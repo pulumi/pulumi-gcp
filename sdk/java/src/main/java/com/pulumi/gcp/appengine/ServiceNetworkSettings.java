@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .versionId("v1")
  *             .service("internalapp")
  *             .deleteServiceOnDestroy(true)
- *             .runtime("nodejs20")
+ *             .runtime("nodejs22")
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
  *                 .shell("node ./app.js")
  *                 .build())

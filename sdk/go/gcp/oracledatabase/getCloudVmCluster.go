@@ -79,16 +79,17 @@ type LookupCloudVmClusterResult struct {
 	ExadataInfrastructure string            `pulumi:"exadataInfrastructure"`
 	GcpOracleZone         string            `pulumi:"gcpOracleZone"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                      `pulumi:"id"`
-	Labels       map[string]string           `pulumi:"labels"`
-	Location     string                      `pulumi:"location"`
-	Name         string                      `pulumi:"name"`
-	Network      string                      `pulumi:"network"`
-	OdbNetwork   string                      `pulumi:"odbNetwork"`
-	OdbSubnet    string                      `pulumi:"odbSubnet"`
-	Project      *string                     `pulumi:"project"`
-	Properties   []GetCloudVmClusterProperty `pulumi:"properties"`
-	PulumiLabels map[string]string           `pulumi:"pulumiLabels"`
+	Id                 string                               `pulumi:"id"`
+	IdentityConnectors []GetCloudVmClusterIdentityConnector `pulumi:"identityConnectors"`
+	Labels             map[string]string                    `pulumi:"labels"`
+	Location           string                               `pulumi:"location"`
+	Name               string                               `pulumi:"name"`
+	Network            string                               `pulumi:"network"`
+	OdbNetwork         string                               `pulumi:"odbNetwork"`
+	OdbSubnet          string                               `pulumi:"odbSubnet"`
+	Project            *string                              `pulumi:"project"`
+	Properties         []GetCloudVmClusterProperty          `pulumi:"properties"`
+	PulumiLabels       map[string]string                    `pulumi:"pulumiLabels"`
 }
 
 func LookupCloudVmClusterOutput(ctx *pulumi.Context, args LookupCloudVmClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCloudVmClusterResultOutput {
@@ -179,6 +180,10 @@ func (o LookupCloudVmClusterResultOutput) GcpOracleZone() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupCloudVmClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) IdentityConnectors() GetCloudVmClusterIdentityConnectorArrayOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) []GetCloudVmClusterIdentityConnector { return v.IdentityConnectors }).(GetCloudVmClusterIdentityConnectorArrayOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) Labels() pulumi.StringMapOutput {

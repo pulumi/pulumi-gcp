@@ -78,6 +78,10 @@ export interface GetSSLPolicyResult {
     readonly minTlsVersion: string;
     readonly name: string;
     /**
+     * The post-quantum key exchange setting of this policy.
+     */
+    readonly postQuantumKeyExchange: string;
+    /**
      * The Google-curated or custom profile used by this policy.
      */
     readonly profile: string;

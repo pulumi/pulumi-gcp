@@ -22,9 +22,6 @@ import javax.annotation.Nullable;
  * A data product is a curated collection of data assets, packaged to address
  * specific use cases.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about DataProduct, see:
  * 
  * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
@@ -70,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_79169}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_56529}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -88,6 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.dataplex.DataProduct;
  * import com.pulumi.gcp.dataplex.DataProductArgs;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupArgs;
@@ -105,6 +104,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var testSa = new Account("testSa", AccountArgs.builder()
+ *             .accountId("tf-test-sa-_75413")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
@@ -120,7 +124,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_56529}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_55138}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()
@@ -128,7 +132,7 @@ import javax.annotation.Nullable;
  *                     .groupId("scientist")
  *                     .displayName("Data Scientist")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-scientists-_75413}{@literal @}{@code example.com")
+ *                         .serviceAccount(testSa.email())
  *                         .build())
  *                     .build())
  *             .build());

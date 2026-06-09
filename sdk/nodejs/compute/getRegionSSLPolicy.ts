@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+ *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_ssl_policy = gcp.compute.getRegionSSLPolicy({
+ *     name: "production-ssl-policy",
+ * });
+ * ```
+ */
 export function getRegionSSLPolicy(args: GetRegionSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSSLPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", {
@@ -17,8 +32,21 @@ export function getRegionSSLPolicy(args: GetRegionSSLPolicyArgs, opts?: pulumi.I
  * A collection of arguments for invoking getRegionSSLPolicy.
  */
 export interface GetRegionSSLPolicyArgs {
+    /**
+     * The name of the SSL Policy.
+     *
+     * - - -
+     */
     name: string;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     project?: string;
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     */
     region?: string;
 }
 
@@ -27,22 +55,64 @@ export interface GetRegionSSLPolicyArgs {
  */
 export interface GetRegionSSLPolicyResult {
     readonly creationTimestamp: string;
+    /**
+     * If the `profile` is `CUSTOM`, these are the custom encryption
+     * ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+     * attribute will be empty.
+     */
     readonly customFeatures: string[];
     readonly deletionPolicy: string;
+    /**
+     * Description of this SSL Policy.
+     */
     readonly description: string;
+    /**
+     * The set of enabled encryption ciphers as a result of the policy config
+     */
     readonly enabledFeatures: string[];
+    /**
+     * Fingerprint of this resource.
+     */
     readonly fingerprint: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The minimum supported TLS version of this policy.
+     */
     readonly minTlsVersion: string;
     readonly name: string;
+    /**
+     * The post-quantum key exchange setting of this policy.
+     */
+    readonly postQuantumKeyExchange: string;
+    /**
+     * The Google-curated or custom profile used by this policy.
+     */
     readonly profile: string;
     readonly project?: string;
     readonly region?: string;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink: string;
 }
+/**
+ * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+ *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_ssl_policy = gcp.compute.getRegionSSLPolicy({
+ *     name: "production-ssl-policy",
+ * });
+ * ```
+ */
 export function getRegionSSLPolicyOutput(args: GetRegionSSLPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionSSLPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", {
@@ -56,7 +126,20 @@ export function getRegionSSLPolicyOutput(args: GetRegionSSLPolicyOutputArgs, opt
  * A collection of arguments for invoking getRegionSSLPolicy.
  */
 export interface GetRegionSSLPolicyOutputArgs {
+    /**
+     * The name of the SSL Policy.
+     *
+     * - - -
+     */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     */
     region?: pulumi.Input<string | undefined>;
 }

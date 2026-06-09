@@ -268,6 +268,12 @@ export class CloudVmCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcpOracleZone: pulumi.Output<string>;
     /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly identityConnectors: pulumi.Output<outputs.oracledatabase.CloudVmClusterIdentityConnector[]>;
+    /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -341,6 +347,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["exadataInfrastructure"] = state?.exadataInfrastructure;
             resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
+            resourceInputs["identityConnectors"] = state?.identityConnectors;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -379,6 +386,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gcpOracleZone"] = undefined /*out*/;
+            resourceInputs["identityConnectors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -450,6 +458,12 @@ export interface CloudVmClusterState {
      * of Exadata infrastructure.
      */
     gcpOracleZone?: pulumi.Input<string | undefined>;
+    /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     */
+    identityConnectors?: pulumi.Input<pulumi.Input<inputs.oracledatabase.CloudVmClusterIdentityConnector>[] | undefined>;
     /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

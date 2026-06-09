@@ -18,14 +18,14 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
     public static final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs Empty = new ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs();
 
     /**
-     * he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+     * The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
      * 
      */
     @Import(name="agent", required=true)
     private Output<String> agent;
 
     /**
-     * @return he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+     * @return The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
      * 
      */
     public Output<String> agent() {
@@ -75,7 +75,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
         }
 
         /**
-         * @param agent he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+         * @param agent The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
         }
 
         /**
-         * @param agent he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+         * @param agent The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
          * 
          * @return builder
          * 

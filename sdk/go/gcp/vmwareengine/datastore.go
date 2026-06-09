@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// use existing network with connectivity to the thirdparty datastore
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "default",
+//				Name: pulumi.StringRef("default"),
 //			}, nil)
 //			if err != nil {
 //				return err

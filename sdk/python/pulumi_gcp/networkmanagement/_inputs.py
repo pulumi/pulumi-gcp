@@ -47,6 +47,10 @@ class ConnectivityTestDestinationArgsDict(TypedDict):
     """
     A cluster URI for Google Kubernetes Engine cluster control plane.
     """
+    gke_pod: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+    """
     instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Compute Engine instance URI.
@@ -58,6 +62,11 @@ class ConnectivityTestDestinationArgsDict(TypedDict):
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A VPC network URI.
+    """
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+    Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
     """
     port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -92,9 +101,11 @@ class ConnectivityTestDestinationArgs:
                  forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdn: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_master_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_pod: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  redis_cluster: pulumi.Input[Optional[_builtins.str]] = None,
@@ -107,9 +118,12 @@ class ConnectivityTestDestinationArgs:
                Requires gke_master_cluster to be set, can't be used simultaneoulsly with
                ip_address or network. Applicable only to destination endpoint.
         :param pulumi.Input[_builtins.str] gke_master_cluster: A cluster URI for Google Kubernetes Engine cluster control plane.
+        :param pulumi.Input[_builtins.str] gke_pod: A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
         :param pulumi.Input[_builtins.str] instance: A Compute Engine instance URI.
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the endpoint, which can be an external or internal IP.
         :param pulumi.Input[_builtins.str] network: A VPC network URI.
+        :param pulumi.Input[_builtins.str] network_type: For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+               Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
         :param pulumi.Input[_builtins.int] port: The IP protocol port of the endpoint. Only applicable when protocol is
                TCP or UDP.
         :param pulumi.Input[_builtins.str] project_id: Project ID where the endpoint is located.
@@ -132,12 +146,16 @@ class ConnectivityTestDestinationArgs:
             pulumi.set(__self__, "fqdn", fqdn)
         if gke_master_cluster is not None:
             pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
+        if gke_pod is not None:
+            pulumi.set(__self__, "gke_pod", gke_pod)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project_id is not None:
@@ -199,6 +217,18 @@ class ConnectivityTestDestinationArgs:
         pulumi.set(self, "gke_master_cluster", value)
 
     @_builtins.property
+    @pulumi.getter(name="gkePod")
+    def gke_pod(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+        """
+        return pulumi.get(self, "gke_pod")
+
+    @gke_pod.setter
+    def gke_pod(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gke_pod", value)
+
+    @_builtins.property
     @pulumi.getter
     def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -233,6 +263,19 @@ class ConnectivityTestDestinationArgs:
     @network.setter
     def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+        Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter

@@ -176,6 +176,9 @@ func GetComposerCustomEndpoint(ctx *pulumi.Context) string {
 func GetComputeCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:computeCustomEndpoint")
 }
+func GetConfigCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:configCustomEndpoint")
+}
 func GetContactCenterInsightsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:contactCenterInsightsCustomEndpoint")
 }

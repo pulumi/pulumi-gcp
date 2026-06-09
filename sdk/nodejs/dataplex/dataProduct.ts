@@ -10,9 +10,6 @@ import * as utilities from "../utilities";
  * A data product is a curated collection of data assets, packaged to address
  * specific use cases.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about DataProduct, see:
  *
  * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
@@ -38,7 +35,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_79169@example.com",
+ *             googleGroup: "tf-test-analysts-_56529@example.com",
  *         },
  *     }],
  * });
@@ -49,6 +46,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const testSa = new gcp.serviceaccount.Account("test_sa", {
+ *     accountId: "tf-test-sa-_75413",
+ *     displayName: "Test Service Account",
+ * });
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
@@ -66,7 +67,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_56529@example.com",
+ *                 googleGroup: "tf-test-analysts-_55138@example.com",
  *             },
  *         },
  *         {
@@ -74,7 +75,7 @@ import * as utilities from "../utilities";
  *             groupId: "scientist",
  *             displayName: "Data Scientist",
  *             principal: {
- *                 googleGroup: "tf-test-scientists-_75413@example.com",
+ *                 serviceAccount: testSa.email,
  *             },
  *         },
  *     ],

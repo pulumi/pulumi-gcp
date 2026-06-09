@@ -21,14 +21,11 @@ import javax.annotation.Nullable;
 /**
  * The Transport resource is a top-level resource used by customers to control Partner Cross-Cloud Interconnect (CCI) connections.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about Transport, see:
  * 
- * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.transport)
+ * * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.transports)
  * * How-to Guides
- *     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/beta/network-connectivity/transports)
+ *     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/network-connectivity/transports)
  * 
  * ## Example Usage
  * 
@@ -64,15 +61,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary_network = new Network("primary-network", NetworkArgs.builder()
- *             .name("tf-test-my-vpc-network_44154")
+ *             .name("tf-test-my-vpc-network_90221")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var primary = new Transport("primary", TransportArgs.builder()
- *             .name("tf-test-basic-transport_90221")
+ *             .name("tf-test-basic-transport_88987")
  *             .region("us-east4")
  *             .description("A sample transport")
- *             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1beta/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))
+ *             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))
  *             .network(primary_network.name())
  *             .bandwidth("BPS_1G")
  *             .remoteAccountId("123")
@@ -106,6 +103,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkconnectivity/transport:Transport")
 public class Transport extends com.pulumi.resources.CustomResource {
     /**
+     * (Optional, Beta)
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      * 
      */
@@ -113,7 +111,8 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> adminEnabled;
 
     /**
-     * @return Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
+     * @return (Optional, Beta)
+     * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      * 
      */
     public Output<Optional<Boolean>> adminEnabled() {
@@ -134,6 +133,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advertisedRoutes);
     }
     /**
+     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
@@ -141,7 +141,8 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> autoAccept;
 
     /**
-     * @return Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+     * @return (Optional, Beta)
+     * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
     public Output<Optional<Boolean>> autoAccept() {
@@ -228,6 +229,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return this.generatedActivationKey;
     }
     /**
+     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
@@ -235,7 +237,8 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> hub;
 
     /**
-     * @return The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+     * @return (Optional, Beta)
+     * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
     public Output<Optional<String>> hub() {
@@ -346,6 +349,7 @@ public class Transport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providedActivationKey);
     }
     /**
+     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
@@ -353,7 +357,8 @@ public class Transport extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> pscRoutingEnabled;
 
     /**
-     * @return Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+     * @return (Optional, Beta)
+     * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
     public Output<Optional<Boolean>> pscRoutingEnabled() {

@@ -1698,7 +1698,7 @@ type DatabaseInstanceSettings struct {
 	DiskAutoresizeLimit *int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize *int `pulumi:"diskSize"`
-	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
@@ -1801,7 +1801,7 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskAutoresizeLimit pulumi.IntPtrInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
@@ -2036,7 +2036,7 @@ func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -2373,7 +2373,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {

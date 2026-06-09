@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Compute
     ///     var policyddosprotection = new Gcp.Compute.RegionSecurityPolicy("policyddosprotection", new()
     ///     {
     ///         Region = "southamerica-west1",
-    ///         Name = "tf-test-policyddos_39249",
+    ///         Name = "tf-test-policyddos_74391",
     ///         Description = "ddos protection security policy to set target instance",
     ///         Type = "CLOUD_ARMOR_NETWORK",
     ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.Compute
     ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edge_sec_service", new()
     ///     {
     ///         Region = "southamerica-west1",
-    ///         Name = "tf-test-edgesec_74391",
+    ///         Name = "tf-test-edgesec_16511",
     ///         SecurityPolicy = policyddosprotection.SelfLink,
     ///     });
     /// 

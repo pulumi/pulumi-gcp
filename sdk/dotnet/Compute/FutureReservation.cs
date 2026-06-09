@@ -219,6 +219,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.FutureReservationParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// Planning state before being submitted for evaluation
         /// Possible values are: `DRAFT`, `SUBMITTED`.
         /// </summary>
@@ -426,6 +433,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.FutureReservationParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// Planning state before being submitted for evaluation
         /// Possible values are: `DRAFT`, `SUBMITTED`.
         /// </summary>
@@ -574,6 +588,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.FutureReservationParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// Planning state before being submitted for evaluation

@@ -239,6 +239,7 @@ __all__ = [
     'GuardrailLlmPromptSecurityDefaultSettings',
     'GuardrailModelSafety',
     'GuardrailModelSafetySafetySetting',
+    'SecuritySettingsEndpointControlPolicy',
     'ToolClientFunction',
     'ToolClientFunctionParameters',
     'ToolClientFunctionResponse',
@@ -7810,6 +7811,8 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity(dict):
             suggest = "custom_policies"
         elif key == "defaultSettings":
             suggest = "default_settings"
+        elif key == "failOpen":
+            suggest = "fail_open"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AppVersionSnapshotGuardrailLlmPromptSecurity. Access the value via the '{suggest}' property getter instead.")
@@ -7824,7 +7827,8 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity(dict):
 
     def __init__(__self__, *,
                  custom_policies: Optional[Sequence['outputs.AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy']] = None,
-                 default_settings: Optional[Sequence['outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting']] = None):
+                 default_settings: Optional[Sequence['outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting']] = None,
+                 fail_open: Optional[_builtins.bool] = None):
         """
         :param Sequence['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgs'] custom_policies: (Output)
                Guardrail that blocks the conversation if the LLM response is considered
@@ -7833,11 +7837,16 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity(dict):
         :param Sequence['AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs'] default_settings: (Output)
                Configuration for default system security settings.
                Structure is documented below.
+        :param _builtins.bool fail_open: (Output)
+               If an error occurs during the policy check, fail open and do not trigger
+               the guardrail.
         """
         if custom_policies is not None:
             pulumi.set(__self__, "custom_policies", custom_policies)
         if default_settings is not None:
             pulumi.set(__self__, "default_settings", default_settings)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
 
     @_builtins.property
     @pulumi.getter(name="customPolicies")
@@ -7859,6 +7868,16 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "default_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        If an error occurs during the policy check, fail open and do not trigger
+        the guardrail.
+        """
+        return pulumi.get(self, "fail_open")
 
 
 @pulumi.output_type
@@ -16702,6 +16721,8 @@ class GuardrailLlmPromptSecurity(dict):
             suggest = "custom_policy"
         elif key == "defaultSettings":
             suggest = "default_settings"
+        elif key == "failOpen":
+            suggest = "fail_open"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPromptSecurity. Access the value via the '{suggest}' property getter instead.")
@@ -16716,18 +16737,26 @@ class GuardrailLlmPromptSecurity(dict):
 
     def __init__(__self__, *,
                  custom_policy: Optional['outputs.GuardrailLlmPromptSecurityCustomPolicy'] = None,
-                 default_settings: Optional['outputs.GuardrailLlmPromptSecurityDefaultSettings'] = None):
+                 default_settings: Optional['outputs.GuardrailLlmPromptSecurityDefaultSettings'] = None,
+                 fail_open: Optional[_builtins.bool] = None):
         """
         :param 'GuardrailLlmPromptSecurityCustomPolicyArgs' custom_policy: Guardrail that blocks the conversation if the LLM response is considered
                violating the policy based on the LLM classification.
                Structure is documented below.
         :param 'GuardrailLlmPromptSecurityDefaultSettingsArgs' default_settings: Configuration for default system security settings.
                Structure is documented below.
+        :param _builtins.bool fail_open: Determines the behavior when the guardrail encounters an LLM error.
+               - If true: the guardrail is bypassed.
+               - If false (default): the guardrail triggers/blocks.
+               Note: If a custom policy is provided, this field is ignored in favor of
+               the policy's 'failOpen' configuration.
         """
         if custom_policy is not None:
             pulumi.set(__self__, "custom_policy", custom_policy)
         if default_settings is not None:
             pulumi.set(__self__, "default_settings", default_settings)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
 
     @_builtins.property
     @pulumi.getter(name="customPolicy")
@@ -16747,6 +16776,18 @@ class GuardrailLlmPromptSecurity(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "default_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        Determines the behavior when the guardrail encounters an LLM error.
+        - If true: the guardrail is bypassed.
+        - If false (default): the guardrail triggers/blocks.
+        Note: If a custom policy is provided, this field is ignored in favor of
+        the policy's 'failOpen' configuration.
+        """
+        return pulumi.get(self, "fail_open")
 
 
 @pulumi.output_type
@@ -17048,6 +17089,58 @@ class GuardrailModelSafetySafetySetting(dict):
         Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
         """
         return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class SecuritySettingsEndpointControlPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "enforcementScope":
+            suggest = "enforcement_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecuritySettingsEndpointControlPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecuritySettingsEndpointControlPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecuritySettingsEndpointControlPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_origins: Optional[Sequence[_builtins.str]] = None,
+                 enforcement_scope: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_origins: Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+        :param _builtins.str enforcement_scope: Optional. The scope in which this policy's allowedOrigins list is enforced.
+               Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+        """
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if enforcement_scope is not None:
+            pulumi.set(__self__, "enforcement_scope", enforcement_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="enforcementScope")
+    def enforcement_scope(self) -> Optional[_builtins.str]:
+        """
+        Optional. The scope in which this policy's allowedOrigins list is enforced.
+        Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+        """
+        return pulumi.get(self, "enforcement_scope")
 
 
 @pulumi.output_type

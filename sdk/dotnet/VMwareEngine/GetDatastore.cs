@@ -12,10 +12,9 @@ namespace Pulumi.Gcp.VMwareEngine
     public static class GetDatastore
     {
         /// <summary>
-        /// Use this data source to get details about a datastore resource.
+        /// Get information about a Cloud VMware Engine Datastore.
         /// 
-        /// To get more information about datastore, see:
-        /// * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -27,10 +26,10 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testDs = Gcp.VMwareEngine.GetDatastore.Invoke(new()
+        ///     var @default = Gcp.VMwareEngine.GetDatastore.Invoke(new()
         ///     {
-        ///         Name = "example-ds",
-        ///         Location = "us-west2",
+        ///         Location = exampleThirdparty.Location,
+        ///         Name = exampleThirdparty.Name,
         ///     });
         /// 
         /// });
@@ -40,10 +39,9 @@ namespace Pulumi.Gcp.VMwareEngine
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("gcp:vmwareengine/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get details about a datastore resource.
+        /// Get information about a Cloud VMware Engine Datastore.
         /// 
-        /// To get more information about datastore, see:
-        /// * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -55,10 +53,10 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testDs = Gcp.VMwareEngine.GetDatastore.Invoke(new()
+        ///     var @default = Gcp.VMwareEngine.GetDatastore.Invoke(new()
         ///     {
-        ///         Name = "example-ds",
-        ///         Location = "us-west2",
+        ///         Location = exampleThirdparty.Location,
+        ///         Name = exampleThirdparty.Name,
         ///     });
         /// 
         /// });
@@ -68,10 +66,9 @@ namespace Pulumi.Gcp.VMwareEngine
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("gcp:vmwareengine/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get details about a datastore resource.
+        /// Get information about a Cloud VMware Engine Datastore.
         /// 
-        /// To get more information about datastore, see:
-        /// * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -83,10 +80,10 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testDs = Gcp.VMwareEngine.GetDatastore.Invoke(new()
+        ///     var @default = Gcp.VMwareEngine.GetDatastore.Invoke(new()
         ///     {
-        ///         Name = "example-ds",
-        ///         Location = "us-west2",
+        ///         Location = exampleThirdparty.Location,
+        ///         Name = exampleThirdparty.Name,
         ///     });
         /// 
         /// });
@@ -100,17 +97,30 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetDatastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// either regional or zonal location of the resource.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
         /// <summary>
-        /// Name of the resource.
+        /// The user-provided identifier of the datastore to be created.
+        /// This identifier must be unique among each `Datastore` within the parent
+        /// and becomes the final token in the name URI.
+        /// The identifier must meet the following requirements:
+        /// * Only contains 1-63 alphanumeric characters and hyphens
+        /// * Begins with an alphabetical character
+        /// * Ends with a non-hyphen character
+        /// * Not formatted as a UUID
+        /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+        /// (section 3.5)
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -123,17 +133,30 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetDatastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// either regional or zonal location of the resource.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Name of the resource.
+        /// The user-provided identifier of the datastore to be created.
+        /// This identifier must be unique among each `Datastore` within the parent
+        /// and becomes the final token in the name URI.
+        /// The identifier must meet the following requirements:
+        /// * Only contains 1-63 alphanumeric characters and hyphens
+        /// * Begins with an alphabetical character
+        /// * Ends with a non-hyphen character
+        /// * Not formatted as a UUID
+        /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+        /// (section 3.5)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

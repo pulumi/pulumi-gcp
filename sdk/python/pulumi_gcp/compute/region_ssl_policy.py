@@ -24,6 +24,7 @@ class RegionSslPolicyArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
@@ -56,6 +57,16 @@ class RegionSslPolicyArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] post_quantum_key_exchange: One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+               X25519MLKEM768 key exchange when clients advertise support for it.
+               When set to `DEFAULT`, or if no SSL Policy is attached to
+               the target proxy, the load balancer disallows X25519MLKEM768 key
+               exchange before October 2026, and allows it afterward. When set to
+               `ENABLED`, the load balancer allows X25519MLKEM768 key
+               exchange. When set to `DEFERRED`, the load balancer
+               disallows X25519MLKEM768 key exchange until October 2027, and allows
+               it afterward.
+               Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
         :param pulumi.Input[_builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -81,6 +92,8 @@ class RegionSslPolicyArgs:
             pulumi.set(__self__, "min_tls_version", min_tls_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if post_quantum_key_exchange is not None:
+            pulumi.set(__self__, "post_quantum_key_exchange", post_quantum_key_exchange)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
         if project is not None:
@@ -170,6 +183,27 @@ class RegionSslPolicyArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="postQuantumKeyExchange")
+    def post_quantum_key_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        X25519MLKEM768 key exchange when clients advertise support for it.
+        When set to `DEFAULT`, or if no SSL Policy is attached to
+        the target proxy, the load balancer disallows X25519MLKEM768 key
+        exchange before October 2026, and allows it afterward. When set to
+        `ENABLED`, the load balancer allows X25519MLKEM768 key
+        exchange. When set to `DEFERRED`, the load balancer
+        disallows X25519MLKEM768 key exchange until October 2027, and allows
+        it afterward.
+        Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        """
+        return pulumi.get(self, "post_quantum_key_exchange")
+
+    @post_quantum_key_exchange.setter
+    def post_quantum_key_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "post_quantum_key_exchange", value)
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -228,6 +262,7 @@ class _RegionSslPolicyState:
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -265,6 +300,16 @@ class _RegionSslPolicyState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] post_quantum_key_exchange: One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+               X25519MLKEM768 key exchange when clients advertise support for it.
+               When set to `DEFAULT`, or if no SSL Policy is attached to
+               the target proxy, the load balancer disallows X25519MLKEM768 key
+               exchange before October 2026, and allows it afterward. When set to
+               `ENABLED`, the load balancer allows X25519MLKEM768 key
+               exchange. When set to `DEFERRED`, the load balancer
+               disallows X25519MLKEM768 key exchange until October 2027, and allows
+               it afterward.
+               Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
         :param pulumi.Input[_builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -297,6 +342,8 @@ class _RegionSslPolicyState:
             pulumi.set(__self__, "min_tls_version", min_tls_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if post_quantum_key_exchange is not None:
+            pulumi.set(__self__, "post_quantum_key_exchange", post_quantum_key_exchange)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
         if project is not None:
@@ -425,6 +472,27 @@ class _RegionSslPolicyState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="postQuantumKeyExchange")
+    def post_quantum_key_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        X25519MLKEM768 key exchange when clients advertise support for it.
+        When set to `DEFAULT`, or if no SSL Policy is attached to
+        the target proxy, the load balancer disallows X25519MLKEM768 key
+        exchange before October 2026, and allows it afterward. When set to
+        `ENABLED`, the load balancer allows X25519MLKEM768 key
+        exchange. When set to `DEFERRED`, the load balancer
+        disallows X25519MLKEM768 key exchange until October 2027, and allows
+        it afterward.
+        Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        """
+        return pulumi.get(self, "post_quantum_key_exchange")
+
+    @post_quantum_key_exchange.setter
+    def post_quantum_key_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "post_quantum_key_exchange", value)
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -495,6 +563,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -508,6 +577,33 @@ class RegionSslPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslPolicies)
         * How-to Guides
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+
+        ## Example Usage
+
+        ### Region Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_ssl_policy = gcp.compute.RegionSslPolicy("region-ssl-policy",
+            name="region-ssl-policy",
+            region="us-central1",
+            profile="MODERN")
+        ```
+        ### Region Ssl Policy Post Quantum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        post_quantum_region_ssl_policy = gcp.compute.RegionSslPolicy("post-quantum-region-ssl-policy",
+            name="post-quantum-region-ssl-policy",
+            region="us-central1",
+            profile="MODERN",
+            min_tls_version="TLS_1_2",
+            post_quantum_key_exchange="ENABLED")
+        ```
 
         ## Import
 
@@ -556,6 +652,16 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] post_quantum_key_exchange: One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+               X25519MLKEM768 key exchange when clients advertise support for it.
+               When set to `DEFAULT`, or if no SSL Policy is attached to
+               the target proxy, the load balancer disallows X25519MLKEM768 key
+               exchange before October 2026, and allows it afterward. When set to
+               `ENABLED`, the load balancer allows X25519MLKEM768 key
+               exchange. When set to `DEFERRED`, the load balancer
+               disallows X25519MLKEM768 key exchange until October 2027, and allows
+               it afterward.
+               Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
         :param pulumi.Input[_builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -586,6 +692,33 @@ class RegionSslPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslPolicies)
         * How-to Guides
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+
+        ## Example Usage
+
+        ### Region Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_ssl_policy = gcp.compute.RegionSslPolicy("region-ssl-policy",
+            name="region-ssl-policy",
+            region="us-central1",
+            profile="MODERN")
+        ```
+        ### Region Ssl Policy Post Quantum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        post_quantum_region_ssl_policy = gcp.compute.RegionSslPolicy("post-quantum-region-ssl-policy",
+            name="post-quantum-region-ssl-policy",
+            region="us-central1",
+            profile="MODERN",
+            min_tls_version="TLS_1_2",
+            post_quantum_key_exchange="ENABLED")
+        ```
 
         ## Import
 
@@ -626,6 +759,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -643,6 +777,7 @@ class RegionSslPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["min_tls_version"] = min_tls_version
             __props__.__dict__["name"] = name
+            __props__.__dict__["post_quantum_key_exchange"] = post_quantum_key_exchange
             __props__.__dict__["profile"] = profile
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -668,6 +803,7 @@ class RegionSslPolicy(pulumi.CustomResource):
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            post_quantum_key_exchange: pulumi.Input[Optional[_builtins.str]] = None,
             profile: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -709,6 +845,16 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] post_quantum_key_exchange: One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+               X25519MLKEM768 key exchange when clients advertise support for it.
+               When set to `DEFAULT`, or if no SSL Policy is attached to
+               the target proxy, the load balancer disallows X25519MLKEM768 key
+               exchange before October 2026, and allows it afterward. When set to
+               `ENABLED`, the load balancer allows X25519MLKEM768 key
+               exchange. When set to `DEFERRED`, the load balancer
+               disallows X25519MLKEM768 key exchange until October 2027, and allows
+               it afterward.
+               Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
         :param pulumi.Input[_builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -737,6 +883,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["min_tls_version"] = min_tls_version
         __props__.__dict__["name"] = name
+        __props__.__dict__["post_quantum_key_exchange"] = post_quantum_key_exchange
         __props__.__dict__["profile"] = profile
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -828,6 +975,23 @@ class RegionSslPolicy(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="postQuantumKeyExchange")
+    def post_quantum_key_exchange(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        X25519MLKEM768 key exchange when clients advertise support for it.
+        When set to `DEFAULT`, or if no SSL Policy is attached to
+        the target proxy, the load balancer disallows X25519MLKEM768 key
+        exchange before October 2026, and allows it afterward. When set to
+        `ENABLED`, the load balancer allows X25519MLKEM768 key
+        exchange. When set to `DEFERRED`, the load balancer
+        disallows X25519MLKEM768 key exchange until October 2027, and allows
+        it afterward.
+        Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        """
+        return pulumi.get(self, "post_quantum_key_exchange")
 
     @_builtins.property
     @pulumi.getter

@@ -40,6 +40,12 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
         public Input<string>? GkeMasterCluster { get; set; }
 
         /// <summary>
+        /// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+        /// </summary>
+        [Input("gkePod")]
+        public Input<string>? GkePod { get; set; }
+
+        /// <summary>
         /// A Compute Engine instance URI.
         /// </summary>
         [Input("instance")]
@@ -56,6 +62,13 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+        /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         /// <summary>
         /// The IP protocol port of the endpoint. Only applicable when protocol is

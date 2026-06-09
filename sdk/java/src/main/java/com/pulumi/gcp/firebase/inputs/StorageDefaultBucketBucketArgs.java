@@ -17,6 +17,23 @@ public final class StorageDefaultBucketBucketArgs extends com.pulumi.resources.R
 
     /**
      * (Output)
+     * The last segment of bucket.name.
+     * 
+     */
+    @Import(name="bucketId")
+    private @Nullable Output<String> bucketId;
+
+    /**
+     * @return (Output)
+     * The last segment of bucket.name.
+     * 
+     */
+    public Optional<Output<String>> bucketId() {
+        return Optional.ofNullable(this.bucketId);
+    }
+
+    /**
+     * (Output)
      * The resource name of the bucket in the format
      * projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      * 
@@ -37,6 +54,7 @@ public final class StorageDefaultBucketBucketArgs extends com.pulumi.resources.R
     private StorageDefaultBucketBucketArgs() {}
 
     private StorageDefaultBucketBucketArgs(StorageDefaultBucketBucketArgs $) {
+        this.bucketId = $.bucketId;
         this.name = $.name;
     }
 
@@ -56,6 +74,29 @@ public final class StorageDefaultBucketBucketArgs extends com.pulumi.resources.R
 
         public Builder(StorageDefaultBucketBucketArgs defaults) {
             $ = new StorageDefaultBucketBucketArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bucketId (Output)
+         * The last segment of bucket.name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketId(@Nullable Output<String> bucketId) {
+            $.bucketId = bucketId;
+            return this;
+        }
+
+        /**
+         * @param bucketId (Output)
+         * The last segment of bucket.name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketId(String bucketId) {
+            return bucketId(Output.of(bucketId));
         }
 
         /**

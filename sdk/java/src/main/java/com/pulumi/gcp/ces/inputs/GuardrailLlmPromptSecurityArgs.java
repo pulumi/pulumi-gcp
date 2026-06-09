@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.GuardrailLlmPromptSecurityCustomPolicyArgs;
 import com.pulumi.gcp.ces.inputs.GuardrailLlmPromptSecurityDefaultSettingsArgs;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,11 +53,35 @@ public final class GuardrailLlmPromptSecurityArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.defaultSettings);
     }
 
+    /**
+     * Determines the behavior when the guardrail encounters an LLM error.
+     * - If true: the guardrail is bypassed.
+     * - If false (default): the guardrail triggers/blocks.
+     *   Note: If a custom policy is provided, this field is ignored in favor of
+     *   the policy&#39;s &#39;failOpen&#39; configuration.
+     * 
+     */
+    @Import(name="failOpen")
+    private @Nullable Output<Boolean> failOpen;
+
+    /**
+     * @return Determines the behavior when the guardrail encounters an LLM error.
+     * - If true: the guardrail is bypassed.
+     * - If false (default): the guardrail triggers/blocks.
+     *   Note: If a custom policy is provided, this field is ignored in favor of
+     *   the policy&#39;s &#39;failOpen&#39; configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
+
     private GuardrailLlmPromptSecurityArgs() {}
 
     private GuardrailLlmPromptSecurityArgs(GuardrailLlmPromptSecurityArgs $) {
         this.customPolicy = $.customPolicy;
         this.defaultSettings = $.defaultSettings;
+        this.failOpen = $.failOpen;
     }
 
     public static Builder builder() {
@@ -123,6 +148,35 @@ public final class GuardrailLlmPromptSecurityArgs extends com.pulumi.resources.R
          */
         public Builder defaultSettings(GuardrailLlmPromptSecurityDefaultSettingsArgs defaultSettings) {
             return defaultSettings(Output.of(defaultSettings));
+        }
+
+        /**
+         * @param failOpen Determines the behavior when the guardrail encounters an LLM error.
+         * - If true: the guardrail is bypassed.
+         * - If false (default): the guardrail triggers/blocks.
+         *   Note: If a custom policy is provided, this field is ignored in favor of
+         *   the policy&#39;s &#39;failOpen&#39; configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(@Nullable Output<Boolean> failOpen) {
+            $.failOpen = failOpen;
+            return this;
+        }
+
+        /**
+         * @param failOpen Determines the behavior when the guardrail encounters an LLM error.
+         * - If true: the guardrail is bypassed.
+         * - If false (default): the guardrail triggers/blocks.
+         *   Note: If a custom policy is provided, this field is ignored in favor of
+         *   the policy&#39;s &#39;failOpen&#39; configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(Boolean failOpen) {
+            return failOpen(Output.of(failOpen));
         }
 
         public GuardrailLlmPromptSecurityArgs build() {

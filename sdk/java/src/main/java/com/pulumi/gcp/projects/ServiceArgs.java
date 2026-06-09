@@ -43,6 +43,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+     * Terraform resource is destroyed even if the `deletionPolicy` field is set to &#34;DELETE&#34;.
      * 
      */
     @Import(name="deletionPolicy")
@@ -55,6 +57,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+     * Terraform resource is destroyed even if the `deletionPolicy` field is set to &#34;DELETE&#34;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -196,6 +200,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
          * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+         * Terraform resource is destroyed even if the `deletionPolicy` field is set to &#34;DELETE&#34;.
          * 
          * @return builder
          * 
@@ -212,6 +218,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
          * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+         * Terraform resource is destroyed even if the `deletionPolicy` field is set to &#34;DELETE&#34;.
          * 
          * @return builder
          * 

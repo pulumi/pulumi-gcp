@@ -1433,6 +1433,59 @@ class Subnetwork(pulumi.CustomResource):
                 "reserved_internal_range": reserved_secondary.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
             }])
         ```
+        ### Subnetwork With Secondary Ipv6 Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            name="network-with-secondary-ranges",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        ipv6_pap = gcp.compute.PublicAdvertisedPrefix("ipv6_pap",
+            name="pap-for-secondary-ranges",
+            ip_cidr_range="2001:db8::/40",
+            pdp_scope="REGIONAL",
+            ipv6_access_type="INTERNAL",
+            description="GOOGLE_INTERNAL_TEST_PREFIX")
+        ipv6_pdp = gcp.compute.PublicDelegatedPrefix("ipv6_pdp",
+            name="pdp-for-secondary-ranges",
+            region="us-central1",
+            description="PDP in internal subnet mode",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=ipv6_pap.id,
+            mode="DELEGATION")
+        ipv6_sub_pdp = gcp.compute.PublicDelegatedPrefix("ipv6_sub_pdp",
+            name="sub-pdp-for-secondary-ranges",
+            region="us-central1",
+            ip_cidr_range="2001:db8::/56",
+            parent_prefix=ipv6_pdp.id,
+            mode="INTERNAL_IPV6_SUBNETWORK_CREATION")
+        subnetwork_with_secondary_ipv6_range = gcp.compute.Subnetwork("subnetwork_with_secondary_ipv6_range",
+            name="subnet-with-secondary-ranges",
+            region="us-central1",
+            network=custom_test.id,
+            stack_type="IPV6_ONLY",
+            ipv6_access_type="INTERNAL",
+            secondary_ip_ranges=[
+                {
+                    "range_name": "v6-ula",
+                    "ip_version": "IPV6",
+                },
+                {
+                    "range_name": "v6-byogua-auto",
+                    "ip_version": "IPV6",
+                    "ip_collection": ipv6_sub_pdp.self_link,
+                },
+                {
+                    "range_name": "v6-byogua-manual",
+                    "ip_version": "IPV6",
+                    "ip_collection": ipv6_sub_pdp.self_link,
+                    "ip_cidr_range": "2001:db8:0:2::/64",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -1776,6 +1829,59 @@ class Subnetwork(pulumi.CustomResource):
                 "range_name": "secondary",
                 "reserved_internal_range": reserved_secondary.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
             }])
+        ```
+        ### Subnetwork With Secondary Ipv6 Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            name="network-with-secondary-ranges",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        ipv6_pap = gcp.compute.PublicAdvertisedPrefix("ipv6_pap",
+            name="pap-for-secondary-ranges",
+            ip_cidr_range="2001:db8::/40",
+            pdp_scope="REGIONAL",
+            ipv6_access_type="INTERNAL",
+            description="GOOGLE_INTERNAL_TEST_PREFIX")
+        ipv6_pdp = gcp.compute.PublicDelegatedPrefix("ipv6_pdp",
+            name="pdp-for-secondary-ranges",
+            region="us-central1",
+            description="PDP in internal subnet mode",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=ipv6_pap.id,
+            mode="DELEGATION")
+        ipv6_sub_pdp = gcp.compute.PublicDelegatedPrefix("ipv6_sub_pdp",
+            name="sub-pdp-for-secondary-ranges",
+            region="us-central1",
+            ip_cidr_range="2001:db8::/56",
+            parent_prefix=ipv6_pdp.id,
+            mode="INTERNAL_IPV6_SUBNETWORK_CREATION")
+        subnetwork_with_secondary_ipv6_range = gcp.compute.Subnetwork("subnetwork_with_secondary_ipv6_range",
+            name="subnet-with-secondary-ranges",
+            region="us-central1",
+            network=custom_test.id,
+            stack_type="IPV6_ONLY",
+            ipv6_access_type="INTERNAL",
+            secondary_ip_ranges=[
+                {
+                    "range_name": "v6-ula",
+                    "ip_version": "IPV6",
+                },
+                {
+                    "range_name": "v6-byogua-auto",
+                    "ip_version": "IPV6",
+                    "ip_collection": ipv6_sub_pdp.self_link,
+                },
+                {
+                    "range_name": "v6-byogua-manual",
+                    "ip_version": "IPV6",
+                    "ip_collection": ipv6_sub_pdp.self_link,
+                    "ip_cidr_range": "2001:db8:0:2::/64",
+                },
+            ])
         ```
 
         ## Import

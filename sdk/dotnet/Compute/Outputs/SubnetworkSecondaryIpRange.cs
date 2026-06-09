@@ -22,6 +22,20 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? IpCidrRange;
         /// <summary>
+        /// (Optional, Beta)
+        /// Reference to a Public Delegated Prefix (PDP) for BYOIP.
+        /// This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+        /// When specified along with the ip_cidr_range, the IpCidrRange must lie within the PDP referenced by the `ipCollection` field.
+        /// When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+        /// </summary>
+        public readonly string? IpCollection;
+        /// <summary>
+        /// (Optional, Beta)
+        /// The IP version of the secondary range. If not specified, IPV4 is used.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        public readonly string? IpVersion;
+        /// <summary>
         /// The name associated with this subnetwork secondary range, used
         /// when adding an alias IP range to a VM instance. The name must
         /// be 1-63 characters long, and comply with RFC1035. The name
@@ -38,11 +52,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         private SubnetworkSecondaryIpRange(
             string? ipCidrRange,
 
+            string? ipCollection,
+
+            string? ipVersion,
+
             string rangeName,
 
             string? reservedInternalRange)
         {
             IpCidrRange = ipCidrRange;
+            IpCollection = ipCollection;
+            IpVersion = ipVersion;
             RangeName = rangeName;
             ReservedInternalRange = reservedInternalRange;
         }

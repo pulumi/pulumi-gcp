@@ -194,7 +194,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         admin_v3 = gcp.appengine.StandardAppVersion("admin_v3",
             version_id="v3",
             service="admin",
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },
@@ -282,7 +282,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         admin_v3 = gcp.appengine.StandardAppVersion("admin_v3",
             version_id="v3",
             service="admin",
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },

@@ -485,8 +485,8 @@ cloud.google.com/go/bigtable v1.31.0/go.mod h1:N/mwZO+4TSHOeyiE1JxO+sRPnW4bnR7WL
 cloud.google.com/go/bigtable v1.33.0/go.mod h1:HtpnH4g25VT1pejHRtInlFPnN5sjTxbQlsYBjh9t5l0=
 cloud.google.com/go/bigtable v1.34.0/go.mod h1:p94uLf6cy6D73POkudMagaFF3x9c7ktZjRnOUVGjZAw=
 cloud.google.com/go/bigtable v1.35.0/go.mod h1:EabtwwmTcOJFXp+oMZAT/jZkyDIjNwrv53TrS4DGrrM=
-cloud.google.com/go/bigtable v1.46.0 h1:Bd6vITx01s6gsdEPvjIGJL/oMMdKvraGI34UiixR2gk=
-cloud.google.com/go/bigtable v1.46.0/go.mod h1:GUM6PdkG3rrDse9kugqvX5+ktwo3ldfLtLi1VFn5Wj4=
+cloud.google.com/go/bigtable v1.47.0 h1:NGLgDSr/i79BTGCjxH/maPKxyvl5q8/SsBsyLK52kdI=
+cloud.google.com/go/bigtable v1.47.0/go.mod h1:GUM6PdkG3rrDse9kugqvX5+ktwo3ldfLtLi1VFn5Wj4=
 cloud.google.com/go/billing v1.4.0/go.mod h1:g9IdKBEFlItS8bTtlrZdVLWSSdSyFUZKXNS02zKMOZY=
 cloud.google.com/go/billing v1.5.0/go.mod h1:mztb1tBc3QekhjSgmpf/CV4LzWXLzCArwpLmP2Gm88s=
 cloud.google.com/go/billing v1.6.0/go.mod h1:WoXzguj+BeHXPbKfNWkqVtDdzORazmCjraY+vrxcyvI=

@@ -41,6 +41,14 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _defaultSettings = value;
         }
 
+        /// <summary>
+        /// (Output)
+        /// If an error occurs during the policy check, fail open and do not trigger
+        /// the guardrail.
+        /// </summary>
+        [Input("failOpen")]
+        public Input<bool>? FailOpen { get; set; }
+
         public AppVersionSnapshotGuardrailLlmPromptSecurityArgs()
         {
         }

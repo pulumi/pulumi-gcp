@@ -542,18 +542,18 @@ class PrivateConnection(pulumi.CustomResource):
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
-            region="us-central1",
+            region="us-west1",
             network=default_network.id,
             ip_cidr_range="10.0.0.0/16")
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-network-attachment",
-            region="us-central1",
+            region="us-west1",
             description="basic network attachment description",
             connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[default_subnetwork.self_link])
         default = gcp.datastream.PrivateConnection("default",
             display_name="Connection profile",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",
@@ -674,18 +674,18 @@ class PrivateConnection(pulumi.CustomResource):
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
-            region="us-central1",
+            region="us-west1",
             network=default_network.id,
             ip_cidr_range="10.0.0.0/16")
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-network-attachment",
-            region="us-central1",
+            region="us-west1",
             description="basic network attachment description",
             connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[default_subnetwork.self_link])
         default = gcp.datastream.PrivateConnection("default",
             display_name="Connection profile",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",

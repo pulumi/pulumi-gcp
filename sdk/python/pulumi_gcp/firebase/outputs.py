@@ -4133,15 +4133,46 @@ class RemoteConfigRemoteConfigVersionUpdateUser(dict):
 
 @pulumi.output_type
 class StorageDefaultBucketBucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketId":
+            suggest = "bucket_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageDefaultBucketBucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageDefaultBucketBucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageDefaultBucketBucket.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 bucket_id: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
         """
+        :param _builtins.str bucket_id: (Output)
+               The last segment of bucket.name.
         :param _builtins.str name: (Output)
                The resource name of the bucket in the format
                projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         """
+        if bucket_id is not None:
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The last segment of bucket.name.
+        """
+        return pulumi.get(self, "bucket_id")
 
     @_builtins.property
     @pulumi.getter

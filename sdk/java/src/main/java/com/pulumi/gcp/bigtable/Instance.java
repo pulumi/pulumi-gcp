@@ -216,6 +216,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    @Export(name="edition", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> edition;
+
+    /**
+     * @return The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<String>> edition() {
+        return Codegen.optional(this.edition);
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -336,16 +354,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
      * 
-     * ***
-     * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
      * @return A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     * 
-     * ***
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

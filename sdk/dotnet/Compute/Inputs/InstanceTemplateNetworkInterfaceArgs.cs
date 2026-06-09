@@ -43,6 +43,20 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("aliasIpv6Ranges")]
+        private InputList<Inputs.InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs>? _aliasIpv6Ranges;
+
+        /// <summary>
+        /// [Beta] An
+        /// array of alias IPv6 ranges for this network interface. Can only be specified for network
+        /// interfaces on subnet-mode networks. Structure documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs> AliasIpv6Ranges
+        {
+            get => _aliasIpv6Ranges ?? (_aliasIpv6Ranges = new InputList<Inputs.InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs>());
+            set => _aliasIpv6Ranges = value;
+        }
+
         /// <summary>
         /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         /// </summary>

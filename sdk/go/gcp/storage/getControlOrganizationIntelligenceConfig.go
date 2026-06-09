@@ -11,10 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a Organization Storage Intelligence config resource.
-// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-// and
-// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
 //
 // ## Example Usage
 //
@@ -31,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.LookupControlOrganizationIntelligenceConfig(ctx, &storage.LookupControlOrganizationIntelligenceConfigArgs{
-//				Name: "123456789",
+//				Name: example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +50,7 @@ func LookupControlOrganizationIntelligenceConfig(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getControlOrganizationIntelligenceConfig.
 type LookupControlOrganizationIntelligenceConfigArgs struct {
-	// The id of GCP organization.
+	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
 	Name string `pulumi:"name"`
 }
 
@@ -80,7 +77,7 @@ func LookupControlOrganizationIntelligenceConfigOutput(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getControlOrganizationIntelligenceConfig.
 type LookupControlOrganizationIntelligenceConfigOutputArgs struct {
-	// The id of GCP organization.
+	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 

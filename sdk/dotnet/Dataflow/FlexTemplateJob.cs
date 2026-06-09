@@ -134,11 +134,17 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Output("containerSpecGcsPath")]
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("createIgnoreAlreadyExists")]
+        public Output<bool?> CreateIgnoreAlreadyExists { get; private set; } = null!;
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -400,11 +406,17 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Input("containerSpecGcsPath", required: true)]
         public Input<string> ContainerSpecGcsPath { get; set; } = null!;
+
+        /// <summary>
+        /// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -611,11 +623,17 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Input("containerSpecGcsPath")]
         public Input<string>? ContainerSpecGcsPath { get; set; }
+
+        /// <summary>
+        /// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

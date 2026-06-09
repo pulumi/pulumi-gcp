@@ -13,6 +13,2311 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AssetsExportJobCondition struct {
+	// Assets filter, supports the same syntax as asset listing.
+	Filter *string `pulumi:"filter"`
+}
+
+// AssetsExportJobConditionInput is an input type that accepts AssetsExportJobConditionArgs and AssetsExportJobConditionOutput values.
+// You can construct a concrete instance of `AssetsExportJobConditionInput` via:
+//
+//	AssetsExportJobConditionArgs{...}
+type AssetsExportJobConditionInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobConditionOutput() AssetsExportJobConditionOutput
+	ToAssetsExportJobConditionOutputWithContext(context.Context) AssetsExportJobConditionOutput
+}
+
+type AssetsExportJobConditionArgs struct {
+	// Assets filter, supports the same syntax as asset listing.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (AssetsExportJobConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobCondition)(nil)).Elem()
+}
+
+func (i AssetsExportJobConditionArgs) ToAssetsExportJobConditionOutput() AssetsExportJobConditionOutput {
+	return i.ToAssetsExportJobConditionOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobConditionArgs) ToAssetsExportJobConditionOutputWithContext(ctx context.Context) AssetsExportJobConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobConditionOutput)
+}
+
+func (i AssetsExportJobConditionArgs) ToAssetsExportJobConditionPtrOutput() AssetsExportJobConditionPtrOutput {
+	return i.ToAssetsExportJobConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobConditionArgs) ToAssetsExportJobConditionPtrOutputWithContext(ctx context.Context) AssetsExportJobConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobConditionOutput).ToAssetsExportJobConditionPtrOutputWithContext(ctx)
+}
+
+// AssetsExportJobConditionPtrInput is an input type that accepts AssetsExportJobConditionArgs, AssetsExportJobConditionPtr and AssetsExportJobConditionPtrOutput values.
+// You can construct a concrete instance of `AssetsExportJobConditionPtrInput` via:
+//
+//	        AssetsExportJobConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetsExportJobConditionPtrInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobConditionPtrOutput() AssetsExportJobConditionPtrOutput
+	ToAssetsExportJobConditionPtrOutputWithContext(context.Context) AssetsExportJobConditionPtrOutput
+}
+
+type assetsExportJobConditionPtrType AssetsExportJobConditionArgs
+
+func AssetsExportJobConditionPtr(v *AssetsExportJobConditionArgs) AssetsExportJobConditionPtrInput {
+	return (*assetsExportJobConditionPtrType)(v)
+}
+
+func (*assetsExportJobConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobCondition)(nil)).Elem()
+}
+
+func (i *assetsExportJobConditionPtrType) ToAssetsExportJobConditionPtrOutput() AssetsExportJobConditionPtrOutput {
+	return i.ToAssetsExportJobConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *assetsExportJobConditionPtrType) ToAssetsExportJobConditionPtrOutputWithContext(ctx context.Context) AssetsExportJobConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobConditionPtrOutput)
+}
+
+type AssetsExportJobConditionOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobCondition)(nil)).Elem()
+}
+
+func (o AssetsExportJobConditionOutput) ToAssetsExportJobConditionOutput() AssetsExportJobConditionOutput {
+	return o
+}
+
+func (o AssetsExportJobConditionOutput) ToAssetsExportJobConditionOutputWithContext(ctx context.Context) AssetsExportJobConditionOutput {
+	return o
+}
+
+func (o AssetsExportJobConditionOutput) ToAssetsExportJobConditionPtrOutput() AssetsExportJobConditionPtrOutput {
+	return o.ToAssetsExportJobConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AssetsExportJobConditionOutput) ToAssetsExportJobConditionPtrOutputWithContext(ctx context.Context) AssetsExportJobConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetsExportJobCondition) *AssetsExportJobCondition {
+		return &v
+	}).(AssetsExportJobConditionPtrOutput)
+}
+
+// Assets filter, supports the same syntax as asset listing.
+func (o AssetsExportJobConditionOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobCondition) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobCondition)(nil)).Elem()
+}
+
+func (o AssetsExportJobConditionPtrOutput) ToAssetsExportJobConditionPtrOutput() AssetsExportJobConditionPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobConditionPtrOutput) ToAssetsExportJobConditionPtrOutputWithContext(ctx context.Context) AssetsExportJobConditionPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobConditionPtrOutput) Elem() AssetsExportJobConditionOutput {
+	return o.ApplyT(func(v *AssetsExportJobCondition) AssetsExportJobCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AssetsExportJobCondition
+		return ret
+	}).(AssetsExportJobConditionOutput)
+}
+
+// Assets filter, supports the same syntax as asset listing.
+func (o AssetsExportJobConditionPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetsExportJobCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobInventory struct {
+}
+
+// AssetsExportJobInventoryInput is an input type that accepts AssetsExportJobInventoryArgs and AssetsExportJobInventoryOutput values.
+// You can construct a concrete instance of `AssetsExportJobInventoryInput` via:
+//
+//	AssetsExportJobInventoryArgs{...}
+type AssetsExportJobInventoryInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobInventoryOutput() AssetsExportJobInventoryOutput
+	ToAssetsExportJobInventoryOutputWithContext(context.Context) AssetsExportJobInventoryOutput
+}
+
+type AssetsExportJobInventoryArgs struct {
+}
+
+func (AssetsExportJobInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobInventory)(nil)).Elem()
+}
+
+func (i AssetsExportJobInventoryArgs) ToAssetsExportJobInventoryOutput() AssetsExportJobInventoryOutput {
+	return i.ToAssetsExportJobInventoryOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobInventoryArgs) ToAssetsExportJobInventoryOutputWithContext(ctx context.Context) AssetsExportJobInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobInventoryOutput)
+}
+
+// AssetsExportJobInventoryArrayInput is an input type that accepts AssetsExportJobInventoryArray and AssetsExportJobInventoryArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobInventoryArrayInput` via:
+//
+//	AssetsExportJobInventoryArray{ AssetsExportJobInventoryArgs{...} }
+type AssetsExportJobInventoryArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobInventoryArrayOutput() AssetsExportJobInventoryArrayOutput
+	ToAssetsExportJobInventoryArrayOutputWithContext(context.Context) AssetsExportJobInventoryArrayOutput
+}
+
+type AssetsExportJobInventoryArray []AssetsExportJobInventoryInput
+
+func (AssetsExportJobInventoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobInventory)(nil)).Elem()
+}
+
+func (i AssetsExportJobInventoryArray) ToAssetsExportJobInventoryArrayOutput() AssetsExportJobInventoryArrayOutput {
+	return i.ToAssetsExportJobInventoryArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobInventoryArray) ToAssetsExportJobInventoryArrayOutputWithContext(ctx context.Context) AssetsExportJobInventoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobInventoryArrayOutput)
+}
+
+type AssetsExportJobInventoryOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobInventory)(nil)).Elem()
+}
+
+func (o AssetsExportJobInventoryOutput) ToAssetsExportJobInventoryOutput() AssetsExportJobInventoryOutput {
+	return o
+}
+
+func (o AssetsExportJobInventoryOutput) ToAssetsExportJobInventoryOutputWithContext(ctx context.Context) AssetsExportJobInventoryOutput {
+	return o
+}
+
+type AssetsExportJobInventoryArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobInventoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobInventory)(nil)).Elem()
+}
+
+func (o AssetsExportJobInventoryArrayOutput) ToAssetsExportJobInventoryArrayOutput() AssetsExportJobInventoryArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobInventoryArrayOutput) ToAssetsExportJobInventoryArrayOutputWithContext(ctx context.Context) AssetsExportJobInventoryArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobInventoryArrayOutput) Index(i pulumi.IntInput) AssetsExportJobInventoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobInventory {
+		return vs[0].([]AssetsExportJobInventory)[vs[1].(int)]
+	}).(AssetsExportJobInventoryOutput)
+}
+
+type AssetsExportJobNetworkDependency struct {
+}
+
+// AssetsExportJobNetworkDependencyInput is an input type that accepts AssetsExportJobNetworkDependencyArgs and AssetsExportJobNetworkDependencyOutput values.
+// You can construct a concrete instance of `AssetsExportJobNetworkDependencyInput` via:
+//
+//	AssetsExportJobNetworkDependencyArgs{...}
+type AssetsExportJobNetworkDependencyInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobNetworkDependencyOutput() AssetsExportJobNetworkDependencyOutput
+	ToAssetsExportJobNetworkDependencyOutputWithContext(context.Context) AssetsExportJobNetworkDependencyOutput
+}
+
+type AssetsExportJobNetworkDependencyArgs struct {
+}
+
+func (AssetsExportJobNetworkDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobNetworkDependency)(nil)).Elem()
+}
+
+func (i AssetsExportJobNetworkDependencyArgs) ToAssetsExportJobNetworkDependencyOutput() AssetsExportJobNetworkDependencyOutput {
+	return i.ToAssetsExportJobNetworkDependencyOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobNetworkDependencyArgs) ToAssetsExportJobNetworkDependencyOutputWithContext(ctx context.Context) AssetsExportJobNetworkDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobNetworkDependencyOutput)
+}
+
+// AssetsExportJobNetworkDependencyArrayInput is an input type that accepts AssetsExportJobNetworkDependencyArray and AssetsExportJobNetworkDependencyArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobNetworkDependencyArrayInput` via:
+//
+//	AssetsExportJobNetworkDependencyArray{ AssetsExportJobNetworkDependencyArgs{...} }
+type AssetsExportJobNetworkDependencyArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobNetworkDependencyArrayOutput() AssetsExportJobNetworkDependencyArrayOutput
+	ToAssetsExportJobNetworkDependencyArrayOutputWithContext(context.Context) AssetsExportJobNetworkDependencyArrayOutput
+}
+
+type AssetsExportJobNetworkDependencyArray []AssetsExportJobNetworkDependencyInput
+
+func (AssetsExportJobNetworkDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobNetworkDependency)(nil)).Elem()
+}
+
+func (i AssetsExportJobNetworkDependencyArray) ToAssetsExportJobNetworkDependencyArrayOutput() AssetsExportJobNetworkDependencyArrayOutput {
+	return i.ToAssetsExportJobNetworkDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobNetworkDependencyArray) ToAssetsExportJobNetworkDependencyArrayOutputWithContext(ctx context.Context) AssetsExportJobNetworkDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobNetworkDependencyArrayOutput)
+}
+
+type AssetsExportJobNetworkDependencyOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobNetworkDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobNetworkDependency)(nil)).Elem()
+}
+
+func (o AssetsExportJobNetworkDependencyOutput) ToAssetsExportJobNetworkDependencyOutput() AssetsExportJobNetworkDependencyOutput {
+	return o
+}
+
+func (o AssetsExportJobNetworkDependencyOutput) ToAssetsExportJobNetworkDependencyOutputWithContext(ctx context.Context) AssetsExportJobNetworkDependencyOutput {
+	return o
+}
+
+type AssetsExportJobNetworkDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobNetworkDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobNetworkDependency)(nil)).Elem()
+}
+
+func (o AssetsExportJobNetworkDependencyArrayOutput) ToAssetsExportJobNetworkDependencyArrayOutput() AssetsExportJobNetworkDependencyArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobNetworkDependencyArrayOutput) ToAssetsExportJobNetworkDependencyArrayOutputWithContext(ctx context.Context) AssetsExportJobNetworkDependencyArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobNetworkDependencyArrayOutput) Index(i pulumi.IntInput) AssetsExportJobNetworkDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobNetworkDependency {
+		return vs[0].([]AssetsExportJobNetworkDependency)[vs[1].(int)]
+	}).(AssetsExportJobNetworkDependencyOutput)
+}
+
+type AssetsExportJobPerformanceData struct {
+	// When this value is set to a positive integer,
+	// performance data will be returned for the most recent days
+	// for which data is available. When this value is unset (or set to zero),
+	// all available data is returned.
+	// The maximum value is 420; values above 420 will be coerced to 420.
+	// If unset (0 value) a default value of 40 will be used.
+	MaxDays *int `pulumi:"maxDays"`
+}
+
+// AssetsExportJobPerformanceDataInput is an input type that accepts AssetsExportJobPerformanceDataArgs and AssetsExportJobPerformanceDataOutput values.
+// You can construct a concrete instance of `AssetsExportJobPerformanceDataInput` via:
+//
+//	AssetsExportJobPerformanceDataArgs{...}
+type AssetsExportJobPerformanceDataInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobPerformanceDataOutput() AssetsExportJobPerformanceDataOutput
+	ToAssetsExportJobPerformanceDataOutputWithContext(context.Context) AssetsExportJobPerformanceDataOutput
+}
+
+type AssetsExportJobPerformanceDataArgs struct {
+	// When this value is set to a positive integer,
+	// performance data will be returned for the most recent days
+	// for which data is available. When this value is unset (or set to zero),
+	// all available data is returned.
+	// The maximum value is 420; values above 420 will be coerced to 420.
+	// If unset (0 value) a default value of 40 will be used.
+	MaxDays pulumi.IntPtrInput `pulumi:"maxDays"`
+}
+
+func (AssetsExportJobPerformanceDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobPerformanceData)(nil)).Elem()
+}
+
+func (i AssetsExportJobPerformanceDataArgs) ToAssetsExportJobPerformanceDataOutput() AssetsExportJobPerformanceDataOutput {
+	return i.ToAssetsExportJobPerformanceDataOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobPerformanceDataArgs) ToAssetsExportJobPerformanceDataOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobPerformanceDataOutput)
+}
+
+func (i AssetsExportJobPerformanceDataArgs) ToAssetsExportJobPerformanceDataPtrOutput() AssetsExportJobPerformanceDataPtrOutput {
+	return i.ToAssetsExportJobPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobPerformanceDataArgs) ToAssetsExportJobPerformanceDataPtrOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobPerformanceDataOutput).ToAssetsExportJobPerformanceDataPtrOutputWithContext(ctx)
+}
+
+// AssetsExportJobPerformanceDataPtrInput is an input type that accepts AssetsExportJobPerformanceDataArgs, AssetsExportJobPerformanceDataPtr and AssetsExportJobPerformanceDataPtrOutput values.
+// You can construct a concrete instance of `AssetsExportJobPerformanceDataPtrInput` via:
+//
+//	        AssetsExportJobPerformanceDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetsExportJobPerformanceDataPtrInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobPerformanceDataPtrOutput() AssetsExportJobPerformanceDataPtrOutput
+	ToAssetsExportJobPerformanceDataPtrOutputWithContext(context.Context) AssetsExportJobPerformanceDataPtrOutput
+}
+
+type assetsExportJobPerformanceDataPtrType AssetsExportJobPerformanceDataArgs
+
+func AssetsExportJobPerformanceDataPtr(v *AssetsExportJobPerformanceDataArgs) AssetsExportJobPerformanceDataPtrInput {
+	return (*assetsExportJobPerformanceDataPtrType)(v)
+}
+
+func (*assetsExportJobPerformanceDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobPerformanceData)(nil)).Elem()
+}
+
+func (i *assetsExportJobPerformanceDataPtrType) ToAssetsExportJobPerformanceDataPtrOutput() AssetsExportJobPerformanceDataPtrOutput {
+	return i.ToAssetsExportJobPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (i *assetsExportJobPerformanceDataPtrType) ToAssetsExportJobPerformanceDataPtrOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobPerformanceDataPtrOutput)
+}
+
+type AssetsExportJobPerformanceDataOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobPerformanceDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobPerformanceData)(nil)).Elem()
+}
+
+func (o AssetsExportJobPerformanceDataOutput) ToAssetsExportJobPerformanceDataOutput() AssetsExportJobPerformanceDataOutput {
+	return o
+}
+
+func (o AssetsExportJobPerformanceDataOutput) ToAssetsExportJobPerformanceDataOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataOutput {
+	return o
+}
+
+func (o AssetsExportJobPerformanceDataOutput) ToAssetsExportJobPerformanceDataPtrOutput() AssetsExportJobPerformanceDataPtrOutput {
+	return o.ToAssetsExportJobPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (o AssetsExportJobPerformanceDataOutput) ToAssetsExportJobPerformanceDataPtrOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetsExportJobPerformanceData) *AssetsExportJobPerformanceData {
+		return &v
+	}).(AssetsExportJobPerformanceDataPtrOutput)
+}
+
+// When this value is set to a positive integer,
+// performance data will be returned for the most recent days
+// for which data is available. When this value is unset (or set to zero),
+// all available data is returned.
+// The maximum value is 420; values above 420 will be coerced to 420.
+// If unset (0 value) a default value of 40 will be used.
+func (o AssetsExportJobPerformanceDataOutput) MaxDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobPerformanceData) *int { return v.MaxDays }).(pulumi.IntPtrOutput)
+}
+
+type AssetsExportJobPerformanceDataPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobPerformanceDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobPerformanceData)(nil)).Elem()
+}
+
+func (o AssetsExportJobPerformanceDataPtrOutput) ToAssetsExportJobPerformanceDataPtrOutput() AssetsExportJobPerformanceDataPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobPerformanceDataPtrOutput) ToAssetsExportJobPerformanceDataPtrOutputWithContext(ctx context.Context) AssetsExportJobPerformanceDataPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobPerformanceDataPtrOutput) Elem() AssetsExportJobPerformanceDataOutput {
+	return o.ApplyT(func(v *AssetsExportJobPerformanceData) AssetsExportJobPerformanceData {
+		if v != nil {
+			return *v
+		}
+		var ret AssetsExportJobPerformanceData
+		return ret
+	}).(AssetsExportJobPerformanceDataOutput)
+}
+
+// When this value is set to a positive integer,
+// performance data will be returned for the most recent days
+// for which data is available. When this value is unset (or set to zero),
+// all available data is returned.
+// The maximum value is 420; values above 420 will be coerced to 420.
+// If unset (0 value) a default value of 40 will be used.
+func (o AssetsExportJobPerformanceDataPtrOutput) MaxDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AssetsExportJobPerformanceData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type AssetsExportJobRecentExecution struct {
+	// (Output)
+	// Completion time of the export.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// Globally unique identifier of the execution.
+	ExecutionId *string `pulumi:"executionId"`
+	// (Output)
+	// Expiration time for the export and artifacts.
+	ExpireTime *string `pulumi:"expireTime"`
+	// (Output)
+	// Number of assets requested for export after resolving the requested
+	// filters.
+	RequestedAssetCount *int `pulumi:"requestedAssetCount"`
+	// (Output)
+	// Contains the result of the assets export.
+	// Structure is documented below.
+	Results []AssetsExportJobRecentExecutionResult `pulumi:"results"`
+	// (Output)
+	// Execution timestamp.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// AssetsExportJobRecentExecutionInput is an input type that accepts AssetsExportJobRecentExecutionArgs and AssetsExportJobRecentExecutionOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionInput` via:
+//
+//	AssetsExportJobRecentExecutionArgs{...}
+type AssetsExportJobRecentExecutionInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionOutput() AssetsExportJobRecentExecutionOutput
+	ToAssetsExportJobRecentExecutionOutputWithContext(context.Context) AssetsExportJobRecentExecutionOutput
+}
+
+type AssetsExportJobRecentExecutionArgs struct {
+	// (Output)
+	// Completion time of the export.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// Globally unique identifier of the execution.
+	ExecutionId pulumi.StringPtrInput `pulumi:"executionId"`
+	// (Output)
+	// Expiration time for the export and artifacts.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// (Output)
+	// Number of assets requested for export after resolving the requested
+	// filters.
+	RequestedAssetCount pulumi.IntPtrInput `pulumi:"requestedAssetCount"`
+	// (Output)
+	// Contains the result of the assets export.
+	// Structure is documented below.
+	Results AssetsExportJobRecentExecutionResultArrayInput `pulumi:"results"`
+	// (Output)
+	// Execution timestamp.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (AssetsExportJobRecentExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecution)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionArgs) ToAssetsExportJobRecentExecutionOutput() AssetsExportJobRecentExecutionOutput {
+	return i.ToAssetsExportJobRecentExecutionOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionArgs) ToAssetsExportJobRecentExecutionOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionOutput)
+}
+
+// AssetsExportJobRecentExecutionArrayInput is an input type that accepts AssetsExportJobRecentExecutionArray and AssetsExportJobRecentExecutionArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionArray{ AssetsExportJobRecentExecutionArgs{...} }
+type AssetsExportJobRecentExecutionArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionArrayOutput() AssetsExportJobRecentExecutionArrayOutput
+	ToAssetsExportJobRecentExecutionArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionArrayOutput
+}
+
+type AssetsExportJobRecentExecutionArray []AssetsExportJobRecentExecutionInput
+
+func (AssetsExportJobRecentExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecution)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionArray) ToAssetsExportJobRecentExecutionArrayOutput() AssetsExportJobRecentExecutionArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionArray) ToAssetsExportJobRecentExecutionArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecution)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionOutput) ToAssetsExportJobRecentExecutionOutput() AssetsExportJobRecentExecutionOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionOutput) ToAssetsExportJobRecentExecutionOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionOutput {
+	return o
+}
+
+// (Output)
+// Completion time of the export.
+func (o AssetsExportJobRecentExecutionOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Globally unique identifier of the execution.
+func (o AssetsExportJobRecentExecutionOutput) ExecutionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) *string { return v.ExecutionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Expiration time for the export and artifacts.
+func (o AssetsExportJobRecentExecutionOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of assets requested for export after resolving the requested
+// filters.
+func (o AssetsExportJobRecentExecutionOutput) RequestedAssetCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) *int { return v.RequestedAssetCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Contains the result of the assets export.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionOutput) Results() AssetsExportJobRecentExecutionResultArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) []AssetsExportJobRecentExecutionResult { return v.Results }).(AssetsExportJobRecentExecutionResultArrayOutput)
+}
+
+// (Output)
+// Execution timestamp.
+func (o AssetsExportJobRecentExecutionOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecution) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobRecentExecutionArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecution)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionArrayOutput) ToAssetsExportJobRecentExecutionArrayOutput() AssetsExportJobRecentExecutionArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionArrayOutput) ToAssetsExportJobRecentExecutionArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecution {
+		return vs[0].([]AssetsExportJobRecentExecution)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionOutput)
+}
+
+type AssetsExportJobRecentExecutionResult struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []AssetsExportJobRecentExecutionResultError `pulumi:"errors"`
+	// (Output)
+	// Contains a list of output files.
+	// Structure is documented below.
+	OutputFiles []AssetsExportJobRecentExecutionResultOutputFile `pulumi:"outputFiles"`
+	// (Output)
+	// List of signed URIs.
+	// Structure is documented below.
+	SignedUris []AssetsExportJobRecentExecutionResultSignedUri `pulumi:"signedUris"`
+}
+
+// AssetsExportJobRecentExecutionResultInput is an input type that accepts AssetsExportJobRecentExecutionResultArgs and AssetsExportJobRecentExecutionResultOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultInput` via:
+//
+//	AssetsExportJobRecentExecutionResultArgs{...}
+type AssetsExportJobRecentExecutionResultInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutput() AssetsExportJobRecentExecutionResultOutput
+	ToAssetsExportJobRecentExecutionResultOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutput
+}
+
+type AssetsExportJobRecentExecutionResultArgs struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors AssetsExportJobRecentExecutionResultErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// Contains a list of output files.
+	// Structure is documented below.
+	OutputFiles AssetsExportJobRecentExecutionResultOutputFileArrayInput `pulumi:"outputFiles"`
+	// (Output)
+	// List of signed URIs.
+	// Structure is documented below.
+	SignedUris AssetsExportJobRecentExecutionResultSignedUriArrayInput `pulumi:"signedUris"`
+}
+
+func (AssetsExportJobRecentExecutionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResult)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultArgs) ToAssetsExportJobRecentExecutionResultOutput() AssetsExportJobRecentExecutionResultOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultArgs) ToAssetsExportJobRecentExecutionResultOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutput)
+}
+
+// AssetsExportJobRecentExecutionResultArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultArray and AssetsExportJobRecentExecutionResultArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultArray{ AssetsExportJobRecentExecutionResultArgs{...} }
+type AssetsExportJobRecentExecutionResultArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultArrayOutput() AssetsExportJobRecentExecutionResultArrayOutput
+	ToAssetsExportJobRecentExecutionResultArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultArray []AssetsExportJobRecentExecutionResultInput
+
+func (AssetsExportJobRecentExecutionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResult)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultArray) ToAssetsExportJobRecentExecutionResultArrayOutput() AssetsExportJobRecentExecutionResultArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultArray) ToAssetsExportJobRecentExecutionResultArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResult)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutput) ToAssetsExportJobRecentExecutionResultOutput() AssetsExportJobRecentExecutionResultOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutput) ToAssetsExportJobRecentExecutionResultOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutput {
+	return o
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutput) Errors() AssetsExportJobRecentExecutionResultErrorArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResult) []AssetsExportJobRecentExecutionResultError {
+		return v.Errors
+	}).(AssetsExportJobRecentExecutionResultErrorArrayOutput)
+}
+
+// (Output)
+// Contains a list of output files.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutput) OutputFiles() AssetsExportJobRecentExecutionResultOutputFileArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResult) []AssetsExportJobRecentExecutionResultOutputFile {
+		return v.OutputFiles
+	}).(AssetsExportJobRecentExecutionResultOutputFileArrayOutput)
+}
+
+// (Output)
+// List of signed URIs.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutput) SignedUris() AssetsExportJobRecentExecutionResultSignedUriArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResult) []AssetsExportJobRecentExecutionResultSignedUri {
+		return v.SignedUris
+	}).(AssetsExportJobRecentExecutionResultSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResult)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultArrayOutput) ToAssetsExportJobRecentExecutionResultArrayOutput() AssetsExportJobRecentExecutionResultArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultArrayOutput) ToAssetsExportJobRecentExecutionResultArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResult {
+		return vs[0].([]AssetsExportJobRecentExecutionResult)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutput)
+}
+
+type AssetsExportJobRecentExecutionResultError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []AssetsExportJobRecentExecutionResultErrorDetail `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AssetsExportJobRecentExecutionResultErrorInput is an input type that accepts AssetsExportJobRecentExecutionResultErrorArgs and AssetsExportJobRecentExecutionResultErrorOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultErrorInput` via:
+//
+//	AssetsExportJobRecentExecutionResultErrorArgs{...}
+type AssetsExportJobRecentExecutionResultErrorInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultErrorOutput() AssetsExportJobRecentExecutionResultErrorOutput
+	ToAssetsExportJobRecentExecutionResultErrorOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultErrorOutput
+}
+
+type AssetsExportJobRecentExecutionResultErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details AssetsExportJobRecentExecutionResultErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AssetsExportJobRecentExecutionResultErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultError)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorArgs) ToAssetsExportJobRecentExecutionResultErrorOutput() AssetsExportJobRecentExecutionResultErrorOutput {
+	return i.ToAssetsExportJobRecentExecutionResultErrorOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorArgs) ToAssetsExportJobRecentExecutionResultErrorOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultErrorOutput)
+}
+
+// AssetsExportJobRecentExecutionResultErrorArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultErrorArray and AssetsExportJobRecentExecutionResultErrorArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultErrorArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultErrorArray{ AssetsExportJobRecentExecutionResultErrorArgs{...} }
+type AssetsExportJobRecentExecutionResultErrorArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultErrorArrayOutput() AssetsExportJobRecentExecutionResultErrorArrayOutput
+	ToAssetsExportJobRecentExecutionResultErrorArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultErrorArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultErrorArray []AssetsExportJobRecentExecutionResultErrorInput
+
+func (AssetsExportJobRecentExecutionResultErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultError)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorArray) ToAssetsExportJobRecentExecutionResultErrorArrayOutput() AssetsExportJobRecentExecutionResultErrorArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorArray) ToAssetsExportJobRecentExecutionResultErrorArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultErrorArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultErrorOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultError)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorOutput) ToAssetsExportJobRecentExecutionResultErrorOutput() AssetsExportJobRecentExecutionResultErrorOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorOutput) ToAssetsExportJobRecentExecutionResultErrorOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AssetsExportJobRecentExecutionResultErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o AssetsExportJobRecentExecutionResultErrorOutput) Details() AssetsExportJobRecentExecutionResultErrorDetailArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultError) []AssetsExportJobRecentExecutionResultErrorDetail {
+		return v.Details
+	}).(AssetsExportJobRecentExecutionResultErrorDetailArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AssetsExportJobRecentExecutionResultErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobRecentExecutionResultErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultError)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorArrayOutput) ToAssetsExportJobRecentExecutionResultErrorArrayOutput() AssetsExportJobRecentExecutionResultErrorArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorArrayOutput) ToAssetsExportJobRecentExecutionResultErrorArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultError {
+		return vs[0].([]AssetsExportJobRecentExecutionResultError)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultErrorOutput)
+}
+
+type AssetsExportJobRecentExecutionResultErrorDetail struct {
+}
+
+// AssetsExportJobRecentExecutionResultErrorDetailInput is an input type that accepts AssetsExportJobRecentExecutionResultErrorDetailArgs and AssetsExportJobRecentExecutionResultErrorDetailOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultErrorDetailInput` via:
+//
+//	AssetsExportJobRecentExecutionResultErrorDetailArgs{...}
+type AssetsExportJobRecentExecutionResultErrorDetailInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultErrorDetailOutput() AssetsExportJobRecentExecutionResultErrorDetailOutput
+	ToAssetsExportJobRecentExecutionResultErrorDetailOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultErrorDetailOutput
+}
+
+type AssetsExportJobRecentExecutionResultErrorDetailArgs struct {
+}
+
+func (AssetsExportJobRecentExecutionResultErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorDetail)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorDetailArgs) ToAssetsExportJobRecentExecutionResultErrorDetailOutput() AssetsExportJobRecentExecutionResultErrorDetailOutput {
+	return i.ToAssetsExportJobRecentExecutionResultErrorDetailOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorDetailArgs) ToAssetsExportJobRecentExecutionResultErrorDetailOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultErrorDetailOutput)
+}
+
+// AssetsExportJobRecentExecutionResultErrorDetailArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultErrorDetailArray and AssetsExportJobRecentExecutionResultErrorDetailArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultErrorDetailArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultErrorDetailArray{ AssetsExportJobRecentExecutionResultErrorDetailArgs{...} }
+type AssetsExportJobRecentExecutionResultErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutput() AssetsExportJobRecentExecutionResultErrorDetailArrayOutput
+	ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultErrorDetailArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultErrorDetailArray []AssetsExportJobRecentExecutionResultErrorDetailInput
+
+func (AssetsExportJobRecentExecutionResultErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultErrorDetail)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorDetailArray) ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutput() AssetsExportJobRecentExecutionResultErrorDetailArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultErrorDetailArray) ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultErrorDetailArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorDetail)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorDetailOutput) ToAssetsExportJobRecentExecutionResultErrorDetailOutput() AssetsExportJobRecentExecutionResultErrorDetailOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorDetailOutput) ToAssetsExportJobRecentExecutionResultErrorDetailOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorDetailOutput {
+	return o
+}
+
+type AssetsExportJobRecentExecutionResultErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultErrorDetail)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorDetailArrayOutput) ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutput() AssetsExportJobRecentExecutionResultErrorDetailArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorDetailArrayOutput) ToAssetsExportJobRecentExecutionResultErrorDetailArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultErrorDetailArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultErrorDetailArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultErrorDetail {
+		return vs[0].([]AssetsExportJobRecentExecutionResultErrorDetail)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultErrorDetailOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFile struct {
+	// (Output)
+	// List of output files.
+	// Structure is documented below.
+	Entries []AssetsExportJobRecentExecutionResultOutputFileEntry `pulumi:"entries"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileArgs and AssetsExportJobRecentExecutionResultOutputFileOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileArgs struct {
+	// (Output)
+	// List of output files.
+	// Structure is documented below.
+	Entries AssetsExportJobRecentExecutionResultOutputFileEntryArrayInput `pulumi:"entries"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileArray and AssetsExportJobRecentExecutionResultOutputFileArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileArray{ AssetsExportJobRecentExecutionResultOutputFileArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileArray []AssetsExportJobRecentExecutionResultOutputFileInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileOutput {
+	return o
+}
+
+// (Output)
+// List of output files.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutputFileOutput) Entries() AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFile) []AssetsExportJobRecentExecutionResultOutputFileEntry {
+		return v.Entries
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFile {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFile)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntry struct {
+	// (Output)
+	// Contains a single output file of type CSV.
+	// Structure is documented below.
+	CsvOutputFiles []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile `pulumi:"csvOutputFiles"`
+	// (Output)
+	// File size in bytes.
+	FileSizeBytes *string `pulumi:"fileSizeBytes"`
+	// (Output)
+	// Contains a single output file of type XLSX.
+	// Structure is documented below.
+	XlsxOutputFiles []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile `pulumi:"xlsxOutputFiles"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryArgs and AssetsExportJobRecentExecutionResultOutputFileEntryOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileEntryInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryOutput() AssetsExportJobRecentExecutionResultOutputFileEntryOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryArgs struct {
+	// (Output)
+	// Contains a single output file of type CSV.
+	// Structure is documented below.
+	CsvOutputFiles AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayInput `pulumi:"csvOutputFiles"`
+	// (Output)
+	// File size in bytes.
+	FileSizeBytes pulumi.StringPtrInput `pulumi:"fileSizeBytes"`
+	// (Output)
+	// Contains a single output file of type XLSX.
+	// Structure is documented below.
+	XlsxOutputFiles AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayInput `pulumi:"xlsxOutputFiles"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntry)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryOutput() AssetsExportJobRecentExecutionResultOutputFileEntryOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryArray and AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryArray{ AssetsExportJobRecentExecutionResultOutputFileEntryArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileEntryArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryArray []AssetsExportJobRecentExecutionResultOutputFileEntryInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntry)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntry)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryOutput() AssetsExportJobRecentExecutionResultOutputFileEntryOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryOutput {
+	return o
+}
+
+// (Output)
+// Contains a single output file of type CSV.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryOutput) CsvOutputFiles() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntry) []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile {
+		return v.CsvOutputFiles
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput)
+}
+
+// (Output)
+// File size in bytes.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryOutput) FileSizeBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntry) *string { return v.FileSizeBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Contains a single output file of type XLSX.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryOutput) XlsxOutputFiles() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntry) []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile {
+		return v.XlsxOutputFiles
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntry)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFileEntry {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFileEntry)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile struct {
+	// (Output)
+	// Number of columns in the file.
+	ColumnsCount *int `pulumi:"columnsCount"`
+	// (Output)
+	// Number of rows in the file.
+	RowCount *int `pulumi:"rowCount"`
+	// (Output)
+	// Contains a signed URI.
+	// Structure is documented below.
+	SignedUris []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri `pulumi:"signedUris"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs and AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs struct {
+	// (Output)
+	// Number of columns in the file.
+	ColumnsCount pulumi.IntPtrInput `pulumi:"columnsCount"`
+	// (Output)
+	// Number of rows in the file.
+	RowCount pulumi.IntPtrInput `pulumi:"rowCount"`
+	// (Output)
+	// Contains a signed URI.
+	// Structure is documented below.
+	SignedUris AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayInput `pulumi:"signedUris"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray and AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray{ AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput {
+	return o
+}
+
+// (Output)
+// Number of columns in the file.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) ColumnsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile) *int { return v.ColumnsCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Number of rows in the file.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) RowCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile) *int { return v.RowCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Contains a signed URI.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput) SignedUris() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile) []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri {
+		return v.SignedUris
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File *string `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri *string `pulumi:"uri"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs and AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File pulumi.StringPtrInput `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray and AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray{ AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray []AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput {
+	return o
+}
+
+// (Output)
+// Name of the file the Signed URI references.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri) *string {
+		return v.File
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Download URI for the file.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile struct {
+	// (Output)
+	// Contains a signed URI.
+	// Structure is documented below.
+	SignedUris []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri `pulumi:"signedUris"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs and AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs struct {
+	// (Output)
+	// Contains a signed URI.
+	// Structure is documented below.
+	SignedUris AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayInput `pulumi:"signedUris"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray and AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray{ AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput {
+	return o
+}
+
+// (Output)
+// Contains a signed URI.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput) SignedUris() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile) []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri {
+		return v.SignedUris
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File *string `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri *string `pulumi:"uri"`
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs and AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs{...}
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File pulumi.StringPtrInput `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput)
+}
+
+// AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray and AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray{ AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs{...} }
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput
+	ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray []AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriInput
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput {
+	return o
+}
+
+// (Output)
+// Name of the file the Signed URI references.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri) *string {
+		return v.File
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Download URI for the file.
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput() AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri {
+		return vs[0].([]AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUri struct {
+	// (Output)
+	// List of signed URIs.
+	// Structure is documented below.
+	SignedUris []AssetsExportJobRecentExecutionResultSignedUriSignedUri `pulumi:"signedUris"`
+}
+
+// AssetsExportJobRecentExecutionResultSignedUriInput is an input type that accepts AssetsExportJobRecentExecutionResultSignedUriArgs and AssetsExportJobRecentExecutionResultSignedUriOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultSignedUriInput` via:
+//
+//	AssetsExportJobRecentExecutionResultSignedUriArgs{...}
+type AssetsExportJobRecentExecutionResultSignedUriInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriOutput
+	ToAssetsExportJobRecentExecutionResultSignedUriOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultSignedUriOutput
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriArgs struct {
+	// (Output)
+	// List of signed URIs.
+	// Structure is documented below.
+	SignedUris AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayInput `pulumi:"signedUris"`
+}
+
+func (AssetsExportJobRecentExecutionResultSignedUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriArgs) ToAssetsExportJobRecentExecutionResultSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriOutput {
+	return i.ToAssetsExportJobRecentExecutionResultSignedUriOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriArgs) ToAssetsExportJobRecentExecutionResultSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultSignedUriOutput)
+}
+
+// AssetsExportJobRecentExecutionResultSignedUriArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultSignedUriArray and AssetsExportJobRecentExecutionResultSignedUriArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultSignedUriArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultSignedUriArray{ AssetsExportJobRecentExecutionResultSignedUriArgs{...} }
+type AssetsExportJobRecentExecutionResultSignedUriArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriArrayOutput
+	ToAssetsExportJobRecentExecutionResultSignedUriArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultSignedUriArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriArray []AssetsExportJobRecentExecutionResultSignedUriInput
+
+func (AssetsExportJobRecentExecutionResultSignedUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriArray) ToAssetsExportJobRecentExecutionResultSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultSignedUriArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriArray) ToAssetsExportJobRecentExecutionResultSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultSignedUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriOutput) ToAssetsExportJobRecentExecutionResultSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriOutput) ToAssetsExportJobRecentExecutionResultSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriOutput {
+	return o
+}
+
+// (Output)
+// List of signed URIs.
+// Structure is documented below.
+func (o AssetsExportJobRecentExecutionResultSignedUriOutput) SignedUris() AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultSignedUri) []AssetsExportJobRecentExecutionResultSignedUriSignedUri {
+		return v.SignedUris
+	}).(AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultSignedUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultSignedUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultSignedUri {
+		return vs[0].([]AssetsExportJobRecentExecutionResultSignedUri)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultSignedUriOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriSignedUri struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File *string `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri *string `pulumi:"uri"`
+}
+
+// AssetsExportJobRecentExecutionResultSignedUriSignedUriInput is an input type that accepts AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs and AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultSignedUriSignedUriInput` via:
+//
+//	AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs{...}
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput
+	ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs struct {
+	// (Output)
+	// Name of the file the Signed URI references.
+	File pulumi.StringPtrInput `pulumi:"file"`
+	// (Output)
+	// Download URI for the file.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput {
+	return i.ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput)
+}
+
+// AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayInput is an input type that accepts AssetsExportJobRecentExecutionResultSignedUriSignedUriArray and AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput values.
+// You can construct a concrete instance of `AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayInput` via:
+//
+//	AssetsExportJobRecentExecutionResultSignedUriSignedUriArray{ AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs{...} }
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput
+	ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutputWithContext(context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriArray []AssetsExportJobRecentExecutionResultSignedUriSignedUriInput
+
+func (AssetsExportJobRecentExecutionResultSignedUriSignedUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultSignedUriSignedUri)(nil)).Elem()
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriSignedUriArray) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput {
+	return i.ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobRecentExecutionResultSignedUriSignedUriArray) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput {
+	return o
+}
+
+// (Output)
+// Name of the file the Signed URI references.
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultSignedUriSignedUri) *string { return v.File }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Download URI for the file.
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetsExportJobRecentExecutionResultSignedUriSignedUri) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetsExportJobRecentExecutionResultSignedUriSignedUri)(nil)).Elem()
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput() AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput) ToAssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutputWithContext(ctx context.Context) AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput {
+	return o
+}
+
+func (o AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput) Index(i pulumi.IntInput) AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetsExportJobRecentExecutionResultSignedUriSignedUri {
+		return vs[0].([]AssetsExportJobRecentExecutionResultSignedUriSignedUri)[vs[1].(int)]
+	}).(AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput)
+}
+
+type AssetsExportJobSignedUriDestination struct {
+	// The file format to export.
+	// Possible values:
+	// CSV
+	// XLSX
+	FileFormat string `pulumi:"fileFormat"`
+}
+
+// AssetsExportJobSignedUriDestinationInput is an input type that accepts AssetsExportJobSignedUriDestinationArgs and AssetsExportJobSignedUriDestinationOutput values.
+// You can construct a concrete instance of `AssetsExportJobSignedUriDestinationInput` via:
+//
+//	AssetsExportJobSignedUriDestinationArgs{...}
+type AssetsExportJobSignedUriDestinationInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobSignedUriDestinationOutput() AssetsExportJobSignedUriDestinationOutput
+	ToAssetsExportJobSignedUriDestinationOutputWithContext(context.Context) AssetsExportJobSignedUriDestinationOutput
+}
+
+type AssetsExportJobSignedUriDestinationArgs struct {
+	// The file format to export.
+	// Possible values:
+	// CSV
+	// XLSX
+	FileFormat pulumi.StringInput `pulumi:"fileFormat"`
+}
+
+func (AssetsExportJobSignedUriDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobSignedUriDestination)(nil)).Elem()
+}
+
+func (i AssetsExportJobSignedUriDestinationArgs) ToAssetsExportJobSignedUriDestinationOutput() AssetsExportJobSignedUriDestinationOutput {
+	return i.ToAssetsExportJobSignedUriDestinationOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobSignedUriDestinationArgs) ToAssetsExportJobSignedUriDestinationOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobSignedUriDestinationOutput)
+}
+
+func (i AssetsExportJobSignedUriDestinationArgs) ToAssetsExportJobSignedUriDestinationPtrOutput() AssetsExportJobSignedUriDestinationPtrOutput {
+	return i.ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i AssetsExportJobSignedUriDestinationArgs) ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobSignedUriDestinationOutput).ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(ctx)
+}
+
+// AssetsExportJobSignedUriDestinationPtrInput is an input type that accepts AssetsExportJobSignedUriDestinationArgs, AssetsExportJobSignedUriDestinationPtr and AssetsExportJobSignedUriDestinationPtrOutput values.
+// You can construct a concrete instance of `AssetsExportJobSignedUriDestinationPtrInput` via:
+//
+//	        AssetsExportJobSignedUriDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetsExportJobSignedUriDestinationPtrInput interface {
+	pulumi.Input
+
+	ToAssetsExportJobSignedUriDestinationPtrOutput() AssetsExportJobSignedUriDestinationPtrOutput
+	ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(context.Context) AssetsExportJobSignedUriDestinationPtrOutput
+}
+
+type assetsExportJobSignedUriDestinationPtrType AssetsExportJobSignedUriDestinationArgs
+
+func AssetsExportJobSignedUriDestinationPtr(v *AssetsExportJobSignedUriDestinationArgs) AssetsExportJobSignedUriDestinationPtrInput {
+	return (*assetsExportJobSignedUriDestinationPtrType)(v)
+}
+
+func (*assetsExportJobSignedUriDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobSignedUriDestination)(nil)).Elem()
+}
+
+func (i *assetsExportJobSignedUriDestinationPtrType) ToAssetsExportJobSignedUriDestinationPtrOutput() AssetsExportJobSignedUriDestinationPtrOutput {
+	return i.ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *assetsExportJobSignedUriDestinationPtrType) ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetsExportJobSignedUriDestinationPtrOutput)
+}
+
+type AssetsExportJobSignedUriDestinationOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobSignedUriDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetsExportJobSignedUriDestination)(nil)).Elem()
+}
+
+func (o AssetsExportJobSignedUriDestinationOutput) ToAssetsExportJobSignedUriDestinationOutput() AssetsExportJobSignedUriDestinationOutput {
+	return o
+}
+
+func (o AssetsExportJobSignedUriDestinationOutput) ToAssetsExportJobSignedUriDestinationOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationOutput {
+	return o
+}
+
+func (o AssetsExportJobSignedUriDestinationOutput) ToAssetsExportJobSignedUriDestinationPtrOutput() AssetsExportJobSignedUriDestinationPtrOutput {
+	return o.ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o AssetsExportJobSignedUriDestinationOutput) ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetsExportJobSignedUriDestination) *AssetsExportJobSignedUriDestination {
+		return &v
+	}).(AssetsExportJobSignedUriDestinationPtrOutput)
+}
+
+// The file format to export.
+// Possible values:
+// CSV
+// XLSX
+func (o AssetsExportJobSignedUriDestinationOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetsExportJobSignedUriDestination) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+type AssetsExportJobSignedUriDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetsExportJobSignedUriDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetsExportJobSignedUriDestination)(nil)).Elem()
+}
+
+func (o AssetsExportJobSignedUriDestinationPtrOutput) ToAssetsExportJobSignedUriDestinationPtrOutput() AssetsExportJobSignedUriDestinationPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobSignedUriDestinationPtrOutput) ToAssetsExportJobSignedUriDestinationPtrOutputWithContext(ctx context.Context) AssetsExportJobSignedUriDestinationPtrOutput {
+	return o
+}
+
+func (o AssetsExportJobSignedUriDestinationPtrOutput) Elem() AssetsExportJobSignedUriDestinationOutput {
+	return o.ApplyT(func(v *AssetsExportJobSignedUriDestination) AssetsExportJobSignedUriDestination {
+		if v != nil {
+			return *v
+		}
+		var ret AssetsExportJobSignedUriDestination
+		return ret
+	}).(AssetsExportJobSignedUriDestinationOutput)
+}
+
+// The file format to export.
+// Possible values:
+// CSV
+// XLSX
+func (o AssetsExportJobSignedUriDestinationPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetsExportJobSignedUriDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryClientError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details []DiscoveryClientErrorDetail `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// DiscoveryClientErrorInput is an input type that accepts DiscoveryClientErrorArgs and DiscoveryClientErrorOutput values.
+// You can construct a concrete instance of `DiscoveryClientErrorInput` via:
+//
+//	DiscoveryClientErrorArgs{...}
+type DiscoveryClientErrorInput interface {
+	pulumi.Input
+
+	ToDiscoveryClientErrorOutput() DiscoveryClientErrorOutput
+	ToDiscoveryClientErrorOutputWithContext(context.Context) DiscoveryClientErrorOutput
+}
+
+type DiscoveryClientErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	Details DiscoveryClientErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (DiscoveryClientErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryClientError)(nil)).Elem()
+}
+
+func (i DiscoveryClientErrorArgs) ToDiscoveryClientErrorOutput() DiscoveryClientErrorOutput {
+	return i.ToDiscoveryClientErrorOutputWithContext(context.Background())
+}
+
+func (i DiscoveryClientErrorArgs) ToDiscoveryClientErrorOutputWithContext(ctx context.Context) DiscoveryClientErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryClientErrorOutput)
+}
+
+// DiscoveryClientErrorArrayInput is an input type that accepts DiscoveryClientErrorArray and DiscoveryClientErrorArrayOutput values.
+// You can construct a concrete instance of `DiscoveryClientErrorArrayInput` via:
+//
+//	DiscoveryClientErrorArray{ DiscoveryClientErrorArgs{...} }
+type DiscoveryClientErrorArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryClientErrorArrayOutput() DiscoveryClientErrorArrayOutput
+	ToDiscoveryClientErrorArrayOutputWithContext(context.Context) DiscoveryClientErrorArrayOutput
+}
+
+type DiscoveryClientErrorArray []DiscoveryClientErrorInput
+
+func (DiscoveryClientErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryClientError)(nil)).Elem()
+}
+
+func (i DiscoveryClientErrorArray) ToDiscoveryClientErrorArrayOutput() DiscoveryClientErrorArrayOutput {
+	return i.ToDiscoveryClientErrorArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryClientErrorArray) ToDiscoveryClientErrorArrayOutputWithContext(ctx context.Context) DiscoveryClientErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryClientErrorArrayOutput)
+}
+
+type DiscoveryClientErrorOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryClientErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryClientError)(nil)).Elem()
+}
+
+func (o DiscoveryClientErrorOutput) ToDiscoveryClientErrorOutput() DiscoveryClientErrorOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorOutput) ToDiscoveryClientErrorOutputWithContext(ctx context.Context) DiscoveryClientErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o DiscoveryClientErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiscoveryClientError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+func (o DiscoveryClientErrorOutput) Details() DiscoveryClientErrorDetailArrayOutput {
+	return o.ApplyT(func(v DiscoveryClientError) []DiscoveryClientErrorDetail { return v.Details }).(DiscoveryClientErrorDetailArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o DiscoveryClientErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryClientError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryClientErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryClientErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryClientError)(nil)).Elem()
+}
+
+func (o DiscoveryClientErrorArrayOutput) ToDiscoveryClientErrorArrayOutput() DiscoveryClientErrorArrayOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorArrayOutput) ToDiscoveryClientErrorArrayOutputWithContext(ctx context.Context) DiscoveryClientErrorArrayOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorArrayOutput) Index(i pulumi.IntInput) DiscoveryClientErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryClientError {
+		return vs[0].([]DiscoveryClientError)[vs[1].(int)]
+	}).(DiscoveryClientErrorOutput)
+}
+
+type DiscoveryClientErrorDetail struct {
+}
+
+// DiscoveryClientErrorDetailInput is an input type that accepts DiscoveryClientErrorDetailArgs and DiscoveryClientErrorDetailOutput values.
+// You can construct a concrete instance of `DiscoveryClientErrorDetailInput` via:
+//
+//	DiscoveryClientErrorDetailArgs{...}
+type DiscoveryClientErrorDetailInput interface {
+	pulumi.Input
+
+	ToDiscoveryClientErrorDetailOutput() DiscoveryClientErrorDetailOutput
+	ToDiscoveryClientErrorDetailOutputWithContext(context.Context) DiscoveryClientErrorDetailOutput
+}
+
+type DiscoveryClientErrorDetailArgs struct {
+}
+
+func (DiscoveryClientErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryClientErrorDetail)(nil)).Elem()
+}
+
+func (i DiscoveryClientErrorDetailArgs) ToDiscoveryClientErrorDetailOutput() DiscoveryClientErrorDetailOutput {
+	return i.ToDiscoveryClientErrorDetailOutputWithContext(context.Background())
+}
+
+func (i DiscoveryClientErrorDetailArgs) ToDiscoveryClientErrorDetailOutputWithContext(ctx context.Context) DiscoveryClientErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryClientErrorDetailOutput)
+}
+
+// DiscoveryClientErrorDetailArrayInput is an input type that accepts DiscoveryClientErrorDetailArray and DiscoveryClientErrorDetailArrayOutput values.
+// You can construct a concrete instance of `DiscoveryClientErrorDetailArrayInput` via:
+//
+//	DiscoveryClientErrorDetailArray{ DiscoveryClientErrorDetailArgs{...} }
+type DiscoveryClientErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToDiscoveryClientErrorDetailArrayOutput() DiscoveryClientErrorDetailArrayOutput
+	ToDiscoveryClientErrorDetailArrayOutputWithContext(context.Context) DiscoveryClientErrorDetailArrayOutput
+}
+
+type DiscoveryClientErrorDetailArray []DiscoveryClientErrorDetailInput
+
+func (DiscoveryClientErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryClientErrorDetail)(nil)).Elem()
+}
+
+func (i DiscoveryClientErrorDetailArray) ToDiscoveryClientErrorDetailArrayOutput() DiscoveryClientErrorDetailArrayOutput {
+	return i.ToDiscoveryClientErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DiscoveryClientErrorDetailArray) ToDiscoveryClientErrorDetailArrayOutputWithContext(ctx context.Context) DiscoveryClientErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryClientErrorDetailArrayOutput)
+}
+
+type DiscoveryClientErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryClientErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryClientErrorDetail)(nil)).Elem()
+}
+
+func (o DiscoveryClientErrorDetailOutput) ToDiscoveryClientErrorDetailOutput() DiscoveryClientErrorDetailOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorDetailOutput) ToDiscoveryClientErrorDetailOutputWithContext(ctx context.Context) DiscoveryClientErrorDetailOutput {
+	return o
+}
+
+type DiscoveryClientErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryClientErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryClientErrorDetail)(nil)).Elem()
+}
+
+func (o DiscoveryClientErrorDetailArrayOutput) ToDiscoveryClientErrorDetailArrayOutput() DiscoveryClientErrorDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorDetailArrayOutput) ToDiscoveryClientErrorDetailArrayOutputWithContext(ctx context.Context) DiscoveryClientErrorDetailArrayOutput {
+	return o
+}
+
+func (o DiscoveryClientErrorDetailArrayOutput) Index(i pulumi.IntInput) DiscoveryClientErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryClientErrorDetail {
+		return vs[0].([]DiscoveryClientErrorDetail)[vs[1].(int)]
+	}).(DiscoveryClientErrorDetailOutput)
+}
+
 type PreferenceSetVirtualMachinePreferences struct {
 	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 	CommitmentPlan *string `pulumi:"commitmentPlan"`
@@ -1357,7 +3662,7239 @@ func (o PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrOutput) 
 	}).(pulumi.Float64PtrOutput)
 }
 
+type ReportConfigGroupPreferencesetAssignment struct {
+	// Name of the group.
+	Group string `pulumi:"group"`
+	// Name of the Preference Set.
+	PreferenceSet string `pulumi:"preferenceSet"`
+}
+
+// ReportConfigGroupPreferencesetAssignmentInput is an input type that accepts ReportConfigGroupPreferencesetAssignmentArgs and ReportConfigGroupPreferencesetAssignmentOutput values.
+// You can construct a concrete instance of `ReportConfigGroupPreferencesetAssignmentInput` via:
+//
+//	ReportConfigGroupPreferencesetAssignmentArgs{...}
+type ReportConfigGroupPreferencesetAssignmentInput interface {
+	pulumi.Input
+
+	ToReportConfigGroupPreferencesetAssignmentOutput() ReportConfigGroupPreferencesetAssignmentOutput
+	ToReportConfigGroupPreferencesetAssignmentOutputWithContext(context.Context) ReportConfigGroupPreferencesetAssignmentOutput
+}
+
+type ReportConfigGroupPreferencesetAssignmentArgs struct {
+	// Name of the group.
+	Group pulumi.StringInput `pulumi:"group"`
+	// Name of the Preference Set.
+	PreferenceSet pulumi.StringInput `pulumi:"preferenceSet"`
+}
+
+func (ReportConfigGroupPreferencesetAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportConfigGroupPreferencesetAssignment)(nil)).Elem()
+}
+
+func (i ReportConfigGroupPreferencesetAssignmentArgs) ToReportConfigGroupPreferencesetAssignmentOutput() ReportConfigGroupPreferencesetAssignmentOutput {
+	return i.ToReportConfigGroupPreferencesetAssignmentOutputWithContext(context.Background())
+}
+
+func (i ReportConfigGroupPreferencesetAssignmentArgs) ToReportConfigGroupPreferencesetAssignmentOutputWithContext(ctx context.Context) ReportConfigGroupPreferencesetAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupPreferencesetAssignmentOutput)
+}
+
+// ReportConfigGroupPreferencesetAssignmentArrayInput is an input type that accepts ReportConfigGroupPreferencesetAssignmentArray and ReportConfigGroupPreferencesetAssignmentArrayOutput values.
+// You can construct a concrete instance of `ReportConfigGroupPreferencesetAssignmentArrayInput` via:
+//
+//	ReportConfigGroupPreferencesetAssignmentArray{ ReportConfigGroupPreferencesetAssignmentArgs{...} }
+type ReportConfigGroupPreferencesetAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToReportConfigGroupPreferencesetAssignmentArrayOutput() ReportConfigGroupPreferencesetAssignmentArrayOutput
+	ToReportConfigGroupPreferencesetAssignmentArrayOutputWithContext(context.Context) ReportConfigGroupPreferencesetAssignmentArrayOutput
+}
+
+type ReportConfigGroupPreferencesetAssignmentArray []ReportConfigGroupPreferencesetAssignmentInput
+
+func (ReportConfigGroupPreferencesetAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportConfigGroupPreferencesetAssignment)(nil)).Elem()
+}
+
+func (i ReportConfigGroupPreferencesetAssignmentArray) ToReportConfigGroupPreferencesetAssignmentArrayOutput() ReportConfigGroupPreferencesetAssignmentArrayOutput {
+	return i.ToReportConfigGroupPreferencesetAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i ReportConfigGroupPreferencesetAssignmentArray) ToReportConfigGroupPreferencesetAssignmentArrayOutputWithContext(ctx context.Context) ReportConfigGroupPreferencesetAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupPreferencesetAssignmentArrayOutput)
+}
+
+type ReportConfigGroupPreferencesetAssignmentOutput struct{ *pulumi.OutputState }
+
+func (ReportConfigGroupPreferencesetAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportConfigGroupPreferencesetAssignment)(nil)).Elem()
+}
+
+func (o ReportConfigGroupPreferencesetAssignmentOutput) ToReportConfigGroupPreferencesetAssignmentOutput() ReportConfigGroupPreferencesetAssignmentOutput {
+	return o
+}
+
+func (o ReportConfigGroupPreferencesetAssignmentOutput) ToReportConfigGroupPreferencesetAssignmentOutputWithContext(ctx context.Context) ReportConfigGroupPreferencesetAssignmentOutput {
+	return o
+}
+
+// Name of the group.
+func (o ReportConfigGroupPreferencesetAssignmentOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportConfigGroupPreferencesetAssignment) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Name of the Preference Set.
+func (o ReportConfigGroupPreferencesetAssignmentOutput) PreferenceSet() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportConfigGroupPreferencesetAssignment) string { return v.PreferenceSet }).(pulumi.StringOutput)
+}
+
+type ReportConfigGroupPreferencesetAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportConfigGroupPreferencesetAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportConfigGroupPreferencesetAssignment)(nil)).Elem()
+}
+
+func (o ReportConfigGroupPreferencesetAssignmentArrayOutput) ToReportConfigGroupPreferencesetAssignmentArrayOutput() ReportConfigGroupPreferencesetAssignmentArrayOutput {
+	return o
+}
+
+func (o ReportConfigGroupPreferencesetAssignmentArrayOutput) ToReportConfigGroupPreferencesetAssignmentArrayOutputWithContext(ctx context.Context) ReportConfigGroupPreferencesetAssignmentArrayOutput {
+	return o
+}
+
+func (o ReportConfigGroupPreferencesetAssignmentArrayOutput) Index(i pulumi.IntInput) ReportConfigGroupPreferencesetAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportConfigGroupPreferencesetAssignment {
+		return vs[0].([]ReportConfigGroupPreferencesetAssignment)[vs[1].(int)]
+	}).(ReportConfigGroupPreferencesetAssignmentOutput)
+}
+
+type ReportSummary struct {
+	// (Output)
+	// Aggregate statistics for a collection of assets.
+	// Structure is documented below.
+	AllAssetsStats []ReportSummaryAllAssetsStat `pulumi:"allAssetsStats"`
+	// (Output)
+	// Findings for each Group included in this report.
+	// Structure is documented below.
+	GroupFindings []ReportSummaryGroupFinding `pulumi:"groupFindings"`
+}
+
+// ReportSummaryInput is an input type that accepts ReportSummaryArgs and ReportSummaryOutput values.
+// You can construct a concrete instance of `ReportSummaryInput` via:
+//
+//	ReportSummaryArgs{...}
+type ReportSummaryInput interface {
+	pulumi.Input
+
+	ToReportSummaryOutput() ReportSummaryOutput
+	ToReportSummaryOutputWithContext(context.Context) ReportSummaryOutput
+}
+
+type ReportSummaryArgs struct {
+	// (Output)
+	// Aggregate statistics for a collection of assets.
+	// Structure is documented below.
+	AllAssetsStats ReportSummaryAllAssetsStatArrayInput `pulumi:"allAssetsStats"`
+	// (Output)
+	// Findings for each Group included in this report.
+	// Structure is documented below.
+	GroupFindings ReportSummaryGroupFindingArrayInput `pulumi:"groupFindings"`
+}
+
+func (ReportSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummary)(nil)).Elem()
+}
+
+func (i ReportSummaryArgs) ToReportSummaryOutput() ReportSummaryOutput {
+	return i.ToReportSummaryOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryArgs) ToReportSummaryOutputWithContext(ctx context.Context) ReportSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryOutput)
+}
+
+// ReportSummaryArrayInput is an input type that accepts ReportSummaryArray and ReportSummaryArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryArrayInput` via:
+//
+//	ReportSummaryArray{ ReportSummaryArgs{...} }
+type ReportSummaryArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryArrayOutput() ReportSummaryArrayOutput
+	ToReportSummaryArrayOutputWithContext(context.Context) ReportSummaryArrayOutput
+}
+
+type ReportSummaryArray []ReportSummaryInput
+
+func (ReportSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummary)(nil)).Elem()
+}
+
+func (i ReportSummaryArray) ToReportSummaryArrayOutput() ReportSummaryArrayOutput {
+	return i.ToReportSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryArray) ToReportSummaryArrayOutputWithContext(ctx context.Context) ReportSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryArrayOutput)
+}
+
+type ReportSummaryOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummary)(nil)).Elem()
+}
+
+func (o ReportSummaryOutput) ToReportSummaryOutput() ReportSummaryOutput {
+	return o
+}
+
+func (o ReportSummaryOutput) ToReportSummaryOutputWithContext(ctx context.Context) ReportSummaryOutput {
+	return o
+}
+
+// (Output)
+// Aggregate statistics for a collection of assets.
+// Structure is documented below.
+func (o ReportSummaryOutput) AllAssetsStats() ReportSummaryAllAssetsStatArrayOutput {
+	return o.ApplyT(func(v ReportSummary) []ReportSummaryAllAssetsStat { return v.AllAssetsStats }).(ReportSummaryAllAssetsStatArrayOutput)
+}
+
+// (Output)
+// Findings for each Group included in this report.
+// Structure is documented below.
+func (o ReportSummaryOutput) GroupFindings() ReportSummaryGroupFindingArrayOutput {
+	return o.ApplyT(func(v ReportSummary) []ReportSummaryGroupFinding { return v.GroupFindings }).(ReportSummaryGroupFindingArrayOutput)
+}
+
+type ReportSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummary)(nil)).Elem()
+}
+
+func (o ReportSummaryArrayOutput) ToReportSummaryArrayOutput() ReportSummaryArrayOutput {
+	return o
+}
+
+func (o ReportSummaryArrayOutput) ToReportSummaryArrayOutputWithContext(ctx context.Context) ReportSummaryArrayOutput {
+	return o
+}
+
+func (o ReportSummaryArrayOutput) Index(i pulumi.IntInput) ReportSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummary {
+		return vs[0].([]ReportSummary)[vs[1].(int)]
+	}).(ReportSummaryOutput)
+}
+
+type ReportSummaryAllAssetsStat struct {
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	CoreCountHistograms []ReportSummaryAllAssetsStatCoreCountHistogram `pulumi:"coreCountHistograms"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	MemoryBytesHistograms []ReportSummaryAllAssetsStatMemoryBytesHistogram `pulumi:"memoryBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	MemoryUtilizationCharts []ReportSummaryAllAssetsStatMemoryUtilizationChart `pulumi:"memoryUtilizationCharts"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	OperatingSystems []ReportSummaryAllAssetsStatOperatingSystem `pulumi:"operatingSystems"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	SoftwareInstances []ReportSummaryAllAssetsStatSoftwareInstance `pulumi:"softwareInstances"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	StorageBytesHistograms []ReportSummaryAllAssetsStatStorageBytesHistogram `pulumi:"storageBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	StorageUtilizationCharts []ReportSummaryAllAssetsStatStorageUtilizationChart `pulumi:"storageUtilizationCharts"`
+	// (Output)
+	// Count of the number of unique assets in this collection.
+	TotalAssets *string `pulumi:"totalAssets"`
+	// (Output)
+	// Sum of the CPU core count of all the assets in this collection.
+	TotalCores *string `pulumi:"totalCores"`
+	// (Output)
+	// Sum of the memory in bytes of all the assets in this collection.
+	TotalMemoryBytes *string `pulumi:"totalMemoryBytes"`
+	// (Output)
+	// Sum of persistent storage in bytes of all the assets in this collection.
+	TotalStorageBytes *string `pulumi:"totalStorageBytes"`
+}
+
+// ReportSummaryAllAssetsStatInput is an input type that accepts ReportSummaryAllAssetsStatArgs and ReportSummaryAllAssetsStatOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatInput` via:
+//
+//	ReportSummaryAllAssetsStatArgs{...}
+type ReportSummaryAllAssetsStatInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatOutput() ReportSummaryAllAssetsStatOutput
+	ToReportSummaryAllAssetsStatOutputWithContext(context.Context) ReportSummaryAllAssetsStatOutput
+}
+
+type ReportSummaryAllAssetsStatArgs struct {
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	CoreCountHistograms ReportSummaryAllAssetsStatCoreCountHistogramArrayInput `pulumi:"coreCountHistograms"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	MemoryBytesHistograms ReportSummaryAllAssetsStatMemoryBytesHistogramArrayInput `pulumi:"memoryBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	MemoryUtilizationCharts ReportSummaryAllAssetsStatMemoryUtilizationChartArrayInput `pulumi:"memoryUtilizationCharts"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	OperatingSystems ReportSummaryAllAssetsStatOperatingSystemArrayInput `pulumi:"operatingSystems"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	SoftwareInstances ReportSummaryAllAssetsStatSoftwareInstanceArrayInput `pulumi:"softwareInstances"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	StorageBytesHistograms ReportSummaryAllAssetsStatStorageBytesHistogramArrayInput `pulumi:"storageBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	StorageUtilizationCharts ReportSummaryAllAssetsStatStorageUtilizationChartArrayInput `pulumi:"storageUtilizationCharts"`
+	// (Output)
+	// Count of the number of unique assets in this collection.
+	TotalAssets pulumi.StringPtrInput `pulumi:"totalAssets"`
+	// (Output)
+	// Sum of the CPU core count of all the assets in this collection.
+	TotalCores pulumi.StringPtrInput `pulumi:"totalCores"`
+	// (Output)
+	// Sum of the memory in bytes of all the assets in this collection.
+	TotalMemoryBytes pulumi.StringPtrInput `pulumi:"totalMemoryBytes"`
+	// (Output)
+	// Sum of persistent storage in bytes of all the assets in this collection.
+	TotalStorageBytes pulumi.StringPtrInput `pulumi:"totalStorageBytes"`
+}
+
+func (ReportSummaryAllAssetsStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStat)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatArgs) ToReportSummaryAllAssetsStatOutput() ReportSummaryAllAssetsStatOutput {
+	return i.ToReportSummaryAllAssetsStatOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatArgs) ToReportSummaryAllAssetsStatOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatOutput)
+}
+
+// ReportSummaryAllAssetsStatArrayInput is an input type that accepts ReportSummaryAllAssetsStatArray and ReportSummaryAllAssetsStatArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatArray{ ReportSummaryAllAssetsStatArgs{...} }
+type ReportSummaryAllAssetsStatArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatArrayOutput() ReportSummaryAllAssetsStatArrayOutput
+	ToReportSummaryAllAssetsStatArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatArrayOutput
+}
+
+type ReportSummaryAllAssetsStatArray []ReportSummaryAllAssetsStatInput
+
+func (ReportSummaryAllAssetsStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStat)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatArray) ToReportSummaryAllAssetsStatArrayOutput() ReportSummaryAllAssetsStatArrayOutput {
+	return i.ToReportSummaryAllAssetsStatArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatArray) ToReportSummaryAllAssetsStatArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStat)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatOutput) ToReportSummaryAllAssetsStatOutput() ReportSummaryAllAssetsStatOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOutput) ToReportSummaryAllAssetsStatOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOutput {
+	return o
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) CoreCountHistograms() ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatCoreCountHistogram {
+		return v.CoreCountHistograms
+	}).(ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput)
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) MemoryBytesHistograms() ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatMemoryBytesHistogram {
+		return v.MemoryBytesHistograms
+	}).(ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput)
+}
+
+// (Output)
+// Utilization Chart is a specific type of visualization which displays
+// a metric classified into "Used" and "Free" buckets.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) MemoryUtilizationCharts() ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatMemoryUtilizationChart {
+		return v.MemoryUtilizationCharts
+	}).(ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput)
+}
+
+// (Output)
+// Describes a collection of data points rendered as a Chart.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) OperatingSystems() ReportSummaryAllAssetsStatOperatingSystemArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatOperatingSystem {
+		return v.OperatingSystems
+	}).(ReportSummaryAllAssetsStatOperatingSystemArrayOutput)
+}
+
+// (Output)
+// Describes a collection of data points rendered as a Chart.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) SoftwareInstances() ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatSoftwareInstance {
+		return v.SoftwareInstances
+	}).(ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput)
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) StorageBytesHistograms() ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatStorageBytesHistogram {
+		return v.StorageBytesHistograms
+	}).(ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput)
+}
+
+// (Output)
+// Utilization Chart is a specific type of visualization which displays
+// a metric classified into "Used" and "Free" buckets.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOutput) StorageUtilizationCharts() ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) []ReportSummaryAllAssetsStatStorageUtilizationChart {
+		return v.StorageUtilizationCharts
+	}).(ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput)
+}
+
+// (Output)
+// Count of the number of unique assets in this collection.
+func (o ReportSummaryAllAssetsStatOutput) TotalAssets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) *string { return v.TotalAssets }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of the CPU core count of all the assets in this collection.
+func (o ReportSummaryAllAssetsStatOutput) TotalCores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) *string { return v.TotalCores }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of the memory in bytes of all the assets in this collection.
+func (o ReportSummaryAllAssetsStatOutput) TotalMemoryBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) *string { return v.TotalMemoryBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of persistent storage in bytes of all the assets in this collection.
+func (o ReportSummaryAllAssetsStatOutput) TotalStorageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStat) *string { return v.TotalStorageBytes }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStat)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatArrayOutput) ToReportSummaryAllAssetsStatArrayOutput() ReportSummaryAllAssetsStatArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatArrayOutput) ToReportSummaryAllAssetsStatArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStat {
+		return vs[0].([]ReportSummaryAllAssetsStat)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryAllAssetsStatCoreCountHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryAllAssetsStatCoreCountHistogramInput is an input type that accepts ReportSummaryAllAssetsStatCoreCountHistogramArgs and ReportSummaryAllAssetsStatCoreCountHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatCoreCountHistogramInput` via:
+//
+//	ReportSummaryAllAssetsStatCoreCountHistogramArgs{...}
+type ReportSummaryAllAssetsStatCoreCountHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatCoreCountHistogramOutput() ReportSummaryAllAssetsStatCoreCountHistogramOutput
+	ToReportSummaryAllAssetsStatCoreCountHistogramOutputWithContext(context.Context) ReportSummaryAllAssetsStatCoreCountHistogramOutput
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramArgs) ToReportSummaryAllAssetsStatCoreCountHistogramOutput() ReportSummaryAllAssetsStatCoreCountHistogramOutput {
+	return i.ToReportSummaryAllAssetsStatCoreCountHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramArgs) ToReportSummaryAllAssetsStatCoreCountHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatCoreCountHistogramOutput)
+}
+
+// ReportSummaryAllAssetsStatCoreCountHistogramArrayInput is an input type that accepts ReportSummaryAllAssetsStatCoreCountHistogramArray and ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatCoreCountHistogramArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatCoreCountHistogramArray{ ReportSummaryAllAssetsStatCoreCountHistogramArgs{...} }
+type ReportSummaryAllAssetsStatCoreCountHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput
+	ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramArray []ReportSummaryAllAssetsStatCoreCountHistogramInput
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramArray) ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput {
+	return i.ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramArray) ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramOutput) ToReportSummaryAllAssetsStatCoreCountHistogramOutput() ReportSummaryAllAssetsStatCoreCountHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramOutput) ToReportSummaryAllAssetsStatCoreCountHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatCoreCountHistogramOutput) Buckets() ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatCoreCountHistogram) []ReportSummaryAllAssetsStatCoreCountHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput) ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput) ToReportSummaryAllAssetsStatCoreCountHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatCoreCountHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatCoreCountHistogram {
+		return vs[0].([]ReportSummaryAllAssetsStatCoreCountHistogram)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatCoreCountHistogramOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryAllAssetsStatCoreCountHistogramBucketInput is an input type that accepts ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs and ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatCoreCountHistogramBucketInput` via:
+//
+//	ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs{...}
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput
+	ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutputWithContext(context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs) ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput {
+	return i.ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs) ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput)
+}
+
+// ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayInput is an input type that accepts ReportSummaryAllAssetsStatCoreCountHistogramBucketArray and ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatCoreCountHistogramBucketArray{ ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs{...} }
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput
+	ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketArray []ReportSummaryAllAssetsStatCoreCountHistogramBucketInput
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramBucketArray) ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput {
+	return i.ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatCoreCountHistogramBucketArray) ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) ToReportSummaryAllAssetsStatCoreCountHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatCoreCountHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatCoreCountHistogramBucket) *string { return v.LowerBound }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatCoreCountHistogramBucket) *string { return v.UpperBound }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput() ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatCoreCountHistogramBucket {
+		return vs[0].([]ReportSummaryAllAssetsStatCoreCountHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryAllAssetsStatMemoryBytesHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryAllAssetsStatMemoryBytesHistogramInput is an input type that accepts ReportSummaryAllAssetsStatMemoryBytesHistogramArgs and ReportSummaryAllAssetsStatMemoryBytesHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryBytesHistogramInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryBytesHistogramArgs{...}
+type ReportSummaryAllAssetsStatMemoryBytesHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramOutput
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramArgs) ToReportSummaryAllAssetsStatMemoryBytesHistogramOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryBytesHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramArgs) ToReportSummaryAllAssetsStatMemoryBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryBytesHistogramOutput)
+}
+
+// ReportSummaryAllAssetsStatMemoryBytesHistogramArrayInput is an input type that accepts ReportSummaryAllAssetsStatMemoryBytesHistogramArray and ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryBytesHistogramArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryBytesHistogramArray{ ReportSummaryAllAssetsStatMemoryBytesHistogramArgs{...} }
+type ReportSummaryAllAssetsStatMemoryBytesHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramArray []ReportSummaryAllAssetsStatMemoryBytesHistogramInput
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramArray) ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramArray) ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramOutput) Buckets() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryBytesHistogram) []ReportSummaryAllAssetsStatMemoryBytesHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatMemoryBytesHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatMemoryBytesHistogram {
+		return vs[0].([]ReportSummaryAllAssetsStatMemoryBytesHistogram)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatMemoryBytesHistogramOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryAllAssetsStatMemoryBytesHistogramBucketInput is an input type that accepts ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs and ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryBytesHistogramBucketInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs{...}
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput)
+}
+
+// ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayInput is an input type that accepts ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray and ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray{ ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs{...} }
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput
+	ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray []ReportSummaryAllAssetsStatMemoryBytesHistogramBucketInput
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryBytesHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryBytesHistogramBucket) *string { return v.LowerBound }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryBytesHistogramBucket) *string { return v.UpperBound }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatMemoryBytesHistogramBucket {
+		return vs[0].([]ReportSummaryAllAssetsStatMemoryBytesHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryUtilizationChart struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free *string `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used *string `pulumi:"used"`
+}
+
+// ReportSummaryAllAssetsStatMemoryUtilizationChartInput is an input type that accepts ReportSummaryAllAssetsStatMemoryUtilizationChartArgs and ReportSummaryAllAssetsStatMemoryUtilizationChartOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryUtilizationChartInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryUtilizationChartArgs{...}
+type ReportSummaryAllAssetsStatMemoryUtilizationChartInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryUtilizationChartOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartOutput
+	ToReportSummaryAllAssetsStatMemoryUtilizationChartOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryUtilizationChartArgs struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free pulumi.StringPtrInput `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used pulumi.StringPtrInput `pulumi:"used"`
+}
+
+func (ReportSummaryAllAssetsStatMemoryUtilizationChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryUtilizationChartArgs) ToReportSummaryAllAssetsStatMemoryUtilizationChartOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryUtilizationChartOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryUtilizationChartArgs) ToReportSummaryAllAssetsStatMemoryUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryUtilizationChartOutput)
+}
+
+// ReportSummaryAllAssetsStatMemoryUtilizationChartArrayInput is an input type that accepts ReportSummaryAllAssetsStatMemoryUtilizationChartArray and ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatMemoryUtilizationChartArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatMemoryUtilizationChartArray{ ReportSummaryAllAssetsStatMemoryUtilizationChartArgs{...} }
+type ReportSummaryAllAssetsStatMemoryUtilizationChartArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput
+	ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput
+}
+
+type ReportSummaryAllAssetsStatMemoryUtilizationChartArray []ReportSummaryAllAssetsStatMemoryUtilizationChartInput
+
+func (ReportSummaryAllAssetsStatMemoryUtilizationChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatMemoryUtilizationChartArray) ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput {
+	return i.ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatMemoryUtilizationChartArray) ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryUtilizationChartOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryUtilizationChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartOutput) ToReportSummaryAllAssetsStatMemoryUtilizationChartOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartOutput) ToReportSummaryAllAssetsStatMemoryUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartOutput {
+	return o
+}
+
+// (Output)
+// Aggregate value which falls into the "Free" bucket.
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartOutput) Free() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryUtilizationChart) *string { return v.Free }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Aggregate value which falls into the "Used" bucket.
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartOutput) Used() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatMemoryUtilizationChart) *string { return v.Used }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput) ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput() ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput) ToReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatMemoryUtilizationChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatMemoryUtilizationChart {
+		return vs[0].([]ReportSummaryAllAssetsStatMemoryUtilizationChart)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatMemoryUtilizationChartOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystem struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints []ReportSummaryAllAssetsStatOperatingSystemDataPoint `pulumi:"dataPoints"`
+}
+
+// ReportSummaryAllAssetsStatOperatingSystemInput is an input type that accepts ReportSummaryAllAssetsStatOperatingSystemArgs and ReportSummaryAllAssetsStatOperatingSystemOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatOperatingSystemInput` via:
+//
+//	ReportSummaryAllAssetsStatOperatingSystemArgs{...}
+type ReportSummaryAllAssetsStatOperatingSystemInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatOperatingSystemOutput() ReportSummaryAllAssetsStatOperatingSystemOutput
+	ToReportSummaryAllAssetsStatOperatingSystemOutputWithContext(context.Context) ReportSummaryAllAssetsStatOperatingSystemOutput
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemArgs struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints ReportSummaryAllAssetsStatOperatingSystemDataPointArrayInput `pulumi:"dataPoints"`
+}
+
+func (ReportSummaryAllAssetsStatOperatingSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystem)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemArgs) ToReportSummaryAllAssetsStatOperatingSystemOutput() ReportSummaryAllAssetsStatOperatingSystemOutput {
+	return i.ToReportSummaryAllAssetsStatOperatingSystemOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemArgs) ToReportSummaryAllAssetsStatOperatingSystemOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatOperatingSystemOutput)
+}
+
+// ReportSummaryAllAssetsStatOperatingSystemArrayInput is an input type that accepts ReportSummaryAllAssetsStatOperatingSystemArray and ReportSummaryAllAssetsStatOperatingSystemArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatOperatingSystemArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatOperatingSystemArray{ ReportSummaryAllAssetsStatOperatingSystemArgs{...} }
+type ReportSummaryAllAssetsStatOperatingSystemArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatOperatingSystemArrayOutput() ReportSummaryAllAssetsStatOperatingSystemArrayOutput
+	ToReportSummaryAllAssetsStatOperatingSystemArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatOperatingSystemArrayOutput
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemArray []ReportSummaryAllAssetsStatOperatingSystemInput
+
+func (ReportSummaryAllAssetsStatOperatingSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatOperatingSystem)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemArray) ToReportSummaryAllAssetsStatOperatingSystemArrayOutput() ReportSummaryAllAssetsStatOperatingSystemArrayOutput {
+	return i.ToReportSummaryAllAssetsStatOperatingSystemArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemArray) ToReportSummaryAllAssetsStatOperatingSystemArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatOperatingSystemArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatOperatingSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystem)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemOutput) ToReportSummaryAllAssetsStatOperatingSystemOutput() ReportSummaryAllAssetsStatOperatingSystemOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemOutput) ToReportSummaryAllAssetsStatOperatingSystemOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemOutput {
+	return o
+}
+
+// (Output)
+// Each data point in the chart is represented as a name-value pair
+// with the name being the x-axis label, and the value being the y-axis
+// value.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatOperatingSystemOutput) DataPoints() ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatOperatingSystem) []ReportSummaryAllAssetsStatOperatingSystemDataPoint {
+		return v.DataPoints
+	}).(ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatOperatingSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatOperatingSystem)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemArrayOutput) ToReportSummaryAllAssetsStatOperatingSystemArrayOutput() ReportSummaryAllAssetsStatOperatingSystemArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemArrayOutput) ToReportSummaryAllAssetsStatOperatingSystemArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatOperatingSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatOperatingSystem {
+		return vs[0].([]ReportSummaryAllAssetsStatOperatingSystem)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatOperatingSystemOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemDataPoint struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label *string `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value *float64 `pulumi:"value"`
+}
+
+// ReportSummaryAllAssetsStatOperatingSystemDataPointInput is an input type that accepts ReportSummaryAllAssetsStatOperatingSystemDataPointArgs and ReportSummaryAllAssetsStatOperatingSystemDataPointOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatOperatingSystemDataPointInput` via:
+//
+//	ReportSummaryAllAssetsStatOperatingSystemDataPointArgs{...}
+type ReportSummaryAllAssetsStatOperatingSystemDataPointInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatOperatingSystemDataPointOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointOutput
+	ToReportSummaryAllAssetsStatOperatingSystemDataPointOutputWithContext(context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointOutput
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemDataPointArgs struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (ReportSummaryAllAssetsStatOperatingSystemDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemDataPointArgs) ToReportSummaryAllAssetsStatOperatingSystemDataPointOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointOutput {
+	return i.ToReportSummaryAllAssetsStatOperatingSystemDataPointOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemDataPointArgs) ToReportSummaryAllAssetsStatOperatingSystemDataPointOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatOperatingSystemDataPointOutput)
+}
+
+// ReportSummaryAllAssetsStatOperatingSystemDataPointArrayInput is an input type that accepts ReportSummaryAllAssetsStatOperatingSystemDataPointArray and ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatOperatingSystemDataPointArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatOperatingSystemDataPointArray{ ReportSummaryAllAssetsStatOperatingSystemDataPointArgs{...} }
+type ReportSummaryAllAssetsStatOperatingSystemDataPointArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput
+	ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemDataPointArray []ReportSummaryAllAssetsStatOperatingSystemDataPointInput
+
+func (ReportSummaryAllAssetsStatOperatingSystemDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemDataPointArray) ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput {
+	return i.ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatOperatingSystemDataPointArray) ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemDataPointOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatOperatingSystemDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointOutput) ToReportSummaryAllAssetsStatOperatingSystemDataPointOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointOutput) ToReportSummaryAllAssetsStatOperatingSystemDataPointOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointOutput {
+	return o
+}
+
+// (Output)
+// The X-axis label for this data point.
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatOperatingSystemDataPoint) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Y-axis value for this data point.
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatOperatingSystemDataPoint) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput) ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput() ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput) ToReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatOperatingSystemDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatOperatingSystemDataPoint {
+		return vs[0].([]ReportSummaryAllAssetsStatOperatingSystemDataPoint)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatOperatingSystemDataPointOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstance struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints []ReportSummaryAllAssetsStatSoftwareInstanceDataPoint `pulumi:"dataPoints"`
+}
+
+// ReportSummaryAllAssetsStatSoftwareInstanceInput is an input type that accepts ReportSummaryAllAssetsStatSoftwareInstanceArgs and ReportSummaryAllAssetsStatSoftwareInstanceOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatSoftwareInstanceInput` via:
+//
+//	ReportSummaryAllAssetsStatSoftwareInstanceArgs{...}
+type ReportSummaryAllAssetsStatSoftwareInstanceInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatSoftwareInstanceOutput() ReportSummaryAllAssetsStatSoftwareInstanceOutput
+	ToReportSummaryAllAssetsStatSoftwareInstanceOutputWithContext(context.Context) ReportSummaryAllAssetsStatSoftwareInstanceOutput
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceArgs struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayInput `pulumi:"dataPoints"`
+}
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstance)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceArgs) ToReportSummaryAllAssetsStatSoftwareInstanceOutput() ReportSummaryAllAssetsStatSoftwareInstanceOutput {
+	return i.ToReportSummaryAllAssetsStatSoftwareInstanceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceArgs) ToReportSummaryAllAssetsStatSoftwareInstanceOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatSoftwareInstanceOutput)
+}
+
+// ReportSummaryAllAssetsStatSoftwareInstanceArrayInput is an input type that accepts ReportSummaryAllAssetsStatSoftwareInstanceArray and ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatSoftwareInstanceArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatSoftwareInstanceArray{ ReportSummaryAllAssetsStatSoftwareInstanceArgs{...} }
+type ReportSummaryAllAssetsStatSoftwareInstanceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput
+	ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceArray []ReportSummaryAllAssetsStatSoftwareInstanceInput
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatSoftwareInstance)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceArray) ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput {
+	return i.ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceArray) ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstance)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceOutput) ToReportSummaryAllAssetsStatSoftwareInstanceOutput() ReportSummaryAllAssetsStatSoftwareInstanceOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceOutput) ToReportSummaryAllAssetsStatSoftwareInstanceOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceOutput {
+	return o
+}
+
+// (Output)
+// Each data point in the chart is represented as a name-value pair
+// with the name being the x-axis label, and the value being the y-axis
+// value.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatSoftwareInstanceOutput) DataPoints() ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatSoftwareInstance) []ReportSummaryAllAssetsStatSoftwareInstanceDataPoint {
+		return v.DataPoints
+	}).(ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatSoftwareInstance)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput) ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput) ToReportSummaryAllAssetsStatSoftwareInstanceArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatSoftwareInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatSoftwareInstance {
+		return vs[0].([]ReportSummaryAllAssetsStatSoftwareInstance)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatSoftwareInstanceOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPoint struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label *string `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value *float64 `pulumi:"value"`
+}
+
+// ReportSummaryAllAssetsStatSoftwareInstanceDataPointInput is an input type that accepts ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs and ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatSoftwareInstanceDataPointInput` via:
+//
+//	ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs{...}
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput
+	ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutputWithContext(context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput {
+	return i.ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput)
+}
+
+// ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayInput is an input type that accepts ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray and ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray{ ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs{...} }
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput
+	ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray []ReportSummaryAllAssetsStatSoftwareInstanceDataPointInput
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput {
+	return i.ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput {
+	return o
+}
+
+// (Output)
+// The X-axis label for this data point.
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatSoftwareInstanceDataPoint) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Y-axis value for this data point.
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatSoftwareInstanceDataPoint) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput() ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput) ToReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatSoftwareInstanceDataPoint {
+		return vs[0].([]ReportSummaryAllAssetsStatSoftwareInstanceDataPoint)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryAllAssetsStatStorageBytesHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryAllAssetsStatStorageBytesHistogramInput is an input type that accepts ReportSummaryAllAssetsStatStorageBytesHistogramArgs and ReportSummaryAllAssetsStatStorageBytesHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageBytesHistogramInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageBytesHistogramArgs{...}
+type ReportSummaryAllAssetsStatStorageBytesHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageBytesHistogramOutput() ReportSummaryAllAssetsStatStorageBytesHistogramOutput
+	ToReportSummaryAllAssetsStatStorageBytesHistogramOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramOutput
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramArgs) ToReportSummaryAllAssetsStatStorageBytesHistogramOutput() ReportSummaryAllAssetsStatStorageBytesHistogramOutput {
+	return i.ToReportSummaryAllAssetsStatStorageBytesHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramArgs) ToReportSummaryAllAssetsStatStorageBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageBytesHistogramOutput)
+}
+
+// ReportSummaryAllAssetsStatStorageBytesHistogramArrayInput is an input type that accepts ReportSummaryAllAssetsStatStorageBytesHistogramArray and ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageBytesHistogramArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageBytesHistogramArray{ ReportSummaryAllAssetsStatStorageBytesHistogramArgs{...} }
+type ReportSummaryAllAssetsStatStorageBytesHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput
+	ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramArray []ReportSummaryAllAssetsStatStorageBytesHistogramInput
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramArray) ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput {
+	return i.ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramArray) ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramOutput() ReportSummaryAllAssetsStatStorageBytesHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramOutput) Buckets() ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageBytesHistogram) []ReportSummaryAllAssetsStatStorageBytesHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatStorageBytesHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatStorageBytesHistogram {
+		return vs[0].([]ReportSummaryAllAssetsStatStorageBytesHistogram)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatStorageBytesHistogramOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryAllAssetsStatStorageBytesHistogramBucketInput is an input type that accepts ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs and ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageBytesHistogramBucketInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs{...}
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput
+	ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput {
+	return i.ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput)
+}
+
+// ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayInput is an input type that accepts ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray and ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray{ ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs{...} }
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput
+	ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray []ReportSummaryAllAssetsStatStorageBytesHistogramBucketInput
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput {
+	return i.ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageBytesHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageBytesHistogramBucket) *string { return v.LowerBound }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageBytesHistogramBucket) *string { return v.UpperBound }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput() ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput) ToReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatStorageBytesHistogramBucket {
+		return vs[0].([]ReportSummaryAllAssetsStatStorageBytesHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageUtilizationChart struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free *string `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used *string `pulumi:"used"`
+}
+
+// ReportSummaryAllAssetsStatStorageUtilizationChartInput is an input type that accepts ReportSummaryAllAssetsStatStorageUtilizationChartArgs and ReportSummaryAllAssetsStatStorageUtilizationChartOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageUtilizationChartInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageUtilizationChartArgs{...}
+type ReportSummaryAllAssetsStatStorageUtilizationChartInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageUtilizationChartOutput() ReportSummaryAllAssetsStatStorageUtilizationChartOutput
+	ToReportSummaryAllAssetsStatStorageUtilizationChartOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartOutput
+}
+
+type ReportSummaryAllAssetsStatStorageUtilizationChartArgs struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free pulumi.StringPtrInput `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used pulumi.StringPtrInput `pulumi:"used"`
+}
+
+func (ReportSummaryAllAssetsStatStorageUtilizationChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageUtilizationChartArgs) ToReportSummaryAllAssetsStatStorageUtilizationChartOutput() ReportSummaryAllAssetsStatStorageUtilizationChartOutput {
+	return i.ToReportSummaryAllAssetsStatStorageUtilizationChartOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageUtilizationChartArgs) ToReportSummaryAllAssetsStatStorageUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageUtilizationChartOutput)
+}
+
+// ReportSummaryAllAssetsStatStorageUtilizationChartArrayInput is an input type that accepts ReportSummaryAllAssetsStatStorageUtilizationChartArray and ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryAllAssetsStatStorageUtilizationChartArrayInput` via:
+//
+//	ReportSummaryAllAssetsStatStorageUtilizationChartArray{ ReportSummaryAllAssetsStatStorageUtilizationChartArgs{...} }
+type ReportSummaryAllAssetsStatStorageUtilizationChartArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput() ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput
+	ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutputWithContext(context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput
+}
+
+type ReportSummaryAllAssetsStatStorageUtilizationChartArray []ReportSummaryAllAssetsStatStorageUtilizationChartInput
+
+func (ReportSummaryAllAssetsStatStorageUtilizationChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryAllAssetsStatStorageUtilizationChartArray) ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput() ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput {
+	return i.ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryAllAssetsStatStorageUtilizationChartArray) ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageUtilizationChartOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageUtilizationChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryAllAssetsStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartOutput) ToReportSummaryAllAssetsStatStorageUtilizationChartOutput() ReportSummaryAllAssetsStatStorageUtilizationChartOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartOutput) ToReportSummaryAllAssetsStatStorageUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartOutput {
+	return o
+}
+
+// (Output)
+// Aggregate value which falls into the "Free" bucket.
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartOutput) Free() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageUtilizationChart) *string { return v.Free }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Aggregate value which falls into the "Used" bucket.
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartOutput) Used() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryAllAssetsStatStorageUtilizationChart) *string { return v.Used }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryAllAssetsStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput) ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput() ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput) ToReportSummaryAllAssetsStatStorageUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput) Index(i pulumi.IntInput) ReportSummaryAllAssetsStatStorageUtilizationChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryAllAssetsStatStorageUtilizationChart {
+		return vs[0].([]ReportSummaryAllAssetsStatStorageUtilizationChart)[vs[1].(int)]
+	}).(ReportSummaryAllAssetsStatStorageUtilizationChartOutput)
+}
+
+type ReportSummaryGroupFinding struct {
+	// (Output)
+	// Aggregate statistics for a collection of assets.
+	// Structure is documented below.
+	AssetAggregateStats []ReportSummaryGroupFindingAssetAggregateStat `pulumi:"assetAggregateStats"`
+	// Free-text description.
+	Description *string `pulumi:"description"`
+	// User-friendly display name. Maximum length is 63 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// This field is deprecated, do not rely on it having a value.
+	OverlappingAssetCount *string `pulumi:"overlappingAssetCount"`
+	// (Output)
+	// Findings for each of the PreferenceSets for this group.
+	// Structure is documented below.
+	PreferenceSetFindings []ReportSummaryGroupFindingPreferenceSetFinding `pulumi:"preferenceSetFindings"`
+}
+
+// ReportSummaryGroupFindingInput is an input type that accepts ReportSummaryGroupFindingArgs and ReportSummaryGroupFindingOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingInput` via:
+//
+//	ReportSummaryGroupFindingArgs{...}
+type ReportSummaryGroupFindingInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingOutput() ReportSummaryGroupFindingOutput
+	ToReportSummaryGroupFindingOutputWithContext(context.Context) ReportSummaryGroupFindingOutput
+}
+
+type ReportSummaryGroupFindingArgs struct {
+	// (Output)
+	// Aggregate statistics for a collection of assets.
+	// Structure is documented below.
+	AssetAggregateStats ReportSummaryGroupFindingAssetAggregateStatArrayInput `pulumi:"assetAggregateStats"`
+	// Free-text description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// User-friendly display name. Maximum length is 63 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// This field is deprecated, do not rely on it having a value.
+	OverlappingAssetCount pulumi.StringPtrInput `pulumi:"overlappingAssetCount"`
+	// (Output)
+	// Findings for each of the PreferenceSets for this group.
+	// Structure is documented below.
+	PreferenceSetFindings ReportSummaryGroupFindingPreferenceSetFindingArrayInput `pulumi:"preferenceSetFindings"`
+}
+
+func (ReportSummaryGroupFindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingArgs) ToReportSummaryGroupFindingOutput() ReportSummaryGroupFindingOutput {
+	return i.ToReportSummaryGroupFindingOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingArgs) ToReportSummaryGroupFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingOutput)
+}
+
+// ReportSummaryGroupFindingArrayInput is an input type that accepts ReportSummaryGroupFindingArray and ReportSummaryGroupFindingArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingArrayInput` via:
+//
+//	ReportSummaryGroupFindingArray{ ReportSummaryGroupFindingArgs{...} }
+type ReportSummaryGroupFindingArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingArrayOutput() ReportSummaryGroupFindingArrayOutput
+	ToReportSummaryGroupFindingArrayOutputWithContext(context.Context) ReportSummaryGroupFindingArrayOutput
+}
+
+type ReportSummaryGroupFindingArray []ReportSummaryGroupFindingInput
+
+func (ReportSummaryGroupFindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingArray) ToReportSummaryGroupFindingArrayOutput() ReportSummaryGroupFindingArrayOutput {
+	return i.ToReportSummaryGroupFindingArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingArray) ToReportSummaryGroupFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingOutput) ToReportSummaryGroupFindingOutput() ReportSummaryGroupFindingOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingOutput) ToReportSummaryGroupFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingOutput {
+	return o
+}
+
+// (Output)
+// Aggregate statistics for a collection of assets.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingOutput) AssetAggregateStats() ReportSummaryGroupFindingAssetAggregateStatArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFinding) []ReportSummaryGroupFindingAssetAggregateStat {
+		return v.AssetAggregateStats
+	}).(ReportSummaryGroupFindingAssetAggregateStatArrayOutput)
+}
+
+// Free-text description.
+func (o ReportSummaryGroupFindingOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFinding) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// User-friendly display name. Maximum length is 63 characters.
+func (o ReportSummaryGroupFindingOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFinding) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// This field is deprecated, do not rely on it having a value.
+func (o ReportSummaryGroupFindingOutput) OverlappingAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFinding) *string { return v.OverlappingAssetCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Findings for each of the PreferenceSets for this group.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingOutput) PreferenceSetFindings() ReportSummaryGroupFindingPreferenceSetFindingArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFinding) []ReportSummaryGroupFindingPreferenceSetFinding {
+		return v.PreferenceSetFindings
+	}).(ReportSummaryGroupFindingPreferenceSetFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingArrayOutput) ToReportSummaryGroupFindingArrayOutput() ReportSummaryGroupFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingArrayOutput) ToReportSummaryGroupFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFinding {
+		return vs[0].([]ReportSummaryGroupFinding)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStat struct {
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	CoreCountHistograms []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram `pulumi:"coreCountHistograms"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	MemoryBytesHistograms []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram `pulumi:"memoryBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	MemoryUtilizationCharts []ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart `pulumi:"memoryUtilizationCharts"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	OperatingSystems []ReportSummaryGroupFindingAssetAggregateStatOperatingSystem `pulumi:"operatingSystems"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	SoftwareInstances []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance `pulumi:"softwareInstances"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	StorageBytesHistograms []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram `pulumi:"storageBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	StorageUtilizationCharts []ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart `pulumi:"storageUtilizationCharts"`
+	// (Output)
+	// Count of the number of unique assets in this collection.
+	TotalAssets *string `pulumi:"totalAssets"`
+	// (Output)
+	// Sum of the CPU core count of all the assets in this collection.
+	TotalCores *string `pulumi:"totalCores"`
+	// (Output)
+	// Sum of the memory in bytes of all the assets in this collection.
+	TotalMemoryBytes *string `pulumi:"totalMemoryBytes"`
+	// (Output)
+	// Sum of persistent storage in bytes of all the assets in this collection.
+	TotalStorageBytes *string `pulumi:"totalStorageBytes"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatArgs and ReportSummaryGroupFindingAssetAggregateStatOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatOutput() ReportSummaryGroupFindingAssetAggregateStatOutput
+	ToReportSummaryGroupFindingAssetAggregateStatOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatArgs struct {
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	CoreCountHistograms ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayInput `pulumi:"coreCountHistograms"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	MemoryBytesHistograms ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayInput `pulumi:"memoryBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	MemoryUtilizationCharts ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayInput `pulumi:"memoryUtilizationCharts"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	OperatingSystems ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayInput `pulumi:"operatingSystems"`
+	// (Output)
+	// Describes a collection of data points rendered as a Chart.
+	// Structure is documented below.
+	SoftwareInstances ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayInput `pulumi:"softwareInstances"`
+	// (Output)
+	// A Histogram Chart shows a distribution of values into buckets, showing
+	// a count of values which fall into a bucket.
+	// Structure is documented below.
+	StorageBytesHistograms ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayInput `pulumi:"storageBytesHistograms"`
+	// (Output)
+	// Utilization Chart is a specific type of visualization which displays
+	// a metric classified into "Used" and "Free" buckets.
+	// Structure is documented below.
+	StorageUtilizationCharts ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayInput `pulumi:"storageUtilizationCharts"`
+	// (Output)
+	// Count of the number of unique assets in this collection.
+	TotalAssets pulumi.StringPtrInput `pulumi:"totalAssets"`
+	// (Output)
+	// Sum of the CPU core count of all the assets in this collection.
+	TotalCores pulumi.StringPtrInput `pulumi:"totalCores"`
+	// (Output)
+	// Sum of the memory in bytes of all the assets in this collection.
+	TotalMemoryBytes pulumi.StringPtrInput `pulumi:"totalMemoryBytes"`
+	// (Output)
+	// Sum of persistent storage in bytes of all the assets in this collection.
+	TotalStorageBytes pulumi.StringPtrInput `pulumi:"totalStorageBytes"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStat)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatArgs) ToReportSummaryGroupFindingAssetAggregateStatOutput() ReportSummaryGroupFindingAssetAggregateStatOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatArgs) ToReportSummaryGroupFindingAssetAggregateStatOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatArray and ReportSummaryGroupFindingAssetAggregateStatArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatArray{ ReportSummaryGroupFindingAssetAggregateStatArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatArrayOutput() ReportSummaryGroupFindingAssetAggregateStatArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatArray []ReportSummaryGroupFindingAssetAggregateStatInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStat)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatArray) ToReportSummaryGroupFindingAssetAggregateStatArrayOutput() ReportSummaryGroupFindingAssetAggregateStatArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatArray) ToReportSummaryGroupFindingAssetAggregateStatArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStat)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) ToReportSummaryGroupFindingAssetAggregateStatOutput() ReportSummaryGroupFindingAssetAggregateStatOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) ToReportSummaryGroupFindingAssetAggregateStatOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOutput {
+	return o
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) CoreCountHistograms() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram {
+		return v.CoreCountHistograms
+	}).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput)
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) MemoryBytesHistograms() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram {
+		return v.MemoryBytesHistograms
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput)
+}
+
+// (Output)
+// Utilization Chart is a specific type of visualization which displays
+// a metric classified into "Used" and "Free" buckets.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) MemoryUtilizationCharts() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart {
+		return v.MemoryUtilizationCharts
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput)
+}
+
+// (Output)
+// Describes a collection of data points rendered as a Chart.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) OperatingSystems() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatOperatingSystem {
+		return v.OperatingSystems
+	}).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput)
+}
+
+// (Output)
+// Describes a collection of data points rendered as a Chart.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) SoftwareInstances() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance {
+		return v.SoftwareInstances
+	}).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput)
+}
+
+// (Output)
+// A Histogram Chart shows a distribution of values into buckets, showing
+// a count of values which fall into a bucket.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) StorageBytesHistograms() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram {
+		return v.StorageBytesHistograms
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput)
+}
+
+// (Output)
+// Utilization Chart is a specific type of visualization which displays
+// a metric classified into "Used" and "Free" buckets.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) StorageUtilizationCharts() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) []ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart {
+		return v.StorageUtilizationCharts
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput)
+}
+
+// (Output)
+// Count of the number of unique assets in this collection.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) TotalAssets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) *string { return v.TotalAssets }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of the CPU core count of all the assets in this collection.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) TotalCores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) *string { return v.TotalCores }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of the memory in bytes of all the assets in this collection.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) TotalMemoryBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) *string { return v.TotalMemoryBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Sum of persistent storage in bytes of all the assets in this collection.
+func (o ReportSummaryGroupFindingAssetAggregateStatOutput) TotalStorageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStat) *string { return v.TotalStorageBytes }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStat)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatArrayOutput() ReportSummaryGroupFindingAssetAggregateStatArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStat {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStat)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs and ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray and ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray{ ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput) Buckets() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram) []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs and ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray and ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray{ ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray []ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket) *string {
+		return v.LowerBound
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket) *string {
+		return v.UpperBound
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs and ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray and ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray{ ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput) Buckets() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram) []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs and ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray and ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray{ ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray []ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket) *string {
+		return v.LowerBound
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket) *string {
+		return v.UpperBound
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free *string `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used *string `pulumi:"used"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs and ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free pulumi.StringPtrInput `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used pulumi.StringPtrInput `pulumi:"used"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray and ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray{ ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray []ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput {
+	return o
+}
+
+// (Output)
+// Aggregate value which falls into the "Free" bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput) Free() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart) *string { return v.Free }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Aggregate value which falls into the "Used" bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput) Used() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart) *string { return v.Used }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystem struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints []ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint `pulumi:"dataPoints"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatOperatingSystemInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs and ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatOperatingSystemInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayInput `pulumi:"dataPoints"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystem)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray and ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray{ ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray []ReportSummaryGroupFindingAssetAggregateStatOperatingSystemInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatOperatingSystem)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystem)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput {
+	return o
+}
+
+// (Output)
+// Each data point in the chart is represented as a name-value pair
+// with the name being the x-axis label, and the value being the y-axis
+// value.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput) DataPoints() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatOperatingSystem) []ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint {
+		return v.DataPoints
+	}).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatOperatingSystem)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatOperatingSystem {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatOperatingSystem)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label *string `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value *float64 `pulumi:"value"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs and ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray and ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray{ ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray []ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput {
+	return o
+}
+
+// (Output)
+// The X-axis label for this data point.
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Y-axis value for this data point.
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint `pulumi:"dataPoints"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs and ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs struct {
+	// (Output)
+	// Each data point in the chart is represented as a name-value pair
+	// with the name being the x-axis label, and the value being the y-axis
+	// value.
+	// Structure is documented below.
+	DataPoints ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayInput `pulumi:"dataPoints"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray and ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray{ ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput {
+	return o
+}
+
+// (Output)
+// Each data point in the chart is represented as a name-value pair
+// with the name being the x-axis label, and the value being the y-axis
+// value.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput) DataPoints() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance) []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint {
+		return v.DataPoints
+	}).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label *string `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value *float64 `pulumi:"value"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs and ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs struct {
+	// (Output)
+	// The X-axis label for this data point.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// (Output)
+	// The Y-axis value for this data point.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray and ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray{ ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray []ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput {
+	return o
+}
+
+// (Output)
+// The X-axis label for this data point.
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Y-axis value for this data point.
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput() ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPoint)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket `pulumi:"buckets"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs and ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs struct {
+	// (Output)
+	// Buckets in the histogram.
+	// There will be `n+1` buckets matching `n` lower bounds in the request.
+	// The first bucket will be from -infinity to the first bound.
+	// Subsequent buckets will be between one bound and the next.
+	// The final bucket will be from the final bound to infinity.
+	// Structure is documented below.
+	Buckets ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayInput `pulumi:"buckets"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray and ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray{ ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput {
+	return o
+}
+
+// (Output)
+// Buckets in the histogram.
+// There will be `n+1` buckets matching `n` lower bounds in the request.
+// The first bucket will be from -infinity to the first bound.
+// Subsequent buckets will be between one bound and the next.
+// The final bucket will be from the final bound to infinity.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput) Buckets() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram) []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket {
+		return v.Buckets
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count *string `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound *string `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound *string `pulumi:"upperBound"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs and ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs struct {
+	// (Output)
+	// Count of items in the bucket.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// (Output)
+	// Lower bound - inclusive.
+	LowerBound pulumi.StringPtrInput `pulumi:"lowerBound"`
+	// (Output)
+	// Upper bound - exclusive.
+	UpperBound pulumi.StringPtrInput `pulumi:"upperBound"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray and ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray{ ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray []ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput {
+	return o
+}
+
+// (Output)
+// Count of items in the bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Lower bound - inclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) LowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket) *string {
+		return v.LowerBound
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Upper bound - exclusive.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput) UpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket) *string {
+		return v.UpperBound
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free *string `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used *string `pulumi:"used"`
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs and ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs{...}
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs struct {
+	// (Output)
+	// Aggregate value which falls into the "Free" bucket.
+	Free pulumi.StringPtrInput `pulumi:"free"`
+	// (Output)
+	// Aggregate value which falls into the "Used" bucket.
+	Used pulumi.StringPtrInput `pulumi:"used"`
+}
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput)
+}
+
+// ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayInput is an input type that accepts ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray and ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayInput` via:
+//
+//	ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray{ ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs{...} }
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput
+	ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutputWithContext(context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray []ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartInput
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput {
+	return i.ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput {
+	return o
+}
+
+// (Output)
+// Aggregate value which falls into the "Free" bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput) Free() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart) *string { return v.Free }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Aggregate value which falls into the "Used" bucket.
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput) Used() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart) *string { return v.Used }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput() ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput) ToReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart {
+		return vs[0].([]ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFinding struct {
+	// (Output)
+	// A set of findings that applies to assets destined for Compute Engine.
+	// Structure is documented below.
+	ComputeEngineFindings []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding `pulumi:"computeEngineFindings"`
+	// Free-text description.
+	Description *string `pulumi:"description"`
+	// User-friendly display name. Maximum length is 63 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// The type of machines to consider when calculating virtual machine migration
+	// insights and recommendations.
+	// Not all machine types are available in all zones and regions.
+	// Structure is documented below.
+	MachinePreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreference `pulumi:"machinePreferences"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostComputes []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute `pulumi:"monthlyCostComputes"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostNetworkEgresses []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress `pulumi:"monthlyCostNetworkEgresses"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostOsLicenses []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense `pulumi:"monthlyCostOsLicenses"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostOthers []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther `pulumi:"monthlyCostOthers"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostStorages []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage `pulumi:"monthlyCostStorages"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostTotals []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal `pulumi:"monthlyCostTotals"`
+	// (Output)
+	// A set of findings that applies to assets destined for Sole-Tenant nodes.
+	// Structure is documented below.
+	SoleTenantFindings []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding `pulumi:"soleTenantFindings"`
+	// (Output)
+	// A set of findings that applies to assets destined for VMWare Engine.
+	// Structure is documented below.
+	VmwareEngineFindings []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding `pulumi:"vmwareEngineFindings"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingArgs and ReportSummaryGroupFindingPreferenceSetFindingOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingArgs struct {
+	// (Output)
+	// A set of findings that applies to assets destined for Compute Engine.
+	// Structure is documented below.
+	ComputeEngineFindings ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayInput `pulumi:"computeEngineFindings"`
+	// Free-text description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// User-friendly display name. Maximum length is 63 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// The type of machines to consider when calculating virtual machine migration
+	// insights and recommendations.
+	// Not all machine types are available in all zones and regions.
+	// Structure is documented below.
+	MachinePreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayInput `pulumi:"machinePreferences"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostComputes ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayInput `pulumi:"monthlyCostComputes"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostNetworkEgresses ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayInput `pulumi:"monthlyCostNetworkEgresses"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostOsLicenses ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayInput `pulumi:"monthlyCostOsLicenses"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostOthers ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayInput `pulumi:"monthlyCostOthers"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostStorages ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayInput `pulumi:"monthlyCostStorages"`
+	// (Output)
+	// Represents an amount of money with its currency type.
+	// Structure is documented below.
+	MonthlyCostTotals ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayInput `pulumi:"monthlyCostTotals"`
+	// (Output)
+	// A set of findings that applies to assets destined for Sole-Tenant nodes.
+	// Structure is documented below.
+	SoleTenantFindings ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayInput `pulumi:"soleTenantFindings"`
+	// (Output)
+	// A set of findings that applies to assets destined for VMWare Engine.
+	// Structure is documented below.
+	VmwareEngineFindings ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayInput `pulumi:"vmwareEngineFindings"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingArray and ReportSummaryGroupFindingPreferenceSetFindingArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingArray{ ReportSummaryGroupFindingPreferenceSetFindingArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingArray []ReportSummaryGroupFindingPreferenceSetFindingInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingOutput {
+	return o
+}
+
+// (Output)
+// A set of findings that applies to assets destined for Compute Engine.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) ComputeEngineFindings() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding {
+		return v.ComputeEngineFindings
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput)
+}
+
+// Free-text description.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// User-friendly display name. Maximum length is 63 characters.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of machines to consider when calculating virtual machine migration
+// insights and recommendations.
+// Not all machine types are available in all zones and regions.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MachinePreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreference {
+		return v.MachinePreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostComputes() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute {
+		return v.MonthlyCostComputes
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostNetworkEgresses() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress {
+		return v.MonthlyCostNetworkEgresses
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostOsLicenses() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense {
+		return v.MonthlyCostOsLicenses
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostOthers() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther {
+		return v.MonthlyCostOthers
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostStorages() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage {
+		return v.MonthlyCostStorages
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput)
+}
+
+// (Output)
+// Represents an amount of money with its currency type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) MonthlyCostTotals() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal {
+		return v.MonthlyCostTotals
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput)
+}
+
+// (Output)
+// A set of findings that applies to assets destined for Sole-Tenant nodes.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) SoleTenantFindings() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding {
+		return v.SoleTenantFindings
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput)
+}
+
+// (Output)
+// A set of findings that applies to assets destined for VMWare Engine.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingOutput) VmwareEngineFindings() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFinding) []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding {
+		return v.VmwareEngineFindings
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFinding {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFinding)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of disk types allocated to assets.
+	AllocatedDiskTypes []string `pulumi:"allocatedDiskTypes"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions []string `pulumi:"allocatedRegions"`
+	// (Output)
+	// Distribution of assets based on the Machine Series.
+	// Structure is documented below.
+	MachineSeriesAllocations []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation `pulumi:"machineSeriesAllocations"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of disk types allocated to assets.
+	AllocatedDiskTypes pulumi.StringArrayInput `pulumi:"allocatedDiskTypes"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions pulumi.StringArrayInput `pulumi:"allocatedRegions"`
+	// (Output)
+	// Distribution of assets based on the Machine Series.
+	// Structure is documented below.
+	MachineSeriesAllocations ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayInput `pulumi:"machineSeriesAllocations"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray{ ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Set of disk types allocated to assets.
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) AllocatedDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding) []string {
+		return v.AllocatedDiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Set of regions in which the assets were allocated
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) AllocatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding) []string {
+		return v.AllocatedRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Distribution of assets based on the Machine Series.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput) MachineSeriesAllocations() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding) []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation {
+		return v.MachineSeriesAllocations
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// A machine series, for a target product
+	// (e.g. Compute Engine, Google Cloud VMware Engine).
+	// Structure is documented below.
+	MachineSeries []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries `pulumi:"machineSeries"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// A machine series, for a target product
+	// (e.g. Compute Engine, Google Cloud VMware Engine).
+	// Structure is documented below.
+	MachineSeries ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayInput `pulumi:"machineSeries"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray{ ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A machine series, for a target product
+// (e.g. Compute Engine, Google Cloud VMware Engine).
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput) MachineSeries() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation) []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries {
+		return v.MachineSeries
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code *string `pulumi:"code"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray and ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray{ ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray []ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput {
+	return o
+}
+
+// (Output)
+// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+// on the displayName of
+// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries) *string {
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreference struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan *string `pulumi:"commitmentPlan"`
+	// (Output)
+	// The user preferences relating to Compute Engine target platform.
+	// Structure is documented below.
+	ComputeEnginePreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference `pulumi:"computeEnginePreferences"`
+	// (Output)
+	// The user preferences relating to target regions.
+	// Structure is documented below.
+	RegionPreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference `pulumi:"regionPreferences"`
+	// (Output)
+	// Possible values:
+	// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+	// SIZING_OPTIMIZATION_STRATEGY_MODERATE
+	// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+	SizingOptimizationStrategy *string `pulumi:"sizingOptimizationStrategy"`
+	// (Output)
+	// Preferences concerning Sole Tenancy nodes and VMs.
+	// Structure is documented below.
+	SoleTenancyPreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference `pulumi:"soleTenancyPreferences"`
+	// (Output)
+	// Possible values:
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+	TargetProduct *string `pulumi:"targetProduct"`
+	// (Output)
+	// The user preferences relating to Google Cloud VMware Engine target platform.
+	// Structure is documented below.
+	VmwareEnginePreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference `pulumi:"vmwareEnginePreferences"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
+	// (Output)
+	// The user preferences relating to Compute Engine target platform.
+	// Structure is documented below.
+	ComputeEnginePreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayInput `pulumi:"computeEnginePreferences"`
+	// (Output)
+	// The user preferences relating to target regions.
+	// Structure is documented below.
+	RegionPreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayInput `pulumi:"regionPreferences"`
+	// (Output)
+	// Possible values:
+	// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+	// SIZING_OPTIMIZATION_STRATEGY_MODERATE
+	// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+	SizingOptimizationStrategy pulumi.StringPtrInput `pulumi:"sizingOptimizationStrategy"`
+	// (Output)
+	// Preferences concerning Sole Tenancy nodes and VMs.
+	// Structure is documented below.
+	SoleTenancyPreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayInput `pulumi:"soleTenancyPreferences"`
+	// (Output)
+	// Possible values:
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+	// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+	TargetProduct pulumi.StringPtrInput `pulumi:"targetProduct"`
+	// (Output)
+	// The user preferences relating to Google Cloud VMware Engine target platform.
+	// Structure is documented below.
+	VmwareEnginePreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayInput `pulumi:"vmwareEnginePreferences"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput {
+	return o
+}
+
+// (Output)
+// Commitment plan to consider when calculating costs for virtual machine
+// insights and recommendations.
+// If you are unsure which value to set, a 3 year commitment plan is often a
+// good value to start with.
+// Possible values:
+// ON_DEMAND
+// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) CommitmentPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) *string {
+		return v.CommitmentPlan
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The user preferences relating to Compute Engine target platform.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) ComputeEnginePreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference {
+		return v.ComputeEnginePreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput)
+}
+
+// (Output)
+// The user preferences relating to target regions.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) RegionPreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference {
+		return v.RegionPreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput)
+}
+
+// (Output)
+// Possible values:
+// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+// SIZING_OPTIMIZATION_STRATEGY_MODERATE
+// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) SizingOptimizationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) *string {
+		return v.SizingOptimizationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Preferences concerning Sole Tenancy nodes and VMs.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) SoleTenancyPreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference {
+		return v.SoleTenancyPreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput)
+}
+
+// (Output)
+// Possible values:
+// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) TargetProduct() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) *string { return v.TargetProduct }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The user preferences relating to Google Cloud VMware Engine target platform.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput) VmwareEnginePreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference {
+		return v.VmwareEnginePreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference struct {
+	// (Output)
+	// Possible values:
+	// LICENSE_TYPE_DEFAULT
+	// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+	LicenseType *string `pulumi:"licenseType"`
+	// (Output)
+	// The type of machines to consider when calculating virtual machine migration
+	// insights and recommendations.
+	// Not all machine types are available in all zones and regions.
+	// Structure is documented below.
+	MachinePreferences []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference `pulumi:"machinePreferences"`
+	// (Output)
+	// Possible values:
+	// PERSISTENT_DISK_TYPE_STANDARD
+	// PERSISTENT_DISK_TYPE_BALANCED
+	// PERSISTENT_DISK_TYPE_SSD
+	PersistentDiskType *string `pulumi:"persistentDiskType"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs struct {
+	// (Output)
+	// Possible values:
+	// LICENSE_TYPE_DEFAULT
+	// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
+	// (Output)
+	// The type of machines to consider when calculating virtual machine migration
+	// insights and recommendations.
+	// Not all machine types are available in all zones and regions.
+	// Structure is documented below.
+	MachinePreferences ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayInput `pulumi:"machinePreferences"`
+	// (Output)
+	// Possible values:
+	// PERSISTENT_DISK_TYPE_STANDARD
+	// PERSISTENT_DISK_TYPE_BALANCED
+	// PERSISTENT_DISK_TYPE_SSD
+	PersistentDiskType pulumi.StringPtrInput `pulumi:"persistentDiskType"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput {
+	return o
+}
+
+// (Output)
+// Possible values:
+// LICENSE_TYPE_DEFAULT
+// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference) *string {
+		return v.LicenseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of machines to consider when calculating virtual machine migration
+// insights and recommendations.
+// Not all machine types are available in all zones and regions.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) MachinePreferences() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference {
+		return v.MachinePreferences
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput)
+}
+
+// (Output)
+// Possible values:
+// PERSISTENT_DISK_TYPE_STANDARD
+// PERSISTENT_DISK_TYPE_BALANCED
+// PERSISTENT_DISK_TYPE_SSD
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput) PersistentDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference) *string {
+		return v.PersistentDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference struct {
+	// (Output)
+	// Compute Engine machine series to consider for insights and recommendations.
+	// If empty, no restriction is applied on the machine series.
+	// Structure is documented below.
+	AllowedMachineSeries []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries `pulumi:"allowedMachineSeries"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs struct {
+	// (Output)
+	// Compute Engine machine series to consider for insights and recommendations.
+	// If empty, no restriction is applied on the machine series.
+	// Structure is documented below.
+	AllowedMachineSeries ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayInput `pulumi:"allowedMachineSeries"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput {
+	return o
+}
+
+// (Output)
+// Compute Engine machine series to consider for insights and recommendations.
+// If empty, no restriction is applied on the machine series.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput) AllowedMachineSeries() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries {
+		return v.AllowedMachineSeries
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code *string `pulumi:"code"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput {
+	return o
+}
+
+// (Output)
+// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+// on the displayName of
+// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries) *string {
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference struct {
+	// (Output)
+	// A list of preferred regions,
+	// ordered by the most preferred region first.
+	// Set only valid Google Cloud region names.
+	// See https://cloud.google.com/compute/docs/regions-zones
+	// for available regions.
+	PreferredRegions []string `pulumi:"preferredRegions"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs struct {
+	// (Output)
+	// A list of preferred regions,
+	// ordered by the most preferred region first.
+	// Set only valid Google Cloud region names.
+	// See https://cloud.google.com/compute/docs/regions-zones
+	// for available regions.
+	PreferredRegions pulumi.StringArrayInput `pulumi:"preferredRegions"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput {
+	return o
+}
+
+// (Output)
+// A list of preferred regions,
+// ordered by the most preferred region first.
+// Set only valid Google Cloud region names.
+// See https://cloud.google.com/compute/docs/regions-zones
+// for available regions.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput) PreferredRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference) []string {
+		return v.PreferredRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan *string `pulumi:"commitmentPlan"`
+	// (Output)
+	// CPU overcommit ratio.
+	// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
+	// (Output)
+	// Sole Tenancy nodes maintenance policy.
+	// Possible values:
+	// HOST_MAINTENANCE_POLICY_DEFAULT
+	// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+	// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+	HostMaintenancePolicy *string `pulumi:"hostMaintenancePolicy"`
+	// (Output)
+	// A list of sole tenant node types.
+	// An empty list means that all possible node types will be considered.
+	// Structure is documented below.
+	NodeTypes []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType `pulumi:"nodeTypes"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
+	// (Output)
+	// CPU overcommit ratio.
+	// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
+	// (Output)
+	// Sole Tenancy nodes maintenance policy.
+	// Possible values:
+	// HOST_MAINTENANCE_POLICY_DEFAULT
+	// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+	// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+	HostMaintenancePolicy pulumi.StringPtrInput `pulumi:"hostMaintenancePolicy"`
+	// (Output)
+	// A list of sole tenant node types.
+	// An empty list means that all possible node types will be considered.
+	// Structure is documented below.
+	NodeTypes ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayInput `pulumi:"nodeTypes"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput {
+	return o
+}
+
+// (Output)
+// Commitment plan to consider when calculating costs for virtual machine
+// insights and recommendations.
+// If you are unsure which value to set, a 3 year commitment plan is often a
+// good value to start with.
+// Possible values:
+// ON_DEMAND
+// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) CommitmentPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference) *string {
+		return v.CommitmentPlan
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// CPU overcommit ratio.
+// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference) *float64 {
+		return v.CpuOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// Sole Tenancy nodes maintenance policy.
+// Possible values:
+// HOST_MAINTENANCE_POLICY_DEFAULT
+// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) HostMaintenancePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference) *string {
+		return v.HostMaintenancePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A list of sole tenant node types.
+// An empty list means that all possible node types will be considered.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput) NodeTypes() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference) []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType {
+		return v.NodeTypes
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType struct {
+	// (Output)
+	// Name of the Sole Tenant node. Consult
+	// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs struct {
+	// (Output)
+	// Name of the Sole Tenant node. Consult
+	// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput {
+	return o
+}
+
+// (Output)
+// Name of the Sole Tenant node. Consult
+// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType) *string {
+		return v.NodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan *string `pulumi:"commitmentPlan"`
+	// (Output)
+	// CPU overcommit ratio.
+	// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
+	// (Output)
+	// Memory overcommit ratio.
+	// Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+	MemoryOvercommitRatio *float64 `pulumi:"memoryOvercommitRatio"`
+	// (Output)
+	// The Deduplication and Compression ratio is based on the logical (Used
+	// Before) space required to store data before applying deduplication and
+	// compression, in relation to the physical (Used After) space required after
+	// applying deduplication and compression. Specifically, the ratio is the Used
+	// Before space divided by the Used After space. For example, if the Used
+	// Before space is 3 GB, but the physical Used After space is 1 GB, the
+	// deduplication and compression ratio is 3x. Acceptable values are
+	// between 1.0 and 4.0.
+	StorageDeduplicationCompressionRatio *float64 `pulumi:"storageDeduplicationCompressionRatio"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs struct {
+	// (Output)
+	// Commitment plan to consider when calculating costs for virtual machine
+	// insights and recommendations.
+	// If you are unsure which value to set, a 3 year commitment plan is often a
+	// good value to start with.
+	// Possible values:
+	// ON_DEMAND
+	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
+	// (Output)
+	// CPU overcommit ratio.
+	// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
+	// (Output)
+	// Memory overcommit ratio.
+	// Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+	MemoryOvercommitRatio pulumi.Float64PtrInput `pulumi:"memoryOvercommitRatio"`
+	// (Output)
+	// The Deduplication and Compression ratio is based on the logical (Used
+	// Before) space required to store data before applying deduplication and
+	// compression, in relation to the physical (Used After) space required after
+	// applying deduplication and compression. Specifically, the ratio is the Used
+	// Before space divided by the Used After space. For example, if the Used
+	// Before space is 3 GB, but the physical Used After space is 1 GB, the
+	// deduplication and compression ratio is 3x. Acceptable values are
+	// between 1.0 and 4.0.
+	StorageDeduplicationCompressionRatio pulumi.Float64PtrInput `pulumi:"storageDeduplicationCompressionRatio"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray and ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray{ ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray []ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput {
+	return o
+}
+
+// (Output)
+// Commitment plan to consider when calculating costs for virtual machine
+// insights and recommendations.
+// If you are unsure which value to set, a 3 year commitment plan is often a
+// good value to start with.
+// Possible values:
+// ON_DEMAND
+// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) CommitmentPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference) *string {
+		return v.CommitmentPlan
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// CPU overcommit ratio.
+// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference) *float64 {
+		return v.CpuOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// Memory overcommit ratio.
+// Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) MemoryOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference) *float64 {
+		return v.MemoryOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// The Deduplication and Compression ratio is based on the logical (Used
+// Before) space required to store data before applying deduplication and
+// compression, in relation to the physical (Used After) space required after
+// applying deduplication and compression. Specifically, the ratio is the Used
+// Before space divided by the Used After space. For example, if the Used
+// Before space is 3 GB, but the physical Used After space is 1 GB, the
+// deduplication and compression ratio is 3x. Acceptable values are
+// between 1.0 and 4.0.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput) StorageDeduplicationCompressionRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference) *float64 {
+		return v.StorageDeduplicationCompressionRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress) *string {
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense) *string {
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs struct {
+	// (Output)
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// (Output)
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999 inclusive.
+	// If `units` is positive, `nanos` must be positive or zero.
+	// If `units` is zero, `nanos` can be positive, zero, or negative.
+	// If `units` is negative, `nanos` must be negative or zero.
+	// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Output)
+	// The whole units of the amount.
+	// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray and ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray{ ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray []ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput {
+	return o
+}
+
+// (Output)
+// The three-letter currency code defined in ISO 4217.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999 inclusive.
+// If `units` is positive, `nanos` must be positive or zero.
+// If `units` is zero, `nanos` can be positive, zero, or negative.
+// If `units` is negative, `nanos` must be negative or zero.
+// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The whole units of the amount.
+// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions []string `pulumi:"allocatedRegions"`
+	// (Output)
+	// Set of per-nodetype allocation records
+	// Structure is documented below.
+	NodeAllocations []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation `pulumi:"nodeAllocations"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions pulumi.StringArrayInput `pulumi:"allocatedRegions"`
+	// (Output)
+	// Set of per-nodetype allocation records
+	// Structure is documented below.
+	NodeAllocations ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayInput `pulumi:"nodeAllocations"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray{ ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Set of regions in which the assets were allocated
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) AllocatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding) []string {
+		return v.AllocatedRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Set of per-nodetype allocation records
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput) NodeAllocations() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding) []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation {
+		return v.NodeAllocations
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Count of this node type to be provisioned
+	NodeCount *string `pulumi:"nodeCount"`
+	// (Output)
+	// A Sole Tenant node type.
+	// Structure is documented below.
+	Nodes []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode `pulumi:"nodes"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Count of this node type to be provisioned
+	NodeCount pulumi.StringPtrInput `pulumi:"nodeCount"`
+	// (Output)
+	// A Sole Tenant node type.
+	// Structure is documented below.
+	Nodes ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayInput `pulumi:"nodes"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray{ ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Count of this node type to be provisioned
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) NodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation) *string {
+		return v.NodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A Sole Tenant node type.
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput) Nodes() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation) []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode {
+		return v.Nodes
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode struct {
+	// (Output)
+	// Name of the Sole Tenant node. Consult
+	// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs struct {
+	// (Output)
+	// Name of the Sole Tenant node. Consult
+	// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray and ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray{ ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray []ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput {
+	return o
+}
+
+// (Output)
+// Name of the Sole Tenant node. Consult
+// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode) *string {
+		return v.NodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions []string `pulumi:"allocatedRegions"`
+	// (Output)
+	// Set of per-nodetype allocation records
+	// Structure is documented below.
+	NodeAllocations []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation `pulumi:"nodeAllocations"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Set of regions in which the assets were allocated
+	AllocatedRegions pulumi.StringArrayInput `pulumi:"allocatedRegions"`
+	// (Output)
+	// Set of per-nodetype allocation records
+	// Structure is documented below.
+	NodeAllocations ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayInput `pulumi:"nodeAllocations"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray{ ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Set of regions in which the assets were allocated
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) AllocatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding) []string {
+		return v.AllocatedRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Set of per-nodetype allocation records
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput) NodeAllocations() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding) []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation {
+		return v.NodeAllocations
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount *string `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Count of this node type to be provisioned
+	NodeCount *string `pulumi:"nodeCount"`
+	// (Output)
+	// A VMWare Engine Node
+	// Structure is documented below.
+	VmwareNodes []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode `pulumi:"vmwareNodes"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs struct {
+	// (Output)
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount pulumi.StringPtrInput `pulumi:"allocatedAssetCount"`
+	// (Output)
+	// Count of this node type to be provisioned
+	NodeCount pulumi.StringPtrInput `pulumi:"nodeCount"`
+	// (Output)
+	// A VMWare Engine Node
+	// Structure is documented below.
+	VmwareNodes ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayInput `pulumi:"vmwareNodes"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray{ ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput {
+	return o
+}
+
+// (Output)
+// Count of assets allocated to these nodes
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) AllocatedAssetCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation) *string {
+		return v.AllocatedAssetCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Count of this node type to be provisioned
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) NodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation) *string {
+		return v.NodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A VMWare Engine Node
+// Structure is documented below.
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput) VmwareNodes() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation) []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode {
+		return v.VmwareNodes
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code *string `pulumi:"code"`
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs{...}
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs struct {
+	// (Output)
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+	// on the displayName of
+	// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput)
+}
+
+// ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayInput is an input type that accepts ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray and ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput values.
+// You can construct a concrete instance of `ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayInput` via:
+//
+//	ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray{ ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs{...} }
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayInput interface {
+	pulumi.Input
+
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput
+	ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutputWithContext(context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray []ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeInput
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode)(nil)).Elem()
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput {
+	return i.ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutputWithContext(context.Background())
+}
+
+func (i ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput {
+	return o
+}
+
+// (Output)
+// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+// on the displayName of
+// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode) *string {
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode)(nil)).Elem()
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput() ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput) ToReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput {
+	return o
+}
+
+func (o ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode {
+		return vs[0].([]ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode)[vs[1].(int)]
+	}).(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobConditionInput)(nil)).Elem(), AssetsExportJobConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobConditionPtrInput)(nil)).Elem(), AssetsExportJobConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobInventoryInput)(nil)).Elem(), AssetsExportJobInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobInventoryArrayInput)(nil)).Elem(), AssetsExportJobInventoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobNetworkDependencyInput)(nil)).Elem(), AssetsExportJobNetworkDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobNetworkDependencyArrayInput)(nil)).Elem(), AssetsExportJobNetworkDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobPerformanceDataInput)(nil)).Elem(), AssetsExportJobPerformanceDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobPerformanceDataPtrInput)(nil)).Elem(), AssetsExportJobPerformanceDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionInput)(nil)).Elem(), AssetsExportJobRecentExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorDetailInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultErrorDetailArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultSignedUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultSignedUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriSignedUriInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayInput)(nil)).Elem(), AssetsExportJobRecentExecutionResultSignedUriSignedUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobSignedUriDestinationInput)(nil)).Elem(), AssetsExportJobSignedUriDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetsExportJobSignedUriDestinationPtrInput)(nil)).Elem(), AssetsExportJobSignedUriDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorInput)(nil)).Elem(), DiscoveryClientErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorArrayInput)(nil)).Elem(), DiscoveryClientErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailInput)(nil)).Elem(), DiscoveryClientErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailArrayInput)(nil)).Elem(), DiscoveryClientErrorDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesPtrInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs{})
@@ -1374,6 +10911,150 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArrayInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportConfigGroupPreferencesetAssignmentInput)(nil)).Elem(), ReportConfigGroupPreferencesetAssignmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportConfigGroupPreferencesetAssignmentArrayInput)(nil)).Elem(), ReportConfigGroupPreferencesetAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryInput)(nil)).Elem(), ReportSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryArrayInput)(nil)).Elem(), ReportSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatInput)(nil)).Elem(), ReportSummaryAllAssetsStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramInput)(nil)).Elem(), ReportSummaryAllAssetsStatCoreCountHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatCoreCountHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramBucketInput)(nil)).Elem(), ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatCoreCountHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryBytesHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryBytesHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramBucketInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryUtilizationChartInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryUtilizationChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatMemoryUtilizationChartArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatMemoryUtilizationChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemInput)(nil)).Elem(), ReportSummaryAllAssetsStatOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatOperatingSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemDataPointInput)(nil)).Elem(), ReportSummaryAllAssetsStatOperatingSystemDataPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatOperatingSystemDataPointArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatOperatingSystemDataPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceInput)(nil)).Elem(), ReportSummaryAllAssetsStatSoftwareInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatSoftwareInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceDataPointInput)(nil)).Elem(), ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatSoftwareInstanceDataPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageBytesHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageBytesHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramBucketInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageBytesHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageUtilizationChartInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageUtilizationChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryAllAssetsStatStorageUtilizationChartArrayInput)(nil)).Elem(), ReportSummaryAllAssetsStatStorageUtilizationChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingInput)(nil)).Elem(), ReportSummaryGroupFindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingArrayInput)(nil)).Elem(), ReportSummaryGroupFindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayInput)(nil)).Elem(), ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayInput)(nil)).Elem(), ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArray{})
+	pulumi.RegisterOutputType(AssetsExportJobConditionOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobConditionPtrOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobInventoryOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobInventoryArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobNetworkDependencyOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobNetworkDependencyArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobPerformanceDataOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobPerformanceDataPtrOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultErrorOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultErrorArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultErrorDetailOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultSignedUriOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultSignedUriArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultSignedUriSignedUriOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobRecentExecutionResultSignedUriSignedUriArrayOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobSignedUriDestinationOutput{})
+	pulumi.RegisterOutputType(AssetsExportJobSignedUriDestinationPtrOutput{})
+	pulumi.RegisterOutputType(DiscoveryClientErrorOutput{})
+	pulumi.RegisterOutputType(DiscoveryClientErrorArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryClientErrorDetailOutput{})
+	pulumi.RegisterOutputType(DiscoveryClientErrorDetailArrayOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesPtrOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput{})
@@ -1390,4 +11071,110 @@ func init() {
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArrayOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrOutput{})
+	pulumi.RegisterOutputType(ReportConfigGroupPreferencesetAssignmentOutput{})
+	pulumi.RegisterOutputType(ReportConfigGroupPreferencesetAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryOutput{})
+	pulumi.RegisterOutputType(ReportSummaryArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatCoreCountHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatCoreCountHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatCoreCountHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatCoreCountHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryBytesHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryBytesHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryUtilizationChartOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatMemoryUtilizationChartArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatOperatingSystemOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatOperatingSystemArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatOperatingSystemDataPointOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatOperatingSystemDataPointArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatSoftwareInstanceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatSoftwareInstanceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatSoftwareInstanceDataPointOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatSoftwareInstanceDataPointArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageBytesHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageBytesHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageBytesHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageBytesHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageUtilizationChartOutput{})
+	pulumi.RegisterOutputType(ReportSummaryAllAssetsStatStorageUtilizationChartArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeOutput{})
+	pulumi.RegisterOutputType(ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArrayOutput{})
 }

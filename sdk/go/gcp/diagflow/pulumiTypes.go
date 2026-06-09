@@ -180,7 +180,7 @@ type ConversationProfileHumanAgentAssistantConfig struct {
 	// Configuration for agent assistance of human agent participant.
 	// Structure is documented below.
 	HumanAgentSuggestionConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig `pulumi:"humanAgentSuggestionConfig"`
-	// desc
+	// Configuration for analyzing conversation messages.
 	// Structure is documented below.
 	MessageAnalysisConfig *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig `pulumi:"messageAnalysisConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
@@ -207,7 +207,7 @@ type ConversationProfileHumanAgentAssistantConfigArgs struct {
 	// Configuration for agent assistance of human agent participant.
 	// Structure is documented below.
 	HumanAgentSuggestionConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput `pulumi:"humanAgentSuggestionConfig"`
-	// desc
+	// Configuration for analyzing conversation messages.
 	// Structure is documented below.
 	MessageAnalysisConfig ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput `pulumi:"messageAnalysisConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
@@ -309,7 +309,7 @@ func (o ConversationProfileHumanAgentAssistantConfigOutput) HumanAgentSuggestion
 	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
 }
 
-// desc
+// Configuration for analyzing conversation messages.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigOutput) MessageAnalysisConfig() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
 	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
@@ -372,7 +372,7 @@ func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) HumanAgentSuggest
 	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
 }
 
-// desc
+// Configuration for analyzing conversation messages.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) MessageAnalysisConfig() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
@@ -1156,7 +1156,7 @@ type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureC
 	KnowledgeBaseQuerySource *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return.
 	MaxResults *int `pulumi:"maxResults"`
-	// he customized sections chosen to return when requesting a summary of a conversation.
+	// The customized sections chosen to return when requesting a summary of a conversation.
 	// Structure is documented below.
 	Sections *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections `pulumi:"sections"`
 }
@@ -1193,7 +1193,7 @@ type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureC
 	KnowledgeBaseQuerySource ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return.
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
-	// he customized sections chosen to return when requesting a summary of a conversation.
+	// The customized sections chosen to return when requesting a summary of a conversation.
 	// Structure is documented below.
 	Sections ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput `pulumi:"sections"`
 }
@@ -1325,7 +1325,7 @@ func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatu
 	}).(pulumi.IntPtrOutput)
 }
 
-// he customized sections chosen to return when requesting a summary of a conversation.
+// The customized sections chosen to return when requesting a summary of a conversation.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) Sections() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
 	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
@@ -1425,7 +1425,7 @@ func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatu
 	}).(pulumi.IntPtrOutput)
 }
 
-// he customized sections chosen to return when requesting a summary of a conversation.
+// The customized sections chosen to return when requesting a summary of a conversation.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) Sections() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
@@ -1618,7 +1618,7 @@ func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatu
 }
 
 type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource struct {
-	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 	Agent string `pulumi:"agent"`
 	// The Dialogflow assist configuration for human agent.
 	// Structure is documented below.
@@ -1637,7 +1637,7 @@ type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureC
 }
 
 type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs struct {
-	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 	Agent pulumi.StringInput `pulumi:"agent"`
 	// The Dialogflow assist configuration for human agent.
 	// Structure is documented below.
@@ -1721,7 +1721,7 @@ func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatu
 	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
 }
 
-// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringOutput {
 	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) string {
 		return v.Agent
@@ -1760,7 +1760,7 @@ func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatu
 	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
 }
 
-// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *string {
 		if v == nil {
@@ -3397,7 +3397,7 @@ type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatu
 	DialogflowQuerySource *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource `pulumi:"dialogflowQuerySource"`
 	// Maximum number of results to return.
 	MaxResults *int `pulumi:"maxResults"`
-	// he customized sections chosen to return when requesting a summary of a conversation.
+	// The customized sections chosen to return when requesting a summary of a conversation.
 	// Structure is documented below.
 	Sections *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections `pulumi:"sections"`
 }
@@ -3426,7 +3426,7 @@ type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatu
 	DialogflowQuerySource ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput `pulumi:"dialogflowQuerySource"`
 	// Maximum number of results to return.
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
-	// he customized sections chosen to return when requesting a summary of a conversation.
+	// The customized sections chosen to return when requesting a summary of a conversation.
 	// Structure is documented below.
 	Sections ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput `pulumi:"sections"`
 }
@@ -3540,7 +3540,7 @@ func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFe
 	}).(pulumi.IntPtrOutput)
 }
 
-// he customized sections chosen to return when requesting a summary of a conversation.
+// The customized sections chosen to return when requesting a summary of a conversation.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) Sections() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
 	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
@@ -3616,7 +3616,7 @@ func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFe
 	}).(pulumi.IntPtrOutput)
 }
 
-// he customized sections chosen to return when requesting a summary of a conversation.
+// The customized sections chosen to return when requesting a summary of a conversation.
 // Structure is documented below.
 func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) Sections() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
@@ -3809,7 +3809,7 @@ func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFe
 }
 
 type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource struct {
-	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 	Agent string `pulumi:"agent"`
 	// The Dialogflow assist configuration for human agent.
 	// Structure is documented below.
@@ -3828,7 +3828,7 @@ type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatu
 }
 
 type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs struct {
-	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 	Agent pulumi.StringInput `pulumi:"agent"`
 	// The Dialogflow assist configuration for human agent.
 	// Structure is documented below.
@@ -3912,7 +3912,7 @@ func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFe
 	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
 }
 
-// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringOutput {
 	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) string {
 		return v.Agent
@@ -3951,7 +3951,7 @@ func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFe
 	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
 }
 
-// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
 func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *string {
 		if v == nil {
@@ -5786,9 +5786,260 @@ func (o ConversationProfileNotificationConfigPtrOutput) Topic() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConversationProfileSipConfig struct {
+	// Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+	AllowVirtualAgentInteraction *bool `pulumi:"allowVirtualAgentInteraction"`
+	// List of inbound call leg headers to be copied to outbound call legs created later.
+	CopyInboundCallLegHeaders []string `pulumi:"copyInboundCallLegHeaders"`
+	// Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+	CreateConversationOnTheFly *bool `pulumi:"createConversationOnTheFly"`
+	// Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+	IgnoreReinviteMediaDirection *bool `pulumi:"ignoreReinviteMediaDirection"`
+	// Starts the conversation with inactive SDP directives
+	InactiveStart *bool `pulumi:"inactiveStart"`
+	// Keeps the conversation running even if the call is disconnected.
+	KeepConversationRunning *bool `pulumi:"keepConversationRunning"`
+	// Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+	MaxAudioRecordingDuration *string `pulumi:"maxAudioRecordingDuration"`
+}
+
+// ConversationProfileSipConfigInput is an input type that accepts ConversationProfileSipConfigArgs and ConversationProfileSipConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileSipConfigInput` via:
+//
+//	ConversationProfileSipConfigArgs{...}
+type ConversationProfileSipConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileSipConfigOutput() ConversationProfileSipConfigOutput
+	ToConversationProfileSipConfigOutputWithContext(context.Context) ConversationProfileSipConfigOutput
+}
+
+type ConversationProfileSipConfigArgs struct {
+	// Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+	AllowVirtualAgentInteraction pulumi.BoolPtrInput `pulumi:"allowVirtualAgentInteraction"`
+	// List of inbound call leg headers to be copied to outbound call legs created later.
+	CopyInboundCallLegHeaders pulumi.StringArrayInput `pulumi:"copyInboundCallLegHeaders"`
+	// Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+	CreateConversationOnTheFly pulumi.BoolPtrInput `pulumi:"createConversationOnTheFly"`
+	// Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+	IgnoreReinviteMediaDirection pulumi.BoolPtrInput `pulumi:"ignoreReinviteMediaDirection"`
+	// Starts the conversation with inactive SDP directives
+	InactiveStart pulumi.BoolPtrInput `pulumi:"inactiveStart"`
+	// Keeps the conversation running even if the call is disconnected.
+	KeepConversationRunning pulumi.BoolPtrInput `pulumi:"keepConversationRunning"`
+	// Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+	MaxAudioRecordingDuration pulumi.StringPtrInput `pulumi:"maxAudioRecordingDuration"`
+}
+
+func (ConversationProfileSipConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSipConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileSipConfigArgs) ToConversationProfileSipConfigOutput() ConversationProfileSipConfigOutput {
+	return i.ToConversationProfileSipConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSipConfigArgs) ToConversationProfileSipConfigOutputWithContext(ctx context.Context) ConversationProfileSipConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSipConfigOutput)
+}
+
+func (i ConversationProfileSipConfigArgs) ToConversationProfileSipConfigPtrOutput() ConversationProfileSipConfigPtrOutput {
+	return i.ToConversationProfileSipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSipConfigArgs) ToConversationProfileSipConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSipConfigOutput).ToConversationProfileSipConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileSipConfigPtrInput is an input type that accepts ConversationProfileSipConfigArgs, ConversationProfileSipConfigPtr and ConversationProfileSipConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileSipConfigPtrInput` via:
+//
+//	        ConversationProfileSipConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileSipConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileSipConfigPtrOutput() ConversationProfileSipConfigPtrOutput
+	ToConversationProfileSipConfigPtrOutputWithContext(context.Context) ConversationProfileSipConfigPtrOutput
+}
+
+type conversationProfileSipConfigPtrType ConversationProfileSipConfigArgs
+
+func ConversationProfileSipConfigPtr(v *ConversationProfileSipConfigArgs) ConversationProfileSipConfigPtrInput {
+	return (*conversationProfileSipConfigPtrType)(v)
+}
+
+func (*conversationProfileSipConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSipConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileSipConfigPtrType) ToConversationProfileSipConfigPtrOutput() ConversationProfileSipConfigPtrOutput {
+	return i.ToConversationProfileSipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileSipConfigPtrType) ToConversationProfileSipConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSipConfigPtrOutput)
+}
+
+type ConversationProfileSipConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSipConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSipConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSipConfigOutput) ToConversationProfileSipConfigOutput() ConversationProfileSipConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSipConfigOutput) ToConversationProfileSipConfigOutputWithContext(ctx context.Context) ConversationProfileSipConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSipConfigOutput) ToConversationProfileSipConfigPtrOutput() ConversationProfileSipConfigPtrOutput {
+	return o.ToConversationProfileSipConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileSipConfigOutput) ToConversationProfileSipConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSipConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileSipConfig) *ConversationProfileSipConfig {
+		return &v
+	}).(ConversationProfileSipConfigPtrOutput)
+}
+
+// Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+func (o ConversationProfileSipConfigOutput) AllowVirtualAgentInteraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *bool { return v.AllowVirtualAgentInteraction }).(pulumi.BoolPtrOutput)
+}
+
+// List of inbound call leg headers to be copied to outbound call legs created later.
+func (o ConversationProfileSipConfigOutput) CopyInboundCallLegHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) []string { return v.CopyInboundCallLegHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+func (o ConversationProfileSipConfigOutput) CreateConversationOnTheFly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *bool { return v.CreateConversationOnTheFly }).(pulumi.BoolPtrOutput)
+}
+
+// Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+func (o ConversationProfileSipConfigOutput) IgnoreReinviteMediaDirection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *bool { return v.IgnoreReinviteMediaDirection }).(pulumi.BoolPtrOutput)
+}
+
+// Starts the conversation with inactive SDP directives
+func (o ConversationProfileSipConfigOutput) InactiveStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *bool { return v.InactiveStart }).(pulumi.BoolPtrOutput)
+}
+
+// Keeps the conversation running even if the call is disconnected.
+func (o ConversationProfileSipConfigOutput) KeepConversationRunning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *bool { return v.KeepConversationRunning }).(pulumi.BoolPtrOutput)
+}
+
+// Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+func (o ConversationProfileSipConfigOutput) MaxAudioRecordingDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSipConfig) *string { return v.MaxAudioRecordingDuration }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileSipConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSipConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSipConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSipConfigPtrOutput) ToConversationProfileSipConfigPtrOutput() ConversationProfileSipConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSipConfigPtrOutput) ToConversationProfileSipConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSipConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSipConfigPtrOutput) Elem() ConversationProfileSipConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) ConversationProfileSipConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileSipConfig
+		return ret
+	}).(ConversationProfileSipConfigOutput)
+}
+
+// Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+func (o ConversationProfileSipConfigPtrOutput) AllowVirtualAgentInteraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowVirtualAgentInteraction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of inbound call leg headers to be copied to outbound call legs created later.
+func (o ConversationProfileSipConfigPtrOutput) CopyInboundCallLegHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CopyInboundCallLegHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+func (o ConversationProfileSipConfigPtrOutput) CreateConversationOnTheFly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateConversationOnTheFly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+func (o ConversationProfileSipConfigPtrOutput) IgnoreReinviteMediaDirection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreReinviteMediaDirection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Starts the conversation with inactive SDP directives
+func (o ConversationProfileSipConfigPtrOutput) InactiveStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InactiveStart
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Keeps the conversation running even if the call is disconnected.
+func (o ConversationProfileSipConfigPtrOutput) KeepConversationRunning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepConversationRunning
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+func (o ConversationProfileSipConfigPtrOutput) MaxAudioRecordingDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSipConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAudioRecordingDuration
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConversationProfileSttConfig struct {
 	// Audio encoding of the audio content to process.
-	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
 	AudioEncoding *string `pulumi:"audioEncoding"`
 	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
 	EnableWordInfo *bool `pulumi:"enableWordInfo"`
@@ -5802,7 +6053,7 @@ type ConversationProfileSttConfig struct {
 	// The speech model used in speech to text.
 	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
 	SpeechModelVariant *string `pulumi:"speechModelVariant"`
-	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
 }
 
@@ -5819,7 +6070,7 @@ type ConversationProfileSttConfigInput interface {
 
 type ConversationProfileSttConfigArgs struct {
 	// Audio encoding of the audio content to process.
-	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
 	AudioEncoding pulumi.StringPtrInput `pulumi:"audioEncoding"`
 	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
@@ -5833,7 +6084,7 @@ type ConversationProfileSttConfigArgs struct {
 	// The speech model used in speech to text.
 	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
 	SpeechModelVariant pulumi.StringPtrInput `pulumi:"speechModelVariant"`
-	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
 }
 
@@ -5915,7 +6166,7 @@ func (o ConversationProfileSttConfigOutput) ToConversationProfileSttConfigPtrOut
 }
 
 // Audio encoding of the audio content to process.
-// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
 func (o ConversationProfileSttConfigOutput) AudioEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.AudioEncoding }).(pulumi.StringPtrOutput)
 }
@@ -5947,7 +6198,7 @@ func (o ConversationProfileSttConfigOutput) SpeechModelVariant() pulumi.StringPt
 	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.SpeechModelVariant }).(pulumi.StringPtrOutput)
 }
 
-// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 func (o ConversationProfileSttConfigOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConversationProfileSttConfig) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
 }
@@ -5977,7 +6228,7 @@ func (o ConversationProfileSttConfigPtrOutput) Elem() ConversationProfileSttConf
 }
 
 // Audio encoding of the audio content to process.
-// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
 func (o ConversationProfileSttConfigPtrOutput) AudioEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
 		if v == nil {
@@ -6039,7 +6290,7 @@ func (o ConversationProfileSttConfigPtrOutput) SpeechModelVariant() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 func (o ConversationProfileSttConfigPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileSttConfig) *bool {
 		if v == nil {
@@ -49046,6 +49297,257 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 	}).(IntentFollowupIntentInfoOutput)
 }
 
+type SipTrunkConnection struct {
+	// (Output)
+	// Output only. The unique identifier of the connection.
+	ConnectionId *string `pulumi:"connectionId"`
+	// (Output)
+	// Output only. The error details of the connection.
+	// Structure is documented below.
+	ErrorDetails []SipTrunkConnectionErrorDetail `pulumi:"errorDetails"`
+	// (Output)
+	// Output only. The state of the connection.
+	State *string `pulumi:"state"`
+	// (Output)
+	// Output only. The last update time of the connection.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// SipTrunkConnectionInput is an input type that accepts SipTrunkConnectionArgs and SipTrunkConnectionOutput values.
+// You can construct a concrete instance of `SipTrunkConnectionInput` via:
+//
+//	SipTrunkConnectionArgs{...}
+type SipTrunkConnectionInput interface {
+	pulumi.Input
+
+	ToSipTrunkConnectionOutput() SipTrunkConnectionOutput
+	ToSipTrunkConnectionOutputWithContext(context.Context) SipTrunkConnectionOutput
+}
+
+type SipTrunkConnectionArgs struct {
+	// (Output)
+	// Output only. The unique identifier of the connection.
+	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// (Output)
+	// Output only. The error details of the connection.
+	// Structure is documented below.
+	ErrorDetails SipTrunkConnectionErrorDetailArrayInput `pulumi:"errorDetails"`
+	// (Output)
+	// Output only. The state of the connection.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Output only. The last update time of the connection.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (SipTrunkConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SipTrunkConnection)(nil)).Elem()
+}
+
+func (i SipTrunkConnectionArgs) ToSipTrunkConnectionOutput() SipTrunkConnectionOutput {
+	return i.ToSipTrunkConnectionOutputWithContext(context.Background())
+}
+
+func (i SipTrunkConnectionArgs) ToSipTrunkConnectionOutputWithContext(ctx context.Context) SipTrunkConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SipTrunkConnectionOutput)
+}
+
+// SipTrunkConnectionArrayInput is an input type that accepts SipTrunkConnectionArray and SipTrunkConnectionArrayOutput values.
+// You can construct a concrete instance of `SipTrunkConnectionArrayInput` via:
+//
+//	SipTrunkConnectionArray{ SipTrunkConnectionArgs{...} }
+type SipTrunkConnectionArrayInput interface {
+	pulumi.Input
+
+	ToSipTrunkConnectionArrayOutput() SipTrunkConnectionArrayOutput
+	ToSipTrunkConnectionArrayOutputWithContext(context.Context) SipTrunkConnectionArrayOutput
+}
+
+type SipTrunkConnectionArray []SipTrunkConnectionInput
+
+func (SipTrunkConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SipTrunkConnection)(nil)).Elem()
+}
+
+func (i SipTrunkConnectionArray) ToSipTrunkConnectionArrayOutput() SipTrunkConnectionArrayOutput {
+	return i.ToSipTrunkConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i SipTrunkConnectionArray) ToSipTrunkConnectionArrayOutputWithContext(ctx context.Context) SipTrunkConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SipTrunkConnectionArrayOutput)
+}
+
+type SipTrunkConnectionOutput struct{ *pulumi.OutputState }
+
+func (SipTrunkConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SipTrunkConnection)(nil)).Elem()
+}
+
+func (o SipTrunkConnectionOutput) ToSipTrunkConnectionOutput() SipTrunkConnectionOutput {
+	return o
+}
+
+func (o SipTrunkConnectionOutput) ToSipTrunkConnectionOutputWithContext(ctx context.Context) SipTrunkConnectionOutput {
+	return o
+}
+
+// (Output)
+// Output only. The unique identifier of the connection.
+func (o SipTrunkConnectionOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SipTrunkConnection) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The error details of the connection.
+// Structure is documented below.
+func (o SipTrunkConnectionOutput) ErrorDetails() SipTrunkConnectionErrorDetailArrayOutput {
+	return o.ApplyT(func(v SipTrunkConnection) []SipTrunkConnectionErrorDetail { return v.ErrorDetails }).(SipTrunkConnectionErrorDetailArrayOutput)
+}
+
+// (Output)
+// Output only. The state of the connection.
+func (o SipTrunkConnectionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SipTrunkConnection) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The last update time of the connection.
+func (o SipTrunkConnectionOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SipTrunkConnection) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type SipTrunkConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (SipTrunkConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SipTrunkConnection)(nil)).Elem()
+}
+
+func (o SipTrunkConnectionArrayOutput) ToSipTrunkConnectionArrayOutput() SipTrunkConnectionArrayOutput {
+	return o
+}
+
+func (o SipTrunkConnectionArrayOutput) ToSipTrunkConnectionArrayOutputWithContext(ctx context.Context) SipTrunkConnectionArrayOutput {
+	return o
+}
+
+func (o SipTrunkConnectionArrayOutput) Index(i pulumi.IntInput) SipTrunkConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SipTrunkConnection {
+		return vs[0].([]SipTrunkConnection)[vs[1].(int)]
+	}).(SipTrunkConnectionOutput)
+}
+
+type SipTrunkConnectionErrorDetail struct {
+	// (Output)
+	// Output only. The error code.
+	Code *string `pulumi:"code"`
+	// (Output)
+	// Output only. The error message.
+	Message *string `pulumi:"message"`
+}
+
+// SipTrunkConnectionErrorDetailInput is an input type that accepts SipTrunkConnectionErrorDetailArgs and SipTrunkConnectionErrorDetailOutput values.
+// You can construct a concrete instance of `SipTrunkConnectionErrorDetailInput` via:
+//
+//	SipTrunkConnectionErrorDetailArgs{...}
+type SipTrunkConnectionErrorDetailInput interface {
+	pulumi.Input
+
+	ToSipTrunkConnectionErrorDetailOutput() SipTrunkConnectionErrorDetailOutput
+	ToSipTrunkConnectionErrorDetailOutputWithContext(context.Context) SipTrunkConnectionErrorDetailOutput
+}
+
+type SipTrunkConnectionErrorDetailArgs struct {
+	// (Output)
+	// Output only. The error code.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// (Output)
+	// Output only. The error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (SipTrunkConnectionErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SipTrunkConnectionErrorDetail)(nil)).Elem()
+}
+
+func (i SipTrunkConnectionErrorDetailArgs) ToSipTrunkConnectionErrorDetailOutput() SipTrunkConnectionErrorDetailOutput {
+	return i.ToSipTrunkConnectionErrorDetailOutputWithContext(context.Background())
+}
+
+func (i SipTrunkConnectionErrorDetailArgs) ToSipTrunkConnectionErrorDetailOutputWithContext(ctx context.Context) SipTrunkConnectionErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SipTrunkConnectionErrorDetailOutput)
+}
+
+// SipTrunkConnectionErrorDetailArrayInput is an input type that accepts SipTrunkConnectionErrorDetailArray and SipTrunkConnectionErrorDetailArrayOutput values.
+// You can construct a concrete instance of `SipTrunkConnectionErrorDetailArrayInput` via:
+//
+//	SipTrunkConnectionErrorDetailArray{ SipTrunkConnectionErrorDetailArgs{...} }
+type SipTrunkConnectionErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToSipTrunkConnectionErrorDetailArrayOutput() SipTrunkConnectionErrorDetailArrayOutput
+	ToSipTrunkConnectionErrorDetailArrayOutputWithContext(context.Context) SipTrunkConnectionErrorDetailArrayOutput
+}
+
+type SipTrunkConnectionErrorDetailArray []SipTrunkConnectionErrorDetailInput
+
+func (SipTrunkConnectionErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SipTrunkConnectionErrorDetail)(nil)).Elem()
+}
+
+func (i SipTrunkConnectionErrorDetailArray) ToSipTrunkConnectionErrorDetailArrayOutput() SipTrunkConnectionErrorDetailArrayOutput {
+	return i.ToSipTrunkConnectionErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i SipTrunkConnectionErrorDetailArray) ToSipTrunkConnectionErrorDetailArrayOutputWithContext(ctx context.Context) SipTrunkConnectionErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SipTrunkConnectionErrorDetailArrayOutput)
+}
+
+type SipTrunkConnectionErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (SipTrunkConnectionErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SipTrunkConnectionErrorDetail)(nil)).Elem()
+}
+
+func (o SipTrunkConnectionErrorDetailOutput) ToSipTrunkConnectionErrorDetailOutput() SipTrunkConnectionErrorDetailOutput {
+	return o
+}
+
+func (o SipTrunkConnectionErrorDetailOutput) ToSipTrunkConnectionErrorDetailOutputWithContext(ctx context.Context) SipTrunkConnectionErrorDetailOutput {
+	return o
+}
+
+// (Output)
+// Output only. The error code.
+func (o SipTrunkConnectionErrorDetailOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SipTrunkConnectionErrorDetail) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The error message.
+func (o SipTrunkConnectionErrorDetailOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SipTrunkConnectionErrorDetail) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type SipTrunkConnectionErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (SipTrunkConnectionErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SipTrunkConnectionErrorDetail)(nil)).Elem()
+}
+
+func (o SipTrunkConnectionErrorDetailArrayOutput) ToSipTrunkConnectionErrorDetailArrayOutput() SipTrunkConnectionErrorDetailArrayOutput {
+	return o
+}
+
+func (o SipTrunkConnectionErrorDetailArrayOutput) ToSipTrunkConnectionErrorDetailArrayOutputWithContext(ctx context.Context) SipTrunkConnectionErrorDetailArrayOutput {
+	return o
+}
+
+func (o SipTrunkConnectionErrorDetailArrayOutput) Index(i pulumi.IntInput) SipTrunkConnectionErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SipTrunkConnectionErrorDetail {
+		return vs[0].([]SipTrunkConnectionErrorDetail)[vs[1].(int)]
+	}).(SipTrunkConnectionErrorDetailOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigPtrInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
@@ -49115,6 +49617,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewRecognitionResultNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNewRecognitionResultNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSipConfigInput)(nil)).Elem(), ConversationProfileSipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSipConfigPtrInput)(nil)).Elem(), ConversationProfileSipConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigPtrInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigInput)(nil)).Elem(), ConversationProfileTtsConfigArgs{})
@@ -49634,6 +50138,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextSummarizationSectionArrayInput)(nil)).Elem(), GeneratorSummarizationContextSummarizationSectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoInput)(nil)).Elem(), IntentFollowupIntentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoArrayInput)(nil)).Elem(), IntentFollowupIntentInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionInput)(nil)).Elem(), SipTrunkConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionArrayInput)(nil)).Elem(), SipTrunkConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionErrorDetailInput)(nil)).Elem(), SipTrunkConnectionErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionErrorDetailArrayInput)(nil)).Elem(), SipTrunkConnectionErrorDetailArray{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigOutput{})
@@ -49702,6 +50210,8 @@ func init() {
 	pulumi.RegisterOutputType(ConversationProfileNewRecognitionResultNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNotificationConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSipConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSipConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileSttConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileSttConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileTtsConfigOutput{})
@@ -50221,4 +50731,8 @@ func init() {
 	pulumi.RegisterOutputType(GeneratorSummarizationContextSummarizationSectionArrayOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoArrayOutput{})
+	pulumi.RegisterOutputType(SipTrunkConnectionOutput{})
+	pulumi.RegisterOutputType(SipTrunkConnectionArrayOutput{})
+	pulumi.RegisterOutputType(SipTrunkConnectionErrorDetailOutput{})
+	pulumi.RegisterOutputType(SipTrunkConnectionErrorDetailArrayOutput{})
 }

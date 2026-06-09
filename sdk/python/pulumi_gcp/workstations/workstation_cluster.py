@@ -759,29 +759,6 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Workstation Cluster Custom Urls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstations-network",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstations-network",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="custom-urls-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
-            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
-        project = gcp.organizations.get_project()
-        ```
         ### Workstation Cluster Basic
 
         ```python
@@ -905,6 +882,29 @@ class WorkstationCluster(pulumi.CustomResource):
                 f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
             })
         )
+        ```
+        ### Workstation Cluster Custom Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="workstations-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstations-network",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="custom-urls-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -977,29 +977,6 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Workstation Cluster Custom Urls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstations-network",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstations-network",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="custom-urls-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
-            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
-        project = gcp.organizations.get_project()
-        ```
         ### Workstation Cluster Basic
 
         ```python
@@ -1123,6 +1100,29 @@ class WorkstationCluster(pulumi.CustomResource):
                 f"{project.project_id}/{resolved_outputs['tagKeyShort_name']}": resolved_outputs['tagValueShort_name'],
             })
         )
+        ```
+        ### Workstation Cluster Custom Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="workstations-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstations-network",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="custom-urls-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
+        project = gcp.organizations.get_project()
         ```
 
         ## Import

@@ -177,6 +177,9 @@ namespace Pulumi.Gcp
         [Output("computeCustomEndpoint")]
         public Output<string?> ComputeCustomEndpoint { get; private set; } = null!;
 
+        [Output("configCustomEndpoint")]
+        public Output<string?> ConfigCustomEndpoint { get; private set; } = null!;
+
         [Output("contactCenterInsightsCustomEndpoint")]
         public Output<string?> ContactCenterInsightsCustomEndpoint { get; private set; } = null!;
 
@@ -832,6 +835,9 @@ namespace Pulumi.Gcp
 
         [Input("computeCustomEndpoint")]
         public Input<string>? ComputeCustomEndpoint { get; set; }
+
+        [Input("configCustomEndpoint")]
+        public Input<string>? ConfigCustomEndpoint { get; set; }
 
         [Input("contactCenterInsightsCustomEndpoint")]
         public Input<string>? ContactCenterInsightsCustomEndpoint { get; set; }

@@ -114,6 +114,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("gcfsConfig")]
         public Input<Inputs.ClusterNodeConfigGcfsConfigArgs>? GcfsConfig { get; set; }
 
+        /// <summary>
+        /// The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+        /// </summary>
+        [Input("gpudirectStrategy")]
+        public Input<string>? GpudirectStrategy { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.ClusterNodeConfigGuestAcceleratorArgs>? _guestAccelerators;
 

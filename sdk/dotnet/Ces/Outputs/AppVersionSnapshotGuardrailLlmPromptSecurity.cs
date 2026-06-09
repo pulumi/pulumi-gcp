@@ -26,15 +26,24 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> DefaultSettings;
+        /// <summary>
+        /// (Output)
+        /// If an error occurs during the policy check, fail open and do not trigger
+        /// the guardrail.
+        /// </summary>
+        public readonly bool? FailOpen;
 
         [OutputConstructor]
         private AppVersionSnapshotGuardrailLlmPromptSecurity(
             ImmutableArray<Outputs.AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy> customPolicies,
 
-            ImmutableArray<Outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> defaultSettings)
+            ImmutableArray<Outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> defaultSettings,
+
+            bool? failOpen)
         {
             CustomPolicies = customPolicies;
             DefaultSettings = defaultSettings;
+            FailOpen = failOpen;
         }
     }
 }

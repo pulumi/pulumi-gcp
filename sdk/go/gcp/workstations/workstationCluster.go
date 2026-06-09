@@ -22,58 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Workstation Cluster Custom Urls
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("workstations-network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("workstations-network"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-//				WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
-//				Network:                     defaultNetwork.ID(),
-//				Subnetwork:                  defaultSubnetwork.ID(),
-//				Location:                    pulumi.String("us-central1"),
-//				WorkstationAuthorizationUrl: pulumi.String("https://workstations.cloud.google.com/ui/auth"),
-//				WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Workstation Cluster Basic
 //
 // ```go
@@ -325,6 +273,58 @@ import (
 // return nil
 // })
 // }
+// ```
+// ### Workstation Cluster Custom Urls
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstations-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstations-network"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
+//				Network:                     defaultNetwork.ID(),
+//				Subnetwork:                  defaultSubnetwork.ID(),
+//				Location:                    pulumi.String("us-central1"),
+//				WorkstationAuthorizationUrl: pulumi.String("https://workstations.cloud.google.com/ui/auth"),
+//				WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get info about a Google Cloud IAP Client.
+// Get information about a Identity-Aware Proxy Client.
 //
 // ## Example Usage
 //
@@ -20,25 +20,16 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-//				ProjectId: pulumi.StringRef("foobar"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.LookupClient(ctx, &iap.LookupClientArgs{
-//				Brand:    fmt.Sprintf("projects/%v/brands/[BRAND_NUMBER]", project.Number),
-//				ClientId: apps.Googleusercontent.Com,
+//			_, err := iap.LookupClient(ctx, &iap.LookupClientArgs{
+//				Brand:    projectClient.Brand,
+//				ClientId: projectClient.ClientId,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -60,9 +51,11 @@ func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getClient.
 type LookupClientArgs struct {
-	// The name of the brand.
+	// Identifier of the brand to which this client
+	// is attached to. The format is
+	// `projects/{project_number}/brands/{brand_id}`.
 	Brand string `pulumi:"brand"`
-	// The clientId of the brand.
+	// Output only. Unique identifier of the OAuth client.
 	ClientId string `pulumi:"clientId"`
 }
 
@@ -88,9 +81,11 @@ func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts .
 
 // A collection of arguments for invoking getClient.
 type LookupClientOutputArgs struct {
-	// The name of the brand.
+	// Identifier of the brand to which this client
+	// is attached to. The format is
+	// `projects/{project_number}/brands/{brand_id}`.
 	Brand pulumi.StringInput `pulumi:"brand"`
-	// The clientId of the brand.
+	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 }
 

@@ -14,39 +14,92 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRegionSSLPolicyResult {
     private String creationTimestamp;
+    /**
+     * @return If the `profile` is `CUSTOM`, these are the custom encryption
+     * ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+     * attribute will be empty.
+     * 
+     */
     private List<String> customFeatures;
     private String deletionPolicy;
+    /**
+     * @return Description of this SSL Policy.
+     * 
+     */
     private String description;
+    /**
+     * @return The set of enabled encryption ciphers as a result of the policy config
+     * 
+     */
     private List<String> enabledFeatures;
+    /**
+     * @return Fingerprint of this resource.
+     * 
+     */
     private String fingerprint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The minimum supported TLS version of this policy.
+     * 
+     */
     private String minTlsVersion;
     private String name;
+    /**
+     * @return The post-quantum key exchange setting of this policy.
+     * 
+     */
+    private String postQuantumKeyExchange;
+    /**
+     * @return The Google-curated or custom profile used by this policy.
+     * 
+     */
     private String profile;
     private @Nullable String project;
     private @Nullable String region;
+    /**
+     * @return The URI of the created resource.
+     * 
+     */
     private String selfLink;
 
     private GetRegionSSLPolicyResult() {}
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
+    /**
+     * @return If the `profile` is `CUSTOM`, these are the custom encryption
+     * ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+     * attribute will be empty.
+     * 
+     */
     public List<String> customFeatures() {
         return this.customFeatures;
     }
     public String deletionPolicy() {
         return this.deletionPolicy;
     }
+    /**
+     * @return Description of this SSL Policy.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The set of enabled encryption ciphers as a result of the policy config
+     * 
+     */
     public List<String> enabledFeatures() {
         return this.enabledFeatures;
     }
+    /**
+     * @return Fingerprint of this resource.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
@@ -57,12 +110,27 @@ public final class GetRegionSSLPolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The minimum supported TLS version of this policy.
+     * 
+     */
     public String minTlsVersion() {
         return this.minTlsVersion;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return The post-quantum key exchange setting of this policy.
+     * 
+     */
+    public String postQuantumKeyExchange() {
+        return this.postQuantumKeyExchange;
+    }
+    /**
+     * @return The Google-curated or custom profile used by this policy.
+     * 
+     */
     public String profile() {
         return this.profile;
     }
@@ -72,6 +140,10 @@ public final class GetRegionSSLPolicyResult {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return The URI of the created resource.
+     * 
+     */
     public String selfLink() {
         return this.selfLink;
     }
@@ -94,6 +166,7 @@ public final class GetRegionSSLPolicyResult {
         private String id;
         private String minTlsVersion;
         private String name;
+        private String postQuantumKeyExchange;
         private String profile;
         private @Nullable String project;
         private @Nullable String region;
@@ -110,6 +183,7 @@ public final class GetRegionSSLPolicyResult {
     	      this.id = defaults.id;
     	      this.minTlsVersion = defaults.minTlsVersion;
     	      this.name = defaults.name;
+    	      this.postQuantumKeyExchange = defaults.postQuantumKeyExchange;
     	      this.profile = defaults.profile;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
@@ -195,6 +269,14 @@ public final class GetRegionSSLPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder postQuantumKeyExchange(String postQuantumKeyExchange) {
+            if (postQuantumKeyExchange == null) {
+              throw new MissingRequiredPropertyException("GetRegionSSLPolicyResult", "postQuantumKeyExchange");
+            }
+            this.postQuantumKeyExchange = postQuantumKeyExchange;
+            return this;
+        }
+        @CustomType.Setter
         public Builder profile(String profile) {
             if (profile == null) {
               throw new MissingRequiredPropertyException("GetRegionSSLPolicyResult", "profile");
@@ -233,6 +315,7 @@ public final class GetRegionSSLPolicyResult {
             _resultValue.id = id;
             _resultValue.minTlsVersion = minTlsVersion;
             _resultValue.name = name;
+            _resultValue.postQuantumKeyExchange = postQuantumKeyExchange;
             _resultValue.profile = profile;
             _resultValue.project = project;
             _resultValue.region = region;

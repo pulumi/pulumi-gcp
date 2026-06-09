@@ -7,9 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get information about a Google Cloud Run Service. For more information see
- * the [official documentation](https://cloud.google.com/run/docs/)
- * and [API](https://cloud.google.com/run/docs/apis).
+ * Get information about a Cloud Run Service.
+ *
+ * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+ * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
  *
  * ## Example Usage
  *
@@ -17,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run_service = gcp.cloudrun.getService({
- *     name: "my-service",
- *     location: "us-central1",
+ * const _default = gcp.cloudrun.getService({
+ *     location: defaultGoogleCloudRunService.location,
+ *     name: defaultGoogleCloudRunService.name,
  * });
  * ```
  */
@@ -38,17 +39,18 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 export interface GetServiceArgs {
     /**
      * The location of the cloud run instance. eg us-central1
-     *
-     * - - -
      */
     location: string;
     /**
-     * The name of the Cloud Run Service.
+     * Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
     name: string;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: string;
 }
@@ -72,9 +74,10 @@ export interface GetServiceResult {
     readonly traffics: outputs.cloudrun.GetServiceTraffic[];
 }
 /**
- * Get information about a Google Cloud Run Service. For more information see
- * the [official documentation](https://cloud.google.com/run/docs/)
- * and [API](https://cloud.google.com/run/docs/apis).
+ * Get information about a Cloud Run Service.
+ *
+ * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+ * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
  *
  * ## Example Usage
  *
@@ -82,9 +85,9 @@ export interface GetServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run_service = gcp.cloudrun.getService({
- *     name: "my-service",
- *     location: "us-central1",
+ * const _default = gcp.cloudrun.getService({
+ *     location: defaultGoogleCloudRunService.location,
+ *     name: defaultGoogleCloudRunService.name,
  * });
  * ```
  */
@@ -103,17 +106,18 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
 export interface GetServiceOutputArgs {
     /**
      * The location of the cloud run instance. eg us-central1
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * The name of the Cloud Run Service.
+     * Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
     name: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
 }

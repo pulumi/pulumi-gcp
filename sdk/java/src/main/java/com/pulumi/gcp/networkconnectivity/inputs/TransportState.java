@@ -20,6 +20,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     public static final TransportState Empty = new TransportState();
 
     /**
+     * (Optional, Beta)
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      * 
      */
@@ -27,7 +28,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> adminEnabled;
 
     /**
-     * @return Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
+     * @return (Optional, Beta)
+     * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      * 
      */
     public Optional<Output<Boolean>> adminEnabled() {
@@ -50,6 +52,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
@@ -57,7 +60,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> autoAccept;
 
     /**
-     * @return Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+     * @return (Optional, Beta)
+     * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
     public Optional<Output<Boolean>> autoAccept() {
@@ -150,6 +154,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
@@ -157,7 +162,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> hub;
 
     /**
-     * @return The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+     * @return (Optional, Beta)
+     * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
     public Optional<Output<String>> hub() {
@@ -276,6 +282,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
@@ -283,7 +290,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> pscRoutingEnabled;
 
     /**
-     * @return Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+     * @return (Optional, Beta)
+     * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
     public Optional<Output<Boolean>> pscRoutingEnabled() {
@@ -433,7 +441,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminEnabled Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
+         * @param adminEnabled (Optional, Beta)
+         * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
          * 
          * @return builder
          * 
@@ -444,7 +453,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminEnabled Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
+         * @param adminEnabled (Optional, Beta)
+         * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
          * 
          * @return builder
          * 
@@ -485,7 +495,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoAccept Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+         * @param autoAccept (Optional, Beta)
+         * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
          * 
          * @return builder
          * 
@@ -496,7 +507,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoAccept Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+         * @param autoAccept (Optional, Beta)
+         * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
          * 
          * @return builder
          * 
@@ -621,7 +633,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hub The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+         * @param hub (Optional, Beta)
+         * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
          * 
          * @return builder
          * 
@@ -632,7 +645,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hub The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+         * @param hub (Optional, Beta)
+         * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
          * 
          * @return builder
          * 
@@ -795,7 +809,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pscRoutingEnabled Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+         * @param pscRoutingEnabled (Optional, Beta)
+         * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
          * 
          * @return builder
          * 
@@ -806,7 +821,8 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pscRoutingEnabled Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+         * @param pscRoutingEnabled (Optional, Beta)
+         * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
          * 
          * @return builder
          * 

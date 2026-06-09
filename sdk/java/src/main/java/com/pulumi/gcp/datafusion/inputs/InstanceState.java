@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
+import com.pulumi.gcp.datafusion.inputs.InstanceMaintenanceEventArgs;
+import com.pulumi.gcp.datafusion.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -276,6 +278,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maintenance events for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceEvents")
+    private @Nullable Output<List<InstanceMaintenanceEventArgs>> maintenanceEvents;
+
+    /**
+     * @return The maintenance events for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceMaintenanceEventArgs>>> maintenanceEvents() {
+        return Optional.ofNullable(this.maintenanceEvents);
+    }
+
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
      */
@@ -461,26 +497,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * (Output)
+     * The state of the maintenance event.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * @return (Output)
+     * The state of the maintenance event.
      * 
      */
     public Optional<Output<String>> state() {
@@ -636,6 +662,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.eventPublishConfig = $.eventPublishConfig;
         this.gcsBucket = $.gcsBucket;
         this.labels = $.labels;
+        this.maintenanceEvents = $.maintenanceEvents;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.options = $.options;
@@ -1032,6 +1060,63 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maintenanceEvents The maintenance events for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceEvents(@Nullable Output<List<InstanceMaintenanceEventArgs>> maintenanceEvents) {
+            $.maintenanceEvents = maintenanceEvents;
+            return this;
+        }
+
+        /**
+         * @param maintenanceEvents The maintenance events for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceEvents(List<InstanceMaintenanceEventArgs> maintenanceEvents) {
+            return maintenanceEvents(Output.of(maintenanceEvents));
+        }
+
+        /**
+         * @param maintenanceEvents The maintenance events for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceEvents(InstanceMaintenanceEventArgs... maintenanceEvents) {
+            return maintenanceEvents(List.of(maintenanceEvents));
+        }
+
+        /**
+         * @param maintenancePolicy Configure the maintenance policy for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Configure the maintenance policy for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
          * @param name The ID of the instance or a fully qualified identifier for the instance.
          * 
          * @return builder
@@ -1283,13 +1368,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance.
-         * - CREATING: Instance is being created
-         * - RUNNING: Instance is running and ready for requests
-         * - FAILED: Instance creation failed
-         * - DELETING: Instance is being deleted
-         * - UPGRADING: Instance is being upgraded
-         * - RESTARTING: Instance is being restarted
+         * @param state (Output)
+         * The state of the maintenance event.
          * 
          * @return builder
          * 
@@ -1300,13 +1380,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance.
-         * - CREATING: Instance is being created
-         * - RUNNING: Instance is running and ready for requests
-         * - FAILED: Instance creation failed
-         * - DELETING: Instance is being deleted
-         * - UPGRADING: Instance is being upgraded
-         * - RESTARTING: Instance is being restarted
+         * @param state (Output)
+         * The state of the maintenance event.
          * 
          * @return builder
          * 

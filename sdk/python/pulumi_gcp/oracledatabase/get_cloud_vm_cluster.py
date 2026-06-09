@@ -27,7 +27,7 @@ class GetCloudVmClusterResult:
     """
     A collection of values returned by getCloudVmCluster.
     """
-    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, identity_connectors=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
         if backup_odb_subnet and not isinstance(backup_odb_subnet, str):
             raise TypeError("Expected argument 'backup_odb_subnet' to be a str")
         pulumi.set(__self__, "backup_odb_subnet", backup_odb_subnet)
@@ -64,6 +64,9 @@ class GetCloudVmClusterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if identity_connectors and not isinstance(identity_connectors, list):
+            raise TypeError("Expected argument 'identity_connectors' to be a list")
+        pulumi.set(__self__, "identity_connectors", identity_connectors)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -156,6 +159,11 @@ class GetCloudVmClusterResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> Sequence['outputs.GetCloudVmClusterIdentityConnectorResult']:
+        return pulumi.get(self, "identity_connectors")
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "labels")
@@ -219,6 +227,7 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
             exadata_infrastructure=self.exadata_infrastructure,
             gcp_oracle_zone=self.gcp_oracle_zone,
             id=self.id,
+            identity_connectors=self.identity_connectors,
             labels=self.labels,
             location=self.location,
             name=self.name,
@@ -278,6 +287,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
         exadata_infrastructure=pulumi.get(__ret__, 'exadata_infrastructure'),
         gcp_oracle_zone=pulumi.get(__ret__, 'gcp_oracle_zone'),
         id=pulumi.get(__ret__, 'id'),
+        identity_connectors=pulumi.get(__ret__, 'identity_connectors'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -334,6 +344,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: pulumi.Input[Optional[_buil
         exadata_infrastructure=pulumi.get(__response__, 'exadata_infrastructure'),
         gcp_oracle_zone=pulumi.get(__response__, 'gcp_oracle_zone'),
         id=pulumi.get(__response__, 'id'),
+        identity_connectors=pulumi.get(__response__, 'identity_connectors'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),

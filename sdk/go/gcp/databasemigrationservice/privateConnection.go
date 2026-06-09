@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("dbms_pc"),
-//				Location:            pulumi.String("us-central1"),
+//				Location:            pulumi.String("us-west1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
@@ -82,7 +82,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("dbms_pc"),
-//				Location:            pulumi.String("us-central1"),
+//				Location:            pulumi.String("us-west1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
@@ -97,7 +97,7 @@ import (
 //			}
 //			_, err = compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
 //				Name:                 pulumi.String("my-attachment"),
-//				Region:               pulumi.String("us-central1"),
+//				Region:               pulumi.String("us-west1"),
 //				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 //				Subnetworks: pulumi.StringArray{
 //					googleComputeSubnetwork.Default.Id,
@@ -116,7 +116,7 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     defaultNetwork.ID(),
 //			})
 //			if err != nil {

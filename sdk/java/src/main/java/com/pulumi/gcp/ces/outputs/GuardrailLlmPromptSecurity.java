@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.GuardrailLlmPromptSecurityCustomPolicy;
 import com.pulumi.gcp.ces.outputs.GuardrailLlmPromptSecurityDefaultSettings;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +26,15 @@ public final class GuardrailLlmPromptSecurity {
      * 
      */
     private @Nullable GuardrailLlmPromptSecurityDefaultSettings defaultSettings;
+    /**
+     * @return Determines the behavior when the guardrail encounters an LLM error.
+     * - If true: the guardrail is bypassed.
+     * - If false (default): the guardrail triggers/blocks.
+     *   Note: If a custom policy is provided, this field is ignored in favor of
+     *   the policy&#39;s &#39;failOpen&#39; configuration.
+     * 
+     */
+    private @Nullable Boolean failOpen;
 
     private GuardrailLlmPromptSecurity() {}
     /**
@@ -44,6 +54,17 @@ public final class GuardrailLlmPromptSecurity {
     public Optional<GuardrailLlmPromptSecurityDefaultSettings> defaultSettings() {
         return Optional.ofNullable(this.defaultSettings);
     }
+    /**
+     * @return Determines the behavior when the guardrail encounters an LLM error.
+     * - If true: the guardrail is bypassed.
+     * - If false (default): the guardrail triggers/blocks.
+     *   Note: If a custom policy is provided, this field is ignored in favor of
+     *   the policy&#39;s &#39;failOpen&#39; configuration.
+     * 
+     */
+    public Optional<Boolean> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,11 +77,13 @@ public final class GuardrailLlmPromptSecurity {
     public static final class Builder {
         private @Nullable GuardrailLlmPromptSecurityCustomPolicy customPolicy;
         private @Nullable GuardrailLlmPromptSecurityDefaultSettings defaultSettings;
+        private @Nullable Boolean failOpen;
         public Builder() {}
         public Builder(GuardrailLlmPromptSecurity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customPolicy = defaults.customPolicy;
     	      this.defaultSettings = defaults.defaultSettings;
+    	      this.failOpen = defaults.failOpen;
         }
 
         @CustomType.Setter
@@ -75,10 +98,17 @@ public final class GuardrailLlmPromptSecurity {
             this.defaultSettings = defaultSettings;
             return this;
         }
+        @CustomType.Setter
+        public Builder failOpen(@Nullable Boolean failOpen) {
+
+            this.failOpen = failOpen;
+            return this;
+        }
         public GuardrailLlmPromptSecurity build() {
             final var _resultValue = new GuardrailLlmPromptSecurity();
             _resultValue.customPolicy = customPolicy;
             _resultValue.defaultSettings = defaultSettings;
+            _resultValue.failOpen = failOpen;
             return _resultValue;
         }
     }

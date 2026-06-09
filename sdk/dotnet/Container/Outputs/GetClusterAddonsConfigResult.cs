@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterAddonsConfigResult
     {
         /// <summary>
+        /// The status of the Agent Sandbox addon. It is disabled by default. Set enabled = true to enable.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigAgentSandboxConfigResult> AgentSandboxConfigs;
+        /// <summary>
         /// The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigCloudrunConfigResult> CloudrunConfigs;
@@ -88,6 +92,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterAddonsConfigResult(
+            ImmutableArray<Outputs.GetClusterAddonsConfigAgentSandboxConfigResult> agentSandboxConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigCloudrunConfigResult> cloudrunConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigConfigConnectorConfigResult> configConnectorConfigs,
@@ -124,6 +130,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> statefulHaConfigs)
         {
+            AgentSandboxConfigs = agentSandboxConfigs;
             CloudrunConfigs = cloudrunConfigs;
             ConfigConnectorConfigs = configConnectorConfigs;
             DnsCacheConfigs = dnsCacheConfigs;

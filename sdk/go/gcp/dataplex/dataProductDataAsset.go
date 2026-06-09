@@ -14,9 +14,6 @@ import (
 
 // A data asset resource that can be packaged and shared via a data product.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about DataProductDataAsset, see:
 //
 // * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
@@ -45,7 +42,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_55138"),
+//				DataProductId: pulumi.String("tf-test-dp-_37559"),
 //				DisplayName:   pulumi.String("Parent Data Product"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -56,7 +53,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_37559@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_91980@example.com"),
 //						},
 //					},
 //				},
@@ -66,7 +63,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__91980"),
+//				DatasetId: pulumi.String("tf_test_dataset__37118"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -111,7 +108,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_37118"),
+//				DataProductId: pulumi.String("tf-test-dp-_80332"),
 //				DisplayName:   pulumi.String("Full Example Parent DP"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -140,7 +137,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__80332"),
+//				DatasetId: pulumi.String("tf_test_dataset__13293"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {

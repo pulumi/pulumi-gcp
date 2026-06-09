@@ -168,6 +168,10 @@ namespace Pulumi.Gcp.Compute
         public readonly string MinTlsVersion;
         public readonly string Name;
         /// <summary>
+        /// The post-quantum key exchange setting of this policy.
+        /// </summary>
+        public readonly string PostQuantumKeyExchange;
+        /// <summary>
         /// The Google-curated or custom profile used by this policy.
         /// </summary>
         public readonly string Profile;
@@ -197,6 +201,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            string postQuantumKeyExchange,
+
             string profile,
 
             string? project,
@@ -212,6 +218,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             MinTlsVersion = minTlsVersion;
             Name = name;
+            PostQuantumKeyExchange = postQuantumKeyExchange;
             Profile = profile;
             Project = project;
             SelfLink = selfLink;

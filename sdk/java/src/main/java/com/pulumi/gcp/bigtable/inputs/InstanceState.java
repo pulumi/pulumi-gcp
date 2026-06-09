@@ -100,6 +100,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -231,16 +250,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
      * 
-     * ***
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -254,6 +269,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
+        this.edition = $.edition;
         this.effectiveLabels = $.effectiveLabels;
         this.forceDestroy = $.forceDestroy;
         this.instanceType = $.instanceType;
@@ -398,6 +414,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param edition The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**
@@ -574,8 +615,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -586,8 +625,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.DataPlex
     /// A data product is a curated collection of data assets, packaged to address
     /// specific use cases.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about DataProduct, see:
     /// 
     /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
@@ -53,7 +50,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_79169@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_56529@example.com",
     ///                 },
     ///             },
     ///         },
@@ -71,6 +68,12 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
+    ///     {
+    ///         AccountId = "tf-test-sa-_75413",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
     ///     var example = new Gcp.DataPlex.DataProduct("example", new()
     ///     {
     ///         Project = "my-project-name",
@@ -96,7 +99,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 Description = "In-place update verified",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_56529@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_55138@example.com",
     ///                 },
     ///             },
     ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs
@@ -106,7 +109,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Scientist",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-scientists-_75413@example.com",
+    ///                     ServiceAccount = testSa.Email,
     ///                 },
     ///             },
     ///         },

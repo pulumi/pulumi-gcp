@@ -16,6 +16,11 @@ public final class DataProductAccessGroupPrincipal {
      * 
      */
     private @Nullable String googleGroup;
+    /**
+     * @return Specifies the email of the producer service account.
+     * 
+     */
+    private @Nullable String serviceAccount;
 
     private DataProductAccessGroupPrincipal() {}
     /**
@@ -24,6 +29,13 @@ public final class DataProductAccessGroupPrincipal {
      */
     public Optional<String> googleGroup() {
         return Optional.ofNullable(this.googleGroup);
+    }
+    /**
+     * @return Specifies the email of the producer service account.
+     * 
+     */
+    public Optional<String> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class DataProductAccessGroupPrincipal {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String googleGroup;
+        private @Nullable String serviceAccount;
         public Builder() {}
         public Builder(DataProductAccessGroupPrincipal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.googleGroup = defaults.googleGroup;
+    	      this.serviceAccount = defaults.serviceAccount;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class DataProductAccessGroupPrincipal {
             this.googleGroup = googleGroup;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceAccount(@Nullable String serviceAccount) {
+
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
         public DataProductAccessGroupPrincipal build() {
             final var _resultValue = new DataProductAccessGroupPrincipal();
             _resultValue.googleGroup = googleGroup;
+            _resultValue.serviceAccount = serviceAccount;
             return _resultValue;
         }
     }

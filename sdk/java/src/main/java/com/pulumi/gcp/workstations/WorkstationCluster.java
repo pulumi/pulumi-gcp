@@ -31,64 +31,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Workstation Cluster Custom Urls
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.Subnetwork;
- * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.workstations.WorkstationCluster;
- * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .name("workstations-network")
- *             .autoCreateSubnetworks(false)
- *             .build());
- * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
- *             .name("workstations-network")
- *             .ipCidrRange("10.0.0.0/24")
- *             .region("us-central1")
- *             .network(defaultNetwork.name())
- *             .build());
- * 
- *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
- *             .workstationClusterId("custom-urls-cluster")
- *             .network(defaultNetwork.id())
- *             .subnetwork(defaultSubnetwork.id())
- *             .location("us-central1")
- *             .workstationAuthorizationUrl("https://workstations.cloud.google.com/ui/auth")
- *             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### Workstation Cluster Basic
  * 
  * <pre>
@@ -344,6 +286,64 @@ import javax.annotation.Nullable;
  *                 var tagValueShortName = values.t2;
  *                 return Map.of(String.format("%s/%s", project.projectId(),tagKeyShortName), tagValueShortName);
  *             }))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Workstation Cluster Custom Urls
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("workstations-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstations-network")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.name())
+ *             .build());
+ * 
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("custom-urls-cluster")
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .workstationAuthorizationUrl("https://workstations.cloud.google.com/ui/auth")
+ *             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
  *     }

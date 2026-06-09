@@ -11,14 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
     /**
-     * @return The name of the Cloud Run Service.
+     * @return Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     private String name;
 
     private GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference() {}
     /**
-     * @return The name of the Cloud Run Service.
+     * @return Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public String name() {

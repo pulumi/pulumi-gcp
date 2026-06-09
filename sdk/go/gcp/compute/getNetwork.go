@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "default-us-east1",
+//				Name: pulumi.StringRef("default-us-east1"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,12 +53,14 @@ type LookupNetworkArgs struct {
 	// The name of the network.
 	//
 	// ***
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// A full or partial URL of the network profile to apply to this network.
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The URI of the resource.
+	SelfLink *string `pulumi:"selfLink"`
 }
 
 // A collection of values returned by getNetwork.
@@ -79,8 +81,8 @@ type LookupNetworkResult struct {
 	// (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	//
 	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
-	NumericId string  `pulumi:"numericId"`
-	Project   *string `pulumi:"project"`
+	NumericId string `pulumi:"numericId"`
+	Project   string `pulumi:"project"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// the list of subnetworks which belong to the network
@@ -101,12 +103,14 @@ type LookupNetworkOutputArgs struct {
 	// The name of the network.
 	//
 	// ***
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A full or partial URL of the network profile to apply to this network.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The URI of the resource.
+	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 }
 
 func (LookupNetworkOutputArgs) ElementType() reflect.Type {
@@ -169,8 +173,8 @@ func (o LookupNetworkResultOutput) NumericId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.NumericId }).(pulumi.StringOutput)
 }
 
-func (o LookupNetworkResultOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+func (o LookupNetworkResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // The URI of the resource.

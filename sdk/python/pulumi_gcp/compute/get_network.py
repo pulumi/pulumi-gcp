@@ -125,7 +125,7 @@ class GetNetworkResult:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[_builtins.str]:
+    def project(self) -> _builtins.str:
         return pulumi.get(self, "project")
 
     @_builtins.property
@@ -167,6 +167,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 def get_network(name: Optional[_builtins.str] = None,
                 network_profile: Optional[_builtins.str] = None,
                 project: Optional[_builtins.str] = None,
+                self_link: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
     Get a network within GCE from its name.
@@ -188,11 +189,13 @@ def get_network(name: Optional[_builtins.str] = None,
     :param _builtins.str network_profile: A full or partial URL of the network profile to apply to this network.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
+    :param _builtins.str self_link: The URI of the resource.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['networkProfile'] = network_profile
     __args__['project'] = project
+    __args__['selfLink'] = self_link
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
@@ -208,9 +211,10 @@ def get_network(name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
         subnetworks_self_links=pulumi.get(__ret__, 'subnetworks_self_links'))
-def get_network_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_network_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        network_profile: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Get a network within GCE from its name.
@@ -232,11 +236,13 @@ def get_network_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.str network_profile: A full or partial URL of the network profile to apply to this network.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
+    :param _builtins.str self_link: The URI of the resource.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['networkProfile'] = network_profile
     __args__['project'] = project
+    __args__['selfLink'] = self_link
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(

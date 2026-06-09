@@ -24,15 +24,26 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuardrailLlmPromptSecurityDefaultSettings? DefaultSettings;
+        /// <summary>
+        /// Determines the behavior when the guardrail encounters an LLM error.
+        /// - If true: the guardrail is bypassed.
+        /// - If false (default): the guardrail triggers/blocks.
+        /// Note: If a custom policy is provided, this field is ignored in favor of
+        /// the policy's 'failOpen' configuration.
+        /// </summary>
+        public readonly bool? FailOpen;
 
         [OutputConstructor]
         private GuardrailLlmPromptSecurity(
             Outputs.GuardrailLlmPromptSecurityCustomPolicy? customPolicy,
 
-            Outputs.GuardrailLlmPromptSecurityDefaultSettings? defaultSettings)
+            Outputs.GuardrailLlmPromptSecurityDefaultSettings? defaultSettings,
+
+            bool? failOpen)
         {
             CustomPolicy = customPolicy;
             DefaultSettings = defaultSettings;
+            FailOpen = failOpen;
         }
     }
 }

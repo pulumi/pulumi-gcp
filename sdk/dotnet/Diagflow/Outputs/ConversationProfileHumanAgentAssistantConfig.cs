@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly Outputs.ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig? HumanAgentSuggestionConfig;
         /// <summary>
-        /// desc
+        /// Configuration for analyzing conversation messages.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig? MessageAnalysisConfig;

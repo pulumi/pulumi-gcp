@@ -68,8 +68,6 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * The GCS path to the Dataflow job Flex
      * Template.
      * 
-     * ***
-     * 
      */
     @Import(name="containerSpecGcsPath")
     private @Nullable Output<String> containerSpecGcsPath;
@@ -78,11 +76,28 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * @return The GCS path to the Dataflow job Flex
      * Template.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> containerSpecGcsPath() {
         return Optional.ofNullable(this.containerSpecGcsPath);
+    }
+
+    /**
+     * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="createIgnoreAlreadyExists")
+    private @Nullable Output<Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<Boolean>> createIgnoreAlreadyExists() {
+        return Optional.ofNullable(this.createIgnoreAlreadyExists);
     }
 
     /**
@@ -525,6 +540,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.additionalPipelineOptions = $.additionalPipelineOptions;
         this.autoscalingAlgorithm = $.autoscalingAlgorithm;
         this.containerSpecGcsPath = $.containerSpecGcsPath;
+        this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.deletionPolicy = $.deletionPolicy;
         this.effectiveLabels = $.effectiveLabels;
         this.enableStreamingEngine = $.enableStreamingEngine;
@@ -659,8 +675,6 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @param containerSpecGcsPath The GCS path to the Dataflow job Flex
          * Template.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -673,13 +687,36 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @param containerSpecGcsPath The GCS path to the Dataflow job Flex
          * Template.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder containerSpecGcsPath(String containerSpecGcsPath) {
             return containerSpecGcsPath(Output.of(containerSpecGcsPath));
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(@Nullable Output<Boolean> createIgnoreAlreadyExists) {
+            $.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            return createIgnoreAlreadyExists(Output.of(createIgnoreAlreadyExists));
         }
 
         /**

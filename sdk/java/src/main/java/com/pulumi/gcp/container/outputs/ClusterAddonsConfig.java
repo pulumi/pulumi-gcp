@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigAgentSandboxConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigCloudrunConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigConfigConnectorConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigDnsCacheConfig;
@@ -29,6 +30,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAddonsConfig {
+    /**
+     * @return Configuration for the Agent Sandbox addon. Structure is documented below:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigAgentSandboxConfig agentSandboxConfig;
     /**
      * @return . Structure is documented below.
      * 
@@ -176,6 +182,13 @@ public final class ClusterAddonsConfig {
     private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
 
     private ClusterAddonsConfig() {}
+    /**
+     * @return Configuration for the Agent Sandbox addon. Structure is documented below:
+     * 
+     */
+    public Optional<ClusterAddonsConfigAgentSandboxConfig> agentSandboxConfig() {
+        return Optional.ofNullable(this.agentSandboxConfig);
+    }
     /**
      * @return . Structure is documented below.
      * 
@@ -367,6 +380,7 @@ public final class ClusterAddonsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterAddonsConfigAgentSandboxConfig agentSandboxConfig;
         private @Nullable ClusterAddonsConfigCloudrunConfig cloudrunConfig;
         private @Nullable ClusterAddonsConfigConfigConnectorConfig configConnectorConfig;
         private @Nullable ClusterAddonsConfigDnsCacheConfig dnsCacheConfig;
@@ -388,6 +402,7 @@ public final class ClusterAddonsConfig {
         public Builder() {}
         public Builder(ClusterAddonsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentSandboxConfig = defaults.agentSandboxConfig;
     	      this.cloudrunConfig = defaults.cloudrunConfig;
     	      this.configConnectorConfig = defaults.configConnectorConfig;
     	      this.dnsCacheConfig = defaults.dnsCacheConfig;
@@ -408,6 +423,12 @@ public final class ClusterAddonsConfig {
     	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
 
+        @CustomType.Setter
+        public Builder agentSandboxConfig(@Nullable ClusterAddonsConfigAgentSandboxConfig agentSandboxConfig) {
+
+            this.agentSandboxConfig = agentSandboxConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder cloudrunConfig(@Nullable ClusterAddonsConfigCloudrunConfig cloudrunConfig) {
 
@@ -521,6 +542,7 @@ public final class ClusterAddonsConfig {
         }
         public ClusterAddonsConfig build() {
             final var _resultValue = new ClusterAddonsConfig();
+            _resultValue.agentSandboxConfig = agentSandboxConfig;
             _resultValue.cloudrunConfig = cloudrunConfig;
             _resultValue.configConnectorConfig = configConnectorConfig;
             _resultValue.dnsCacheConfig = dnsCacheConfig;

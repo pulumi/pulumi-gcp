@@ -521,6 +521,8 @@ __all__ = [
     'FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict',
     'FeedFailureDetailsArgs',
     'FeedFailureDetailsArgsDict',
+    'FindingsRefinementOutcomeFilterArgs',
+    'FindingsRefinementOutcomeFilterArgsDict',
     'NativeDashboardChartArgs',
     'NativeDashboardChartArgsDict',
     'NativeDashboardChartChartLayoutArgs',
@@ -19848,6 +19850,87 @@ class FeedFailureDetailsArgs:
     @http_error_code.setter
     def http_error_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_error_code", value)
+
+
+class FindingsRefinementOutcomeFilterArgsDict(TypedDict):
+    outcome_filter_operator: pulumi.Input[_builtins.str]
+    """
+    The operator to be applied to the outcome variable.
+    Possible values:
+    EQUAL
+    CONTAINS
+    MATCHES_REGEX
+    MATCHES_CIDR
+    """
+    outcome_value: pulumi.Input[_builtins.str]
+    """
+    The value of the outcome variable to match.
+    """
+    outcome_variable: pulumi.Input[_builtins.str]
+    """
+    The outcome variable name.
+    """
+
+@pulumi.input_type
+class FindingsRefinementOutcomeFilterArgs:
+    def __init__(__self__, *,
+                 outcome_filter_operator: pulumi.Input[_builtins.str],
+                 outcome_value: pulumi.Input[_builtins.str],
+                 outcome_variable: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] outcome_filter_operator: The operator to be applied to the outcome variable.
+               Possible values:
+               EQUAL
+               CONTAINS
+               MATCHES_REGEX
+               MATCHES_CIDR
+        :param pulumi.Input[_builtins.str] outcome_value: The value of the outcome variable to match.
+        :param pulumi.Input[_builtins.str] outcome_variable: The outcome variable name.
+        """
+        pulumi.set(__self__, "outcome_filter_operator", outcome_filter_operator)
+        pulumi.set(__self__, "outcome_value", outcome_value)
+        pulumi.set(__self__, "outcome_variable", outcome_variable)
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeFilterOperator")
+    def outcome_filter_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operator to be applied to the outcome variable.
+        Possible values:
+        EQUAL
+        CONTAINS
+        MATCHES_REGEX
+        MATCHES_CIDR
+        """
+        return pulumi.get(self, "outcome_filter_operator")
+
+    @outcome_filter_operator.setter
+    def outcome_filter_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "outcome_filter_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeValue")
+    def outcome_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the outcome variable to match.
+        """
+        return pulumi.get(self, "outcome_value")
+
+    @outcome_value.setter
+    def outcome_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "outcome_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeVariable")
+    def outcome_variable(self) -> pulumi.Input[_builtins.str]:
+        """
+        The outcome variable name.
+        """
+        return pulumi.get(self, "outcome_variable")
+
+    @outcome_variable.setter
+    def outcome_variable(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "outcome_variable", value)
 
 
 class NativeDashboardChartArgsDict(TypedDict):

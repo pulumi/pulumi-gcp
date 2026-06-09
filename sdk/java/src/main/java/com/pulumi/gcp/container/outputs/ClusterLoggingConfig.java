@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class ClusterLoggingConfig {
     /**
      * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     private List<String> enableComponents;
@@ -21,7 +21,7 @@ public final class ClusterLoggingConfig {
     private ClusterLoggingConfig() {}
     /**
      * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     public List<String> enableComponents() {

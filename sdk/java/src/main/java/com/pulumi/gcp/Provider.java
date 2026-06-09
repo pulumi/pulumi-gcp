@@ -341,6 +341,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> computeCustomEndpoint() {
         return Codegen.optional(this.computeCustomEndpoint);
     }
+    @Export(name="configCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> configCustomEndpoint;
+
+    public Output<Optional<String>> configCustomEndpoint() {
+        return Codegen.optional(this.configCustomEndpoint);
+    }
     @Export(name="contactCenterInsightsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contactCenterInsightsCustomEndpoint;
 

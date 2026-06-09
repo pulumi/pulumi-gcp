@@ -239,13 +239,6 @@ namespace Pulumi.Gcp.Datastream
     ///             Bucket = "my-bucket",
     ///             RootPath = "/path",
     ///         },
-    ///         ForwardSshConnectivity = new Gcp.Datastream.Inputs.ConnectionProfileForwardSshConnectivityArgs
-    ///         {
-    ///             Hostname = "google.com",
-    ///             Username = "my-user",
-    ///             Port = 8022,
-    ///             Password = "swordfish",
-    ///         },
     ///         Labels = 
     ///         {
     ///             { "key", "value" },

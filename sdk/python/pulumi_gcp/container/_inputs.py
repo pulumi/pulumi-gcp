@@ -155,6 +155,8 @@ __all__ = [
     'AzureNodePoolMaxPodsConstraintArgsDict',
     'ClusterAddonsConfigArgs',
     'ClusterAddonsConfigArgsDict',
+    'ClusterAddonsConfigAgentSandboxConfigArgs',
+    'ClusterAddonsConfigAgentSandboxConfigArgsDict',
     'ClusterAddonsConfigCloudrunConfigArgs',
     'ClusterAddonsConfigCloudrunConfigArgsDict',
     'ClusterAddonsConfigConfigConnectorConfigArgs',
@@ -357,6 +359,8 @@ __all__ = [
     'ClusterNodeConfigHostMaintenancePolicyArgsDict',
     'ClusterNodeConfigKubeletConfigArgs',
     'ClusterNodeConfigKubeletConfigArgsDict',
+    'ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs',
+    'ClusterNodeConfigKubeletConfigCrashLoopBackOffArgsDict',
     'ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs',
     'ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict',
     'ClusterNodeConfigKubeletConfigEvictionSoftArgs',
@@ -515,6 +519,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigHostMaintenancePolicyArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigArgs',
     'ClusterNodePoolNodeConfigKubeletConfigArgsDict',
+    'ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs',
+    'ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs',
     'ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs',
@@ -693,6 +699,8 @@ __all__ = [
     'NodePoolNodeConfigHostMaintenancePolicyArgsDict',
     'NodePoolNodeConfigKubeletConfigArgs',
     'NodePoolNodeConfigKubeletConfigArgsDict',
+    'NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs',
+    'NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict',
     'NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs',
     'NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict',
     'NodePoolNodeConfigKubeletConfigEvictionSoftArgs',
@@ -4536,6 +4544,10 @@ class AzureNodePoolMaxPodsConstraintArgs:
 
 
 class ClusterAddonsConfigArgsDict(TypedDict):
+    agent_sandbox_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigAgentSandboxConfigArgsDict']]]
+    """
+    Configuration for the Agent Sandbox addon. Structure is documented below:
+    """
     cloudrun_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigCloudrunConfigArgsDict']]]
     """
     . Structure is documented below.
@@ -4667,6 +4679,7 @@ class ClusterAddonsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterAddonsConfigArgs:
     def __init__(__self__, *,
+                 agent_sandbox_config: pulumi.Input[Optional['ClusterAddonsConfigAgentSandboxConfigArgs']] = None,
                  cloudrun_config: pulumi.Input[Optional['ClusterAddonsConfigCloudrunConfigArgs']] = None,
                  config_connector_config: pulumi.Input[Optional['ClusterAddonsConfigConfigConnectorConfigArgs']] = None,
                  dns_cache_config: pulumi.Input[Optional['ClusterAddonsConfigDnsCacheConfigArgs']] = None,
@@ -4686,6 +4699,7 @@ class ClusterAddonsConfigArgs:
                  slice_controller_config: pulumi.Input[Optional['ClusterAddonsConfigSliceControllerConfigArgs']] = None,
                  stateful_ha_config: pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgs']] = None):
         """
+        :param pulumi.Input['ClusterAddonsConfigAgentSandboxConfigArgs'] agent_sandbox_config: Configuration for the Agent Sandbox addon. Structure is documented below:
         :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
         :param pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
@@ -4760,6 +4774,8 @@ class ClusterAddonsConfigArgs:
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
         """
+        if agent_sandbox_config is not None:
+            pulumi.set(__self__, "agent_sandbox_config", agent_sandbox_config)
         if cloudrun_config is not None:
             pulumi.set(__self__, "cloudrun_config", cloudrun_config)
         if config_connector_config is not None:
@@ -4796,6 +4812,18 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "slice_controller_config", slice_controller_config)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
+
+    @_builtins.property
+    @pulumi.getter(name="agentSandboxConfig")
+    def agent_sandbox_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigAgentSandboxConfigArgs']]:
+        """
+        Configuration for the Agent Sandbox addon. Structure is documented below:
+        """
+        return pulumi.get(self, "agent_sandbox_config")
+
+    @agent_sandbox_config.setter
+    def agent_sandbox_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigAgentSandboxConfigArgs']]):
+        pulumi.set(self, "agent_sandbox_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudrunConfig")
@@ -5067,6 +5095,34 @@ class ClusterAddonsConfigArgs:
     @stateful_ha_config.setter
     def stateful_ha_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgs']]):
         pulumi.set(self, "stateful_ha_config", value)
+
+
+class ClusterAddonsConfigAgentSandboxConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the Agent Sandbox addon is enabled.
+    """
+
+@pulumi.input_type
+class ClusterAddonsConfigAgentSandboxConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Agent Sandbox addon is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the Agent Sandbox addon is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 class ClusterAddonsConfigCloudrunConfigArgsDict(TypedDict):
@@ -7952,7 +8008,7 @@ class ClusterLoggingConfigArgsDict(TypedDict):
     enable_components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
     The GKE components exposing logs. Supported values include:
-    `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+    `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
     """
 
 @pulumi.input_type
@@ -7961,7 +8017,7 @@ class ClusterLoggingConfigArgs:
                  enable_components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enable_components: The GKE components exposing logs. Supported values include:
-               `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+               `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -7970,7 +8026,7 @@ class ClusterLoggingConfigArgs:
     def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         The GKE components exposing logs. Supported values include:
-        `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+        `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         """
         return pulumi.get(self, "enable_components")
 
@@ -9236,6 +9292,10 @@ class ClusterNodeConfigArgsDict(TypedDict):
     GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
     Structure is documented below.
     """
+    gpudirect_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+    """
     guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
@@ -9432,6 +9492,7 @@ class ClusterNodeConfigArgs:
                  fast_socket: pulumi.Input[Optional['ClusterNodeConfigFastSocketArgs']] = None,
                  flex_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcfs_config: pulumi.Input[Optional['ClusterNodeConfigGcfsConfigArgs']] = None,
+                 gpudirect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]] = None,
                  gvnic: pulumi.Input[Optional['ClusterNodeConfigGvnicArgs']] = None,
                  host_maintenance_policy: pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyArgs']] = None,
@@ -9491,6 +9552,7 @@ class ClusterNodeConfigArgs:
                A `machine_type` that has more than 16 GiB of memory is also recommended.
                GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] gpudirect_strategy: The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input['ClusterNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -9602,6 +9664,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
+        if gpudirect_strategy is not None:
+            pulumi.set(__self__, "gpudirect_strategy", gpudirect_strategy)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
@@ -9846,6 +9910,18 @@ class ClusterNodeConfigArgs:
     @gcfs_config.setter
     def gcfs_config(self, value: pulumi.Input[Optional['ClusterNodeConfigGcfsConfigArgs']]):
         pulumi.set(self, "gcfs_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpudirectStrategy")
+    def gpudirect_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+        """
+        return pulumi.get(self, "gpudirect_strategy")
+
+    @gpudirect_strategy.setter
+    def gpudirect_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpudirect_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -11597,6 +11673,10 @@ class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
     Prior to the 6.4.0 this field was marked as required. The workaround for the required field
     is setting the empty string `""`, which will function identically to not setting this field.
     """
+    crash_loop_back_off: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigCrashLoopBackOffArgsDict']]]
+    """
+    Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+    """
     eviction_max_pod_grace_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
@@ -11665,6 +11745,7 @@ class ClusterNodeConfigKubeletConfigArgs:
                  cpu_cfs_quota: pulumi.Input[Optional[_builtins.bool]] = None,
                  cpu_cfs_quota_period: pulumi.Input[Optional[_builtins.str]] = None,
                  cpu_manager_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 crash_loop_back_off: pulumi.Input[Optional['ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs']] = None,
                  eviction_max_pod_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  eviction_minimum_reclaim: pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs']] = None,
                  eviction_soft: pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionSoftArgs']] = None,
@@ -11698,6 +11779,7 @@ class ClusterNodeConfigKubeletConfigArgs:
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs'] crash_loop_back_off: Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
         :param pulumi.Input[_builtins.int] eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs'] eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigEvictionSoftArgs'] eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
@@ -11727,6 +11809,8 @@ class ClusterNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if crash_loop_back_off is not None:
+            pulumi.set(__self__, "crash_loop_back_off", crash_loop_back_off)
         if eviction_max_pod_grace_period_seconds is not None:
             pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
         if eviction_minimum_reclaim is not None:
@@ -11839,6 +11923,18 @@ class ClusterNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crashLoopBackOff")
+    def crash_loop_back_off(self) -> pulumi.Input[Optional['ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs']]:
+        """
+        Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+        """
+        return pulumi.get(self, "crash_loop_back_off")
+
+    @crash_loop_back_off.setter
+    def crash_loop_back_off(self, value: pulumi.Input[Optional['ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs']]):
+        pulumi.set(self, "crash_loop_back_off", value)
 
     @_builtins.property
     @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
@@ -12009,6 +12105,35 @@ class ClusterNodeConfigKubeletConfigArgs:
     @topology_manager.setter
     def topology_manager(self, value: pulumi.Input[Optional['ClusterNodeConfigKubeletConfigTopologyManagerArgs']]):
         pulumi.set(self, "topology_manager", value)
+
+
+class ClusterNodeConfigKubeletConfigCrashLoopBackOffArgsDict(TypedDict):
+    max_container_restart_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs:
+    def __init__(__self__, *,
+                 max_container_restart_period: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] max_container_restart_period: The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+        """
+        if max_container_restart_period is not None:
+            pulumi.set(__self__, "max_container_restart_period", max_container_restart_period)
+
+    @_builtins.property
+    @pulumi.getter(name="maxContainerRestartPeriod")
+    def max_container_restart_period(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+        """
+        return pulumi.get(self, "max_container_restart_period")
+
+    @max_container_restart_period.setter
+    def max_container_restart_period(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_container_restart_period", value)
 
 
 class ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict(TypedDict):
@@ -15659,6 +15784,10 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
     Structure is documented below.
     """
+    gpudirect_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+    """
     guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
@@ -15855,6 +15984,7 @@ class ClusterNodePoolNodeConfigArgs:
                  fast_socket: pulumi.Input[Optional['ClusterNodePoolNodeConfigFastSocketArgs']] = None,
                  flex_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcfs_config: pulumi.Input[Optional['ClusterNodePoolNodeConfigGcfsConfigArgs']] = None,
+                 gpudirect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  gvnic: pulumi.Input[Optional['ClusterNodePoolNodeConfigGvnicArgs']] = None,
                  host_maintenance_policy: pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']] = None,
@@ -15914,6 +16044,7 @@ class ClusterNodePoolNodeConfigArgs:
                A `machine_type` that has more than 16 GiB of memory is also recommended.
                GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] gpudirect_strategy: The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -16025,6 +16156,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
+        if gpudirect_strategy is not None:
+            pulumi.set(__self__, "gpudirect_strategy", gpudirect_strategy)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
@@ -16269,6 +16402,18 @@ class ClusterNodePoolNodeConfigArgs:
     @gcfs_config.setter
     def gcfs_config(self, value: pulumi.Input[Optional['ClusterNodePoolNodeConfigGcfsConfigArgs']]):
         pulumi.set(self, "gcfs_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpudirectStrategy")
+    def gpudirect_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+        """
+        return pulumi.get(self, "gpudirect_strategy")
+
+    @gpudirect_strategy.setter
+    def gpudirect_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpudirect_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -18020,6 +18165,10 @@ class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     Prior to the 6.4.0 this field was marked as required. The workaround for the required field
     is setting the empty string `""`, which will function identically to not setting this field.
     """
+    crash_loop_back_off: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict']]]
+    """
+    Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+    """
     eviction_max_pod_grace_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
@@ -18088,6 +18237,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                  cpu_cfs_quota: pulumi.Input[Optional[_builtins.bool]] = None,
                  cpu_cfs_quota_period: pulumi.Input[Optional[_builtins.str]] = None,
                  cpu_manager_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 crash_loop_back_off: pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']] = None,
                  eviction_max_pod_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  eviction_minimum_reclaim: pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs']] = None,
                  eviction_soft: pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs']] = None,
@@ -18121,6 +18271,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs'] crash_loop_back_off: Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
         :param pulumi.Input[_builtins.int] eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs'] eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs'] eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
@@ -18150,6 +18301,8 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if crash_loop_back_off is not None:
+            pulumi.set(__self__, "crash_loop_back_off", crash_loop_back_off)
         if eviction_max_pod_grace_period_seconds is not None:
             pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
         if eviction_minimum_reclaim is not None:
@@ -18262,6 +18415,18 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crashLoopBackOff")
+    def crash_loop_back_off(self) -> pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']]:
+        """
+        Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+        """
+        return pulumi.get(self, "crash_loop_back_off")
+
+    @crash_loop_back_off.setter
+    def crash_loop_back_off(self, value: pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']]):
+        pulumi.set(self, "crash_loop_back_off", value)
 
     @_builtins.property
     @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
@@ -18432,6 +18597,35 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @topology_manager.setter
     def topology_manager(self, value: pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs']]):
         pulumi.set(self, "topology_manager", value)
+
+
+class ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict(TypedDict):
+    max_container_restart_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs:
+    def __init__(__self__, *,
+                 max_container_restart_period: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] max_container_restart_period: The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+        """
+        if max_container_restart_period is not None:
+            pulumi.set(__self__, "max_container_restart_period", max_container_restart_period)
+
+    @_builtins.property
+    @pulumi.getter(name="maxContainerRestartPeriod")
+    def max_container_restart_period(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum duration the backoff delay can accrue to for container restarts. If not set, defaults to the internal crashloopbackoff maximum. The value must be a positive duration string no more than `"5m"` and no less than `"1s"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See [Configurable container restart delay](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay) for more details.
+        """
+        return pulumi.get(self, "max_container_restart_period")
+
+    @max_container_restart_period.setter
+    def max_container_restart_period(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_container_restart_period", value)
 
 
 class ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict(TypedDict):
@@ -22398,6 +22592,10 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     GCFS configuration for this node.
     """
+    gpudirect_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of GPUDirect strategy to enable on the node.
+    """
     guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
@@ -22544,6 +22742,7 @@ class NodePoolNodeConfigArgs:
                  fast_socket: pulumi.Input[Optional['NodePoolNodeConfigFastSocketArgs']] = None,
                  flex_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcfs_config: pulumi.Input[Optional['NodePoolNodeConfigGcfsConfigArgs']] = None,
+                 gpudirect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  gvnic: pulumi.Input[Optional['NodePoolNodeConfigGvnicArgs']] = None,
                  host_maintenance_policy: pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyArgs']] = None,
@@ -22591,6 +22790,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input['NodePoolNodeConfigFastSocketArgs'] fast_socket: Enable or disable NCCL Fast Socket in the node pool.
         :param pulumi.Input[_builtins.bool] flex_start: Enables Flex Start provisioning model for the node pool
         :param pulumi.Input['NodePoolNodeConfigGcfsConfigArgs'] gcfs_config: GCFS configuration for this node.
+        :param pulumi.Input[_builtins.str] gpudirect_strategy: The type of GPUDirect strategy to enable on the node.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input['NodePoolNodeConfigGvnicArgs'] gvnic: Enable or disable gvnic in the node pool.
         :param pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArgs'] host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
@@ -22652,6 +22852,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
+        if gpudirect_strategy is not None:
+            pulumi.set(__self__, "gpudirect_strategy", gpudirect_strategy)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
@@ -22884,6 +23086,18 @@ class NodePoolNodeConfigArgs:
     @gcfs_config.setter
     def gcfs_config(self, value: pulumi.Input[Optional['NodePoolNodeConfigGcfsConfigArgs']]):
         pulumi.set(self, "gcfs_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpudirectStrategy")
+    def gpudirect_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of GPUDirect strategy to enable on the node.
+        """
+        return pulumi.get(self, "gpudirect_strategy")
+
+    @gpudirect_strategy.setter
+    def gpudirect_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpudirect_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -24537,6 +24751,10 @@ class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Control the CPU management policy on the node.
     """
+    crash_loop_back_off: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict']]]
+    """
+    Contains configuration options to modify node-level parameters for container restart behavior.
+    """
     eviction_max_pod_grace_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
@@ -24603,6 +24821,7 @@ class NodePoolNodeConfigKubeletConfigArgs:
                  cpu_cfs_quota: pulumi.Input[Optional[_builtins.bool]] = None,
                  cpu_cfs_quota_period: pulumi.Input[Optional[_builtins.str]] = None,
                  cpu_manager_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 crash_loop_back_off: pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']] = None,
                  eviction_max_pod_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  eviction_minimum_reclaim: pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs']] = None,
                  eviction_soft: pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionSoftArgs']] = None,
@@ -24624,6 +24843,7 @@ class NodePoolNodeConfigKubeletConfigArgs:
         :param pulumi.Input[_builtins.bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param pulumi.Input[_builtins.str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         :param pulumi.Input[_builtins.str] cpu_manager_policy: Control the CPU management policy on the node.
+        :param pulumi.Input['NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs'] crash_loop_back_off: Contains configuration options to modify node-level parameters for container restart behavior.
         :param pulumi.Input[_builtins.int] eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
         :param pulumi.Input['NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs'] eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
         :param pulumi.Input['NodePoolNodeConfigKubeletConfigEvictionSoftArgs'] eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
@@ -24651,6 +24871,8 @@ class NodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if crash_loop_back_off is not None:
+            pulumi.set(__self__, "crash_loop_back_off", crash_loop_back_off)
         if eviction_max_pod_grace_period_seconds is not None:
             pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
         if eviction_minimum_reclaim is not None:
@@ -24751,6 +24973,18 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crashLoopBackOff")
+    def crash_loop_back_off(self) -> pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']]:
+        """
+        Contains configuration options to modify node-level parameters for container restart behavior.
+        """
+        return pulumi.get(self, "crash_loop_back_off")
+
+    @crash_loop_back_off.setter
+    def crash_loop_back_off(self, value: pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs']]):
+        pulumi.set(self, "crash_loop_back_off", value)
 
     @_builtins.property
     @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
@@ -24919,6 +25153,35 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @topology_manager.setter
     def topology_manager(self, value: pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigTopologyManagerArgs']]):
         pulumi.set(self, "topology_manager", value)
+
+
+class NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgsDict(TypedDict):
+    max_container_restart_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum duration the backoff delay can accrue to for container restarts.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs:
+    def __init__(__self__, *,
+                 max_container_restart_period: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] max_container_restart_period: The maximum duration the backoff delay can accrue to for container restarts.
+        """
+        if max_container_restart_period is not None:
+            pulumi.set(__self__, "max_container_restart_period", max_container_restart_period)
+
+    @_builtins.property
+    @pulumi.getter(name="maxContainerRestartPeriod")
+    def max_container_restart_period(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum duration the backoff delay can accrue to for container restarts.
+        """
+        return pulumi.get(self, "max_container_restart_period")
+
+    @max_container_restart_period.setter
+    def max_container_restart_period(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_container_restart_period", value)
 
 
 class NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict(TypedDict):

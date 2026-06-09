@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name:    "new",
+//				Name:    pulumi.StringRef("new"),
 //				Project: pulumi.StringRef("my-project"),
 //			}, nil)
 //			if err != nil {
@@ -175,7 +175,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name:    "new",
+//				Name:    pulumi.StringRef("new"),
 //				Project: pulumi.StringRef("my-project"),
 //			}, nil)
 //			if err != nil {
@@ -296,6 +296,10 @@ type CloudVmCluster struct {
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringOutput `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors CloudVmClusterIdentityConnectorArrayOutput `pulumi:"identityConnectors"`
 	// Labels or tags associated with the VM Cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -408,6 +412,10 @@ type cloudVmClusterState struct {
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone *string `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors []CloudVmClusterIdentityConnector `pulumi:"identityConnectors"`
 	// Labels or tags associated with the VM Cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -477,6 +485,10 @@ type CloudVmClusterState struct {
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringPtrInput
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors CloudVmClusterIdentityConnectorArrayInput
 	// Labels or tags associated with the VM Cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -780,6 +792,13 @@ func (o CloudVmClusterOutput) ExadataInfrastructure() pulumi.StringOutput {
 // of Exadata infrastructure.
 func (o CloudVmClusterOutput) GcpOracleZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.GcpOracleZone }).(pulumi.StringOutput)
+}
+
+// The identity connector details which will allow OCI to securely access
+// the resources in the customer project.
+// Structure is documented below.
+func (o CloudVmClusterOutput) IdentityConnectors() CloudVmClusterIdentityConnectorArrayOutput {
+	return o.ApplyT(func(v *CloudVmCluster) CloudVmClusterIdentityConnectorArrayOutput { return v.IdentityConnectors }).(CloudVmClusterIdentityConnectorArrayOutput)
 }
 
 // Labels or tags associated with the VM Cluster.

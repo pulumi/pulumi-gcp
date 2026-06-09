@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterfaceAccessConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterfaceAliasIpRange;
+import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterfaceAliasIpv6Range;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterfaceIpv6AccessConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -26,6 +27,11 @@ public final class GetInstanceNetworkInterface {
      * 
      */
     private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+    /**
+     * @return An array of IPv6 alias IP ranges for this network interface.
+     * 
+     */
+    private List<GetInstanceNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
      * 
@@ -132,6 +138,13 @@ public final class GetInstanceNetworkInterface {
      */
     public List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges;
+    }
+    /**
+     * @return An array of IPv6 alias IP ranges for this network interface.
+     * 
+     */
+    public List<GetInstanceNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges() {
+        return this.aliasIpv6Ranges;
     }
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -271,6 +284,7 @@ public final class GetInstanceNetworkInterface {
     public static final class Builder {
         private List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private List<GetInstanceNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
         private String igmpQuery;
         private Integer internalIpv6PrefixLength;
         private List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
@@ -294,6 +308,7 @@ public final class GetInstanceNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.aliasIpv6Ranges = defaults.aliasIpv6Ranges;
     	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
@@ -335,6 +350,17 @@ public final class GetInstanceNetworkInterface {
         }
         public Builder aliasIpRanges(GetInstanceNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+        @CustomType.Setter
+        public Builder aliasIpv6Ranges(List<GetInstanceNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges) {
+            if (aliasIpv6Ranges == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "aliasIpv6Ranges");
+            }
+            this.aliasIpv6Ranges = aliasIpv6Ranges;
+            return this;
+        }
+        public Builder aliasIpv6Ranges(GetInstanceNetworkInterfaceAliasIpv6Range... aliasIpv6Ranges) {
+            return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
         }
         @CustomType.Setter
         public Builder igmpQuery(String igmpQuery) {
@@ -487,6 +513,7 @@ public final class GetInstanceNetworkInterface {
             final var _resultValue = new GetInstanceNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.aliasIpv6Ranges = aliasIpv6Ranges;
             _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;

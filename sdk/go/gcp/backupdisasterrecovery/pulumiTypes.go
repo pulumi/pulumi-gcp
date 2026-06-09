@@ -3001,9 +3001,9 @@ type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey struct
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
 }
 
@@ -3023,9 +3023,9 @@ type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs st
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
 }
 
@@ -3120,12 +3120,12 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
 		return v.RsaEncryptedKey
@@ -3176,7 +3176,7 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
 		if v == nil {
@@ -3186,7 +3186,7 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
 		if v == nil {
@@ -3703,9 +3703,9 @@ type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey struct
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
 }
 
@@ -3725,9 +3725,9 @@ type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs st
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
 }
 
@@ -3822,12 +3822,12 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
 		return v.RsaEncryptedKey
@@ -3878,7 +3878,7 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
 		if v == nil {
@@ -3888,7 +3888,7 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
 		if v == nil {
@@ -7143,9 +7143,9 @@ type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
 }
 
@@ -7165,9 +7165,9 @@ type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs struct {
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// (Optional)
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// (Optional)
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
 }
 
@@ -7258,12 +7258,12 @@ func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) KmsKeyServi
 	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
 }
@@ -7312,7 +7312,7 @@ func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) KmsKeySe
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
 		if v == nil {
@@ -7322,7 +7322,7 @@ func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) RawKey()
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
 		if v == nil {

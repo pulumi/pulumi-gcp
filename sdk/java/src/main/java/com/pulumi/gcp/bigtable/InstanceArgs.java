@@ -100,6 +100,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      * 
      */
@@ -201,16 +220,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
      * 
-     * ***
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -224,6 +239,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
+        this.edition = $.edition;
         this.forceDestroy = $.forceDestroy;
         this.instanceType = $.instanceType;
         this.labels = $.labels;
@@ -369,6 +385,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param edition The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition of the Bigtable instance. One of &#34;ENTERPRISE&#34; or &#34;ENTERPRISE_PLUS&#34;. Defaults to &#34;ENTERPRISE&#34;. Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
+        }
+
+        /**
          * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
          * 
          * @return builder
@@ -500,8 +541,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -512,8 +551,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-         * 
-         * ***
          * 
          * @return builder
          * 

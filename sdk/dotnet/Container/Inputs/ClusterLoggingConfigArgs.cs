@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The GKE components exposing logs. Supported values include:
-        /// `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+        /// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         /// </summary>
         public InputList<string> EnableComponents
         {

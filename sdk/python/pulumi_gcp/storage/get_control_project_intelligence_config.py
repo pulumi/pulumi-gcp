@@ -107,10 +107,7 @@ class AwaitableGetControlProjectIntelligenceConfigResult(GetControlProjectIntell
 def get_control_project_intelligence_config(name: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetControlProjectIntelligenceConfigResult:
     """
-    Use this data source to get information about a Project Storage Intelligence config resource.
-    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-    and
-    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+    Get information about a Cloud Storage Control ProjectIntelligenceConfig.
 
     ## Example Usage
 
@@ -118,11 +115,11 @@ def get_control_project_intelligence_config(name: Optional[_builtins.str] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    sample_config = gcp.storage.get_control_project_intelligence_config(name="my-project")
+    default = gcp.storage.get_control_project_intelligence_config(name=example["name"])
     ```
 
 
-    :param _builtins.str name: The name or number of the GCP project.
+    :param _builtins.str name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -140,10 +137,7 @@ def get_control_project_intelligence_config(name: Optional[_builtins.str] = None
 def get_control_project_intelligence_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlProjectIntelligenceConfigResult]:
     """
-    Use this data source to get information about a Project Storage Intelligence config resource.
-    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-    and
-    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+    Get information about a Cloud Storage Control ProjectIntelligenceConfig.
 
     ## Example Usage
 
@@ -151,11 +145,11 @@ def get_control_project_intelligence_config_output(name: pulumi.Input[Optional[_
     import pulumi
     import pulumi_gcp as gcp
 
-    sample_config = gcp.storage.get_control_project_intelligence_config(name="my-project")
+    default = gcp.storage.get_control_project_intelligence_config(name=example["name"])
     ```
 
 
-    :param _builtins.str name: The name or number of the GCP project.
+    :param _builtins.str name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
     """
     __args__ = dict()
     __args__['name'] = name

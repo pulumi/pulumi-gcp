@@ -659,14 +659,18 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.scheduling;
     }
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.alias_ipv6_range` [Beta]
+     * * `network_interface.access_config`
      * 
      */
     @Export(name="scratchDisks", refs={List.class,InstanceFromTemplateScratchDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromTemplateScratchDisk>> scratchDisks;
 
     /**
-     * @return The scratch disks attached to the instance.
+     * @return * `network_interface.alias_ip_range`
+     * * `network_interface.alias_ipv6_range` [Beta]
+     * * `network_interface.access_config`
      * 
      */
     public Output<List<InstanceFromTemplateScratchDisk>> scratchDisks() {
@@ -772,6 +776,9 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
+     * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
@@ -783,6 +790,9 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * In addition to these, all arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
      * 
      */
     public Output<String> zone() {

@@ -26,7 +26,7 @@ class GetSSLPolicyResult:
     """
     A collection of values returned by getSSLPolicy.
     """
-    def __init__(__self__, creation_timestamp=None, custom_features=None, deletion_policy=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, deletion_policy=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, post_quantum_key_exchange=None, profile=None, project=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -54,6 +54,9 @@ class GetSSLPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if post_quantum_key_exchange and not isinstance(post_quantum_key_exchange, str):
+            raise TypeError("Expected argument 'post_quantum_key_exchange' to be a str")
+        pulumi.set(__self__, "post_quantum_key_exchange", post_quantum_key_exchange)
         if profile and not isinstance(profile, str):
             raise TypeError("Expected argument 'profile' to be a str")
         pulumi.set(__self__, "profile", profile)
@@ -130,6 +133,14 @@ class GetSSLPolicyResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="postQuantumKeyExchange")
+    def post_quantum_key_exchange(self) -> _builtins.str:
+        """
+        The post-quantum key exchange setting of this policy.
+        """
+        return pulumi.get(self, "post_quantum_key_exchange")
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> _builtins.str:
         """
@@ -166,6 +177,7 @@ class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
             id=self.id,
             min_tls_version=self.min_tls_version,
             name=self.name,
+            post_quantum_key_exchange=self.post_quantum_key_exchange,
             profile=self.profile,
             project=self.project,
             self_link=self.self_link)
@@ -210,6 +222,7 @@ def get_ssl_policy(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         min_tls_version=pulumi.get(__ret__, 'min_tls_version'),
         name=pulumi.get(__ret__, 'name'),
+        post_quantum_key_exchange=pulumi.get(__ret__, 'post_quantum_key_exchange'),
         profile=pulumi.get(__ret__, 'profile'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
@@ -251,6 +264,7 @@ def get_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         min_tls_version=pulumi.get(__response__, 'min_tls_version'),
         name=pulumi.get(__response__, 'name'),
+        post_quantum_key_exchange=pulumi.get(__response__, 'post_quantum_key_exchange'),
         profile=pulumi.get(__response__, 'profile'),
         project=pulumi.get(__response__, 'project'),
         self_link=pulumi.get(__response__, 'self_link')))

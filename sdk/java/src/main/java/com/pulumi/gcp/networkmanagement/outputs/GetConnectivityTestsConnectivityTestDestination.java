@@ -33,6 +33,11 @@ public final class GetConnectivityTestsConnectivityTestDestination {
      */
     private String gkeMasterCluster;
     /**
+     * @return A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    private String gkePod;
+    /**
      * @return A Compute Engine instance URI.
      * 
      */
@@ -47,6 +52,11 @@ public final class GetConnectivityTestsConnectivityTestDestination {
      * 
      */
     private String network;
+    /**
+     * @return Type of the network where the endpoint is located.
+     * 
+     */
+    private String networkType;
     /**
      * @return The IP protocol port of the endpoint.
      * 
@@ -99,6 +109,13 @@ public final class GetConnectivityTestsConnectivityTestDestination {
         return this.gkeMasterCluster;
     }
     /**
+     * @return A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    public String gkePod() {
+        return this.gkePod;
+    }
+    /**
      * @return A Compute Engine instance URI.
      * 
      */
@@ -118,6 +135,13 @@ public final class GetConnectivityTestsConnectivityTestDestination {
      */
     public String network() {
         return this.network;
+    }
+    /**
+     * @return Type of the network where the endpoint is located.
+     * 
+     */
+    public String networkType() {
+        return this.networkType;
     }
     /**
      * @return The IP protocol port of the endpoint.
@@ -161,9 +185,11 @@ public final class GetConnectivityTestsConnectivityTestDestination {
         private String forwardingRule;
         private String fqdn;
         private String gkeMasterCluster;
+        private String gkePod;
         private String instance;
         private String ipAddress;
         private String network;
+        private String networkType;
         private Integer port;
         private String projectId;
         private String redisCluster;
@@ -175,9 +201,11 @@ public final class GetConnectivityTestsConnectivityTestDestination {
     	      this.forwardingRule = defaults.forwardingRule;
     	      this.fqdn = defaults.fqdn;
     	      this.gkeMasterCluster = defaults.gkeMasterCluster;
+    	      this.gkePod = defaults.gkePod;
     	      this.instance = defaults.instance;
     	      this.ipAddress = defaults.ipAddress;
     	      this.network = defaults.network;
+    	      this.networkType = defaults.networkType;
     	      this.port = defaults.port;
     	      this.projectId = defaults.projectId;
     	      this.redisCluster = defaults.redisCluster;
@@ -217,6 +245,14 @@ public final class GetConnectivityTestsConnectivityTestDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder gkePod(String gkePod) {
+            if (gkePod == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTestDestination", "gkePod");
+            }
+            this.gkePod = gkePod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder instance(String instance) {
             if (instance == null) {
               throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTestDestination", "instance");
@@ -238,6 +274,14 @@ public final class GetConnectivityTestsConnectivityTestDestination {
               throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTestDestination", "network");
             }
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkType(String networkType) {
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTestDestination", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
@@ -278,9 +322,11 @@ public final class GetConnectivityTestsConnectivityTestDestination {
             _resultValue.forwardingRule = forwardingRule;
             _resultValue.fqdn = fqdn;
             _resultValue.gkeMasterCluster = gkeMasterCluster;
+            _resultValue.gkePod = gkePod;
             _resultValue.instance = instance;
             _resultValue.ipAddress = ipAddress;
             _resultValue.network = network;
+            _resultValue.networkType = networkType;
             _resultValue.port = port;
             _resultValue.projectId = projectId;
             _resultValue.redisCluster = redisCluster;

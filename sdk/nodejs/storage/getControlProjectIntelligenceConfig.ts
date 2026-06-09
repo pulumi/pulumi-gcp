@@ -7,10 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get information about a Project Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -18,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlProjectIntelligenceConfig({
- *     name: "my-project",
+ * const _default = gcp.storage.getControlProjectIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -35,7 +32,7 @@ export function getControlProjectIntelligenceConfig(args: GetControlProjectIntel
  */
 export interface GetControlProjectIntelligenceConfigArgs {
     /**
-     * The name or number of the GCP project.
+     * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      */
     name: string;
 }
@@ -56,10 +53,7 @@ export interface GetControlProjectIntelligenceConfigResult {
     readonly updateTime: string;
 }
 /**
- * Use this data source to get information about a Project Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -67,8 +61,8 @@ export interface GetControlProjectIntelligenceConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlProjectIntelligenceConfig({
- *     name: "my-project",
+ * const _default = gcp.storage.getControlProjectIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -84,7 +78,7 @@ export function getControlProjectIntelligenceConfigOutput(args: GetControlProjec
  */
 export interface GetControlProjectIntelligenceConfigOutputArgs {
     /**
-     * The name or number of the GCP project.
+     * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      */
     name: pulumi.Input<string>;
 }

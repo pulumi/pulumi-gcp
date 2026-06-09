@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigKubeletConfigCrashLoopBackOff;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigKubeletConfigEvictionSoft;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod;
@@ -48,6 +49,11 @@ public final class GetClusterNodeConfigKubeletConfig {
      * 
      */
     private String cpuManagerPolicy;
+    /**
+     * @return Contains configuration options to modify node-level parameters for container restart behavior.
+     * 
+     */
+    private List<GetClusterNodeConfigKubeletConfigCrashLoopBackOff> crashLoopBackOffs;
     /**
      * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
      * 
@@ -163,6 +169,13 @@ public final class GetClusterNodeConfigKubeletConfig {
         return this.cpuManagerPolicy;
     }
     /**
+     * @return Contains configuration options to modify node-level parameters for container restart behavior.
+     * 
+     */
+    public List<GetClusterNodeConfigKubeletConfigCrashLoopBackOff> crashLoopBackOffs() {
+        return this.crashLoopBackOffs;
+    }
+    /**
      * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
      * 
      */
@@ -276,6 +289,7 @@ public final class GetClusterNodeConfigKubeletConfig {
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private List<GetClusterNodeConfigKubeletConfigCrashLoopBackOff> crashLoopBackOffs;
         private Integer evictionMaxPodGracePeriodSeconds;
         private List<GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim> evictionMinimumReclaims;
         private List<GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod> evictionSoftGracePeriods;
@@ -299,6 +313,7 @@ public final class GetClusterNodeConfigKubeletConfig {
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.crashLoopBackOffs = defaults.crashLoopBackOffs;
     	      this.evictionMaxPodGracePeriodSeconds = defaults.evictionMaxPodGracePeriodSeconds;
     	      this.evictionMinimumReclaims = defaults.evictionMinimumReclaims;
     	      this.evictionSoftGracePeriods = defaults.evictionSoftGracePeriods;
@@ -365,6 +380,17 @@ public final class GetClusterNodeConfigKubeletConfig {
             }
             this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
+        }
+        @CustomType.Setter
+        public Builder crashLoopBackOffs(List<GetClusterNodeConfigKubeletConfigCrashLoopBackOff> crashLoopBackOffs) {
+            if (crashLoopBackOffs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "crashLoopBackOffs");
+            }
+            this.crashLoopBackOffs = crashLoopBackOffs;
+            return this;
+        }
+        public Builder crashLoopBackOffs(GetClusterNodeConfigKubeletConfigCrashLoopBackOff... crashLoopBackOffs) {
+            return crashLoopBackOffs(List.of(crashLoopBackOffs));
         }
         @CustomType.Setter
         public Builder evictionMaxPodGracePeriodSeconds(Integer evictionMaxPodGracePeriodSeconds) {
@@ -501,6 +527,7 @@ public final class GetClusterNodeConfigKubeletConfig {
             _resultValue.cpuCfsQuota = cpuCfsQuota;
             _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.crashLoopBackOffs = crashLoopBackOffs;
             _resultValue.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
             _resultValue.evictionMinimumReclaims = evictionMinimumReclaims;
             _resultValue.evictionSoftGracePeriods = evictionSoftGracePeriods;

@@ -35,6 +35,11 @@ export type Feed = import("./feed").Feed;
 export const Feed: typeof import("./feed").Feed = null as any;
 utilities.lazyLoad(exports, ["Feed"], () => require("./feed"));
 
+export { FindingsRefinementArgs, FindingsRefinementState } from "./findingsRefinement";
+export type FindingsRefinement = import("./findingsRefinement").FindingsRefinement;
+export const FindingsRefinement: typeof import("./findingsRefinement").FindingsRefinement = null as any;
+utilities.lazyLoad(exports, ["FindingsRefinement"], () => require("./findingsRefinement"));
+
 export { NativeDashboardArgs, NativeDashboardState } from "./nativeDashboard";
 export type NativeDashboard = import("./nativeDashboard").NativeDashboard;
 export const NativeDashboard: typeof import("./nativeDashboard").NativeDashboard = null as any;
@@ -82,6 +87,8 @@ const _module = {
                 return new DataTableRow(name, <any>undefined, { urn })
             case "gcp:chronicle/feed:Feed":
                 return new Feed(name, <any>undefined, { urn })
+            case "gcp:chronicle/findingsRefinement:FindingsRefinement":
+                return new FindingsRefinement(name, <any>undefined, { urn })
             case "gcp:chronicle/nativeDashboard:NativeDashboard":
                 return new NativeDashboard(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
@@ -105,6 +112,7 @@ pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _modul
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinement", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)

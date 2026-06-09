@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.CloudVmClusterArgs;
 import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterState;
+import com.pulumi.gcp.oracledatabase.outputs.CloudVmClusterIdentityConnector;
 import com.pulumi.gcp.oracledatabase.outputs.CloudVmClusterProperties;
 import java.lang.Boolean;
 import java.lang.String;
@@ -465,6 +466,24 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> gcpOracleZone() {
         return this.gcpOracleZone;
+    }
+    /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="identityConnectors", refs={List.class,CloudVmClusterIdentityConnector.class}, tree="[0,1]")
+    private Output<List<CloudVmClusterIdentityConnector>> identityConnectors;
+
+    /**
+     * @return The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<CloudVmClusterIdentityConnector>> identityConnectors() {
+        return this.identityConnectors;
     }
     /**
      * Labels or tags associated with the VM Cluster.

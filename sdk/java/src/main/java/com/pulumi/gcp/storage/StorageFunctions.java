@@ -1831,10 +1831,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Folder Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control FolderIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -1860,8 +1857,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -1874,10 +1871,7 @@ public final class StorageFunctions {
         return getControlFolderIntelligenceConfig(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Folder Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control FolderIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -1903,8 +1897,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -1917,10 +1911,7 @@ public final class StorageFunctions {
         return getControlFolderIntelligenceConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Folder Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control FolderIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -1946,8 +1937,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -1960,10 +1951,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Folder Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control FolderIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -1989,8 +1977,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2003,10 +1991,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Folder Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control FolderIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2032,8 +2017,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2046,10 +2031,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Organization Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2075,8 +2057,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2089,10 +2071,7 @@ public final class StorageFunctions {
         return getControlOrganizationIntelligenceConfig(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Organization Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2118,8 +2097,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2132,10 +2111,7 @@ public final class StorageFunctions {
         return getControlOrganizationIntelligenceConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Organization Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2161,8 +2137,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2175,10 +2151,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Organization Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2204,8 +2177,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2218,10 +2191,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Organization Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2247,8 +2217,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name("123456789")
+     *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2261,10 +2231,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Project Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2290,8 +2257,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name("my-project")
+     *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2304,10 +2271,7 @@ public final class StorageFunctions {
         return getControlProjectIntelligenceConfig(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Project Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2333,8 +2297,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name("my-project")
+     *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2347,10 +2311,7 @@ public final class StorageFunctions {
         return getControlProjectIntelligenceConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information about a Project Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2376,8 +2337,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name("my-project")
+     *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2390,10 +2351,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Project Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2419,8 +2377,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name("my-project")
+     *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }
@@ -2433,10 +2391,7 @@ public final class StorageFunctions {
         return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information about a Project Storage Intelligence config resource.
-     * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-     * and
-     * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+     * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
      * 
      * ## Example Usage
      * 
@@ -2462,8 +2417,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name("my-project")
+     *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+     *             .name(example.name())
      *             .build());
      * 
      *     }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAliasIpRangeArgs;
+import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAliasIpv6RangeArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,6 +63,25 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<InstanceNetworkInterfaceAliasIpRangeArgs>>> aliasIpRanges() {
         return Optional.ofNullable(this.aliasIpRanges);
+    }
+
+    /**
+     * [Beta] An
+     * array of alias IPv6 ranges for this network interface. Can only be specified for network
+     * interfaces on subnet-mode networks. Structure documented below.
+     * 
+     */
+    @Import(name="aliasIpv6Ranges")
+    private @Nullable Output<List<InstanceNetworkInterfaceAliasIpv6RangeArgs>> aliasIpv6Ranges;
+
+    /**
+     * @return [Beta] An
+     * array of alias IPv6 ranges for this network interface. Can only be specified for network
+     * interfaces on subnet-mode networks. Structure documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceNetworkInterfaceAliasIpv6RangeArgs>>> aliasIpv6Ranges() {
+        return Optional.ofNullable(this.aliasIpv6Ranges);
     }
 
     /**
@@ -371,6 +391,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     private InstanceNetworkInterfaceArgs(InstanceNetworkInterfaceArgs $) {
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
+        this.aliasIpv6Ranges = $.aliasIpv6Ranges;
         this.igmpQuery = $.igmpQuery;
         this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
@@ -490,6 +511,43 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
          */
         public Builder aliasIpRanges(InstanceNetworkInterfaceAliasIpRangeArgs... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+
+        /**
+         * @param aliasIpv6Ranges [Beta] An
+         * array of alias IPv6 ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(@Nullable Output<List<InstanceNetworkInterfaceAliasIpv6RangeArgs>> aliasIpv6Ranges) {
+            $.aliasIpv6Ranges = aliasIpv6Ranges;
+            return this;
+        }
+
+        /**
+         * @param aliasIpv6Ranges [Beta] An
+         * array of alias IPv6 ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(List<InstanceNetworkInterfaceAliasIpv6RangeArgs> aliasIpv6Ranges) {
+            return aliasIpv6Ranges(Output.of(aliasIpv6Ranges));
+        }
+
+        /**
+         * @param aliasIpv6Ranges [Beta] An
+         * array of alias IPv6 ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(InstanceNetworkInterfaceAliasIpv6RangeArgs... aliasIpv6Ranges) {
+            return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
         }
 
         /**

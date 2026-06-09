@@ -189,7 +189,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Use this network for filestore instance
 //			fsNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "filestore_nw",
+//				Name: pulumi.StringRef("filestore_nw"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -360,7 +360,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Use this network for netapp volume
 //			npNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "netapp_nw",
+//				Name: pulumi.StringRef("netapp_nw"),
 //			}, nil)
 //			if err != nil {
 //				return err

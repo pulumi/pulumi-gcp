@@ -374,6 +374,83 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Subnetwork With Secondary Ipv6 Range
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
+    ///     {
+    ///         Name = "network-with-secondary-ranges",
+    ///         AutoCreateSubnetworks = false,
+    ///         EnableUlaInternalIpv6 = true,
+    ///     });
+    /// 
+    ///     var ipv6Pap = new Gcp.Compute.PublicAdvertisedPrefix("ipv6_pap", new()
+    ///     {
+    ///         Name = "pap-for-secondary-ranges",
+    ///         IpCidrRange = "2001:db8::/40",
+    ///         PdpScope = "REGIONAL",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///         Description = "GOOGLE_INTERNAL_TEST_PREFIX",
+    ///     });
+    /// 
+    ///     var ipv6Pdp = new Gcp.Compute.PublicDelegatedPrefix("ipv6_pdp", new()
+    ///     {
+    ///         Name = "pdp-for-secondary-ranges",
+    ///         Region = "us-central1",
+    ///         Description = "PDP in internal subnet mode",
+    ///         IpCidrRange = "2001:db8::/48",
+    ///         ParentPrefix = ipv6Pap.Id,
+    ///         Mode = "DELEGATION",
+    ///     });
+    /// 
+    ///     var ipv6SubPdp = new Gcp.Compute.PublicDelegatedPrefix("ipv6_sub_pdp", new()
+    ///     {
+    ///         Name = "sub-pdp-for-secondary-ranges",
+    ///         Region = "us-central1",
+    ///         IpCidrRange = "2001:db8::/56",
+    ///         ParentPrefix = ipv6Pdp.Id,
+    ///         Mode = "INTERNAL_IPV6_SUBNETWORK_CREATION",
+    ///     });
+    /// 
+    ///     var subnetworkWithSecondaryIpv6Range = new Gcp.Compute.Subnetwork("subnetwork_with_secondary_ipv6_range", new()
+    ///     {
+    ///         Name = "subnet-with-secondary-ranges",
+    ///         Region = "us-central1",
+    ///         Network = custom_test.Id,
+    ///         StackType = "IPV6_ONLY",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "v6-ula",
+    ///                 IpVersion = "IPV6",
+    ///             },
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "v6-byogua-auto",
+    ///                 IpVersion = "IPV6",
+    ///                 IpCollection = ipv6SubPdp.SelfLink,
+    ///             },
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "v6-byogua-manual",
+    ///                 IpVersion = "IPV6",
+    ///                 IpCollection = ipv6SubPdp.SelfLink,
+    ///                 IpCidrRange = "2001:db8:0:2::/64",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

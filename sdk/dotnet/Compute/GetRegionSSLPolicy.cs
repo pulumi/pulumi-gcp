@@ -11,12 +11,78 @@ namespace Pulumi.Gcp.Compute
 {
     public static class GetRegionSSLPolicy
     {
+        /// <summary>
+        /// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_ssl_policy = Gcp.Compute.GetRegionSSLPolicy.Invoke(new()
+        ///     {
+        ///         Name = "production-ssl-policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRegionSSLPolicyResult> InvokeAsync(GetRegionSSLPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionSSLPolicyResult>("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", args ?? new GetRegionSSLPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_ssl_policy = Gcp.Compute.GetRegionSSLPolicy.Invoke(new()
+        ///     {
+        ///         Name = "production-ssl-policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRegionSSLPolicyResult> Invoke(GetRegionSSLPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionSSLPolicyResult>("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", args ?? new GetRegionSSLPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_ssl_policy = Gcp.Compute.GetRegionSSLPolicy.Invoke(new()
+        ///     {
+        ///         Name = "production-ssl-policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRegionSSLPolicyResult> Invoke(GetRegionSSLPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionSSLPolicyResult>("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", args ?? new GetRegionSSLPolicyInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +90,25 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class GetRegionSSLPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the SSL Policy.
+        /// 
+        /// - - -
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the resource belongs. If it
+        /// is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -41,12 +120,25 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class GetRegionSSLPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the SSL Policy.
+        /// 
+        /// - - -
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the resource belongs. If it
+        /// is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -61,20 +153,47 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionSSLPolicyResult
     {
         public readonly string CreationTimestamp;
+        /// <summary>
+        /// If the `Profile` is `CUSTOM`, these are the custom encryption
+        /// ciphers supported by the profile. If the `Profile` is *not* `CUSTOM`, this
+        /// attribute will be empty.
+        /// </summary>
         public readonly ImmutableArray<string> CustomFeatures;
         public readonly string DeletionPolicy;
+        /// <summary>
+        /// Description of this SSL Policy.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The set of enabled encryption ciphers as a result of the policy config
+        /// </summary>
         public readonly ImmutableArray<string> EnabledFeatures;
+        /// <summary>
+        /// Fingerprint of this resource.
+        /// </summary>
         public readonly string Fingerprint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The minimum supported TLS version of this policy.
+        /// </summary>
         public readonly string MinTlsVersion;
         public readonly string Name;
+        /// <summary>
+        /// The post-quantum key exchange setting of this policy.
+        /// </summary>
+        public readonly string PostQuantumKeyExchange;
+        /// <summary>
+        /// The Google-curated or custom profile used by this policy.
+        /// </summary>
         public readonly string Profile;
         public readonly string? Project;
         public readonly string? Region;
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         public readonly string SelfLink;
 
         [OutputConstructor]
@@ -97,6 +216,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            string postQuantumKeyExchange,
+
             string profile,
 
             string? project,
@@ -114,6 +235,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             MinTlsVersion = minTlsVersion;
             Name = name;
+            PostQuantumKeyExchange = postQuantumKeyExchange;
             Profile = profile;
             Project = project;
             Region = region;

@@ -12,6 +12,7 @@ import com.pulumi.gcp.diagflow.inputs.ConversationProfileLoggingConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewMessageEventNotificationConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNotificationConfigArgs;
+import com.pulumi.gcp.diagflow.inputs.ConversationProfileSipConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileTtsConfigArgs;
 import java.lang.Boolean;
@@ -132,14 +133,14 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * desc
+     * The location of the conversation profile.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return desc
+     * @return The location of the conversation profile.
      * 
      */
     public Optional<Output<String>> location() {
@@ -164,14 +165,14 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * name
+     * Identifier. The unique identifier of this conversation profile.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name
+     * @return Identifier. The unique identifier of this conversation profile.
      * 
      */
     public Optional<Output<String>> name() {
@@ -266,6 +267,25 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sipConfig")
+    private @Nullable Output<ConversationProfileSipConfigArgs> sipConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConversationProfileSipConfigArgs>> sipConfig() {
+        return Optional.ofNullable(this.sipConfig);
+    }
+
+    /**
      * Settings for speech transcription.
      * Structure is documented below.
      * 
@@ -348,6 +368,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
         this.securitySettings = $.securitySettings;
+        this.sipConfig = $.sipConfig;
         this.sttConfig = $.sttConfig;
         this.timeZone = $.timeZone;
         this.ttsConfig = $.ttsConfig;
@@ -515,7 +536,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param location desc
+         * @param location The location of the conversation profile.
          * 
          * @return builder
          * 
@@ -526,7 +547,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param location desc
+         * @param location The location of the conversation profile.
          * 
          * @return builder
          * 
@@ -559,7 +580,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name name
+         * @param name Identifier. The unique identifier of this conversation profile.
          * 
          * @return builder
          * 
@@ -570,7 +591,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name name
+         * @param name Identifier. The unique identifier of this conversation profile.
          * 
          * @return builder
          * 
@@ -694,6 +715,31 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
          */
         public Builder securitySettings(String securitySettings) {
             return securitySettings(Output.of(securitySettings));
+        }
+
+        /**
+         * @param sipConfig (Optional, Beta)
+         * Configuration for SIP.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sipConfig(@Nullable Output<ConversationProfileSipConfigArgs> sipConfig) {
+            $.sipConfig = sipConfig;
+            return this;
+        }
+
+        /**
+         * @param sipConfig (Optional, Beta)
+         * Configuration for SIP.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sipConfig(ConversationProfileSipConfigArgs sipConfig) {
+            return sipConfig(Output.of(sipConfig));
         }
 
         /**

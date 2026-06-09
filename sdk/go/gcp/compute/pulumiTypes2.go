@@ -13,6 +13,624 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGroupManagerParam struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetInstanceGroupManagerParamInput is an input type that accepts GetInstanceGroupManagerParamArgs and GetInstanceGroupManagerParamOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerParamInput` via:
+//
+//	GetInstanceGroupManagerParamArgs{...}
+type GetInstanceGroupManagerParamInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput
+	ToGetInstanceGroupManagerParamOutputWithContext(context.Context) GetInstanceGroupManagerParamOutput
+}
+
+type GetInstanceGroupManagerParamArgs struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetInstanceGroupManagerParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerParamArgs) ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput {
+	return i.ToGetInstanceGroupManagerParamOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerParamArgs) ToGetInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerParamOutput)
+}
+
+// GetInstanceGroupManagerParamArrayInput is an input type that accepts GetInstanceGroupManagerParamArray and GetInstanceGroupManagerParamArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerParamArrayInput` via:
+//
+//	GetInstanceGroupManagerParamArray{ GetInstanceGroupManagerParamArgs{...} }
+type GetInstanceGroupManagerParamArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput
+	ToGetInstanceGroupManagerParamArrayOutputWithContext(context.Context) GetInstanceGroupManagerParamArrayOutput
+}
+
+type GetInstanceGroupManagerParamArray []GetInstanceGroupManagerParamInput
+
+func (GetInstanceGroupManagerParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerParamArray) ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput {
+	return i.ToGetInstanceGroupManagerParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerParamArray) ToGetInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerParamArrayOutput)
+}
+
+type GetInstanceGroupManagerParamOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerParamOutput) ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamOutput) ToGetInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamOutput {
+	return o
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+func (o GetInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetInstanceGroupManagerParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) ToGetInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerParam {
+		return vs[0].([]GetInstanceGroupManagerParam)[vs[1].(int)]
+	}).(GetInstanceGroupManagerParamOutput)
+}
+
+type GetInstanceGroupManagerResourcePolicy struct {
+	// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+	WorkloadPolicy string `pulumi:"workloadPolicy"`
+}
+
+// GetInstanceGroupManagerResourcePolicyInput is an input type that accepts GetInstanceGroupManagerResourcePolicyArgs and GetInstanceGroupManagerResourcePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerResourcePolicyInput` via:
+//
+//	GetInstanceGroupManagerResourcePolicyArgs{...}
+type GetInstanceGroupManagerResourcePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerResourcePolicyOutput() GetInstanceGroupManagerResourcePolicyOutput
+	ToGetInstanceGroupManagerResourcePolicyOutputWithContext(context.Context) GetInstanceGroupManagerResourcePolicyOutput
+}
+
+type GetInstanceGroupManagerResourcePolicyArgs struct {
+	// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+	WorkloadPolicy pulumi.StringInput `pulumi:"workloadPolicy"`
+}
+
+func (GetInstanceGroupManagerResourcePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerResourcePolicyArgs) ToGetInstanceGroupManagerResourcePolicyOutput() GetInstanceGroupManagerResourcePolicyOutput {
+	return i.ToGetInstanceGroupManagerResourcePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerResourcePolicyArgs) ToGetInstanceGroupManagerResourcePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerResourcePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerResourcePolicyOutput)
+}
+
+// GetInstanceGroupManagerResourcePolicyArrayInput is an input type that accepts GetInstanceGroupManagerResourcePolicyArray and GetInstanceGroupManagerResourcePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerResourcePolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerResourcePolicyArray{ GetInstanceGroupManagerResourcePolicyArgs{...} }
+type GetInstanceGroupManagerResourcePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerResourcePolicyArrayOutput() GetInstanceGroupManagerResourcePolicyArrayOutput
+	ToGetInstanceGroupManagerResourcePolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerResourcePolicyArrayOutput
+}
+
+type GetInstanceGroupManagerResourcePolicyArray []GetInstanceGroupManagerResourcePolicyInput
+
+func (GetInstanceGroupManagerResourcePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerResourcePolicyArray) ToGetInstanceGroupManagerResourcePolicyArrayOutput() GetInstanceGroupManagerResourcePolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerResourcePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerResourcePolicyArray) ToGetInstanceGroupManagerResourcePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerResourcePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerResourcePolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerResourcePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerResourcePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerResourcePolicyOutput) ToGetInstanceGroupManagerResourcePolicyOutput() GetInstanceGroupManagerResourcePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerResourcePolicyOutput) ToGetInstanceGroupManagerResourcePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerResourcePolicyOutput {
+	return o
+}
+
+// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+func (o GetInstanceGroupManagerResourcePolicyOutput) WorkloadPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerResourcePolicy) string { return v.WorkloadPolicy }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerResourcePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerResourcePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerResourcePolicyArrayOutput) ToGetInstanceGroupManagerResourcePolicyArrayOutput() GetInstanceGroupManagerResourcePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerResourcePolicyArrayOutput) ToGetInstanceGroupManagerResourcePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerResourcePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerResourcePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerResourcePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerResourcePolicy {
+		return vs[0].([]GetInstanceGroupManagerResourcePolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerResourcePolicyOutput)
+}
+
+type GetInstanceGroupManagerStandbyPolicy struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode string `pulumi:"mode"`
+}
+
+// GetInstanceGroupManagerStandbyPolicyInput is an input type that accepts GetInstanceGroupManagerStandbyPolicyArgs and GetInstanceGroupManagerStandbyPolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStandbyPolicyInput` via:
+//
+//	GetInstanceGroupManagerStandbyPolicyArgs{...}
+type GetInstanceGroupManagerStandbyPolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput
+	ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(context.Context) GetInstanceGroupManagerStandbyPolicyOutput
+}
+
+type GetInstanceGroupManagerStandbyPolicyArgs struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetInstanceGroupManagerStandbyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArgs) ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput {
+	return i.ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArgs) ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStandbyPolicyOutput)
+}
+
+// GetInstanceGroupManagerStandbyPolicyArrayInput is an input type that accepts GetInstanceGroupManagerStandbyPolicyArray and GetInstanceGroupManagerStandbyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStandbyPolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerStandbyPolicyArray{ GetInstanceGroupManagerStandbyPolicyArgs{...} }
+type GetInstanceGroupManagerStandbyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput
+	ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput
+}
+
+type GetInstanceGroupManagerStandbyPolicyArray []GetInstanceGroupManagerStandbyPolicyInput
+
+func (GetInstanceGroupManagerStandbyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArray) ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStandbyPolicyArray) ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStandbyPolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerStandbyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStandbyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyOutput) ToGetInstanceGroupManagerStandbyPolicyOutput() GetInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyOutput) ToGetInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+func (o GetInstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStandbyPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+func (o GetInstanceGroupManagerStandbyPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStandbyPolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStandbyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStandbyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) ToGetInstanceGroupManagerStandbyPolicyArrayOutput() GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) ToGetInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStandbyPolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStandbyPolicy {
+		return vs[0].([]GetInstanceGroupManagerStandbyPolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStandbyPolicyOutput)
+}
+
+type GetInstanceGroupManagerStatefulDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// GetInstanceGroupManagerStatefulDiskInput is an input type that accepts GetInstanceGroupManagerStatefulDiskArgs and GetInstanceGroupManagerStatefulDiskOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulDiskInput` via:
+//
+//	GetInstanceGroupManagerStatefulDiskArgs{...}
+type GetInstanceGroupManagerStatefulDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulDiskOutput() GetInstanceGroupManagerStatefulDiskOutput
+	ToGetInstanceGroupManagerStatefulDiskOutputWithContext(context.Context) GetInstanceGroupManagerStatefulDiskOutput
+}
+
+type GetInstanceGroupManagerStatefulDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+}
+
+func (GetInstanceGroupManagerStatefulDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulDiskArgs) ToGetInstanceGroupManagerStatefulDiskOutput() GetInstanceGroupManagerStatefulDiskOutput {
+	return i.ToGetInstanceGroupManagerStatefulDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulDiskArgs) ToGetInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulDiskOutput)
+}
+
+// GetInstanceGroupManagerStatefulDiskArrayInput is an input type that accepts GetInstanceGroupManagerStatefulDiskArray and GetInstanceGroupManagerStatefulDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulDiskArrayInput` via:
+//
+//	GetInstanceGroupManagerStatefulDiskArray{ GetInstanceGroupManagerStatefulDiskArgs{...} }
+type GetInstanceGroupManagerStatefulDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulDiskArrayOutput() GetInstanceGroupManagerStatefulDiskArrayOutput
+	ToGetInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatefulDiskArrayOutput
+}
+
+type GetInstanceGroupManagerStatefulDiskArray []GetInstanceGroupManagerStatefulDiskInput
+
+func (GetInstanceGroupManagerStatefulDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulDiskArray) ToGetInstanceGroupManagerStatefulDiskArrayOutput() GetInstanceGroupManagerStatefulDiskArrayOutput {
+	return i.ToGetInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulDiskArray) ToGetInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+type GetInstanceGroupManagerStatefulDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulDiskOutput) ToGetInstanceGroupManagerStatefulDiskOutput() GetInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulDiskOutput) ToGetInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetInstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulDisk) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The device name of the disk to be attached.
+func (o GetInstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStatefulDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulDiskArrayOutput) ToGetInstanceGroupManagerStatefulDiskArrayOutput() GetInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulDiskArrayOutput) ToGetInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatefulDisk {
+		return vs[0].([]GetInstanceGroupManagerStatefulDisk)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatefulDiskOutput)
+}
+
+type GetInstanceGroupManagerStatefulExternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetInstanceGroupManagerStatefulExternalIpInput is an input type that accepts GetInstanceGroupManagerStatefulExternalIpArgs and GetInstanceGroupManagerStatefulExternalIpOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulExternalIpInput` via:
+//
+//	GetInstanceGroupManagerStatefulExternalIpArgs{...}
+type GetInstanceGroupManagerStatefulExternalIpInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulExternalIpOutput() GetInstanceGroupManagerStatefulExternalIpOutput
+	ToGetInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Context) GetInstanceGroupManagerStatefulExternalIpOutput
+}
+
+type GetInstanceGroupManagerStatefulExternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetInstanceGroupManagerStatefulExternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulExternalIpArgs) ToGetInstanceGroupManagerStatefulExternalIpOutput() GetInstanceGroupManagerStatefulExternalIpOutput {
+	return i.ToGetInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulExternalIpArgs) ToGetInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+// GetInstanceGroupManagerStatefulExternalIpArrayInput is an input type that accepts GetInstanceGroupManagerStatefulExternalIpArray and GetInstanceGroupManagerStatefulExternalIpArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulExternalIpArrayInput` via:
+//
+//	GetInstanceGroupManagerStatefulExternalIpArray{ GetInstanceGroupManagerStatefulExternalIpArgs{...} }
+type GetInstanceGroupManagerStatefulExternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulExternalIpArrayOutput() GetInstanceGroupManagerStatefulExternalIpArrayOutput
+	ToGetInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatefulExternalIpArrayOutput
+}
+
+type GetInstanceGroupManagerStatefulExternalIpArray []GetInstanceGroupManagerStatefulExternalIpInput
+
+func (GetInstanceGroupManagerStatefulExternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulExternalIpArray) ToGetInstanceGroupManagerStatefulExternalIpArrayOutput() GetInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return i.ToGetInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulExternalIpArray) ToGetInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulExternalIpArrayOutput)
+}
+
+type GetInstanceGroupManagerStatefulExternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulExternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulExternalIpOutput) ToGetInstanceGroupManagerStatefulExternalIpOutput() GetInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulExternalIpOutput) ToGetInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetInstanceGroupManagerStatefulExternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulExternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetInstanceGroupManagerStatefulExternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulExternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStatefulExternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulExternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetInstanceGroupManagerStatefulExternalIpArrayOutput() GetInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulExternalIpArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatefulExternalIp {
+		return vs[0].([]GetInstanceGroupManagerStatefulExternalIp)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+type GetInstanceGroupManagerStatefulInternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetInstanceGroupManagerStatefulInternalIpInput is an input type that accepts GetInstanceGroupManagerStatefulInternalIpArgs and GetInstanceGroupManagerStatefulInternalIpOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulInternalIpInput` via:
+//
+//	GetInstanceGroupManagerStatefulInternalIpArgs{...}
+type GetInstanceGroupManagerStatefulInternalIpInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput
+	ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Context) GetInstanceGroupManagerStatefulInternalIpOutput
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetInstanceGroupManagerStatefulInternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArgs) ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput {
+	return i.ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArgs) ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+// GetInstanceGroupManagerStatefulInternalIpArrayInput is an input type that accepts GetInstanceGroupManagerStatefulInternalIpArray and GetInstanceGroupManagerStatefulInternalIpArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulInternalIpArrayInput` via:
+//
+//	GetInstanceGroupManagerStatefulInternalIpArray{ GetInstanceGroupManagerStatefulInternalIpArgs{...} }
+type GetInstanceGroupManagerStatefulInternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput
+	ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArray []GetInstanceGroupManagerStatefulInternalIpInput
+
+func (GetInstanceGroupManagerStatefulInternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArray) ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return i.ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArray) ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulInternalIpArrayOutput)
+}
+
+type GetInstanceGroupManagerStatefulInternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulInternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulInternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatefulInternalIp {
+		return vs[0].([]GetInstanceGroupManagerStatefulInternalIp)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatefulInternalIpOutput)
+}
+
 type GetInstanceGroupManagerStatus struct {
 	// Status of all-instances configuration on the group.
 	AllInstancesConfigs []GetInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
@@ -1483,6 +2101,8 @@ type GetInstanceNetworkInterface struct {
 	AccessConfigs []GetInstanceNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
 	AliasIpRanges []GetInstanceNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// An array of IPv6 alias IP ranges for this network interface.
+	AliasIpv6Ranges []GetInstanceNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -1538,6 +2158,8 @@ type GetInstanceNetworkInterfaceArgs struct {
 	AccessConfigs GetInstanceNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
 	AliasIpRanges GetInstanceNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// An array of IPv6 alias IP ranges for this network interface.
+	AliasIpv6Ranges GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -1636,6 +2258,13 @@ func (o GetInstanceNetworkInterfaceOutput) AccessConfigs() GetInstanceNetworkInt
 // An array of alias IP ranges for this network interface. Structure documented below.
 func (o GetInstanceNetworkInterfaceOutput) AliasIpRanges() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// An array of IPv6 alias IP ranges for this network interface.
+func (o GetInstanceNetworkInterfaceOutput) AliasIpv6Ranges() GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpv6Range {
+		return v.AliasIpv6Ranges
+	}).(GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -1984,6 +2613,118 @@ func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterfaceAliasIpRange {
 		return vs[0].([]GetInstanceNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(GetInstanceNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpv6Range struct {
+	// The IP CIDR range represented by this alias IP range.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetInstanceNetworkInterfaceAliasIpv6RangeInput is an input type that accepts GetInstanceNetworkInterfaceAliasIpv6RangeArgs and GetInstanceNetworkInterfaceAliasIpv6RangeOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAliasIpv6RangeInput` via:
+//
+//	GetInstanceNetworkInterfaceAliasIpv6RangeArgs{...}
+type GetInstanceNetworkInterfaceAliasIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAliasIpv6RangeOutput() GetInstanceNetworkInterfaceAliasIpv6RangeOutput
+	ToGetInstanceNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeOutput
+}
+
+type GetInstanceNetworkInterfaceAliasIpv6RangeArgs struct {
+	// The IP CIDR range represented by this alias IP range.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetInstanceNetworkInterfaceAliasIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpv6RangeArgs) ToGetInstanceNetworkInterfaceAliasIpv6RangeOutput() GetInstanceNetworkInterfaceAliasIpv6RangeOutput {
+	return i.ToGetInstanceNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpv6RangeArgs) ToGetInstanceNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAliasIpv6RangeOutput)
+}
+
+// GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput is an input type that accepts GetInstanceNetworkInterfaceAliasIpv6RangeArray and GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceAliasIpv6RangeArray{ GetInstanceNetworkInterfaceAliasIpv6RangeArgs{...} }
+type GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput
+	ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput
+}
+
+type GetInstanceNetworkInterfaceAliasIpv6RangeArray []GetInstanceNetworkInterfaceAliasIpv6RangeInput
+
+func (GetInstanceNetworkInterfaceAliasIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpv6RangeArray) ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpv6RangeArray) ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAliasIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeOutput) ToGetInstanceNetworkInterfaceAliasIpv6RangeOutput() GetInstanceNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeOutput) ToGetInstanceNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range.
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAliasIpv6Range) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range.
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAliasIpv6Range) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetInstanceNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterfaceAliasIpv6Range {
+		return vs[0].([]GetInstanceNetworkInterfaceAliasIpv6Range)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceAliasIpv6RangeOutput)
 }
 
 type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
@@ -5069,6 +5810,8 @@ type GetInstanceTemplateNetworkInterface struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges []GetInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+	AliasIpv6Ranges []GetInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -5132,6 +5875,8 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+	AliasIpv6Ranges GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -5242,6 +5987,13 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetInstanceTe
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAliasIpRange {
 		return v.AliasIpRanges
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return v.AliasIpv6Ranges
+	}).(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -5598,6 +6350,130 @@ func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]GetInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpv6Range struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetInstanceTemplateNetworkInterfaceAliasIpv6RangeInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs and GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAliasIpv6RangeInput` via:
+//
+//	GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...}
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+	ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
+}
+
+// GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray and GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput` via:
+//
+//	GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{ GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...} }
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+	ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray []GetInstanceTemplateNetworkInterfaceAliasIpv6RangeInput
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range. This IP CIDR range
+// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+// system or used by other network interfaces. At the time of writing only a
+// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+// error.
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range. If left unspecified, the primary range of the subnetwork will be used.
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return vs[0].([]GetInstanceTemplateNetworkInterfaceAliasIpv6Range)[vs[1].(int)]
+	}).(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
 }
 
 type GetInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
@@ -18426,6 +19302,8 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+	AliasIpv6Ranges []GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -18489,6 +19367,8 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+	AliasIpv6Ranges GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -18599,6 +19479,13 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetRegi
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
 		return v.AliasIpRanges
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return v.AliasIpv6Ranges
+	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -18955,6 +19842,130 @@ func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
 		return vs[0].([]GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs and GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...}
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray and GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{ GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...} }
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray []GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range. This IP CIDR range
+// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+// system or used by other network interfaces. At the time of writing only a
+// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+// error.
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range. If left unspecified, the primary range of the subnetwork will be used.
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return vs[0].([]GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
@@ -35333,6 +36344,505 @@ func (o GetSecurityPolicyRuleRedirectOptionArrayOutput) Index(i pulumi.IntInput)
 	}).(GetSecurityPolicyRuleRedirectOptionOutput)
 }
 
+type GetServiceAttachmentConnectedEndpoint struct {
+	// The url of the consumer network.
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The URL of the consumer forwarding rule.
+	Endpoint string `pulumi:"endpoint"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// 'The nat IPs of the connected endpoint.'
+	NatIps []string `pulumi:"natIps"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount int `pulumi:"propagatedConnectionCount"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status string `pulumi:"status"`
+}
+
+// GetServiceAttachmentConnectedEndpointInput is an input type that accepts GetServiceAttachmentConnectedEndpointArgs and GetServiceAttachmentConnectedEndpointOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentConnectedEndpointInput` via:
+//
+//	GetServiceAttachmentConnectedEndpointArgs{...}
+type GetServiceAttachmentConnectedEndpointInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentConnectedEndpointOutput
+	ToGetServiceAttachmentConnectedEndpointOutputWithContext(context.Context) GetServiceAttachmentConnectedEndpointOutput
+}
+
+type GetServiceAttachmentConnectedEndpointArgs struct {
+	// The url of the consumer network.
+	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The URL of the consumer forwarding rule.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// 'The nat IPs of the connected endpoint.'
+	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount pulumi.IntInput `pulumi:"propagatedConnectionCount"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetServiceAttachmentConnectedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentConnectedEndpointArgs) ToGetServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentConnectedEndpointOutput {
+	return i.ToGetServiceAttachmentConnectedEndpointOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentConnectedEndpointArgs) ToGetServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) GetServiceAttachmentConnectedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentConnectedEndpointOutput)
+}
+
+// GetServiceAttachmentConnectedEndpointArrayInput is an input type that accepts GetServiceAttachmentConnectedEndpointArray and GetServiceAttachmentConnectedEndpointArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentConnectedEndpointArrayInput` via:
+//
+//	GetServiceAttachmentConnectedEndpointArray{ GetServiceAttachmentConnectedEndpointArgs{...} }
+type GetServiceAttachmentConnectedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentConnectedEndpointArrayOutput
+	ToGetServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Context) GetServiceAttachmentConnectedEndpointArrayOutput
+}
+
+type GetServiceAttachmentConnectedEndpointArray []GetServiceAttachmentConnectedEndpointInput
+
+func (GetServiceAttachmentConnectedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentConnectedEndpointArray) ToGetServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentConnectedEndpointArrayOutput {
+	return i.ToGetServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentConnectedEndpointArray) ToGetServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) GetServiceAttachmentConnectedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+type GetServiceAttachmentConnectedEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentConnectedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentConnectedEndpointOutput) ToGetServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConnectedEndpointOutput) ToGetServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) GetServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+// The url of the consumer network.
+func (o GetServiceAttachmentConnectedEndpointOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) string { return v.ConsumerNetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the consumer forwarding rule.
+func (o GetServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// NOTE: This field is temporarily non-functional due to an underlying API issue.
+// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+// 'The nat IPs of the connected endpoint.'
+func (o GetServiceAttachmentConnectedEndpointOutput) NatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) []string { return v.NatIps }).(pulumi.StringArrayOutput)
+}
+
+// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+func (o GetServiceAttachmentConnectedEndpointOutput) PropagatedConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) int { return v.PropagatedConnectionCount }).(pulumi.IntOutput)
+}
+
+// The PSC connection id of the connected endpoint.
+func (o GetServiceAttachmentConnectedEndpointOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The status of the connection from the consumer forwarding rule to
+// this service attachment.
+func (o GetServiceAttachmentConnectedEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConnectedEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentConnectedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentConnectedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentConnectedEndpointArrayOutput) ToGetServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConnectedEndpointArrayOutput) ToGetServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) GetServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentConnectedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentConnectedEndpoint {
+		return vs[0].([]GetServiceAttachmentConnectedEndpoint)[vs[1].(int)]
+	}).(GetServiceAttachmentConnectedEndpointOutput)
+}
+
+type GetServiceAttachmentConsumerAcceptList struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The endpoint that is allowed to connect to this service attachment.
+	// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+	EndpointUrl string `pulumi:"endpointUrl"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
+}
+
+// GetServiceAttachmentConsumerAcceptListInput is an input type that accepts GetServiceAttachmentConsumerAcceptListArgs and GetServiceAttachmentConsumerAcceptListOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentConsumerAcceptListInput` via:
+//
+//	GetServiceAttachmentConsumerAcceptListArgs{...}
+type GetServiceAttachmentConsumerAcceptListInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentConsumerAcceptListOutput
+	ToGetServiceAttachmentConsumerAcceptListOutputWithContext(context.Context) GetServiceAttachmentConsumerAcceptListOutput
+}
+
+type GetServiceAttachmentConsumerAcceptListArgs struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// The endpoint that is allowed to connect to this service attachment.
+	// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum pulumi.StringInput `pulumi:"projectIdOrNum"`
+}
+
+func (GetServiceAttachmentConsumerAcceptListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentConsumerAcceptListArgs) ToGetServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentConsumerAcceptListOutput {
+	return i.ToGetServiceAttachmentConsumerAcceptListOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentConsumerAcceptListArgs) ToGetServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) GetServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentConsumerAcceptListOutput)
+}
+
+// GetServiceAttachmentConsumerAcceptListArrayInput is an input type that accepts GetServiceAttachmentConsumerAcceptListArray and GetServiceAttachmentConsumerAcceptListArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentConsumerAcceptListArrayInput` via:
+//
+//	GetServiceAttachmentConsumerAcceptListArray{ GetServiceAttachmentConsumerAcceptListArgs{...} }
+type GetServiceAttachmentConsumerAcceptListArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentConsumerAcceptListArrayOutput
+	ToGetServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Context) GetServiceAttachmentConsumerAcceptListArrayOutput
+}
+
+type GetServiceAttachmentConsumerAcceptListArray []GetServiceAttachmentConsumerAcceptListInput
+
+func (GetServiceAttachmentConsumerAcceptListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentConsumerAcceptListArray) ToGetServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentConsumerAcceptListArrayOutput {
+	return i.ToGetServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentConsumerAcceptListArray) ToGetServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) GetServiceAttachmentConsumerAcceptListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentConsumerAcceptListArrayOutput)
+}
+
+type GetServiceAttachmentConsumerAcceptListOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentConsumerAcceptListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentConsumerAcceptListOutput) ToGetServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConsumerAcceptListOutput) ToGetServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) GetServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+// The number of consumer forwarding rules the consumer project can
+// create.
+func (o GetServiceAttachmentConsumerAcceptListOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConsumerAcceptList) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The endpoint that is allowed to connect to this service attachment.
+// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+func (o GetServiceAttachmentConsumerAcceptListOutput) EndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConsumerAcceptList) string { return v.EndpointUrl }).(pulumi.StringOutput)
+}
+
+// The network that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o GetServiceAttachmentConsumerAcceptListOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConsumerAcceptList) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// A project that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o GetServiceAttachmentConsumerAcceptListOutput) ProjectIdOrNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentConsumerAcceptList) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentConsumerAcceptListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentConsumerAcceptListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentConsumerAcceptListArrayOutput) ToGetServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConsumerAcceptListArrayOutput) ToGetServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) GetServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentConsumerAcceptListArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentConsumerAcceptList {
+		return vs[0].([]GetServiceAttachmentConsumerAcceptList)[vs[1].(int)]
+	}).(GetServiceAttachmentConsumerAcceptListOutput)
+}
+
+type GetServiceAttachmentPscServiceAttachmentId struct {
+	// The high 64 bits of the PSC service attachment ID.
+	High string `pulumi:"high"`
+	// The low 64 bits of the PSC service attachment ID.
+	Low string `pulumi:"low"`
+}
+
+// GetServiceAttachmentPscServiceAttachmentIdInput is an input type that accepts GetServiceAttachmentPscServiceAttachmentIdArgs and GetServiceAttachmentPscServiceAttachmentIdOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentPscServiceAttachmentIdInput` via:
+//
+//	GetServiceAttachmentPscServiceAttachmentIdArgs{...}
+type GetServiceAttachmentPscServiceAttachmentIdInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentPscServiceAttachmentIdOutput
+	ToGetServiceAttachmentPscServiceAttachmentIdOutputWithContext(context.Context) GetServiceAttachmentPscServiceAttachmentIdOutput
+}
+
+type GetServiceAttachmentPscServiceAttachmentIdArgs struct {
+	// The high 64 bits of the PSC service attachment ID.
+	High pulumi.StringInput `pulumi:"high"`
+	// The low 64 bits of the PSC service attachment ID.
+	Low pulumi.StringInput `pulumi:"low"`
+}
+
+func (GetServiceAttachmentPscServiceAttachmentIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentPscServiceAttachmentIdArgs) ToGetServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentPscServiceAttachmentIdOutput {
+	return i.ToGetServiceAttachmentPscServiceAttachmentIdOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentPscServiceAttachmentIdArgs) ToGetServiceAttachmentPscServiceAttachmentIdOutputWithContext(ctx context.Context) GetServiceAttachmentPscServiceAttachmentIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentPscServiceAttachmentIdOutput)
+}
+
+// GetServiceAttachmentPscServiceAttachmentIdArrayInput is an input type that accepts GetServiceAttachmentPscServiceAttachmentIdArray and GetServiceAttachmentPscServiceAttachmentIdArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentPscServiceAttachmentIdArrayInput` via:
+//
+//	GetServiceAttachmentPscServiceAttachmentIdArray{ GetServiceAttachmentPscServiceAttachmentIdArgs{...} }
+type GetServiceAttachmentPscServiceAttachmentIdArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentPscServiceAttachmentIdArrayOutput
+	ToGetServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(context.Context) GetServiceAttachmentPscServiceAttachmentIdArrayOutput
+}
+
+type GetServiceAttachmentPscServiceAttachmentIdArray []GetServiceAttachmentPscServiceAttachmentIdInput
+
+func (GetServiceAttachmentPscServiceAttachmentIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentPscServiceAttachmentIdArray) ToGetServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return i.ToGetServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentPscServiceAttachmentIdArray) ToGetServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(ctx context.Context) GetServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentPscServiceAttachmentIdArrayOutput)
+}
+
+type GetServiceAttachmentPscServiceAttachmentIdOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentPscServiceAttachmentIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentPscServiceAttachmentIdOutput) ToGetServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentPscServiceAttachmentIdOutput {
+	return o
+}
+
+func (o GetServiceAttachmentPscServiceAttachmentIdOutput) ToGetServiceAttachmentPscServiceAttachmentIdOutputWithContext(ctx context.Context) GetServiceAttachmentPscServiceAttachmentIdOutput {
+	return o
+}
+
+// The high 64 bits of the PSC service attachment ID.
+func (o GetServiceAttachmentPscServiceAttachmentIdOutput) High() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentPscServiceAttachmentId) string { return v.High }).(pulumi.StringOutput)
+}
+
+// The low 64 bits of the PSC service attachment ID.
+func (o GetServiceAttachmentPscServiceAttachmentIdOutput) Low() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentPscServiceAttachmentId) string { return v.Low }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentPscServiceAttachmentIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentPscServiceAttachmentIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentPscServiceAttachmentIdArrayOutput) ToGetServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentPscServiceAttachmentIdArrayOutput) ToGetServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(ctx context.Context) GetServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentPscServiceAttachmentIdArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentPscServiceAttachmentIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentPscServiceAttachmentId {
+		return vs[0].([]GetServiceAttachmentPscServiceAttachmentId)[vs[1].(int)]
+	}).(GetServiceAttachmentPscServiceAttachmentIdOutput)
+}
+
+type GetServiceAttachmentTunnelingConfig struct {
+	// The encapsulation profile for tunneling traffic.
+	EncapsulationProfile string `pulumi:"encapsulationProfile"`
+	// The routing mode for tunneling traffic.
+	RoutingMode string `pulumi:"routingMode"`
+}
+
+// GetServiceAttachmentTunnelingConfigInput is an input type that accepts GetServiceAttachmentTunnelingConfigArgs and GetServiceAttachmentTunnelingConfigOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentTunnelingConfigInput` via:
+//
+//	GetServiceAttachmentTunnelingConfigArgs{...}
+type GetServiceAttachmentTunnelingConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentTunnelingConfigOutput
+	ToGetServiceAttachmentTunnelingConfigOutputWithContext(context.Context) GetServiceAttachmentTunnelingConfigOutput
+}
+
+type GetServiceAttachmentTunnelingConfigArgs struct {
+	// The encapsulation profile for tunneling traffic.
+	EncapsulationProfile pulumi.StringInput `pulumi:"encapsulationProfile"`
+	// The routing mode for tunneling traffic.
+	RoutingMode pulumi.StringInput `pulumi:"routingMode"`
+}
+
+func (GetServiceAttachmentTunnelingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentTunnelingConfigArgs) ToGetServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentTunnelingConfigOutput {
+	return i.ToGetServiceAttachmentTunnelingConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentTunnelingConfigArgs) ToGetServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) GetServiceAttachmentTunnelingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentTunnelingConfigOutput)
+}
+
+// GetServiceAttachmentTunnelingConfigArrayInput is an input type that accepts GetServiceAttachmentTunnelingConfigArray and GetServiceAttachmentTunnelingConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentTunnelingConfigArrayInput` via:
+//
+//	GetServiceAttachmentTunnelingConfigArray{ GetServiceAttachmentTunnelingConfigArgs{...} }
+type GetServiceAttachmentTunnelingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentTunnelingConfigArrayOutput
+	ToGetServiceAttachmentTunnelingConfigArrayOutputWithContext(context.Context) GetServiceAttachmentTunnelingConfigArrayOutput
+}
+
+type GetServiceAttachmentTunnelingConfigArray []GetServiceAttachmentTunnelingConfigInput
+
+func (GetServiceAttachmentTunnelingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentTunnelingConfigArray) ToGetServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentTunnelingConfigArrayOutput {
+	return i.ToGetServiceAttachmentTunnelingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentTunnelingConfigArray) ToGetServiceAttachmentTunnelingConfigArrayOutputWithContext(ctx context.Context) GetServiceAttachmentTunnelingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentTunnelingConfigArrayOutput)
+}
+
+type GetServiceAttachmentTunnelingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentTunnelingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentTunnelingConfigOutput) ToGetServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+func (o GetServiceAttachmentTunnelingConfigOutput) ToGetServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) GetServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+// The encapsulation profile for tunneling traffic.
+func (o GetServiceAttachmentTunnelingConfigOutput) EncapsulationProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentTunnelingConfig) string { return v.EncapsulationProfile }).(pulumi.StringOutput)
+}
+
+// The routing mode for tunneling traffic.
+func (o GetServiceAttachmentTunnelingConfigOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentTunnelingConfig) string { return v.RoutingMode }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentTunnelingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentTunnelingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentTunnelingConfigArrayOutput) ToGetServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentTunnelingConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentTunnelingConfigArrayOutput) ToGetServiceAttachmentTunnelingConfigArrayOutputWithContext(ctx context.Context) GetServiceAttachmentTunnelingConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentTunnelingConfigArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentTunnelingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentTunnelingConfig {
+		return vs[0].([]GetServiceAttachmentTunnelingConfig)[vs[1].(int)]
+	}).(GetServiceAttachmentTunnelingConfigOutput)
+}
+
 type GetSnapshotSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
@@ -36545,6 +38055,18 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamInput)(nil)).Elem(), GetInstanceGroupManagerParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetInstanceGroupManagerParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerResourcePolicyInput)(nil)).Elem(), GetInstanceGroupManagerResourcePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerResourcePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerResourcePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), GetInstanceGroupManagerStandbyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStandbyPolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerStandbyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetInstanceGroupManagerStatefulExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIpArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulExternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIpInput)(nil)).Elem(), GetInstanceGroupManagerStatefulInternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIpArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulInternalIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusInput)(nil)).Elem(), GetInstanceGroupManagerStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetInstanceGroupManagerStatusAllInstancesConfigArgs{})
@@ -36577,6 +38099,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetInstanceNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceIpv6AccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPerformanceConfigInput)(nil)).Elem(), GetInstanceNetworkPerformanceConfigArgs{})
@@ -36629,6 +38153,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), GetInstanceTemplateNetworkPerformanceConfigArgs{})
@@ -36825,6 +38351,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkPerformanceConfigArgs{})
@@ -37077,6 +38605,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRedirectOptionInput)(nil)).Elem(), GetSecurityPolicyRuleRedirectOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleRedirectOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleRedirectOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentConnectedEndpointInput)(nil)).Elem(), GetServiceAttachmentConnectedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentConnectedEndpointArrayInput)(nil)).Elem(), GetServiceAttachmentConnectedEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentConsumerAcceptListInput)(nil)).Elem(), GetServiceAttachmentConsumerAcceptListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentConsumerAcceptListArrayInput)(nil)).Elem(), GetServiceAttachmentConsumerAcceptListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentIdInput)(nil)).Elem(), GetServiceAttachmentPscServiceAttachmentIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentIdArrayInput)(nil)).Elem(), GetServiceAttachmentPscServiceAttachmentIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigArrayInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
@@ -37093,6 +38629,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerParamOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerParamArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerResourcePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerResourcePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStandbyPolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStandbyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulExternalIpOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulExternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulInternalIpOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulInternalIpArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusAllInstancesConfigOutput{})
@@ -37125,6 +38673,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigOutput{})
@@ -37177,6 +38727,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkPerformanceConfigOutput{})
@@ -37373,6 +38925,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkPerformanceConfigOutput{})
@@ -37625,6 +39179,14 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleRedirectOptionOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleRedirectOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentConnectedEndpointOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentConnectedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentConsumerAcceptListOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentConsumerAcceptListArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentPscServiceAttachmentIdOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentPscServiceAttachmentIdArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})

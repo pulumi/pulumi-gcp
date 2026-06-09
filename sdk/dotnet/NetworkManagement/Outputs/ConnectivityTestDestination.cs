@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// </summary>
         public readonly string? GkeMasterCluster;
         /// <summary>
+        /// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+        /// </summary>
+        public readonly string? GkePod;
+        /// <summary>
         /// A Compute Engine instance URI.
         /// </summary>
         public readonly string? Instance;
@@ -44,6 +48,11 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// A VPC network URI.
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+        /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+        /// </summary>
+        public readonly string? NetworkType;
         /// <summary>
         /// The IP protocol port of the endpoint. Only applicable when protocol is
         /// TCP or UDP.
@@ -80,11 +89,15 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
 
             string? gkeMasterCluster,
 
+            string? gkePod,
+
             string? instance,
 
             string? ipAddress,
 
             string? network,
+
+            string? networkType,
 
             int? port,
 
@@ -98,9 +111,11 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
             ForwardingRule = forwardingRule;
             Fqdn = fqdn;
             GkeMasterCluster = gkeMasterCluster;
+            GkePod = gkePod;
             Instance = instance;
             IpAddress = ipAddress;
             Network = network;
+            NetworkType = networkType;
             Port = port;
             ProjectId = projectId;
             RedisCluster = redisCluster;

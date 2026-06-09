@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,8 +20,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
      * ***
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="name")
+    private @Nullable String name;
 
     /**
      * @return The name of the network.
@@ -30,8 +29,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
      * ***
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -66,12 +65,28 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The URI of the resource.
+     * 
+     */
+    @Import(name="selfLink")
+    private @Nullable String selfLink;
+
+    /**
+     * @return The URI of the resource.
+     * 
+     */
+    public Optional<String> selfLink() {
+        return Optional.ofNullable(this.selfLink);
+    }
+
     private GetNetworkPlainArgs() {}
 
     private GetNetworkPlainArgs(GetNetworkPlainArgs $) {
         this.name = $.name;
         this.networkProfile = $.networkProfile;
         this.project = $.project;
+        this.selfLink = $.selfLink;
     }
 
     public static Builder builder() {
@@ -100,7 +115,7 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
@@ -128,10 +143,18 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param selfLink The URI of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLink(@Nullable String selfLink) {
+            $.selfLink = selfLink;
+            return this;
+        }
+
         public GetNetworkPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetNetworkPlainArgs", "name");
-            }
             return $;
         }
     }

@@ -15043,6 +15043,10 @@ type AppVersionSnapshotGuardrailLlmPromptSecurity struct {
 	// Configuration for default system security settings.
 	// Structure is documented below.
 	DefaultSettings []AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting `pulumi:"defaultSettings"`
+	// (Output)
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen *bool `pulumi:"failOpen"`
 }
 
 // AppVersionSnapshotGuardrailLlmPromptSecurityInput is an input type that accepts AppVersionSnapshotGuardrailLlmPromptSecurityArgs and AppVersionSnapshotGuardrailLlmPromptSecurityOutput values.
@@ -15066,6 +15070,10 @@ type AppVersionSnapshotGuardrailLlmPromptSecurityArgs struct {
 	// Configuration for default system security settings.
 	// Structure is documented below.
 	DefaultSettings AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArrayInput `pulumi:"defaultSettings"`
+	// (Output)
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
 }
 
 func (AppVersionSnapshotGuardrailLlmPromptSecurityArgs) ElementType() reflect.Type {
@@ -15136,6 +15144,13 @@ func (o AppVersionSnapshotGuardrailLlmPromptSecurityOutput) DefaultSettings() Ap
 	return o.ApplyT(func(v AppVersionSnapshotGuardrailLlmPromptSecurity) []AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting {
 		return v.DefaultSettings
 	}).(AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArrayOutput)
+}
+
+// (Output)
+// If an error occurs during the policy check, fail open and do not trigger
+// the guardrail.
+func (o AppVersionSnapshotGuardrailLlmPromptSecurityOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotGuardrailLlmPromptSecurity) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
 }
 
 type AppVersionSnapshotGuardrailLlmPromptSecurityArrayOutput struct{ *pulumi.OutputState }
@@ -35421,6 +35436,12 @@ type GuardrailLlmPromptSecurity struct {
 	// Configuration for default system security settings.
 	// Structure is documented below.
 	DefaultSettings *GuardrailLlmPromptSecurityDefaultSettings `pulumi:"defaultSettings"`
+	// Determines the behavior when the guardrail encounters an LLM error.
+	// - If true: the guardrail is bypassed.
+	// - If false (default): the guardrail triggers/blocks.
+	//   Note: If a custom policy is provided, this field is ignored in favor of
+	//   the policy's 'failOpen' configuration.
+	FailOpen *bool `pulumi:"failOpen"`
 }
 
 // GuardrailLlmPromptSecurityInput is an input type that accepts GuardrailLlmPromptSecurityArgs and GuardrailLlmPromptSecurityOutput values.
@@ -35442,6 +35463,12 @@ type GuardrailLlmPromptSecurityArgs struct {
 	// Configuration for default system security settings.
 	// Structure is documented below.
 	DefaultSettings GuardrailLlmPromptSecurityDefaultSettingsPtrInput `pulumi:"defaultSettings"`
+	// Determines the behavior when the guardrail encounters an LLM error.
+	// - If true: the guardrail is bypassed.
+	// - If false (default): the guardrail triggers/blocks.
+	//   Note: If a custom policy is provided, this field is ignored in favor of
+	//   the policy's 'failOpen' configuration.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
 }
 
 func (GuardrailLlmPromptSecurityArgs) ElementType() reflect.Type {
@@ -35536,6 +35563,15 @@ func (o GuardrailLlmPromptSecurityOutput) DefaultSettings() GuardrailLlmPromptSe
 	}).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
 }
 
+// Determines the behavior when the guardrail encounters an LLM error.
+//   - If true: the guardrail is bypassed.
+//   - If false (default): the guardrail triggers/blocks.
+//     Note: If a custom policy is provided, this field is ignored in favor of
+//     the policy's 'failOpen' configuration.
+func (o GuardrailLlmPromptSecurityOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurity) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
 type GuardrailLlmPromptSecurityPtrOutput struct{ *pulumi.OutputState }
 
 func (GuardrailLlmPromptSecurityPtrOutput) ElementType() reflect.Type {
@@ -35581,6 +35617,20 @@ func (o GuardrailLlmPromptSecurityPtrOutput) DefaultSettings() GuardrailLlmPromp
 		}
 		return v.DefaultSettings
 	}).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
+}
+
+// Determines the behavior when the guardrail encounters an LLM error.
+//   - If true: the guardrail is bypassed.
+//   - If false (default): the guardrail triggers/blocks.
+//     Note: If a custom policy is provided, this field is ignored in favor of
+//     the policy's 'failOpen' configuration.
+func (o GuardrailLlmPromptSecurityPtrOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailOpen
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GuardrailLlmPromptSecurityCustomPolicy struct {
@@ -36474,6 +36524,166 @@ func (o GuardrailModelSafetySafetySettingArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuardrailModelSafetySafetySetting {
 		return vs[0].([]GuardrailModelSafetySafetySetting)[vs[1].(int)]
 	}).(GuardrailModelSafetySafetySettingOutput)
+}
+
+type SecuritySettingsEndpointControlPolicy struct {
+	// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Optional. The scope in which this policy's allowedOrigins list is enforced.
+	// Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+	EnforcementScope *string `pulumi:"enforcementScope"`
+}
+
+// SecuritySettingsEndpointControlPolicyInput is an input type that accepts SecuritySettingsEndpointControlPolicyArgs and SecuritySettingsEndpointControlPolicyOutput values.
+// You can construct a concrete instance of `SecuritySettingsEndpointControlPolicyInput` via:
+//
+//	SecuritySettingsEndpointControlPolicyArgs{...}
+type SecuritySettingsEndpointControlPolicyInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsEndpointControlPolicyOutput() SecuritySettingsEndpointControlPolicyOutput
+	ToSecuritySettingsEndpointControlPolicyOutputWithContext(context.Context) SecuritySettingsEndpointControlPolicyOutput
+}
+
+type SecuritySettingsEndpointControlPolicyArgs struct {
+	// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Optional. The scope in which this policy's allowedOrigins list is enforced.
+	// Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+	EnforcementScope pulumi.StringPtrInput `pulumi:"enforcementScope"`
+}
+
+func (SecuritySettingsEndpointControlPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingsEndpointControlPolicy)(nil)).Elem()
+}
+
+func (i SecuritySettingsEndpointControlPolicyArgs) ToSecuritySettingsEndpointControlPolicyOutput() SecuritySettingsEndpointControlPolicyOutput {
+	return i.ToSecuritySettingsEndpointControlPolicyOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsEndpointControlPolicyArgs) ToSecuritySettingsEndpointControlPolicyOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsEndpointControlPolicyOutput)
+}
+
+func (i SecuritySettingsEndpointControlPolicyArgs) ToSecuritySettingsEndpointControlPolicyPtrOutput() SecuritySettingsEndpointControlPolicyPtrOutput {
+	return i.ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsEndpointControlPolicyArgs) ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsEndpointControlPolicyOutput).ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(ctx)
+}
+
+// SecuritySettingsEndpointControlPolicyPtrInput is an input type that accepts SecuritySettingsEndpointControlPolicyArgs, SecuritySettingsEndpointControlPolicyPtr and SecuritySettingsEndpointControlPolicyPtrOutput values.
+// You can construct a concrete instance of `SecuritySettingsEndpointControlPolicyPtrInput` via:
+//
+//	        SecuritySettingsEndpointControlPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecuritySettingsEndpointControlPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsEndpointControlPolicyPtrOutput() SecuritySettingsEndpointControlPolicyPtrOutput
+	ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(context.Context) SecuritySettingsEndpointControlPolicyPtrOutput
+}
+
+type securitySettingsEndpointControlPolicyPtrType SecuritySettingsEndpointControlPolicyArgs
+
+func SecuritySettingsEndpointControlPolicyPtr(v *SecuritySettingsEndpointControlPolicyArgs) SecuritySettingsEndpointControlPolicyPtrInput {
+	return (*securitySettingsEndpointControlPolicyPtrType)(v)
+}
+
+func (*securitySettingsEndpointControlPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettingsEndpointControlPolicy)(nil)).Elem()
+}
+
+func (i *securitySettingsEndpointControlPolicyPtrType) ToSecuritySettingsEndpointControlPolicyPtrOutput() SecuritySettingsEndpointControlPolicyPtrOutput {
+	return i.ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *securitySettingsEndpointControlPolicyPtrType) ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsEndpointControlPolicyPtrOutput)
+}
+
+type SecuritySettingsEndpointControlPolicyOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsEndpointControlPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingsEndpointControlPolicy)(nil)).Elem()
+}
+
+func (o SecuritySettingsEndpointControlPolicyOutput) ToSecuritySettingsEndpointControlPolicyOutput() SecuritySettingsEndpointControlPolicyOutput {
+	return o
+}
+
+func (o SecuritySettingsEndpointControlPolicyOutput) ToSecuritySettingsEndpointControlPolicyOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyOutput {
+	return o
+}
+
+func (o SecuritySettingsEndpointControlPolicyOutput) ToSecuritySettingsEndpointControlPolicyPtrOutput() SecuritySettingsEndpointControlPolicyPtrOutput {
+	return o.ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingsEndpointControlPolicyOutput) ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettingsEndpointControlPolicy) *SecuritySettingsEndpointControlPolicy {
+		return &v
+	}).(SecuritySettingsEndpointControlPolicyPtrOutput)
+}
+
+// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+func (o SecuritySettingsEndpointControlPolicyOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecuritySettingsEndpointControlPolicy) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The scope in which this policy's allowedOrigins list is enforced.
+// Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+func (o SecuritySettingsEndpointControlPolicyOutput) EnforcementScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsEndpointControlPolicy) *string { return v.EnforcementScope }).(pulumi.StringPtrOutput)
+}
+
+type SecuritySettingsEndpointControlPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsEndpointControlPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettingsEndpointControlPolicy)(nil)).Elem()
+}
+
+func (o SecuritySettingsEndpointControlPolicyPtrOutput) ToSecuritySettingsEndpointControlPolicyPtrOutput() SecuritySettingsEndpointControlPolicyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsEndpointControlPolicyPtrOutput) ToSecuritySettingsEndpointControlPolicyPtrOutputWithContext(ctx context.Context) SecuritySettingsEndpointControlPolicyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsEndpointControlPolicyPtrOutput) Elem() SecuritySettingsEndpointControlPolicyOutput {
+	return o.ApplyT(func(v *SecuritySettingsEndpointControlPolicy) SecuritySettingsEndpointControlPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingsEndpointControlPolicy
+		return ret
+	}).(SecuritySettingsEndpointControlPolicyOutput)
+}
+
+// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
+func (o SecuritySettingsEndpointControlPolicyPtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecuritySettingsEndpointControlPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The scope in which this policy's allowedOrigins list is enforced.
+// Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
+func (o SecuritySettingsEndpointControlPolicyPtrOutput) EnforcementScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsEndpointControlPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcementScope
+	}).(pulumi.StringPtrOutput)
 }
 
 type ToolClientFunction struct {
@@ -46801,6 +47011,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetyPtrInput)(nil)).Elem(), GuardrailModelSafetyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetySafetySettingInput)(nil)).Elem(), GuardrailModelSafetySafetySettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetySafetySettingArrayInput)(nil)).Elem(), GuardrailModelSafetySafetySettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsEndpointControlPolicyInput)(nil)).Elem(), SecuritySettingsEndpointControlPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsEndpointControlPolicyPtrInput)(nil)).Elem(), SecuritySettingsEndpointControlPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionInput)(nil)).Elem(), ToolClientFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionPtrInput)(nil)).Elem(), ToolClientFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionParametersInput)(nil)).Elem(), ToolClientFunctionParametersArgs{})
@@ -47350,6 +47562,8 @@ func init() {
 	pulumi.RegisterOutputType(GuardrailModelSafetyPtrOutput{})
 	pulumi.RegisterOutputType(GuardrailModelSafetySafetySettingOutput{})
 	pulumi.RegisterOutputType(GuardrailModelSafetySafetySettingArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsEndpointControlPolicyOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsEndpointControlPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionPtrOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionParametersOutput{})

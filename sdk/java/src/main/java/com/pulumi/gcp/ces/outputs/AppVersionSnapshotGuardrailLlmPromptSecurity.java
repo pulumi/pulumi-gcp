@@ -6,8 +6,10 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -27,6 +29,13 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurity {
      * 
      */
     private @Nullable List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> defaultSettings;
+    /**
+     * @return (Output)
+     * If an error occurs during the policy check, fail open and do not trigger
+     * the guardrail.
+     * 
+     */
+    private @Nullable Boolean failOpen;
 
     private AppVersionSnapshotGuardrailLlmPromptSecurity() {}
     /**
@@ -48,6 +57,15 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurity {
     public List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> defaultSettings() {
         return this.defaultSettings == null ? List.of() : this.defaultSettings;
     }
+    /**
+     * @return (Output)
+     * If an error occurs during the policy check, fail open and do not trigger
+     * the guardrail.
+     * 
+     */
+    public Optional<Boolean> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,11 +78,13 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurity {
     public static final class Builder {
         private @Nullable List<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy> customPolicies;
         private @Nullable List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting> defaultSettings;
+        private @Nullable Boolean failOpen;
         public Builder() {}
         public Builder(AppVersionSnapshotGuardrailLlmPromptSecurity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customPolicies = defaults.customPolicies;
     	      this.defaultSettings = defaults.defaultSettings;
+    	      this.failOpen = defaults.failOpen;
         }
 
         @CustomType.Setter
@@ -85,10 +105,17 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurity {
         public Builder defaultSettings(AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting... defaultSettings) {
             return defaultSettings(List.of(defaultSettings));
         }
+        @CustomType.Setter
+        public Builder failOpen(@Nullable Boolean failOpen) {
+
+            this.failOpen = failOpen;
+            return this;
+        }
         public AppVersionSnapshotGuardrailLlmPromptSecurity build() {
             final var _resultValue = new AppVersionSnapshotGuardrailLlmPromptSecurity();
             _resultValue.customPolicies = customPolicies;
             _resultValue.defaultSettings = defaultSettings;
+            _resultValue.failOpen = failOpen;
             return _resultValue;
         }
     }

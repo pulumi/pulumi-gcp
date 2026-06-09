@@ -670,6 +670,27 @@ class ConnectivityTest(pulumi.CustomResource):
             bypass_firewall_checks=True,
             round_trip=True)
         ```
+        ### Network Management Connectivity Test Gke Pod
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pod_test = gcp.networkmanagement.ConnectivityTest("pod-test",
+            name="conn-test-pod",
+            source={
+                "ip_address": "10.0.0.1",
+                "project_id": "test-project",
+                "network_type": "GCP_NETWORK",
+            },
+            destination={
+                "ip_address": "10.0.0.2",
+                "project_id": "test-project",
+                "network_type": "GCP_NETWORK",
+                "gke_pod": "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+            },
+            protocol="TCP")
+        ```
 
         ## Import
 
@@ -864,6 +885,27 @@ class ConnectivityTest(pulumi.CustomResource):
             },
             bypass_firewall_checks=True,
             round_trip=True)
+        ```
+        ### Network Management Connectivity Test Gke Pod
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pod_test = gcp.networkmanagement.ConnectivityTest("pod-test",
+            name="conn-test-pod",
+            source={
+                "ip_address": "10.0.0.1",
+                "project_id": "test-project",
+                "network_type": "GCP_NETWORK",
+            },
+            destination={
+                "ip_address": "10.0.0.2",
+                "project_id": "test-project",
+                "network_type": "GCP_NETWORK",
+                "gke_pod": "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+            },
+            protocol="TCP")
         ```
 
         ## Import

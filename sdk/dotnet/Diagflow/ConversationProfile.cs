@@ -109,12 +109,17 @@ namespace Pulumi.Gcp.Diagflow
     ///     var bidiProfile = new Gcp.Diagflow.ConversationProfile("bidi_profile", new()
     ///     {
     ///         DisplayName = "dialogflow-profile-bidi",
-    ///         Location = "global",
+    ///         Location = "europe-west1",
     ///         LanguageCode = "en-US",
     ///         UseBidiStreaming = true,
     ///         AutomatedAgentConfig = new Gcp.Diagflow.Inputs.ConversationProfileAutomatedAgentConfigArgs
     ///         {
     ///             Agent = cesAppForAgent.Id,
+    ///         },
+    ///         SipConfig = new Gcp.Diagflow.Inputs.ConversationProfileSipConfigArgs
+    ///         {
+    ///             AllowVirtualAgentInteraction = true,
+    ///             CreateConversationOnTheFly = true,
     ///         },
     ///     });
     /// 
@@ -181,7 +186,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> LanguageCode { get; private set; } = null!;
 
         /// <summary>
-        /// desc
+        /// The location of the conversation profile.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -194,7 +199,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.ConversationProfileLoggingConfig?> LoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// name
+        /// Identifier. The unique identifier of this conversation profile.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -234,6 +239,14 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("securitySettings")]
         public Output<string?> SecuritySettings { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for SIP.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sipConfig")]
+        public Output<Outputs.ConversationProfileSipConfig?> SipConfig { get; private set; } = null!;
 
         /// <summary>
         /// Settings for speech transcription.
@@ -353,7 +366,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// desc
+        /// The location of the conversation profile.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -400,6 +413,14 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("securitySettings")]
         public Input<string>? SecuritySettings { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for SIP.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sipConfig")]
+        public Input<Inputs.ConversationProfileSipConfigArgs>? SipConfig { get; set; }
 
         /// <summary>
         /// Settings for speech transcription.
@@ -481,7 +502,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// desc
+        /// The location of the conversation profile.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -494,7 +515,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.ConversationProfileLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// name
+        /// Identifier. The unique identifier of this conversation profile.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -534,6 +555,14 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("securitySettings")]
         public Input<string>? SecuritySettings { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Configuration for SIP.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sipConfig")]
+        public Input<Inputs.ConversationProfileSipConfigGetArgs>? SipConfig { get; set; }
 
         /// <summary>
         /// Settings for speech transcription.

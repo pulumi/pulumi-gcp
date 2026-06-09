@@ -236,6 +236,43 @@ import (
 //	}
 //
 // ```
+// ### Network Management Connectivity Test Gke Pod
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkmanagement.NewConnectivityTest(ctx, "pod-test", &networkmanagement.ConnectivityTestArgs{
+//				Name: pulumi.String("conn-test-pod"),
+//				Source: &networkmanagement.ConnectivityTestSourceArgs{
+//					IpAddress:   pulumi.String("10.0.0.1"),
+//					ProjectId:   pulumi.String("test-project"),
+//					NetworkType: pulumi.String("GCP_NETWORK"),
+//				},
+//				Destination: &networkmanagement.ConnectivityTestDestinationArgs{
+//					IpAddress:   pulumi.String("10.0.0.2"),
+//					ProjectId:   pulumi.String("test-project"),
+//					NetworkType: pulumi.String("GCP_NETWORK"),
+//					GkePod:      pulumi.String("projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name"),
+//				},
+//				Protocol: pulumi.String("TCP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

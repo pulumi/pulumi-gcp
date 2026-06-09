@@ -195,6 +195,90 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Firewall Policy Rule Target Type Internal Managed Lb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net = new gcp.compute.Network("net", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const backend = new gcp.compute.Subnetwork("backend", {
+ *     name: "backend-subnet",
+ *     region: "us-central1",
+ *     network: net.id,
+ *     ipCidrRange: "10.10.0.0/24",
+ * });
+ * const proxy = new gcp.compute.Subnetwork("proxy", {
+ *     name: "proxy-subnet",
+ *     region: "us-central1",
+ *     network: net.id,
+ *     ipCidrRange: "10.20.0.0/24",
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ * });
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "backend-service",
+ *     region: "us-central1",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     name: "url-map",
+ *     region: "us-central1",
+ *     defaultService: defaultRegionBackendService.id,
+ * });
+ * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("default", {
+ *     name: "target-http-proxy",
+ *     region: "us-central1",
+ *     urlMap: defaultRegionUrlMap.id,
+ * });
+ * const ilb = new gcp.compute.ForwardingRule("ilb", {
+ *     name: "forwarding-rule",
+ *     region: "us-central1",
+ *     network: net.id,
+ *     subnetwork: backend.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     target: defaultRegionTargetHttpProxy.id,
+ *     ipProtocol: "TCP",
+ *     portRange: "80",
+ * }, {
+ *     dependsOn: [proxy],
+ * });
+ * const fwPolicy = new gcp.compute.NetworkFirewallPolicy("fw_policy", {
+ *     name: "fw-policy",
+ *     project: "my-project-name",
+ * });
+ * const primary = new gcp.compute.NetworkFirewallPolicyRule("primary", {
+ *     firewallPolicy: fwPolicy.name,
+ *     priority: 1000,
+ *     action: "allow",
+ *     direction: "INGRESS",
+ *     targetType: "INTERNAL_MANAGED_LB",
+ *     targetForwardingRules: [ilb.id],
+ *     match: {
+ *         srcIpRanges: ["10.0.0.0/8"],
+ *         layer4Configs: [{
+ *             ipProtocol: "tcp",
+ *         }],
+ *     },
+ * });
+ * const globalAssoc = new gcp.compute.NetworkFirewallPolicyAssociation("global_assoc", {
+ *     name: "global-policy-assoc-_72490",
+ *     firewallPolicy: fwPolicy.id,
+ *     attachmentTarget: net.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -318,6 +402,16 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
      */
     declare public readonly securityProfileGroup: pulumi.Output<string | undefined>;
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     */
+    declare public readonly targetForwardingRules: pulumi.Output<string[] | undefined>;
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -328,6 +422,13 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     declare public readonly targetServiceAccounts: pulumi.Output<string[] | undefined>;
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     */
+    declare public readonly targetType: pulumi.Output<string>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
@@ -362,8 +463,10 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleName"] = state?.ruleName;
             resourceInputs["ruleTupleCount"] = state?.ruleTupleCount;
             resourceInputs["securityProfileGroup"] = state?.securityProfileGroup;
+            resourceInputs["targetForwardingRules"] = state?.targetForwardingRules;
             resourceInputs["targetSecureTags"] = state?.targetSecureTags;
             resourceInputs["targetServiceAccounts"] = state?.targetServiceAccounts;
+            resourceInputs["targetType"] = state?.targetType;
             resourceInputs["tlsInspect"] = state?.tlsInspect;
         } else {
             const args = argsOrState as NetworkFirewallPolicyRuleArgs | undefined;
@@ -394,8 +497,10 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["ruleName"] = args?.ruleName;
             resourceInputs["securityProfileGroup"] = args?.securityProfileGroup;
+            resourceInputs["targetForwardingRules"] = args?.targetForwardingRules;
             resourceInputs["targetSecureTags"] = args?.targetSecureTags;
             resourceInputs["targetServiceAccounts"] = args?.targetServiceAccounts;
+            resourceInputs["targetType"] = args?.targetType;
             resourceInputs["tlsInspect"] = args?.tlsInspect;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -488,6 +593,16 @@ export interface NetworkFirewallPolicyRuleState {
      */
     securityProfileGroup?: pulumi.Input<string | undefined>;
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     */
+    targetForwardingRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -498,6 +613,13 @@ export interface NetworkFirewallPolicyRuleState {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     */
+    targetType?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
@@ -575,6 +697,16 @@ export interface NetworkFirewallPolicyRuleArgs {
      */
     securityProfileGroup?: pulumi.Input<string | undefined>;
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     */
+    targetForwardingRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -585,6 +717,13 @@ export interface NetworkFirewallPolicyRuleArgs {
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     */
+    targetType?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.

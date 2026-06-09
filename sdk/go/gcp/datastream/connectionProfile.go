@@ -270,12 +270,6 @@ import (
 //					Bucket:   pulumi.String("my-bucket"),
 //					RootPath: pulumi.String("/path"),
 //				},
-//				ForwardSshConnectivity: &datastream.ConnectionProfileForwardSshConnectivityArgs{
-//					Hostname: pulumi.String("google.com"),
-//					Username: pulumi.String("my-user"),
-//					Port:     pulumi.Int(8022),
-//					Password: pulumi.String("swordfish"),
-//				},
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},

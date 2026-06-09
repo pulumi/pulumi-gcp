@@ -25,12 +25,17 @@ type ConnectivityTestDestination struct {
 	Fqdn *string `pulumi:"fqdn"`
 	// A cluster URI for Google Kubernetes Engine cluster control plane.
 	GkeMasterCluster *string `pulumi:"gkeMasterCluster"`
+	// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+	GkePod *string `pulumi:"gkePod"`
 	// A Compute Engine instance URI.
 	Instance *string `pulumi:"instance"`
 	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress *string `pulumi:"ipAddress"`
 	// A VPC network URI.
 	Network *string `pulumi:"network"`
+	// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+	// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+	NetworkType *string `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is
 	// TCP or UDP.
 	Port *int `pulumi:"port"`
@@ -73,12 +78,17 @@ type ConnectivityTestDestinationArgs struct {
 	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
 	// A cluster URI for Google Kubernetes Engine cluster control plane.
 	GkeMasterCluster pulumi.StringPtrInput `pulumi:"gkeMasterCluster"`
+	// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+	GkePod pulumi.StringPtrInput `pulumi:"gkePod"`
 	// A Compute Engine instance URI.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
 	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// A VPC network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+	// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is
 	// TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -198,6 +208,11 @@ func (o ConnectivityTestDestinationOutput) GkeMasterCluster() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.GkeMasterCluster }).(pulumi.StringPtrOutput)
 }
 
+// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+func (o ConnectivityTestDestinationOutput) GkePod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.GkePod }).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestDestinationOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Instance }).(pulumi.StringPtrOutput)
@@ -211,6 +226,12 @@ func (o ConnectivityTestDestinationOutput) IpAddress() pulumi.StringPtrOutput {
 // A VPC network URI.
 func (o ConnectivityTestDestinationOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+func (o ConnectivityTestDestinationOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
 // The IP protocol port of the endpoint. Only applicable when protocol is
@@ -309,6 +330,16 @@ func (o ConnectivityTestDestinationPtrOutput) GkeMasterCluster() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+func (o ConnectivityTestDestinationPtrOutput) GkePod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkePod
+	}).(pulumi.StringPtrOutput)
+}
+
 // A Compute Engine instance URI.
 func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
@@ -336,6 +367,17 @@ func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+func (o ConnectivityTestDestinationPtrOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2010,12 +2052,16 @@ type GetConnectivityTestsConnectivityTestDestination struct {
 	Fqdn string `pulumi:"fqdn"`
 	// A cluster URI for Google Kubernetes Engine cluster control plane.
 	GkeMasterCluster string `pulumi:"gkeMasterCluster"`
+	// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+	GkePod string `pulumi:"gkePod"`
 	// A Compute Engine instance URI.
 	Instance string `pulumi:"instance"`
 	// The IP address of the endpoint.
 	IpAddress string `pulumi:"ipAddress"`
 	// A VPC network URI.
 	Network string `pulumi:"network"`
+	// Type of the network where the endpoint is located.
+	NetworkType string `pulumi:"networkType"`
 	// The IP protocol port of the endpoint.
 	Port int `pulumi:"port"`
 	// Project ID where the endpoint is located.
@@ -2047,12 +2093,16 @@ type GetConnectivityTestsConnectivityTestDestinationArgs struct {
 	Fqdn pulumi.StringInput `pulumi:"fqdn"`
 	// A cluster URI for Google Kubernetes Engine cluster control plane.
 	GkeMasterCluster pulumi.StringInput `pulumi:"gkeMasterCluster"`
+	// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+	GkePod pulumi.StringInput `pulumi:"gkePod"`
 	// A Compute Engine instance URI.
 	Instance pulumi.StringInput `pulumi:"instance"`
 	// The IP address of the endpoint.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// A VPC network URI.
 	Network pulumi.StringInput `pulumi:"network"`
+	// Type of the network where the endpoint is located.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The IP protocol port of the endpoint.
 	Port pulumi.IntInput `pulumi:"port"`
 	// Project ID where the endpoint is located.
@@ -2135,6 +2185,11 @@ func (o GetConnectivityTestsConnectivityTestDestinationOutput) GkeMasterCluster(
 	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.GkeMasterCluster }).(pulumi.StringOutput)
 }
 
+// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) GkePod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.GkePod }).(pulumi.StringOutput)
+}
+
 // A Compute Engine instance URI.
 func (o GetConnectivityTestsConnectivityTestDestinationOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.Instance }).(pulumi.StringOutput)
@@ -2148,6 +2203,11 @@ func (o GetConnectivityTestsConnectivityTestDestinationOutput) IpAddress() pulum
 // A VPC network URI.
 func (o GetConnectivityTestsConnectivityTestDestinationOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Type of the network where the endpoint is located.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The IP protocol port of the endpoint.

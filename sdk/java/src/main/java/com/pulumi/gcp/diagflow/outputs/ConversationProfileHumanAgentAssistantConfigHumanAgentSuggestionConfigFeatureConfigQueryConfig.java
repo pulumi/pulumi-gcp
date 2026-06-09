@@ -40,7 +40,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
      */
     private @Nullable Integer maxResults;
     /**
-     * @return he customized sections chosen to return when requesting a summary of a conversation.
+     * @return The customized sections chosen to return when requesting a summary of a conversation.
      * Structure is documented below.
      * 
      */
@@ -80,7 +80,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
         return Optional.ofNullable(this.maxResults);
     }
     /**
-     * @return he customized sections chosen to return when requesting a summary of a conversation.
+     * @return The customized sections chosen to return when requesting a summary of a conversation.
      * Structure is documented below.
      * 
      */

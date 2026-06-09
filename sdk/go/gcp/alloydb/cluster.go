@@ -94,7 +94,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
+//				Name: pulumi.StringRef("alloydb-network"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -146,7 +146,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
+//				Name: pulumi.StringRef("alloydb-network"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -278,7 +278,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
+//				Name: pulumi.StringRef("alloydb-network"),
 //			}, nil)
 //			if err != nil {
 //				return err

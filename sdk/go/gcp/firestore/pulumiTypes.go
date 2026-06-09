@@ -769,6 +769,8 @@ func (o FieldIndexConfigIndexArrayOutput) Index(i pulumi.IntInput) FieldIndexCon
 }
 
 type FieldTtlConfig struct {
+	// The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+	ExpirationOffset *string `pulumi:"expirationOffset"`
 	// (Output)
 	// The state of TTL (time-to-live) configuration for documents that have this Field set.
 	State *string `pulumi:"state"`
@@ -786,6 +788,8 @@ type FieldTtlConfigInput interface {
 }
 
 type FieldTtlConfigArgs struct {
+	// The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+	ExpirationOffset pulumi.StringPtrInput `pulumi:"expirationOffset"`
 	// (Output)
 	// The state of TTL (time-to-live) configuration for documents that have this Field set.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -868,6 +872,11 @@ func (o FieldTtlConfigOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.C
 	}).(FieldTtlConfigPtrOutput)
 }
 
+// The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+func (o FieldTtlConfigOutput) ExpirationOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldTtlConfig) *string { return v.ExpirationOffset }).(pulumi.StringPtrOutput)
+}
+
 // (Output)
 // The state of TTL (time-to-live) configuration for documents that have this Field set.
 func (o FieldTtlConfigOutput) State() pulumi.StringPtrOutput {
@@ -896,6 +905,16 @@ func (o FieldTtlConfigPtrOutput) Elem() FieldTtlConfigOutput {
 		var ret FieldTtlConfig
 		return ret
 	}).(FieldTtlConfigOutput)
+}
+
+// The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+func (o FieldTtlConfigPtrOutput) ExpirationOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FieldTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationOffset
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Output)

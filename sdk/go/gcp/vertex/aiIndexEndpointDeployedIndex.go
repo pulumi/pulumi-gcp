@@ -78,7 +78,7 @@ import (
 //				return err
 //			}
 //			vertexNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "network-name",
+//				Name: pulumi.StringRef("network-name"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			vertexNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "network-name",
+//				Name: pulumi.StringRef("network-name"),
 //			}, nil)
 //			if err != nil {
 //				return err

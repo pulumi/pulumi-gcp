@@ -154,10 +154,7 @@ def get_datastore(location: Optional[_builtins.str] = None,
                   project: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
-    Use this data source to get details about a datastore resource.
-
-    To get more information about datastore, see:
-    * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+    Get information about a Cloud VMware Engine Datastore.
 
     ## Example Usage
 
@@ -165,13 +162,24 @@ def get_datastore(location: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test_ds = gcp.vmwareengine.get_datastore(name="example-ds",
-        location="us-west2")
+    default = gcp.vmwareengine.get_datastore(location=example_thirdparty["location"],
+        name=example_thirdparty["name"])
     ```
 
 
-    :param _builtins.str location: either regional or zonal location of the resource.
-    :param _builtins.str name: Name of the resource.
+    :param _builtins.str location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+    :param _builtins.str name: The user-provided identifier of the datastore to be created.
+           This identifier must be unique among each `Datastore` within the parent
+           and becomes the final token in the name URI.
+           The identifier must meet the following requirements:
+           * Only contains 1-63 alphanumeric characters and hyphens
+           * Begins with an alphabetical character
+           * Ends with a non-hyphen character
+           * Not formatted as a UUID
+           * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+           (section 3.5)
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -198,10 +206,7 @@ def get_datastore_output(location: pulumi.Input[Optional[_builtins.str]] = None,
                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreResult]:
     """
-    Use this data source to get details about a datastore resource.
-
-    To get more information about datastore, see:
-    * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+    Get information about a Cloud VMware Engine Datastore.
 
     ## Example Usage
 
@@ -209,13 +214,24 @@ def get_datastore_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test_ds = gcp.vmwareengine.get_datastore(name="example-ds",
-        location="us-west2")
+    default = gcp.vmwareengine.get_datastore(location=example_thirdparty["location"],
+        name=example_thirdparty["name"])
     ```
 
 
-    :param _builtins.str location: either regional or zonal location of the resource.
-    :param _builtins.str name: Name of the resource.
+    :param _builtins.str location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+    :param _builtins.str name: The user-provided identifier of the datastore to be created.
+           This identifier must be unique among each `Datastore` within the parent
+           and becomes the final token in the name URI.
+           The identifier must meet the following requirements:
+           * Only contains 1-63 alphanumeric characters and hyphens
+           * Begins with an alphabetical character
+           * Ends with a non-hyphen character
+           * Not formatted as a UUID
+           * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+           (section 3.5)
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location

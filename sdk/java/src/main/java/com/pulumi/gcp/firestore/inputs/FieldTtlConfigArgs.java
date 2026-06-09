@@ -16,6 +16,21 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
     public static final FieldTtlConfigArgs Empty = new FieldTtlConfigArgs();
 
     /**
+     * The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+     * 
+     */
+    @Import(name="expirationOffset")
+    private @Nullable Output<String> expirationOffset;
+
+    /**
+     * @return The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+     * 
+     */
+    public Optional<Output<String>> expirationOffset() {
+        return Optional.ofNullable(this.expirationOffset);
+    }
+
+    /**
      * (Output)
      * The state of TTL (time-to-live) configuration for documents that have this Field set.
      * 
@@ -35,6 +50,7 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
     private FieldTtlConfigArgs() {}
 
     private FieldTtlConfigArgs(FieldTtlConfigArgs $) {
+        this.expirationOffset = $.expirationOffset;
         this.state = $.state;
     }
 
@@ -54,6 +70,27 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(FieldTtlConfigArgs defaults) {
             $ = new FieldTtlConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param expirationOffset The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationOffset(@Nullable Output<String> expirationOffset) {
+            $.expirationOffset = expirationOffset;
+            return this;
+        }
+
+        /**
+         * @param expirationOffset The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationOffset(String expirationOffset) {
+            return expirationOffset(Output.of(expirationOffset));
         }
 
         /**

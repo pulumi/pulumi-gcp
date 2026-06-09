@@ -137,6 +137,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     *
+     * -----
+     */
+    declare public readonly edition: pulumi.Output<string | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -176,8 +182,6 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     *
-     * -----
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -198,6 +202,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["edition"] = state?.edition;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["instanceType"] = state?.instanceType;
@@ -212,6 +217,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["edition"] = args?.edition;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["labels"] = args?.labels;
@@ -259,6 +265,12 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
+     * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     *
+     * -----
+     */
+    edition?: pulumi.Input<string | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -298,8 +310,6 @@ export interface InstanceState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     *
-     * -----
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
@@ -335,6 +345,12 @@ export interface InstanceArgs {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
+     * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+     *
+     * -----
+     */
+    edition?: pulumi.Input<string | undefined>;
+    /**
      * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
      */
     forceDestroy?: pulumi.Input<boolean | undefined>;
@@ -366,8 +382,6 @@ export interface InstanceArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-     *
-     * -----
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

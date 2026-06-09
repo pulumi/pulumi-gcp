@@ -21,6 +21,16 @@ __all__ = [
     'InstanceCryptoKeyConfigArgsDict',
     'InstanceEventPublishConfigArgs',
     'InstanceEventPublishConfigArgsDict',
+    'InstanceMaintenanceEventArgs',
+    'InstanceMaintenanceEventArgsDict',
+    'InstanceMaintenancePolicyArgs',
+    'InstanceMaintenancePolicyArgsDict',
+    'InstanceMaintenancePolicyMaintenanceWindowArgs',
+    'InstanceMaintenancePolicyMaintenanceWindowArgsDict',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgsDict',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgsDict',
     'InstanceNetworkConfigArgs',
     'InstanceNetworkConfigArgsDict',
     'InstanceNetworkConfigPrivateServiceConnectConfigArgs',
@@ -153,6 +163,244 @@ class InstanceEventPublishConfigArgs:
     @topic.setter
     def topic(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "topic", value)
+
+
+class InstanceMaintenanceEventArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The end time of the maintenance event provided in RFC 3339 format.
+    """
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The start time of the maintenance event provided in RFC 3339 format.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The state of the maintenance event.
+    """
+
+@pulumi.input_type
+class InstanceMaintenanceEventArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_time: (Output)
+               The end time of the maintenance event provided in RFC 3339 format.
+        :param pulumi.Input[_builtins.str] start_time: (Output)
+               The start time of the maintenance event provided in RFC 3339 format.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the maintenance event.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The end time of the maintenance event provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The start time of the maintenance event provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The state of the maintenance event.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+class InstanceMaintenancePolicyArgsDict(TypedDict):
+    maintenance_window: NotRequired[pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceWindowArgsDict']]]
+    """
+    The maintenance window of the instance.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 maintenance_window: pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceWindowArgs']] = None):
+        """
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowArgs'] maintenance_window: The maintenance window of the instance.
+               Structure is documented below.
+        """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceWindowArgs']]:
+        """
+        The maintenance window of the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+
+class InstanceMaintenancePolicyMaintenanceWindowArgsDict(TypedDict):
+    recurring_time_window: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgsDict']
+    """
+    The recurring time window of the maintenance window.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 recurring_time_window: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs']):
+        """
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs'] recurring_time_window: The recurring time window of the maintenance window.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recurring_time_window", recurring_time_window)
+
+    @_builtins.property
+    @pulumi.getter(name="recurringTimeWindow")
+    def recurring_time_window(self) -> pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs']:
+        """
+        The recurring time window of the maintenance window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recurring_time_window")
+
+    @recurring_time_window.setter
+    def recurring_time_window(self, value: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs']):
+        pulumi.set(self, "recurring_time_window", value)
+
+
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgsDict(TypedDict):
+    recurrence: pulumi.Input[_builtins.str]
+    """
+    An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+    """
+    window: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgsDict']
+    """
+    The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs:
+    def __init__(__self__, *,
+                 recurrence: pulumi.Input[_builtins.str],
+                 window: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs']):
+        """
+        :param pulumi.Input[_builtins.str] recurrence: An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs'] window: The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "window", window)
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> pulumi.Input[_builtins.str]:
+        """
+        An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+        """
+        return pulumi.get(self, "recurrence")
+
+    @recurrence.setter
+    def recurrence(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "recurrence", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def window(self) -> pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs']:
+        """
+        The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "window")
+
+    @window.setter
+    def window(self, value: pulumi.Input['InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs']):
+        pulumi.set(self, "window", value)
+
+
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgsDict(TypedDict):
+    end_time: pulumi.Input[_builtins.str]
+    """
+    The end time of the time window provided in RFC 3339 format.
+    """
+    start_time: pulumi.Input[_builtins.str]
+    """
+    The start time of the time window provided in RFC 3339 format.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[_builtins.str],
+                 start_time: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] end_time: The end time of the time window provided in RFC 3339 format.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the time window provided in RFC 3339 format.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        The end time of the time window provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        The start time of the time window provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "start_time", value)
 
 
 class InstanceNetworkConfigArgsDict(TypedDict):

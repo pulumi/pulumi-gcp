@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         VersionId = "v3",
     ///         Service = "admin",
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",

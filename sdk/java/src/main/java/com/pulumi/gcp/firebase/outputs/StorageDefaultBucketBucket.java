@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 public final class StorageDefaultBucketBucket {
     /**
      * @return (Output)
+     * The last segment of bucket.name.
+     * 
+     */
+    private @Nullable String bucketId;
+    /**
+     * @return (Output)
      * The resource name of the bucket in the format
      * projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      * 
@@ -20,6 +26,14 @@ public final class StorageDefaultBucketBucket {
     private @Nullable String name;
 
     private StorageDefaultBucketBucket() {}
+    /**
+     * @return (Output)
+     * The last segment of bucket.name.
+     * 
+     */
+    public Optional<String> bucketId() {
+        return Optional.ofNullable(this.bucketId);
+    }
     /**
      * @return (Output)
      * The resource name of the bucket in the format
@@ -39,13 +53,21 @@ public final class StorageDefaultBucketBucket {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String bucketId;
         private @Nullable String name;
         public Builder() {}
         public Builder(StorageDefaultBucketBucket defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bucketId = defaults.bucketId;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder bucketId(@Nullable String bucketId) {
+
+            this.bucketId = bucketId;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
 
@@ -54,6 +76,7 @@ public final class StorageDefaultBucketBucket {
         }
         public StorageDefaultBucketBucket build() {
             final var _resultValue = new StorageDefaultBucketBucket();
+            _resultValue.bucketId = bucketId;
             _resultValue.name = name;
             return _resultValue;
         }

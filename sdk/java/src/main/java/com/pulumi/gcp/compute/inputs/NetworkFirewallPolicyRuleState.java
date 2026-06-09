@@ -280,6 +280,33 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    @Import(name="targetForwardingRules")
+    private @Nullable Output<List<String>> targetForwardingRules;
+
+    /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    public Optional<Output<List<String>>> targetForwardingRules() {
+        return Optional.ofNullable(this.targetForwardingRules);
+    }
+
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -313,6 +340,27 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
      */
     public Optional<Output<List<String>>> targetServiceAccounts() {
         return Optional.ofNullable(this.targetServiceAccounts);
+    }
+
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    @Import(name="targetType")
+    private @Nullable Output<String> targetType;
+
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    public Optional<Output<String>> targetType() {
+        return Optional.ofNullable(this.targetType);
     }
 
     /**
@@ -350,8 +398,10 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         this.ruleName = $.ruleName;
         this.ruleTupleCount = $.ruleTupleCount;
         this.securityProfileGroup = $.securityProfileGroup;
+        this.targetForwardingRules = $.targetForwardingRules;
         this.targetSecureTags = $.targetSecureTags;
         this.targetServiceAccounts = $.targetServiceAccounts;
+        this.targetType = $.targetType;
         this.tlsInspect = $.tlsInspect;
     }
 
@@ -723,6 +773,55 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(@Nullable Output<List<String>> targetForwardingRules) {
+            $.targetForwardingRules = targetForwardingRules;
+            return this;
+        }
+
+        /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(List<String> targetForwardingRules) {
+            return targetForwardingRules(Output.of(targetForwardingRules));
+        }
+
+        /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(String... targetForwardingRules) {
+            return targetForwardingRules(List.of(targetForwardingRules));
+        }
+
+        /**
          * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to.
          * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
          * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -791,6 +890,33 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
          */
         public Builder targetServiceAccounts(String... targetServiceAccounts) {
             return targetServiceAccounts(List.of(targetServiceAccounts));
+        }
+
+        /**
+         * @param targetType Target types of the firewall policy rule.
+         * Default value is INSTANCES.
+         * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+         * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetType(@Nullable Output<String> targetType) {
+            $.targetType = targetType;
+            return this;
+        }
+
+        /**
+         * @param targetType Target types of the firewall policy rule.
+         * Default value is INSTANCES.
+         * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+         * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetType(String targetType) {
+            return targetType(Output.of(targetType));
         }
 
         /**

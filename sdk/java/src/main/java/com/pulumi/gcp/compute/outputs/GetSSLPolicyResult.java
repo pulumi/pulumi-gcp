@@ -49,6 +49,11 @@ public final class GetSSLPolicyResult {
     private String minTlsVersion;
     private String name;
     /**
+     * @return The post-quantum key exchange setting of this policy.
+     * 
+     */
+    private String postQuantumKeyExchange;
+    /**
      * @return The Google-curated or custom profile used by this policy.
      * 
      */
@@ -115,6 +120,13 @@ public final class GetSSLPolicyResult {
         return this.name;
     }
     /**
+     * @return The post-quantum key exchange setting of this policy.
+     * 
+     */
+    public String postQuantumKeyExchange() {
+        return this.postQuantumKeyExchange;
+    }
+    /**
      * @return The Google-curated or custom profile used by this policy.
      * 
      */
@@ -150,6 +162,7 @@ public final class GetSSLPolicyResult {
         private String id;
         private String minTlsVersion;
         private String name;
+        private String postQuantumKeyExchange;
         private String profile;
         private @Nullable String project;
         private String selfLink;
@@ -165,6 +178,7 @@ public final class GetSSLPolicyResult {
     	      this.id = defaults.id;
     	      this.minTlsVersion = defaults.minTlsVersion;
     	      this.name = defaults.name;
+    	      this.postQuantumKeyExchange = defaults.postQuantumKeyExchange;
     	      this.profile = defaults.profile;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
@@ -249,6 +263,14 @@ public final class GetSSLPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder postQuantumKeyExchange(String postQuantumKeyExchange) {
+            if (postQuantumKeyExchange == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "postQuantumKeyExchange");
+            }
+            this.postQuantumKeyExchange = postQuantumKeyExchange;
+            return this;
+        }
+        @CustomType.Setter
         public Builder profile(String profile) {
             if (profile == null) {
               throw new MissingRequiredPropertyException("GetSSLPolicyResult", "profile");
@@ -281,6 +303,7 @@ public final class GetSSLPolicyResult {
             _resultValue.id = id;
             _resultValue.minTlsVersion = minTlsVersion;
             _resultValue.name = name;
+            _resultValue.postQuantumKeyExchange = postQuantumKeyExchange;
             _resultValue.profile = profile;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;

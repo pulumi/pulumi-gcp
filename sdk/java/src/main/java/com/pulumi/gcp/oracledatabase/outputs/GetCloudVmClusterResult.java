@@ -5,6 +5,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClusterIdentityConnector;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClusterProperty;
 import java.lang.Boolean;
 import java.lang.String;
@@ -32,6 +33,7 @@ public final class GetCloudVmClusterResult {
      * 
      */
     private String id;
+    private List<GetCloudVmClusterIdentityConnector> identityConnectors;
     private Map<String,String> labels;
     private String location;
     private String name;
@@ -83,6 +85,9 @@ public final class GetCloudVmClusterResult {
     public String id() {
         return this.id;
     }
+    public List<GetCloudVmClusterIdentityConnector> identityConnectors() {
+        return this.identityConnectors;
+    }
     public Map<String,String> labels() {
         return this.labels;
     }
@@ -132,6 +137,7 @@ public final class GetCloudVmClusterResult {
         private String exadataInfrastructure;
         private String gcpOracleZone;
         private String id;
+        private List<GetCloudVmClusterIdentityConnector> identityConnectors;
         private Map<String,String> labels;
         private String location;
         private String name;
@@ -156,6 +162,7 @@ public final class GetCloudVmClusterResult {
     	      this.exadataInfrastructure = defaults.exadataInfrastructure;
     	      this.gcpOracleZone = defaults.gcpOracleZone;
     	      this.id = defaults.id;
+    	      this.identityConnectors = defaults.identityConnectors;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -264,6 +271,17 @@ public final class GetCloudVmClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder identityConnectors(List<GetCloudVmClusterIdentityConnector> identityConnectors) {
+            if (identityConnectors == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "identityConnectors");
+            }
+            this.identityConnectors = identityConnectors;
+            return this;
+        }
+        public Builder identityConnectors(GetCloudVmClusterIdentityConnector... identityConnectors) {
+            return identityConnectors(List.of(identityConnectors));
+        }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "labels");
@@ -350,6 +368,7 @@ public final class GetCloudVmClusterResult {
             _resultValue.exadataInfrastructure = exadataInfrastructure;
             _resultValue.gcpOracleZone = gcpOracleZone;
             _resultValue.id = id;
+            _resultValue.identityConnectors = identityConnectors;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.name = name;

@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult> AliasIpRanges;
         /// <summary>
+        /// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeResult> AliasIpv6Ranges;
+        /// <summary>
         /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         /// </summary>
         public readonly string IgmpQuery;
@@ -105,6 +109,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult> aliasIpRanges,
 
+            ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeResult> aliasIpv6Ranges,
+
             string igmpQuery,
 
             int internalIpv6PrefixLength,
@@ -139,6 +145,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            AliasIpv6Ranges = aliasIpv6Ranges;
             IgmpQuery = igmpQuery;
             InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;

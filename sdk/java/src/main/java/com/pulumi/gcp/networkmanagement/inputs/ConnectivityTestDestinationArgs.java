@@ -83,6 +83,21 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
     }
 
     /**
+     * A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    @Import(name="gkePod")
+    private @Nullable Output<String> gkePod;
+
+    /**
+     * @return A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    public Optional<Output<String>> gkePod() {
+        return Optional.ofNullable(this.gkePod);
+    }
+
+    /**
      * A Compute Engine instance URI.
      * 
      */
@@ -125,6 +140,23 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+     * 
+     */
+    @Import(name="networkType")
+    private @Nullable Output<String> networkType;
+
+    /**
+     * @return For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+     * 
+     */
+    public Optional<Output<String>> networkType() {
+        return Optional.ofNullable(this.networkType);
     }
 
     /**
@@ -212,9 +244,11 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         this.forwardingRule = $.forwardingRule;
         this.fqdn = $.fqdn;
         this.gkeMasterCluster = $.gkeMasterCluster;
+        this.gkePod = $.gkePod;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
         this.network = $.network;
+        this.networkType = $.networkType;
         this.port = $.port;
         this.projectId = $.projectId;
         this.redisCluster = $.redisCluster;
@@ -330,6 +364,27 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param gkePod A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkePod(@Nullable Output<String> gkePod) {
+            $.gkePod = gkePod;
+            return this;
+        }
+
+        /**
+         * @param gkePod A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkePod(String gkePod) {
+            return gkePod(Output.of(gkePod));
+        }
+
+        /**
          * @param instance A Compute Engine instance URI.
          * 
          * @return builder
@@ -390,6 +445,29 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkType For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+         * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(@Nullable Output<String> networkType) {
+            $.networkType = networkType;
+            return this;
+        }
+
+        /**
+         * @param networkType For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+         * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(String networkType) {
+            return networkType(Output.of(networkType));
         }
 
         /**

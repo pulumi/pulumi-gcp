@@ -164,7 +164,6 @@ export class Backup extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      */
@@ -327,7 +326,6 @@ export interface BackupState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      */
@@ -403,7 +401,6 @@ export interface BackupArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      */

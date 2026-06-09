@@ -7,10 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get details about a datastore resource.
- *
- * To get more information about datastore, see:
- * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+ * Get information about a Cloud VMware Engine Datastore.
  *
  * ## Example Usage
  *
@@ -18,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDs = gcp.vmwareengine.getDatastore({
- *     name: "example-ds",
- *     location: "us-west2",
+ * const _default = gcp.vmwareengine.getDatastore({
+ *     location: exampleThirdparty.location,
+ *     name: exampleThirdparty.name,
  * });
  * ```
  */
@@ -38,13 +35,26 @@ export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetDatastoreArgs {
     /**
-     * either regional or zonal location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: string;
     /**
-     * Name of the resource.
+     * The user-provided identifier of the datastore to be created.
+     * This identifier must be unique among each `Datastore` within the parent
+     * and becomes the final token in the name URI.
+     * The identifier must meet the following requirements:
+     * * Only contains 1-63 alphanumeric characters and hyphens
+     * * Begins with an alphabetical character
+     * * Ends with a non-hyphen character
+     * * Not formatted as a UUID
+     * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+     * (section 3.5)
      */
     name: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: string;
 }
 
@@ -69,10 +79,7 @@ export interface GetDatastoreResult {
     readonly updateTime: string;
 }
 /**
- * Use this data source to get details about a datastore resource.
- *
- * To get more information about datastore, see:
- * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+ * Get information about a Cloud VMware Engine Datastore.
  *
  * ## Example Usage
  *
@@ -80,9 +87,9 @@ export interface GetDatastoreResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDs = gcp.vmwareengine.getDatastore({
- *     name: "example-ds",
- *     location: "us-west2",
+ * const _default = gcp.vmwareengine.getDatastore({
+ *     location: exampleThirdparty.location,
+ *     name: exampleThirdparty.name,
  * });
  * ```
  */
@@ -100,12 +107,25 @@ export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.I
  */
 export interface GetDatastoreOutputArgs {
     /**
-     * either regional or zonal location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
     /**
-     * Name of the resource.
+     * The user-provided identifier of the datastore to be created.
+     * This identifier must be unique among each `Datastore` within the parent
+     * and becomes the final token in the name URI.
+     * The identifier must meet the following requirements:
+     * * Only contains 1-63 alphanumeric characters and hyphens
+     * * Begins with an alphabetical character
+     * * Ends with a non-hyphen character
+     * * Not formatted as a UUID
+     * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+     * (section 3.5)
      */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string | undefined>;
 }

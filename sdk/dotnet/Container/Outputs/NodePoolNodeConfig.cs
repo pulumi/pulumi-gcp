@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigGcfsConfig? GcfsConfig;
         /// <summary>
+        /// The type of GPUDirect strategy to enable on the node.
+        /// </summary>
+        public readonly string? GpudirectStrategy;
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> GuestAccelerators;
@@ -228,6 +232,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.NodePoolNodeConfigGcfsConfig? gcfsConfig,
 
+            string? gpudirectStrategy,
+
             ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> guestAccelerators,
 
             Outputs.NodePoolNodeConfigGvnic? gvnic,
@@ -306,6 +312,7 @@ namespace Pulumi.Gcp.Container.Outputs
             FastSocket = fastSocket;
             FlexStart = flexStart;
             GcfsConfig = gcfsConfig;
+            GpudirectStrategy = gpudirectStrategy;
             GuestAccelerators = guestAccelerators;
             Gvnic = gvnic;
             HostMaintenancePolicy = hostMaintenancePolicy;

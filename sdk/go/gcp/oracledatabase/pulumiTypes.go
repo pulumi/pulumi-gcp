@@ -4873,6 +4873,136 @@ func (o CloudExadataInfrastructurePropertiesMaintenanceWindowPtrOutput) WeeksOfM
 	}).(pulumi.IntArrayOutput)
 }
 
+type CloudVmClusterIdentityConnector struct {
+	// (Output)
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState *string `pulumi:"connectionState"`
+	// (Output)
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail *string `pulumi:"serviceAgentEmail"`
+}
+
+// CloudVmClusterIdentityConnectorInput is an input type that accepts CloudVmClusterIdentityConnectorArgs and CloudVmClusterIdentityConnectorOutput values.
+// You can construct a concrete instance of `CloudVmClusterIdentityConnectorInput` via:
+//
+//	CloudVmClusterIdentityConnectorArgs{...}
+type CloudVmClusterIdentityConnectorInput interface {
+	pulumi.Input
+
+	ToCloudVmClusterIdentityConnectorOutput() CloudVmClusterIdentityConnectorOutput
+	ToCloudVmClusterIdentityConnectorOutputWithContext(context.Context) CloudVmClusterIdentityConnectorOutput
+}
+
+type CloudVmClusterIdentityConnectorArgs struct {
+	// (Output)
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
+	// (Output)
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail pulumi.StringPtrInput `pulumi:"serviceAgentEmail"`
+}
+
+func (CloudVmClusterIdentityConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i CloudVmClusterIdentityConnectorArgs) ToCloudVmClusterIdentityConnectorOutput() CloudVmClusterIdentityConnectorOutput {
+	return i.ToCloudVmClusterIdentityConnectorOutputWithContext(context.Background())
+}
+
+func (i CloudVmClusterIdentityConnectorArgs) ToCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) CloudVmClusterIdentityConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudVmClusterIdentityConnectorOutput)
+}
+
+// CloudVmClusterIdentityConnectorArrayInput is an input type that accepts CloudVmClusterIdentityConnectorArray and CloudVmClusterIdentityConnectorArrayOutput values.
+// You can construct a concrete instance of `CloudVmClusterIdentityConnectorArrayInput` via:
+//
+//	CloudVmClusterIdentityConnectorArray{ CloudVmClusterIdentityConnectorArgs{...} }
+type CloudVmClusterIdentityConnectorArrayInput interface {
+	pulumi.Input
+
+	ToCloudVmClusterIdentityConnectorArrayOutput() CloudVmClusterIdentityConnectorArrayOutput
+	ToCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Context) CloudVmClusterIdentityConnectorArrayOutput
+}
+
+type CloudVmClusterIdentityConnectorArray []CloudVmClusterIdentityConnectorInput
+
+func (CloudVmClusterIdentityConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i CloudVmClusterIdentityConnectorArray) ToCloudVmClusterIdentityConnectorArrayOutput() CloudVmClusterIdentityConnectorArrayOutput {
+	return i.ToCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i CloudVmClusterIdentityConnectorArray) ToCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) CloudVmClusterIdentityConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudVmClusterIdentityConnectorArrayOutput)
+}
+
+type CloudVmClusterIdentityConnectorOutput struct{ *pulumi.OutputState }
+
+func (CloudVmClusterIdentityConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o CloudVmClusterIdentityConnectorOutput) ToCloudVmClusterIdentityConnectorOutput() CloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+func (o CloudVmClusterIdentityConnectorOutput) ToCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) CloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+// (Output)
+// The connection state of the identity connector.
+// Possible values:
+// CONNECTION_STATE_UNSPECIFIED
+// CONNECTED
+// PARTIALLY_CONNECTED
+// DISCONNECTED
+// UNKNOWN
+func (o CloudVmClusterIdentityConnectorOutput) ConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterIdentityConnector) *string { return v.ConnectionState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A google managed service account on which customers can grant roles to access resources in the customer project.
+func (o CloudVmClusterIdentityConnectorOutput) ServiceAgentEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterIdentityConnector) *string { return v.ServiceAgentEmail }).(pulumi.StringPtrOutput)
+}
+
+type CloudVmClusterIdentityConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudVmClusterIdentityConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o CloudVmClusterIdentityConnectorArrayOutput) ToCloudVmClusterIdentityConnectorArrayOutput() CloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o CloudVmClusterIdentityConnectorArrayOutput) ToCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) CloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o CloudVmClusterIdentityConnectorArrayOutput) Index(i pulumi.IntInput) CloudVmClusterIdentityConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudVmClusterIdentityConnector {
+		return vs[0].([]CloudVmClusterIdentityConnector)[vs[1].(int)]
+	}).(CloudVmClusterIdentityConnectorOutput)
+}
+
 type CloudVmClusterProperties struct {
 	// OCI Cluster name.
 	ClusterName *string `pulumi:"clusterName"`
@@ -10702,6 +10832,16300 @@ func (o ExascaleDbStorageVaultPropertiesTimeZonePtrOutput) Version() pulumi.Stri
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionAssignmentProperties struct {
+	// (Output)
+	// Credential store alias.
+	Alias *string `pulumi:"alias"`
+	// The GoldengateConnection resource to be assigned.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+	GoldengateConnection string `pulumi:"goldengateConnection"`
+	// The GoldenGateDeployment to assign the connection to.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+	GoldengateDeployment string `pulumi:"goldengateDeployment"`
+	// (Output)
+	// The
+	// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+	// of the connection assignment being referenced.
+	Ocid *string `pulumi:"ocid"`
+	// (Output)
+	// The lifecycle state of the connection assignment.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// FAILED
+	// UPDATING
+	// DELETING
+	State *string `pulumi:"state"`
+}
+
+// GoldengateConnectionAssignmentPropertiesInput is an input type that accepts GoldengateConnectionAssignmentPropertiesArgs and GoldengateConnectionAssignmentPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionAssignmentPropertiesInput` via:
+//
+//	GoldengateConnectionAssignmentPropertiesArgs{...}
+type GoldengateConnectionAssignmentPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionAssignmentPropertiesOutput() GoldengateConnectionAssignmentPropertiesOutput
+	ToGoldengateConnectionAssignmentPropertiesOutputWithContext(context.Context) GoldengateConnectionAssignmentPropertiesOutput
+}
+
+type GoldengateConnectionAssignmentPropertiesArgs struct {
+	// (Output)
+	// Credential store alias.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The GoldengateConnection resource to be assigned.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+	GoldengateConnection pulumi.StringInput `pulumi:"goldengateConnection"`
+	// The GoldenGateDeployment to assign the connection to.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+	GoldengateDeployment pulumi.StringInput `pulumi:"goldengateDeployment"`
+	// (Output)
+	// The
+	// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+	// of the connection assignment being referenced.
+	Ocid pulumi.StringPtrInput `pulumi:"ocid"`
+	// (Output)
+	// The lifecycle state of the connection assignment.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// FAILED
+	// UPDATING
+	// DELETING
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (GoldengateConnectionAssignmentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionAssignmentProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionAssignmentPropertiesArgs) ToGoldengateConnectionAssignmentPropertiesOutput() GoldengateConnectionAssignmentPropertiesOutput {
+	return i.ToGoldengateConnectionAssignmentPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionAssignmentPropertiesArgs) ToGoldengateConnectionAssignmentPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionAssignmentPropertiesOutput)
+}
+
+func (i GoldengateConnectionAssignmentPropertiesArgs) ToGoldengateConnectionAssignmentPropertiesPtrOutput() GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return i.ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionAssignmentPropertiesArgs) ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionAssignmentPropertiesOutput).ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionAssignmentPropertiesPtrInput is an input type that accepts GoldengateConnectionAssignmentPropertiesArgs, GoldengateConnectionAssignmentPropertiesPtr and GoldengateConnectionAssignmentPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionAssignmentPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionAssignmentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionAssignmentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionAssignmentPropertiesPtrOutput() GoldengateConnectionAssignmentPropertiesPtrOutput
+	ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionAssignmentPropertiesPtrOutput
+}
+
+type goldengateConnectionAssignmentPropertiesPtrType GoldengateConnectionAssignmentPropertiesArgs
+
+func GoldengateConnectionAssignmentPropertiesPtr(v *GoldengateConnectionAssignmentPropertiesArgs) GoldengateConnectionAssignmentPropertiesPtrInput {
+	return (*goldengateConnectionAssignmentPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionAssignmentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionAssignmentProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionAssignmentPropertiesPtrType) ToGoldengateConnectionAssignmentPropertiesPtrOutput() GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return i.ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionAssignmentPropertiesPtrType) ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionAssignmentPropertiesPtrOutput)
+}
+
+type GoldengateConnectionAssignmentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionAssignmentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionAssignmentProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionAssignmentPropertiesOutput) ToGoldengateConnectionAssignmentPropertiesOutput() GoldengateConnectionAssignmentPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionAssignmentPropertiesOutput) ToGoldengateConnectionAssignmentPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionAssignmentPropertiesOutput) ToGoldengateConnectionAssignmentPropertiesPtrOutput() GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return o.ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionAssignmentPropertiesOutput) ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionAssignmentProperties) *GoldengateConnectionAssignmentProperties {
+		return &v
+	}).(GoldengateConnectionAssignmentPropertiesPtrOutput)
+}
+
+// (Output)
+// Credential store alias.
+func (o GoldengateConnectionAssignmentPropertiesOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionAssignmentProperties) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The GoldengateConnection resource to be assigned.
+// Format:
+// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+func (o GoldengateConnectionAssignmentPropertiesOutput) GoldengateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionAssignmentProperties) string { return v.GoldengateConnection }).(pulumi.StringOutput)
+}
+
+// The GoldenGateDeployment to assign the connection to.
+// Format:
+// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+func (o GoldengateConnectionAssignmentPropertiesOutput) GoldengateDeployment() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionAssignmentProperties) string { return v.GoldengateDeployment }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The
+// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+// of the connection assignment being referenced.
+func (o GoldengateConnectionAssignmentPropertiesOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionAssignmentProperties) *string { return v.Ocid }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the connection assignment.
+// Possible values:
+// CREATING
+// ACTIVE
+// FAILED
+// UPDATING
+// DELETING
+func (o GoldengateConnectionAssignmentPropertiesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionAssignmentProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionAssignmentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionAssignmentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionAssignmentProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) ToGoldengateConnectionAssignmentPropertiesPtrOutput() GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) ToGoldengateConnectionAssignmentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionAssignmentPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) Elem() GoldengateConnectionAssignmentPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) GoldengateConnectionAssignmentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionAssignmentProperties
+		return ret
+	}).(GoldengateConnectionAssignmentPropertiesOutput)
+}
+
+// (Output)
+// Credential store alias.
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GoldengateConnection resource to be assigned.
+// Format:
+// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) GoldengateConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GoldengateConnection
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GoldenGateDeployment to assign the connection to.
+// Format:
+// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) GoldengateDeployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GoldengateDeployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The
+// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+// of the connection assignment being referenced.
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ocid
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the connection assignment.
+// Possible values:
+// CREATING
+// ACTIVE
+// FAILED
+// UPDATING
+// DELETING
+func (o GoldengateConnectionAssignmentPropertiesPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionProperties struct {
+	// The properties of GoldengateAmazonKinesisConnection.
+	// Structure is documented below.
+	AmazonKinesisConnectionProperties *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties `pulumi:"amazonKinesisConnectionProperties"`
+	// The properties of GoldengateAmazonRedshiftConnection.
+	// Structure is documented below.
+	AmazonRedshiftConnectionProperties *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties `pulumi:"amazonRedshiftConnectionProperties"`
+	// The properties of GoldengateAmazonS3Connection.
+	// Structure is documented below.
+	AmazonS3ConnectionProperties *GoldengateConnectionPropertiesAmazonS3ConnectionProperties `pulumi:"amazonS3ConnectionProperties"`
+	// The properties of GoldengateAzureDataLakeStorageConnection.
+	// Structure is documented below.
+	AzureDataLakeStorageConnectionProperties *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties `pulumi:"azureDataLakeStorageConnectionProperties"`
+	// The properties of GoldengateAzureSynapseAnalyticsConnection.
+	// Structure is documented below.
+	AzureSynapseAnalyticsConnectionProperties *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties `pulumi:"azureSynapseAnalyticsConnectionProperties"`
+	// The connection type.
+	// Possible values:
+	// GOLDENGATE
+	// KAFKA
+	// KAFKA_SCHEMA_REGISTRY
+	// MYSQL
+	// JAVA_MESSAGE_SERVICE
+	// MICROSOFT_SQLSERVER
+	// OCI_OBJECT_STORAGE
+	// ORACLE
+	// AZURE_DATA_LAKE_STORAGE
+	// POSTGRESQL
+	// AZURE_SYNAPSE_ANALYTICS
+	// SNOWFLAKE
+	// AMAZON_S3
+	// HDFS
+	// ORACLE_AI_DATA_PLATFORM
+	// ORACLE_NOSQL
+	// MONGODB
+	// AMAZON_KINESIS
+	// AMAZON_REDSHIFT
+	// DB2
+	// REDIS
+	// ELASTICSEARCH
+	// GENERIC
+	// GOOGLE_CLOUD_STORAGE
+	// GOOGLE_BIGQUERY
+	// DATABRICKS
+	// GOOGLE_PUBSUB
+	// MICROSOFT_FABRIC
+	// ICEBERG
+	ConnectionType string `pulumi:"connectionType"`
+	// The properties of GoldengateDatabricksConnection.
+	// Structure is documented below.
+	DatabricksConnectionProperties *GoldengateConnectionPropertiesDatabricksConnectionProperties `pulumi:"databricksConnectionProperties"`
+	// The properties of GoldengateDb2Connection.
+	// Structure is documented below.
+	Db2ConnectionProperties *GoldengateConnectionPropertiesDb2ConnectionProperties `pulumi:"db2ConnectionProperties"`
+	// Metadata about this specific object.
+	Description *string `pulumi:"description"`
+	// An object's Display Name.
+	DisplayName string `pulumi:"displayName"`
+	// The properties of GoldengateElasticsearchConnection.
+	// Structure is documented below.
+	ElasticsearchConnectionProperties *GoldengateConnectionPropertiesElasticsearchConnectionProperties `pulumi:"elasticsearchConnectionProperties"`
+	// The properties of GoldengateGenericConnectionProperties.
+	// Structure is documented below.
+	GenericConnectionProperties *GoldengateConnectionPropertiesGenericConnectionProperties `pulumi:"genericConnectionProperties"`
+	// The properties of GoldengateGoldengateConnectionProperties.
+	// Structure is documented below.
+	GoldengateConnectionProperties *GoldengateConnectionPropertiesGoldengateConnectionProperties `pulumi:"goldengateConnectionProperties"`
+	// The properties of GoldengateGoogleBigQueryConnectionProperties.
+	// Structure is documented below.
+	GoogleBigQueryConnectionProperties *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties `pulumi:"googleBigQueryConnectionProperties"`
+	// The properties of GoldengateGoogleCloudStorageConnectionProperties.
+	// Structure is documented below.
+	GoogleCloudStorageConnectionProperties *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties `pulumi:"googleCloudStorageConnectionProperties"`
+	// The properties of GoldengateGooglePubsubConnection.
+	// Structure is documented below.
+	GooglePubsubConnectionProperties *GoldengateConnectionPropertiesGooglePubsubConnectionProperties `pulumi:"googlePubsubConnectionProperties"`
+	// The properties of GoldengateHdfsConnection.
+	// Structure is documented below.
+	HdfsConnectionProperties *GoldengateConnectionPropertiesHdfsConnectionProperties `pulumi:"hdfsConnectionProperties"`
+	// The properties of GoldengateIcebergConnection.
+	// Structure is documented below.
+	IcebergConnectionProperties *GoldengateConnectionPropertiesIcebergConnectionProperties `pulumi:"icebergConnectionProperties"`
+	// (Output)
+	// The Ingress IPs of the GoldengateConnection.
+	IngressIpAddresses []string `pulumi:"ingressIpAddresses"`
+	// The properties of GoldengateJavaMessageServiceConnection.
+	// Structure is documented below.
+	JavaMessageServiceConnectionProperties *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties `pulumi:"javaMessageServiceConnectionProperties"`
+	// The properties of GoldengateKafkaConnection.
+	// Structure is documented below.
+	KafkaConnectionProperties *GoldengateConnectionPropertiesKafkaConnectionProperties `pulumi:"kafkaConnectionProperties"`
+	// The properties of GoldengateKafkaSchemaRegistryConnection.
+	// Structure is documented below.
+	KafkaSchemaRegistryConnectionProperties *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties `pulumi:"kafkaSchemaRegistryConnectionProperties"`
+	// (Output)
+	// Describes the object's current state in detail. For example, it can be
+	// used to provide actionable information for a resource in a Failed state.
+	LifecycleDetails *string `pulumi:"lifecycleDetails"`
+	// (Output)
+	// The lifecycle state of the connection.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// UPDATING
+	// DELETING
+	// DELETED
+	// FAILED
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// The properties of GoldengateMicrosoftFabricConnection.
+	// Structure is documented below.
+	MicrosoftFabricConnectionProperties *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties `pulumi:"microsoftFabricConnectionProperties"`
+	// The properties of GoldengateMicrosoftSqlserverConnection.
+	// Structure is documented below.
+	MicrosoftSqlserverConnectionProperties *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties `pulumi:"microsoftSqlserverConnectionProperties"`
+	// The properties of GoldengateMongodbConnection.
+	// Structure is documented below.
+	MongodbConnectionProperties *GoldengateConnectionPropertiesMongodbConnectionProperties `pulumi:"mongodbConnectionProperties"`
+	// Properties of GoldengateMysqlConnection.
+	// Structure is documented below.
+	MysqlConnectionProperties *GoldengateConnectionPropertiesMysqlConnectionProperties `pulumi:"mysqlConnectionProperties"`
+	// The properties of GoldengateOciObjectStorageConnection.
+	// Structure is documented below.
+	OciObjectStorageConnectionProperties *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties `pulumi:"ociObjectStorageConnectionProperties"`
+	// (Output)
+	// The [OCID] of the connection being
+	// referenced.
+	Ocid *string `pulumi:"ocid"`
+	// The properties of GoldengateOracleAIDataPlatformConnection.
+	// Structure is documented below.
+	OracleAiDataPlatformConnectionProperties *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties `pulumi:"oracleAiDataPlatformConnectionProperties"`
+	// The properties of Goldengate Oracle Database Connection.
+	// Structure is documented below.
+	OracleConnectionProperties *GoldengateConnectionPropertiesOracleConnectionProperties `pulumi:"oracleConnectionProperties"`
+	// The properties of GoldengateOracleNosqlConnection.
+	// Structure is documented below.
+	OracleNosqlConnectionProperties *GoldengateConnectionPropertiesOracleNosqlConnectionProperties `pulumi:"oracleNosqlConnectionProperties"`
+	// The properties of GoldengatePostgresqlConnection.
+	// Structure is documented below.
+	PostgresqlConnectionProperties *GoldengateConnectionPropertiesPostgresqlConnectionProperties `pulumi:"postgresqlConnectionProperties"`
+	// The properties of GoldengateRedisConnection.
+	// Structure is documented below.
+	RedisConnectionProperties *GoldengateConnectionPropertiesRedisConnectionProperties `pulumi:"redisConnectionProperties"`
+	// The routing method for the GoldengateConnection.
+	// Possible values:
+	// SHARED_DEPLOYMENT_ENDPOINT
+	// DEDICATED_ENDPOINT
+	RoutingMethod *string `pulumi:"routingMethod"`
+	// The properties of GoldengateSnowflakeConnection.
+	// Structure is documented below.
+	SnowflakeConnectionProperties *GoldengateConnectionPropertiesSnowflakeConnectionProperties `pulumi:"snowflakeConnectionProperties"`
+	// (Output)
+	// The time the resource was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// GoldengateConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesArgs and GoldengateConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesArgs struct {
+	// The properties of GoldengateAmazonKinesisConnection.
+	// Structure is documented below.
+	AmazonKinesisConnectionProperties GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput `pulumi:"amazonKinesisConnectionProperties"`
+	// The properties of GoldengateAmazonRedshiftConnection.
+	// Structure is documented below.
+	AmazonRedshiftConnectionProperties GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput `pulumi:"amazonRedshiftConnectionProperties"`
+	// The properties of GoldengateAmazonS3Connection.
+	// Structure is documented below.
+	AmazonS3ConnectionProperties GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput `pulumi:"amazonS3ConnectionProperties"`
+	// The properties of GoldengateAzureDataLakeStorageConnection.
+	// Structure is documented below.
+	AzureDataLakeStorageConnectionProperties GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput `pulumi:"azureDataLakeStorageConnectionProperties"`
+	// The properties of GoldengateAzureSynapseAnalyticsConnection.
+	// Structure is documented below.
+	AzureSynapseAnalyticsConnectionProperties GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput `pulumi:"azureSynapseAnalyticsConnectionProperties"`
+	// The connection type.
+	// Possible values:
+	// GOLDENGATE
+	// KAFKA
+	// KAFKA_SCHEMA_REGISTRY
+	// MYSQL
+	// JAVA_MESSAGE_SERVICE
+	// MICROSOFT_SQLSERVER
+	// OCI_OBJECT_STORAGE
+	// ORACLE
+	// AZURE_DATA_LAKE_STORAGE
+	// POSTGRESQL
+	// AZURE_SYNAPSE_ANALYTICS
+	// SNOWFLAKE
+	// AMAZON_S3
+	// HDFS
+	// ORACLE_AI_DATA_PLATFORM
+	// ORACLE_NOSQL
+	// MONGODB
+	// AMAZON_KINESIS
+	// AMAZON_REDSHIFT
+	// DB2
+	// REDIS
+	// ELASTICSEARCH
+	// GENERIC
+	// GOOGLE_CLOUD_STORAGE
+	// GOOGLE_BIGQUERY
+	// DATABRICKS
+	// GOOGLE_PUBSUB
+	// MICROSOFT_FABRIC
+	// ICEBERG
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// The properties of GoldengateDatabricksConnection.
+	// Structure is documented below.
+	DatabricksConnectionProperties GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput `pulumi:"databricksConnectionProperties"`
+	// The properties of GoldengateDb2Connection.
+	// Structure is documented below.
+	Db2ConnectionProperties GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput `pulumi:"db2ConnectionProperties"`
+	// Metadata about this specific object.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An object's Display Name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The properties of GoldengateElasticsearchConnection.
+	// Structure is documented below.
+	ElasticsearchConnectionProperties GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput `pulumi:"elasticsearchConnectionProperties"`
+	// The properties of GoldengateGenericConnectionProperties.
+	// Structure is documented below.
+	GenericConnectionProperties GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput `pulumi:"genericConnectionProperties"`
+	// The properties of GoldengateGoldengateConnectionProperties.
+	// Structure is documented below.
+	GoldengateConnectionProperties GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput `pulumi:"goldengateConnectionProperties"`
+	// The properties of GoldengateGoogleBigQueryConnectionProperties.
+	// Structure is documented below.
+	GoogleBigQueryConnectionProperties GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput `pulumi:"googleBigQueryConnectionProperties"`
+	// The properties of GoldengateGoogleCloudStorageConnectionProperties.
+	// Structure is documented below.
+	GoogleCloudStorageConnectionProperties GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput `pulumi:"googleCloudStorageConnectionProperties"`
+	// The properties of GoldengateGooglePubsubConnection.
+	// Structure is documented below.
+	GooglePubsubConnectionProperties GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput `pulumi:"googlePubsubConnectionProperties"`
+	// The properties of GoldengateHdfsConnection.
+	// Structure is documented below.
+	HdfsConnectionProperties GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput `pulumi:"hdfsConnectionProperties"`
+	// The properties of GoldengateIcebergConnection.
+	// Structure is documented below.
+	IcebergConnectionProperties GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput `pulumi:"icebergConnectionProperties"`
+	// (Output)
+	// The Ingress IPs of the GoldengateConnection.
+	IngressIpAddresses pulumi.StringArrayInput `pulumi:"ingressIpAddresses"`
+	// The properties of GoldengateJavaMessageServiceConnection.
+	// Structure is documented below.
+	JavaMessageServiceConnectionProperties GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput `pulumi:"javaMessageServiceConnectionProperties"`
+	// The properties of GoldengateKafkaConnection.
+	// Structure is documented below.
+	KafkaConnectionProperties GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput `pulumi:"kafkaConnectionProperties"`
+	// The properties of GoldengateKafkaSchemaRegistryConnection.
+	// Structure is documented below.
+	KafkaSchemaRegistryConnectionProperties GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput `pulumi:"kafkaSchemaRegistryConnectionProperties"`
+	// (Output)
+	// Describes the object's current state in detail. For example, it can be
+	// used to provide actionable information for a resource in a Failed state.
+	LifecycleDetails pulumi.StringPtrInput `pulumi:"lifecycleDetails"`
+	// (Output)
+	// The lifecycle state of the connection.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// UPDATING
+	// DELETING
+	// DELETED
+	// FAILED
+	LifecycleState pulumi.StringPtrInput `pulumi:"lifecycleState"`
+	// The properties of GoldengateMicrosoftFabricConnection.
+	// Structure is documented below.
+	MicrosoftFabricConnectionProperties GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput `pulumi:"microsoftFabricConnectionProperties"`
+	// The properties of GoldengateMicrosoftSqlserverConnection.
+	// Structure is documented below.
+	MicrosoftSqlserverConnectionProperties GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput `pulumi:"microsoftSqlserverConnectionProperties"`
+	// The properties of GoldengateMongodbConnection.
+	// Structure is documented below.
+	MongodbConnectionProperties GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput `pulumi:"mongodbConnectionProperties"`
+	// Properties of GoldengateMysqlConnection.
+	// Structure is documented below.
+	MysqlConnectionProperties GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput `pulumi:"mysqlConnectionProperties"`
+	// The properties of GoldengateOciObjectStorageConnection.
+	// Structure is documented below.
+	OciObjectStorageConnectionProperties GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput `pulumi:"ociObjectStorageConnectionProperties"`
+	// (Output)
+	// The [OCID] of the connection being
+	// referenced.
+	Ocid pulumi.StringPtrInput `pulumi:"ocid"`
+	// The properties of GoldengateOracleAIDataPlatformConnection.
+	// Structure is documented below.
+	OracleAiDataPlatformConnectionProperties GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput `pulumi:"oracleAiDataPlatformConnectionProperties"`
+	// The properties of Goldengate Oracle Database Connection.
+	// Structure is documented below.
+	OracleConnectionProperties GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput `pulumi:"oracleConnectionProperties"`
+	// The properties of GoldengateOracleNosqlConnection.
+	// Structure is documented below.
+	OracleNosqlConnectionProperties GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput `pulumi:"oracleNosqlConnectionProperties"`
+	// The properties of GoldengatePostgresqlConnection.
+	// Structure is documented below.
+	PostgresqlConnectionProperties GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput `pulumi:"postgresqlConnectionProperties"`
+	// The properties of GoldengateRedisConnection.
+	// Structure is documented below.
+	RedisConnectionProperties GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput `pulumi:"redisConnectionProperties"`
+	// The routing method for the GoldengateConnection.
+	// Possible values:
+	// SHARED_DEPLOYMENT_ENDPOINT
+	// DEDICATED_ENDPOINT
+	RoutingMethod pulumi.StringPtrInput `pulumi:"routingMethod"`
+	// The properties of GoldengateSnowflakeConnection.
+	// Structure is documented below.
+	SnowflakeConnectionProperties GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput `pulumi:"snowflakeConnectionProperties"`
+	// (Output)
+	// The time the resource was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (GoldengateConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOutput).ToGoldengateConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesArgs, GoldengateConnectionPropertiesPtr and GoldengateConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesPtrType GoldengateConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesPtr(v *GoldengateConnectionPropertiesArgs) GoldengateConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionProperties) *GoldengateConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAmazonKinesisConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) AmazonKinesisConnectionProperties() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties {
+		return v.AmazonKinesisConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAmazonRedshiftConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) AmazonRedshiftConnectionProperties() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties {
+		return v.AmazonRedshiftConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAmazonS3Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) AmazonS3ConnectionProperties() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonS3ConnectionProperties {
+		return v.AmazonS3ConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAzureDataLakeStorageConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) AzureDataLakeStorageConnectionProperties() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties {
+		return v.AzureDataLakeStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAzureSynapseAnalyticsConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) AzureSynapseAnalyticsConnectionProperties() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties {
+		return v.AzureSynapseAnalyticsConnectionProperties
+	}).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput)
+}
+
+// The connection type.
+// Possible values:
+// GOLDENGATE
+// KAFKA
+// KAFKA_SCHEMA_REGISTRY
+// MYSQL
+// JAVA_MESSAGE_SERVICE
+// MICROSOFT_SQLSERVER
+// OCI_OBJECT_STORAGE
+// ORACLE
+// AZURE_DATA_LAKE_STORAGE
+// POSTGRESQL
+// AZURE_SYNAPSE_ANALYTICS
+// SNOWFLAKE
+// AMAZON_S3
+// HDFS
+// ORACLE_AI_DATA_PLATFORM
+// ORACLE_NOSQL
+// MONGODB
+// AMAZON_KINESIS
+// AMAZON_REDSHIFT
+// DB2
+// REDIS
+// ELASTICSEARCH
+// GENERIC
+// GOOGLE_CLOUD_STORAGE
+// GOOGLE_BIGQUERY
+// DATABRICKS
+// GOOGLE_PUBSUB
+// MICROSOFT_FABRIC
+// ICEBERG
+func (o GoldengateConnectionPropertiesOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// The properties of GoldengateDatabricksConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) DatabricksConnectionProperties() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesDatabricksConnectionProperties {
+		return v.DatabricksConnectionProperties
+	}).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateDb2Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) Db2ConnectionProperties() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesDb2ConnectionProperties {
+		return v.Db2ConnectionProperties
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput)
+}
+
+// Metadata about this specific object.
+func (o GoldengateConnectionPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An object's Display Name.
+func (o GoldengateConnectionPropertiesOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The properties of GoldengateElasticsearchConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) ElasticsearchConnectionProperties() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesElasticsearchConnectionProperties {
+		return v.ElasticsearchConnectionProperties
+	}).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGenericConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) GenericConnectionProperties() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesGenericConnectionProperties {
+		return v.GenericConnectionProperties
+	}).(GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoldengateConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) GoldengateConnectionProperties() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoldengateConnectionProperties {
+		return v.GoldengateConnectionProperties
+	}).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoogleBigQueryConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) GoogleBigQueryConnectionProperties() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties {
+		return v.GoogleBigQueryConnectionProperties
+	}).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoogleCloudStorageConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) GoogleCloudStorageConnectionProperties() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties {
+		return v.GoogleCloudStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGooglePubsubConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) GooglePubsubConnectionProperties() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesGooglePubsubConnectionProperties {
+		return v.GooglePubsubConnectionProperties
+	}).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateHdfsConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) HdfsConnectionProperties() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesHdfsConnectionProperties {
+		return v.HdfsConnectionProperties
+	}).(GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateIcebergConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) IcebergConnectionProperties() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesIcebergConnectionProperties {
+		return v.IcebergConnectionProperties
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The Ingress IPs of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesOutput) IngressIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) []string { return v.IngressIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The properties of GoldengateJavaMessageServiceConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) JavaMessageServiceConnectionProperties() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties {
+		return v.JavaMessageServiceConnectionProperties
+	}).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateKafkaConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) KafkaConnectionProperties() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesKafkaConnectionProperties {
+		return v.KafkaConnectionProperties
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateKafkaSchemaRegistryConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) KafkaSchemaRegistryConnectionProperties() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties {
+		return v.KafkaSchemaRegistryConnectionProperties
+	}).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// Describes the object's current state in detail. For example, it can be
+// used to provide actionable information for a resource in a Failed state.
+func (o GoldengateConnectionPropertiesOutput) LifecycleDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.LifecycleDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the connection.
+// Possible values:
+// CREATING
+// ACTIVE
+// UPDATING
+// DELETING
+// DELETED
+// FAILED
+func (o GoldengateConnectionPropertiesOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.LifecycleState }).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateMicrosoftFabricConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) MicrosoftFabricConnectionProperties() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties {
+		return v.MicrosoftFabricConnectionProperties
+	}).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateMicrosoftSqlserverConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) MicrosoftSqlserverConnectionProperties() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
+		return v.MicrosoftSqlserverConnectionProperties
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateMongodbConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) MongodbConnectionProperties() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesMongodbConnectionProperties {
+		return v.MongodbConnectionProperties
+	}).(GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput)
+}
+
+// Properties of GoldengateMysqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) MysqlConnectionProperties() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesMysqlConnectionProperties {
+		return v.MysqlConnectionProperties
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateOciObjectStorageConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) OciObjectStorageConnectionProperties() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties {
+		return v.OciObjectStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The [OCID] of the connection being
+// referenced.
+func (o GoldengateConnectionPropertiesOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.Ocid }).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateOracleAIDataPlatformConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) OracleAiDataPlatformConnectionProperties() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties {
+		return v.OracleAiDataPlatformConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput)
+}
+
+// The properties of Goldengate Oracle Database Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) OracleConnectionProperties() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleConnectionProperties {
+		return v.OracleConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateOracleNosqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) OracleNosqlConnectionProperties() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleNosqlConnectionProperties {
+		return v.OracleNosqlConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengatePostgresqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) PostgresqlConnectionProperties() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesPostgresqlConnectionProperties {
+		return v.PostgresqlConnectionProperties
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateRedisConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) RedisConnectionProperties() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesRedisConnectionProperties {
+		return v.RedisConnectionProperties
+	}).(GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput)
+}
+
+// The routing method for the GoldengateConnection.
+// Possible values:
+// SHARED_DEPLOYMENT_ENDPOINT
+// DEDICATED_ENDPOINT
+func (o GoldengateConnectionPropertiesOutput) RoutingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.RoutingMethod }).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateSnowflakeConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesOutput) SnowflakeConnectionProperties() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *GoldengateConnectionPropertiesSnowflakeConnectionProperties {
+		return v.SnowflakeConnectionProperties
+	}).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The time the resource was last updated.
+func (o GoldengateConnectionPropertiesOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionProperties) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) GoldengateConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesOutput)
+}
+
+// The properties of GoldengateAmazonKinesisConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) AmazonKinesisConnectionProperties() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AmazonKinesisConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAmazonRedshiftConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) AmazonRedshiftConnectionProperties() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AmazonRedshiftConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAmazonS3Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) AmazonS3ConnectionProperties() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesAmazonS3ConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AmazonS3ConnectionProperties
+	}).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAzureDataLakeStorageConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) AzureDataLakeStorageConnectionProperties() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDataLakeStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateAzureSynapseAnalyticsConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) AzureSynapseAnalyticsConnectionProperties() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSynapseAnalyticsConnectionProperties
+	}).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput)
+}
+
+// The connection type.
+// Possible values:
+// GOLDENGATE
+// KAFKA
+// KAFKA_SCHEMA_REGISTRY
+// MYSQL
+// JAVA_MESSAGE_SERVICE
+// MICROSOFT_SQLSERVER
+// OCI_OBJECT_STORAGE
+// ORACLE
+// AZURE_DATA_LAKE_STORAGE
+// POSTGRESQL
+// AZURE_SYNAPSE_ANALYTICS
+// SNOWFLAKE
+// AMAZON_S3
+// HDFS
+// ORACLE_AI_DATA_PLATFORM
+// ORACLE_NOSQL
+// MONGODB
+// AMAZON_KINESIS
+// AMAZON_REDSHIFT
+// DB2
+// REDIS
+// ELASTICSEARCH
+// GENERIC
+// GOOGLE_CLOUD_STORAGE
+// GOOGLE_BIGQUERY
+// DATABRICKS
+// GOOGLE_PUBSUB
+// MICROSOFT_FABRIC
+// ICEBERG
+func (o GoldengateConnectionPropertiesPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateDatabricksConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) DatabricksConnectionProperties() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesDatabricksConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DatabricksConnectionProperties
+	}).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateDb2Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) Db2ConnectionProperties() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesDb2ConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Db2ConnectionProperties
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput)
+}
+
+// Metadata about this specific object.
+func (o GoldengateConnectionPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// An object's Display Name.
+func (o GoldengateConnectionPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateElasticsearchConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) ElasticsearchConnectionProperties() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesElasticsearchConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticsearchConnectionProperties
+	}).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGenericConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) GenericConnectionProperties() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesGenericConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.GenericConnectionProperties
+	}).(GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoldengateConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) GoldengateConnectionProperties() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoldengateConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.GoldengateConnectionProperties
+	}).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoogleBigQueryConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) GoogleBigQueryConnectionProperties() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleBigQueryConnectionProperties
+	}).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGoogleCloudStorageConnectionProperties.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) GoogleCloudStorageConnectionProperties() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloudStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateGooglePubsubConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) GooglePubsubConnectionProperties() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesGooglePubsubConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.GooglePubsubConnectionProperties
+	}).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateHdfsConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) HdfsConnectionProperties() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesHdfsConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.HdfsConnectionProperties
+	}).(GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateIcebergConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) IcebergConnectionProperties() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesIcebergConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.IcebergConnectionProperties
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The Ingress IPs of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesPtrOutput) IngressIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IngressIpAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The properties of GoldengateJavaMessageServiceConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) JavaMessageServiceConnectionProperties() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.JavaMessageServiceConnectionProperties
+	}).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateKafkaConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) KafkaConnectionProperties() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesKafkaConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnectionProperties
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateKafkaSchemaRegistryConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) KafkaSchemaRegistryConnectionProperties() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaSchemaRegistryConnectionProperties
+	}).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// Describes the object's current state in detail. For example, it can be
+// used to provide actionable information for a resource in a Failed state.
+func (o GoldengateConnectionPropertiesPtrOutput) LifecycleDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the connection.
+// Possible values:
+// CREATING
+// ACTIVE
+// UPDATING
+// DELETING
+// DELETED
+// FAILED
+func (o GoldengateConnectionPropertiesPtrOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateMicrosoftFabricConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) MicrosoftFabricConnectionProperties() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MicrosoftFabricConnectionProperties
+	}).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateMicrosoftSqlserverConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) MicrosoftSqlserverConnectionProperties() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MicrosoftSqlserverConnectionProperties
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateMongodbConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) MongodbConnectionProperties() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesMongodbConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MongodbConnectionProperties
+	}).(GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput)
+}
+
+// Properties of GoldengateMysqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) MysqlConnectionProperties() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesMysqlConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlConnectionProperties
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateOciObjectStorageConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) OciObjectStorageConnectionProperties() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.OciObjectStorageConnectionProperties
+	}).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The [OCID] of the connection being
+// referenced.
+func (o GoldengateConnectionPropertiesPtrOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ocid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateOracleAIDataPlatformConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) OracleAiDataPlatformConnectionProperties() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.OracleAiDataPlatformConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput)
+}
+
+// The properties of Goldengate Oracle Database Connection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) OracleConnectionProperties() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.OracleConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateOracleNosqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) OracleNosqlConnectionProperties() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesOracleNosqlConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.OracleNosqlConnectionProperties
+	}).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengatePostgresqlConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) PostgresqlConnectionProperties() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesPostgresqlConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlConnectionProperties
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput)
+}
+
+// The properties of GoldengateRedisConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) RedisConnectionProperties() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesRedisConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.RedisConnectionProperties
+	}).(GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput)
+}
+
+// The routing method for the GoldengateConnection.
+// Possible values:
+// SHARED_DEPLOYMENT_ENDPOINT
+// DEDICATED_ENDPOINT
+func (o GoldengateConnectionPropertiesPtrOutput) RoutingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of GoldengateSnowflakeConnection.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPtrOutput) SnowflakeConnectionProperties() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *GoldengateConnectionPropertiesSnowflakeConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SnowflakeConnectionProperties
+	}).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput)
+}
+
+// (Output)
+// The time the resource was last updated.
+func (o GoldengateConnectionPropertiesPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonKinesisConnectionProperties struct {
+	// Access key ID to access the Amazon Kinesis.
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// The name of the AWS region.
+	// If not provided, Goldengate will default to 'us-west-1'.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// The endpoint URL of the Amazon Kinesis service.
+	// e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+	// If not provided, Goldengate will default to
+	// 'https://kinesis..amazonaws.com'.
+	Endpoint *string `pulumi:"endpoint"`
+	// Secret access key to access the Amazon Kinesis.
+	SecretAccessKeySecret *string `pulumi:"secretAccessKeySecret"`
+	// The technology type of AmazonKinesisConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs and GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs struct {
+	// Access key ID to access the Amazon Kinesis.
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// The name of the AWS region.
+	// If not provided, Goldengate will default to 'us-west-1'.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The endpoint URL of the Amazon Kinesis service.
+	// e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+	// If not provided, Goldengate will default to
+	// 'https://kinesis..amazonaws.com'.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Secret access key to access the Amazon Kinesis.
+	SecretAccessKeySecret pulumi.StringPtrInput `pulumi:"secretAccessKeySecret"`
+	// The technology type of AmazonKinesisConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonKinesisConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput).ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs, GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtr and GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrType GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtr(v *GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonKinesisConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonKinesisConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput)
+}
+
+// Access key ID to access the Amazon Kinesis.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS region.
+// If not provided, Goldengate will default to 'us-west-1'.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint URL of the Amazon Kinesis service.
+// e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+// If not provided, Goldengate will default to
+// 'https://kinesis..amazonaws.com'.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Secret access key to access the Amazon Kinesis.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonKinesisConnection.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonKinesisConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) GoldengateConnectionPropertiesAmazonKinesisConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesAmazonKinesisConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput)
+}
+
+// Access key ID to access the Amazon Kinesis.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS region.
+// If not provided, Goldengate will default to 'us-west-1'.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint URL of the Amazon Kinesis service.
+// e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+// If not provided, Goldengate will default to
+// 'https://kinesis..amazonaws.com'.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret access key to access the Amazon Kinesis.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonKinesisConnection.
+func (o GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonKinesisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties struct {
+	// Connection URL.
+	// e.g.:
+	// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+	ConnectionUrl *string `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+	// in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Amazon Redshift connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The technology type of AmazonS3Connection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	//
+	// <a name="nestedPropertiesAmazonS3ConnectionProperties"></a>The `amazonS3ConnectionProperties` block supports:
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs and GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs struct {
+	// Connection URL.
+	// e.g.:
+	// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+	// in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Amazon Redshift connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The technology type of AmazonS3Connection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	//
+	// <a name="nestedPropertiesAmazonS3ConnectionProperties"></a>The `amazonS3ConnectionProperties` block supports:
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput).ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs, GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtr and GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrType GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtr(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput)
+}
+
+// Connection URL.
+// e.g.:
+// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+// in plain text.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Amazon Redshift connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonS3Connection.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+//
+// <a name="nestedPropertiesAmazonS3ConnectionProperties"></a>The `amazonS3ConnectionProperties` block supports:
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput)
+}
+
+// Connection URL.
+// e.g.:
+// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+// in plain text.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Amazon Redshift connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonS3Connection.
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+//
+// <a name="nestedPropertiesAmazonS3ConnectionProperties"></a>The `amazonS3ConnectionProperties` block supports:
+func (o GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonS3ConnectionProperties struct {
+	// Access key ID to access the Amazon S3 bucket.
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// The Amazon Endpoint for S3.
+	Endpoint *string `pulumi:"endpoint"`
+	// The name of the AWS region where the bucket is created.
+	Region *string `pulumi:"region"`
+	// Secret access key to access the Amazon S3 bucket.
+	SecretAccessKeySecret *string `pulumi:"secretAccessKeySecret"`
+	// The technology type of AmazonS3Connection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs and GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs struct {
+	// Access key ID to access the Amazon S3 bucket.
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// The Amazon Endpoint for S3.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The name of the AWS region where the bucket is created.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Secret access key to access the Amazon S3 bucket.
+	SecretAccessKeySecret pulumi.StringPtrInput `pulumi:"secretAccessKeySecret"`
+	// The technology type of AmazonS3Connection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonS3ConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput).ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs, GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtr and GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrType GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtr(v *GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonS3ConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAmazonS3ConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *GoldengateConnectionPropertiesAmazonS3ConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput)
+}
+
+// Access key ID to access the Amazon S3 bucket.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Endpoint for S3.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS region where the bucket is created.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Secret access key to access the Amazon S3 bucket.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonS3Connection.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAmazonS3ConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) GoldengateConnectionPropertiesAmazonS3ConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesAmazonS3ConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput)
+}
+
+// Access key ID to access the Amazon S3 bucket.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Endpoint for S3.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS region where the bucket is created.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret access key to access the Amazon S3 bucket.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AmazonS3Connection.
+func (o GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAmazonS3ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties struct {
+	// Sets the Azure storage account name.
+	Account *string `pulumi:"account"`
+	// Azure storage account key. This property is required when
+	// 'authentication_type' is set to 'SHARED_KEY'.
+	AccountKeySecret *string `pulumi:"accountKeySecret"`
+	// Authentication mechanism to access Azure Data Lake Storage.
+	// Possible values:
+	// SHARED_KEY
+	// SHARED_ACCESS_SIGNATURE
+	// AZURE_ACTIVE_DIRECTORY
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The endpoint used for authentication with Microsoft Entra ID (formerly
+	// Azure Active Directory). Default value:
+	// https://login.microsoftonline.com
+	AzureAuthorityHost *string `pulumi:"azureAuthorityHost"`
+	// Azure tenant ID of the application. This property is required when
+	// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+	AzureTenantId *string `pulumi:"azureTenantId"`
+	// Azure client ID of the application. This property is required when
+	// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+	ClientId *string `pulumi:"clientId"`
+	// Azure client secret (aka application password) for authentication.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Azure Storage service endpoint.
+	// e.g: https://test.blob.core.windows.net
+	Endpoint *string `pulumi:"endpoint"`
+	// Credential that uses a shared access signature (SAS) to authenticate to
+	// an Azure Service.
+	SasTokenSecret *string `pulumi:"sasTokenSecret"`
+	// The technology type of AzureDataLakeStorageConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs and GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs struct {
+	// Sets the Azure storage account name.
+	Account pulumi.StringPtrInput `pulumi:"account"`
+	// Azure storage account key. This property is required when
+	// 'authentication_type' is set to 'SHARED_KEY'.
+	AccountKeySecret pulumi.StringPtrInput `pulumi:"accountKeySecret"`
+	// Authentication mechanism to access Azure Data Lake Storage.
+	// Possible values:
+	// SHARED_KEY
+	// SHARED_ACCESS_SIGNATURE
+	// AZURE_ACTIVE_DIRECTORY
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The endpoint used for authentication with Microsoft Entra ID (formerly
+	// Azure Active Directory). Default value:
+	// https://login.microsoftonline.com
+	AzureAuthorityHost pulumi.StringPtrInput `pulumi:"azureAuthorityHost"`
+	// Azure tenant ID of the application. This property is required when
+	// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+	AzureTenantId pulumi.StringPtrInput `pulumi:"azureTenantId"`
+	// Azure client ID of the application. This property is required when
+	// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Azure client secret (aka application password) for authentication.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Azure Storage service endpoint.
+	// e.g: https://test.blob.core.windows.net
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Credential that uses a shared access signature (SAS) to authenticate to
+	// an Azure Service.
+	SasTokenSecret pulumi.StringPtrInput `pulumi:"sasTokenSecret"`
+	// The technology type of AzureDataLakeStorageConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput).ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs, GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtr and GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrType GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtr(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput)
+}
+
+// Sets the Azure storage account name.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure storage account key. This property is required when
+// 'authentication_type' is set to 'SHARED_KEY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) AccountKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.AccountKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication mechanism to access Azure Data Lake Storage.
+// Possible values:
+// SHARED_KEY
+// SHARED_ACCESS_SIGNATURE
+// AZURE_ACTIVE_DIRECTORY
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint used for authentication with Microsoft Entra ID (formerly
+// Azure Active Directory). Default value:
+// https://login.microsoftonline.com
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) AzureAuthorityHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.AzureAuthorityHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID of the application. This property is required when
+// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.AzureTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure client ID of the application. This property is required when
+// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure client secret (aka application password) for authentication.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Storage service endpoint.
+// e.g: https://test.blob.core.windows.net
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credential that uses a shared access signature (SAS) to authenticate to
+// an Azure Service.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) SasTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.SasTokenSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AzureDataLakeStorageConnection.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput)
+}
+
+// Sets the Azure storage account name.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure storage account key. This property is required when
+// 'authentication_type' is set to 'SHARED_KEY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) AccountKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication mechanism to access Azure Data Lake Storage.
+// Possible values:
+// SHARED_KEY
+// SHARED_ACCESS_SIGNATURE
+// AZURE_ACTIVE_DIRECTORY
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint used for authentication with Microsoft Entra ID (formerly
+// Azure Active Directory). Default value:
+// https://login.microsoftonline.com
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) AzureAuthorityHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAuthorityHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID of the application. This property is required when
+// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure client ID of the application. This property is required when
+// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure client secret (aka application password) for authentication.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Storage service endpoint.
+// e.g: https://test.blob.core.windows.net
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credential that uses a shared access signature (SAS) to authenticate to
+// an Azure Service.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) SasTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SasTokenSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AzureDataLakeStorageConnection.
+func (o GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties struct {
+	// JDBC connection string.
+	// e.g.:
+	// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+	ConnectionString *string `pulumi:"connectionString"`
+	// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+	// connection in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Azure Synapse Analytics
+	// connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The technology type of AzureSynapseAnalyticsConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs and GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs struct {
+	// JDBC connection string.
+	// e.g.:
+	// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+	// connection in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Azure Synapse Analytics
+	// connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The technology type of AzureSynapseAnalyticsConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput).ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs, GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtr and GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrType GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtr(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput)
+}
+
+// JDBC connection string.
+// e.g.:
+// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		return v.ConnectionString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+// connection in plain text.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Azure Synapse Analytics
+// connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AzureSynapseAnalyticsConnection.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput)
+}
+
+// JDBC connection string.
+// e.g.:
+// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+// connection in plain text.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Azure Synapse Analytics
+// connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of AzureSynapseAnalyticsConnection.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDatabricksConnectionProperties struct {
+	// Authentication type for Databricks.
+	// Possible values:
+	// PERSONAL_ACCESS_TOKEN
+	// OAUTH_M2M
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// OAuth client id, only applicable for authenticationType == OAUTH_M2M
+	ClientId *string `pulumi:"clientId"`
+	// OAuth client secret, only applicable for authenticationType == OAUTH_M2M
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Connection URL.
+	// e.g.:
+	// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+	ConnectionUrl *string `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Db2 connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// External storage credential name to access files on object
+	// storage such as ADLS Gen2, S3 or Cloud Storage.
+	StorageCredential *string `pulumi:"storageCredential"`
+	// The technology type of Db2Connection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesDatabricksConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs and GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDatabricksConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesDatabricksConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs struct {
+	// Authentication type for Databricks.
+	// Possible values:
+	// PERSONAL_ACCESS_TOKEN
+	// OAUTH_M2M
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// OAuth client id, only applicable for authenticationType == OAUTH_M2M
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// OAuth client secret, only applicable for authenticationType == OAUTH_M2M
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Connection URL.
+	// e.g.:
+	// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Db2 connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// External storage credential name to access files on object
+	// storage such as ADLS Gen2, S3 or Cloud Storage.
+	StorageCredential pulumi.StringPtrInput `pulumi:"storageCredential"`
+	// The technology type of Db2Connection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDatabricksConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput).ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs, GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtr and GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesDatabricksConnectionPropertiesPtrType GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtr(v *GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesDatabricksConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesDatabricksConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesDatabricksConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesDatabricksConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesDatabricksConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDatabricksConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesDatabricksConnectionProperties) *GoldengateConnectionPropertiesDatabricksConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput)
+}
+
+// Authentication type for Databricks.
+// Possible values:
+// PERSONAL_ACCESS_TOKEN
+// OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth client id, only applicable for authenticationType == OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// OAuth client secret, only applicable for authenticationType == OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Connection URL.
+// e.g.:
+// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Db2 connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// External storage credential name to access files on object
+// storage such as ADLS Gen2, S3 or Cloud Storage.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) StorageCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		return v.StorageCredential
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of Db2Connection.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDatabricksConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesDatabricksConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) GoldengateConnectionPropertiesDatabricksConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesDatabricksConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput)
+}
+
+// Authentication type for Databricks.
+// Possible values:
+// PERSONAL_ACCESS_TOKEN
+// OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth client id, only applicable for authenticationType == OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth client secret, only applicable for authenticationType == OAUTH_M2M
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URL.
+// e.g.:
+// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Db2 connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// External storage credential name to access files on object
+// storage such as ADLS Gen2, S3 or Cloud Storage.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) StorageCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageCredential
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of Db2Connection.
+func (o GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDatabricksConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionProperties struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	AdditionalAttributes []GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database *string `pulumi:"database"`
+	// The name or address of a host.
+	Host *string `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Db2 connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port *int `pulumi:"port"`
+	// Security protocol for the DB2 database.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// The keystash file which contains the encrypted password to
+	// the key database file. Not supported for IBM Db2 for i.
+	SslClientKeystashFile *string `pulumi:"sslClientKeystashFile"`
+	// The keystore file created at the client containing the
+	// server certificate / CA root certificate. Not supported for IBM Db2 for i.
+	SslClientKeystoredbFile *string `pulumi:"sslClientKeystoredbFile"`
+	// The file which contains the self-signed server certificate
+	// / Certificate Authority (CA) certificate.
+	SslServerCertificateFile *string `pulumi:"sslServerCertificateFile"`
+	// The technology type of Db2Connection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to the DB2 database.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesDb2ConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs and GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDb2ConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	AdditionalAttributes GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayInput `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The name or address of a host.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Db2 connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Security protocol for the DB2 database.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// The keystash file which contains the encrypted password to
+	// the key database file. Not supported for IBM Db2 for i.
+	SslClientKeystashFile pulumi.StringPtrInput `pulumi:"sslClientKeystashFile"`
+	// The keystore file created at the client containing the
+	// server certificate / CA root certificate. Not supported for IBM Db2 for i.
+	SslClientKeystoredbFile pulumi.StringPtrInput `pulumi:"sslClientKeystoredbFile"`
+	// The file which contains the self-signed server certificate
+	// / Certificate Authority (CA) certificate.
+	SslServerCertificateFile pulumi.StringPtrInput `pulumi:"sslServerCertificateFile"`
+	// The technology type of Db2Connection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to the DB2 database.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput).ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs, GoldengateConnectionPropertiesDb2ConnectionPropertiesPtr and GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesDb2ConnectionPropertiesPtrType GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesDb2ConnectionPropertiesPtr(v *GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesDb2ConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesDb2ConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesDb2ConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesDb2ConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesDb2ConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesDb2ConnectionProperties) *GoldengateConnectionPropertiesDb2ConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) AdditionalAttributes() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) []GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute {
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Db2 connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.PasswordSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Security protocol for the DB2 database.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The keystash file which contains the encrypted password to
+// the key database file. Not supported for IBM Db2 for i.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) SslClientKeystashFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.SslClientKeystashFile }).(pulumi.StringPtrOutput)
+}
+
+// The keystore file created at the client containing the
+// server certificate / CA root certificate. Not supported for IBM Db2 for i.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) SslClientKeystoredbFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		return v.SslClientKeystoredbFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file which contains the self-signed server certificate
+// / Certificate Authority (CA) certificate.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) SslServerCertificateFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		return v.SslServerCertificateFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of Db2Connection.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the DB2 database.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesDb2ConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) GoldengateConnectionPropertiesDb2ConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesDb2ConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) AdditionalAttributes() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) []GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Db2 connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Security protocol for the DB2 database.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The keystash file which contains the encrypted password to
+// the key database file. Not supported for IBM Db2 for i.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) SslClientKeystashFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslClientKeystashFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The keystore file created at the client containing the
+// server certificate / CA root certificate. Not supported for IBM Db2 for i.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) SslClientKeystoredbFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslClientKeystoredbFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file which contains the self-signed server certificate
+// / Certificate Authority (CA) certificate.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) SslServerCertificateFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslServerCertificateFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of Db2Connection.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the DB2 database.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesDb2ConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute struct {
+	// The name of the property entry.
+	Key string `pulumi:"key"`
+	// The value of the property entry.
+	Value string `pulumi:"value"`
+}
+
+// GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeInput is an input type that accepts GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs and GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeInput` via:
+//
+//	GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs{...}
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutputWithContext(context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs struct {
+	// The name of the property entry.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the property entry.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput {
+	return i.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput)
+}
+
+// GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayInput is an input type that accepts GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray and GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayInput` via:
+//
+//	GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray{ GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs{...} }
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput
+	ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray []GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeInput
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return i.ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+// The name of the property entry.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the property entry.
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput) Index(i pulumi.IntInput) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute {
+		return vs[0].([]GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute)[vs[1].(int)]
+	}).(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput)
+}
+
+type GoldengateConnectionPropertiesElasticsearchConnectionProperties struct {
+	// Authentication type for Elasticsearch.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// Fingerprint required by TLS security protocol.
+	// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+	Fingerprint *string `pulumi:"fingerprint"`
+	// Input only. The password Oracle Goldengate uses for Elastic Search connection
+	// in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Elastic Search connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// Security protocol for Elasticsearch.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// Comma separated list of Elasticsearch server addresses, specified as
+	// host:port entries, where :port is optional. If port is not specified, it
+	// defaults to 9200. Example:
+	// "server1.example.com:4000,server2.example.com:4000"
+	Servers *string `pulumi:"servers"`
+	// The technology type of ElasticsearchConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesElasticsearchConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs and GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesElasticsearchConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesElasticsearchConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs struct {
+	// Authentication type for Elasticsearch.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// Fingerprint required by TLS security protocol.
+	// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
+	// Input only. The password Oracle Goldengate uses for Elastic Search connection
+	// in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Elastic Search connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// Security protocol for Elasticsearch.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// Comma separated list of Elasticsearch server addresses, specified as
+	// host:port entries, where :port is optional. If port is not specified, it
+	// defaults to 9200. Example:
+	// "server1.example.com:4000,server2.example.com:4000"
+	Servers pulumi.StringPtrInput `pulumi:"servers"`
+	// The technology type of ElasticsearchConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesElasticsearchConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput).ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs, GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtr and GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrType GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtr(v *GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesElasticsearchConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesElasticsearchConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *GoldengateConnectionPropertiesElasticsearchConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput)
+}
+
+// Authentication type for Elasticsearch.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fingerprint required by TLS security protocol.
+// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Elastic Search connection
+// in plain text.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Elastic Search connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Elasticsearch.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of Elasticsearch server addresses, specified as
+// host:port entries, where :port is optional. If port is not specified, it
+// defaults to 9200. Example:
+// "server1.example.com:4000,server2.example.com:4000"
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) Servers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string { return v.Servers }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of ElasticsearchConnection.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesElasticsearchConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) GoldengateConnectionPropertiesElasticsearchConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesElasticsearchConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput)
+}
+
+// Authentication type for Elasticsearch.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fingerprint required by TLS security protocol.
+// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Elastic Search connection
+// in plain text.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Elastic Search connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Elasticsearch.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of Elasticsearch server addresses, specified as
+// host:port entries, where :port is optional. If port is not specified, it
+// defaults to 9200. Example:
+// "server1.example.com:4000,server2.example.com:4000"
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) Servers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of ElasticsearchConnection.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesElasticsearchConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGenericConnectionProperties struct {
+	// The host of the GenericConnection.
+	Host *string `pulumi:"host"`
+	// The technology type.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesGenericConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesGenericConnectionPropertiesArgs and GoldengateConnectionPropertiesGenericConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGenericConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesGenericConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesGenericConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesGenericConnectionPropertiesArgs struct {
+	// The host of the GenericConnection.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The technology type.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGenericConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGenericConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGenericConnectionPropertiesOutput).ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesGenericConnectionPropertiesArgs, GoldengateConnectionPropertiesGenericConnectionPropertiesPtr and GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesGenericConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesGenericConnectionPropertiesPtrType GoldengateConnectionPropertiesGenericConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesGenericConnectionPropertiesPtr(v *GoldengateConnectionPropertiesGenericConnectionPropertiesArgs) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesGenericConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesGenericConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGenericConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesGenericConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesGenericConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGenericConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGenericConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesGenericConnectionProperties) *GoldengateConnectionPropertiesGenericConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput)
+}
+
+// The host of the GenericConnection.
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGenericConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGenericConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGenericConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesGenericConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGenericConnectionProperties) GoldengateConnectionPropertiesGenericConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesGenericConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesGenericConnectionPropertiesOutput)
+}
+
+// The host of the GenericConnection.
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGenericConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGenericConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoldengateConnectionProperties struct {
+	// The name of the GoldengateDeployment associated with the
+	// GoldengateConnection.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+	GoldengateDeploymentId *string `pulumi:"goldengateDeploymentId"`
+	// The host of the GoldengateConnection.
+	Host *string `pulumi:"host"`
+	// Input only. The password used to connect to the Oracle Goldengate in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password used to connect to the Oracle Goldengate.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The port of the GoldengateConnection.
+	Port *int `pulumi:"port"`
+	// The technology type.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username credential.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesGoldengateConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs and GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoldengateConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesGoldengateConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs struct {
+	// The name of the GoldengateDeployment associated with the
+	// GoldengateConnection.
+	// Format:
+	// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+	GoldengateDeploymentId pulumi.StringPtrInput `pulumi:"goldengateDeploymentId"`
+	// The host of the GoldengateConnection.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password used to connect to the Oracle Goldengate in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password used to connect to the Oracle Goldengate.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The port of the GoldengateConnection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The technology type.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username credential.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput).ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs, GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtr and GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesGoldengateConnectionPropertiesPtrType GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtr(v *GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesGoldengateConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesGoldengateConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesGoldengateConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesGoldengateConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesGoldengateConnectionProperties) *GoldengateConnectionPropertiesGoldengateConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput)
+}
+
+// The name of the GoldengateDeployment associated with the
+// GoldengateConnection.
+// Format:
+// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) GoldengateDeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		return v.GoldengateDeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password used to connect to the Oracle Goldengate in plain text.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password used to connect to the Oracle Goldengate.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username credential.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoldengateConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoldengateConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) GoldengateConnectionPropertiesGoldengateConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesGoldengateConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput)
+}
+
+// The name of the GoldengateDeployment associated with the
+// GoldengateConnection.
+// Format:
+// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) GoldengateDeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoldengateDeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password used to connect to the Oracle Goldengate in plain text.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password used to connect to the Oracle Goldengate.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the GoldengateConnection.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username credential.
+func (o GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoldengateConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties struct {
+	// The service account key file Cloud Storage containing the
+	// credentials required to use Google BigQuery.
+	ServiceAccountKeyFile *string `pulumi:"serviceAccountKeyFile"`
+	// The technology type.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs and GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs struct {
+	// The service account key file Cloud Storage containing the
+	// credentials required to use Google BigQuery.
+	ServiceAccountKeyFile pulumi.StringPtrInput `pulumi:"serviceAccountKeyFile"`
+	// The technology type.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput).ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs, GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtr and GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrType GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtr(v *GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput)
+}
+
+// The service account key file Cloud Storage containing the
+// credentials required to use Google BigQuery.
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) *string {
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput)
+}
+
+// The service account key file Cloud Storage containing the
+// credentials required to use Google BigQuery.
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties struct {
+	// The service account key Cloud Storage file containing the
+	// credentials required to use Google Cloud Storage.
+	ServiceAccountKeyFile *string `pulumi:"serviceAccountKeyFile"`
+	// The technology type.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs and GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs struct {
+	// The service account key Cloud Storage file containing the
+	// credentials required to use Google Cloud Storage.
+	ServiceAccountKeyFile pulumi.StringPtrInput `pulumi:"serviceAccountKeyFile"`
+	// The technology type.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput).ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs, GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtr and GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrType GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtr(v *GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput)
+}
+
+// The service account key Cloud Storage file containing the
+// credentials required to use Google Cloud Storage.
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) *string {
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput)
+}
+
+// The service account key Cloud Storage file containing the
+// credentials required to use Google Cloud Storage.
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGooglePubsubConnectionProperties struct {
+	// The content of the service account key file containing the
+	// credentials required to use Google Pub/Sub.
+	ServiceAccountKeyFile *string `pulumi:"serviceAccountKeyFile"`
+	// The technology type of GooglePubsubConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs and GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs struct {
+	// The content of the service account key file containing the
+	// credentials required to use Google Pub/Sub.
+	ServiceAccountKeyFile pulumi.StringPtrInput `pulumi:"serviceAccountKeyFile"`
+	// The technology type of GooglePubsubConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGooglePubsubConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput).ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs, GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtr and GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrType GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtr(v *GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGooglePubsubConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesGooglePubsubConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesGooglePubsubConnectionProperties) *GoldengateConnectionPropertiesGooglePubsubConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput)
+}
+
+// The content of the service account key file containing the
+// credentials required to use Google Pub/Sub.
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGooglePubsubConnectionProperties) *string {
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of GooglePubsubConnection.
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesGooglePubsubConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesGooglePubsubConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGooglePubsubConnectionProperties) GoldengateConnectionPropertiesGooglePubsubConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesGooglePubsubConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput)
+}
+
+// The content of the service account key file containing the
+// credentials required to use Google Pub/Sub.
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGooglePubsubConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of GooglePubsubConnection.
+func (o GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesGooglePubsubConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesHdfsConnectionProperties struct {
+	// The content of the Hadoop Distributed File System
+	// configuration file (core-site.xml).
+	CoreSiteXml *string `pulumi:"coreSiteXml"`
+	// The technology type of HdfsConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesHdfsConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs and GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesHdfsConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesHdfsConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs struct {
+	// The content of the Hadoop Distributed File System
+	// configuration file (core-site.xml).
+	CoreSiteXml pulumi.StringPtrInput `pulumi:"coreSiteXml"`
+	// The technology type of HdfsConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesHdfsConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput).ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs, GoldengateConnectionPropertiesHdfsConnectionPropertiesPtr and GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesHdfsConnectionPropertiesPtrType GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesHdfsConnectionPropertiesPtr(v *GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesHdfsConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesHdfsConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesHdfsConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesHdfsConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesHdfsConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesHdfsConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesHdfsConnectionProperties) *GoldengateConnectionPropertiesHdfsConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput)
+}
+
+// The content of the Hadoop Distributed File System
+// configuration file (core-site.xml).
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) CoreSiteXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesHdfsConnectionProperties) *string { return v.CoreSiteXml }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of HdfsConnection.
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesHdfsConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesHdfsConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesHdfsConnectionProperties) GoldengateConnectionPropertiesHdfsConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesHdfsConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput)
+}
+
+// The content of the Hadoop Distributed File System
+// configuration file (core-site.xml).
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) CoreSiteXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesHdfsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoreSiteXml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of HdfsConnection.
+func (o GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesHdfsConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionProperties struct {
+	// The Iceberg catalog details.
+	// Structure is documented below.
+	Catalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog `pulumi:"catalog"`
+	// The Iceberg storage details.
+	// Structure is documented below.
+	Storage GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage `pulumi:"storage"`
+	// The technology type of Iceberg connection.
+	TechnologyType string `pulumi:"technologyType"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs struct {
+	// The Iceberg catalog details.
+	// Structure is documented below.
+	Catalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogInput `pulumi:"catalog"`
+	// The Iceberg storage details.
+	// Structure is documented below.
+	Storage GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageInput `pulumi:"storage"`
+	// The technology type of Iceberg connection.
+	TechnologyType pulumi.StringInput `pulumi:"technologyType"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionProperties) *GoldengateConnectionPropertiesIcebergConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput)
+}
+
+// The Iceberg catalog details.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) Catalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionProperties) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog {
+		return v.Catalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput)
+}
+
+// The Iceberg storage details.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) Storage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionProperties) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage {
+		return v.Storage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput)
+}
+
+// The technology type of Iceberg connection.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput) TechnologyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionProperties) string { return v.TechnologyType }).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionProperties) GoldengateConnectionPropertiesIcebergConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput)
+}
+
+// The Iceberg catalog details.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) Catalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionProperties) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog {
+		if v == nil {
+			return nil
+		}
+		return &v.Catalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput)
+}
+
+// The Iceberg storage details.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) Storage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionProperties) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage {
+		if v == nil {
+			return nil
+		}
+		return &v.Storage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput)
+}
+
+// The technology type of Iceberg connection.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog struct {
+	// The type of Iceberg catalog.
+	// Possible values:
+	// GLUE
+	// HADOOP
+	// NESSIE
+	// POLARIS
+	// REST
+	CatalogType string `pulumi:"catalogType"`
+	// The Glue Iceberg catalog.
+	// Structure is documented below.
+	GlueIcebergCatalog *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog `pulumi:"glueIcebergCatalog"`
+	// The Nessie Iceberg catalog.
+	// Structure is documented below.
+	NessieIcebergCatalog *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog `pulumi:"nessieIcebergCatalog"`
+	// The Polaris Iceberg catalog.
+	// Structure is documented below.
+	PolarisIcebergCatalog *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog `pulumi:"polarisIcebergCatalog"`
+	// The REST Iceberg catalog.
+	// Structure is documented below.
+	RestIcebergCatalog *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog `pulumi:"restIcebergCatalog"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs struct {
+	// The type of Iceberg catalog.
+	// Possible values:
+	// GLUE
+	// HADOOP
+	// NESSIE
+	// POLARIS
+	// REST
+	CatalogType pulumi.StringInput `pulumi:"catalogType"`
+	// The Glue Iceberg catalog.
+	// Structure is documented below.
+	GlueIcebergCatalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput `pulumi:"glueIcebergCatalog"`
+	// The Nessie Iceberg catalog.
+	// Structure is documented below.
+	NessieIcebergCatalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput `pulumi:"nessieIcebergCatalog"`
+	// The Polaris Iceberg catalog.
+	// Structure is documented below.
+	PolarisIcebergCatalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput `pulumi:"polarisIcebergCatalog"`
+	// The REST Iceberg catalog.
+	// Structure is documented below.
+	RestIcebergCatalog GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput `pulumi:"restIcebergCatalog"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput)
+}
+
+// The type of Iceberg catalog.
+// Possible values:
+// GLUE
+// HADOOP
+// NESSIE
+// POLARIS
+// REST
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) CatalogType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) string { return v.CatalogType }).(pulumi.StringOutput)
+}
+
+// The Glue Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) GlueIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog {
+		return v.GlueIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput)
+}
+
+// The Nessie Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) NessieIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog {
+		return v.NessieIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput)
+}
+
+// The Polaris Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) PolarisIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog {
+		return v.PolarisIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput)
+}
+
+// The REST Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput) RestIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog {
+		return v.RestIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput)
+}
+
+// The type of Iceberg catalog.
+// Possible values:
+// GLUE
+// HADOOP
+// NESSIE
+// POLARIS
+// REST
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CatalogType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Glue Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) GlueIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog {
+		if v == nil {
+			return nil
+		}
+		return v.GlueIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput)
+}
+
+// The Nessie Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) NessieIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog {
+		if v == nil {
+			return nil
+		}
+		return v.NessieIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput)
+}
+
+// The Polaris Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) PolarisIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog {
+		if v == nil {
+			return nil
+		}
+		return v.PolarisIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput)
+}
+
+// The REST Iceberg catalog.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput) RestIcebergCatalog() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog {
+		if v == nil {
+			return nil
+		}
+		return v.RestIcebergCatalog
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog struct {
+	// The catalog ID of Glue.
+	GlueId string `pulumi:"glueId"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs struct {
+	// The catalog ID of Glue.
+	GlueId pulumi.StringInput `pulumi:"glueId"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput)
+}
+
+// The catalog ID of Glue.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput) GlueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog) string {
+		return v.GlueId
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput)
+}
+
+// The catalog ID of Glue.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput) GlueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GlueId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog struct {
+	// The Nessie branch.
+	Branch string `pulumi:"branch"`
+	// The Nessie uri.
+	Uri string `pulumi:"uri"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs struct {
+	// The Nessie branch.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// The Nessie uri.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput)
+}
+
+// The Nessie branch.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) string {
+		return v.Branch
+	}).(pulumi.StringOutput)
+}
+
+// The Nessie uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput)
+}
+
+// The Nessie branch.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Nessie uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog struct {
+	// The Polaris client ID.
+	ClientId string `pulumi:"clientId"`
+	// The Polaris client secret.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The catalog name within Polaris.
+	PolarisCatalog string `pulumi:"polarisCatalog"`
+	// The Polaris principal role.
+	PrincipalRole string `pulumi:"principalRole"`
+	// The Polaris uri.
+	Uri string `pulumi:"uri"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs struct {
+	// The Polaris client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The Polaris client secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// The catalog name within Polaris.
+	PolarisCatalog pulumi.StringInput `pulumi:"polarisCatalog"`
+	// The Polaris principal role.
+	PrincipalRole pulumi.StringInput `pulumi:"principalRole"`
+	// The Polaris uri.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput)
+}
+
+// The Polaris client ID.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) string {
+		return v.ClientId
+	}).(pulumi.StringOutput)
+}
+
+// The Polaris client secret.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The catalog name within Polaris.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) PolarisCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) string {
+		return v.PolarisCatalog
+	}).(pulumi.StringOutput)
+}
+
+// The Polaris principal role.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) PrincipalRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) string {
+		return v.PrincipalRole
+	}).(pulumi.StringOutput)
+}
+
+// The Polaris uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput)
+}
+
+// The Polaris client ID.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Polaris client secret.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The catalog name within Polaris.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) PolarisCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolarisCatalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Polaris principal role.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) PrincipalRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Polaris uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog struct {
+	// The content of the configuration file containing additional properties for
+	// the REST catalog.
+	Properties *string `pulumi:"properties"`
+	// The REST uri.
+	Uri string `pulumi:"uri"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs struct {
+	// The content of the configuration file containing additional properties for
+	// the REST catalog.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// The REST uri.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput)
+}
+
+// The content of the configuration file containing additional properties for
+// the REST catalog.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) *string {
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// The REST uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput)
+}
+
+// The content of the configuration file containing additional properties for
+// the REST catalog.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// The REST uri.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage struct {
+	// The Amazon S3 Iceberg storage.
+	// Structure is documented below.
+	AmazonS3IcebergStorage *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage `pulumi:"amazonS3IcebergStorage"`
+	// The Azure Data Lake Storage Iceberg storage.
+	// Structure is documented below.
+	AzureDataLakeStorageIcebergStorage *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage `pulumi:"azureDataLakeStorageIcebergStorage"`
+	// The Google Cloud Storage Iceberg storage.
+	// Structure is documented below.
+	GoogleCloudStorageIcebergStorage *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage `pulumi:"googleCloudStorageIcebergStorage"`
+	// The type of Iceberg storage.
+	// Possible values:
+	// AMAZON_S3
+	// GOOGLE_CLOUD_STORAGE
+	// AZURE_DATA_LAKE_STORAGE
+	//
+	// <a name="nestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"></a>The `amazonS3IcebergStorage` block supports:
+	StorageType string `pulumi:"storageType"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs struct {
+	// The Amazon S3 Iceberg storage.
+	// Structure is documented below.
+	AmazonS3IcebergStorage GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput `pulumi:"amazonS3IcebergStorage"`
+	// The Azure Data Lake Storage Iceberg storage.
+	// Structure is documented below.
+	AzureDataLakeStorageIcebergStorage GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput `pulumi:"azureDataLakeStorageIcebergStorage"`
+	// The Google Cloud Storage Iceberg storage.
+	// Structure is documented below.
+	GoogleCloudStorageIcebergStorage GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput `pulumi:"googleCloudStorageIcebergStorage"`
+	// The type of Iceberg storage.
+	// Possible values:
+	// AMAZON_S3
+	// GOOGLE_CLOUD_STORAGE
+	// AZURE_DATA_LAKE_STORAGE
+	//
+	// <a name="nestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"></a>The `amazonS3IcebergStorage` block supports:
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput)
+}
+
+// The Amazon S3 Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) AmazonS3IcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage {
+		return v.AmazonS3IcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput)
+}
+
+// The Azure Data Lake Storage Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) AzureDataLakeStorageIcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage {
+		return v.AzureDataLakeStorageIcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput)
+}
+
+// The Google Cloud Storage Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) GoogleCloudStorageIcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage {
+		return v.GoogleCloudStorageIcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput)
+}
+
+// The type of Iceberg storage.
+// Possible values:
+// AMAZON_S3
+// GOOGLE_CLOUD_STORAGE
+// AZURE_DATA_LAKE_STORAGE
+//
+// <a name="nestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"></a>The `amazonS3IcebergStorage` block supports:
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput)
+}
+
+// The Amazon S3 Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) AmazonS3IcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage {
+		if v == nil {
+			return nil
+		}
+		return v.AmazonS3IcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput)
+}
+
+// The Azure Data Lake Storage Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) AzureDataLakeStorageIcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDataLakeStorageIcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput)
+}
+
+// The Google Cloud Storage Iceberg storage.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) GoogleCloudStorageIcebergStorage() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloudStorageIcebergStorage
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput)
+}
+
+// The type of Iceberg storage.
+// Possible values:
+// AMAZON_S3
+// GOOGLE_CLOUD_STORAGE
+// AZURE_DATA_LAKE_STORAGE
+//
+// <a name="nestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"></a>The `amazonS3IcebergStorage` block supports:
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage struct {
+	// The access key ID of Amazon S3.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// The bucket of Amazon S3.
+	Bucket string `pulumi:"bucket"`
+	// The endpoint of Amazon S3.
+	Endpoint *string `pulumi:"endpoint"`
+	// The region of Amazon S3.
+	Region string `pulumi:"region"`
+	// The scheme type of Amazon S3.
+	// Possible values:
+	// S3
+	// S3A
+	SchemeType string `pulumi:"schemeType"`
+	// The secret access key of Amazon S3.
+	SecretAccessKeySecret *string `pulumi:"secretAccessKeySecret"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs struct {
+	// The access key ID of Amazon S3.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// The bucket of Amazon S3.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The endpoint of Amazon S3.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The region of Amazon S3.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The scheme type of Amazon S3.
+	// Possible values:
+	// S3
+	// S3A
+	SchemeType pulumi.StringInput `pulumi:"schemeType"`
+	// The secret access key of Amazon S3.
+	SecretAccessKeySecret pulumi.StringPtrInput `pulumi:"secretAccessKeySecret"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput)
+}
+
+// The access key ID of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) string {
+		return v.AccessKeyId
+	}).(pulumi.StringOutput)
+}
+
+// The bucket of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The endpoint of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) string {
+		return v.Region
+	}).(pulumi.StringOutput)
+}
+
+// The scheme type of Amazon S3.
+// Possible values:
+// S3
+// S3A
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) SchemeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) string {
+		return v.SchemeType
+	}).(pulumi.StringOutput)
+}
+
+// The secret access key of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput)
+}
+
+// The access key ID of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bucket of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scheme type of Amazon S3.
+// Possible values:
+// S3
+// S3A
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) SchemeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SchemeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret access key of Amazon S3.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput) SecretAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage struct {
+	// The account key of Azure Data Lake Storage.
+	AccountKeySecret *string `pulumi:"accountKeySecret"`
+	// The account of Azure Data Lake Storage.
+	AzureAccount string `pulumi:"azureAccount"`
+	// The container of Azure Data Lake Storage.
+	Container string `pulumi:"container"`
+	// The endpoint of Azure Data Lake Storage.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs struct {
+	// The account key of Azure Data Lake Storage.
+	AccountKeySecret pulumi.StringPtrInput `pulumi:"accountKeySecret"`
+	// The account of Azure Data Lake Storage.
+	AzureAccount pulumi.StringInput `pulumi:"azureAccount"`
+	// The container of Azure Data Lake Storage.
+	Container pulumi.StringInput `pulumi:"container"`
+	// The endpoint of Azure Data Lake Storage.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput)
+}
+
+// The account key of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) AccountKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		return v.AccountKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The account of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) AzureAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) string {
+		return v.AzureAccount
+	}).(pulumi.StringOutput)
+}
+
+// The container of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) string {
+		return v.Container
+	}).(pulumi.StringOutput)
+}
+
+// The endpoint of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput)
+}
+
+// The account key of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) AccountKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The account of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) AzureAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The container of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of Azure Data Lake Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage struct {
+	// The bucket of Google Cloud Storage.
+	Bucket string `pulumi:"bucket"`
+	// The project ID of Google Cloud Storage.
+	ProjectId string `pulumi:"projectId"`
+	// The service account key file of Google Cloud Storage.
+	ServiceAccountKeyFile *string `pulumi:"serviceAccountKeyFile"`
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageInput` via:
+//
+//	GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs{...}
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs struct {
+	// The bucket of Google Cloud Storage.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The project ID of Google Cloud Storage.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The service account key file of Google Cloud Storage.
+	ServiceAccountKeyFile pulumi.StringPtrInput `pulumi:"serviceAccountKeyFile"`
+}
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput)
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput).ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput is an input type that accepts GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs, GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtr and GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput` via:
+//
+//	        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput
+	ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput
+}
+
+type goldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrType GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs
+
+func GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtr(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput {
+	return (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return i.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrType) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o.ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage {
+		return &v
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput)
+}
+
+// The bucket of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The project ID of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) string {
+		return v.ProjectId
+	}).(pulumi.StringOutput)
+}
+
+// The service account key file of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) *string {
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) ToGoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) Elem() GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage
+		return ret
+	}).(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput)
+}
+
+// The bucket of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project ID of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account key file of Google Cloud Storage.
+func (o GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput) ServiceAccountKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties struct {
+	// Authentication type for Java Message Service.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The Java class implementing javax.jms.ConnectionFactory interface supplied
+	// by the JMS provider.
+	ConnectionFactory *string `pulumi:"connectionFactory"`
+	// Connection URL of the Java Message Service, specifying the protocol, host,
+	// and port. e.g.: 'mq://myjms.host.domain:7676'
+	ConnectionUrl *string `pulumi:"connectionUrl"`
+	// The Connection Factory can be looked up using this name.
+	// e.g.: 'ConnectionFactory'
+	JndiConnectionFactory *string `pulumi:"jndiConnectionFactory"`
+	// The implementation of javax.naming.spi.InitialContextFactory interface
+	// used to obtain initial naming context.
+	JndiInitialContextFactory *string `pulumi:"jndiInitialContextFactory"`
+	// The URL that Java Message Service will use to contact the JNDI provider.
+	// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+	JndiProviderUrl *string `pulumi:"jndiProviderUrl"`
+	// The password associated to the principal.
+	JndiSecurityCredentialsSecret *string `pulumi:"jndiSecurityCredentialsSecret"`
+	// Specifies the identity of the principal (user) to be authenticated.
+	JndiSecurityPrincipal *string `pulumi:"jndiSecurityPrincipal"`
+	// The content of the KeyStore file.
+	KeyStoreFile *string `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword *string `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion *string `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password Oracle Goldengate uses to connect the Java Message Service
+	// in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect the associated Java
+	// Message Service.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// Security protocol for Java Message Service.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// Input only. The password for the cert inside of the KeyStore in plain text.
+	SslKeyPassword *string `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside of the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion *string `pulumi:"sslKeyPasswordSecretVersion"`
+	// The technology type of JavaMessageServiceConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile *string `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword *string `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion *string `pulumi:"trustStorePasswordSecretVersion"`
+	// If set to true, Java Naming and Directory Interface (JNDI) properties
+	// should be provided.
+	UseJndi *bool `pulumi:"useJndi"`
+	// The username Oracle Goldengate uses to connect to the Java Message
+	// Service.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs and GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs struct {
+	// Authentication type for Java Message Service.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The Java class implementing javax.jms.ConnectionFactory interface supplied
+	// by the JMS provider.
+	ConnectionFactory pulumi.StringPtrInput `pulumi:"connectionFactory"`
+	// Connection URL of the Java Message Service, specifying the protocol, host,
+	// and port. e.g.: 'mq://myjms.host.domain:7676'
+	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
+	// The Connection Factory can be looked up using this name.
+	// e.g.: 'ConnectionFactory'
+	JndiConnectionFactory pulumi.StringPtrInput `pulumi:"jndiConnectionFactory"`
+	// The implementation of javax.naming.spi.InitialContextFactory interface
+	// used to obtain initial naming context.
+	JndiInitialContextFactory pulumi.StringPtrInput `pulumi:"jndiInitialContextFactory"`
+	// The URL that Java Message Service will use to contact the JNDI provider.
+	// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+	JndiProviderUrl pulumi.StringPtrInput `pulumi:"jndiProviderUrl"`
+	// The password associated to the principal.
+	JndiSecurityCredentialsSecret pulumi.StringPtrInput `pulumi:"jndiSecurityCredentialsSecret"`
+	// Specifies the identity of the principal (user) to be authenticated.
+	JndiSecurityPrincipal pulumi.StringPtrInput `pulumi:"jndiSecurityPrincipal"`
+	// The content of the KeyStore file.
+	KeyStoreFile pulumi.StringPtrInput `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword pulumi.StringPtrInput `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password Oracle Goldengate uses to connect the Java Message Service
+	// in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect the associated Java
+	// Message Service.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// Security protocol for Java Message Service.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// Input only. The password for the cert inside of the KeyStore in plain text.
+	SslKeyPassword pulumi.StringPtrInput `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside of the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion pulumi.StringPtrInput `pulumi:"sslKeyPasswordSecretVersion"`
+	// The technology type of JavaMessageServiceConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile pulumi.StringPtrInput `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword pulumi.StringPtrInput `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"trustStorePasswordSecretVersion"`
+	// If set to true, Java Naming and Directory Interface (JNDI) properties
+	// should be provided.
+	UseJndi pulumi.BoolPtrInput `pulumi:"useJndi"`
+	// The username Oracle Goldengate uses to connect to the Java Message
+	// Service.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput).ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs, GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtr and GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrType GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtr(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput)
+}
+
+// Authentication type for Java Message Service.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Java class implementing javax.jms.ConnectionFactory interface supplied
+// by the JMS provider.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ConnectionFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.ConnectionFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URL of the Java Message Service, specifying the protocol, host,
+// and port. e.g.: 'mq://myjms.host.domain:7676'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Connection Factory can be looked up using this name.
+// e.g.: 'ConnectionFactory'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) JndiConnectionFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.JndiConnectionFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The implementation of javax.naming.spi.InitialContextFactory interface
+// used to obtain initial naming context.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) JndiInitialContextFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.JndiInitialContextFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL that Java Message Service will use to contact the JNDI provider.
+// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) JndiProviderUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.JndiProviderUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password associated to the principal.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) JndiSecurityCredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.JndiSecurityCredentialsSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the identity of the principal (user) to be authenticated.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) JndiSecurityPrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.JndiSecurityPrincipal
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect the Java Message Service
+// in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect the associated Java
+// Message Service.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Java Message Service.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside of the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.SslKeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside of the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of JavaMessageServiceConnection.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, Java Naming and Directory Interface (JNDI) properties
+// should be provided.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) UseJndi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *bool { return v.UseJndi }).(pulumi.BoolPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the Java Message
+// Service.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput)
+}
+
+// Authentication type for Java Message Service.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Java class implementing javax.jms.ConnectionFactory interface supplied
+// by the JMS provider.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) ConnectionFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URL of the Java Message Service, specifying the protocol, host,
+// and port. e.g.: 'mq://myjms.host.domain:7676'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Connection Factory can be looked up using this name.
+// e.g.: 'ConnectionFactory'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) JndiConnectionFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JndiConnectionFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The implementation of javax.naming.spi.InitialContextFactory interface
+// used to obtain initial naming context.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) JndiInitialContextFactory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JndiInitialContextFactory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL that Java Message Service will use to contact the JNDI provider.
+// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) JndiProviderUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JndiProviderUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password associated to the principal.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) JndiSecurityCredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JndiSecurityCredentialsSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the identity of the principal (user) to be authenticated.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) JndiSecurityPrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JndiSecurityPrincipal
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect the Java Message Service
+// in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect the associated Java
+// Message Service.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Java Message Service.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside of the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside of the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of JavaMessageServiceConnection.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, Java Naming and Directory Interface (JNDI) properties
+// should be provided.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) UseJndi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseJndi
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the Java Message
+// Service.
+func (o GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionProperties struct {
+	// Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+	// in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+	// Used for establishing the initial connection to the Kafka cluster.
+	// Example: "server1.example.com:9092,server2.example.com:9092"
+	// Structure is documented below.
+	BootstrapServers []GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer `pulumi:"bootstrapServers"`
+	// The OCID of the Kafka cluster being referenced from OCI Streaming with
+	// Apache Kafka.
+	ClusterId *string `pulumi:"clusterId"`
+	// The content of the consumer.properties file.
+	ConsumerPropertiesFile *string `pulumi:"consumerPropertiesFile"`
+	// The content of the KeyStore file.
+	KeyStoreFile *string `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword *string `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion *string `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password for Kafka basic/SASL auth in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for Kafka basic/SASL auth.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The content of the producer.properties file.
+	ProducerPropertiesFile *string `pulumi:"producerPropertiesFile"`
+	// Security Type for Kafka.
+	// Possible values:
+	// SSL
+	// SASL_SSL
+	// PLAINTEXT
+	// SASL_PLAINTEXT
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// Input only. The password for the cert inside of the KeyStore in plain text.
+	SslKeyPassword *string `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside of the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion *string `pulumi:"sslKeyPasswordSecretVersion"`
+	// The OCID of the stream pool being referenced.
+	StreamPoolId *string `pulumi:"streamPoolId"`
+	// The technology type of KafkaConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile *string `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword *string `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion *string `pulumi:"trustStorePasswordSecretVersion"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal. Applicable only for OCI Streaming connections.
+	UseResourcePrincipal *bool `pulumi:"useResourcePrincipal"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesKafkaConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs and GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs struct {
+	// Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+	// in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+	// Used for establishing the initial connection to the Kafka cluster.
+	// Example: "server1.example.com:9092,server2.example.com:9092"
+	// Structure is documented below.
+	BootstrapServers GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayInput `pulumi:"bootstrapServers"`
+	// The OCID of the Kafka cluster being referenced from OCI Streaming with
+	// Apache Kafka.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The content of the consumer.properties file.
+	ConsumerPropertiesFile pulumi.StringPtrInput `pulumi:"consumerPropertiesFile"`
+	// The content of the KeyStore file.
+	KeyStoreFile pulumi.StringPtrInput `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword pulumi.StringPtrInput `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password for Kafka basic/SASL auth in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for Kafka basic/SASL auth.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The content of the producer.properties file.
+	ProducerPropertiesFile pulumi.StringPtrInput `pulumi:"producerPropertiesFile"`
+	// Security Type for Kafka.
+	// Possible values:
+	// SSL
+	// SASL_SSL
+	// PLAINTEXT
+	// SASL_PLAINTEXT
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// Input only. The password for the cert inside of the KeyStore in plain text.
+	SslKeyPassword pulumi.StringPtrInput `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside of the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion pulumi.StringPtrInput `pulumi:"sslKeyPasswordSecretVersion"`
+	// The OCID of the stream pool being referenced.
+	StreamPoolId pulumi.StringPtrInput `pulumi:"streamPoolId"`
+	// The technology type of KafkaConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile pulumi.StringPtrInput `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword pulumi.StringPtrInput `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"trustStorePasswordSecretVersion"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal. Applicable only for OCI Streaming connections.
+	UseResourcePrincipal pulumi.BoolPtrInput `pulumi:"useResourcePrincipal"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput).ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs, GoldengateConnectionPropertiesKafkaConnectionPropertiesPtr and GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesKafkaConnectionPropertiesPtrType GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesKafkaConnectionPropertiesPtr(v *GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesKafkaConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesKafkaConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesKafkaConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesKafkaConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesKafkaConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesKafkaConnectionProperties) *GoldengateConnectionPropertiesKafkaConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput)
+}
+
+// Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+// in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+// Used for establishing the initial connection to the Kafka cluster.
+// Example: "server1.example.com:9092,server2.example.com:9092"
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) BootstrapServers() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) []GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer {
+		return v.BootstrapServers
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput)
+}
+
+// The OCID of the Kafka cluster being referenced from OCI Streaming with
+// Apache Kafka.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The content of the consumer.properties file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ConsumerPropertiesFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.ConsumerPropertiesFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.KeyStoreFile }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.KeyStorePassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for Kafka basic/SASL auth in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for Kafka basic/SASL auth.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the producer.properties file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) ProducerPropertiesFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.ProducerPropertiesFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security Type for Kafka.
+// Possible values:
+// SSL
+// SASL_SSL
+// PLAINTEXT
+// SASL_PLAINTEXT
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside of the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.SslKeyPassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside of the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the stream pool being referenced.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) StreamPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.StreamPoolId }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of KafkaConnection.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.TrustStoreFile }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.TrustStorePassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal. Applicable only for OCI Streaming connections.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *bool { return v.UseResourcePrincipal }).(pulumi.BoolPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesKafkaConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) GoldengateConnectionPropertiesKafkaConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesKafkaConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput)
+}
+
+// Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+// in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+// Used for establishing the initial connection to the Kafka cluster.
+// Example: "server1.example.com:9092,server2.example.com:9092"
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) BootstrapServers() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) []GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer {
+		if v == nil {
+			return nil
+		}
+		return v.BootstrapServers
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput)
+}
+
+// The OCID of the Kafka cluster being referenced from OCI Streaming with
+// Apache Kafka.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the consumer.properties file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ConsumerPropertiesFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerPropertiesFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for Kafka basic/SASL auth in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for Kafka basic/SASL auth.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the producer.properties file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) ProducerPropertiesFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerPropertiesFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security Type for Kafka.
+// Possible values:
+// SSL
+// SASL_SSL
+// PLAINTEXT
+// SASL_PLAINTEXT
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside of the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside of the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the stream pool being referenced.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) StreamPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamPoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of KafkaConnection.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal. Applicable only for OCI Streaming connections.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer struct {
+	// The name or address of a host.
+	Host string `pulumi:"host"`
+	// The port of an endpoint usually specified for a connection.
+	Port *int `pulumi:"port"`
+	// The private IP address of the connection's endpoint in the customer's VCN,
+	// typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+	// server). In case the privateIp is provided, the subnetId must also be
+	// provided. In case the privateIp (and the subnetId) is not provided it is
+	// assumed the datasource is publicly accessible. In case the connection is
+	// accessible only privately, the lack of privateIp will result in not being
+	// able to access the connection.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+}
+
+// GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerInput is an input type that accepts GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs and GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerInput` via:
+//
+//	GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs{...}
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs struct {
+	// The name or address of a host.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The port of an endpoint usually specified for a connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The private IP address of the connection's endpoint in the customer's VCN,
+	// typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+	// server). In case the privateIp is provided, the subnetId must also be
+	// provided. In case the privateIp (and the subnetId) is not provided it is
+	// assumed the datasource is publicly accessible. In case the connection is
+	// accessible only privately, the lack of privateIp will result in not being
+	// able to access the connection.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+}
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput)
+}
+
+// GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayInput is an input type that accepts GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray and GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayInput` via:
+//
+//	GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray{ GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs{...} }
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput
+	ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray []GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerInput
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput {
+	return o
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The private IP address of the connection's endpoint in the customer's VCN,
+// typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+// server). In case the privateIp is provided, the subnetId must also be
+// provided. In case the privateIp (and the subnetId) is not provided it is
+// assumed the datasource is publicly accessible. In case the connection is
+// accessible only privately, the lack of privateIp will result in not being
+// able to access the connection.
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer) *string {
+		return v.PrivateIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput() GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput) ToGoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput) Index(i pulumi.IntInput) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer {
+		return vs[0].([]GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer)[vs[1].(int)]
+	}).(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties struct {
+	// Used authentication mechanism to access Schema Registry.
+	// Possible values:
+	// NONE
+	// BASIC
+	// MUTUAL
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The content of the KeyStore file.
+	KeyStoreFile *string `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword *string `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion *string `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password to access Schema Registry in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password to access Schema Registry using basic authentication.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// Input only. The password for the cert inside the KeyStore in plain text.
+	SslKeyPassword *string `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion *string `pulumi:"sslKeyPasswordSecretVersion"`
+	// The technology type of KafkaSchemaRegistryConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile *string `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword *string `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion *string `pulumi:"trustStorePasswordSecretVersion"`
+	// Kafka Schema Registry URL.
+	// e.g.: 'https://server1.us.oracle.com:8081'
+	Url *string `pulumi:"url"`
+	// The username to access Schema Registry using basic authentication.
+	// This value is injected into
+	// 'schema.registry.basic.auth.user.info=user:password' configuration
+	// property.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs and GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs struct {
+	// Used authentication mechanism to access Schema Registry.
+	// Possible values:
+	// NONE
+	// BASIC
+	// MUTUAL
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The content of the KeyStore file.
+	KeyStoreFile pulumi.StringPtrInput `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword pulumi.StringPtrInput `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password to access Schema Registry in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password to access Schema Registry using basic authentication.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// Input only. The password for the cert inside the KeyStore in plain text.
+	SslKeyPassword pulumi.StringPtrInput `pulumi:"sslKeyPassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password for the cert inside the KeyStore.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	SslKeyPasswordSecretVersion pulumi.StringPtrInput `pulumi:"sslKeyPasswordSecretVersion"`
+	// The technology type of KafkaSchemaRegistryConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile pulumi.StringPtrInput `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword pulumi.StringPtrInput `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"trustStorePasswordSecretVersion"`
+	// Kafka Schema Registry URL.
+	// e.g.: 'https://server1.us.oracle.com:8081'
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The username to access Schema Registry using basic authentication.
+	// This value is injected into
+	// 'schema.registry.basic.auth.user.info=user:password' configuration
+	// property.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput).ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs, GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtr and GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrType GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtr(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput)
+}
+
+// Used authentication mechanism to access Schema Registry.
+// Possible values:
+// NONE
+// BASIC
+// MUTUAL
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password to access Schema Registry in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password to access Schema Registry using basic authentication.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.SslKeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of KafkaSchemaRegistryConnection.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Schema Registry URL.
+// e.g.: 'https://server1.us.oracle.com:8081'
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The username to access Schema Registry using basic authentication.
+// This value is injected into
+// 'schema.registry.basic.auth.user.info=user:password' configuration
+// property.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput)
+}
+
+// Used authentication mechanism to access Schema Registry.
+// Possible values:
+// NONE
+// BASIC
+// MUTUAL
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password to access Schema Registry in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password to access Schema Registry using basic authentication.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the cert inside the KeyStore in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) SslKeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password for the cert inside the KeyStore.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) SslKeyPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of KafkaSchemaRegistryConnection.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Schema Registry URL.
+// e.g.: 'https://server1.us.oracle.com:8081'
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to access Schema Registry using basic authentication.
+// This value is injected into
+// 'schema.registry.basic.auth.user.info=user:password' configuration
+// property.
+func (o GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties struct {
+	// Azure client ID of the application.
+	ClientId *string `pulumi:"clientId"`
+	// Client secret associated with the client id.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Optional Microsoft Fabric service endpoint.
+	// Default value: https://onelake.dfs.fabric.microsoft.com
+	Endpoint *string `pulumi:"endpoint"`
+	// The technology type of MicrosoftFabricConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// Azure tenant ID of the application.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs and GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs struct {
+	// Azure client ID of the application.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret associated with the client id.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Optional Microsoft Fabric service endpoint.
+	// Default value: https://onelake.dfs.fabric.microsoft.com
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The technology type of MicrosoftFabricConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// Azure tenant ID of the application.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput).ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs, GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtr and GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrType GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtr(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput)
+}
+
+// Azure client ID of the application.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Client secret associated with the client id.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional Microsoft Fabric service endpoint.
+// Default value: https://onelake.dfs.fabric.microsoft.com
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MicrosoftFabricConnection.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID of the application.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput)
+}
+
+// Azure client ID of the application.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client secret associated with the client id.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional Microsoft Fabric service endpoint.
+// Default value: https://onelake.dfs.fabric.microsoft.com
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MicrosoftFabricConnection.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID of the application.
+func (o GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes []GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database *string `pulumi:"database"`
+	// The name or address of a host.
+	Host *string `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+	// in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Microsoft SQL Server
+	// connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port *int `pulumi:"port"`
+	// Security Type for Microsoft SQL Server.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// If set to true, the driver validates the certificate that is sent by the
+	// database server.
+	ServerCertificateValidationRequired *bool `pulumi:"serverCertificateValidationRequired"`
+	// Database Certificate - The content of a .pem or .crt file
+	// containing the server public key (for 1-way SSL).
+	SslCaFile *string `pulumi:"sslCaFile"`
+	// The technology type of MicrosoftSqlserverConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to the Microsoft SQL
+	// Server.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs and GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayInput `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The name or address of a host.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+	// in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Microsoft SQL Server
+	// connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Security Type for Microsoft SQL Server.
+	// Possible values:
+	// PLAIN
+	// TLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// If set to true, the driver validates the certificate that is sent by the
+	// database server.
+	ServerCertificateValidationRequired pulumi.BoolPtrInput `pulumi:"serverCertificateValidationRequired"`
+	// Database Certificate - The content of a .pem or .crt file
+	// containing the server public key (for 1-way SSL).
+	SslCaFile pulumi.StringPtrInput `pulumi:"sslCaFile"`
+	// The technology type of MicrosoftSqlserverConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to the Microsoft SQL
+	// Server.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput).ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs, GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtr and GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrType GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtr(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) AdditionalAttributes() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) []GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute {
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+// in plain text.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Microsoft SQL Server
+// connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Security Type for Microsoft SQL Server.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the driver validates the certificate that is sent by the
+// database server.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) ServerCertificateValidationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *bool {
+		return v.ServerCertificateValidationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Database Certificate - The content of a .pem or .crt file
+// containing the server public key (for 1-way SSL).
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.SslCaFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MicrosoftSqlserverConnection.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the Microsoft SQL
+// Server.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) AdditionalAttributes() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) []GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+// in plain text.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Microsoft SQL Server
+// connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Security Type for Microsoft SQL Server.
+// Possible values:
+// PLAIN
+// TLS
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the driver validates the certificate that is sent by the
+// database server.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) ServerCertificateValidationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerCertificateValidationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Database Certificate - The content of a .pem or .crt file
+// containing the server public key (for 1-way SSL).
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MicrosoftSqlserverConnection.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the Microsoft SQL
+// Server.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute struct {
+	// The name of the property entry.
+	Key string `pulumi:"key"`
+	// The value of the property entry.
+	Value string `pulumi:"value"`
+}
+
+// GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs and GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeInput` via:
+//
+//	GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs{...}
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs struct {
+	// The name of the property entry.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the property entry.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput)
+}
+
+// GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayInput is an input type that accepts GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray and GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayInput` via:
+//
+//	GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray{ GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs{...} }
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput
+	ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray []GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeInput
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return i.ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+// The name of the property entry.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The value of the property entry.
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput) Index(i pulumi.IntInput) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute {
+		return vs[0].([]GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute)[vs[1].(int)]
+	}).(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput)
+}
+
+type GoldengateConnectionPropertiesMongodbConnectionProperties struct {
+	// MongoDB connection string.
+	// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+	ConnectionString *string `pulumi:"connectionString"`
+	// The OCID of the Oracle Autonomous Json Database.
+	DatabaseId *string `pulumi:"databaseId"`
+	// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+	// plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect the Mongodb connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// Security Type for MongoDB.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// The technology type of MongodbConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// Database Certificate - The content of a .pem file,
+	// containing the server public key (for 1 and 2-way SSL).
+	TlsCaFile *string `pulumi:"tlsCaFile"`
+	// Client Certificate - The content of a .pem file, containing
+	// the client public key (for 2-way SSL).
+	TlsCertificateKeyFile *string `pulumi:"tlsCertificateKeyFile"`
+	// Input only. The Client Certificate key file password in plain text.
+	TlsCertificateKeyFilePassword *string `pulumi:"tlsCertificateKeyFilePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the Client Certificate key file password in Secret Manager.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TlsCertificateKeyFilePasswordSecretVersion *string `pulumi:"tlsCertificateKeyFilePasswordSecretVersion"`
+	// The username Oracle Goldengate uses to connect to the database.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesMongodbConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs and GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMongodbConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesMongodbConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs struct {
+	// MongoDB connection string.
+	// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// The OCID of the Oracle Autonomous Json Database.
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
+	// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+	// plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect the Mongodb connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// Security Type for MongoDB.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// The technology type of MongodbConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// Database Certificate - The content of a .pem file,
+	// containing the server public key (for 1 and 2-way SSL).
+	TlsCaFile pulumi.StringPtrInput `pulumi:"tlsCaFile"`
+	// Client Certificate - The content of a .pem file, containing
+	// the client public key (for 2-way SSL).
+	TlsCertificateKeyFile pulumi.StringPtrInput `pulumi:"tlsCertificateKeyFile"`
+	// Input only. The Client Certificate key file password in plain text.
+	TlsCertificateKeyFilePassword pulumi.StringPtrInput `pulumi:"tlsCertificateKeyFilePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the Client Certificate key file password in Secret Manager.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TlsCertificateKeyFilePasswordSecretVersion pulumi.StringPtrInput `pulumi:"tlsCertificateKeyFilePasswordSecretVersion"`
+	// The username Oracle Goldengate uses to connect to the database.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMongodbConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput).ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs, GoldengateConnectionPropertiesMongodbConnectionPropertiesPtr and GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesMongodbConnectionPropertiesPtrType GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesMongodbConnectionPropertiesPtr(v *GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesMongodbConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesMongodbConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMongodbConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesMongodbConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesMongodbConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMongodbConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesMongodbConnectionProperties) *GoldengateConnectionPropertiesMongodbConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput)
+}
+
+// MongoDB connection string.
+// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the Oracle Autonomous Json Database.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+// plain text.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect the Mongodb connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security Type for MongoDB.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MongodbConnection.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// Database Certificate - The content of a .pem file,
+// containing the server public key (for 1 and 2-way SSL).
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) TlsCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.TlsCaFile }).(pulumi.StringPtrOutput)
+}
+
+// Client Certificate - The content of a .pem file, containing
+// the client public key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) TlsCertificateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		return v.TlsCertificateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Client Certificate key file password in plain text.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) TlsCertificateKeyFilePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		return v.TlsCertificateKeyFilePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the Client Certificate key file password in Secret Manager.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) TlsCertificateKeyFilePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		return v.TlsCertificateKeyFilePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the database.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMongodbConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMongodbConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) GoldengateConnectionPropertiesMongodbConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesMongodbConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput)
+}
+
+// MongoDB connection string.
+// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionString
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the Oracle Autonomous Json Database.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+// plain text.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect the Mongodb connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security Type for MongoDB.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MongodbConnection.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database Certificate - The content of a .pem file,
+// containing the server public key (for 1 and 2-way SSL).
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) TlsCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsCaFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Certificate - The content of a .pem file, containing
+// the client public key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) TlsCertificateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsCertificateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Client Certificate key file password in plain text.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) TlsCertificateKeyFilePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsCertificateKeyFilePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the Client Certificate key file password in Secret Manager.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) TlsCertificateKeyFilePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsCertificateKeyFilePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to the database.
+func (o GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMongodbConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionProperties struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes []GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database *string `pulumi:"database"`
+	// The OCID of the database system being referenced.
+	DbSystemId *string `pulumi:"dbSystemId"`
+	// The name or address of a host.
+	Host *string `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect to MySQL.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port *int `pulumi:"port"`
+	// Security Type for MySQL.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// Database Certificate - The content of a .pem or .crt file
+	// containing the server public key (for 1 and 2-way SSL).
+	SslCaFile *string `pulumi:"sslCaFile"`
+	// Client Certificate - The content of a .pem or .crt file
+	// containing the client public key (for 2-way SSL).
+	SslCertFile *string `pulumi:"sslCertFile"`
+	// The list of certificates revoked by the trusted
+	// certificate authorities (Trusted CA).
+	SslCrlFile *string `pulumi:"sslCrlFile"`
+	// Client Key - The content of a .pem or .crt file containing
+	// the client private key (for 2-way SSL).
+	SslKeyFile *string `pulumi:"sslKeyFile"`
+	// SSL modes for MySQL.
+	// Possible values:
+	// DISABLED
+	// PREFERRED
+	// REQUIRED
+	// VERIFY_CA
+	// VERIFY_IDENTITY
+	SslMode *string `pulumi:"sslMode"`
+	// The technology type of MysqlConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesMysqlConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs and GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMysqlConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayInput `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The OCID of the database system being referenced.
+	DbSystemId pulumi.StringPtrInput `pulumi:"dbSystemId"`
+	// The name or address of a host.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect to MySQL.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Security Type for MySQL.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// Database Certificate - The content of a .pem or .crt file
+	// containing the server public key (for 1 and 2-way SSL).
+	SslCaFile pulumi.StringPtrInput `pulumi:"sslCaFile"`
+	// Client Certificate - The content of a .pem or .crt file
+	// containing the client public key (for 2-way SSL).
+	SslCertFile pulumi.StringPtrInput `pulumi:"sslCertFile"`
+	// The list of certificates revoked by the trusted
+	// certificate authorities (Trusted CA).
+	SslCrlFile pulumi.StringPtrInput `pulumi:"sslCrlFile"`
+	// Client Key - The content of a .pem or .crt file containing
+	// the client private key (for 2-way SSL).
+	SslKeyFile pulumi.StringPtrInput `pulumi:"sslKeyFile"`
+	// SSL modes for MySQL.
+	// Possible values:
+	// DISABLED
+	// PREFERRED
+	// REQUIRED
+	// VERIFY_CA
+	// VERIFY_IDENTITY
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+	// The technology type of MysqlConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput).ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs, GoldengateConnectionPropertiesMysqlConnectionPropertiesPtr and GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesMysqlConnectionPropertiesPtrType GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesMysqlConnectionPropertiesPtr(v *GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesMysqlConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesMysqlConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMysqlConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesMysqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesMysqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesMysqlConnectionProperties) *GoldengateConnectionPropertiesMysqlConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) AdditionalAttributes() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) []GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute {
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the database system being referenced.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) DbSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.DbSystemId }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect to MySQL.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Security Type for MySQL.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Database Certificate - The content of a .pem or .crt file
+// containing the server public key (for 1 and 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SslCaFile }).(pulumi.StringPtrOutput)
+}
+
+// Client Certificate - The content of a .pem or .crt file
+// containing the client public key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SslCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SslCertFile }).(pulumi.StringPtrOutput)
+}
+
+// The list of certificates revoked by the trusted
+// certificate authorities (Trusted CA).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SslCrlFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SslCrlFile }).(pulumi.StringPtrOutput)
+}
+
+// Client Key - The content of a .pem or .crt file containing
+// the client private key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SslKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SslKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// SSL modes for MySQL.
+// Possible values:
+// DISABLED
+// PREFERRED
+// REQUIRED
+// VERIFY_CA
+// VERIFY_IDENTITY
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MysqlConnection.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesMysqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) GoldengateConnectionPropertiesMysqlConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesMysqlConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) AdditionalAttributes() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) []GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the database system being referenced.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) DbSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbSystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect to MySQL.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Security Type for MySQL.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database Certificate - The content of a .pem or .crt file
+// containing the server public key (for 1 and 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Certificate - The content of a .pem or .crt file
+// containing the client public key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SslCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of certificates revoked by the trusted
+// certificate authorities (Trusted CA).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SslCrlFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCrlFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Key - The content of a .pem or .crt file containing
+// the client private key (for 2-way SSL).
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SslKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL modes for MySQL.
+// Possible values:
+// DISABLED
+// PREFERRED
+// REQUIRED
+// VERIFY_CA
+// VERIFY_IDENTITY
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of MysqlConnection.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesMysqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute struct {
+	// The name of the property entry.
+	Key string `pulumi:"key"`
+	// The value of the property entry.
+	Value string `pulumi:"value"`
+}
+
+// GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeInput is an input type that accepts GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs and GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeInput` via:
+//
+//	GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs{...}
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutputWithContext(context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs struct {
+	// The name of the property entry.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the property entry.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput {
+	return i.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput)
+}
+
+// GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayInput is an input type that accepts GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray and GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayInput` via:
+//
+//	GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray{ GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs{...} }
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput
+	ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray []GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeInput
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return i.ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+// The name of the property entry.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The value of the property entry.
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput) Index(i pulumi.IntInput) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute {
+		return vs[0].([]GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute)[vs[1].(int)]
+	}).(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput)
+}
+
+type GoldengateConnectionPropertiesOciObjectStorageConnectionProperties struct {
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile *string `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret *string `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the userId.
+	PublicKeyFingerprint *string `pulumi:"publicKeyFingerprint"`
+	// The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+	// If the region is not provided, backend will default to the default region.
+	Region *string `pulumi:"region"`
+	// The technology type of OciObjectStorageConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The OCID of the related OCI tenancy.
+	TenancyId *string `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal *bool `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access the Object Storage.
+	// The user must have write access to the bucket they want to connect to.
+	UserId *string `pulumi:"userId"`
+}
+
+// GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs and GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs struct {
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret pulumi.StringPtrInput `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the userId.
+	PublicKeyFingerprint pulumi.StringPtrInput `pulumi:"publicKeyFingerprint"`
+	// The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+	// If the region is not provided, backend will default to the default region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The technology type of OciObjectStorageConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The OCID of the related OCI tenancy.
+	TenancyId pulumi.StringPtrInput `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal pulumi.BoolPtrInput `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access the Object Storage.
+	// The user must have write access to the bucket they want to connect to.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOciObjectStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput).ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs, GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtr and GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrType GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtr(v *GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOciObjectStorageConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOciObjectStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the userId.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+// If the region is not provided, backend will default to the default region.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OciObjectStorageConnection.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the related OCI tenancy.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string { return v.TenancyId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *bool {
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access the Object Storage.
+// The user must have write access to the bucket they want to connect to.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOciObjectStorageConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) GoldengateConnectionPropertiesOciObjectStorageConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesOciObjectStorageConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the userId.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+// If the region is not provided, backend will default to the default region.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OciObjectStorageConnection.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the related OCI tenancy.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenancyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access the Object Storage.
+// The user must have write access to the bucket they want to connect to.
+func (o GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOciObjectStorageConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties struct {
+	// Connection URL. It must start with 'jdbc:spark://'
+	ConnectionUrl *string `pulumi:"connectionUrl"`
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile *string `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret *string `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the user_id.
+	PublicKeyFingerprint *string `pulumi:"publicKeyFingerprint"`
+	// The name of the region. e.g.: us-ashburn-1
+	Region *string `pulumi:"region"`
+	// The technology type of OracleAiDataPlatformConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The OCID of the related OCI tenancy.
+	TenancyId *string `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal *bool `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access.
+	UserId *string `pulumi:"userId"`
+}
+
+// GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs and GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs struct {
+	// Connection URL. It must start with 'jdbc:spark://'
+	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret pulumi.StringPtrInput `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the user_id.
+	PublicKeyFingerprint pulumi.StringPtrInput `pulumi:"publicKeyFingerprint"`
+	// The name of the region. e.g.: us-ashburn-1
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The technology type of OracleAiDataPlatformConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The OCID of the related OCI tenancy.
+	TenancyId pulumi.StringPtrInput `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal pulumi.BoolPtrInput `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput).ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs, GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtr and GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrType GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtr(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput)
+}
+
+// Connection URL. It must start with 'jdbc:spark://'
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the user_id.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region. e.g.: us-ashburn-1
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OracleAiDataPlatformConnection.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the related OCI tenancy.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.TenancyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *bool {
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput)
+}
+
+// Connection URL. It must start with 'jdbc:spark://'
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the user_id.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region. e.g.: us-ashburn-1
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OracleAiDataPlatformConnection.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the related OCI tenancy.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenancyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access.
+func (o GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleConnectionProperties struct {
+	// Authentication mode.
+	// Possible values:
+	// TLS
+	// MTLS
+	AuthenticationMode *string `pulumi:"authenticationMode"`
+	// Connect descriptor or Easy Connect Naming method used to connect to a
+	// database.
+	ConnectionString *string `pulumi:"connectionString"`
+	// Database instance id of database in Oracle Database @ Google Cloud.
+	// If gcpOracleDatabaseId is provided, connectionString must be empty.
+	GcpOracleDatabaseId *string `pulumi:"gcpOracleDatabaseId"`
+	// Input only. The password Oracle Goldengate uses in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The mode of the database connection session to be established by the data
+	// client.
+	// Possible values:
+	// DIRECT
+	// REDIRECT
+	SessionMode *string `pulumi:"sessionMode"`
+	// The technology type.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect.
+	Username *string `pulumi:"username"`
+	// The wallet contents Oracle Goldengate uses to make connections to a
+	// database.
+	WalletFile *string `pulumi:"walletFile"`
+}
+
+// GoldengateConnectionPropertiesOracleConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesOracleConnectionPropertiesArgs and GoldengateConnectionPropertiesOracleConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesOracleConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesOracleConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesOracleConnectionPropertiesArgs struct {
+	// Authentication mode.
+	// Possible values:
+	// TLS
+	// MTLS
+	AuthenticationMode pulumi.StringPtrInput `pulumi:"authenticationMode"`
+	// Connect descriptor or Easy Connect Naming method used to connect to a
+	// database.
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// Database instance id of database in Oracle Database @ Google Cloud.
+	// If gcpOracleDatabaseId is provided, connectionString must be empty.
+	GcpOracleDatabaseId pulumi.StringPtrInput `pulumi:"gcpOracleDatabaseId"`
+	// Input only. The password Oracle Goldengate uses in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The mode of the database connection session to be established by the data
+	// client.
+	// Possible values:
+	// DIRECT
+	// REDIRECT
+	SessionMode pulumi.StringPtrInput `pulumi:"sessionMode"`
+	// The technology type.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The wallet contents Oracle Goldengate uses to make connections to a
+	// database.
+	WalletFile pulumi.StringPtrInput `pulumi:"walletFile"`
+}
+
+func (GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleConnectionPropertiesOutput).ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesOracleConnectionPropertiesArgs, GoldengateConnectionPropertiesOracleConnectionPropertiesPtr and GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesOracleConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesOracleConnectionPropertiesPtrType GoldengateConnectionPropertiesOracleConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesOracleConnectionPropertiesPtr(v *GoldengateConnectionPropertiesOracleConnectionPropertiesArgs) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesOracleConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesOracleConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesOracleConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesOracleConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesOracleConnectionProperties) *GoldengateConnectionPropertiesOracleConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput)
+}
+
+// Authentication mode.
+// Possible values:
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.AuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// Connect descriptor or Easy Connect Naming method used to connect to a
+// database.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// Database instance id of database in Oracle Database @ Google Cloud.
+// If gcpOracleDatabaseId is provided, connectionString must be empty.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) GcpOracleDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.GcpOracleDatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses in plain text.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mode of the database connection session to be established by the data
+// client.
+// Possible values:
+// DIRECT
+// REDIRECT
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) SessionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.SessionMode }).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// The wallet contents Oracle Goldengate uses to make connections to a
+// database.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesOutput) WalletFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleConnectionProperties) *string { return v.WalletFile }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesOracleConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) GoldengateConnectionPropertiesOracleConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesOracleConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesOracleConnectionPropertiesOutput)
+}
+
+// Authentication mode.
+// Possible values:
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connect descriptor or Easy Connect Naming method used to connect to a
+// database.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database instance id of database in Oracle Database @ Google Cloud.
+// If gcpOracleDatabaseId is provided, connectionString must be empty.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) GcpOracleDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpOracleDatabaseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses in plain text.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mode of the database connection session to be established by the data
+// client.
+// Possible values:
+// DIRECT
+// REDIRECT
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) SessionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The wallet contents Oracle Goldengate uses to make connections to a
+// database.
+func (o GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput) WalletFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WalletFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleNosqlConnectionProperties struct {
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile *string `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret *string `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the userId.
+	PublicKeyFingerprint *string `pulumi:"publicKeyFingerprint"`
+	// The name of the region. e.g.: us-ashburn-1
+	Region *string `pulumi:"region"`
+	// The technology type of OracleNosqlConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The OCID of the OCI tenancy.
+	TenancyId *string `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal *bool `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access the Oracle NoSQL database.
+	UserId *string `pulumi:"userId"`
+}
+
+// GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs and GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs struct {
+	// The content of the private key file (PEM file)
+	// corresponding to the API key of the fingerprint.
+	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
+	// The passphrase of the private key.
+	PrivateKeyPassphraseSecret pulumi.StringPtrInput `pulumi:"privateKeyPassphraseSecret"`
+	// The fingerprint of the API Key of the user specified by the userId.
+	PublicKeyFingerprint pulumi.StringPtrInput `pulumi:"publicKeyFingerprint"`
+	// The name of the region. e.g.: us-ashburn-1
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The technology type of OracleNosqlConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The OCID of the OCI tenancy.
+	TenancyId pulumi.StringPtrInput `pulumi:"tenancyId"`
+	// Specifies that the user intends to authenticate to the instance using a
+	// resource principal.
+	UseResourcePrincipal pulumi.BoolPtrInput `pulumi:"useResourcePrincipal"`
+	// The OCID of the OCI user who will access the Oracle NoSQL database.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleNosqlConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput).ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs, GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtr and GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrType GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtr(v *GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleNosqlConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesOracleNosqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *GoldengateConnectionPropertiesOracleNosqlConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the userId.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region. e.g.: us-ashburn-1
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OracleNosqlConnection.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the OCI tenancy.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string { return v.TenancyId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *bool {
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access the Oracle NoSQL database.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesOracleNosqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) GoldengateConnectionPropertiesOracleNosqlConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesOracleNosqlConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput)
+}
+
+// The content of the private key file (PEM file)
+// corresponding to the API key of the fingerprint.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase of the private key.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the API Key of the user specified by the userId.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) PublicKeyFingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyFingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the region. e.g.: us-ashburn-1
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of OracleNosqlConnection.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the OCI tenancy.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenancyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the user intends to authenticate to the instance using a
+// resource principal.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) UseResourcePrincipal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseResourcePrincipal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the OCI user who will access the Oracle NoSQL database.
+func (o GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesOracleNosqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionProperties struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes []GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database *string `pulumi:"database"`
+	// The OCID of the database system being referenced.
+	DbSystemId *string `pulumi:"dbSystemId"`
+	// The name or address of a host.
+	Host *string `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+	// text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for PostgreSQL connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port *int `pulumi:"port"`
+	// Security protocol for PostgreSQL.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// The certificate of the trusted certificate authorities
+	// (Trusted CA) for PostgreSQL.
+	SslCaFile *string `pulumi:"sslCaFile"`
+	// The certificate of the PostgreSQL server.
+	SslCertFile *string `pulumi:"sslCertFile"`
+	// The list of certificates revoked by the trusted
+	// certificate authorities (Trusted CA).
+	SslCrlFile *string `pulumi:"sslCrlFile"`
+	// The private key of the PostgreSQL server.
+	SslKeyFile *string `pulumi:"sslKeyFile"`
+	// SSL modes for PostgreSQL.
+	// Possible values:
+	// PREFER
+	// REQUIRE
+	// VERIFY_CA
+	// VERIFY_FULL
+	SslMode *string `pulumi:"sslMode"`
+	// The technology type of PostgresqlConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesPostgresqlConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs and GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesPostgresqlConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs struct {
+	// An array of name-value pair attribute entries.
+	// Used as additional parameters in connection string.
+	// Structure is documented below.
+	AdditionalAttributes GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayInput `pulumi:"additionalAttributes"`
+	// The name of the database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The OCID of the database system being referenced.
+	DbSystemId pulumi.StringPtrInput `pulumi:"dbSystemId"`
+	// The name or address of a host.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+	// text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for PostgreSQL connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The port of an endpoint usually specified for a connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Security protocol for PostgreSQL.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// The certificate of the trusted certificate authorities
+	// (Trusted CA) for PostgreSQL.
+	SslCaFile pulumi.StringPtrInput `pulumi:"sslCaFile"`
+	// The certificate of the PostgreSQL server.
+	SslCertFile pulumi.StringPtrInput `pulumi:"sslCertFile"`
+	// The list of certificates revoked by the trusted
+	// certificate authorities (Trusted CA).
+	SslCrlFile pulumi.StringPtrInput `pulumi:"sslCrlFile"`
+	// The private key of the PostgreSQL server.
+	SslKeyFile pulumi.StringPtrInput `pulumi:"sslKeyFile"`
+	// SSL modes for PostgreSQL.
+	// Possible values:
+	// PREFER
+	// REQUIRE
+	// VERIFY_CA
+	// VERIFY_FULL
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+	// The technology type of PostgresqlConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput).ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs, GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtr and GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrType GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtr(v *GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesPostgresqlConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *GoldengateConnectionPropertiesPostgresqlConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) AdditionalAttributes() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) []GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute {
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the database system being referenced.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) DbSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.DbSystemId }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+// text.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for PostgreSQL connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Security protocol for PostgreSQL.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate of the trusted certificate authorities
+// (Trusted CA) for PostgreSQL.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.SslCaFile }).(pulumi.StringPtrOutput)
+}
+
+// The certificate of the PostgreSQL server.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SslCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.SslCertFile }).(pulumi.StringPtrOutput)
+}
+
+// The list of certificates revoked by the trusted
+// certificate authorities (Trusted CA).
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SslCrlFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.SslCrlFile }).(pulumi.StringPtrOutput)
+}
+
+// The private key of the PostgreSQL server.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SslKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.SslKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// SSL modes for PostgreSQL.
+// Possible values:
+// PREFER
+// REQUIRE
+// VERIFY_CA
+// VERIFY_FULL
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of PostgresqlConnection.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesPostgresqlConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) GoldengateConnectionPropertiesPostgresqlConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesPostgresqlConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput)
+}
+
+// An array of name-value pair attribute entries.
+// Used as additional parameters in connection string.
+// Structure is documented below.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) AdditionalAttributes() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) []GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalAttributes
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+// The name of the database.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the database system being referenced.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) DbSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbSystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or address of a host.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+// text.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for PostgreSQL connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of an endpoint usually specified for a connection.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Security protocol for PostgreSQL.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate of the trusted certificate authorities
+// (Trusted CA) for PostgreSQL.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SslCaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate of the PostgreSQL server.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SslCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of certificates revoked by the trusted
+// certificate authorities (Trusted CA).
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SslCrlFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCrlFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private key of the PostgreSQL server.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SslKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL modes for PostgreSQL.
+// Possible values:
+// PREFER
+// REQUIRE
+// VERIFY_CA
+// VERIFY_FULL
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of PostgresqlConnection.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesPostgresqlConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute struct {
+	// The name of the property entry.
+	Key string `pulumi:"key"`
+	// The value of the property entry.
+	Value string `pulumi:"value"`
+}
+
+// GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeInput is an input type that accepts GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs and GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeInput` via:
+//
+//	GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs{...}
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutputWithContext(context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs struct {
+	// The name of the property entry.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the property entry.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput {
+	return i.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput)
+}
+
+// GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayInput is an input type that accepts GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray and GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayInput` via:
+//
+//	GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray{ GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs{...} }
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput
+	ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray []GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeInput
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return i.ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput {
+	return o
+}
+
+// The name of the property entry.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The value of the property entry.
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput() GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput) ToGoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput) Index(i pulumi.IntInput) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute {
+		return vs[0].([]GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute)[vs[1].(int)]
+	}).(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput)
+}
+
+type GoldengateConnectionPropertiesRedisConnectionProperties struct {
+	// Authentication type for Redis.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The content of the KeyStore file.
+	KeyStoreFile *string `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword *string `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion *string `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Redis connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The OCID of the Redis cluster.
+	RedisClusterId *string `pulumi:"redisClusterId"`
+	// Security protocol for Redis.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// Comma separated list of Redis server addresses, specified as host:port
+	// entries, where :port is optional. If port is not specified, it defaults
+	// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+	Servers *string `pulumi:"servers"`
+	// The technology type of RedisConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile *string `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword *string `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion *string `pulumi:"trustStorePasswordSecretVersion"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesRedisConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesRedisConnectionPropertiesArgs and GoldengateConnectionPropertiesRedisConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesRedisConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesRedisConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesRedisConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesRedisConnectionPropertiesArgs struct {
+	// Authentication type for Redis.
+	// Possible values:
+	// NONE
+	// BASIC
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The content of the KeyStore file.
+	KeyStoreFile pulumi.StringPtrInput `pulumi:"keyStoreFile"`
+	// Input only. The KeyStore password in plain text.
+	KeyStorePassword pulumi.StringPtrInput `pulumi:"keyStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the KeyStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	KeyStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"keyStorePasswordSecretVersion"`
+	// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses for Redis connection.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The OCID of the Redis cluster.
+	RedisClusterId pulumi.StringPtrInput `pulumi:"redisClusterId"`
+	// Security protocol for Redis.
+	// Possible values:
+	// PLAIN
+	// TLS
+	// MTLS
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// Comma separated list of Redis server addresses, specified as host:port
+	// entries, where :port is optional. If port is not specified, it defaults
+	// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+	Servers pulumi.StringPtrInput `pulumi:"servers"`
+	// The technology type of RedisConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The content of the TrustStore file.
+	TrustStoreFile pulumi.StringPtrInput `pulumi:"trustStoreFile"`
+	// Input only. The TrustStore password in plain text.
+	TrustStorePassword pulumi.StringPtrInput `pulumi:"trustStorePassword"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the TrustStore password.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	TrustStorePasswordSecretVersion pulumi.StringPtrInput `pulumi:"trustStorePasswordSecretVersion"`
+	// The username Oracle Goldengate uses to connect the associated system of
+	// the given technology.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesRedisConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesRedisConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesRedisConnectionPropertiesOutput).ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesRedisConnectionPropertiesArgs, GoldengateConnectionPropertiesRedisConnectionPropertiesPtr and GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesRedisConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesRedisConnectionPropertiesPtrType GoldengateConnectionPropertiesRedisConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesRedisConnectionPropertiesPtr(v *GoldengateConnectionPropertiesRedisConnectionPropertiesArgs) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesRedisConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesRedisConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesRedisConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesRedisConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesRedisConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesRedisConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesRedisConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesRedisConnectionProperties) *GoldengateConnectionPropertiesRedisConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput)
+}
+
+// Authentication type for Redis.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.KeyStoreFile }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.KeyStorePassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Redis connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the Redis cluster.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) RedisClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.RedisClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Redis.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of Redis server addresses, specified as host:port
+// entries, where :port is optional. If port is not specified, it defaults
+// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) Servers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.Servers }).(pulumi.StringPtrOutput)
+}
+
+// The technology type of RedisConnection.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.TrustStoreFile }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.TrustStorePassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesRedisConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesRedisConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesRedisConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) GoldengateConnectionPropertiesRedisConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesRedisConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesRedisConnectionPropertiesOutput)
+}
+
+// Authentication type for Redis.
+// Possible values:
+// NONE
+// BASIC
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the KeyStore file.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) KeyStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The KeyStore password in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) KeyStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the KeyStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) KeyStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses for Redis connection.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of the Redis cluster.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) RedisClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security protocol for Redis.
+// Possible values:
+// PLAIN
+// TLS
+// MTLS
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of Redis server addresses, specified as host:port
+// entries, where :port is optional. If port is not specified, it defaults
+// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) Servers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of RedisConnection.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TrustStore file.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) TrustStoreFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStoreFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The TrustStore password in plain text.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) TrustStorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the TrustStore password.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) TrustStorePasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStorePasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect the associated system of
+// the given technology.
+func (o GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesRedisConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesSnowflakeConnectionProperties struct {
+	// Used authentication mechanism to access Snowflake.
+	// Possible values:
+	// BASIC
+	// KEY_PAIR
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// JDBC connection URL.
+	// e.g.:
+	// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+	ConnectionUrl *string `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+	// in plain text.
+	Password *string `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect to Snowflake platform.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The content of private key file in PEM format.
+	PrivateKeyFile *string `pulumi:"privateKeyFile"`
+	// Password if the private key file is encrypted.
+	PrivateKeyPassphraseSecret *string `pulumi:"privateKeyPassphraseSecret"`
+	// The technology type of SnowflakeConnection.
+	TechnologyType *string `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to Snowflake.
+	Username *string `pulumi:"username"`
+}
+
+// GoldengateConnectionPropertiesSnowflakeConnectionPropertiesInput is an input type that accepts GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs and GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesSnowflakeConnectionPropertiesInput` via:
+//
+//	GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs{...}
+type GoldengateConnectionPropertiesSnowflakeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput
+	ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutputWithContext(context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput
+}
+
+type GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs struct {
+	// Used authentication mechanism to access Snowflake.
+	// Possible values:
+	// BASIC
+	// KEY_PAIR
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// JDBC connection URL.
+	// e.g.:
+	// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
+	// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+	// in plain text.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Input only. The resource name of a secret version in Secret Manager which contains
+	// the password Oracle Goldengate uses to connect to Snowflake platform.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The content of private key file in PEM format.
+	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
+	// Password if the private key file is encrypted.
+	PrivateKeyPassphraseSecret pulumi.StringPtrInput `pulumi:"privateKeyPassphraseSecret"`
+	// The technology type of SnowflakeConnection.
+	TechnologyType pulumi.StringPtrInput `pulumi:"technologyType"`
+	// The username Oracle Goldengate uses to connect to Snowflake.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesSnowflakeConnectionProperties)(nil)).Elem()
+}
+
+func (i GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput {
+	return i.ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput)
+}
+
+func (i GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput).ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput is an input type that accepts GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs, GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtr and GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput` via:
+//
+//	        GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput
+	ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput
+}
+
+type goldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrType GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs
+
+func GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtr(v *GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput {
+	return (*goldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrType)(v)
+}
+
+func (*goldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesSnowflakeConnectionProperties)(nil)).Elem()
+}
+
+func (i *goldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return i.ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrType) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput)
+}
+
+type GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateConnectionPropertiesSnowflakeConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o.ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *GoldengateConnectionPropertiesSnowflakeConnectionProperties {
+		return &v
+	}).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput)
+}
+
+// Used authentication mechanism to access Snowflake.
+// Possible values:
+// BASIC
+// KEY_PAIR
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// JDBC connection URL.
+// e.g.:
+// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+// in plain text.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect to Snowflake platform.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of private key file in PEM format.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// Password if the private key file is encrypted.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of SnowflakeConnection.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string { return v.TechnologyType }).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to Snowflake.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateConnectionPropertiesSnowflakeConnectionProperties)(nil)).Elem()
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) ToGoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutputWithContext(ctx context.Context) GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) Elem() GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) GoldengateConnectionPropertiesSnowflakeConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateConnectionPropertiesSnowflakeConnectionProperties
+		return ret
+	}).(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput)
+}
+
+// Used authentication mechanism to access Snowflake.
+// Possible values:
+// BASIC
+// KEY_PAIR
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// JDBC connection URL.
+// e.g.:
+// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+// in plain text.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The resource name of a secret version in Secret Manager which contains
+// the password Oracle Goldengate uses to connect to Snowflake platform.
+// Format: projects/{project}/secrets/{secret}/versions/{version}.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of private key file in PEM format.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password if the private key file is encrypted.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) PrivateKeyPassphraseSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyPassphraseSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The technology type of SnowflakeConnection.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) TechnologyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TechnologyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username Oracle Goldengate uses to connect to Snowflake.
+func (o GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateConnectionPropertiesSnowflakeConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentProperties struct {
+	// The backup schedule of the GoldengateDeployment.
+	// Structure is documented below.
+	BackupSchedule *GoldengateDeploymentPropertiesBackupSchedule `pulumi:"backupSchedule"`
+	// (Output)
+	// The category of the GoldengateDeployment.
+	// Possible values:
+	// DATA_REPLICATION
+	// DATA_TRANSFORMS
+	Category *string `pulumi:"category"`
+	// The Minimum number of OCPUs to be made available for this Deployment.
+	CpuCoreCount *int `pulumi:"cpuCoreCount"`
+	// (Output)
+	// The deployment backup id of the GoldengateDeployment.
+	DeploymentBackupId *string `pulumi:"deploymentBackupId"`
+	// The deployment diagnostic data.
+	// Structure is documented below.
+	DeploymentDiagnosticData *GoldengateDeploymentPropertiesDeploymentDiagnosticData `pulumi:"deploymentDiagnosticData"`
+	// (Output)
+	// The deployment role of the GoldengateDeployment.
+	// Possible values:
+	// PRIMARY
+	// STANDBY
+	DeploymentRole *string `pulumi:"deploymentRole"`
+	// A valid Goldengate Deployment type. For a list of supported types, use
+	// the `ListGoldengateDeploymentTypes` operation.
+	DeploymentType string `pulumi:"deploymentType"`
+	// (Output)
+	// The deployment url of the GoldengateDeployment.
+	DeploymentUrl *string `pulumi:"deploymentUrl"`
+	// The description of the GoldengateDeployment.
+	Description *string `pulumi:"description"`
+	// The environment type of the GoldengateDeployment.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// (Output)
+	// The Fully Qualified Domain Name of the GoldengateDeployment.
+	Fqdn *string `pulumi:"fqdn"`
+	// (Output)
+	// Whether the GoldengateDeployment is healthy.
+	Healthy *bool `pulumi:"healthy"`
+	// (Output)
+	// The ingress ips of the GoldengateDeployment.
+	// Structure is documented below.
+	IngressIps []GoldengateDeploymentPropertiesIngressIp `pulumi:"ingressIps"`
+	// Indicates if auto scaling is enabled for the Deployment's CPU core count.
+	IsAutoScalingEnabled *bool `pulumi:"isAutoScalingEnabled"`
+	// (Output)
+	// Whether the GoldengateDeployment is of the latest version.
+	IsLatestVersion *bool `pulumi:"isLatestVersion"`
+	// (Output)
+	// Whether the GoldengateDeployment is public.
+	IsPublic *bool `pulumi:"isPublic"`
+	// (Output)
+	// Whether storage utilization limit is exceeded of the GoldengateDeployment.
+	IsStorageUtilizationLimitExceeded *bool `pulumi:"isStorageUtilizationLimitExceeded"`
+	// (Output)
+	// The time last backup scheduled of the GoldengateDeployment.
+	LastBackupScheduleTime *string `pulumi:"lastBackupScheduleTime"`
+	// The Oracle license model that applies to a Deployment.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel *string `pulumi:"licenseModel"`
+	// (Output)
+	// The lifecycle details of the GoldengateDeployment.
+	LifecycleDetails *string `pulumi:"lifecycleDetails"`
+	// (Output)
+	// State of the GoldengateDeployment.
+	// Possible values:
+	// CREATING
+	// UPDATING
+	// ACTIVE
+	// INACTIVE
+	// DELETING
+	// DELETED
+	// FAILED
+	// NEEDS_ATTENTION
+	// IN_PROGRESS
+	// CANCELLING
+	// CANCELLED
+	// SUCCEEDED
+	// WAITING
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// (Output)
+	// The lifecycle sub-state of the GoldengateDeployment.
+	// Possible values:
+	// RECOVERING
+	// STARTING
+	// STOPPING
+	// MOVING
+	// UPGRADING
+	// RESTORING
+	// BACKING_UP
+	// ROLLING_BACK
+	LifecycleSubState *string `pulumi:"lifecycleSubState"`
+	// (Output)
+	// The load balancer id of the GoldengateDeployment.
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	// (Output)
+	// The load balancer subnet id of the GoldengateDeployment.
+	LoadBalancerSubnetId *string `pulumi:"loadBalancerSubnetId"`
+	// (Output)
+	// The locks of the GoldengateDeployment.
+	// Structure is documented below.
+	Locks []GoldengateDeploymentPropertiesLock `pulumi:"locks"`
+	// The maintenance configuration of the GoldengateDeployment.
+	// Structure is documented below.
+	MaintenanceConfig *GoldengateDeploymentPropertiesMaintenanceConfig `pulumi:"maintenanceConfig"`
+	// The maintenance window of the GoldengateDeployment.
+	// Structure is documented below.
+	MaintenanceWindow *GoldengateDeploymentPropertiesMaintenanceWindow `pulumi:"maintenanceWindow"`
+	// (Output)
+	// The time next backup scheduled of the GoldengateDeployment.
+	NextBackupScheduleTime *string `pulumi:"nextBackupScheduleTime"`
+	// (Output)
+	// The next maintenance action type of the GoldengateDeployment.
+	// Possible values:
+	// UPGRADE
+	NextMaintenanceActionType *string `pulumi:"nextMaintenanceActionType"`
+	// (Output)
+	// The next maintenance description of the GoldengateDeployment.
+	NextMaintenanceDescription *string `pulumi:"nextMaintenanceDescription"`
+	// (Output)
+	// The time of next maintenance of the GoldengateDeployment.
+	NextMaintenanceTime *string `pulumi:"nextMaintenanceTime"`
+	// (Output)
+	// The nsg ids of the GoldengateDeployment.
+	NsgIds []string `pulumi:"nsgIds"`
+	// (Output)
+	// OCID of the GoldengateDeployment.
+	Ocid *string `pulumi:"ocid"`
+	// The Ogg data of the GoldengateDeployment.
+	// Structure is documented below.
+	OggData GoldengateDeploymentPropertiesOggData `pulumi:"oggData"`
+	// (Output)
+	// The time ogg version supported until of the GoldengateDeployment.
+	OggVersionSupportEndTime *string `pulumi:"oggVersionSupportEndTime"`
+	// (Output)
+	// The placements of the GoldengateDeployment.
+	// Structure is documented below.
+	Placements []GoldengateDeploymentPropertiesPlacement `pulumi:"placements"`
+	// (Output)
+	// The private ip address of the GoldengateDeployment.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// (Output)
+	// The public ip address of the GoldengateDeployment.
+	PublicIpAddress *string `pulumi:"publicIpAddress"`
+	// (Output)
+	// The time when the role of the GoldengateDeployment was changed.
+	RoleChangeTime *string `pulumi:"roleChangeTime"`
+	// (Output)
+	// The storage utilization in bytes of the GoldengateDeployment.
+	StorageUtilizationBytes *string `pulumi:"storageUtilizationBytes"`
+	// (Output)
+	// The time the GoldengateDeployment was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// (Output)
+	// The time upgrade required of the GoldengateDeployment.
+	UpgradeRequiredTime *string `pulumi:"upgradeRequiredTime"`
+}
+
+// GoldengateDeploymentPropertiesInput is an input type that accepts GoldengateDeploymentPropertiesArgs and GoldengateDeploymentPropertiesOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesInput` via:
+//
+//	GoldengateDeploymentPropertiesArgs{...}
+type GoldengateDeploymentPropertiesInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesOutput() GoldengateDeploymentPropertiesOutput
+	ToGoldengateDeploymentPropertiesOutputWithContext(context.Context) GoldengateDeploymentPropertiesOutput
+}
+
+type GoldengateDeploymentPropertiesArgs struct {
+	// The backup schedule of the GoldengateDeployment.
+	// Structure is documented below.
+	BackupSchedule GoldengateDeploymentPropertiesBackupSchedulePtrInput `pulumi:"backupSchedule"`
+	// (Output)
+	// The category of the GoldengateDeployment.
+	// Possible values:
+	// DATA_REPLICATION
+	// DATA_TRANSFORMS
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// The Minimum number of OCPUs to be made available for this Deployment.
+	CpuCoreCount pulumi.IntPtrInput `pulumi:"cpuCoreCount"`
+	// (Output)
+	// The deployment backup id of the GoldengateDeployment.
+	DeploymentBackupId pulumi.StringPtrInput `pulumi:"deploymentBackupId"`
+	// The deployment diagnostic data.
+	// Structure is documented below.
+	DeploymentDiagnosticData GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput `pulumi:"deploymentDiagnosticData"`
+	// (Output)
+	// The deployment role of the GoldengateDeployment.
+	// Possible values:
+	// PRIMARY
+	// STANDBY
+	DeploymentRole pulumi.StringPtrInput `pulumi:"deploymentRole"`
+	// A valid Goldengate Deployment type. For a list of supported types, use
+	// the `ListGoldengateDeploymentTypes` operation.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// (Output)
+	// The deployment url of the GoldengateDeployment.
+	DeploymentUrl pulumi.StringPtrInput `pulumi:"deploymentUrl"`
+	// The description of the GoldengateDeployment.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The environment type of the GoldengateDeployment.
+	EnvironmentType pulumi.StringPtrInput `pulumi:"environmentType"`
+	// (Output)
+	// The Fully Qualified Domain Name of the GoldengateDeployment.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// (Output)
+	// Whether the GoldengateDeployment is healthy.
+	Healthy pulumi.BoolPtrInput `pulumi:"healthy"`
+	// (Output)
+	// The ingress ips of the GoldengateDeployment.
+	// Structure is documented below.
+	IngressIps GoldengateDeploymentPropertiesIngressIpArrayInput `pulumi:"ingressIps"`
+	// Indicates if auto scaling is enabled for the Deployment's CPU core count.
+	IsAutoScalingEnabled pulumi.BoolPtrInput `pulumi:"isAutoScalingEnabled"`
+	// (Output)
+	// Whether the GoldengateDeployment is of the latest version.
+	IsLatestVersion pulumi.BoolPtrInput `pulumi:"isLatestVersion"`
+	// (Output)
+	// Whether the GoldengateDeployment is public.
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
+	// (Output)
+	// Whether storage utilization limit is exceeded of the GoldengateDeployment.
+	IsStorageUtilizationLimitExceeded pulumi.BoolPtrInput `pulumi:"isStorageUtilizationLimitExceeded"`
+	// (Output)
+	// The time last backup scheduled of the GoldengateDeployment.
+	LastBackupScheduleTime pulumi.StringPtrInput `pulumi:"lastBackupScheduleTime"`
+	// The Oracle license model that applies to a Deployment.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel pulumi.StringPtrInput `pulumi:"licenseModel"`
+	// (Output)
+	// The lifecycle details of the GoldengateDeployment.
+	LifecycleDetails pulumi.StringPtrInput `pulumi:"lifecycleDetails"`
+	// (Output)
+	// State of the GoldengateDeployment.
+	// Possible values:
+	// CREATING
+	// UPDATING
+	// ACTIVE
+	// INACTIVE
+	// DELETING
+	// DELETED
+	// FAILED
+	// NEEDS_ATTENTION
+	// IN_PROGRESS
+	// CANCELLING
+	// CANCELLED
+	// SUCCEEDED
+	// WAITING
+	LifecycleState pulumi.StringPtrInput `pulumi:"lifecycleState"`
+	// (Output)
+	// The lifecycle sub-state of the GoldengateDeployment.
+	// Possible values:
+	// RECOVERING
+	// STARTING
+	// STOPPING
+	// MOVING
+	// UPGRADING
+	// RESTORING
+	// BACKING_UP
+	// ROLLING_BACK
+	LifecycleSubState pulumi.StringPtrInput `pulumi:"lifecycleSubState"`
+	// (Output)
+	// The load balancer id of the GoldengateDeployment.
+	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
+	// (Output)
+	// The load balancer subnet id of the GoldengateDeployment.
+	LoadBalancerSubnetId pulumi.StringPtrInput `pulumi:"loadBalancerSubnetId"`
+	// (Output)
+	// The locks of the GoldengateDeployment.
+	// Structure is documented below.
+	Locks GoldengateDeploymentPropertiesLockArrayInput `pulumi:"locks"`
+	// The maintenance configuration of the GoldengateDeployment.
+	// Structure is documented below.
+	MaintenanceConfig GoldengateDeploymentPropertiesMaintenanceConfigPtrInput `pulumi:"maintenanceConfig"`
+	// The maintenance window of the GoldengateDeployment.
+	// Structure is documented below.
+	MaintenanceWindow GoldengateDeploymentPropertiesMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// (Output)
+	// The time next backup scheduled of the GoldengateDeployment.
+	NextBackupScheduleTime pulumi.StringPtrInput `pulumi:"nextBackupScheduleTime"`
+	// (Output)
+	// The next maintenance action type of the GoldengateDeployment.
+	// Possible values:
+	// UPGRADE
+	NextMaintenanceActionType pulumi.StringPtrInput `pulumi:"nextMaintenanceActionType"`
+	// (Output)
+	// The next maintenance description of the GoldengateDeployment.
+	NextMaintenanceDescription pulumi.StringPtrInput `pulumi:"nextMaintenanceDescription"`
+	// (Output)
+	// The time of next maintenance of the GoldengateDeployment.
+	NextMaintenanceTime pulumi.StringPtrInput `pulumi:"nextMaintenanceTime"`
+	// (Output)
+	// The nsg ids of the GoldengateDeployment.
+	NsgIds pulumi.StringArrayInput `pulumi:"nsgIds"`
+	// (Output)
+	// OCID of the GoldengateDeployment.
+	Ocid pulumi.StringPtrInput `pulumi:"ocid"`
+	// The Ogg data of the GoldengateDeployment.
+	// Structure is documented below.
+	OggData GoldengateDeploymentPropertiesOggDataInput `pulumi:"oggData"`
+	// (Output)
+	// The time ogg version supported until of the GoldengateDeployment.
+	OggVersionSupportEndTime pulumi.StringPtrInput `pulumi:"oggVersionSupportEndTime"`
+	// (Output)
+	// The placements of the GoldengateDeployment.
+	// Structure is documented below.
+	Placements GoldengateDeploymentPropertiesPlacementArrayInput `pulumi:"placements"`
+	// (Output)
+	// The private ip address of the GoldengateDeployment.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// (Output)
+	// The public ip address of the GoldengateDeployment.
+	PublicIpAddress pulumi.StringPtrInput `pulumi:"publicIpAddress"`
+	// (Output)
+	// The time when the role of the GoldengateDeployment was changed.
+	RoleChangeTime pulumi.StringPtrInput `pulumi:"roleChangeTime"`
+	// (Output)
+	// The storage utilization in bytes of the GoldengateDeployment.
+	StorageUtilizationBytes pulumi.StringPtrInput `pulumi:"storageUtilizationBytes"`
+	// (Output)
+	// The time the GoldengateDeployment was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// (Output)
+	// The time upgrade required of the GoldengateDeployment.
+	UpgradeRequiredTime pulumi.StringPtrInput `pulumi:"upgradeRequiredTime"`
+}
+
+func (GoldengateDeploymentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentProperties)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesArgs) ToGoldengateDeploymentPropertiesOutput() GoldengateDeploymentPropertiesOutput {
+	return i.ToGoldengateDeploymentPropertiesOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesArgs) ToGoldengateDeploymentPropertiesOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOutput)
+}
+
+func (i GoldengateDeploymentPropertiesArgs) ToGoldengateDeploymentPropertiesPtrOutput() GoldengateDeploymentPropertiesPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesArgs) ToGoldengateDeploymentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOutput).ToGoldengateDeploymentPropertiesPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesPtrInput is an input type that accepts GoldengateDeploymentPropertiesArgs, GoldengateDeploymentPropertiesPtr and GoldengateDeploymentPropertiesPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesPtrOutput() GoldengateDeploymentPropertiesPtrOutput
+	ToGoldengateDeploymentPropertiesPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesPtrOutput
+}
+
+type goldengateDeploymentPropertiesPtrType GoldengateDeploymentPropertiesArgs
+
+func GoldengateDeploymentPropertiesPtr(v *GoldengateDeploymentPropertiesArgs) GoldengateDeploymentPropertiesPtrInput {
+	return (*goldengateDeploymentPropertiesPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentProperties)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesPtrType) ToGoldengateDeploymentPropertiesPtrOutput() GoldengateDeploymentPropertiesPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesPtrType) ToGoldengateDeploymentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentProperties)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesOutput) ToGoldengateDeploymentPropertiesOutput() GoldengateDeploymentPropertiesOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOutput) ToGoldengateDeploymentPropertiesOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOutput) ToGoldengateDeploymentPropertiesPtrOutput() GoldengateDeploymentPropertiesPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesOutput) ToGoldengateDeploymentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentProperties) *GoldengateDeploymentProperties {
+		return &v
+	}).(GoldengateDeploymentPropertiesPtrOutput)
+}
+
+// The backup schedule of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) BackupSchedule() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesBackupSchedule {
+		return v.BackupSchedule
+	}).(GoldengateDeploymentPropertiesBackupSchedulePtrOutput)
+}
+
+// (Output)
+// The category of the GoldengateDeployment.
+// Possible values:
+// DATA_REPLICATION
+// DATA_TRANSFORMS
+func (o GoldengateDeploymentPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The Minimum number of OCPUs to be made available for this Deployment.
+func (o GoldengateDeploymentPropertiesOutput) CpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *int { return v.CpuCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The deployment backup id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) DeploymentBackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.DeploymentBackupId }).(pulumi.StringPtrOutput)
+}
+
+// The deployment diagnostic data.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) DeploymentDiagnosticData() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesDeploymentDiagnosticData {
+		return v.DeploymentDiagnosticData
+	}).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput)
+}
+
+// (Output)
+// The deployment role of the GoldengateDeployment.
+// Possible values:
+// PRIMARY
+// STANDBY
+func (o GoldengateDeploymentPropertiesOutput) DeploymentRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.DeploymentRole }).(pulumi.StringPtrOutput)
+}
+
+// A valid Goldengate Deployment type. For a list of supported types, use
+// the `ListGoldengateDeploymentTypes` operation.
+func (o GoldengateDeploymentPropertiesOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The deployment url of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) DeploymentUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.DeploymentUrl }).(pulumi.StringPtrOutput)
+}
+
+// The description of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The environment type of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Fully Qualified Domain Name of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is healthy.
+func (o GoldengateDeploymentPropertiesOutput) Healthy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *bool { return v.Healthy }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ingress ips of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) IngressIps() GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesIngressIp { return v.IngressIps }).(GoldengateDeploymentPropertiesIngressIpArrayOutput)
+}
+
+// Indicates if auto scaling is enabled for the Deployment's CPU core count.
+func (o GoldengateDeploymentPropertiesOutput) IsAutoScalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *bool { return v.IsAutoScalingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is of the latest version.
+func (o GoldengateDeploymentPropertiesOutput) IsLatestVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *bool { return v.IsLatestVersion }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is public.
+func (o GoldengateDeploymentPropertiesOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether storage utilization limit is exceeded of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) IsStorageUtilizationLimitExceeded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *bool { return v.IsStorageUtilizationLimitExceeded }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The time last backup scheduled of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) LastBackupScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LastBackupScheduleTime }).(pulumi.StringPtrOutput)
+}
+
+// The Oracle license model that applies to a Deployment.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o GoldengateDeploymentPropertiesOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LicenseModel }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle details of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) LifecycleDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LifecycleDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the GoldengateDeployment.
+// Possible values:
+// CREATING
+// UPDATING
+// ACTIVE
+// INACTIVE
+// DELETING
+// DELETED
+// FAILED
+// NEEDS_ATTENTION
+// IN_PROGRESS
+// CANCELLING
+// CANCELLED
+// SUCCEEDED
+// WAITING
+func (o GoldengateDeploymentPropertiesOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LifecycleState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle sub-state of the GoldengateDeployment.
+// Possible values:
+// RECOVERING
+// STARTING
+// STOPPING
+// MOVING
+// UPGRADING
+// RESTORING
+// BACKING_UP
+// ROLLING_BACK
+func (o GoldengateDeploymentPropertiesOutput) LifecycleSubState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LifecycleSubState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The load balancer id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) LoadBalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LoadBalancerId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The load balancer subnet id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) LoadBalancerSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.LoadBalancerSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The locks of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) Locks() GoldengateDeploymentPropertiesLockArrayOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesLock { return v.Locks }).(GoldengateDeploymentPropertiesLockArrayOutput)
+}
+
+// The maintenance configuration of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) MaintenanceConfig() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesMaintenanceConfig {
+		return v.MaintenanceConfig
+	}).(GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput)
+}
+
+// The maintenance window of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) MaintenanceWindow() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput)
+}
+
+// (Output)
+// The time next backup scheduled of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) NextBackupScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.NextBackupScheduleTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The next maintenance action type of the GoldengateDeployment.
+// Possible values:
+// UPGRADE
+func (o GoldengateDeploymentPropertiesOutput) NextMaintenanceActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.NextMaintenanceActionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The next maintenance description of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) NextMaintenanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.NextMaintenanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time of next maintenance of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) NextMaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.NextMaintenanceTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The nsg ids of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) NsgIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) []string { return v.NsgIds }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// OCID of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.Ocid }).(pulumi.StringPtrOutput)
+}
+
+// The Ogg data of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) OggData() GoldengateDeploymentPropertiesOggDataOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) GoldengateDeploymentPropertiesOggData { return v.OggData }).(GoldengateDeploymentPropertiesOggDataOutput)
+}
+
+// (Output)
+// The time ogg version supported until of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) OggVersionSupportEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.OggVersionSupportEndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The placements of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOutput) Placements() GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesPlacement { return v.Placements }).(GoldengateDeploymentPropertiesPlacementArrayOutput)
+}
+
+// (Output)
+// The private ip address of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The public ip address of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) PublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.PublicIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the role of the GoldengateDeployment was changed.
+func (o GoldengateDeploymentPropertiesOutput) RoleChangeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.RoleChangeTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The storage utilization in bytes of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) StorageUtilizationBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.StorageUtilizationBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time the GoldengateDeployment was updated.
+func (o GoldengateDeploymentPropertiesOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time upgrade required of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOutput) UpgradeRequiredTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentProperties) *string { return v.UpgradeRequiredTime }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentProperties)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesPtrOutput) ToGoldengateDeploymentPropertiesPtrOutput() GoldengateDeploymentPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesPtrOutput) ToGoldengateDeploymentPropertiesPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesPtrOutput) Elem() GoldengateDeploymentPropertiesOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) GoldengateDeploymentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentProperties
+		return ret
+	}).(GoldengateDeploymentPropertiesOutput)
+}
+
+// The backup schedule of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) BackupSchedule() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesBackupSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.BackupSchedule
+	}).(GoldengateDeploymentPropertiesBackupSchedulePtrOutput)
+}
+
+// (Output)
+// The category of the GoldengateDeployment.
+// Possible values:
+// DATA_REPLICATION
+// DATA_TRANSFORMS
+func (o GoldengateDeploymentPropertiesPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Minimum number of OCPUs to be made available for this Deployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) CpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The deployment backup id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) DeploymentBackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentBackupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The deployment diagnostic data.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) DeploymentDiagnosticData() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesDeploymentDiagnosticData {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentDiagnosticData
+	}).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput)
+}
+
+// (Output)
+// The deployment role of the GoldengateDeployment.
+// Possible values:
+// PRIMARY
+// STANDBY
+func (o GoldengateDeploymentPropertiesPtrOutput) DeploymentRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// A valid Goldengate Deployment type. For a list of supported types, use
+// the `ListGoldengateDeploymentTypes` operation.
+func (o GoldengateDeploymentPropertiesPtrOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The deployment url of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) DeploymentUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment type of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Fully Qualified Domain Name of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is healthy.
+func (o GoldengateDeploymentPropertiesPtrOutput) Healthy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Healthy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ingress ips of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) IngressIps() GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesIngressIp {
+		if v == nil {
+			return nil
+		}
+		return v.IngressIps
+	}).(GoldengateDeploymentPropertiesIngressIpArrayOutput)
+}
+
+// Indicates if auto scaling is enabled for the Deployment's CPU core count.
+func (o GoldengateDeploymentPropertiesPtrOutput) IsAutoScalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoScalingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is of the latest version.
+func (o GoldengateDeploymentPropertiesPtrOutput) IsLatestVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsLatestVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether the GoldengateDeployment is public.
+func (o GoldengateDeploymentPropertiesPtrOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPublic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Whether storage utilization limit is exceeded of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) IsStorageUtilizationLimitExceeded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsStorageUtilizationLimitExceeded
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The time last backup scheduled of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) LastBackupScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastBackupScheduleTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Oracle license model that applies to a Deployment.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o GoldengateDeploymentPropertiesPtrOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle details of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) LifecycleDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the GoldengateDeployment.
+// Possible values:
+// CREATING
+// UPDATING
+// ACTIVE
+// INACTIVE
+// DELETING
+// DELETED
+// FAILED
+// NEEDS_ATTENTION
+// IN_PROGRESS
+// CANCELLING
+// CANCELLED
+// SUCCEEDED
+// WAITING
+func (o GoldengateDeploymentPropertiesPtrOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle sub-state of the GoldengateDeployment.
+// Possible values:
+// RECOVERING
+// STARTING
+// STOPPING
+// MOVING
+// UPGRADING
+// RESTORING
+// BACKING_UP
+// ROLLING_BACK
+func (o GoldengateDeploymentPropertiesPtrOutput) LifecycleSubState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleSubState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The load balancer id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) LoadBalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The load balancer subnet id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) LoadBalancerSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The locks of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) Locks() GoldengateDeploymentPropertiesLockArrayOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesLock {
+		if v == nil {
+			return nil
+		}
+		return v.Locks
+	}).(GoldengateDeploymentPropertiesLockArrayOutput)
+}
+
+// The maintenance configuration of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) MaintenanceConfig() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesMaintenanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceConfig
+	}).(GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput)
+}
+
+// The maintenance window of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) MaintenanceWindow() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindow
+	}).(GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput)
+}
+
+// (Output)
+// The time next backup scheduled of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) NextBackupScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextBackupScheduleTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The next maintenance action type of the GoldengateDeployment.
+// Possible values:
+// UPGRADE
+func (o GoldengateDeploymentPropertiesPtrOutput) NextMaintenanceActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextMaintenanceActionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The next maintenance description of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) NextMaintenanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextMaintenanceDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time of next maintenance of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) NextMaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextMaintenanceTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The nsg ids of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) NsgIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NsgIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// OCID of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ocid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Ogg data of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) OggData() GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *GoldengateDeploymentPropertiesOggData {
+		if v == nil {
+			return nil
+		}
+		return &v.OggData
+	}).(GoldengateDeploymentPropertiesOggDataPtrOutput)
+}
+
+// (Output)
+// The time ogg version supported until of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) OggVersionSupportEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OggVersionSupportEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The placements of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesPtrOutput) Placements() GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) []GoldengateDeploymentPropertiesPlacement {
+		if v == nil {
+			return nil
+		}
+		return v.Placements
+	}).(GoldengateDeploymentPropertiesPlacementArrayOutput)
+}
+
+// (Output)
+// The private ip address of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The public ip address of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) PublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the role of the GoldengateDeployment was changed.
+func (o GoldengateDeploymentPropertiesPtrOutput) RoleChangeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleChangeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The storage utilization in bytes of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) StorageUtilizationBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageUtilizationBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time the GoldengateDeployment was updated.
+func (o GoldengateDeploymentPropertiesPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time upgrade required of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesPtrOutput) UpgradeRequiredTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeRequiredTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesBackupSchedule struct {
+	// (Output)
+	// The timestamp of when the backup was scheduled.
+	BackupScheduledTime *string `pulumi:"backupScheduledTime"`
+	// (Output)
+	// The bucket name.
+	Bucket *string `pulumi:"bucket"`
+	// (Output)
+	// The compartment id.
+	CompartmentId *string `pulumi:"compartmentId"`
+	// (Output)
+	// The frequency backup scheduled.
+	// Possible values:
+	// DAILY
+	// WEEKLY
+	// MONTHLY
+	FrequencyBackupScheduled *string `pulumi:"frequencyBackupScheduled"`
+	// (Output)
+	// If metadata only.
+	MetadataOnly *bool `pulumi:"metadataOnly"`
+	// (Output)
+	// The namespace name.
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GoldengateDeploymentPropertiesBackupScheduleInput is an input type that accepts GoldengateDeploymentPropertiesBackupScheduleArgs and GoldengateDeploymentPropertiesBackupScheduleOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesBackupScheduleInput` via:
+//
+//	GoldengateDeploymentPropertiesBackupScheduleArgs{...}
+type GoldengateDeploymentPropertiesBackupScheduleInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesBackupScheduleOutput() GoldengateDeploymentPropertiesBackupScheduleOutput
+	ToGoldengateDeploymentPropertiesBackupScheduleOutputWithContext(context.Context) GoldengateDeploymentPropertiesBackupScheduleOutput
+}
+
+type GoldengateDeploymentPropertiesBackupScheduleArgs struct {
+	// (Output)
+	// The timestamp of when the backup was scheduled.
+	BackupScheduledTime pulumi.StringPtrInput `pulumi:"backupScheduledTime"`
+	// (Output)
+	// The bucket name.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// (Output)
+	// The compartment id.
+	CompartmentId pulumi.StringPtrInput `pulumi:"compartmentId"`
+	// (Output)
+	// The frequency backup scheduled.
+	// Possible values:
+	// DAILY
+	// WEEKLY
+	// MONTHLY
+	FrequencyBackupScheduled pulumi.StringPtrInput `pulumi:"frequencyBackupScheduled"`
+	// (Output)
+	// If metadata only.
+	MetadataOnly pulumi.BoolPtrInput `pulumi:"metadataOnly"`
+	// (Output)
+	// The namespace name.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GoldengateDeploymentPropertiesBackupScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesBackupSchedule)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesBackupScheduleArgs) ToGoldengateDeploymentPropertiesBackupScheduleOutput() GoldengateDeploymentPropertiesBackupScheduleOutput {
+	return i.ToGoldengateDeploymentPropertiesBackupScheduleOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesBackupScheduleArgs) ToGoldengateDeploymentPropertiesBackupScheduleOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesBackupScheduleOutput)
+}
+
+func (i GoldengateDeploymentPropertiesBackupScheduleArgs) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutput() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return i.ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesBackupScheduleArgs) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesBackupScheduleOutput).ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesBackupSchedulePtrInput is an input type that accepts GoldengateDeploymentPropertiesBackupScheduleArgs, GoldengateDeploymentPropertiesBackupSchedulePtr and GoldengateDeploymentPropertiesBackupSchedulePtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesBackupSchedulePtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesBackupScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesBackupSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesBackupSchedulePtrOutput() GoldengateDeploymentPropertiesBackupSchedulePtrOutput
+	ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesBackupSchedulePtrOutput
+}
+
+type goldengateDeploymentPropertiesBackupSchedulePtrType GoldengateDeploymentPropertiesBackupScheduleArgs
+
+func GoldengateDeploymentPropertiesBackupSchedulePtr(v *GoldengateDeploymentPropertiesBackupScheduleArgs) GoldengateDeploymentPropertiesBackupSchedulePtrInput {
+	return (*goldengateDeploymentPropertiesBackupSchedulePtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesBackupSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesBackupSchedule)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesBackupSchedulePtrType) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutput() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return i.ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesBackupSchedulePtrType) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesBackupSchedulePtrOutput)
+}
+
+type GoldengateDeploymentPropertiesBackupScheduleOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesBackupScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesBackupSchedule)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) ToGoldengateDeploymentPropertiesBackupScheduleOutput() GoldengateDeploymentPropertiesBackupScheduleOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) ToGoldengateDeploymentPropertiesBackupScheduleOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupScheduleOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutput() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o.ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesBackupSchedule) *GoldengateDeploymentPropertiesBackupSchedule {
+		return &v
+	}).(GoldengateDeploymentPropertiesBackupSchedulePtrOutput)
+}
+
+// (Output)
+// The timestamp of when the backup was scheduled.
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) BackupScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *string { return v.BackupScheduledTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The bucket name.
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The compartment id.
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) CompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *string { return v.CompartmentId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The frequency backup scheduled.
+// Possible values:
+// DAILY
+// WEEKLY
+// MONTHLY
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) FrequencyBackupScheduled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *string { return v.FrequencyBackupScheduled }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// If metadata only.
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) MetadataOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *bool { return v.MetadataOnly }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The namespace name.
+func (o GoldengateDeploymentPropertiesBackupScheduleOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesBackupSchedule) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesBackupSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesBackupSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesBackupSchedule)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutput() GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) ToGoldengateDeploymentPropertiesBackupSchedulePtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesBackupSchedulePtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) Elem() GoldengateDeploymentPropertiesBackupScheduleOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) GoldengateDeploymentPropertiesBackupSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesBackupSchedule
+		return ret
+	}).(GoldengateDeploymentPropertiesBackupScheduleOutput)
+}
+
+// (Output)
+// The timestamp of when the backup was scheduled.
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) BackupScheduledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupScheduledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The bucket name.
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The compartment id.
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) CompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompartmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The frequency backup scheduled.
+// Possible values:
+// DAILY
+// WEEKLY
+// MONTHLY
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) FrequencyBackupScheduled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FrequencyBackupScheduled
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// If metadata only.
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) MetadataOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The namespace name.
+func (o GoldengateDeploymentPropertiesBackupSchedulePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesBackupSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesDeploymentDiagnosticData struct {
+	// (Output)
+	// The bucket name.
+	Bucket *string `pulumi:"bucket"`
+	// (Output)
+	// The time diagnostic end.
+	DiagnosticEndTime *string `pulumi:"diagnosticEndTime"`
+	// (Output)
+	// The time diagnostic start.
+	DiagnosticStartTime *string `pulumi:"diagnosticStartTime"`
+	// (Output)
+	// The diagnostic state.
+	// Possible values:
+	// IN_PROGRESS
+	// SUCCEEDED
+	// FAILED
+	DiagnosticState *string `pulumi:"diagnosticState"`
+	// (Output)
+	// The namespace name.
+	Namespace *string `pulumi:"namespace"`
+	// (Output)
+	// The object name.
+	//
+	// <a name="nestedPropertiesIngressIps"></a>The `ingressIps` block contains:
+	Object *string `pulumi:"object"`
+}
+
+// GoldengateDeploymentPropertiesDeploymentDiagnosticDataInput is an input type that accepts GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs and GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesDeploymentDiagnosticDataInput` via:
+//
+//	GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs{...}
+type GoldengateDeploymentPropertiesDeploymentDiagnosticDataInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput
+	ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutputWithContext(context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput
+}
+
+type GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs struct {
+	// (Output)
+	// The bucket name.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// (Output)
+	// The time diagnostic end.
+	DiagnosticEndTime pulumi.StringPtrInput `pulumi:"diagnosticEndTime"`
+	// (Output)
+	// The time diagnostic start.
+	DiagnosticStartTime pulumi.StringPtrInput `pulumi:"diagnosticStartTime"`
+	// (Output)
+	// The diagnostic state.
+	// Possible values:
+	// IN_PROGRESS
+	// SUCCEEDED
+	// FAILED
+	DiagnosticState pulumi.StringPtrInput `pulumi:"diagnosticState"`
+	// (Output)
+	// The namespace name.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// (Output)
+	// The object name.
+	//
+	// <a name="nestedPropertiesIngressIps"></a>The `ingressIps` block contains:
+	Object pulumi.StringPtrInput `pulumi:"object"`
+}
+
+func (GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesDeploymentDiagnosticData)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput {
+	return i.ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput)
+}
+
+func (i GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput).ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput is an input type that accepts GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs, GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtr and GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput
+	ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput
+}
+
+type goldengateDeploymentPropertiesDeploymentDiagnosticDataPtrType GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs
+
+func GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtr(v *GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput {
+	return (*goldengateDeploymentPropertiesDeploymentDiagnosticDataPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesDeploymentDiagnosticDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesDeploymentDiagnosticData)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesDeploymentDiagnosticDataPtrType) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesDeploymentDiagnosticDataPtrType) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesDeploymentDiagnosticData)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *GoldengateDeploymentPropertiesDeploymentDiagnosticData {
+		return &v
+	}).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput)
+}
+
+// (Output)
+// The bucket name.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time diagnostic end.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) DiagnosticEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.DiagnosticEndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time diagnostic start.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) DiagnosticStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.DiagnosticStartTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The diagnostic state.
+// Possible values:
+// IN_PROGRESS
+// SUCCEEDED
+// FAILED
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) DiagnosticState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.DiagnosticState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The namespace name.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The object name.
+//
+// <a name="nestedPropertiesIngressIps"></a>The `ingressIps` block contains:
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesDeploymentDiagnosticData)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput() GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) ToGoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) Elem() GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) GoldengateDeploymentPropertiesDeploymentDiagnosticData {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesDeploymentDiagnosticData
+		return ret
+	}).(GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput)
+}
+
+// (Output)
+// The bucket name.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time diagnostic end.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) DiagnosticEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time diagnostic start.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) DiagnosticStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The diagnostic state.
+// Possible values:
+// IN_PROGRESS
+// SUCCEEDED
+// FAILED
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) DiagnosticState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The namespace name.
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The object name.
+//
+// <a name="nestedPropertiesIngressIps"></a>The `ingressIps` block contains:
+func (o GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesDeploymentDiagnosticData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesIngressIp struct {
+	// The ingress IP.
+	IngressIpAddress *string `pulumi:"ingressIpAddress"`
+}
+
+// GoldengateDeploymentPropertiesIngressIpInput is an input type that accepts GoldengateDeploymentPropertiesIngressIpArgs and GoldengateDeploymentPropertiesIngressIpOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesIngressIpInput` via:
+//
+//	GoldengateDeploymentPropertiesIngressIpArgs{...}
+type GoldengateDeploymentPropertiesIngressIpInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesIngressIpOutput() GoldengateDeploymentPropertiesIngressIpOutput
+	ToGoldengateDeploymentPropertiesIngressIpOutputWithContext(context.Context) GoldengateDeploymentPropertiesIngressIpOutput
+}
+
+type GoldengateDeploymentPropertiesIngressIpArgs struct {
+	// The ingress IP.
+	IngressIpAddress pulumi.StringPtrInput `pulumi:"ingressIpAddress"`
+}
+
+func (GoldengateDeploymentPropertiesIngressIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesIngressIp)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesIngressIpArgs) ToGoldengateDeploymentPropertiesIngressIpOutput() GoldengateDeploymentPropertiesIngressIpOutput {
+	return i.ToGoldengateDeploymentPropertiesIngressIpOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesIngressIpArgs) ToGoldengateDeploymentPropertiesIngressIpOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesIngressIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesIngressIpOutput)
+}
+
+// GoldengateDeploymentPropertiesIngressIpArrayInput is an input type that accepts GoldengateDeploymentPropertiesIngressIpArray and GoldengateDeploymentPropertiesIngressIpArrayOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesIngressIpArrayInput` via:
+//
+//	GoldengateDeploymentPropertiesIngressIpArray{ GoldengateDeploymentPropertiesIngressIpArgs{...} }
+type GoldengateDeploymentPropertiesIngressIpArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesIngressIpArrayOutput() GoldengateDeploymentPropertiesIngressIpArrayOutput
+	ToGoldengateDeploymentPropertiesIngressIpArrayOutputWithContext(context.Context) GoldengateDeploymentPropertiesIngressIpArrayOutput
+}
+
+type GoldengateDeploymentPropertiesIngressIpArray []GoldengateDeploymentPropertiesIngressIpInput
+
+func (GoldengateDeploymentPropertiesIngressIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesIngressIp)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesIngressIpArray) ToGoldengateDeploymentPropertiesIngressIpArrayOutput() GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return i.ToGoldengateDeploymentPropertiesIngressIpArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesIngressIpArray) ToGoldengateDeploymentPropertiesIngressIpArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesIngressIpArrayOutput)
+}
+
+type GoldengateDeploymentPropertiesIngressIpOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesIngressIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesIngressIp)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesIngressIpOutput) ToGoldengateDeploymentPropertiesIngressIpOutput() GoldengateDeploymentPropertiesIngressIpOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesIngressIpOutput) ToGoldengateDeploymentPropertiesIngressIpOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesIngressIpOutput {
+	return o
+}
+
+// The ingress IP.
+func (o GoldengateDeploymentPropertiesIngressIpOutput) IngressIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesIngressIp) *string { return v.IngressIpAddress }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesIngressIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesIngressIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesIngressIp)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesIngressIpArrayOutput) ToGoldengateDeploymentPropertiesIngressIpArrayOutput() GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesIngressIpArrayOutput) ToGoldengateDeploymentPropertiesIngressIpArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesIngressIpArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesIngressIpArrayOutput) Index(i pulumi.IntInput) GoldengateDeploymentPropertiesIngressIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateDeploymentPropertiesIngressIp {
+		return vs[0].([]GoldengateDeploymentPropertiesIngressIp)[vs[1].(int)]
+	}).(GoldengateDeploymentPropertiesIngressIpOutput)
+}
+
+type GoldengateDeploymentPropertiesLock struct {
+	// The compartment id.
+	CompartmentId *string `pulumi:"compartmentId"`
+	// The date and time that the GoldengateDeployment was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The message.
+	Message *string `pulumi:"message"`
+	// The related resource id.
+	RelatedResourceId *string `pulumi:"relatedResourceId"`
+	// The type of lock.
+	// Possible values:
+	// FULL
+	// DELETE
+	Type *string `pulumi:"type"`
+}
+
+// GoldengateDeploymentPropertiesLockInput is an input type that accepts GoldengateDeploymentPropertiesLockArgs and GoldengateDeploymentPropertiesLockOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesLockInput` via:
+//
+//	GoldengateDeploymentPropertiesLockArgs{...}
+type GoldengateDeploymentPropertiesLockInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesLockOutput() GoldengateDeploymentPropertiesLockOutput
+	ToGoldengateDeploymentPropertiesLockOutputWithContext(context.Context) GoldengateDeploymentPropertiesLockOutput
+}
+
+type GoldengateDeploymentPropertiesLockArgs struct {
+	// The compartment id.
+	CompartmentId pulumi.StringPtrInput `pulumi:"compartmentId"`
+	// The date and time that the GoldengateDeployment was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// The message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The related resource id.
+	RelatedResourceId pulumi.StringPtrInput `pulumi:"relatedResourceId"`
+	// The type of lock.
+	// Possible values:
+	// FULL
+	// DELETE
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoldengateDeploymentPropertiesLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesLock)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesLockArgs) ToGoldengateDeploymentPropertiesLockOutput() GoldengateDeploymentPropertiesLockOutput {
+	return i.ToGoldengateDeploymentPropertiesLockOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesLockArgs) ToGoldengateDeploymentPropertiesLockOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesLockOutput)
+}
+
+// GoldengateDeploymentPropertiesLockArrayInput is an input type that accepts GoldengateDeploymentPropertiesLockArray and GoldengateDeploymentPropertiesLockArrayOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesLockArrayInput` via:
+//
+//	GoldengateDeploymentPropertiesLockArray{ GoldengateDeploymentPropertiesLockArgs{...} }
+type GoldengateDeploymentPropertiesLockArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesLockArrayOutput() GoldengateDeploymentPropertiesLockArrayOutput
+	ToGoldengateDeploymentPropertiesLockArrayOutputWithContext(context.Context) GoldengateDeploymentPropertiesLockArrayOutput
+}
+
+type GoldengateDeploymentPropertiesLockArray []GoldengateDeploymentPropertiesLockInput
+
+func (GoldengateDeploymentPropertiesLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesLock)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesLockArray) ToGoldengateDeploymentPropertiesLockArrayOutput() GoldengateDeploymentPropertiesLockArrayOutput {
+	return i.ToGoldengateDeploymentPropertiesLockArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesLockArray) ToGoldengateDeploymentPropertiesLockArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesLockArrayOutput)
+}
+
+type GoldengateDeploymentPropertiesLockOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesLock)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesLockOutput) ToGoldengateDeploymentPropertiesLockOutput() GoldengateDeploymentPropertiesLockOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesLockOutput) ToGoldengateDeploymentPropertiesLockOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesLockOutput {
+	return o
+}
+
+// The compartment id.
+func (o GoldengateDeploymentPropertiesLockOutput) CompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesLock) *string { return v.CompartmentId }).(pulumi.StringPtrOutput)
+}
+
+// The date and time that the GoldengateDeployment was created.
+func (o GoldengateDeploymentPropertiesLockOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesLock) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The message.
+func (o GoldengateDeploymentPropertiesLockOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesLock) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The related resource id.
+func (o GoldengateDeploymentPropertiesLockOutput) RelatedResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesLock) *string { return v.RelatedResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of lock.
+// Possible values:
+// FULL
+// DELETE
+func (o GoldengateDeploymentPropertiesLockOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesLock) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesLock)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesLockArrayOutput) ToGoldengateDeploymentPropertiesLockArrayOutput() GoldengateDeploymentPropertiesLockArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesLockArrayOutput) ToGoldengateDeploymentPropertiesLockArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesLockArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesLockArrayOutput) Index(i pulumi.IntInput) GoldengateDeploymentPropertiesLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateDeploymentPropertiesLock {
+		return vs[0].([]GoldengateDeploymentPropertiesLock)[vs[1].(int)]
+	}).(GoldengateDeploymentPropertiesLockOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceConfig struct {
+	// Defines auto upgrade period for bundle releases. Manually configured period
+	// cannot be longer than service defined period for bundle releases. This
+	// period must be shorter or equal to major release upgrade period. Not
+	// passing this field during create will equate to using the service default.
+	BundleReleaseUpgradePeriodDays *int `pulumi:"bundleReleaseUpgradePeriodDays"`
+	// Defines auto upgrade period for interim releases. This period must be
+	// shorter or equal to bundle release upgrade period.
+	InterimReleaseUpgradePeriodDays *int `pulumi:"interimReleaseUpgradePeriodDays"`
+	// By default auto upgrade for interim releases are not enabled. If
+	// auto-upgrade is enabled for interim release,  you have to specify
+	// interimReleaseUpgradePeriodDays too.
+	IsInterimReleaseAutoUpgradeEnabled *bool `pulumi:"isInterimReleaseAutoUpgradeEnabled"`
+	// Defines auto upgrade period for major releases. Manually configured period
+	// cannot be longer than service defined period for major releases. Not
+	// passing this field during create will equate to using the service default.
+	MajorReleaseUpgradePeriodDays *int `pulumi:"majorReleaseUpgradePeriodDays"`
+	// Defines auto upgrade period for releases with security fix. Manually
+	// configured period cannot be longer than service defined period for security
+	// releases. Not passing this field during create will equate to using the
+	// service default.
+	SecurityPatchUpgradePeriodDays *int `pulumi:"securityPatchUpgradePeriodDays"`
+}
+
+// GoldengateDeploymentPropertiesMaintenanceConfigInput is an input type that accepts GoldengateDeploymentPropertiesMaintenanceConfigArgs and GoldengateDeploymentPropertiesMaintenanceConfigOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesMaintenanceConfigInput` via:
+//
+//	GoldengateDeploymentPropertiesMaintenanceConfigArgs{...}
+type GoldengateDeploymentPropertiesMaintenanceConfigInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesMaintenanceConfigOutput() GoldengateDeploymentPropertiesMaintenanceConfigOutput
+	ToGoldengateDeploymentPropertiesMaintenanceConfigOutputWithContext(context.Context) GoldengateDeploymentPropertiesMaintenanceConfigOutput
+}
+
+type GoldengateDeploymentPropertiesMaintenanceConfigArgs struct {
+	// Defines auto upgrade period for bundle releases. Manually configured period
+	// cannot be longer than service defined period for bundle releases. This
+	// period must be shorter or equal to major release upgrade period. Not
+	// passing this field during create will equate to using the service default.
+	BundleReleaseUpgradePeriodDays pulumi.IntPtrInput `pulumi:"bundleReleaseUpgradePeriodDays"`
+	// Defines auto upgrade period for interim releases. This period must be
+	// shorter or equal to bundle release upgrade period.
+	InterimReleaseUpgradePeriodDays pulumi.IntPtrInput `pulumi:"interimReleaseUpgradePeriodDays"`
+	// By default auto upgrade for interim releases are not enabled. If
+	// auto-upgrade is enabled for interim release,  you have to specify
+	// interimReleaseUpgradePeriodDays too.
+	IsInterimReleaseAutoUpgradeEnabled pulumi.BoolPtrInput `pulumi:"isInterimReleaseAutoUpgradeEnabled"`
+	// Defines auto upgrade period for major releases. Manually configured period
+	// cannot be longer than service defined period for major releases. Not
+	// passing this field during create will equate to using the service default.
+	MajorReleaseUpgradePeriodDays pulumi.IntPtrInput `pulumi:"majorReleaseUpgradePeriodDays"`
+	// Defines auto upgrade period for releases with security fix. Manually
+	// configured period cannot be longer than service defined period for security
+	// releases. Not passing this field during create will equate to using the
+	// service default.
+	SecurityPatchUpgradePeriodDays pulumi.IntPtrInput `pulumi:"securityPatchUpgradePeriodDays"`
+}
+
+func (GoldengateDeploymentPropertiesMaintenanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceConfig)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceConfigArgs) ToGoldengateDeploymentPropertiesMaintenanceConfigOutput() GoldengateDeploymentPropertiesMaintenanceConfigOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceConfigOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceConfigArgs) ToGoldengateDeploymentPropertiesMaintenanceConfigOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceConfigOutput)
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceConfigArgs) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutput() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceConfigArgs) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceConfigOutput).ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesMaintenanceConfigPtrInput is an input type that accepts GoldengateDeploymentPropertiesMaintenanceConfigArgs, GoldengateDeploymentPropertiesMaintenanceConfigPtr and GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesMaintenanceConfigPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesMaintenanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesMaintenanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutput() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput
+	ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput
+}
+
+type goldengateDeploymentPropertiesMaintenanceConfigPtrType GoldengateDeploymentPropertiesMaintenanceConfigArgs
+
+func GoldengateDeploymentPropertiesMaintenanceConfigPtr(v *GoldengateDeploymentPropertiesMaintenanceConfigArgs) GoldengateDeploymentPropertiesMaintenanceConfigPtrInput {
+	return (*goldengateDeploymentPropertiesMaintenanceConfigPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesMaintenanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesMaintenanceConfig)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesMaintenanceConfigPtrType) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutput() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesMaintenanceConfigPtrType) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesMaintenanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceConfig)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigOutput() GoldengateDeploymentPropertiesMaintenanceConfigOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutput() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesMaintenanceConfig) *GoldengateDeploymentPropertiesMaintenanceConfig {
+		return &v
+	}).(GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput)
+}
+
+// Defines auto upgrade period for bundle releases. Manually configured period
+// cannot be longer than service defined period for bundle releases. This
+// period must be shorter or equal to major release upgrade period. Not
+// passing this field during create will equate to using the service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) BundleReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceConfig) *int { return v.BundleReleaseUpgradePeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// Defines auto upgrade period for interim releases. This period must be
+// shorter or equal to bundle release upgrade period.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) InterimReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceConfig) *int { return v.InterimReleaseUpgradePeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// By default auto upgrade for interim releases are not enabled. If
+// auto-upgrade is enabled for interim release,  you have to specify
+// interimReleaseUpgradePeriodDays too.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) IsInterimReleaseAutoUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceConfig) *bool {
+		return v.IsInterimReleaseAutoUpgradeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines auto upgrade period for major releases. Manually configured period
+// cannot be longer than service defined period for major releases. Not
+// passing this field during create will equate to using the service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) MajorReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceConfig) *int { return v.MajorReleaseUpgradePeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// Defines auto upgrade period for releases with security fix. Manually
+// configured period cannot be longer than service defined period for security
+// releases. Not passing this field during create will equate to using the
+// service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigOutput) SecurityPatchUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceConfig) *int { return v.SecurityPatchUpgradePeriodDays }).(pulumi.IntPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesMaintenanceConfig)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutput() GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) ToGoldengateDeploymentPropertiesMaintenanceConfigPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) Elem() GoldengateDeploymentPropertiesMaintenanceConfigOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) GoldengateDeploymentPropertiesMaintenanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesMaintenanceConfig
+		return ret
+	}).(GoldengateDeploymentPropertiesMaintenanceConfigOutput)
+}
+
+// Defines auto upgrade period for bundle releases. Manually configured period
+// cannot be longer than service defined period for bundle releases. This
+// period must be shorter or equal to major release upgrade period. Not
+// passing this field during create will equate to using the service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) BundleReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BundleReleaseUpgradePeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines auto upgrade period for interim releases. This period must be
+// shorter or equal to bundle release upgrade period.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) InterimReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InterimReleaseUpgradePeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// By default auto upgrade for interim releases are not enabled. If
+// auto-upgrade is enabled for interim release,  you have to specify
+// interimReleaseUpgradePeriodDays too.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) IsInterimReleaseAutoUpgradeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsInterimReleaseAutoUpgradeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines auto upgrade period for major releases. Manually configured period
+// cannot be longer than service defined period for major releases. Not
+// passing this field during create will equate to using the service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) MajorReleaseUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MajorReleaseUpgradePeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines auto upgrade period for releases with security fix. Manually
+// configured period cannot be longer than service defined period for security
+// releases. Not passing this field during create will equate to using the
+// service default.
+func (o GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput) SecurityPatchUpgradePeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityPatchUpgradePeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceWindow struct {
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
+	Day string `pulumi:"day"`
+	// Start hour for maintenance period. Hour is in UTC.
+	StartHour int `pulumi:"startHour"`
+}
+
+// GoldengateDeploymentPropertiesMaintenanceWindowInput is an input type that accepts GoldengateDeploymentPropertiesMaintenanceWindowArgs and GoldengateDeploymentPropertiesMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesMaintenanceWindowInput` via:
+//
+//	GoldengateDeploymentPropertiesMaintenanceWindowArgs{...}
+type GoldengateDeploymentPropertiesMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesMaintenanceWindowOutput() GoldengateDeploymentPropertiesMaintenanceWindowOutput
+	ToGoldengateDeploymentPropertiesMaintenanceWindowOutputWithContext(context.Context) GoldengateDeploymentPropertiesMaintenanceWindowOutput
+}
+
+type GoldengateDeploymentPropertiesMaintenanceWindowArgs struct {
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
+	Day pulumi.StringInput `pulumi:"day"`
+	// Start hour for maintenance period. Hour is in UTC.
+	StartHour pulumi.IntInput `pulumi:"startHour"`
+}
+
+func (GoldengateDeploymentPropertiesMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceWindowArgs) ToGoldengateDeploymentPropertiesMaintenanceWindowOutput() GoldengateDeploymentPropertiesMaintenanceWindowOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceWindowArgs) ToGoldengateDeploymentPropertiesMaintenanceWindowOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceWindowOutput)
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceWindowArgs) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutput() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesMaintenanceWindowArgs) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceWindowOutput).ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesMaintenanceWindowPtrInput is an input type that accepts GoldengateDeploymentPropertiesMaintenanceWindowArgs, GoldengateDeploymentPropertiesMaintenanceWindowPtr and GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesMaintenanceWindowPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutput() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput
+	ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput
+}
+
+type goldengateDeploymentPropertiesMaintenanceWindowPtrType GoldengateDeploymentPropertiesMaintenanceWindowArgs
+
+func GoldengateDeploymentPropertiesMaintenanceWindowPtr(v *GoldengateDeploymentPropertiesMaintenanceWindowArgs) GoldengateDeploymentPropertiesMaintenanceWindowPtrInput {
+	return (*goldengateDeploymentPropertiesMaintenanceWindowPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesMaintenanceWindowPtrType) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutput() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesMaintenanceWindowPtrType) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowOutput() GoldengateDeploymentPropertiesMaintenanceWindowOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutput() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesMaintenanceWindow) *GoldengateDeploymentPropertiesMaintenanceWindow {
+		return &v
+	}).(GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput)
+}
+
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Start hour for maintenance period. Hour is in UTC.
+func (o GoldengateDeploymentPropertiesMaintenanceWindowOutput) StartHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesMaintenanceWindow) int { return v.StartHour }).(pulumi.IntOutput)
+}
+
+type GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutput() GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) ToGoldengateDeploymentPropertiesMaintenanceWindowPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) Elem() GoldengateDeploymentPropertiesMaintenanceWindowOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceWindow) GoldengateDeploymentPropertiesMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesMaintenanceWindow
+		return ret
+	}).(GoldengateDeploymentPropertiesMaintenanceWindowOutput)
+}
+
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
+func (o GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start hour for maintenance period. Hour is in UTC.
+func (o GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggData struct {
+	// The Goldengate deployment console password in plain text.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Input only. The Goldengate deployment console password secret version.
+	AdminPasswordSecretVersion *string `pulumi:"adminPasswordSecretVersion"`
+	// The Goldengate deployment console username.
+	AdminUsername string `pulumi:"adminUsername"`
+	// (Output)
+	// The certificate of the GoldengateDeployment.
+	Certificate *string `pulumi:"certificate"`
+	// (Output)
+	// The credential store of the GoldengateDeployment.
+	// Possible values:
+	// GOLDENGATE
+	// IAM
+	CredentialStore *string `pulumi:"credentialStore"`
+	// The name given to the Goldengate service deployment. The name must be 1 to
+	// 32 characters long, must contain only alphanumeric characters and must
+	// start with a letter.
+	Deployment string `pulumi:"deployment"`
+	// The group to roles mapping of the GoldengateDeployment.
+	// Structure is documented below.
+	GroupRolesMapping *GoldengateDeploymentPropertiesOggDataGroupRolesMapping `pulumi:"groupRolesMapping"`
+	// (Output)
+	// The identity domain id of the GoldengateDeployment.
+	IdentityDomainId *string `pulumi:"identityDomainId"`
+	// Version of OGG
+	OggVersion *string `pulumi:"oggVersion"`
+	// (Output)
+	// The password secret id of the GoldengateDeployment.
+	PasswordSecretId *string `pulumi:"passwordSecretId"`
+}
+
+// GoldengateDeploymentPropertiesOggDataInput is an input type that accepts GoldengateDeploymentPropertiesOggDataArgs and GoldengateDeploymentPropertiesOggDataOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesOggDataInput` via:
+//
+//	GoldengateDeploymentPropertiesOggDataArgs{...}
+type GoldengateDeploymentPropertiesOggDataInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesOggDataOutput() GoldengateDeploymentPropertiesOggDataOutput
+	ToGoldengateDeploymentPropertiesOggDataOutputWithContext(context.Context) GoldengateDeploymentPropertiesOggDataOutput
+}
+
+type GoldengateDeploymentPropertiesOggDataArgs struct {
+	// The Goldengate deployment console password in plain text.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Input only. The Goldengate deployment console password secret version.
+	AdminPasswordSecretVersion pulumi.StringPtrInput `pulumi:"adminPasswordSecretVersion"`
+	// The Goldengate deployment console username.
+	AdminUsername pulumi.StringInput `pulumi:"adminUsername"`
+	// (Output)
+	// The certificate of the GoldengateDeployment.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// (Output)
+	// The credential store of the GoldengateDeployment.
+	// Possible values:
+	// GOLDENGATE
+	// IAM
+	CredentialStore pulumi.StringPtrInput `pulumi:"credentialStore"`
+	// The name given to the Goldengate service deployment. The name must be 1 to
+	// 32 characters long, must contain only alphanumeric characters and must
+	// start with a letter.
+	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// The group to roles mapping of the GoldengateDeployment.
+	// Structure is documented below.
+	GroupRolesMapping GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput `pulumi:"groupRolesMapping"`
+	// (Output)
+	// The identity domain id of the GoldengateDeployment.
+	IdentityDomainId pulumi.StringPtrInput `pulumi:"identityDomainId"`
+	// Version of OGG
+	OggVersion pulumi.StringPtrInput `pulumi:"oggVersion"`
+	// (Output)
+	// The password secret id of the GoldengateDeployment.
+	PasswordSecretId pulumi.StringPtrInput `pulumi:"passwordSecretId"`
+}
+
+func (GoldengateDeploymentPropertiesOggDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesOggData)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesOggDataArgs) ToGoldengateDeploymentPropertiesOggDataOutput() GoldengateDeploymentPropertiesOggDataOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesOggDataArgs) ToGoldengateDeploymentPropertiesOggDataOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataOutput)
+}
+
+func (i GoldengateDeploymentPropertiesOggDataArgs) ToGoldengateDeploymentPropertiesOggDataPtrOutput() GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesOggDataArgs) ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataOutput).ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesOggDataPtrInput is an input type that accepts GoldengateDeploymentPropertiesOggDataArgs, GoldengateDeploymentPropertiesOggDataPtr and GoldengateDeploymentPropertiesOggDataPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesOggDataPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesOggDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesOggDataPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesOggDataPtrOutput() GoldengateDeploymentPropertiesOggDataPtrOutput
+	ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesOggDataPtrOutput
+}
+
+type goldengateDeploymentPropertiesOggDataPtrType GoldengateDeploymentPropertiesOggDataArgs
+
+func GoldengateDeploymentPropertiesOggDataPtr(v *GoldengateDeploymentPropertiesOggDataArgs) GoldengateDeploymentPropertiesOggDataPtrInput {
+	return (*goldengateDeploymentPropertiesOggDataPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesOggDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesOggData)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesOggDataPtrType) ToGoldengateDeploymentPropertiesOggDataPtrOutput() GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesOggDataPtrType) ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggDataOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesOggDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesOggData)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesOggDataOutput) ToGoldengateDeploymentPropertiesOggDataOutput() GoldengateDeploymentPropertiesOggDataOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataOutput) ToGoldengateDeploymentPropertiesOggDataOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataOutput) ToGoldengateDeploymentPropertiesOggDataPtrOutput() GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesOggDataOutput) ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesOggData) *GoldengateDeploymentPropertiesOggData {
+		return &v
+	}).(GoldengateDeploymentPropertiesOggDataPtrOutput)
+}
+
+// The Goldengate deployment console password in plain text.
+func (o GoldengateDeploymentPropertiesOggDataOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Goldengate deployment console password secret version.
+func (o GoldengateDeploymentPropertiesOggDataOutput) AdminPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.AdminPasswordSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// The Goldengate deployment console username.
+func (o GoldengateDeploymentPropertiesOggDataOutput) AdminUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) string { return v.AdminUsername }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The certificate of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The credential store of the GoldengateDeployment.
+// Possible values:
+// GOLDENGATE
+// IAM
+func (o GoldengateDeploymentPropertiesOggDataOutput) CredentialStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.CredentialStore }).(pulumi.StringPtrOutput)
+}
+
+// The name given to the Goldengate service deployment. The name must be 1 to
+// 32 characters long, must contain only alphanumeric characters and must
+// start with a letter.
+func (o GoldengateDeploymentPropertiesOggDataOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// The group to roles mapping of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOggDataOutput) GroupRolesMapping() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *GoldengateDeploymentPropertiesOggDataGroupRolesMapping {
+		return v.GroupRolesMapping
+	}).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput)
+}
+
+// (Output)
+// The identity domain id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataOutput) IdentityDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.IdentityDomainId }).(pulumi.StringPtrOutput)
+}
+
+// Version of OGG
+func (o GoldengateDeploymentPropertiesOggDataOutput) OggVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.OggVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The password secret id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataOutput) PasswordSecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggData) *string { return v.PasswordSecretId }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggDataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesOggDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesOggData)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) ToGoldengateDeploymentPropertiesOggDataPtrOutput() GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) ToGoldengateDeploymentPropertiesOggDataPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) Elem() GoldengateDeploymentPropertiesOggDataOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) GoldengateDeploymentPropertiesOggData {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesOggData
+		return ret
+	}).(GoldengateDeploymentPropertiesOggDataOutput)
+}
+
+// The Goldengate deployment console password in plain text.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Goldengate deployment console password secret version.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) AdminPasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Goldengate deployment console username.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The certificate of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The credential store of the GoldengateDeployment.
+// Possible values:
+// GOLDENGATE
+// IAM
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) CredentialStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name given to the Goldengate service deployment. The name must be 1 to
+// 32 characters long, must contain only alphanumeric characters and must
+// start with a letter.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The group to roles mapping of the GoldengateDeployment.
+// Structure is documented below.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) GroupRolesMapping() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *GoldengateDeploymentPropertiesOggDataGroupRolesMapping {
+		if v == nil {
+			return nil
+		}
+		return v.GroupRolesMapping
+	}).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput)
+}
+
+// (Output)
+// The identity domain id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) IdentityDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityDomainId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of OGG
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) OggVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OggVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The password secret id of the GoldengateDeployment.
+func (o GoldengateDeploymentPropertiesOggDataPtrOutput) PasswordSecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggDataGroupRolesMapping struct {
+	// (Output)
+	// The administrator group id.
+	AdministratorGroupId *string `pulumi:"administratorGroupId"`
+	// (Output)
+	// The operator group id.
+	OperatorGroupId *string `pulumi:"operatorGroupId"`
+	// (Output)
+	// The security group id.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// (Output)
+	// The user group id.
+	//
+	// <a name="nestedPropertiesPlacements"></a>The `placements` block contains:
+	UserGroupId *string `pulumi:"userGroupId"`
+}
+
+// GoldengateDeploymentPropertiesOggDataGroupRolesMappingInput is an input type that accepts GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs and GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesOggDataGroupRolesMappingInput` via:
+//
+//	GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs{...}
+type GoldengateDeploymentPropertiesOggDataGroupRolesMappingInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput
+	ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutputWithContext(context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput
+}
+
+type GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs struct {
+	// (Output)
+	// The administrator group id.
+	AdministratorGroupId pulumi.StringPtrInput `pulumi:"administratorGroupId"`
+	// (Output)
+	// The operator group id.
+	OperatorGroupId pulumi.StringPtrInput `pulumi:"operatorGroupId"`
+	// (Output)
+	// The security group id.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// (Output)
+	// The user group id.
+	//
+	// <a name="nestedPropertiesPlacements"></a>The `placements` block contains:
+	UserGroupId pulumi.StringPtrInput `pulumi:"userGroupId"`
+}
+
+func (GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataGroupRolesMapping)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput)
+}
+
+func (i GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput).ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(ctx)
+}
+
+// GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput is an input type that accepts GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs, GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtr and GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput` via:
+//
+//	        GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput
+	ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput
+}
+
+type goldengateDeploymentPropertiesOggDataGroupRolesMappingPtrType GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs
+
+func GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtr(v *GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput {
+	return (*goldengateDeploymentPropertiesOggDataGroupRolesMappingPtrType)(v)
+}
+
+func (*goldengateDeploymentPropertiesOggDataGroupRolesMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesOggDataGroupRolesMapping)(nil)).Elem()
+}
+
+func (i *goldengateDeploymentPropertiesOggDataGroupRolesMappingPtrType) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return i.ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *goldengateDeploymentPropertiesOggDataGroupRolesMappingPtrType) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataGroupRolesMapping)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o.ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(context.Background())
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *GoldengateDeploymentPropertiesOggDataGroupRolesMapping {
+		return &v
+	}).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput)
+}
+
+// (Output)
+// The administrator group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) AdministratorGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string { return v.AdministratorGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The operator group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) OperatorGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string { return v.OperatorGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The security group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The user group id.
+//
+// <a name="nestedPropertiesPlacements"></a>The `placements` block contains:
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput) UserGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string { return v.UserGroupId }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoldengateDeploymentPropertiesOggDataGroupRolesMapping)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput() GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) ToGoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) Elem() GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggDataGroupRolesMapping) GoldengateDeploymentPropertiesOggDataGroupRolesMapping {
+		if v != nil {
+			return *v
+		}
+		var ret GoldengateDeploymentPropertiesOggDataGroupRolesMapping
+		return ret
+	}).(GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput)
+}
+
+// (Output)
+// The administrator group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) AdministratorGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdministratorGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The operator group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) OperatorGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatorGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The security group id.
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The user group id.
+//
+// <a name="nestedPropertiesPlacements"></a>The `placements` block contains:
+func (o GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput) UserGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoldengateDeploymentPropertiesOggDataGroupRolesMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesPlacement struct {
+	// The availability domain.
+	AvailabilityDomain *string `pulumi:"availabilityDomain"`
+	// The fault domain.
+	FaultDomain *string `pulumi:"faultDomain"`
+}
+
+// GoldengateDeploymentPropertiesPlacementInput is an input type that accepts GoldengateDeploymentPropertiesPlacementArgs and GoldengateDeploymentPropertiesPlacementOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesPlacementInput` via:
+//
+//	GoldengateDeploymentPropertiesPlacementArgs{...}
+type GoldengateDeploymentPropertiesPlacementInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesPlacementOutput() GoldengateDeploymentPropertiesPlacementOutput
+	ToGoldengateDeploymentPropertiesPlacementOutputWithContext(context.Context) GoldengateDeploymentPropertiesPlacementOutput
+}
+
+type GoldengateDeploymentPropertiesPlacementArgs struct {
+	// The availability domain.
+	AvailabilityDomain pulumi.StringPtrInput `pulumi:"availabilityDomain"`
+	// The fault domain.
+	FaultDomain pulumi.StringPtrInput `pulumi:"faultDomain"`
+}
+
+func (GoldengateDeploymentPropertiesPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesPlacement)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesPlacementArgs) ToGoldengateDeploymentPropertiesPlacementOutput() GoldengateDeploymentPropertiesPlacementOutput {
+	return i.ToGoldengateDeploymentPropertiesPlacementOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesPlacementArgs) ToGoldengateDeploymentPropertiesPlacementOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesPlacementOutput)
+}
+
+// GoldengateDeploymentPropertiesPlacementArrayInput is an input type that accepts GoldengateDeploymentPropertiesPlacementArray and GoldengateDeploymentPropertiesPlacementArrayOutput values.
+// You can construct a concrete instance of `GoldengateDeploymentPropertiesPlacementArrayInput` via:
+//
+//	GoldengateDeploymentPropertiesPlacementArray{ GoldengateDeploymentPropertiesPlacementArgs{...} }
+type GoldengateDeploymentPropertiesPlacementArrayInput interface {
+	pulumi.Input
+
+	ToGoldengateDeploymentPropertiesPlacementArrayOutput() GoldengateDeploymentPropertiesPlacementArrayOutput
+	ToGoldengateDeploymentPropertiesPlacementArrayOutputWithContext(context.Context) GoldengateDeploymentPropertiesPlacementArrayOutput
+}
+
+type GoldengateDeploymentPropertiesPlacementArray []GoldengateDeploymentPropertiesPlacementInput
+
+func (GoldengateDeploymentPropertiesPlacementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesPlacement)(nil)).Elem()
+}
+
+func (i GoldengateDeploymentPropertiesPlacementArray) ToGoldengateDeploymentPropertiesPlacementArrayOutput() GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return i.ToGoldengateDeploymentPropertiesPlacementArrayOutputWithContext(context.Background())
+}
+
+func (i GoldengateDeploymentPropertiesPlacementArray) ToGoldengateDeploymentPropertiesPlacementArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoldengateDeploymentPropertiesPlacementArrayOutput)
+}
+
+type GoldengateDeploymentPropertiesPlacementOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoldengateDeploymentPropertiesPlacement)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesPlacementOutput) ToGoldengateDeploymentPropertiesPlacementOutput() GoldengateDeploymentPropertiesPlacementOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesPlacementOutput) ToGoldengateDeploymentPropertiesPlacementOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPlacementOutput {
+	return o
+}
+
+// The availability domain.
+func (o GoldengateDeploymentPropertiesPlacementOutput) AvailabilityDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesPlacement) *string { return v.AvailabilityDomain }).(pulumi.StringPtrOutput)
+}
+
+// The fault domain.
+func (o GoldengateDeploymentPropertiesPlacementOutput) FaultDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoldengateDeploymentPropertiesPlacement) *string { return v.FaultDomain }).(pulumi.StringPtrOutput)
+}
+
+type GoldengateDeploymentPropertiesPlacementArrayOutput struct{ *pulumi.OutputState }
+
+func (GoldengateDeploymentPropertiesPlacementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoldengateDeploymentPropertiesPlacement)(nil)).Elem()
+}
+
+func (o GoldengateDeploymentPropertiesPlacementArrayOutput) ToGoldengateDeploymentPropertiesPlacementArrayOutput() GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesPlacementArrayOutput) ToGoldengateDeploymentPropertiesPlacementArrayOutputWithContext(ctx context.Context) GoldengateDeploymentPropertiesPlacementArrayOutput {
+	return o
+}
+
+func (o GoldengateDeploymentPropertiesPlacementArrayOutput) Index(i pulumi.IntInput) GoldengateDeploymentPropertiesPlacementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoldengateDeploymentPropertiesPlacement {
+		return vs[0].([]GoldengateDeploymentPropertiesPlacement)[vs[1].(int)]
+	}).(GoldengateDeploymentPropertiesPlacementOutput)
 }
 
 type GetAutonomousDatabaseProperty struct {
@@ -18254,6 +34678,130 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintena
 	}).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowOutput)
 }
 
+type GetCloudVmClusterIdentityConnector struct {
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState string `pulumi:"connectionState"`
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail string `pulumi:"serviceAgentEmail"`
+}
+
+// GetCloudVmClusterIdentityConnectorInput is an input type that accepts GetCloudVmClusterIdentityConnectorArgs and GetCloudVmClusterIdentityConnectorOutput values.
+// You can construct a concrete instance of `GetCloudVmClusterIdentityConnectorInput` via:
+//
+//	GetCloudVmClusterIdentityConnectorArgs{...}
+type GetCloudVmClusterIdentityConnectorInput interface {
+	pulumi.Input
+
+	ToGetCloudVmClusterIdentityConnectorOutput() GetCloudVmClusterIdentityConnectorOutput
+	ToGetCloudVmClusterIdentityConnectorOutputWithContext(context.Context) GetCloudVmClusterIdentityConnectorOutput
+}
+
+type GetCloudVmClusterIdentityConnectorArgs struct {
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState pulumi.StringInput `pulumi:"connectionState"`
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail pulumi.StringInput `pulumi:"serviceAgentEmail"`
+}
+
+func (GetCloudVmClusterIdentityConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i GetCloudVmClusterIdentityConnectorArgs) ToGetCloudVmClusterIdentityConnectorOutput() GetCloudVmClusterIdentityConnectorOutput {
+	return i.ToGetCloudVmClusterIdentityConnectorOutputWithContext(context.Background())
+}
+
+func (i GetCloudVmClusterIdentityConnectorArgs) ToGetCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) GetCloudVmClusterIdentityConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudVmClusterIdentityConnectorOutput)
+}
+
+// GetCloudVmClusterIdentityConnectorArrayInput is an input type that accepts GetCloudVmClusterIdentityConnectorArray and GetCloudVmClusterIdentityConnectorArrayOutput values.
+// You can construct a concrete instance of `GetCloudVmClusterIdentityConnectorArrayInput` via:
+//
+//	GetCloudVmClusterIdentityConnectorArray{ GetCloudVmClusterIdentityConnectorArgs{...} }
+type GetCloudVmClusterIdentityConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClusterIdentityConnectorArrayOutput
+	ToGetCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Context) GetCloudVmClusterIdentityConnectorArrayOutput
+}
+
+type GetCloudVmClusterIdentityConnectorArray []GetCloudVmClusterIdentityConnectorInput
+
+func (GetCloudVmClusterIdentityConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i GetCloudVmClusterIdentityConnectorArray) ToGetCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClusterIdentityConnectorArrayOutput {
+	return i.ToGetCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudVmClusterIdentityConnectorArray) ToGetCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) GetCloudVmClusterIdentityConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudVmClusterIdentityConnectorArrayOutput)
+}
+
+type GetCloudVmClusterIdentityConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudVmClusterIdentityConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o GetCloudVmClusterIdentityConnectorOutput) ToGetCloudVmClusterIdentityConnectorOutput() GetCloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+func (o GetCloudVmClusterIdentityConnectorOutput) ToGetCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) GetCloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+// The connection state of the identity connector.
+// Possible values:
+// CONNECTION_STATE_UNSPECIFIED
+// CONNECTED
+// PARTIALLY_CONNECTED
+// DISCONNECTED
+// UNKNOWN
+func (o GetCloudVmClusterIdentityConnectorOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterIdentityConnector) string { return v.ConnectionState }).(pulumi.StringOutput)
+}
+
+// A google managed service account on which customers can grant roles to access resources in the customer project.
+func (o GetCloudVmClusterIdentityConnectorOutput) ServiceAgentEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterIdentityConnector) string { return v.ServiceAgentEmail }).(pulumi.StringOutput)
+}
+
+type GetCloudVmClusterIdentityConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudVmClusterIdentityConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o GetCloudVmClusterIdentityConnectorArrayOutput) ToGetCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o GetCloudVmClusterIdentityConnectorArrayOutput) ToGetCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) GetCloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o GetCloudVmClusterIdentityConnectorArrayOutput) Index(i pulumi.IntInput) GetCloudVmClusterIdentityConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudVmClusterIdentityConnector {
+		return vs[0].([]GetCloudVmClusterIdentityConnector)[vs[1].(int)]
+	}).(GetCloudVmClusterIdentityConnectorOutput)
+}
+
 type GetCloudVmClusterProperty struct {
 	// OCI Cluster name.
 	ClusterName string `pulumi:"clusterName"`
@@ -18968,6 +35516,9 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone string `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	IdentityConnectors []GetCloudVmClustersCloudVmClusterIdentityConnector `pulumi:"identityConnectors"`
 	// Labels or tags associated with the VM Cluster.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -19050,6 +35601,9 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringInput `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	IdentityConnectors GetCloudVmClustersCloudVmClusterIdentityConnectorArrayInput `pulumi:"identityConnectors"`
 	// Labels or tags associated with the VM Cluster.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -19204,6 +35758,14 @@ func (o GetCloudVmClustersCloudVmClusterOutput) GcpOracleZone() pulumi.StringOut
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.GcpOracleZone }).(pulumi.StringOutput)
 }
 
+// The identity connector details which will allow OCI to securely access
+// the resources in the customer project.
+func (o GetCloudVmClustersCloudVmClusterOutput) IdentityConnectors() GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) []GetCloudVmClustersCloudVmClusterIdentityConnector {
+		return v.IdentityConnectors
+	}).(GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput)
+}
+
 // Labels or tags associated with the VM Cluster.
 //
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -19285,6 +35847,130 @@ func (o GetCloudVmClustersCloudVmClusterArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudVmClustersCloudVmCluster {
 		return vs[0].([]GetCloudVmClustersCloudVmCluster)[vs[1].(int)]
 	}).(GetCloudVmClustersCloudVmClusterOutput)
+}
+
+type GetCloudVmClustersCloudVmClusterIdentityConnector struct {
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState string `pulumi:"connectionState"`
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail string `pulumi:"serviceAgentEmail"`
+}
+
+// GetCloudVmClustersCloudVmClusterIdentityConnectorInput is an input type that accepts GetCloudVmClustersCloudVmClusterIdentityConnectorArgs and GetCloudVmClustersCloudVmClusterIdentityConnectorOutput values.
+// You can construct a concrete instance of `GetCloudVmClustersCloudVmClusterIdentityConnectorInput` via:
+//
+//	GetCloudVmClustersCloudVmClusterIdentityConnectorArgs{...}
+type GetCloudVmClustersCloudVmClusterIdentityConnectorInput interface {
+	pulumi.Input
+
+	ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorOutput
+	ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutputWithContext(context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorOutput
+}
+
+type GetCloudVmClustersCloudVmClusterIdentityConnectorArgs struct {
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState pulumi.StringInput `pulumi:"connectionState"`
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail pulumi.StringInput `pulumi:"serviceAgentEmail"`
+}
+
+func (GetCloudVmClustersCloudVmClusterIdentityConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVmClustersCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i GetCloudVmClustersCloudVmClusterIdentityConnectorArgs) ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorOutput {
+	return i.ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutputWithContext(context.Background())
+}
+
+func (i GetCloudVmClustersCloudVmClusterIdentityConnectorArgs) ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudVmClustersCloudVmClusterIdentityConnectorOutput)
+}
+
+// GetCloudVmClustersCloudVmClusterIdentityConnectorArrayInput is an input type that accepts GetCloudVmClustersCloudVmClusterIdentityConnectorArray and GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput values.
+// You can construct a concrete instance of `GetCloudVmClustersCloudVmClusterIdentityConnectorArrayInput` via:
+//
+//	GetCloudVmClustersCloudVmClusterIdentityConnectorArray{ GetCloudVmClustersCloudVmClusterIdentityConnectorArgs{...} }
+type GetCloudVmClustersCloudVmClusterIdentityConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput
+	ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput
+}
+
+type GetCloudVmClustersCloudVmClusterIdentityConnectorArray []GetCloudVmClustersCloudVmClusterIdentityConnectorInput
+
+func (GetCloudVmClustersCloudVmClusterIdentityConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudVmClustersCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i GetCloudVmClustersCloudVmClusterIdentityConnectorArray) ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput {
+	return i.ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudVmClustersCloudVmClusterIdentityConnectorArray) ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput)
+}
+
+type GetCloudVmClustersCloudVmClusterIdentityConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudVmClustersCloudVmClusterIdentityConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVmClustersCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorOutput) ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorOutput) ToGetCloudVmClustersCloudVmClusterIdentityConnectorOutputWithContext(ctx context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorOutput {
+	return o
+}
+
+// The connection state of the identity connector.
+// Possible values:
+// CONNECTION_STATE_UNSPECIFIED
+// CONNECTED
+// PARTIALLY_CONNECTED
+// DISCONNECTED
+// UNKNOWN
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterIdentityConnector) string { return v.ConnectionState }).(pulumi.StringOutput)
+}
+
+// A google managed service account on which customers can grant roles to access resources in the customer project.
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorOutput) ServiceAgentEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterIdentityConnector) string { return v.ServiceAgentEmail }).(pulumi.StringOutput)
+}
+
+type GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudVmClustersCloudVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput) ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput() GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput) ToGetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput) Index(i pulumi.IntInput) GetCloudVmClustersCloudVmClusterIdentityConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudVmClustersCloudVmClusterIdentityConnector {
+		return vs[0].([]GetCloudVmClustersCloudVmClusterIdentityConnector)[vs[1].(int)]
+	}).(GetCloudVmClustersCloudVmClusterIdentityConnectorOutput)
 }
 
 type GetCloudVmClustersCloudVmClusterProperty struct {
@@ -20513,6 +37199,326 @@ func (o GetDbServersDbServerPropertyArrayOutput) Index(i pulumi.IntInput) GetDbS
 	}).(GetDbServersDbServerPropertyOutput)
 }
 
+type GetGoldengateConnectionTypesGoldengateConnectionType struct {
+	// The connection type of the Goldengate Connection Type resource.
+	ConnectionType string `pulumi:"connectionType"`
+	// The name of the Goldengate Connection Type resource.
+	Name string `pulumi:"name"`
+	// An array of technologyTypes supported for the connection type.
+	TechnologyTypes []string `pulumi:"technologyTypes"`
+}
+
+// GetGoldengateConnectionTypesGoldengateConnectionTypeInput is an input type that accepts GetGoldengateConnectionTypesGoldengateConnectionTypeArgs and GetGoldengateConnectionTypesGoldengateConnectionTypeOutput values.
+// You can construct a concrete instance of `GetGoldengateConnectionTypesGoldengateConnectionTypeInput` via:
+//
+//	GetGoldengateConnectionTypesGoldengateConnectionTypeArgs{...}
+type GetGoldengateConnectionTypesGoldengateConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeOutput
+	ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutputWithContext(context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeOutput
+}
+
+type GetGoldengateConnectionTypesGoldengateConnectionTypeArgs struct {
+	// The connection type of the Goldengate Connection Type resource.
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// The name of the Goldengate Connection Type resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// An array of technologyTypes supported for the connection type.
+	TechnologyTypes pulumi.StringArrayInput `pulumi:"technologyTypes"`
+}
+
+func (GetGoldengateConnectionTypesGoldengateConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionType)(nil)).Elem()
+}
+
+func (i GetGoldengateConnectionTypesGoldengateConnectionTypeArgs) ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeOutput {
+	return i.ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateConnectionTypesGoldengateConnectionTypeArgs) ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutputWithContext(ctx context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateConnectionTypesGoldengateConnectionTypeOutput)
+}
+
+// GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput is an input type that accepts GetGoldengateConnectionTypesGoldengateConnectionTypeArray and GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput` via:
+//
+//	GetGoldengateConnectionTypesGoldengateConnectionTypeArray{ GetGoldengateConnectionTypesGoldengateConnectionTypeArgs{...} }
+type GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput
+	ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutputWithContext(context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput
+}
+
+type GetGoldengateConnectionTypesGoldengateConnectionTypeArray []GetGoldengateConnectionTypesGoldengateConnectionTypeInput
+
+func (GetGoldengateConnectionTypesGoldengateConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateConnectionTypesGoldengateConnectionType)(nil)).Elem()
+}
+
+func (i GetGoldengateConnectionTypesGoldengateConnectionTypeArray) ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput {
+	return i.ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateConnectionTypesGoldengateConnectionTypeArray) ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutputWithContext(ctx context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput)
+}
+
+type GetGoldengateConnectionTypesGoldengateConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionType)(nil)).Elem()
+}
+
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeOutput {
+	return o
+}
+
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) ToGetGoldengateConnectionTypesGoldengateConnectionTypeOutputWithContext(ctx context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeOutput {
+	return o
+}
+
+// The connection type of the Goldengate Connection Type resource.
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateConnectionTypesGoldengateConnectionType) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// The name of the Goldengate Connection Type resource.
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateConnectionTypesGoldengateConnectionType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of technologyTypes supported for the connection type.
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeOutput) TechnologyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGoldengateConnectionTypesGoldengateConnectionType) []string { return v.TechnologyTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateConnectionTypesGoldengateConnectionType)(nil)).Elem()
+}
+
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput) ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput() GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput) ToGetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutputWithContext(ctx context.Context) GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetGoldengateConnectionTypesGoldengateConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGoldengateConnectionTypesGoldengateConnectionType {
+		return vs[0].([]GetGoldengateConnectionTypesGoldengateConnectionType)[vs[1].(int)]
+	}).(GetGoldengateConnectionTypesGoldengateConnectionTypeOutput)
+}
+
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment struct {
+	// Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+	AutoScalingEnabled bool `pulumi:"autoScalingEnabled"`
+	// The category of the Goldengate Deployment Environment resource.
+	Category string `pulumi:"category"`
+	// The default CPU core count of the Goldengate Deployment Environment resource.
+	DefaultCpuCoreCount int `pulumi:"defaultCpuCoreCount"`
+	// The display name of the Goldengate Deployment Environment resource.
+	DisplayName string `pulumi:"displayName"`
+	// The environment type of the Goldengate Deployment Environment resource.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The max CPU core count of the Goldengate Deployment Environment resource.
+	MaxCpuCoreCount int `pulumi:"maxCpuCoreCount"`
+	// The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+	MemoryGbPerCpuCore int `pulumi:"memoryGbPerCpuCore"`
+	// The min CPU core count of the Goldengate Deployment Environment resource.
+	MinCpuCoreCount int `pulumi:"minCpuCoreCount"`
+	// The name of the Goldengate Deployment Environment resource.
+	Name string `pulumi:"name"`
+	// The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+	NetworkBandwidthGbpsPerCpuCore int `pulumi:"networkBandwidthGbpsPerCpuCore"`
+	// The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+	StorageUsageLimitGbPerCpuCore int `pulumi:"storageUsageLimitGbPerCpuCore"`
+}
+
+// GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput is an input type that accepts GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs and GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput` via:
+//
+//	GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs{...}
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput
+	ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutputWithContext(context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput
+}
+
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs struct {
+	// Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+	AutoScalingEnabled pulumi.BoolInput `pulumi:"autoScalingEnabled"`
+	// The category of the Goldengate Deployment Environment resource.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The default CPU core count of the Goldengate Deployment Environment resource.
+	DefaultCpuCoreCount pulumi.IntInput `pulumi:"defaultCpuCoreCount"`
+	// The display name of the Goldengate Deployment Environment resource.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The environment type of the Goldengate Deployment Environment resource.
+	EnvironmentType pulumi.StringInput `pulumi:"environmentType"`
+	// The max CPU core count of the Goldengate Deployment Environment resource.
+	MaxCpuCoreCount pulumi.IntInput `pulumi:"maxCpuCoreCount"`
+	// The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+	MemoryGbPerCpuCore pulumi.IntInput `pulumi:"memoryGbPerCpuCore"`
+	// The min CPU core count of the Goldengate Deployment Environment resource.
+	MinCpuCoreCount pulumi.IntInput `pulumi:"minCpuCoreCount"`
+	// The name of the Goldengate Deployment Environment resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+	NetworkBandwidthGbpsPerCpuCore pulumi.IntInput `pulumi:"networkBandwidthGbpsPerCpuCore"`
+	// The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+	StorageUsageLimitGbPerCpuCore pulumi.IntInput `pulumi:"storageUsageLimitGbPerCpuCore"`
+}
+
+func (GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput {
+	return i.ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutputWithContext(ctx context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput)
+}
+
+// GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput is an input type that accepts GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray and GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput` via:
+//
+//	GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray{ GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs{...} }
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput
+	ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutputWithContext(context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput
+}
+
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray []GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput
+
+func (GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput {
+	return i.ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput)
+}
+
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutputWithContext(ctx context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput {
+	return o
+}
+
+// Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) AutoScalingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) bool {
+		return v.AutoScalingEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// The category of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The default CPU core count of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) DefaultCpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.DefaultCpuCoreCount
+	}).(pulumi.IntOutput)
+}
+
+// The display name of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// The environment type of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) string {
+		return v.EnvironmentType
+	}).(pulumi.StringOutput)
+}
+
+// The max CPU core count of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) MaxCpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.MaxCpuCoreCount
+	}).(pulumi.IntOutput)
+}
+
+// The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) MemoryGbPerCpuCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.MemoryGbPerCpuCore
+	}).(pulumi.IntOutput)
+}
+
+// The min CPU core count of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) MinCpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.MinCpuCoreCount
+	}).(pulumi.IntOutput)
+}
+
+// The name of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) NetworkBandwidthGbpsPerCpuCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.NetworkBandwidthGbpsPerCpuCore
+	}).(pulumi.IntOutput)
+}
+
+// The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput) StorageUsageLimitGbPerCpuCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment) int {
+		return v.StorageUsageLimitGbPerCpuCore
+	}).(pulumi.IntOutput)
+}
+
+type GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput() GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput) ToGetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput) Index(i pulumi.IntInput) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment {
+		return vs[0].([]GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment)[vs[1].(int)]
+	}).(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesPtrInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
@@ -20544,6 +37550,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesCustomerContactArrayInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesCustomerContactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesMaintenanceWindowInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesMaintenanceWindowPtrInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterIdentityConnectorInput)(nil)).Elem(), CloudVmClusterIdentityConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterIdentityConnectorArrayInput)(nil)).Elem(), CloudVmClusterIdentityConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesInput)(nil)).Elem(), CloudVmClusterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesPtrInput)(nil)).Elem(), CloudVmClusterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsInput)(nil)).Elem(), CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsArgs{})
@@ -20584,6 +37592,116 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsPtrInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesTimeZoneInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesTimeZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesTimeZonePtrInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionAssignmentPropertiesInput)(nil)).Elem(), GoldengateConnectionAssignmentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionAssignmentPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionAssignmentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDatabricksConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeInput)(nil)).Elem(), GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayInput)(nil)).Elem(), GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesElasticsearchConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGenericConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesGenericConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGenericConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesGenericConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoldengateConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesHdfsConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrInput)(nil)).Elem(), GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayInput)(nil)).Elem(), GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMongodbConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeInput)(nil)).Elem(), GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayInput)(nil)).Elem(), GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeInput)(nil)).Elem(), GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayInput)(nil)).Elem(), GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesRedisConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesRedisConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesRedisConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesRedisConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesSnowflakeConnectionPropertiesInput)(nil)).Elem(), GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrInput)(nil)).Elem(), GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesInput)(nil)).Elem(), GoldengateDeploymentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesBackupScheduleInput)(nil)).Elem(), GoldengateDeploymentPropertiesBackupScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesBackupSchedulePtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesBackupScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesDeploymentDiagnosticDataInput)(nil)).Elem(), GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesIngressIpInput)(nil)).Elem(), GoldengateDeploymentPropertiesIngressIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesIngressIpArrayInput)(nil)).Elem(), GoldengateDeploymentPropertiesIngressIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesLockInput)(nil)).Elem(), GoldengateDeploymentPropertiesLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesLockArrayInput)(nil)).Elem(), GoldengateDeploymentPropertiesLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceConfigInput)(nil)).Elem(), GoldengateDeploymentPropertiesMaintenanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceConfigPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesMaintenanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceWindowInput)(nil)).Elem(), GoldengateDeploymentPropertiesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesMaintenanceWindowPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataInput)(nil)).Elem(), GoldengateDeploymentPropertiesOggDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesOggDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataGroupRolesMappingInput)(nil)).Elem(), GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrInput)(nil)).Elem(), GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesPlacementInput)(nil)).Elem(), GoldengateDeploymentPropertiesPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoldengateDeploymentPropertiesPlacementArrayInput)(nil)).Elem(), GoldengateDeploymentPropertiesPlacementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyInput)(nil)).Elem(), GetAutonomousDatabasePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyArrayInput)(nil)).Elem(), GetAutonomousDatabasePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyApexDetailInput)(nil)).Elem(), GetAutonomousDatabasePropertyApexDetailArgs{})
@@ -20648,6 +37766,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterIdentityConnectorInput)(nil)).Elem(), GetCloudVmClusterIdentityConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterIdentityConnectorArrayInput)(nil)).Elem(), GetCloudVmClusterIdentityConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterPropertyInput)(nil)).Elem(), GetCloudVmClusterPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterPropertyArrayInput)(nil)).Elem(), GetCloudVmClusterPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionInput)(nil)).Elem(), GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionArgs{})
@@ -20656,6 +37776,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterPropertyTimeZoneArrayInput)(nil)).Elem(), GetCloudVmClusterPropertyTimeZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterArrayInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterIdentityConnectorInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterIdentityConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterIdentityConnectorArrayInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterIdentityConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterPropertyInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterPropertyArrayInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionInput)(nil)).Elem(), GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionArgs{})
@@ -20670,6 +37792,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerArrayInput)(nil)).Elem(), GetDbServersDbServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerPropertyInput)(nil)).Elem(), GetDbServersDbServerPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerPropertyArrayInput)(nil)).Elem(), GetDbServersDbServerPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionTypeInput)(nil)).Elem(), GetGoldengateConnectionTypesGoldengateConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput)(nil)).Elem(), GetGoldengateConnectionTypesGoldengateConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesApexDetailOutput{})
@@ -20700,6 +37826,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesCustomerContactArrayOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(CloudVmClusterIdentityConnectorOutput{})
+	pulumi.RegisterOutputType(CloudVmClusterIdentityConnectorArrayOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsOutput{})
@@ -20740,6 +37868,116 @@ func init() {
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesTimeZoneOutput{})
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesTimeZonePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionAssignmentPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionAssignmentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDatabricksConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDatabricksConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDb2ConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDb2ConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesElasticsearchConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGenericConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGenericConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoldengateConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoldengateConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesHdfsConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesHdfsConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStoragePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStoragePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStoragePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStoragePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMongodbConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMongodbConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMysqlConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMysqlConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesRedisConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesRedisConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateConnectionPropertiesSnowflakeConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesBackupScheduleOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesBackupSchedulePtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesDeploymentDiagnosticDataOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesDeploymentDiagnosticDataPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesIngressIpOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesIngressIpArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesLockOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesLockArrayOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesMaintenanceConfigOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesMaintenanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesOggDataOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesOggDataPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesOggDataGroupRolesMappingOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesOggDataGroupRolesMappingPtrOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesPlacementOutput{})
+	pulumi.RegisterOutputType(GoldengateDeploymentPropertiesPlacementArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyApexDetailOutput{})
@@ -20804,6 +38042,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudVmClusterIdentityConnectorOutput{})
+	pulumi.RegisterOutputType(GetCloudVmClusterIdentityConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClusterPropertyOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClusterPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionOutput{})
@@ -20812,6 +38052,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudVmClusterPropertyTimeZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterIdentityConnectorOutput{})
+	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterIdentityConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterPropertyOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionOutput{})
@@ -20826,4 +38068,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDbServersDbServerArrayOutput{})
 	pulumi.RegisterOutputType(GetDbServersDbServerPropertyOutput{})
 	pulumi.RegisterOutputType(GetDbServersDbServerPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetGoldengateConnectionTypesGoldengateConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput{})
 }

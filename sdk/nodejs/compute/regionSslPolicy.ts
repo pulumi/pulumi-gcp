@@ -14,6 +14,35 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
  *
+ * ## Example Usage
+ *
+ * ### Region Ssl Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const region_ssl_policy = new gcp.compute.RegionSslPolicy("region-ssl-policy", {
+ *     name: "region-ssl-policy",
+ *     region: "us-central1",
+ *     profile: "MODERN",
+ * });
+ * ```
+ * ### Region Ssl Policy Post Quantum
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const post_quantum_region_ssl_policy = new gcp.compute.RegionSslPolicy("post-quantum-region-ssl-policy", {
+ *     name: "post-quantum-region-ssl-policy",
+ *     region: "us-central1",
+ *     profile: "MODERN",
+ *     minTlsVersion: "TLS_1_2",
+ *     postQuantumKeyExchange: "ENABLED",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RegionSslPolicy can be imported using any of these accepted formats:
@@ -115,6 +144,19 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+     * X25519MLKEM768 key exchange when clients advertise support for it.
+     * When set to `DEFAULT`, or if no SSL Policy is attached to
+     * the target proxy, the load balancer disallows X25519MLKEM768 key
+     * exchange before October 2026, and allows it afterward. When set to
+     * `ENABLED`, the load balancer allows X25519MLKEM768 key
+     * exchange. When set to `DEFERRED`, the load balancer
+     * disallows X25519MLKEM768 key exchange until October 2027, and allows
+     * it afterward.
+     * Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+     */
+    declare public readonly postQuantumKeyExchange: pulumi.Output<string | undefined>;
+    /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
      * the set of SSL features to enable must be specified in the
@@ -163,6 +205,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["minTlsVersion"] = state?.minTlsVersion;
             resourceInputs["name"] = state?.name;
+            resourceInputs["postQuantumKeyExchange"] = state?.postQuantumKeyExchange;
             resourceInputs["profile"] = state?.profile;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
@@ -174,6 +217,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["minTlsVersion"] = args?.minTlsVersion;
             resourceInputs["name"] = args?.name;
+            resourceInputs["postQuantumKeyExchange"] = args?.postQuantumKeyExchange;
             resourceInputs["profile"] = args?.profile;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -245,6 +289,19 @@ export interface RegionSslPolicyState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+     * X25519MLKEM768 key exchange when clients advertise support for it.
+     * When set to `DEFAULT`, or if no SSL Policy is attached to
+     * the target proxy, the load balancer disallows X25519MLKEM768 key
+     * exchange before October 2026, and allows it afterward. When set to
+     * `ENABLED`, the load balancer allows X25519MLKEM768 key
+     * exchange. When set to `DEFERRED`, the load balancer
+     * disallows X25519MLKEM768 key exchange until October 2027, and allows
+     * it afterward.
+     * Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+     */
+    postQuantumKeyExchange?: pulumi.Input<string | undefined>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -319,6 +376,19 @@ export interface RegionSslPolicyArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+     * X25519MLKEM768 key exchange when clients advertise support for it.
+     * When set to `DEFAULT`, or if no SSL Policy is attached to
+     * the target proxy, the load balancer disallows X25519MLKEM768 key
+     * exchange before October 2026, and allows it afterward. When set to
+     * `ENABLED`, the load balancer allows X25519MLKEM768 key
+     * exchange. When set to `DEFERRED`, the load balancer
+     * disallows X25519MLKEM768 key exchange until October 2027, and allows
+     * it afterward.
+     * Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+     */
+    postQuantumKeyExchange?: pulumi.Input<string | undefined>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,

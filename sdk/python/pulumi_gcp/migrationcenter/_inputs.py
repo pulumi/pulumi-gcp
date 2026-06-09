@@ -15,6 +15,44 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AssetsExportJobConditionArgs',
+    'AssetsExportJobConditionArgsDict',
+    'AssetsExportJobInventoryArgs',
+    'AssetsExportJobInventoryArgsDict',
+    'AssetsExportJobNetworkDependencyArgs',
+    'AssetsExportJobNetworkDependencyArgsDict',
+    'AssetsExportJobPerformanceDataArgs',
+    'AssetsExportJobPerformanceDataArgsDict',
+    'AssetsExportJobRecentExecutionArgs',
+    'AssetsExportJobRecentExecutionArgsDict',
+    'AssetsExportJobRecentExecutionResultArgs',
+    'AssetsExportJobRecentExecutionResultArgsDict',
+    'AssetsExportJobRecentExecutionResultErrorArgs',
+    'AssetsExportJobRecentExecutionResultErrorArgsDict',
+    'AssetsExportJobRecentExecutionResultErrorDetailArgs',
+    'AssetsExportJobRecentExecutionResultErrorDetailArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgsDict',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs',
+    'AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgsDict',
+    'AssetsExportJobRecentExecutionResultSignedUriArgs',
+    'AssetsExportJobRecentExecutionResultSignedUriArgsDict',
+    'AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs',
+    'AssetsExportJobRecentExecutionResultSignedUriSignedUriArgsDict',
+    'AssetsExportJobSignedUriDestinationArgs',
+    'AssetsExportJobSignedUriDestinationArgsDict',
+    'DiscoveryClientErrorArgs',
+    'DiscoveryClientErrorArgsDict',
+    'DiscoveryClientErrorDetailArgs',
+    'DiscoveryClientErrorDetailArgsDict',
     'PreferenceSetVirtualMachinePreferencesArgs',
     'PreferenceSetVirtualMachinePreferencesArgsDict',
     'PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs',
@@ -31,7 +69,1123 @@ __all__ = [
     'PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict',
     'PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs',
     'PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict',
+    'ReportConfigGroupPreferencesetAssignmentArgs',
+    'ReportConfigGroupPreferencesetAssignmentArgsDict',
+    'ReportSummaryArgs',
+    'ReportSummaryArgsDict',
+    'ReportSummaryAllAssetsStatArgs',
+    'ReportSummaryAllAssetsStatArgsDict',
+    'ReportSummaryAllAssetsStatCoreCountHistogramArgs',
+    'ReportSummaryAllAssetsStatCoreCountHistogramArgsDict',
+    'ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs',
+    'ReportSummaryAllAssetsStatCoreCountHistogramBucketArgsDict',
+    'ReportSummaryAllAssetsStatMemoryBytesHistogramArgs',
+    'ReportSummaryAllAssetsStatMemoryBytesHistogramArgsDict',
+    'ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs',
+    'ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgsDict',
+    'ReportSummaryAllAssetsStatMemoryUtilizationChartArgs',
+    'ReportSummaryAllAssetsStatMemoryUtilizationChartArgsDict',
+    'ReportSummaryAllAssetsStatOperatingSystemArgs',
+    'ReportSummaryAllAssetsStatOperatingSystemArgsDict',
+    'ReportSummaryAllAssetsStatOperatingSystemDataPointArgs',
+    'ReportSummaryAllAssetsStatOperatingSystemDataPointArgsDict',
+    'ReportSummaryAllAssetsStatSoftwareInstanceArgs',
+    'ReportSummaryAllAssetsStatSoftwareInstanceArgsDict',
+    'ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs',
+    'ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgsDict',
+    'ReportSummaryAllAssetsStatStorageBytesHistogramArgs',
+    'ReportSummaryAllAssetsStatStorageBytesHistogramArgsDict',
+    'ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs',
+    'ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgsDict',
+    'ReportSummaryAllAssetsStatStorageUtilizationChartArgs',
+    'ReportSummaryAllAssetsStatStorageUtilizationChartArgsDict',
+    'ReportSummaryGroupFindingArgs',
+    'ReportSummaryGroupFindingArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgsDict',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs',
+    'ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgsDict',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs',
+    'ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgsDict',
 ]
+
+class AssetsExportJobConditionArgsDict(TypedDict):
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Assets filter, supports the same syntax as asset listing.
+    """
+
+@pulumi.input_type
+class AssetsExportJobConditionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] filter: Assets filter, supports the same syntax as asset listing.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Assets filter, supports the same syntax as asset listing.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+
+class AssetsExportJobInventoryArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AssetsExportJobInventoryArgs:
+    def __init__(__self__):
+        pass
+
+
+class AssetsExportJobNetworkDependencyArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AssetsExportJobNetworkDependencyArgs:
+    def __init__(__self__):
+        pass
+
+
+class AssetsExportJobPerformanceDataArgsDict(TypedDict):
+    max_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    When this value is set to a positive integer,
+    performance data will be returned for the most recent days
+    for which data is available. When this value is unset (or set to zero),
+    all available data is returned.
+    The maximum value is 420; values above 420 will be coerced to 420.
+    If unset (0 value) a default value of 40 will be used.
+    """
+
+@pulumi.input_type
+class AssetsExportJobPerformanceDataArgs:
+    def __init__(__self__, *,
+                 max_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_days: When this value is set to a positive integer,
+               performance data will be returned for the most recent days
+               for which data is available. When this value is unset (or set to zero),
+               all available data is returned.
+               The maximum value is 420; values above 420 will be coerced to 420.
+               If unset (0 value) a default value of 40 will be used.
+        """
+        if max_days is not None:
+            pulumi.set(__self__, "max_days", max_days)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDays")
+    def max_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        When this value is set to a positive integer,
+        performance data will be returned for the most recent days
+        for which data is available. When this value is unset (or set to zero),
+        all available data is returned.
+        The maximum value is 420; values above 420 will be coerced to 420.
+        If unset (0 value) a default value of 40 will be used.
+        """
+        return pulumi.get(self, "max_days")
+
+    @max_days.setter
+    def max_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_days", value)
+
+
+class AssetsExportJobRecentExecutionArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Completion time of the export.
+    """
+    execution_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Globally unique identifier of the execution.
+    """
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Expiration time for the export and artifacts.
+    """
+    requested_asset_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of assets requested for export after resolving the requested
+    filters.
+    """
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultArgsDict']]]]]
+    """
+    (Output)
+    Contains the result of the assets export.
+    Structure is documented below.
+    """
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Execution timestamp.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_asset_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 results: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultArgs']]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_time: (Output)
+               Completion time of the export.
+        :param pulumi.Input[_builtins.str] execution_id: (Output)
+               Globally unique identifier of the execution.
+        :param pulumi.Input[_builtins.str] expire_time: (Output)
+               Expiration time for the export and artifacts.
+        :param pulumi.Input[_builtins.int] requested_asset_count: (Output)
+               Number of assets requested for export after resolving the requested
+               filters.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultArgs']]] results: (Output)
+               Contains the result of the assets export.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] start_time: (Output)
+               Execution timestamp.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if execution_id is not None:
+            pulumi.set(__self__, "execution_id", execution_id)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+        if requested_asset_count is not None:
+            pulumi.set(__self__, "requested_asset_count", requested_asset_count)
+        if results is not None:
+            pulumi.set(__self__, "results", results)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Completion time of the export.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Globally unique identifier of the execution.
+        """
+        return pulumi.get(self, "execution_id")
+
+    @execution_id.setter
+    def execution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "execution_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Expiration time for the export and artifacts.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestedAssetCount")
+    def requested_asset_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of assets requested for export after resolving the requested
+        filters.
+        """
+        return pulumi.get(self, "requested_asset_count")
+
+    @requested_asset_count.setter
+    def requested_asset_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "requested_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultArgs']]]]:
+        """
+        (Output)
+        Contains the result of the assets export.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "results")
+
+    @results.setter
+    def results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultArgs']]]]):
+        pulumi.set(self, "results", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Execution timestamp.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+
+class AssetsExportJobRecentExecutionResultArgsDict(TypedDict):
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorArgsDict']]]]]
+    """
+    (Output)
+    The `Status` type defines a logical error model that is suitable for
+    different programming environments, including REST APIs and RPC APIs. It is
+    used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    three pieces of data: error code, error message, and error details.
+    You can find out more about this error model and how to work with it in the
+    [API Design Guide](https://cloud.google.com/apis/design/errors).
+    Structure is documented below.
+    """
+    output_files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileArgsDict']]]]]
+    """
+    (Output)
+    Contains a list of output files.
+    Structure is documented below.
+    """
+    signed_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriArgsDict']]]]]
+    """
+    (Output)
+    List of signed URIs.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultArgs:
+    def __init__(__self__, *,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorArgs']]]] = None,
+                 output_files: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileArgs']]]] = None,
+                 signed_uris: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorArgs']]] errors: (Output)
+               The `Status` type defines a logical error model that is suitable for
+               different programming environments, including REST APIs and RPC APIs. It is
+               used by [gRPC](https://github.com/grpc). Each `Status` message contains
+               three pieces of data: error code, error message, and error details.
+               You can find out more about this error model and how to work with it in the
+               [API Design Guide](https://cloud.google.com/apis/design/errors).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileArgs']]] output_files: (Output)
+               Contains a list of output files.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriArgs']]] signed_uris: (Output)
+               List of signed URIs.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if output_files is not None:
+            pulumi.set(__self__, "output_files", output_files)
+        if signed_uris is not None:
+            pulumi.set(__self__, "signed_uris", signed_uris)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorArgs']]]]:
+        """
+        (Output)
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It is
+        used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        three pieces of data: error code, error message, and error details.
+        You can find out more about this error model and how to work with it in the
+        [API Design Guide](https://cloud.google.com/apis/design/errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputFiles")
+    def output_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileArgs']]]]:
+        """
+        (Output)
+        Contains a list of output files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_files")
+
+    @output_files.setter
+    def output_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileArgs']]]]):
+        pulumi.set(self, "output_files", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signedUris")
+    def signed_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriArgs']]]]:
+        """
+        (Output)
+        List of signed URIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "signed_uris")
+
+    @signed_uris.setter
+    def signed_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriArgs']]]]):
+        pulumi.set(self, "signed_uris", value)
+
+
+class AssetsExportJobRecentExecutionResultErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorDetailArgsDict']]]]]
+    """
+    (Output)
+    A list of messages that carry the error details.  There is a common set of
+    message types for APIs to use.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English. Any
+    user-facing error message should be localized and sent in the
+    google.rpc.Status.details field, or localized by the client.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorDetailArgs']]] details: (Output)
+               A list of messages that carry the error details.  There is a common set of
+               message types for APIs to use.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorDetailArgs']]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultErrorDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class AssetsExportJobRecentExecutionResultErrorDetailArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultErrorDetailArgs:
+    def __init__(__self__):
+        pass
+
+
+class AssetsExportJobRecentExecutionResultOutputFileArgsDict(TypedDict):
+    entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryArgsDict']]]]]
+    """
+    (Output)
+    List of output files.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileArgs:
+    def __init__(__self__, *,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryArgs']]] entries: (Output)
+               List of output files.
+               Structure is documented below.
+        """
+        if entries is not None:
+            pulumi.set(__self__, "entries", entries)
+
+    @_builtins.property
+    @pulumi.getter
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryArgs']]]]:
+        """
+        (Output)
+        List of output files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryArgs']]]]):
+        pulumi.set(self, "entries", value)
+
+
+class AssetsExportJobRecentExecutionResultOutputFileEntryArgsDict(TypedDict):
+    csv_output_files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgsDict']]]]]
+    """
+    (Output)
+    Contains a single output file of type CSV.
+    Structure is documented below.
+    """
+    file_size_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    File size in bytes.
+    """
+    xlsx_output_files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgsDict']]]]]
+    """
+    (Output)
+    Contains a single output file of type XLSX.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileEntryArgs:
+    def __init__(__self__, *,
+                 csv_output_files: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs']]]] = None,
+                 file_size_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 xlsx_output_files: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs']]] csv_output_files: (Output)
+               Contains a single output file of type CSV.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] file_size_bytes: (Output)
+               File size in bytes.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs']]] xlsx_output_files: (Output)
+               Contains a single output file of type XLSX.
+               Structure is documented below.
+        """
+        if csv_output_files is not None:
+            pulumi.set(__self__, "csv_output_files", csv_output_files)
+        if file_size_bytes is not None:
+            pulumi.set(__self__, "file_size_bytes", file_size_bytes)
+        if xlsx_output_files is not None:
+            pulumi.set(__self__, "xlsx_output_files", xlsx_output_files)
+
+    @_builtins.property
+    @pulumi.getter(name="csvOutputFiles")
+    def csv_output_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs']]]]:
+        """
+        (Output)
+        Contains a single output file of type CSV.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_output_files")
+
+    @csv_output_files.setter
+    def csv_output_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs']]]]):
+        pulumi.set(self, "csv_output_files", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fileSizeBytes")
+    def file_size_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        File size in bytes.
+        """
+        return pulumi.get(self, "file_size_bytes")
+
+    @file_size_bytes.setter
+    def file_size_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_size_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xlsxOutputFiles")
+    def xlsx_output_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs']]]]:
+        """
+        (Output)
+        Contains a single output file of type XLSX.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xlsx_output_files")
+
+    @xlsx_output_files.setter
+    def xlsx_output_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs']]]]):
+        pulumi.set(self, "xlsx_output_files", value)
+
+
+class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgsDict(TypedDict):
+    columns_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of columns in the file.
+    """
+    row_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of rows in the file.
+    """
+    signed_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgsDict']]]]]
+    """
+    (Output)
+    Contains a signed URI.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileArgs:
+    def __init__(__self__, *,
+                 columns_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 row_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 signed_uris: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] columns_count: (Output)
+               Number of columns in the file.
+        :param pulumi.Input[_builtins.int] row_count: (Output)
+               Number of rows in the file.
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs']]] signed_uris: (Output)
+               Contains a signed URI.
+               Structure is documented below.
+        """
+        if columns_count is not None:
+            pulumi.set(__self__, "columns_count", columns_count)
+        if row_count is not None:
+            pulumi.set(__self__, "row_count", row_count)
+        if signed_uris is not None:
+            pulumi.set(__self__, "signed_uris", signed_uris)
+
+    @_builtins.property
+    @pulumi.getter(name="columnsCount")
+    def columns_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of columns in the file.
+        """
+        return pulumi.get(self, "columns_count")
+
+    @columns_count.setter
+    def columns_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "columns_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of rows in the file.
+        """
+        return pulumi.get(self, "row_count")
+
+    @row_count.setter
+    def row_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signedUris")
+    def signed_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs']]]]:
+        """
+        (Output)
+        Contains a signed URI.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "signed_uris")
+
+    @signed_uris.setter
+    def signed_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs']]]]):
+        pulumi.set(self, "signed_uris", value)
+
+
+class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgsDict(TypedDict):
+    file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the file the Signed URI references.
+    """
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Download URI for the file.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUriArgs:
+    def __init__(__self__, *,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] file: (Output)
+               Name of the file the Signed URI references.
+        :param pulumi.Input[_builtins.str] uri: (Output)
+               Download URI for the file.
+        """
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the file the Signed URI references.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Download URI for the file.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+class AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgsDict(TypedDict):
+    signed_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgsDict']]]]]
+    """
+    (Output)
+    Contains a signed URI.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileArgs:
+    def __init__(__self__, *,
+                 signed_uris: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs']]] signed_uris: (Output)
+               Contains a signed URI.
+               Structure is documented below.
+        """
+        if signed_uris is not None:
+            pulumi.set(__self__, "signed_uris", signed_uris)
+
+    @_builtins.property
+    @pulumi.getter(name="signedUris")
+    def signed_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs']]]]:
+        """
+        (Output)
+        Contains a signed URI.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "signed_uris")
+
+    @signed_uris.setter
+    def signed_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs']]]]):
+        pulumi.set(self, "signed_uris", value)
+
+
+class AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgsDict(TypedDict):
+    file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the file the Signed URI references.
+    """
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Download URI for the file.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUriArgs:
+    def __init__(__self__, *,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] file: (Output)
+               Name of the file the Signed URI references.
+        :param pulumi.Input[_builtins.str] uri: (Output)
+               Download URI for the file.
+        """
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the file the Signed URI references.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Download URI for the file.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+class AssetsExportJobRecentExecutionResultSignedUriArgsDict(TypedDict):
+    signed_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriSignedUriArgsDict']]]]]
+    """
+    (Output)
+    List of signed URIs.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultSignedUriArgs:
+    def __init__(__self__, *,
+                 signed_uris: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs']]] signed_uris: (Output)
+               List of signed URIs.
+               Structure is documented below.
+        """
+        if signed_uris is not None:
+            pulumi.set(__self__, "signed_uris", signed_uris)
+
+    @_builtins.property
+    @pulumi.getter(name="signedUris")
+    def signed_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs']]]]:
+        """
+        (Output)
+        List of signed URIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "signed_uris")
+
+    @signed_uris.setter
+    def signed_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs']]]]):
+        pulumi.set(self, "signed_uris", value)
+
+
+class AssetsExportJobRecentExecutionResultSignedUriSignedUriArgsDict(TypedDict):
+    file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the file the Signed URI references.
+    """
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Download URI for the file.
+    """
+
+@pulumi.input_type
+class AssetsExportJobRecentExecutionResultSignedUriSignedUriArgs:
+    def __init__(__self__, *,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] file: (Output)
+               Name of the file the Signed URI references.
+        :param pulumi.Input[_builtins.str] uri: (Output)
+               Download URI for the file.
+        """
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the file the Signed URI references.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Download URI for the file.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+class AssetsExportJobSignedUriDestinationArgsDict(TypedDict):
+    file_format: pulumi.Input[_builtins.str]
+    """
+    The file format to export.
+    Possible values:
+    CSV
+    XLSX
+    """
+
+@pulumi.input_type
+class AssetsExportJobSignedUriDestinationArgs:
+    def __init__(__self__, *,
+                 file_format: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] file_format: The file format to export.
+               Possible values:
+               CSV
+               XLSX
+        """
+        pulumi.set(__self__, "file_format", file_format)
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> pulumi.Input[_builtins.str]:
+        """
+        The file format to export.
+        Possible values:
+        CSV
+        XLSX
+        """
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "file_format", value)
+
+
+class DiscoveryClientErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryClientErrorDetailArgsDict']]]]]
+    """
+    (Output)
+    A list of messages that carry the error details.  There is a common set of
+    message types for APIs to use.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English. Any
+    user-facing error message should be localized and sent in the
+    google.rpc.Status.details field, or localized by the client.
+    """
+
+@pulumi.input_type
+class DiscoveryClientErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryClientErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input['DiscoveryClientErrorDetailArgs']]] details: (Output)
+               A list of messages that carry the error details.  There is a common set of
+               message types for APIs to use.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryClientErrorDetailArgs']]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryClientErrorDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class DiscoveryClientErrorDetailArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class DiscoveryClientErrorDetailArgs:
+    def __init__(__self__):
+        pass
+
 
 class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
     commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -567,5 +1721,4466 @@ class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs:
     @storage_deduplication_compression_ratio.setter
     def storage_deduplication_compression_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "storage_deduplication_compression_ratio", value)
+
+
+class ReportConfigGroupPreferencesetAssignmentArgsDict(TypedDict):
+    group: pulumi.Input[_builtins.str]
+    """
+    Name of the group.
+    """
+    preference_set: pulumi.Input[_builtins.str]
+    """
+    Name of the Preference Set.
+    """
+
+@pulumi.input_type
+class ReportConfigGroupPreferencesetAssignmentArgs:
+    def __init__(__self__, *,
+                 group: pulumi.Input[_builtins.str],
+                 preference_set: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] group: Name of the group.
+        :param pulumi.Input[_builtins.str] preference_set: Name of the Preference Set.
+        """
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "preference_set", preference_set)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the group.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferenceSet")
+    def preference_set(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the Preference Set.
+        """
+        return pulumi.get(self, "preference_set")
+
+    @preference_set.setter
+    def preference_set(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "preference_set", value)
+
+
+class ReportSummaryArgsDict(TypedDict):
+    all_assets_stats: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatArgsDict']]]]]
+    """
+    (Output)
+    Aggregate statistics for a collection of assets.
+    Structure is documented below.
+    """
+    group_findings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingArgsDict']]]]]
+    """
+    (Output)
+    Findings for each Group included in this report.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryArgs:
+    def __init__(__self__, *,
+                 all_assets_stats: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatArgs']]]] = None,
+                 group_findings: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatArgs']]] all_assets_stats: (Output)
+               Aggregate statistics for a collection of assets.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingArgs']]] group_findings: (Output)
+               Findings for each Group included in this report.
+               Structure is documented below.
+        """
+        if all_assets_stats is not None:
+            pulumi.set(__self__, "all_assets_stats", all_assets_stats)
+        if group_findings is not None:
+            pulumi.set(__self__, "group_findings", group_findings)
+
+    @_builtins.property
+    @pulumi.getter(name="allAssetsStats")
+    def all_assets_stats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatArgs']]]]:
+        """
+        (Output)
+        Aggregate statistics for a collection of assets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "all_assets_stats")
+
+    @all_assets_stats.setter
+    def all_assets_stats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatArgs']]]]):
+        pulumi.set(self, "all_assets_stats", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupFindings")
+    def group_findings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingArgs']]]]:
+        """
+        (Output)
+        Findings for each Group included in this report.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_findings")
+
+    @group_findings.setter
+    def group_findings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingArgs']]]]):
+        pulumi.set(self, "group_findings", value)
+
+
+class ReportSummaryAllAssetsStatArgsDict(TypedDict):
+    core_count_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    memory_bytes_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    memory_utilization_charts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryUtilizationChartArgsDict']]]]]
+    """
+    (Output)
+    Utilization Chart is a specific type of visualization which displays
+    a metric classified into "Used" and "Free" buckets.
+    Structure is documented below.
+    """
+    operating_systems: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemArgsDict']]]]]
+    """
+    (Output)
+    Describes a collection of data points rendered as a Chart.
+    Structure is documented below.
+    """
+    software_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceArgsDict']]]]]
+    """
+    (Output)
+    Describes a collection of data points rendered as a Chart.
+    Structure is documented below.
+    """
+    storage_bytes_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    storage_utilization_charts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageUtilizationChartArgsDict']]]]]
+    """
+    (Output)
+    Utilization Chart is a specific type of visualization which displays
+    a metric classified into "Used" and "Free" buckets.
+    Structure is documented below.
+    """
+    total_assets: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of the number of unique assets in this collection.
+    """
+    total_cores: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of the CPU core count of all the assets in this collection.
+    """
+    total_memory_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of the memory in bytes of all the assets in this collection.
+    """
+    total_storage_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of persistent storage in bytes of all the assets in this collection.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatArgs:
+    def __init__(__self__, *,
+                 core_count_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramArgs']]]] = None,
+                 memory_bytes_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramArgs']]]] = None,
+                 memory_utilization_charts: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryUtilizationChartArgs']]]] = None,
+                 operating_systems: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemArgs']]]] = None,
+                 software_instances: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceArgs']]]] = None,
+                 storage_bytes_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramArgs']]]] = None,
+                 storage_utilization_charts: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageUtilizationChartArgs']]]] = None,
+                 total_assets: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_cores: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_memory_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_storage_bytes: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramArgs']]] core_count_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramArgs']]] memory_bytes_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryUtilizationChartArgs']]] memory_utilization_charts: (Output)
+               Utilization Chart is a specific type of visualization which displays
+               a metric classified into "Used" and "Free" buckets.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemArgs']]] operating_systems: (Output)
+               Describes a collection of data points rendered as a Chart.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceArgs']]] software_instances: (Output)
+               Describes a collection of data points rendered as a Chart.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramArgs']]] storage_bytes_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageUtilizationChartArgs']]] storage_utilization_charts: (Output)
+               Utilization Chart is a specific type of visualization which displays
+               a metric classified into "Used" and "Free" buckets.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] total_assets: (Output)
+               Count of the number of unique assets in this collection.
+        :param pulumi.Input[_builtins.str] total_cores: (Output)
+               Sum of the CPU core count of all the assets in this collection.
+        :param pulumi.Input[_builtins.str] total_memory_bytes: (Output)
+               Sum of the memory in bytes of all the assets in this collection.
+        :param pulumi.Input[_builtins.str] total_storage_bytes: (Output)
+               Sum of persistent storage in bytes of all the assets in this collection.
+        """
+        if core_count_histograms is not None:
+            pulumi.set(__self__, "core_count_histograms", core_count_histograms)
+        if memory_bytes_histograms is not None:
+            pulumi.set(__self__, "memory_bytes_histograms", memory_bytes_histograms)
+        if memory_utilization_charts is not None:
+            pulumi.set(__self__, "memory_utilization_charts", memory_utilization_charts)
+        if operating_systems is not None:
+            pulumi.set(__self__, "operating_systems", operating_systems)
+        if software_instances is not None:
+            pulumi.set(__self__, "software_instances", software_instances)
+        if storage_bytes_histograms is not None:
+            pulumi.set(__self__, "storage_bytes_histograms", storage_bytes_histograms)
+        if storage_utilization_charts is not None:
+            pulumi.set(__self__, "storage_utilization_charts", storage_utilization_charts)
+        if total_assets is not None:
+            pulumi.set(__self__, "total_assets", total_assets)
+        if total_cores is not None:
+            pulumi.set(__self__, "total_cores", total_cores)
+        if total_memory_bytes is not None:
+            pulumi.set(__self__, "total_memory_bytes", total_memory_bytes)
+        if total_storage_bytes is not None:
+            pulumi.set(__self__, "total_storage_bytes", total_storage_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCountHistograms")
+    def core_count_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "core_count_histograms")
+
+    @core_count_histograms.setter
+    def core_count_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramArgs']]]]):
+        pulumi.set(self, "core_count_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryBytesHistograms")
+    def memory_bytes_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_bytes_histograms")
+
+    @memory_bytes_histograms.setter
+    def memory_bytes_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramArgs']]]]):
+        pulumi.set(self, "memory_bytes_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryUtilizationCharts")
+    def memory_utilization_charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryUtilizationChartArgs']]]]:
+        """
+        (Output)
+        Utilization Chart is a specific type of visualization which displays
+        a metric classified into "Used" and "Free" buckets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_utilization_charts")
+
+    @memory_utilization_charts.setter
+    def memory_utilization_charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryUtilizationChartArgs']]]]):
+        pulumi.set(self, "memory_utilization_charts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystems")
+    def operating_systems(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemArgs']]]]:
+        """
+        (Output)
+        Describes a collection of data points rendered as a Chart.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operating_systems")
+
+    @operating_systems.setter
+    def operating_systems(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemArgs']]]]):
+        pulumi.set(self, "operating_systems", value)
+
+    @_builtins.property
+    @pulumi.getter(name="softwareInstances")
+    def software_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceArgs']]]]:
+        """
+        (Output)
+        Describes a collection of data points rendered as a Chart.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "software_instances")
+
+    @software_instances.setter
+    def software_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceArgs']]]]):
+        pulumi.set(self, "software_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageBytesHistograms")
+    def storage_bytes_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_bytes_histograms")
+
+    @storage_bytes_histograms.setter
+    def storage_bytes_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramArgs']]]]):
+        pulumi.set(self, "storage_bytes_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageUtilizationCharts")
+    def storage_utilization_charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageUtilizationChartArgs']]]]:
+        """
+        (Output)
+        Utilization Chart is a specific type of visualization which displays
+        a metric classified into "Used" and "Free" buckets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_utilization_charts")
+
+    @storage_utilization_charts.setter
+    def storage_utilization_charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageUtilizationChartArgs']]]]):
+        pulumi.set(self, "storage_utilization_charts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalAssets")
+    def total_assets(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of the number of unique assets in this collection.
+        """
+        return pulumi.get(self, "total_assets")
+
+    @total_assets.setter
+    def total_assets(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_assets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalCores")
+    def total_cores(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of the CPU core count of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_cores")
+
+    @total_cores.setter
+    def total_cores(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalMemoryBytes")
+    def total_memory_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of the memory in bytes of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_memory_bytes")
+
+    @total_memory_bytes.setter
+    def total_memory_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_memory_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageBytes")
+    def total_storage_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of persistent storage in bytes of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_storage_bytes")
+
+    @total_storage_bytes.setter
+    def total_storage_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_storage_bytes", value)
+
+
+class ReportSummaryAllAssetsStatCoreCountHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatCoreCountHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryAllAssetsStatCoreCountHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatCoreCountHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryAllAssetsStatMemoryBytesHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatMemoryBytesHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatMemoryBytesHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryAllAssetsStatMemoryUtilizationChartArgsDict(TypedDict):
+    free: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Free" bucket.
+    """
+    used: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Used" bucket.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatMemoryUtilizationChartArgs:
+    def __init__(__self__, *,
+                 free: pulumi.Input[Optional[_builtins.str]] = None,
+                 used: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] free: (Output)
+               Aggregate value which falls into the "Free" bucket.
+        :param pulumi.Input[_builtins.str] used: (Output)
+               Aggregate value which falls into the "Used" bucket.
+        """
+        if free is not None:
+            pulumi.set(__self__, "free", free)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def free(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Free" bucket.
+        """
+        return pulumi.get(self, "free")
+
+    @free.setter
+    def free(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "free", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Used" bucket.
+        """
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "used", value)
+
+
+class ReportSummaryAllAssetsStatOperatingSystemArgsDict(TypedDict):
+    data_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemDataPointArgsDict']]]]]
+    """
+    (Output)
+    Each data point in the chart is represented as a name-value pair
+    with the name being the x-axis label, and the value being the y-axis
+    value.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatOperatingSystemArgs:
+    def __init__(__self__, *,
+                 data_points: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemDataPointArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemDataPointArgs']]] data_points: (Output)
+               Each data point in the chart is represented as a name-value pair
+               with the name being the x-axis label, and the value being the y-axis
+               value.
+               Structure is documented below.
+        """
+        if data_points is not None:
+            pulumi.set(__self__, "data_points", data_points)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPoints")
+    def data_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemDataPointArgs']]]]:
+        """
+        (Output)
+        Each data point in the chart is represented as a name-value pair
+        with the name being the x-axis label, and the value being the y-axis
+        value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_points")
+
+    @data_points.setter
+    def data_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatOperatingSystemDataPointArgs']]]]):
+        pulumi.set(self, "data_points", value)
+
+
+class ReportSummaryAllAssetsStatOperatingSystemDataPointArgsDict(TypedDict):
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The X-axis label for this data point.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The Y-axis value for this data point.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatOperatingSystemDataPointArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label: (Output)
+               The X-axis label for this data point.
+        :param pulumi.Input[_builtins.float] value: (Output)
+               The Y-axis value for this data point.
+        """
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The X-axis label for this data point.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The Y-axis value for this data point.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "value", value)
+
+
+class ReportSummaryAllAssetsStatSoftwareInstanceArgsDict(TypedDict):
+    data_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgsDict']]]]]
+    """
+    (Output)
+    Each data point in the chart is represented as a name-value pair
+    with the name being the x-axis label, and the value being the y-axis
+    value.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatSoftwareInstanceArgs:
+    def __init__(__self__, *,
+                 data_points: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs']]] data_points: (Output)
+               Each data point in the chart is represented as a name-value pair
+               with the name being the x-axis label, and the value being the y-axis
+               value.
+               Structure is documented below.
+        """
+        if data_points is not None:
+            pulumi.set(__self__, "data_points", data_points)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPoints")
+    def data_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs']]]]:
+        """
+        (Output)
+        Each data point in the chart is represented as a name-value pair
+        with the name being the x-axis label, and the value being the y-axis
+        value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_points")
+
+    @data_points.setter
+    def data_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs']]]]):
+        pulumi.set(self, "data_points", value)
+
+
+class ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgsDict(TypedDict):
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The X-axis label for this data point.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The Y-axis value for this data point.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatSoftwareInstanceDataPointArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label: (Output)
+               The X-axis label for this data point.
+        :param pulumi.Input[_builtins.float] value: (Output)
+               The Y-axis value for this data point.
+        """
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The X-axis label for this data point.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The Y-axis value for this data point.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "value", value)
+
+
+class ReportSummaryAllAssetsStatStorageBytesHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatStorageBytesHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatStorageBytesHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryAllAssetsStatStorageUtilizationChartArgsDict(TypedDict):
+    free: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Free" bucket.
+    """
+    used: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Used" bucket.
+    """
+
+@pulumi.input_type
+class ReportSummaryAllAssetsStatStorageUtilizationChartArgs:
+    def __init__(__self__, *,
+                 free: pulumi.Input[Optional[_builtins.str]] = None,
+                 used: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] free: (Output)
+               Aggregate value which falls into the "Free" bucket.
+        :param pulumi.Input[_builtins.str] used: (Output)
+               Aggregate value which falls into the "Used" bucket.
+        """
+        if free is not None:
+            pulumi.set(__self__, "free", free)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def free(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Free" bucket.
+        """
+        return pulumi.get(self, "free")
+
+    @free.setter
+    def free(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "free", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Used" bucket.
+        """
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "used", value)
+
+
+class ReportSummaryGroupFindingArgsDict(TypedDict):
+    asset_aggregate_stats: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatArgsDict']]]]]
+    """
+    (Output)
+    Aggregate statistics for a collection of assets.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Free-text description.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-friendly display name. Maximum length is 63 characters.
+    """
+    overlapping_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    This field is deprecated, do not rely on it having a value.
+    """
+    preference_set_findings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingArgsDict']]]]]
+    """
+    (Output)
+    Findings for each of the PreferenceSets for this group.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingArgs:
+    def __init__(__self__, *,
+                 asset_aggregate_stats: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlapping_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 preference_set_findings: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatArgs']]] asset_aggregate_stats: (Output)
+               Aggregate statistics for a collection of assets.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] description: Free-text description.
+        :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
+        :param pulumi.Input[_builtins.str] overlapping_asset_count: (Output)
+               This field is deprecated, do not rely on it having a value.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingArgs']]] preference_set_findings: (Output)
+               Findings for each of the PreferenceSets for this group.
+               Structure is documented below.
+        """
+        if asset_aggregate_stats is not None:
+            pulumi.set(__self__, "asset_aggregate_stats", asset_aggregate_stats)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if overlapping_asset_count is not None:
+            pulumi.set(__self__, "overlapping_asset_count", overlapping_asset_count)
+        if preference_set_findings is not None:
+            pulumi.set(__self__, "preference_set_findings", preference_set_findings)
+
+    @_builtins.property
+    @pulumi.getter(name="assetAggregateStats")
+    def asset_aggregate_stats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatArgs']]]]:
+        """
+        (Output)
+        Aggregate statistics for a collection of assets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "asset_aggregate_stats")
+
+    @asset_aggregate_stats.setter
+    def asset_aggregate_stats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatArgs']]]]):
+        pulumi.set(self, "asset_aggregate_stats", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-text description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-friendly display name. Maximum length is 63 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="overlappingAssetCount")
+    def overlapping_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        This field is deprecated, do not rely on it having a value.
+        """
+        return pulumi.get(self, "overlapping_asset_count")
+
+    @overlapping_asset_count.setter
+    def overlapping_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "overlapping_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferenceSetFindings")
+    def preference_set_findings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingArgs']]]]:
+        """
+        (Output)
+        Findings for each of the PreferenceSets for this group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preference_set_findings")
+
+    @preference_set_findings.setter
+    def preference_set_findings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingArgs']]]]):
+        pulumi.set(self, "preference_set_findings", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatArgsDict(TypedDict):
+    core_count_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    memory_bytes_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    memory_utilization_charts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgsDict']]]]]
+    """
+    (Output)
+    Utilization Chart is a specific type of visualization which displays
+    a metric classified into "Used" and "Free" buckets.
+    Structure is documented below.
+    """
+    operating_systems: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgsDict']]]]]
+    """
+    (Output)
+    Describes a collection of data points rendered as a Chart.
+    Structure is documented below.
+    """
+    software_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgsDict']]]]]
+    """
+    (Output)
+    Describes a collection of data points rendered as a Chart.
+    Structure is documented below.
+    """
+    storage_bytes_histograms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgsDict']]]]]
+    """
+    (Output)
+    A Histogram Chart shows a distribution of values into buckets, showing
+    a count of values which fall into a bucket.
+    Structure is documented below.
+    """
+    storage_utilization_charts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgsDict']]]]]
+    """
+    (Output)
+    Utilization Chart is a specific type of visualization which displays
+    a metric classified into "Used" and "Free" buckets.
+    Structure is documented below.
+    """
+    total_assets: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of the number of unique assets in this collection.
+    """
+    total_cores: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of the CPU core count of all the assets in this collection.
+    """
+    total_memory_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of the memory in bytes of all the assets in this collection.
+    """
+    total_storage_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sum of persistent storage in bytes of all the assets in this collection.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatArgs:
+    def __init__(__self__, *,
+                 core_count_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs']]]] = None,
+                 memory_bytes_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs']]]] = None,
+                 memory_utilization_charts: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs']]]] = None,
+                 operating_systems: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs']]]] = None,
+                 software_instances: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs']]]] = None,
+                 storage_bytes_histograms: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs']]]] = None,
+                 storage_utilization_charts: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs']]]] = None,
+                 total_assets: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_cores: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_memory_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_storage_bytes: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs']]] core_count_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs']]] memory_bytes_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs']]] memory_utilization_charts: (Output)
+               Utilization Chart is a specific type of visualization which displays
+               a metric classified into "Used" and "Free" buckets.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs']]] operating_systems: (Output)
+               Describes a collection of data points rendered as a Chart.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs']]] software_instances: (Output)
+               Describes a collection of data points rendered as a Chart.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs']]] storage_bytes_histograms: (Output)
+               A Histogram Chart shows a distribution of values into buckets, showing
+               a count of values which fall into a bucket.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs']]] storage_utilization_charts: (Output)
+               Utilization Chart is a specific type of visualization which displays
+               a metric classified into "Used" and "Free" buckets.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] total_assets: (Output)
+               Count of the number of unique assets in this collection.
+        :param pulumi.Input[_builtins.str] total_cores: (Output)
+               Sum of the CPU core count of all the assets in this collection.
+        :param pulumi.Input[_builtins.str] total_memory_bytes: (Output)
+               Sum of the memory in bytes of all the assets in this collection.
+        :param pulumi.Input[_builtins.str] total_storage_bytes: (Output)
+               Sum of persistent storage in bytes of all the assets in this collection.
+        """
+        if core_count_histograms is not None:
+            pulumi.set(__self__, "core_count_histograms", core_count_histograms)
+        if memory_bytes_histograms is not None:
+            pulumi.set(__self__, "memory_bytes_histograms", memory_bytes_histograms)
+        if memory_utilization_charts is not None:
+            pulumi.set(__self__, "memory_utilization_charts", memory_utilization_charts)
+        if operating_systems is not None:
+            pulumi.set(__self__, "operating_systems", operating_systems)
+        if software_instances is not None:
+            pulumi.set(__self__, "software_instances", software_instances)
+        if storage_bytes_histograms is not None:
+            pulumi.set(__self__, "storage_bytes_histograms", storage_bytes_histograms)
+        if storage_utilization_charts is not None:
+            pulumi.set(__self__, "storage_utilization_charts", storage_utilization_charts)
+        if total_assets is not None:
+            pulumi.set(__self__, "total_assets", total_assets)
+        if total_cores is not None:
+            pulumi.set(__self__, "total_cores", total_cores)
+        if total_memory_bytes is not None:
+            pulumi.set(__self__, "total_memory_bytes", total_memory_bytes)
+        if total_storage_bytes is not None:
+            pulumi.set(__self__, "total_storage_bytes", total_storage_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCountHistograms")
+    def core_count_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "core_count_histograms")
+
+    @core_count_histograms.setter
+    def core_count_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs']]]]):
+        pulumi.set(self, "core_count_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryBytesHistograms")
+    def memory_bytes_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_bytes_histograms")
+
+    @memory_bytes_histograms.setter
+    def memory_bytes_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs']]]]):
+        pulumi.set(self, "memory_bytes_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryUtilizationCharts")
+    def memory_utilization_charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs']]]]:
+        """
+        (Output)
+        Utilization Chart is a specific type of visualization which displays
+        a metric classified into "Used" and "Free" buckets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_utilization_charts")
+
+    @memory_utilization_charts.setter
+    def memory_utilization_charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs']]]]):
+        pulumi.set(self, "memory_utilization_charts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystems")
+    def operating_systems(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs']]]]:
+        """
+        (Output)
+        Describes a collection of data points rendered as a Chart.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operating_systems")
+
+    @operating_systems.setter
+    def operating_systems(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs']]]]):
+        pulumi.set(self, "operating_systems", value)
+
+    @_builtins.property
+    @pulumi.getter(name="softwareInstances")
+    def software_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs']]]]:
+        """
+        (Output)
+        Describes a collection of data points rendered as a Chart.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "software_instances")
+
+    @software_instances.setter
+    def software_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs']]]]):
+        pulumi.set(self, "software_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageBytesHistograms")
+    def storage_bytes_histograms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs']]]]:
+        """
+        (Output)
+        A Histogram Chart shows a distribution of values into buckets, showing
+        a count of values which fall into a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_bytes_histograms")
+
+    @storage_bytes_histograms.setter
+    def storage_bytes_histograms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs']]]]):
+        pulumi.set(self, "storage_bytes_histograms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageUtilizationCharts")
+    def storage_utilization_charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs']]]]:
+        """
+        (Output)
+        Utilization Chart is a specific type of visualization which displays
+        a metric classified into "Used" and "Free" buckets.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_utilization_charts")
+
+    @storage_utilization_charts.setter
+    def storage_utilization_charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs']]]]):
+        pulumi.set(self, "storage_utilization_charts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalAssets")
+    def total_assets(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of the number of unique assets in this collection.
+        """
+        return pulumi.get(self, "total_assets")
+
+    @total_assets.setter
+    def total_assets(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_assets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalCores")
+    def total_cores(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of the CPU core count of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_cores")
+
+    @total_cores.setter
+    def total_cores(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalMemoryBytes")
+    def total_memory_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of the memory in bytes of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_memory_bytes")
+
+    @total_memory_bytes.setter
+    def total_memory_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_memory_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageBytes")
+    def total_storage_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sum of persistent storage in bytes of all the assets in this collection.
+        """
+        return pulumi.get(self, "total_storage_bytes")
+
+    @total_storage_bytes.setter
+    def total_storage_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "total_storage_bytes", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgsDict(TypedDict):
+    free: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Free" bucket.
+    """
+    used: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Used" bucket.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChartArgs:
+    def __init__(__self__, *,
+                 free: pulumi.Input[Optional[_builtins.str]] = None,
+                 used: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] free: (Output)
+               Aggregate value which falls into the "Free" bucket.
+        :param pulumi.Input[_builtins.str] used: (Output)
+               Aggregate value which falls into the "Used" bucket.
+        """
+        if free is not None:
+            pulumi.set(__self__, "free", free)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def free(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Free" bucket.
+        """
+        return pulumi.get(self, "free")
+
+    @free.setter
+    def free(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "free", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Used" bucket.
+        """
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "used", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgsDict(TypedDict):
+    data_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgsDict']]]]]
+    """
+    (Output)
+    Each data point in the chart is represented as a name-value pair
+    with the name being the x-axis label, and the value being the y-axis
+    value.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatOperatingSystemArgs:
+    def __init__(__self__, *,
+                 data_points: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs']]] data_points: (Output)
+               Each data point in the chart is represented as a name-value pair
+               with the name being the x-axis label, and the value being the y-axis
+               value.
+               Structure is documented below.
+        """
+        if data_points is not None:
+            pulumi.set(__self__, "data_points", data_points)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPoints")
+    def data_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs']]]]:
+        """
+        (Output)
+        Each data point in the chart is represented as a name-value pair
+        with the name being the x-axis label, and the value being the y-axis
+        value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_points")
+
+    @data_points.setter
+    def data_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs']]]]):
+        pulumi.set(self, "data_points", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgsDict(TypedDict):
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The X-axis label for this data point.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The Y-axis value for this data point.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPointArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label: (Output)
+               The X-axis label for this data point.
+        :param pulumi.Input[_builtins.float] value: (Output)
+               The Y-axis value for this data point.
+        """
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The X-axis label for this data point.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The Y-axis value for this data point.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "value", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgsDict(TypedDict):
+    data_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgsDict']]]]]
+    """
+    (Output)
+    Each data point in the chart is represented as a name-value pair
+    with the name being the x-axis label, and the value being the y-axis
+    value.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceArgs:
+    def __init__(__self__, *,
+                 data_points: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs']]] data_points: (Output)
+               Each data point in the chart is represented as a name-value pair
+               with the name being the x-axis label, and the value being the y-axis
+               value.
+               Structure is documented below.
+        """
+        if data_points is not None:
+            pulumi.set(__self__, "data_points", data_points)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPoints")
+    def data_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs']]]]:
+        """
+        (Output)
+        Each data point in the chart is represented as a name-value pair
+        with the name being the x-axis label, and the value being the y-axis
+        value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_points")
+
+    @data_points.setter
+    def data_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs']]]]):
+        pulumi.set(self, "data_points", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgsDict(TypedDict):
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The X-axis label for this data point.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The Y-axis value for this data point.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatSoftwareInstanceDataPointArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label: (Output)
+               The X-axis label for this data point.
+        :param pulumi.Input[_builtins.float] value: (Output)
+               The Y-axis value for this data point.
+        """
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The X-axis label for this data point.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The Y-axis value for this data point.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "value", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgsDict']]]]]
+    """
+    (Output)
+    Buckets in the histogram.
+    There will be `n+1` buckets matching `n` lower bounds in the request.
+    The first bucket will be from -infinity to the first bound.
+    Subsequent buckets will be between one bound and the next.
+    The final bucket will be from the final bound to infinity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs']]] buckets: (Output)
+               Buckets in the histogram.
+               There will be `n+1` buckets matching `n` lower bounds in the request.
+               The first bucket will be from -infinity to the first bound.
+               Subsequent buckets will be between one bound and the next.
+               The final bucket will be from the final bound to infinity.
+               Structure is documented below.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @_builtins.property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs']]]]:
+        """
+        (Output)
+        Buckets in the histogram.
+        There will be `n+1` buckets matching `n` lower bounds in the request.
+        The first bucket will be from -infinity to the first bound.
+        Subsequent buckets will be between one bound and the next.
+        The final bucket will be from the final bound to infinity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of items in the bucket.
+    """
+    lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Lower bound - inclusive.
+    """
+    upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Upper bound - exclusive.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucketArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.str]] = None,
+                 lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_bound: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] count: (Output)
+               Count of items in the bucket.
+        :param pulumi.Input[_builtins.str] lower_bound: (Output)
+               Lower bound - inclusive.
+        :param pulumi.Input[_builtins.str] upper_bound: (Output)
+               Upper bound - exclusive.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of items in the bucket.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Lower bound - inclusive.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Upper bound - exclusive.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+class ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgsDict(TypedDict):
+    free: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Free" bucket.
+    """
+    used: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Aggregate value which falls into the "Used" bucket.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChartArgs:
+    def __init__(__self__, *,
+                 free: pulumi.Input[Optional[_builtins.str]] = None,
+                 used: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] free: (Output)
+               Aggregate value which falls into the "Free" bucket.
+        :param pulumi.Input[_builtins.str] used: (Output)
+               Aggregate value which falls into the "Used" bucket.
+        """
+        if free is not None:
+            pulumi.set(__self__, "free", free)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def free(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Free" bucket.
+        """
+        return pulumi.get(self, "free")
+
+    @free.setter
+    def free(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "free", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Aggregate value which falls into the "Used" bucket.
+        """
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "used", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingArgsDict(TypedDict):
+    compute_engine_findings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgsDict']]]]]
+    """
+    (Output)
+    A set of findings that applies to assets destined for Compute Engine.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Free-text description.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-friendly display name. Maximum length is 63 characters.
+    """
+    machine_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgsDict']]]]]
+    """
+    (Output)
+    The type of machines to consider when calculating virtual machine migration
+    insights and recommendations.
+    Not all machine types are available in all zones and regions.
+    Structure is documented below.
+    """
+    monthly_cost_computes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    monthly_cost_network_egresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    monthly_cost_os_licenses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    monthly_cost_others: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    monthly_cost_storages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    monthly_cost_totals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgsDict']]]]]
+    """
+    (Output)
+    Represents an amount of money with its currency type.
+    Structure is documented below.
+    """
+    sole_tenant_findings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgsDict']]]]]
+    """
+    (Output)
+    A set of findings that applies to assets destined for Sole-Tenant nodes.
+    Structure is documented below.
+    """
+    vmware_engine_findings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgsDict']]]]]
+    """
+    (Output)
+    A set of findings that applies to assets destined for VMWare Engine.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingArgs:
+    def __init__(__self__, *,
+                 compute_engine_findings: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs']]]] = None,
+                 monthly_cost_computes: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs']]]] = None,
+                 monthly_cost_network_egresses: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs']]]] = None,
+                 monthly_cost_os_licenses: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs']]]] = None,
+                 monthly_cost_others: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs']]]] = None,
+                 monthly_cost_storages: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs']]]] = None,
+                 monthly_cost_totals: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs']]]] = None,
+                 sole_tenant_findings: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs']]]] = None,
+                 vmware_engine_findings: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs']]] compute_engine_findings: (Output)
+               A set of findings that applies to assets destined for Compute Engine.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] description: Free-text description.
+        :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs']]] machine_preferences: (Output)
+               The type of machines to consider when calculating virtual machine migration
+               insights and recommendations.
+               Not all machine types are available in all zones and regions.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs']]] monthly_cost_computes: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs']]] monthly_cost_network_egresses: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs']]] monthly_cost_os_licenses: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs']]] monthly_cost_others: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs']]] monthly_cost_storages: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs']]] monthly_cost_totals: (Output)
+               Represents an amount of money with its currency type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs']]] sole_tenant_findings: (Output)
+               A set of findings that applies to assets destined for Sole-Tenant nodes.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs']]] vmware_engine_findings: (Output)
+               A set of findings that applies to assets destined for VMWare Engine.
+               Structure is documented below.
+        """
+        if compute_engine_findings is not None:
+            pulumi.set(__self__, "compute_engine_findings", compute_engine_findings)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if machine_preferences is not None:
+            pulumi.set(__self__, "machine_preferences", machine_preferences)
+        if monthly_cost_computes is not None:
+            pulumi.set(__self__, "monthly_cost_computes", monthly_cost_computes)
+        if monthly_cost_network_egresses is not None:
+            pulumi.set(__self__, "monthly_cost_network_egresses", monthly_cost_network_egresses)
+        if monthly_cost_os_licenses is not None:
+            pulumi.set(__self__, "monthly_cost_os_licenses", monthly_cost_os_licenses)
+        if monthly_cost_others is not None:
+            pulumi.set(__self__, "monthly_cost_others", monthly_cost_others)
+        if monthly_cost_storages is not None:
+            pulumi.set(__self__, "monthly_cost_storages", monthly_cost_storages)
+        if monthly_cost_totals is not None:
+            pulumi.set(__self__, "monthly_cost_totals", monthly_cost_totals)
+        if sole_tenant_findings is not None:
+            pulumi.set(__self__, "sole_tenant_findings", sole_tenant_findings)
+        if vmware_engine_findings is not None:
+            pulumi.set(__self__, "vmware_engine_findings", vmware_engine_findings)
+
+    @_builtins.property
+    @pulumi.getter(name="computeEngineFindings")
+    def compute_engine_findings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs']]]]:
+        """
+        (Output)
+        A set of findings that applies to assets destined for Compute Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compute_engine_findings")
+
+    @compute_engine_findings.setter
+    def compute_engine_findings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs']]]]):
+        pulumi.set(self, "compute_engine_findings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-text description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-friendly display name. Maximum length is 63 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machinePreferences")
+    def machine_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs']]]]:
+        """
+        (Output)
+        The type of machines to consider when calculating virtual machine migration
+        insights and recommendations.
+        Not all machine types are available in all zones and regions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_preferences")
+
+    @machine_preferences.setter
+    def machine_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs']]]]):
+        pulumi.set(self, "machine_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostComputes")
+    def monthly_cost_computes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_computes")
+
+    @monthly_cost_computes.setter
+    def monthly_cost_computes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs']]]]):
+        pulumi.set(self, "monthly_cost_computes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostNetworkEgresses")
+    def monthly_cost_network_egresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_network_egresses")
+
+    @monthly_cost_network_egresses.setter
+    def monthly_cost_network_egresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs']]]]):
+        pulumi.set(self, "monthly_cost_network_egresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostOsLicenses")
+    def monthly_cost_os_licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_os_licenses")
+
+    @monthly_cost_os_licenses.setter
+    def monthly_cost_os_licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs']]]]):
+        pulumi.set(self, "monthly_cost_os_licenses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostOthers")
+    def monthly_cost_others(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_others")
+
+    @monthly_cost_others.setter
+    def monthly_cost_others(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs']]]]):
+        pulumi.set(self, "monthly_cost_others", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostStorages")
+    def monthly_cost_storages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_storages")
+
+    @monthly_cost_storages.setter
+    def monthly_cost_storages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs']]]]):
+        pulumi.set(self, "monthly_cost_storages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyCostTotals")
+    def monthly_cost_totals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs']]]]:
+        """
+        (Output)
+        Represents an amount of money with its currency type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monthly_cost_totals")
+
+    @monthly_cost_totals.setter
+    def monthly_cost_totals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs']]]]):
+        pulumi.set(self, "monthly_cost_totals", value)
+
+    @_builtins.property
+    @pulumi.getter(name="soleTenantFindings")
+    def sole_tenant_findings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs']]]]:
+        """
+        (Output)
+        A set of findings that applies to assets destined for Sole-Tenant nodes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sole_tenant_findings")
+
+    @sole_tenant_findings.setter
+    def sole_tenant_findings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs']]]]):
+        pulumi.set(self, "sole_tenant_findings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmwareEngineFindings")
+    def vmware_engine_findings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs']]]]:
+        """
+        (Output)
+        A set of findings that applies to assets destined for VMWare Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vmware_engine_findings")
+
+    @vmware_engine_findings.setter
+    def vmware_engine_findings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs']]]]):
+        pulumi.set(self, "vmware_engine_findings", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    allocated_disk_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    Set of disk types allocated to assets.
+    """
+    allocated_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    Set of regions in which the assets were allocated
+    """
+    machine_series_allocations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgsDict']]]]]
+    """
+    (Output)
+    Distribution of assets based on the Machine Series.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocated_disk_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allocated_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 machine_series_allocations: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allocated_disk_types: (Output)
+               Set of disk types allocated to assets.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allocated_regions: (Output)
+               Set of regions in which the assets were allocated
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs']]] machine_series_allocations: (Output)
+               Distribution of assets based on the Machine Series.
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if allocated_disk_types is not None:
+            pulumi.set(__self__, "allocated_disk_types", allocated_disk_types)
+        if allocated_regions is not None:
+            pulumi.set(__self__, "allocated_regions", allocated_regions)
+        if machine_series_allocations is not None:
+            pulumi.set(__self__, "machine_series_allocations", machine_series_allocations)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedDiskTypes")
+    def allocated_disk_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Set of disk types allocated to assets.
+        """
+        return pulumi.get(self, "allocated_disk_types")
+
+    @allocated_disk_types.setter
+    def allocated_disk_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allocated_disk_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedRegions")
+    def allocated_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Set of regions in which the assets were allocated
+        """
+        return pulumi.get(self, "allocated_regions")
+
+    @allocated_regions.setter
+    def allocated_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allocated_regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSeriesAllocations")
+    def machine_series_allocations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs']]]]:
+        """
+        (Output)
+        Distribution of assets based on the Machine Series.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_series_allocations")
+
+    @machine_series_allocations.setter
+    def machine_series_allocations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs']]]]):
+        pulumi.set(self, "machine_series_allocations", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    machine_series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgsDict']]]]]
+    """
+    (Output)
+    A machine series, for a target product
+    (e.g. Compute Engine, Google Cloud VMware Engine).
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_series: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs']]] machine_series: (Output)
+               A machine series, for a target product
+               (e.g. Compute Engine, Google Cloud VMware Engine).
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if machine_series is not None:
+            pulumi.set(__self__, "machine_series", machine_series)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSeries")
+    def machine_series(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs']]]]:
+        """
+        (Output)
+        A machine series, for a target product
+        (e.g. Compute Engine, Google Cloud VMware Engine).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_series")
+
+    @machine_series.setter
+    def machine_series(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs']]]]):
+        pulumi.set(self, "machine_series", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+    on the displayName of
+    cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeriesArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] code: (Output)
+               Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+               on the displayName of
+               cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+        on the displayName of
+        cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Commitment plan to consider when calculating costs for virtual machine
+    insights and recommendations.
+    If you are unsure which value to set, a 3 year commitment plan is often a
+    good value to start with.
+    Possible values:
+    ON_DEMAND
+    COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+    COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+    """
+    compute_engine_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgsDict']]]]]
+    """
+    (Output)
+    The user preferences relating to Compute Engine target platform.
+    Structure is documented below.
+    """
+    region_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgsDict']]]]]
+    """
+    (Output)
+    The user preferences relating to target regions.
+    Structure is documented below.
+    """
+    sizing_optimization_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values:
+    SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+    SIZING_OPTIMIZATION_STRATEGY_MODERATE
+    SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+    """
+    sole_tenancy_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgsDict']]]]]
+    """
+    (Output)
+    Preferences concerning Sole Tenancy nodes and VMs.
+    Structure is documented below.
+    """
+    target_product: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values:
+    COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+    COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+    COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+    """
+    vmware_engine_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgsDict']]]]]
+    """
+    (Output)
+    The user preferences relating to Google Cloud VMware Engine target platform.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceArgs:
+    def __init__(__self__, *,
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_engine_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs']]]] = None,
+                 region_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs']]]] = None,
+                 sizing_optimization_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sole_tenancy_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs']]]] = None,
+                 target_product: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_engine_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] commitment_plan: (Output)
+               Commitment plan to consider when calculating costs for virtual machine
+               insights and recommendations.
+               If you are unsure which value to set, a 3 year commitment plan is often a
+               good value to start with.
+               Possible values:
+               ON_DEMAND
+               COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+               COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs']]] compute_engine_preferences: (Output)
+               The user preferences relating to Compute Engine target platform.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs']]] region_preferences: (Output)
+               The user preferences relating to target regions.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] sizing_optimization_strategy: (Output)
+               Possible values:
+               SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+               SIZING_OPTIMIZATION_STRATEGY_MODERATE
+               SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs']]] sole_tenancy_preferences: (Output)
+               Preferences concerning Sole Tenancy nodes and VMs.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] target_product: (Output)
+               Possible values:
+               COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+               COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+               COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs']]] vmware_engine_preferences: (Output)
+               The user preferences relating to Google Cloud VMware Engine target platform.
+               Structure is documented below.
+        """
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if compute_engine_preferences is not None:
+            pulumi.set(__self__, "compute_engine_preferences", compute_engine_preferences)
+        if region_preferences is not None:
+            pulumi.set(__self__, "region_preferences", region_preferences)
+        if sizing_optimization_strategy is not None:
+            pulumi.set(__self__, "sizing_optimization_strategy", sizing_optimization_strategy)
+        if sole_tenancy_preferences is not None:
+            pulumi.set(__self__, "sole_tenancy_preferences", sole_tenancy_preferences)
+        if target_product is not None:
+            pulumi.set(__self__, "target_product", target_product)
+        if vmware_engine_preferences is not None:
+            pulumi.set(__self__, "vmware_engine_preferences", vmware_engine_preferences)
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Commitment plan to consider when calculating costs for virtual machine
+        insights and recommendations.
+        If you are unsure which value to set, a 3 year commitment plan is often a
+        good value to start with.
+        Possible values:
+        ON_DEMAND
+        COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+        COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="computeEnginePreferences")
+    def compute_engine_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs']]]]:
+        """
+        (Output)
+        The user preferences relating to Compute Engine target platform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compute_engine_preferences")
+
+    @compute_engine_preferences.setter
+    def compute_engine_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs']]]]):
+        pulumi.set(self, "compute_engine_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionPreferences")
+    def region_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs']]]]:
+        """
+        (Output)
+        The user preferences relating to target regions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "region_preferences")
+
+    @region_preferences.setter
+    def region_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs']]]]):
+        pulumi.set(self, "region_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizingOptimizationStrategy")
+    def sizing_optimization_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+        SIZING_OPTIMIZATION_STRATEGY_MODERATE
+        SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+        """
+        return pulumi.get(self, "sizing_optimization_strategy")
+
+    @sizing_optimization_strategy.setter
+    def sizing_optimization_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sizing_optimization_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="soleTenancyPreferences")
+    def sole_tenancy_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs']]]]:
+        """
+        (Output)
+        Preferences concerning Sole Tenancy nodes and VMs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sole_tenancy_preferences")
+
+    @sole_tenancy_preferences.setter
+    def sole_tenancy_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs']]]]):
+        pulumi.set(self, "sole_tenancy_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetProduct")
+    def target_product(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+        COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+        COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+        """
+        return pulumi.get(self, "target_product")
+
+    @target_product.setter
+    def target_product(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_product", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmwareEnginePreferences")
+    def vmware_engine_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs']]]]:
+        """
+        (Output)
+        The user preferences relating to Google Cloud VMware Engine target platform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vmware_engine_preferences")
+
+    @vmware_engine_preferences.setter
+    def vmware_engine_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs']]]]):
+        pulumi.set(self, "vmware_engine_preferences", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgsDict(TypedDict):
+    license_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values:
+    LICENSE_TYPE_DEFAULT
+    LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+    """
+    machine_preferences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgsDict']]]]]
+    """
+    (Output)
+    The type of machines to consider when calculating virtual machine migration
+    insights and recommendations.
+    Not all machine types are available in all zones and regions.
+    Structure is documented below.
+    """
+    persistent_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values:
+    PERSISTENT_DISK_TYPE_STANDARD
+    PERSISTENT_DISK_TYPE_BALANCED
+    PERSISTENT_DISK_TYPE_SSD
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceArgs:
+    def __init__(__self__, *,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_preferences: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs']]]] = None,
+                 persistent_disk_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] license_type: (Output)
+               Possible values:
+               LICENSE_TYPE_DEFAULT
+               LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs']]] machine_preferences: (Output)
+               The type of machines to consider when calculating virtual machine migration
+               insights and recommendations.
+               Not all machine types are available in all zones and regions.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] persistent_disk_type: (Output)
+               Possible values:
+               PERSISTENT_DISK_TYPE_STANDARD
+               PERSISTENT_DISK_TYPE_BALANCED
+               PERSISTENT_DISK_TYPE_SSD
+        """
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
+        if machine_preferences is not None:
+            pulumi.set(__self__, "machine_preferences", machine_preferences)
+        if persistent_disk_type is not None:
+            pulumi.set(__self__, "persistent_disk_type", persistent_disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        LICENSE_TYPE_DEFAULT
+        LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+        """
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "license_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machinePreferences")
+    def machine_preferences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs']]]]:
+        """
+        (Output)
+        The type of machines to consider when calculating virtual machine migration
+        insights and recommendations.
+        Not all machine types are available in all zones and regions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_preferences")
+
+    @machine_preferences.setter
+    def machine_preferences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs']]]]):
+        pulumi.set(self, "machine_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentDiskType")
+    def persistent_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values:
+        PERSISTENT_DISK_TYPE_STANDARD
+        PERSISTENT_DISK_TYPE_BALANCED
+        PERSISTENT_DISK_TYPE_SSD
+        """
+        return pulumi.get(self, "persistent_disk_type")
+
+    @persistent_disk_type.setter
+    def persistent_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "persistent_disk_type", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgsDict(TypedDict):
+    allowed_machine_series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgsDict']]]]]
+    """
+    (Output)
+    Compute Engine machine series to consider for insights and recommendations.
+    If empty, no restriction is applied on the machine series.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceArgs:
+    def __init__(__self__, *,
+                 allowed_machine_series: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs']]] allowed_machine_series: (Output)
+               Compute Engine machine series to consider for insights and recommendations.
+               If empty, no restriction is applied on the machine series.
+               Structure is documented below.
+        """
+        if allowed_machine_series is not None:
+            pulumi.set(__self__, "allowed_machine_series", allowed_machine_series)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedMachineSeries")
+    def allowed_machine_series(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs']]]]:
+        """
+        (Output)
+        Compute Engine machine series to consider for insights and recommendations.
+        If empty, no restriction is applied on the machine series.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_machine_series")
+
+    @allowed_machine_series.setter
+    def allowed_machine_series(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs']]]]):
+        pulumi.set(self, "allowed_machine_series", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+    on the displayName of
+    cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeriesArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] code: (Output)
+               Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+               on the displayName of
+               cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+        on the displayName of
+        cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgsDict(TypedDict):
+    preferred_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    A list of preferred regions,
+    ordered by the most preferred region first.
+    Set only valid Google Cloud region names.
+    See https://cloud.google.com/compute/docs/regions-zones
+    for available regions.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreferenceArgs:
+    def __init__(__self__, *,
+                 preferred_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_regions: (Output)
+               A list of preferred regions,
+               ordered by the most preferred region first.
+               Set only valid Google Cloud region names.
+               See https://cloud.google.com/compute/docs/regions-zones
+               for available regions.
+        """
+        if preferred_regions is not None:
+            pulumi.set(__self__, "preferred_regions", preferred_regions)
+
+    @_builtins.property
+    @pulumi.getter(name="preferredRegions")
+    def preferred_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        A list of preferred regions,
+        ordered by the most preferred region first.
+        Set only valid Google Cloud region names.
+        See https://cloud.google.com/compute/docs/regions-zones
+        for available regions.
+        """
+        return pulumi.get(self, "preferred_regions")
+
+    @preferred_regions.setter
+    def preferred_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "preferred_regions", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Commitment plan to consider when calculating costs for virtual machine
+    insights and recommendations.
+    If you are unsure which value to set, a 3 year commitment plan is often a
+    good value to start with.
+    Possible values:
+    ON_DEMAND
+    COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+    COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+    """
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    CPU overcommit ratio.
+    Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+    """
+    host_maintenance_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Sole Tenancy nodes maintenance policy.
+    Possible values:
+    HOST_MAINTENANCE_POLICY_DEFAULT
+    HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+    HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+    """
+    node_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgsDict']]]]]
+    """
+    (Output)
+    A list of sole tenant node types.
+    An empty list means that all possible node types will be considered.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceArgs:
+    def __init__(__self__, *,
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 host_maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_types: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] commitment_plan: (Output)
+               Commitment plan to consider when calculating costs for virtual machine
+               insights and recommendations.
+               If you are unsure which value to set, a 3 year commitment plan is often a
+               good value to start with.
+               Possible values:
+               ON_DEMAND
+               COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+               COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        :param pulumi.Input[_builtins.float] cpu_overcommit_ratio: (Output)
+               CPU overcommit ratio.
+               Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        :param pulumi.Input[_builtins.str] host_maintenance_policy: (Output)
+               Sole Tenancy nodes maintenance policy.
+               Possible values:
+               HOST_MAINTENANCE_POLICY_DEFAULT
+               HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+               HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs']]] node_types: (Output)
+               A list of sole tenant node types.
+               An empty list means that all possible node types will be considered.
+               Structure is documented below.
+        """
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if cpu_overcommit_ratio is not None:
+            pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        if host_maintenance_policy is not None:
+            pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
+        if node_types is not None:
+            pulumi.set(__self__, "node_types", node_types)
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Commitment plan to consider when calculating costs for virtual machine
+        insights and recommendations.
+        If you are unsure which value to set, a 3 year commitment plan is often a
+        good value to start with.
+        Possible values:
+        ON_DEMAND
+        COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+        COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        CPU overcommit ratio.
+        Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @cpu_overcommit_ratio.setter
+    def cpu_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "cpu_overcommit_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Sole Tenancy nodes maintenance policy.
+        Possible values:
+        HOST_MAINTENANCE_POLICY_DEFAULT
+        HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+        HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+        """
+        return pulumi.get(self, "host_maintenance_policy")
+
+    @host_maintenance_policy.setter
+    def host_maintenance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "host_maintenance_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeTypes")
+    def node_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs']]]]:
+        """
+        (Output)
+        A list of sole tenant node types.
+        An empty list means that all possible node types will be considered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_types")
+
+    @node_types.setter
+    def node_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs']]]]):
+        pulumi.set(self, "node_types", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgsDict(TypedDict):
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the Sole Tenant node. Consult
+    https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeTypeArgs:
+    def __init__(__self__, *,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] node_name: (Output)
+               Name of the Sole Tenant node. Consult
+               https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the Sole Tenant node. Consult
+        https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_name", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Commitment plan to consider when calculating costs for virtual machine
+    insights and recommendations.
+    If you are unsure which value to set, a 3 year commitment plan is often a
+    good value to start with.
+    Possible values:
+    ON_DEMAND
+    COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+    COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+    COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+    """
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    CPU overcommit ratio.
+    Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+    """
+    memory_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    Memory overcommit ratio.
+    Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+    """
+    storage_deduplication_compression_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The Deduplication and Compression ratio is based on the logical (Used
+    Before) space required to store data before applying deduplication and
+    compression, in relation to the physical (Used After) space required after
+    applying deduplication and compression. Specifically, the ratio is the Used
+    Before space divided by the Used After space. For example, if the Used
+    Before space is 3 GB, but the physical Used After space is 1 GB, the
+    deduplication and compression ratio is 3x. Acceptable values are
+    between 1.0 and 4.0.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreferenceArgs:
+    def __init__(__self__, *,
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 storage_deduplication_compression_ratio: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] commitment_plan: (Output)
+               Commitment plan to consider when calculating costs for virtual machine
+               insights and recommendations.
+               If you are unsure which value to set, a 3 year commitment plan is often a
+               good value to start with.
+               Possible values:
+               ON_DEMAND
+               COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+               COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+               COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        :param pulumi.Input[_builtins.float] cpu_overcommit_ratio: (Output)
+               CPU overcommit ratio.
+               Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        :param pulumi.Input[_builtins.float] memory_overcommit_ratio: (Output)
+               Memory overcommit ratio.
+               Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        :param pulumi.Input[_builtins.float] storage_deduplication_compression_ratio: (Output)
+               The Deduplication and Compression ratio is based on the logical (Used
+               Before) space required to store data before applying deduplication and
+               compression, in relation to the physical (Used After) space required after
+               applying deduplication and compression. Specifically, the ratio is the Used
+               Before space divided by the Used After space. For example, if the Used
+               Before space is 3 GB, but the physical Used After space is 1 GB, the
+               deduplication and compression ratio is 3x. Acceptable values are
+               between 1.0 and 4.0.
+        """
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if cpu_overcommit_ratio is not None:
+            pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        if memory_overcommit_ratio is not None:
+            pulumi.set(__self__, "memory_overcommit_ratio", memory_overcommit_ratio)
+        if storage_deduplication_compression_ratio is not None:
+            pulumi.set(__self__, "storage_deduplication_compression_ratio", storage_deduplication_compression_ratio)
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Commitment plan to consider when calculating costs for virtual machine
+        insights and recommendations.
+        If you are unsure which value to set, a 3 year commitment plan is often a
+        good value to start with.
+        Possible values:
+        ON_DEMAND
+        COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+        COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+        COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        CPU overcommit ratio.
+        Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @cpu_overcommit_ratio.setter
+    def cpu_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "cpu_overcommit_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryOvercommitRatio")
+    def memory_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        Memory overcommit ratio.
+        Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        """
+        return pulumi.get(self, "memory_overcommit_ratio")
+
+    @memory_overcommit_ratio.setter
+    def memory_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "memory_overcommit_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageDeduplicationCompressionRatio")
+    def storage_deduplication_compression_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The Deduplication and Compression ratio is based on the logical (Used
+        Before) space required to store data before applying deduplication and
+        compression, in relation to the physical (Used After) space required after
+        applying deduplication and compression. Specifically, the ratio is the Used
+        Before space divided by the Used After space. For example, if the Used
+        Before space is 3 GB, but the physical Used After space is 1 GB, the
+        deduplication and compression ratio is 3x. Acceptable values are
+        between 1.0 and 4.0.
+        """
+        return pulumi.get(self, "storage_deduplication_compression_ratio")
+
+    @storage_deduplication_compression_ratio.setter
+    def storage_deduplication_compression_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "storage_deduplication_compression_ratio", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostComputeArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgressArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicenseArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOtherArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorageArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The three-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999 inclusive.
+    If `units` is positive, `nanos` must be positive or zero.
+    If `units` is zero, `nanos` can be positive, zero, or negative.
+    If `units` is negative, `nanos` must be negative or zero.
+    For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The whole units of the amount.
+    For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotalArgs:
+    def __init__(__self__, *,
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] currency_code: (Output)
+               The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[_builtins.int] nanos: (Output)
+               Number of nano (10^-9) units of the amount.
+               The value must be between -999,999,999 and +999,999,999 inclusive.
+               If `units` is positive, `nanos` must be positive or zero.
+               If `units` is zero, `nanos` can be positive, zero, or negative.
+               If `units` is negative, `nanos` must be negative or zero.
+               For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[_builtins.str] units: (Output)
+               The whole units of the amount.
+               For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Number of nano (10^-9) units of the amount.
+        The value must be between -999,999,999 and +999,999,999 inclusive.
+        If `units` is positive, `nanos` must be positive or zero.
+        If `units` is zero, `nanos` can be positive, zero, or negative.
+        If `units` is negative, `nanos` must be negative or zero.
+        For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The whole units of the amount.
+        For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "units", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    allocated_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    Set of regions in which the assets were allocated
+    """
+    node_allocations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgsDict']]]]]
+    """
+    (Output)
+    Set of per-nodetype allocation records
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocated_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_allocations: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allocated_regions: (Output)
+               Set of regions in which the assets were allocated
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs']]] node_allocations: (Output)
+               Set of per-nodetype allocation records
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if allocated_regions is not None:
+            pulumi.set(__self__, "allocated_regions", allocated_regions)
+        if node_allocations is not None:
+            pulumi.set(__self__, "node_allocations", node_allocations)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedRegions")
+    def allocated_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Set of regions in which the assets were allocated
+        """
+        return pulumi.get(self, "allocated_regions")
+
+    @allocated_regions.setter
+    def allocated_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allocated_regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeAllocations")
+    def node_allocations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs']]]]:
+        """
+        (Output)
+        Set of per-nodetype allocation records
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_allocations")
+
+    @node_allocations.setter
+    def node_allocations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs']]]]):
+        pulumi.set(self, "node_allocations", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    node_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of this node type to be provisioned
+    """
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgsDict']]]]]
+    """
+    (Output)
+    A Sole Tenant node type.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[_builtins.str] node_count: (Output)
+               Count of this node type to be provisioned
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs']]] nodes: (Output)
+               A Sole Tenant node type.
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of this node type to be provisioned
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs']]]]:
+        """
+        (Output)
+        A Sole Tenant node type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs']]]]):
+        pulumi.set(self, "nodes", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgsDict(TypedDict):
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Name of the Sole Tenant node. Consult
+    https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNodeArgs:
+    def __init__(__self__, *,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] node_name: (Output)
+               Name of the Sole Tenant node. Consult
+               https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Name of the Sole Tenant node. Consult
+        https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_name", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    allocated_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    Set of regions in which the assets were allocated
+    """
+    node_allocations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgsDict']]]]]
+    """
+    (Output)
+    Set of per-nodetype allocation records
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocated_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_allocations: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allocated_regions: (Output)
+               Set of regions in which the assets were allocated
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs']]] node_allocations: (Output)
+               Set of per-nodetype allocation records
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if allocated_regions is not None:
+            pulumi.set(__self__, "allocated_regions", allocated_regions)
+        if node_allocations is not None:
+            pulumi.set(__self__, "node_allocations", node_allocations)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedRegions")
+    def allocated_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Set of regions in which the assets were allocated
+        """
+        return pulumi.get(self, "allocated_regions")
+
+    @allocated_regions.setter
+    def allocated_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allocated_regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeAllocations")
+    def node_allocations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs']]]]:
+        """
+        (Output)
+        Set of per-nodetype allocation records
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_allocations")
+
+    @node_allocations.setter
+    def node_allocations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs']]]]):
+        pulumi.set(self, "node_allocations", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgsDict(TypedDict):
+    allocated_asset_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of assets allocated to these nodes
+    """
+    node_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Count of this node type to be provisioned
+    """
+    vmware_nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgsDict']]]]]
+    """
+    (Output)
+    A VMWare Engine Node
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationArgs:
+    def __init__(__self__, *,
+                 allocated_asset_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocated_asset_count: (Output)
+               Count of assets allocated to these nodes
+        :param pulumi.Input[_builtins.str] node_count: (Output)
+               Count of this node type to be provisioned
+        :param pulumi.Input[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs']]] vmware_nodes: (Output)
+               A VMWare Engine Node
+               Structure is documented below.
+        """
+        if allocated_asset_count is not None:
+            pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if vmware_nodes is not None:
+            pulumi.set(__self__, "vmware_nodes", vmware_nodes)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @allocated_asset_count.setter
+    def allocated_asset_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allocated_asset_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Count of this node type to be provisioned
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmwareNodes")
+    def vmware_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs']]]]:
+        """
+        (Output)
+        A VMWare Engine Node
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vmware_nodes")
+
+    @vmware_nodes.setter
+    def vmware_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs']]]]):
+        pulumi.set(self, "vmware_nodes", value)
+
+
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+    on the displayName of
+    cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+    """
+
+@pulumi.input_type
+class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNodeArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] code: (Output)
+               Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+               on the displayName of
+               cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
+        on the displayName of
+        cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code", value)
 
 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationAutoCreatedReservationsDurationArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationCommitmentInfoArgs;
+import com.pulumi.gcp.compute.inputs.FutureReservationParamsArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationSpecificSkuPropertiesArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationStatusArgs;
@@ -217,6 +218,23 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> namePrefix() {
         return Optional.ofNullable(this.namePrefix);
+    }
+
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<FutureReservationParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FutureReservationParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
     }
 
     /**
@@ -444,6 +462,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
         this.description = $.description;
         this.name = $.name;
         this.namePrefix = $.namePrefix;
+        this.params = $.params;
         this.planningStatus = $.planningStatus;
         this.project = $.project;
         this.reservationMode = $.reservationMode;
@@ -736,6 +755,29 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
          */
         public Builder namePrefix(String namePrefix) {
             return namePrefix(Output.of(namePrefix));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<FutureReservationParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(FutureReservationParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

@@ -110,7 +110,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      * 
@@ -119,8 +118,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<BackupOntapSourceArgs> ontapSource;
 
     /**
-     * @return (Optional, Beta)
-     * Details of the ONTAP source volume and snapshot.
+     * @return Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      * 
      */
@@ -349,8 +347,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ontapSource (Optional, Beta)
-         * Details of the ONTAP source volume and snapshot.
+         * @param ontapSource Details of the ONTAP source volume and snapshot.
          * Structure is documented below.
          * 
          * @return builder
@@ -362,8 +359,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ontapSource (Optional, Beta)
-         * Details of the ONTAP source volume and snapshot.
+         * @param ontapSource Details of the ONTAP source volume and snapshot.
          * Structure is documented below.
          * 
          * @return builder

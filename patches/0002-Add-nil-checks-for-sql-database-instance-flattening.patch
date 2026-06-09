@@ -5,7 +5,7 @@ Subject: [PATCH] Add nil checks for sql database instance flattening
 
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index bb9c24d90..fb26bb49e 100644
+index bb9c24d909..fb26bb49e1 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
 @@ -3174,6 +3174,10 @@ func flattenDataCacheConfig(d *sqladmin.DataCacheConfig) []map[string]interface{

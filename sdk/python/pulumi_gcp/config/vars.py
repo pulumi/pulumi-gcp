@@ -242,6 +242,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('computeCustomEndpoint')
 
     @_builtins.property
+    def config_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('configCustomEndpoint')
+
+    @_builtins.property
     def contact_center_insights_custom_endpoint(self) -> Optional[str]:
         return __config__.get('contactCenterInsightsCustomEndpoint')
 

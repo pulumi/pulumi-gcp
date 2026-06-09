@@ -102,6 +102,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("gcfsConfig")]
         public Input<Inputs.NodePoolNodeConfigGcfsConfigGetArgs>? GcfsConfig { get; set; }
 
+        /// <summary>
+        /// The type of GPUDirect strategy to enable on the node.
+        /// </summary>
+        [Input("gpudirectStrategy")]
+        public Input<string>? GpudirectStrategy { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.NodePoolNodeConfigGuestAcceleratorGetArgs>? _guestAccelerators;
 

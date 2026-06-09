@@ -22,6 +22,22 @@ public final class SubnetworkSecondaryIpRange {
      */
     private @Nullable String ipCidrRange;
     /**
+     * @return (Optional, Beta)
+     * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+     * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+     * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+     * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+     * 
+     */
+    private @Nullable String ipCollection;
+    /**
+     * @return (Optional, Beta)
+     * The IP version of the secondary range. If not specified, IPV4 is used.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    private @Nullable String ipVersion;
+    /**
      * @return The name associated with this subnetwork secondary range, used
      * when adding an alias IP range to a VM instance. The name must
      * be 1-63 characters long, and comply with RFC1035. The name
@@ -47,6 +63,26 @@ public final class SubnetworkSecondaryIpRange {
      */
     public Optional<String> ipCidrRange() {
         return Optional.ofNullable(this.ipCidrRange);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+     * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+     * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+     * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+     * 
+     */
+    public Optional<String> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+    /**
+     * @return (Optional, Beta)
+     * The IP version of the secondary range. If not specified, IPV4 is used.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<String> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
     }
     /**
      * @return The name associated with this subnetwork secondary range, used
@@ -77,12 +113,16 @@ public final class SubnetworkSecondaryIpRange {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipCidrRange;
+        private @Nullable String ipCollection;
+        private @Nullable String ipVersion;
         private String rangeName;
         private @Nullable String reservedInternalRange;
         public Builder() {}
         public Builder(SubnetworkSecondaryIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipCidrRange = defaults.ipCidrRange;
+    	      this.ipCollection = defaults.ipCollection;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.rangeName = defaults.rangeName;
     	      this.reservedInternalRange = defaults.reservedInternalRange;
         }
@@ -91,6 +131,18 @@ public final class SubnetworkSecondaryIpRange {
         public Builder ipCidrRange(@Nullable String ipCidrRange) {
 
             this.ipCidrRange = ipCidrRange;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipCollection(@Nullable String ipCollection) {
+
+            this.ipCollection = ipCollection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(@Nullable String ipVersion) {
+
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +162,8 @@ public final class SubnetworkSecondaryIpRange {
         public SubnetworkSecondaryIpRange build() {
             final var _resultValue = new SubnetworkSecondaryIpRange();
             _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.ipCollection = ipCollection;
+            _resultValue.ipVersion = ipVersion;
             _resultValue.rangeName = rangeName;
             _resultValue.reservedInternalRange = reservedInternalRange;
             return _resultValue;

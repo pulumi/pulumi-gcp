@@ -29,6 +29,7 @@ from .environment import *
 from .fulfillment import *
 from .generator import *
 from .intent import *
+from .sip_trunk import *
 from .version import *
 from ._inputs import *
 from . import outputs

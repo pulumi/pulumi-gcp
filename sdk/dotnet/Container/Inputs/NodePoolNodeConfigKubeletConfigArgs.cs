@@ -55,6 +55,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? CpuManagerPolicy { get; set; }
 
         /// <summary>
+        /// Contains configuration options to modify node-level parameters for container restart behavior.
+        /// </summary>
+        [Input("crashLoopBackOff")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs>? CrashLoopBackOff { get; set; }
+
+        /// <summary>
         /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
         /// </summary>
         [Input("evictionMaxPodGracePeriodSeconds")]

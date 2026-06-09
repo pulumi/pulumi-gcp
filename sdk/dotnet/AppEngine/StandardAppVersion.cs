@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         VersionId = "v1",
     ///         Service = "myapp",
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         VersionId = "v2",
     ///         Service = "myapp",
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         AppEngineApis = true,
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {

@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Example{}
 	case "gcp:ces/guardrail:Guardrail":
 		r = &Guardrail{}
+	case "gcp:ces/securitySettings:SecuritySettings":
+		r = &SecuritySettings{}
 	case "gcp:ces/tool:Tool":
 		r = &Tool{}
 	case "gcp:ces/toolset:Toolset":
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"ces/guardrail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"ces/securitySettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

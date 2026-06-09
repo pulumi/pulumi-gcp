@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Generator{}
 	case "gcp:diagflow/intent:Intent":
 		r = &Intent{}
+	case "gcp:diagflow/sipTrunk:SipTrunk":
+		r = &SipTrunk{}
 	case "gcp:diagflow/version:Version":
 		r = &Version{}
 	default:
@@ -195,6 +197,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/intent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/sipTrunk",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

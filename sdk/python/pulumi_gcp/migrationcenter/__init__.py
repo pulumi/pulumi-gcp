@@ -6,7 +6,13 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .assets_export_job import *
+from .discovery_client import *
 from .group import *
 from .preference_set import *
+from .report import *
+from .report_config import *
+from .settings import *
+from .source import *
 from ._inputs import *
 from . import outputs

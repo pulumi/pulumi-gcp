@@ -20,8 +20,13 @@ from .get_cloud_vm_cluster import *
 from .get_cloud_vm_clusters import *
 from .get_db_nodes import *
 from .get_db_servers import *
+from .get_goldengate_connection_types import *
+from .get_goldengate_deployment_environments import *
 from .get_odb_network import *
 from .get_odb_subnet import *
+from .goldengate_connection import *
+from .goldengate_connection_assignment import *
+from .goldengate_deployment import *
 from .odb_network import *
 from .odb_subnet import *
 from ._inputs import *

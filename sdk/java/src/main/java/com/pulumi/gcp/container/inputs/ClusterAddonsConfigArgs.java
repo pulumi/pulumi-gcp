@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigAgentSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigCloudrunConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigConfigConnectorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigDnsCacheConfigArgs;
@@ -32,6 +33,21 @@ import javax.annotation.Nullable;
 public final class ClusterAddonsConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterAddonsConfigArgs Empty = new ClusterAddonsConfigArgs();
+
+    /**
+     * Configuration for the Agent Sandbox addon. Structure is documented below:
+     * 
+     */
+    @Import(name="agentSandboxConfig")
+    private @Nullable Output<ClusterAddonsConfigAgentSandboxConfigArgs> agentSandboxConfig;
+
+    /**
+     * @return Configuration for the Agent Sandbox addon. Structure is documented below:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigAgentSandboxConfigArgs>> agentSandboxConfig() {
+        return Optional.ofNullable(this.agentSandboxConfig);
+    }
 
     /**
      * . Structure is documented below.
@@ -416,6 +432,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private ClusterAddonsConfigArgs() {}
 
     private ClusterAddonsConfigArgs(ClusterAddonsConfigArgs $) {
+        this.agentSandboxConfig = $.agentSandboxConfig;
         this.cloudrunConfig = $.cloudrunConfig;
         this.configConnectorConfig = $.configConnectorConfig;
         this.dnsCacheConfig = $.dnsCacheConfig;
@@ -452,6 +469,27 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
         public Builder(ClusterAddonsConfigArgs defaults) {
             $ = new ClusterAddonsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentSandboxConfig Configuration for the Agent Sandbox addon. Structure is documented below:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentSandboxConfig(@Nullable Output<ClusterAddonsConfigAgentSandboxConfigArgs> agentSandboxConfig) {
+            $.agentSandboxConfig = agentSandboxConfig;
+            return this;
+        }
+
+        /**
+         * @param agentSandboxConfig Configuration for the Agent Sandbox addon. Structure is documented below:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentSandboxConfig(ClusterAddonsConfigAgentSandboxConfigArgs agentSandboxConfig) {
+            return agentSandboxConfig(Output.of(agentSandboxConfig));
         }
 
         /**

@@ -1152,7 +1152,7 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+    The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
     """
     edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1293,7 +1293,7 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[_builtins.bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         :param pulumi.Input[_builtins.int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[_builtins.int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
-        :param pulumi.Input[_builtins.str] disk_type: The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+        :param pulumi.Input[_builtins.str] disk_type: The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
         :param pulumi.Input[_builtins.str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         :param pulumi.Input[_builtins.str] effective_availability_type: (Computed) The availability type of
                the Cloud SQL instance, high availability (REGIONAL) or single zone
@@ -1636,7 +1636,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+        The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
         """
         return pulumi.get(self, "disk_type")
 

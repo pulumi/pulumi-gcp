@@ -20,6 +20,65 @@ import (
 // * How-to Guides
 //   - [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 //
+// ## Example Usage
+//
+// ### Region Ssl Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSslPolicy(ctx, "region-ssl-policy", &compute.RegionSslPolicyArgs{
+//				Name:    pulumi.String("region-ssl-policy"),
+//				Region:  pulumi.String("us-central1"),
+//				Profile: pulumi.String("MODERN"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Ssl Policy Post Quantum
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSslPolicy(ctx, "post-quantum-region-ssl-policy", &compute.RegionSslPolicyArgs{
+//				Name:                   pulumi.String("post-quantum-region-ssl-policy"),
+//				Region:                 pulumi.String("us-central1"),
+//				Profile:                pulumi.String("MODERN"),
+//				MinTlsVersion:          pulumi.String("TLS_1_2"),
+//				PostQuantumKeyExchange: pulumi.String("ENABLED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RegionSslPolicy can be imported using any of these accepted formats:
@@ -78,6 +137,17 @@ type RegionSslPolicy struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+	// X25519MLKEM768 key exchange when clients advertise support for it.
+	// When set to `DEFAULT`, or if no SSL Policy is attached to
+	// the target proxy, the load balancer disallows X25519MLKEM768 key
+	// exchange before October 2026, and allows it afterward. When set to
+	// `ENABLED`, the load balancer allows X25519MLKEM768 key
+	// exchange. When set to `DEFERRED`, the load balancer
+	// disallows X25519MLKEM768 key exchange until October 2027, and allows
+	// it afterward.
+	// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+	PostQuantumKeyExchange pulumi.StringPtrOutput `pulumi:"postQuantumKeyExchange"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
@@ -167,6 +237,17 @@ type regionSslPolicyState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+	// X25519MLKEM768 key exchange when clients advertise support for it.
+	// When set to `DEFAULT`, or if no SSL Policy is attached to
+	// the target proxy, the load balancer disallows X25519MLKEM768 key
+	// exchange before October 2026, and allows it afterward. When set to
+	// `ENABLED`, the load balancer allows X25519MLKEM768 key
+	// exchange. When set to `DEFERRED`, the load balancer
+	// disallows X25519MLKEM768 key exchange until October 2027, and allows
+	// it afterward.
+	// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+	PostQuantumKeyExchange *string `pulumi:"postQuantumKeyExchange"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
@@ -227,6 +308,17 @@ type RegionSslPolicyState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+	// X25519MLKEM768 key exchange when clients advertise support for it.
+	// When set to `DEFAULT`, or if no SSL Policy is attached to
+	// the target proxy, the load balancer disallows X25519MLKEM768 key
+	// exchange before October 2026, and allows it afterward. When set to
+	// `ENABLED`, the load balancer allows X25519MLKEM768 key
+	// exchange. When set to `DEFERRED`, the load balancer
+	// disallows X25519MLKEM768 key exchange until October 2027, and allows
+	// it afterward.
+	// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+	PostQuantumKeyExchange pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
@@ -284,6 +376,17 @@ type regionSslPolicyArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+	// X25519MLKEM768 key exchange when clients advertise support for it.
+	// When set to `DEFAULT`, or if no SSL Policy is attached to
+	// the target proxy, the load balancer disallows X25519MLKEM768 key
+	// exchange before October 2026, and allows it afterward. When set to
+	// `ENABLED`, the load balancer allows X25519MLKEM768 key
+	// exchange. When set to `DEFERRED`, the load balancer
+	// disallows X25519MLKEM768 key exchange until October 2027, and allows
+	// it afterward.
+	// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+	PostQuantumKeyExchange *string `pulumi:"postQuantumKeyExchange"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
@@ -336,6 +439,17 @@ type RegionSslPolicyArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+	// X25519MLKEM768 key exchange when clients advertise support for it.
+	// When set to `DEFAULT`, or if no SSL Policy is attached to
+	// the target proxy, the load balancer disallows X25519MLKEM768 key
+	// exchange before October 2026, and allows it afterward. When set to
+	// `ENABLED`, the load balancer allows X25519MLKEM768 key
+	// exchange. When set to `DEFERRED`, the load balancer
+	// disallows X25519MLKEM768 key exchange until October 2027, and allows
+	// it afterward.
+	// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+	PostQuantumKeyExchange pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
@@ -502,6 +616,20 @@ func (o RegionSslPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 // character, which cannot be a dash.
 func (o RegionSslPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+// X25519MLKEM768 key exchange when clients advertise support for it.
+// When set to `DEFAULT`, or if no SSL Policy is attached to
+// the target proxy, the load balancer disallows X25519MLKEM768 key
+// exchange before October 2026, and allows it afterward. When set to
+// `ENABLED`, the load balancer allows X25519MLKEM768 key
+// exchange. When set to `DEFERRED`, the load balancer
+// disallows X25519MLKEM768 key exchange until October 2027, and allows
+// it afterward.
+// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+func (o RegionSslPolicyOutput) PostQuantumKeyExchange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringPtrOutput { return v.PostQuantumKeyExchange }).(pulumi.StringPtrOutput)
 }
 
 // Profile specifies the set of SSL features that can be used by the

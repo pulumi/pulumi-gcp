@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetCloudVmClusterIdentityConnectorResult> IdentityConnectors;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly string Name;
@@ -210,6 +211,8 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string id,
 
+            ImmutableArray<Outputs.GetCloudVmClusterIdentityConnectorResult> identityConnectors,
+
             ImmutableDictionary<string, string> labels,
 
             string location,
@@ -240,6 +243,7 @@ namespace Pulumi.Gcp.OracleDatabase
             ExadataInfrastructure = exadataInfrastructure;
             GcpOracleZone = gcpOracleZone;
             Id = id;
+            IdentityConnectors = identityConnectors;
             Labels = labels;
             Location = location;
             Name = name;

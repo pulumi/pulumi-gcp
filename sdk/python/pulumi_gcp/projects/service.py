@@ -38,6 +38,8 @@ class ServiceArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+               If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+               Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -97,6 +99,8 @@ class ServiceArgs:
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
+        If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+        Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -169,6 +173,8 @@ class _ServiceState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+               If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+               Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -218,6 +224,8 @@ class _ServiceState:
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
+        If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+        Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -352,6 +360,8 @@ class Service(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+               If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+               Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -487,6 +497,8 @@ class Service(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+               If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+               Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -531,6 +543,8 @@ class Service(pulumi.CustomResource):
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
+        If `disable_on_destroy` is set to `false`, the service will still be enabled when the
+        Terraform resource is destroyed even if the `deletion_policy` field is set to "DELETE".
         """
         return pulumi.get(self, "deletion_policy")
 

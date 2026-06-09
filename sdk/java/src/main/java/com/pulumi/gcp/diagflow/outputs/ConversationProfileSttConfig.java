@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class ConversationProfileSttConfig {
     /**
      * @return Audio encoding of the audio content to process.
-     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
      * 
      */
     private @Nullable String audioEncoding;
@@ -47,7 +47,7 @@ public final class ConversationProfileSttConfig {
      */
     private @Nullable String speechModelVariant;
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     private @Nullable Boolean useTimeoutBasedEndpointing;
@@ -55,7 +55,7 @@ public final class ConversationProfileSttConfig {
     private ConversationProfileSttConfig() {}
     /**
      * @return Audio encoding of the audio content to process.
-     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
      * 
      */
     public Optional<String> audioEncoding() {
@@ -99,7 +99,7 @@ public final class ConversationProfileSttConfig {
         return Optional.ofNullable(this.speechModelVariant);
     }
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     public Optional<Boolean> useTimeoutBasedEndpointing() {

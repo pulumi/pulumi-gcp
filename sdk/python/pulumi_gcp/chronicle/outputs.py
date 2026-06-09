@@ -269,6 +269,7 @@ __all__ = [
     'FeedDetailsWorkspaceUsersSettingsAuthenticationClaims',
     'FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentials',
     'FeedFailureDetails',
+    'FindingsRefinementOutcomeFilter',
     'NativeDashboardChart',
     'NativeDashboardChartChartLayout',
     'NativeDashboardFilter',
@@ -15777,6 +15778,77 @@ class FeedFailureDetails(dict):
         feed transfer failure may or may not result in http error code.
         """
         return pulumi.get(self, "http_error_code")
+
+
+@pulumi.output_type
+class FindingsRefinementOutcomeFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outcomeFilterOperator":
+            suggest = "outcome_filter_operator"
+        elif key == "outcomeValue":
+            suggest = "outcome_value"
+        elif key == "outcomeVariable":
+            suggest = "outcome_variable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FindingsRefinementOutcomeFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FindingsRefinementOutcomeFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FindingsRefinementOutcomeFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 outcome_filter_operator: _builtins.str,
+                 outcome_value: _builtins.str,
+                 outcome_variable: _builtins.str):
+        """
+        :param _builtins.str outcome_filter_operator: The operator to be applied to the outcome variable.
+               Possible values:
+               EQUAL
+               CONTAINS
+               MATCHES_REGEX
+               MATCHES_CIDR
+        :param _builtins.str outcome_value: The value of the outcome variable to match.
+        :param _builtins.str outcome_variable: The outcome variable name.
+        """
+        pulumi.set(__self__, "outcome_filter_operator", outcome_filter_operator)
+        pulumi.set(__self__, "outcome_value", outcome_value)
+        pulumi.set(__self__, "outcome_variable", outcome_variable)
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeFilterOperator")
+    def outcome_filter_operator(self) -> _builtins.str:
+        """
+        The operator to be applied to the outcome variable.
+        Possible values:
+        EQUAL
+        CONTAINS
+        MATCHES_REGEX
+        MATCHES_CIDR
+        """
+        return pulumi.get(self, "outcome_filter_operator")
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeValue")
+    def outcome_value(self) -> _builtins.str:
+        """
+        The value of the outcome variable to match.
+        """
+        return pulumi.get(self, "outcome_value")
+
+    @_builtins.property
+    @pulumi.getter(name="outcomeVariable")
+    def outcome_variable(self) -> _builtins.str:
+        """
+        The outcome variable name.
+        """
+        return pulumi.get(self, "outcome_variable")
 
 
 @pulumi.output_type

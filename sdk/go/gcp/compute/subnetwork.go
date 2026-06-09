@@ -473,6 +473,91 @@ import (
 //	}
 //
 // ```
+// ### Subnetwork With Secondary Ipv6 Range
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-with-secondary-ranges"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//				EnableUlaInternalIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ipv6Pap, err := compute.NewPublicAdvertisedPrefix(ctx, "ipv6_pap", &compute.PublicAdvertisedPrefixArgs{
+//				Name:           pulumi.String("pap-for-secondary-ranges"),
+//				IpCidrRange:    pulumi.String("2001:db8::/40"),
+//				PdpScope:       pulumi.String("REGIONAL"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//				Description:    pulumi.String("GOOGLE_INTERNAL_TEST_PREFIX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ipv6Pdp, err := compute.NewPublicDelegatedPrefix(ctx, "ipv6_pdp", &compute.PublicDelegatedPrefixArgs{
+//				Name:         pulumi.String("pdp-for-secondary-ranges"),
+//				Region:       pulumi.String("us-central1"),
+//				Description:  pulumi.String("PDP in internal subnet mode"),
+//				IpCidrRange:  pulumi.String("2001:db8::/48"),
+//				ParentPrefix: ipv6Pap.ID(),
+//				Mode:         pulumi.String("DELEGATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ipv6SubPdp, err := compute.NewPublicDelegatedPrefix(ctx, "ipv6_sub_pdp", &compute.PublicDelegatedPrefixArgs{
+//				Name:         pulumi.String("sub-pdp-for-secondary-ranges"),
+//				Region:       pulumi.String("us-central1"),
+//				IpCidrRange:  pulumi.String("2001:db8::/56"),
+//				ParentPrefix: ipv6Pdp.ID(),
+//				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork_with_secondary_ipv6_range", &compute.SubnetworkArgs{
+//				Name:           pulumi.String("subnet-with-secondary-ranges"),
+//				Region:         pulumi.String("us-central1"),
+//				Network:        custom_test.ID(),
+//				StackType:      pulumi.String("IPV6_ONLY"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName: pulumi.String("v6-ula"),
+//						IpVersion: pulumi.String("IPV6"),
+//					},
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:    pulumi.String("v6-byogua-auto"),
+//						IpVersion:    pulumi.String("IPV6"),
+//						IpCollection: ipv6SubPdp.SelfLink,
+//					},
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:    pulumi.String("v6-byogua-manual"),
+//						IpVersion:    pulumi.String("IPV6"),
+//						IpCollection: ipv6SubPdp.SelfLink,
+//						IpCidrRange:  pulumi.String("2001:db8:0:2::/64"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

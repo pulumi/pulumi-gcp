@@ -1974,11 +1974,11 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgsDi
     """
     raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
 
 @pulumi.input_type
@@ -1991,8 +1991,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs:
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
-        :param pulumi.Input[_builtins.str] raw_key: (Optional)
-        :param pulumi.Input[_builtins.str] rsa_encrypted_key: (Optional)
+        :param pulumi.Input[_builtins.str] raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -2031,7 +2031,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs:
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -2043,7 +2043,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs:
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -2219,11 +2219,11 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgsDi
     """
     raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
 
 @pulumi.input_type
@@ -2236,8 +2236,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs:
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
-        :param pulumi.Input[_builtins.str] raw_key: (Optional)
-        :param pulumi.Input[_builtins.str] rsa_encrypted_key: (Optional)
+        :param pulumi.Input[_builtins.str] raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -2276,7 +2276,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs:
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -2288,7 +2288,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs:
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -4148,11 +4148,11 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgsDict(TypedDict):
     """
     raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional)
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
 
 @pulumi.input_type
@@ -4165,8 +4165,8 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs:
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
-        :param pulumi.Input[_builtins.str] raw_key: (Optional)
-        :param pulumi.Input[_builtins.str] rsa_encrypted_key: (Optional)
+        :param pulumi.Input[_builtins.str] raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -4205,7 +4205,7 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs:
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -4217,7 +4217,7 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs:
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 

@@ -59,7 +59,7 @@ import (
 //			_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__49547"),
+//				Collection: pulumi.String("chatrooms__48675"),
 //				Field:      pulumi.String("basic"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -71,6 +71,90 @@ import (
 //							ArrayConfig: pulumi.String("CONTAINS"),
 //						},
 //					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Field Timestamp Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "timestamp-enterprise", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms"),
+//				Field:      pulumi.String("timestamp"),
+//				TtlConfig:  &firestore.FieldTtlConfigArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Field Timestamp With Ttl Offset Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "timestamp-with-offset-enterprise", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms"),
+//				Field:      pulumi.String("timestamp"),
+//				TtlConfig: &firestore.FieldTtlConfigArgs{
+//					ExpirationOffset: pulumi.String("2592000s"),
 //				},
 //			})
 //			if err != nil {
@@ -122,6 +206,49 @@ import (
 //	}
 //
 // ```
+// ### Firestore Field Timestamp With Ttl Offset
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "timestamp-with-offset", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms"),
+//				Field:      pulumi.String("timestamp"),
+//				TtlConfig: &firestore.FieldTtlConfigArgs{
+//					ExpirationOffset: pulumi.String("2592000s"),
+//				},
+//				IndexConfig: &firestore.FieldIndexConfigArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firestore Field Match Override
 //
 // ```go
@@ -150,7 +277,7 @@ import (
 //			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__48675"),
+//				Collection: pulumi.String("chatrooms__42702"),
 //				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -202,7 +329,7 @@ import (
 //			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__42702"),
+//				Collection: pulumi.String("chatrooms__37426"),
 //				Field:      pulumi.String("*"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -264,7 +391,7 @@ type Field struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrOutput `pulumi:"ttlConfig"`
 }
@@ -330,7 +457,7 @@ type fieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
 }
@@ -361,7 +488,7 @@ type FieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
 }
@@ -393,7 +520,7 @@ type fieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
 }
@@ -422,7 +549,7 @@ type FieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
 }
@@ -560,7 +687,7 @@ func (o FieldOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 // Structure is documented below.
 func (o FieldOutput) TtlConfig() FieldTtlConfigPtrOutput {
 	return o.ApplyT(func(v *Field) FieldTtlConfigPtrOutput { return v.TtlConfig }).(FieldTtlConfigPtrOutput)

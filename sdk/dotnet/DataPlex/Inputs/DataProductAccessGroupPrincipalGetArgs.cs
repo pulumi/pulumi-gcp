@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("googleGroup")]
         public Input<string>? GoogleGroup { get; set; }
 
+        /// <summary>
+        /// Specifies the email of the producer service account.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
         public DataProductAccessGroupPrincipalGetArgs()
         {
         }

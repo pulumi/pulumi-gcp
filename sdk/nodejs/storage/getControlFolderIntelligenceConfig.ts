@@ -7,10 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get information about a Folder Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control FolderIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -18,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlFolderIntelligenceConfig({
- *     name: "123456789",
+ * const _default = gcp.storage.getControlFolderIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -35,7 +32,7 @@ export function getControlFolderIntelligenceConfig(args: GetControlFolderIntelli
  */
 export interface GetControlFolderIntelligenceConfigArgs {
     /**
-     * The number of GCP folder.
+     * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      */
     name: string;
 }
@@ -56,10 +53,7 @@ export interface GetControlFolderIntelligenceConfigResult {
     readonly updateTime: string;
 }
 /**
- * Use this data source to get information about a Folder Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control FolderIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -67,8 +61,8 @@ export interface GetControlFolderIntelligenceConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlFolderIntelligenceConfig({
- *     name: "123456789",
+ * const _default = gcp.storage.getControlFolderIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -84,7 +78,7 @@ export function getControlFolderIntelligenceConfigOutput(args: GetControlFolderI
  */
 export interface GetControlFolderIntelligenceConfigOutputArgs {
     /**
-     * The number of GCP folder.
+     * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      */
     name: pulumi.Input<string>;
 }

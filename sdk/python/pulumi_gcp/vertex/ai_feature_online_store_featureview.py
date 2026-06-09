@@ -667,8 +667,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_9305",
-            name="tf-test_48542",
+            project_id="tf-test_48542",
+            name="tf-test_29506",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1098,8 +1098,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_9305",
-            name="tf-test_48542",
+            project_id="tf-test_48542",
+            name="tf-test_29506",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")

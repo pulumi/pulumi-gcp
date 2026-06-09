@@ -14,14 +14,14 @@ public final class GetControlProjectIntelligenceConfigPlainArgs extends com.pulu
     public static final GetControlProjectIntelligenceConfigPlainArgs Empty = new GetControlProjectIntelligenceConfigPlainArgs();
 
     /**
-     * The name or number of the GCP project.
+     * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name or number of the GCP project.
+     * @return Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetControlProjectIntelligenceConfigPlainArgs extends com.pulu
         }
 
         /**
-         * @param name The name or number of the GCP project.
+         * @param name Identifier of the GCP project. For GCP project, this field can be project name or project number.
          * 
          * @return builder
          * 

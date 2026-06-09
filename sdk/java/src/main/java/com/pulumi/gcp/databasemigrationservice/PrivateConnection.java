@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
  *             .displayName("dbms_pc")
- *             .location("us-central1")
+ *             .location("us-west1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
  *             .displayName("dbms_pc")
- *             .location("us-central1")
+ *             .location("us-west1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs.builder()
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
  *             .name("my-attachment")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .subnetworks(googleComputeSubnetwork.default().id())
  *             .build());
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
  *             .ipCidrRange("10.0.0.0/16")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(defaultNetwork.id())
  *             .build());
  * 

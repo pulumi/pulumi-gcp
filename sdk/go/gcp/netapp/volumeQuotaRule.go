@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "test-network",
+//				Name: pulumi.StringRef("test-network"),
 //			}, nil)
 //			if err != nil {
 //				return err

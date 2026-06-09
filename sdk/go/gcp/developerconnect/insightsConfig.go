@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_44339"),
+//				ProjectId:      pulumi.String("dci-tf-_34599"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -174,7 +174,7 @@ import (
 //			}
 //			myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
 //				Location:      pulumi.String("us-central1"),
-//				ApplicationId: pulumi.String("tf-test-example-application_34599"),
+//				ApplicationId: pulumi.String("tf-test-example-application_79513"),
 //				Scope: &apphub.ApplicationScopeArgs{
 //					Type: pulumi.String("REGIONAL"),
 //				},
@@ -198,7 +198,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
 //				Location:          pulumi.String("us-central1"),
-//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_79513"),
+//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_55500"),
 //				Project:           project.ProjectId,
 //				Annotations:       pulumi.StringMap{},
 //				Labels:            pulumi.StringMap{},
@@ -246,7 +246,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_55500"),
+//				ProjectId:      pulumi.String("dci-tf-_12223"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -384,7 +384,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config_projects", &developerconnect.InsightsConfigArgs{
 //				Location:         pulumi.String("us-central1"),
-//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_12223"),
+//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_49547"),
 //				Project:          project.ProjectId,
 //				Annotations:      pulumi.StringMap{},
 //				Labels:           pulumi.StringMap{},

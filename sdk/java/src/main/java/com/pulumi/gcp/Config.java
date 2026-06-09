@@ -181,6 +181,9 @@ public final class Config {
     public Optional<String> computeCustomEndpoint() {
         return Codegen.stringProp("computeCustomEndpoint").config(config).get();
     }
+    public Optional<String> configCustomEndpoint() {
+        return Codegen.stringProp("configCustomEndpoint").config(config).get();
+    }
     public Optional<String> contactCenterInsightsCustomEndpoint() {
         return Codegen.stringProp("contactCenterInsightsCustomEndpoint").config(config).get();
     }

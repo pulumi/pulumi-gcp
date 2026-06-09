@@ -11,10 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a Folder Storage Intelligence config resource.
-// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-// and
-// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+// Get information about a Cloud Storage Control FolderIntelligenceConfig.
 //
 // ## Example Usage
 //
@@ -31,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.LookupControlFolderIntelligenceConfig(ctx, &storage.LookupControlFolderIntelligenceConfigArgs{
-//				Name: "123456789",
+//				Name: example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +50,7 @@ func LookupControlFolderIntelligenceConfig(ctx *pulumi.Context, args *LookupCont
 
 // A collection of arguments for invoking getControlFolderIntelligenceConfig.
 type LookupControlFolderIntelligenceConfigArgs struct {
-	// The number of GCP folder.
+	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
 	Name string `pulumi:"name"`
 }
 
@@ -80,7 +77,7 @@ func LookupControlFolderIntelligenceConfigOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getControlFolderIntelligenceConfig.
 type LookupControlFolderIntelligenceConfigOutputArgs struct {
-	// The number of GCP folder.
+	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 

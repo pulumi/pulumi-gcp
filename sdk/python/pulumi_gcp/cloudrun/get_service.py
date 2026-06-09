@@ -136,9 +136,10 @@ def get_service(location: Optional[_builtins.str] = None,
                 project: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Get information about a Google Cloud Run Service. For more information see
-    the [official documentation](https://cloud.google.com/run/docs/)
-    and [API](https://cloud.google.com/run/docs/apis).
+    Get information about a Cloud Run Service.
+
+    For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+    the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
 
     ## Example Usage
 
@@ -146,17 +147,18 @@ def get_service(location: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.cloudrun.get_service(name="my-service",
-        location="us-central1")
+    default = gcp.cloudrun.get_service(location=default_google_cloud_run_service["location"],
+        name=default_google_cloud_run_service["name"])
     ```
 
 
     :param _builtins.str location: The location of the cloud run instance. eg us-central1
-           
-           - - -
-    :param _builtins.str name: The name of the Cloud Run Service.
-    :param _builtins.str project: The project in which the resource belongs. If it
-           is not provided, the provider project is used.
+    :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+           Is required when creating resources. Name is primarily intended
+           for creation idempotence and configuration definition. Cannot be updated.
+           More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -181,9 +183,10 @@ def get_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
-    Get information about a Google Cloud Run Service. For more information see
-    the [official documentation](https://cloud.google.com/run/docs/)
-    and [API](https://cloud.google.com/run/docs/apis).
+    Get information about a Cloud Run Service.
+
+    For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+    the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
 
     ## Example Usage
 
@@ -191,17 +194,18 @@ def get_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.cloudrun.get_service(name="my-service",
-        location="us-central1")
+    default = gcp.cloudrun.get_service(location=default_google_cloud_run_service["location"],
+        name=default_google_cloud_run_service["name"])
     ```
 
 
     :param _builtins.str location: The location of the cloud run instance. eg us-central1
-           
-           - - -
-    :param _builtins.str name: The name of the Cloud Run Service.
-    :param _builtins.str project: The project in which the resource belongs. If it
-           is not provided, the provider project is used.
+    :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+           Is required when creating resources. Name is primarily intended
+           for creation idempotence and configuration definition. Cannot be updated.
+           More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location

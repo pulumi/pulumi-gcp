@@ -12,9 +12,11 @@ namespace Pulumi.Gcp.CloudRun
     public static class GetService
     {
         /// <summary>
-        /// Get information about a Google Cloud Run Service. For more information see
-        /// the [official documentation](https://cloud.google.com/run/docs/)
-        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// Get information about a Cloud Run Service.
+        /// 
+        /// 
+        /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+        /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
         /// 
         /// ## Example Usage
         /// 
@@ -26,10 +28,10 @@ namespace Pulumi.Gcp.CloudRun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
+        ///     var @default = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         Name = "my-service",
-        ///         Location = "us-central1",
+        ///         Location = defaultGoogleCloudRunService.Location,
+        ///         Name = defaultGoogleCloudRunService.Name,
         ///     });
         /// 
         /// });
@@ -39,9 +41,11 @@ namespace Pulumi.Gcp.CloudRun
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("gcp:cloudrun/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information about a Google Cloud Run Service. For more information see
-        /// the [official documentation](https://cloud.google.com/run/docs/)
-        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// Get information about a Cloud Run Service.
+        /// 
+        /// 
+        /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+        /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
         /// 
         /// ## Example Usage
         /// 
@@ -53,10 +57,10 @@ namespace Pulumi.Gcp.CloudRun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
+        ///     var @default = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         Name = "my-service",
-        ///         Location = "us-central1",
+        ///         Location = defaultGoogleCloudRunService.Location,
+        ///         Name = defaultGoogleCloudRunService.Name,
         ///     });
         /// 
         /// });
@@ -66,9 +70,11 @@ namespace Pulumi.Gcp.CloudRun
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("gcp:cloudrun/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information about a Google Cloud Run Service. For more information see
-        /// the [official documentation](https://cloud.google.com/run/docs/)
-        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// Get information about a Cloud Run Service.
+        /// 
+        /// 
+        /// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+        /// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
         /// 
         /// ## Example Usage
         /// 
@@ -80,10 +86,10 @@ namespace Pulumi.Gcp.CloudRun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
+        ///     var @default = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         Name = "my-service",
-        ///         Location = "us-central1",
+        ///         Location = defaultGoogleCloudRunService.Location,
+        ///         Name = defaultGoogleCloudRunService.Name,
         ///     });
         /// 
         /// });
@@ -98,21 +104,22 @@ namespace Pulumi.Gcp.CloudRun
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Cloud Run Service.
+        /// Name must be unique within a Google Cloud project and region.
+        /// Is required when creating resources. Name is primarily intended
+        /// for creation idempotence and configuration definition. Cannot be updated.
+        /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -127,21 +134,22 @@ namespace Pulumi.Gcp.CloudRun
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Cloud Run Service.
+        /// Name must be unique within a Google Cloud project and region.
+        /// Is required when creating resources. Name is primarily intended
+        /// for creation idempotence and configuration definition. Cannot be updated.
+        /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

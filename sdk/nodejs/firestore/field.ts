@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.firestore.Field("basic", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__49547",
+ *     collection: "chatrooms__48675",
  *     field: "basic",
  *     indexConfig: {
  *         indexes: [
@@ -53,6 +53,54 @@ import * as utilities from "../utilities";
  *                 arrayConfig: "CONTAINS",
  *             },
  *         ],
+ *     },
+ * });
+ * ```
+ * ### Firestore Field Timestamp Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const timestamp_enterprise = new gcp.firestore.Field("timestamp-enterprise", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms",
+ *     field: "timestamp",
+ *     ttlConfig: {},
+ * });
+ * ```
+ * ### Firestore Field Timestamp With Ttl Offset Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const timestamp_with_offset_enterprise = new gcp.firestore.Field("timestamp-with-offset-enterprise", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms",
+ *     field: "timestamp",
+ *     ttlConfig: {
+ *         expirationOffset: "2592000s",
  *     },
  * });
  * ```
@@ -79,6 +127,31 @@ import * as utilities from "../utilities";
  *     indexConfig: {},
  * });
  * ```
+ * ### Firestore Field Timestamp With Ttl Offset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const timestamp_with_offset = new gcp.firestore.Field("timestamp-with-offset", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms",
+ *     field: "timestamp",
+ *     ttlConfig: {
+ *         expirationOffset: "2592000s",
+ *     },
+ *     indexConfig: {},
+ * });
+ * ```
  * ### Firestore Field Match Override
  *
  * ```typescript
@@ -96,7 +169,7 @@ import * as utilities from "../utilities";
  * const matchOverride = new gcp.firestore.Field("match_override", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__48675",
+ *     collection: "chatrooms__42702",
  *     field: "field_with_same_configuration_as_ancestor",
  *     indexConfig: {
  *         indexes: [
@@ -130,7 +203,7 @@ import * as utilities from "../utilities";
  * const wildcard = new gcp.firestore.Field("wildcard", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__42702",
+ *     collection: "chatrooms__37426",
  *     field: "*",
  *     indexConfig: {
  *         indexes: [
@@ -226,7 +299,7 @@ export class Field extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     declare public readonly ttlConfig: pulumi.Output<outputs.firestore.FieldTtlConfig | undefined>;
@@ -318,7 +391,7 @@ export interface FieldState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig | undefined>;
@@ -363,7 +436,7 @@ export interface FieldArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig | undefined>;

@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.FutureReservationState;
 import com.pulumi.gcp.compute.outputs.FutureReservationAggregateReservation;
 import com.pulumi.gcp.compute.outputs.FutureReservationAutoCreatedReservationsDuration;
 import com.pulumi.gcp.compute.outputs.FutureReservationCommitmentInfo;
+import com.pulumi.gcp.compute.outputs.FutureReservationParams;
 import com.pulumi.gcp.compute.outputs.FutureReservationShareSettings;
 import com.pulumi.gcp.compute.outputs.FutureReservationSpecificSkuProperties;
 import com.pulumi.gcp.compute.outputs.FutureReservationStatus;
@@ -360,6 +361,22 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> namePrefix() {
         return Codegen.optional(this.namePrefix);
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={FutureReservationParams.class}, tree="[0]")
+    private Output</* @Nullable */ FutureReservationParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FutureReservationParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * Planning state before being submitted for evaluation

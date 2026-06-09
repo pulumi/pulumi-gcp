@@ -5337,6 +5337,11 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgs:
 
 
 class StorageDefaultBucketBucketArgsDict(TypedDict):
+    bucket_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The last segment of bucket.name.
+    """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -5347,14 +5352,32 @@ class StorageDefaultBucketBucketArgsDict(TypedDict):
 @pulumi.input_type
 class StorageDefaultBucketBucketArgs:
     def __init__(__self__, *,
+                 bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] bucket_id: (Output)
+               The last segment of bucket.name.
         :param pulumi.Input[_builtins.str] name: (Output)
                The resource name of the bucket in the format
                projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         """
+        if bucket_id is not None:
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The last segment of bucket.name.
+        """
+        return pulumi.get(self, "bucket_id")
+
+    @bucket_id.setter
+    def bucket_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket_id", value)
 
     @_builtins.property
     @pulumi.getter

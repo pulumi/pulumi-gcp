@@ -26,7 +26,7 @@ class GetRegionSSLPolicyResult:
     """
     A collection of values returned by getRegionSSLPolicy.
     """
-    def __init__(__self__, creation_timestamp=None, custom_features=None, deletion_policy=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, profile=None, project=None, region=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, deletion_policy=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, post_quantum_key_exchange=None, profile=None, project=None, region=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -54,6 +54,9 @@ class GetRegionSSLPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if post_quantum_key_exchange and not isinstance(post_quantum_key_exchange, str):
+            raise TypeError("Expected argument 'post_quantum_key_exchange' to be a str")
+        pulumi.set(__self__, "post_quantum_key_exchange", post_quantum_key_exchange)
         if profile and not isinstance(profile, str):
             raise TypeError("Expected argument 'profile' to be a str")
         pulumi.set(__self__, "profile", profile)
@@ -75,6 +78,11 @@ class GetRegionSSLPolicyResult:
     @_builtins.property
     @pulumi.getter(name="customFeatures")
     def custom_features(self) -> Sequence[_builtins.str]:
+        """
+        If the `profile` is `CUSTOM`, these are the custom encryption
+        ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+        attribute will be empty.
+        """
         return pulumi.get(self, "custom_features")
 
     @_builtins.property
@@ -85,16 +93,25 @@ class GetRegionSSLPolicyResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of this SSL Policy.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
     def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        The set of enabled encryption ciphers as a result of the policy config
+        """
         return pulumi.get(self, "enabled_features")
 
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> _builtins.str:
+        """
+        Fingerprint of this resource.
+        """
         return pulumi.get(self, "fingerprint")
 
     @_builtins.property
@@ -108,6 +125,9 @@ class GetRegionSSLPolicyResult:
     @_builtins.property
     @pulumi.getter(name="minTlsVersion")
     def min_tls_version(self) -> _builtins.str:
+        """
+        The minimum supported TLS version of this policy.
+        """
         return pulumi.get(self, "min_tls_version")
 
     @_builtins.property
@@ -116,8 +136,19 @@ class GetRegionSSLPolicyResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="postQuantumKeyExchange")
+    def post_quantum_key_exchange(self) -> _builtins.str:
+        """
+        The post-quantum key exchange setting of this policy.
+        """
+        return pulumi.get(self, "post_quantum_key_exchange")
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> _builtins.str:
+        """
+        The Google-curated or custom profile used by this policy.
+        """
         return pulumi.get(self, "profile")
 
     @_builtins.property
@@ -133,6 +164,9 @@ class GetRegionSSLPolicyResult:
     @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> _builtins.str:
+        """
+        The URI of the created resource.
+        """
         return pulumi.get(self, "self_link")
 
 
@@ -151,6 +185,7 @@ class AwaitableGetRegionSSLPolicyResult(GetRegionSSLPolicyResult):
             id=self.id,
             min_tls_version=self.min_tls_version,
             name=self.name,
+            post_quantum_key_exchange=self.post_quantum_key_exchange,
             profile=self.profile,
             project=self.project,
             region=self.region,
@@ -162,7 +197,26 @@ def get_region_ssl_policy(name: Optional[_builtins.str] = None,
                           region: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionSSLPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_ssl_policy = gcp.compute.get_region_ssl_policy(name="production-ssl-policy")
+    ```
+
+
+    :param _builtins.str name: The name of the SSL Policy.
+           
+           - - -
+    :param _builtins.str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param _builtins.str region: The region in which the resource belongs. If it
+           is not provided, the provider region is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -181,6 +235,7 @@ def get_region_ssl_policy(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         min_tls_version=pulumi.get(__ret__, 'min_tls_version'),
         name=pulumi.get(__ret__, 'name'),
+        post_quantum_key_exchange=pulumi.get(__ret__, 'post_quantum_key_exchange'),
         profile=pulumi.get(__ret__, 'profile'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
@@ -190,7 +245,26 @@ def get_region_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionSSLPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_ssl_policy = gcp.compute.get_region_ssl_policy(name="production-ssl-policy")
+    ```
+
+
+    :param _builtins.str name: The name of the SSL Policy.
+           
+           - - -
+    :param _builtins.str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param _builtins.str region: The region in which the resource belongs. If it
+           is not provided, the provider region is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -208,6 +282,7 @@ def get_region_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = N
         id=pulumi.get(__response__, 'id'),
         min_tls_version=pulumi.get(__response__, 'min_tls_version'),
         name=pulumi.get(__response__, 'name'),
+        post_quantum_key_exchange=pulumi.get(__response__, 'post_quantum_key_exchange'),
         profile=pulumi.get(__response__, 'profile'),
         project=pulumi.get(__response__, 'project'),
         region=pulumi.get(__response__, 'region'),

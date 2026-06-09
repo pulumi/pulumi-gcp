@@ -337,9 +337,10 @@ public final class CloudrunFunctions {
         return Deployment.getInstance().invokeAsync("gcp:cloudrun/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Cloud Run Service. For more information see
-     * the [official documentation](https://cloud.google.com/run/docs/)
-     * and [API](https://cloud.google.com/run/docs/apis).
+     * Get information about a Cloud Run Service.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+     * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
      * 
      * ## Example Usage
      * 
@@ -365,9 +366,9 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .name("my-service")
-     *             .location("us-central1")
+     *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .location(defaultGoogleCloudRunService.location())
+     *             .name(defaultGoogleCloudRunService.name())
      *             .build());
      * 
      *     }
@@ -380,9 +381,10 @@ public final class CloudrunFunctions {
         return getService(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Cloud Run Service. For more information see
-     * the [official documentation](https://cloud.google.com/run/docs/)
-     * and [API](https://cloud.google.com/run/docs/apis).
+     * Get information about a Cloud Run Service.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+     * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
      * 
      * ## Example Usage
      * 
@@ -408,9 +410,9 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .name("my-service")
-     *             .location("us-central1")
+     *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .location(defaultGoogleCloudRunService.location())
+     *             .name(defaultGoogleCloudRunService.name())
      *             .build());
      * 
      *     }
@@ -423,9 +425,10 @@ public final class CloudrunFunctions {
         return getServicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Cloud Run Service. For more information see
-     * the [official documentation](https://cloud.google.com/run/docs/)
-     * and [API](https://cloud.google.com/run/docs/apis).
+     * Get information about a Cloud Run Service.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+     * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
      * 
      * ## Example Usage
      * 
@@ -451,9 +454,9 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .name("my-service")
-     *             .location("us-central1")
+     *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .location(defaultGoogleCloudRunService.location())
+     *             .name(defaultGoogleCloudRunService.name())
      *             .build());
      * 
      *     }
@@ -466,9 +469,10 @@ public final class CloudrunFunctions {
         return Deployment.getInstance().invoke("gcp:cloudrun/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Cloud Run Service. For more information see
-     * the [official documentation](https://cloud.google.com/run/docs/)
-     * and [API](https://cloud.google.com/run/docs/apis).
+     * Get information about a Cloud Run Service.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+     * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
      * 
      * ## Example Usage
      * 
@@ -494,9 +498,9 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .name("my-service")
-     *             .location("us-central1")
+     *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .location(defaultGoogleCloudRunService.location())
+     *             .name(defaultGoogleCloudRunService.name())
      *             .build());
      * 
      *     }
@@ -509,9 +513,10 @@ public final class CloudrunFunctions {
         return Deployment.getInstance().invoke("gcp:cloudrun/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Cloud Run Service. For more information see
-     * the [official documentation](https://cloud.google.com/run/docs/)
-     * and [API](https://cloud.google.com/run/docs/apis).
+     * Get information about a Cloud Run Service.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+     * the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
      * 
      * ## Example Usage
      * 
@@ -537,9 +542,9 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .name("my-service")
-     *             .location("us-central1")
+     *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .location(defaultGoogleCloudRunService.location())
+     *             .name(defaultGoogleCloudRunService.name())
      *             .build());
      * 
      *     }

@@ -7,10 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get information about a Organization Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -18,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlOrganizationIntelligenceConfig({
- *     name: "123456789",
+ * const _default = gcp.storage.getControlOrganizationIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -35,7 +32,7 @@ export function getControlOrganizationIntelligenceConfig(args: GetControlOrganiz
  */
 export interface GetControlOrganizationIntelligenceConfigArgs {
     /**
-     * The id of GCP organization.
+     * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      */
     name: string;
 }
@@ -56,10 +53,7 @@ export interface GetControlOrganizationIntelligenceConfigResult {
     readonly updateTime: string;
 }
 /**
- * Use this data source to get information about a Organization Storage Intelligence config resource.
- * See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
- * and
- * [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+ * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
  *
  * ## Example Usage
  *
@@ -67,8 +61,8 @@ export interface GetControlOrganizationIntelligenceConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample_config = gcp.storage.getControlOrganizationIntelligenceConfig({
- *     name: "123456789",
+ * const _default = gcp.storage.getControlOrganizationIntelligenceConfig({
+ *     name: example.name,
  * });
  * ```
  */
@@ -84,7 +78,7 @@ export function getControlOrganizationIntelligenceConfigOutput(args: GetControlO
  */
 export interface GetControlOrganizationIntelligenceConfigOutputArgs {
     /**
-     * The id of GCP organization.
+     * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      */
     name: pulumi.Input<string>;
 }

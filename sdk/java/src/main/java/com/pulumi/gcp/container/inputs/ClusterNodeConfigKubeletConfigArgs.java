@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs;
@@ -135,6 +136,21 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> cpuManagerPolicy() {
         return Optional.ofNullable(this.cpuManagerPolicy);
+    }
+
+    /**
+     * Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+     * 
+     */
+    @Import(name="crashLoopBackOff")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs> crashLoopBackOff;
+
+    /**
+     * @return Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs>> crashLoopBackOff() {
+        return Optional.ofNullable(this.crashLoopBackOff);
     }
 
     /**
@@ -360,6 +376,7 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.crashLoopBackOff = $.crashLoopBackOff;
         this.evictionMaxPodGracePeriodSeconds = $.evictionMaxPodGracePeriodSeconds;
         this.evictionMinimumReclaim = $.evictionMinimumReclaim;
         this.evictionSoft = $.evictionSoft;
@@ -552,6 +569,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             return cpuManagerPolicy(Output.of(cpuManagerPolicy));
+        }
+
+        /**
+         * @param crashLoopBackOff Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crashLoopBackOff(@Nullable Output<ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs> crashLoopBackOff) {
+            $.crashLoopBackOff = crashLoopBackOff;
+            return this;
+        }
+
+        /**
+         * @param crashLoopBackOff Contains configuration options to modify node-level parameters for container restart behavior. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crashLoopBackOff(ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs crashLoopBackOff) {
+            return crashLoopBackOff(Output.of(crashLoopBackOff));
         }
 
         /**

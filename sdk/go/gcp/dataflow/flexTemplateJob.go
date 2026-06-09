@@ -140,9 +140,11 @@ type FlexTemplateJob struct {
 	AutoscalingAlgorithm pulumi.StringOutput `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
+	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
+	// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 	//
 	// ***
-	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
+	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -259,9 +261,11 @@ type flexTemplateJobState struct {
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
+	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
+	// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 	//
 	// ***
-	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -341,9 +345,11 @@ type FlexTemplateJobState struct {
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
 	// Template.
+	ContainerSpecGcsPath pulumi.StringPtrInput
+	// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 	//
 	// ***
-	ContainerSpecGcsPath pulumi.StringPtrInput
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -427,9 +433,11 @@ type flexTemplateJobArgs struct {
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
+	ContainerSpecGcsPath string `pulumi:"containerSpecGcsPath"`
+	// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 	//
 	// ***
-	ContainerSpecGcsPath string `pulumi:"containerSpecGcsPath"`
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -500,9 +508,11 @@ type FlexTemplateJobArgs struct {
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
 	// Template.
+	ContainerSpecGcsPath pulumi.StringInput
+	// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 	//
 	// ***
-	ContainerSpecGcsPath pulumi.StringInput
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -667,10 +677,15 @@ func (o FlexTemplateJobOutput) AutoscalingAlgorithm() pulumi.StringOutput {
 
 // The GCS path to the Dataflow job Flex
 // Template.
-//
-// ***
 func (o FlexTemplateJobOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ContainerSpecGcsPath }).(pulumi.StringOutput)
+}
+
+// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+//
+// ***
+func (o FlexTemplateJobOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

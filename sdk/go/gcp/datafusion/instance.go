@@ -444,6 +444,12 @@ type Instance struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The maintenance events for this instance.
+	// Structure is documented below.
+	MaintenanceEvents InstanceMaintenanceEventArrayOutput `pulumi:"maintenanceEvents"`
+	// Configure the maintenance policy for this instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -474,13 +480,8 @@ type Instance struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// (Output)
+	// The state of the maintenance event.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
@@ -593,6 +594,12 @@ type instanceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// The maintenance events for this instance.
+	// Structure is documented below.
+	MaintenanceEvents []InstanceMaintenanceEvent `pulumi:"maintenanceEvents"`
+	// Configure the maintenance policy for this instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -623,13 +630,8 @@ type instanceState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// (Output)
+	// The state of the maintenance event.
 	State *string `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage *string `pulumi:"stateMessage"`
@@ -705,6 +707,12 @@ type InstanceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// The maintenance events for this instance.
+	// Structure is documented below.
+	MaintenanceEvents InstanceMaintenanceEventArrayInput
+	// Configure the maintenance policy for this instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -735,13 +743,8 @@ type InstanceState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// (Output)
+	// The state of the maintenance event.
 	State pulumi.StringPtrInput
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringPtrInput
@@ -813,6 +816,9 @@ type instanceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Configure the maintenance policy for this instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -892,6 +898,9 @@ type InstanceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Configure the maintenance policy for this instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -1109,6 +1118,18 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The maintenance events for this instance.
+// Structure is documented below.
+func (o InstanceOutput) MaintenanceEvents() InstanceMaintenanceEventArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceEventArrayOutput { return v.MaintenanceEvents }).(InstanceMaintenanceEventArrayOutput)
+}
+
+// Configure the maintenance policy for this instance.
+// Structure is documented below.
+func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(InstanceMaintenancePolicyPtrOutput)
+}
+
 // The ID of the instance or a fully qualified identifier for the instance.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -1173,13 +1194,8 @@ func (o InstanceOutput) ServiceEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceEndpoint }).(pulumi.StringOutput)
 }
 
-// The current state of this Data Fusion instance.
-// - CREATING: Instance is being created
-// - RUNNING: Instance is running and ready for requests
-// - FAILED: Instance creation failed
-// - DELETING: Instance is being deleted
-// - UPGRADING: Instance is being upgraded
-// - RESTARTING: Instance is being restarted
+// (Output)
+// The state of the maintenance event.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

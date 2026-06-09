@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<int>? MaxResults { get; set; }
 
         /// <summary>
-        /// he customized sections chosen to return when requesting a summary of a conversation.
+        /// The customized sections chosen to return when requesting a summary of a conversation.
         /// Structure is documented below.
         /// </summary>
         [Input("sections")]

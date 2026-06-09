@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .access_boundary_policy import *
 from .deny_policy import *
+from .folder_access_policy import *
 from .folders_policy_binding import *
 from .get_rule import *
 from .get_testable_permissions import *
@@ -19,6 +20,7 @@ from .oauth_client import *
 from .oauth_client_credential import *
 from .organizations_policy_binding import *
 from .principal_access_boundary_policy import *
+from .project_access_policy import *
 from .projects_policy_binding import *
 from .workforce_pool import *
 from .workforce_pool_iam_binding import *

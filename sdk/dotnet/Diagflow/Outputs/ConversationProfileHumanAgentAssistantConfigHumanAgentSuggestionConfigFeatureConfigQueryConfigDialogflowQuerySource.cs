@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource
     {
         /// <summary>
-        /// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+        /// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
         /// </summary>
         public readonly string Agent;
         /// <summary>

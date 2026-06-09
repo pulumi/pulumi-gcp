@@ -22,12 +22,20 @@ __all__ = [
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
+    'FolderAccessPolicyDetails',
+    'FolderAccessPolicyDetailsRule',
+    'FolderAccessPolicyDetailsRuleCondition',
+    'FolderAccessPolicyDetailsRuleOperation',
     'FoldersPolicyBindingCondition',
     'FoldersPolicyBindingTarget',
     'OrganizationsPolicyBindingCondition',
     'OrganizationsPolicyBindingTarget',
     'PrincipalAccessBoundaryPolicyDetails',
     'PrincipalAccessBoundaryPolicyDetailsRule',
+    'ProjectAccessPolicyDetails',
+    'ProjectAccessPolicyDetailsRule',
+    'ProjectAccessPolicyDetailsRuleCondition',
+    'ProjectAccessPolicyDetailsRuleOperation',
     'ProjectsPolicyBindingCondition',
     'ProjectsPolicyBindingTarget',
     'WorkforcePoolAccessRestrictions',
@@ -469,6 +477,340 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
 
 
 @pulumi.output_type
+class FolderAccessPolicyDetails(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.FolderAccessPolicyDetailsRule']):
+        """
+        :param Sequence['FolderAccessPolicyDetailsRuleArgs'] rules: A list of access policy rules.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.FolderAccessPolicyDetailsRule']:
+        """
+        A list of access policy rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class FolderAccessPolicyDetailsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedPrincipals":
+            suggest = "excluded_principals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderAccessPolicyDetailsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderAccessPolicyDetailsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderAccessPolicyDetailsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: _builtins.str,
+                 operation: 'outputs.FolderAccessPolicyDetailsRuleOperation',
+                 principals: Sequence[_builtins.str],
+                 conditions: Optional[Sequence['outputs.FolderAccessPolicyDetailsRuleCondition']] = None,
+                 description: Optional[_builtins.str] = None,
+                 excluded_principals: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str effect: The effect of the rule.
+               Possible values:
+               DENY
+               ALLOW
+               Possible values are: `DENY`, `ALLOW`.
+        :param 'FolderAccessPolicyDetailsRuleOperationArgs' operation: Attributes that are used to determine whether this rule applies to a
+               request.
+               Structure is documented below.
+        :param Sequence[_builtins.str] principals: The identities for which this rule's effect governs using one or more
+               permissions on Google Cloud resources. This field can contain the
+               following values:
+               * `principal://goog/subject/{email_id}`: A specific Google Account.
+               Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+               example, `principal://goog/subject/alice@example.com`.
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+               A Google Cloud service account. For example,
+               `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+               * `principalSet://goog/group/{group_id}`: A Google group. For example,
+               `principalSet://goog/group/admins@example.com`.
+               * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+               principals associated with the specified Google Workspace or Cloud
+               Identity customer ID. For example,
+               `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+               If an identifier that was previously set on a policy is soft deleted, then
+               calls to read that policy will return the identifier with a deleted
+               prefix. Users cannot set identifiers with this syntax.
+               * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+               Google Account that was deleted recently. For example,
+               `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+               the Google Account is recovered, this identifier reverts to the standard
+               identifier for a Google Account.
+               * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+               that was deleted recently. For example,
+               `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+               If the Google group is restored, this identifier reverts to the standard
+               identifier for a Google group.
+               * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+               A Google Cloud service account that was deleted recently. For example,
+               `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+               If the service account is undeleted, this identifier reverts to the
+               standard identifier for a service account.
+        :param Sequence['FolderAccessPolicyDetailsRuleConditionArgs'] conditions: The conditions that determine whether this rule applies to a request.
+               Conditions are identified by their key, which is the FQDN of the service
+               that they are relevant to. For example:
+               ```
+               "conditions": {
+               "iam.googleapis.com": {
+               "expression":
+               }
+               }
+               ```
+               Each rule is evaluated independently. If this rule does not apply
+               to a request, other rules might still apply.
+               Currently supported keys are as follows:
+               * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+               resource fields.
+               * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+               [resource
+               tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+               combine them using boolean and logical operators. Other functions and
+               operators are not supported.
+               Structure is documented below.
+        :param _builtins.str description: Customer specified description of the rule. Must be less than or equal to
+               256 characters.
+        :param Sequence[_builtins.str] excluded_principals: The identities that are excluded from the access policy rule, even if they
+               are listed in the `principals`. For example, you could add a Google
+               group to the `principals`, then exclude specific users who belong to
+               that group.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "principals", principals)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if excluded_principals is not None:
+            pulumi.set(__self__, "excluded_principals", excluded_principals)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> _builtins.str:
+        """
+        The effect of the rule.
+        Possible values:
+        DENY
+        ALLOW
+        Possible values are: `DENY`, `ALLOW`.
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> 'outputs.FolderAccessPolicyDetailsRuleOperation':
+        """
+        Attributes that are used to determine whether this rule applies to a
+        request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> Sequence[_builtins.str]:
+        """
+        The identities for which this rule's effect governs using one or more
+        permissions on Google Cloud resources. This field can contain the
+        following values:
+        * `principal://goog/subject/{email_id}`: A specific Google Account.
+        Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+        example, `principal://goog/subject/alice@example.com`.
+        * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+        A Google Cloud service account. For example,
+        `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+        * `principalSet://goog/group/{group_id}`: A Google group. For example,
+        `principalSet://goog/group/admins@example.com`.
+        * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+        principals associated with the specified Google Workspace or Cloud
+        Identity customer ID. For example,
+        `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+        If an identifier that was previously set on a policy is soft deleted, then
+        calls to read that policy will return the identifier with a deleted
+        prefix. Users cannot set identifiers with this syntax.
+        * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+        Google Account that was deleted recently. For example,
+        `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+        the Google Account is recovered, this identifier reverts to the standard
+        identifier for a Google Account.
+        * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+        that was deleted recently. For example,
+        `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+        If the Google group is restored, this identifier reverts to the standard
+        identifier for a Google group.
+        * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+        A Google Cloud service account that was deleted recently. For example,
+        `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+        If the service account is undeleted, this identifier reverts to the
+        standard identifier for a service account.
+        """
+        return pulumi.get(self, "principals")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.FolderAccessPolicyDetailsRuleCondition']]:
+        """
+        The conditions that determine whether this rule applies to a request.
+        Conditions are identified by their key, which is the FQDN of the service
+        that they are relevant to. For example:
+        ```
+        "conditions": {
+        "iam.googleapis.com": {
+        "expression":
+        }
+        }
+        ```
+        Each rule is evaluated independently. If this rule does not apply
+        to a request, other rules might still apply.
+        Currently supported keys are as follows:
+        * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+        resource fields.
+        * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+        [resource
+        tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+        combine them using boolean and logical operators. Other functions and
+        operators are not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Customer specified description of the rule. Must be less than or equal to
+        256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedPrincipals")
+    def excluded_principals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The identities that are excluded from the access policy rule, even if they
+        are listed in the `principals`. For example, you could add a Google
+        group to the `principals`, then exclude specific users who belong to
+        that group.
+        """
+        return pulumi.get(self, "excluded_principals")
+
+
+@pulumi.output_type
+class FolderAccessPolicyDetailsRuleCondition(dict):
+    def __init__(__self__, *,
+                 service: _builtins.str,
+                 expression: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service: The identifier for this object. Format specified above.
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language
+               syntax.
+        """
+        pulumi.set(__self__, "service", service)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language
+        syntax.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class FolderAccessPolicyDetailsRuleOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedPermissions":
+            suggest = "excluded_permissions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderAccessPolicyDetailsRuleOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderAccessPolicyDetailsRuleOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderAccessPolicyDetailsRuleOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permissions: Sequence[_builtins.str],
+                 excluded_permissions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] permissions: The permissions that are explicitly affected by this rule. Each
+               permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+               `{service_fqdn}` is the fully qualified domain name for the service.
+               Currently supported permissions are as follows:
+               * `eventarc.googleapis.com/messageBuses.publish`.
+        :param Sequence[_builtins.str] excluded_permissions: Specifies the permissions that this rule excludes from the set of
+               affected permissions given by `permissions`. If a permission appears in
+               `permissions` _and_ in `excluded_permissions` then it will _not_ be
+               subject to the policy effect.
+               The excluded permissions can be specified using the same syntax as
+               `permissions`.
+        """
+        pulumi.set(__self__, "permissions", permissions)
+        if excluded_permissions is not None:
+            pulumi.set(__self__, "excluded_permissions", excluded_permissions)
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> Sequence[_builtins.str]:
+        """
+        The permissions that are explicitly affected by this rule. Each
+        permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+        `{service_fqdn}` is the fully qualified domain name for the service.
+        Currently supported permissions are as follows:
+        * `eventarc.googleapis.com/messageBuses.publish`.
+        """
+        return pulumi.get(self, "permissions")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedPermissions")
+    def excluded_permissions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the permissions that this rule excludes from the set of
+        affected permissions given by `permissions`. If a permission appears in
+        `permissions` _and_ in `excluded_permissions` then it will _not_ be
+        subject to the policy effect.
+        The excluded permissions can be specified using the same syntax as
+        `permissions`.
+        """
+        return pulumi.get(self, "excluded_permissions")
+
+
+@pulumi.output_type
 class FoldersPolicyBindingCondition(dict):
     def __init__(__self__, *,
                  description: Optional[_builtins.str] = None,
@@ -776,6 +1118,340 @@ class PrincipalAccessBoundaryPolicyDetailsRule(dict):
         The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ProjectAccessPolicyDetails(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.ProjectAccessPolicyDetailsRule']):
+        """
+        :param Sequence['ProjectAccessPolicyDetailsRuleArgs'] rules: A list of access policy rules.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.ProjectAccessPolicyDetailsRule']:
+        """
+        A list of access policy rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class ProjectAccessPolicyDetailsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedPrincipals":
+            suggest = "excluded_principals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectAccessPolicyDetailsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectAccessPolicyDetailsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectAccessPolicyDetailsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: _builtins.str,
+                 operation: 'outputs.ProjectAccessPolicyDetailsRuleOperation',
+                 principals: Sequence[_builtins.str],
+                 conditions: Optional[Sequence['outputs.ProjectAccessPolicyDetailsRuleCondition']] = None,
+                 description: Optional[_builtins.str] = None,
+                 excluded_principals: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str effect: The effect of the rule.
+               Possible values:
+               DENY
+               ALLOW
+               Possible values are: `DENY`, `ALLOW`.
+        :param 'ProjectAccessPolicyDetailsRuleOperationArgs' operation: Attributes that are used to determine whether this rule applies to a
+               request.
+               Structure is documented below.
+        :param Sequence[_builtins.str] principals: The identities for which this rule's effect governs using one or more
+               permissions on Google Cloud resources. This field can contain the
+               following values:
+               * `principal://goog/subject/{email_id}`: A specific Google Account.
+               Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+               example, `principal://goog/subject/alice@example.com`.
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+               A Google Cloud service account. For example,
+               `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+               * `principalSet://goog/group/{group_id}`: A Google group. For example,
+               `principalSet://goog/group/admins@example.com`.
+               * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+               principals associated with the specified Google Workspace or Cloud
+               Identity customer ID. For example,
+               `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+               If an identifier that was previously set on a policy is soft deleted, then
+               calls to read that policy will return the identifier with a deleted
+               prefix. Users cannot set identifiers with this syntax.
+               * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+               Google Account that was deleted recently. For example,
+               `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+               the Google Account is recovered, this identifier reverts to the standard
+               identifier for a Google Account.
+               * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+               that was deleted recently. For example,
+               `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+               If the Google group is restored, this identifier reverts to the standard
+               identifier for a Google group.
+               * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+               A Google Cloud service account that was deleted recently. For example,
+               `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+               If the service account is undeleted, this identifier reverts to the
+               standard identifier for a service account.
+        :param Sequence['ProjectAccessPolicyDetailsRuleConditionArgs'] conditions: The conditions that determine whether this rule applies to a request.
+               Conditions are identified by their key, which is the FQDN of the service
+               that they are relevant to. For example:
+               ```
+               "conditions": {
+               "iam.googleapis.com": {
+               "expression":
+               }
+               }
+               ```
+               Each rule is evaluated independently. If this rule does not apply
+               to a request, other rules might still apply.
+               Currently supported keys are as follows:
+               * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+               resource fields.
+               * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+               [resource
+               tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+               combine them using boolean and logical operators. Other functions and
+               operators are not supported.
+               Structure is documented below.
+        :param _builtins.str description: Customer specified description of the rule. Must be less than or equal to
+               256 characters.
+        :param Sequence[_builtins.str] excluded_principals: The identities that are excluded from the access policy rule, even if they
+               are listed in the `principals`. For example, you could add a Google
+               group to the `principals`, then exclude specific users who belong to
+               that group.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "principals", principals)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if excluded_principals is not None:
+            pulumi.set(__self__, "excluded_principals", excluded_principals)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> _builtins.str:
+        """
+        The effect of the rule.
+        Possible values:
+        DENY
+        ALLOW
+        Possible values are: `DENY`, `ALLOW`.
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> 'outputs.ProjectAccessPolicyDetailsRuleOperation':
+        """
+        Attributes that are used to determine whether this rule applies to a
+        request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> Sequence[_builtins.str]:
+        """
+        The identities for which this rule's effect governs using one or more
+        permissions on Google Cloud resources. This field can contain the
+        following values:
+        * `principal://goog/subject/{email_id}`: A specific Google Account.
+        Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+        example, `principal://goog/subject/alice@example.com`.
+        * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+        A Google Cloud service account. For example,
+        `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+        * `principalSet://goog/group/{group_id}`: A Google group. For example,
+        `principalSet://goog/group/admins@example.com`.
+        * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+        principals associated with the specified Google Workspace or Cloud
+        Identity customer ID. For example,
+        `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+        If an identifier that was previously set on a policy is soft deleted, then
+        calls to read that policy will return the identifier with a deleted
+        prefix. Users cannot set identifiers with this syntax.
+        * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+        Google Account that was deleted recently. For example,
+        `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+        the Google Account is recovered, this identifier reverts to the standard
+        identifier for a Google Account.
+        * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+        that was deleted recently. For example,
+        `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+        If the Google group is restored, this identifier reverts to the standard
+        identifier for a Google group.
+        * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+        A Google Cloud service account that was deleted recently. For example,
+        `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+        If the service account is undeleted, this identifier reverts to the
+        standard identifier for a service account.
+        """
+        return pulumi.get(self, "principals")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.ProjectAccessPolicyDetailsRuleCondition']]:
+        """
+        The conditions that determine whether this rule applies to a request.
+        Conditions are identified by their key, which is the FQDN of the service
+        that they are relevant to. For example:
+        ```
+        "conditions": {
+        "iam.googleapis.com": {
+        "expression":
+        }
+        }
+        ```
+        Each rule is evaluated independently. If this rule does not apply
+        to a request, other rules might still apply.
+        Currently supported keys are as follows:
+        * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+        resource fields.
+        * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+        [resource
+        tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+        combine them using boolean and logical operators. Other functions and
+        operators are not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Customer specified description of the rule. Must be less than or equal to
+        256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedPrincipals")
+    def excluded_principals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The identities that are excluded from the access policy rule, even if they
+        are listed in the `principals`. For example, you could add a Google
+        group to the `principals`, then exclude specific users who belong to
+        that group.
+        """
+        return pulumi.get(self, "excluded_principals")
+
+
+@pulumi.output_type
+class ProjectAccessPolicyDetailsRuleCondition(dict):
+    def __init__(__self__, *,
+                 service: _builtins.str,
+                 expression: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service: The identifier for this object. Format specified above.
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language
+               syntax.
+        """
+        pulumi.set(__self__, "service", service)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language
+        syntax.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class ProjectAccessPolicyDetailsRuleOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedPermissions":
+            suggest = "excluded_permissions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectAccessPolicyDetailsRuleOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectAccessPolicyDetailsRuleOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectAccessPolicyDetailsRuleOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permissions: Sequence[_builtins.str],
+                 excluded_permissions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] permissions: The permissions that are explicitly affected by this rule. Each
+               permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+               `{service_fqdn}` is the fully qualified domain name for the service.
+               Currently supported permissions are as follows:
+               * `eventarc.googleapis.com/messageBuses.publish`.
+        :param Sequence[_builtins.str] excluded_permissions: Specifies the permissions that this rule excludes from the set of
+               affected permissions given by `permissions`. If a permission appears in
+               `permissions` _and_ in `excluded_permissions` then it will _not_ be
+               subject to the policy effect.
+               The excluded permissions can be specified using the same syntax as
+               `permissions`.
+        """
+        pulumi.set(__self__, "permissions", permissions)
+        if excluded_permissions is not None:
+            pulumi.set(__self__, "excluded_permissions", excluded_permissions)
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> Sequence[_builtins.str]:
+        """
+        The permissions that are explicitly affected by this rule. Each
+        permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+        `{service_fqdn}` is the fully qualified domain name for the service.
+        Currently supported permissions are as follows:
+        * `eventarc.googleapis.com/messageBuses.publish`.
+        """
+        return pulumi.get(self, "permissions")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedPermissions")
+    def excluded_permissions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the permissions that this rule excludes from the set of
+        affected permissions given by `permissions`. If a permission appears in
+        `permissions` _and_ in `excluded_permissions` then it will _not_ be
+        subject to the policy effect.
+        The excluded permissions can be specified using the same syntax as
+        `permissions`.
+        """
+        return pulumi.get(self, "excluded_permissions")
 
 
 @pulumi.output_type

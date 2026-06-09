@@ -88,7 +88,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
     }
 
     /**
-     * he customized sections chosen to return when requesting a summary of a conversation.
+     * The customized sections chosen to return when requesting a summary of a conversation.
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
     private @Nullable Output<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs> sections;
 
     /**
-     * @return he customized sections chosen to return when requesting a summary of a conversation.
+     * @return The customized sections chosen to return when requesting a summary of a conversation.
      * Structure is documented below.
      * 
      */
@@ -225,7 +225,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
         }
 
         /**
-         * @param sections he customized sections chosen to return when requesting a summary of a conversation.
+         * @param sections The customized sections chosen to return when requesting a summary of a conversation.
          * Structure is documented below.
          * 
          * @return builder
@@ -237,7 +237,7 @@ public final class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggest
         }
 
         /**
-         * @param sections he customized sections chosen to return when requesting a summary of a conversation.
+         * @param sections The customized sections chosen to return when requesting a summary of a conversation.
          * Structure is documented below.
          * 
          * @return builder

@@ -147,6 +147,14 @@ namespace Pulumi.Gcp.BigTable
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+        /// 
+        /// -----
+        /// </summary>
+        [Output("edition")]
+        public Output<string?> Edition { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -198,8 +206,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-        /// 
-        /// -----
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -296,6 +302,14 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+        /// 
+        /// -----
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Input("forceDestroy")]
@@ -344,8 +358,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-        /// 
-        /// -----
         /// </summary>
         public InputMap<string> Tags
         {
@@ -400,6 +412,14 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
+        /// 
+        /// -----
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -482,8 +502,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
-        /// 
-        /// -----
         /// </summary>
         public InputMap<string> Tags
         {

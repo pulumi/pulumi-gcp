@@ -92,6 +92,8 @@ export class Service extends pulumi.CustomResource {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
+     * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+     * Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -171,6 +173,8 @@ export interface ServiceState {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
+     * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+     * Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -215,6 +219,8 @@ export interface ServiceArgs {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
+     * If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+     * Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

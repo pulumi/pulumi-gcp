@@ -18,12 +18,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  */
-export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
+export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
         "networkProfile": args.networkProfile,
         "project": args.project,
+        "selfLink": args.selfLink,
     }, opts);
 }
 
@@ -37,7 +39,7 @@ export interface GetNetworkArgs {
      *
      * - - -
      */
-    name: string;
+    name?: string;
     /**
      * A full or partial URL of the network profile to apply to this network.
      */
@@ -47,6 +49,10 @@ export interface GetNetworkArgs {
      * is not provided, the provider project is used.
      */
     project?: string;
+    /**
+     * The URI of the resource.
+     */
+    selfLink?: string;
 }
 
 /**
@@ -84,7 +90,7 @@ export interface GetNetworkResult {
      * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
     readonly numericId: string;
-    readonly project?: string;
+    readonly project: string;
     /**
      * The URI of the resource.
      */
@@ -108,12 +114,14 @@ export interface GetNetworkResult {
  * });
  * ```
  */
-export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkResult> {
+export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
         "networkProfile": args.networkProfile,
         "project": args.project,
+        "selfLink": args.selfLink,
     }, opts);
 }
 
@@ -127,7 +135,7 @@ export interface GetNetworkOutputArgs {
      *
      * - - -
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A full or partial URL of the network profile to apply to this network.
      */
@@ -137,4 +145,8 @@ export interface GetNetworkOutputArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The URI of the resource.
+     */
+    selfLink?: pulumi.Input<string | undefined>;
 }

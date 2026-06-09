@@ -906,7 +906,7 @@ class StandardAppVersion(pulumi.CustomResource):
         myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
             service="myapp",
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },
@@ -940,7 +940,7 @@ class StandardAppVersion(pulumi.CustomResource):
         myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
             service="myapp",
-            runtime="nodejs20",
+            runtime="nodejs22",
             app_engine_apis=True,
             entrypoint={
                 "shell": "node ./app.js",
@@ -1074,7 +1074,7 @@ class StandardAppVersion(pulumi.CustomResource):
         myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
             service="myapp",
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },
@@ -1108,7 +1108,7 @@ class StandardAppVersion(pulumi.CustomResource):
         myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
             service="myapp",
-            runtime="nodejs20",
+            runtime="nodejs22",
             app_engine_apis=True,
             entrypoint={
                 "shell": "node ./app.js",

@@ -308,14 +308,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+     * The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -1031,7 +1031,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+         * @param diskType The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
          * 
          * @return builder
          * 
@@ -1042,7 +1042,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+         * @param diskType The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
          * 
          * @return builder
          * 

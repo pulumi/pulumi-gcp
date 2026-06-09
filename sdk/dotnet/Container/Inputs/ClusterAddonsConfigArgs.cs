@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterAddonsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for the Agent Sandbox addon. Structure is documented below:
+        /// </summary>
+        [Input("agentSandboxConfig")]
+        public Input<Inputs.ClusterAddonsConfigAgentSandboxConfigArgs>? AgentSandboxConfig { get; set; }
+
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         [Input("cloudrunConfig")]

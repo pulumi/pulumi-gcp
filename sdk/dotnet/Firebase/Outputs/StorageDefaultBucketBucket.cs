@@ -15,14 +15,23 @@ namespace Pulumi.Gcp.Firebase.Outputs
     {
         /// <summary>
         /// (Output)
+        /// The last segment of bucket.name.
+        /// </summary>
+        public readonly string? BucketId;
+        /// <summary>
+        /// (Output)
         /// The resource name of the bucket in the format
         /// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]
-        private StorageDefaultBucketBucket(string? name)
+        private StorageDefaultBucketBucket(
+            string? bucketId,
+
+            string? name)
         {
+            BucketId = bucketId;
             Name = name;
         }
     }

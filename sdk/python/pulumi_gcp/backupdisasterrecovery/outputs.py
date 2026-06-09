@@ -1606,8 +1606,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey(dict)
         """
         :param _builtins.str kms_key_name: (Optional)
         :param _builtins.str kms_key_service_account: (Optional)
-        :param _builtins.str raw_key: (Optional)
-        :param _builtins.str rsa_encrypted_key: (Optional)
+        :param _builtins.str raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -1638,7 +1638,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey(dict)
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -1646,7 +1646,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey(dict)
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -1839,8 +1839,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey(dict)
         """
         :param _builtins.str kms_key_name: (Optional)
         :param _builtins.str kms_key_service_account: (Optional)
-        :param _builtins.str raw_key: (Optional)
-        :param _builtins.str rsa_encrypted_key: (Optional)
+        :param _builtins.str raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -1871,7 +1871,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey(dict)
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -1879,7 +1879,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey(dict)
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -3286,8 +3286,8 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey(dict):
         """
         :param _builtins.str kms_key_name: (Optional)
         :param _builtins.str kms_key_service_account: (Optional)
-        :param _builtins.str raw_key: (Optional)
-        :param _builtins.str rsa_encrypted_key: (Optional)
+        :param _builtins.str raw_key: **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str rsa_encrypted_key: **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -3318,7 +3318,7 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey(dict):
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
 
@@ -3326,7 +3326,7 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey(dict):
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> Optional[_builtins.str]:
         """
-        (Optional)
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "rsa_encrypted_key")
 

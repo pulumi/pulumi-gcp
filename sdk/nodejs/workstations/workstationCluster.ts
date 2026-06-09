@@ -17,32 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Workstation Cluster Custom Urls
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstations-network",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstations-network",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "custom-urls-cluster",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     workstationAuthorizationUrl: "https://workstations.cloud.google.com/ui/auth",
- *     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
- * });
- * const project = gcp.organizations.getProject({});
- * ```
  * ### Workstation Cluster Basic
  *
  * ```typescript
@@ -176,6 +150,32 @@ import * as utilities from "../utilities";
  *         [`${project.projectId}/${tagKeyShortName}`]: tagValueShortName,
  *     }),
  * });
+ * ```
+ * ### Workstation Cluster Custom Urls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstations-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstations-network",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * });
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "custom-urls-cluster",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     workstationAuthorizationUrl: "https://workstations.cloud.google.com/ui/auth",
+ *     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
+ * });
+ * const project = gcp.organizations.getProject({});
  * ```
  *
  * ## Import
