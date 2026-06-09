@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The properties of GoldengateGoldengateConnectionProperties.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.GoldengateConnectionPropertiesGoldengateConnectionProperties? GoldengateConnectionProperties;
+        public readonly Outputs.GoldengateConnectionPropertiesGoldengateConnectionProperties? GoldengateConnectionPropertiesDetails;
         /// <summary>
         /// The properties of GoldengateGoogleBigQueryConnectionProperties.
         /// Structure is documented below.
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             DisplayName = displayName;
             ElasticsearchConnectionProperties = elasticsearchConnectionProperties;
             GenericConnectionProperties = genericConnectionProperties;
-            GoldengateConnectionProperties = goldengateConnectionProperties;
+            GoldengateConnectionPropertiesDetails = goldengateConnectionProperties;
             GoogleBigQueryConnectionProperties = googleBigQueryConnectionProperties;
             GoogleCloudStorageConnectionProperties = googleCloudStorageConnectionProperties;
             GooglePubsubConnectionProperties = googlePubsubConnectionProperties;

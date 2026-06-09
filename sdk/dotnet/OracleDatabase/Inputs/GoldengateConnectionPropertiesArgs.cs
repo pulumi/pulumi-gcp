@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         /// Structure is documented below.
         /// </summary>
         [Input("goldengateConnectionProperties")]
-        public Input<Inputs.GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs>? GoldengateConnectionProperties { get; set; }
+        public Input<Inputs.GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs>? GoldengateConnectionPropertiesDetails { get; set; }
 
         /// <summary>
         /// The properties of GoldengateGoogleBigQueryConnectionProperties.

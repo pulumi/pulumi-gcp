@@ -625,6 +625,21 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpAccessContextManager, "IngressPolicy"),
 			},
 
+			// OracleDatabase
+			"google_oracle_database_goldengate_connection": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"properties": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"goldengate_connection_properties": {
+									CSharpName: "GoldengateConnectionPropertiesDetails",
+								},
+							},
+						},
+					},
+				},
+			},
+
 			// Alloydb
 			"google_alloydb_backup":   {Tok: gcpResource(gcpAlloydb, "Backup")},
 			"google_alloydb_cluster":  {Tok: gcpResource(gcpAlloydb, "Cluster")},
