@@ -387,8 +387,8 @@ github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRI
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 h1:vkHw5I/plNdTr435cARxCW6q9gc0S/Yxz7Mkd38pOb0=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231/go.mod h1:murToZ2N9hNJzewjHBgfFdXhZKjY3z5cYC1VXk+lbFE=
-github.com/pulumi/esc v0.24.0 h1:sCtiB0qbyrlU1ZNzJn4dTLYiChl8xeCBFbHWl1YoXJg=
-github.com/pulumi/esc v0.24.0/go.mod h1:eCOOkcDJS6eooGwdE4/E0+pOsvUWG254+KBmPCFwJpA=
+github.com/pulumi/esc v0.25.0 h1:U31tSec7ikQuj4RG3Nhm3mqBz/dp+2MQDLA3bY6/v3w=
+github.com/pulumi/esc v0.25.0/go.mod h1:A6rZBVCQBZepaOyt+xoZjPHtC4kKqxapkJ8wKB5VT7k=
 github.com/pulumi/providertest v0.7.0 h1:nXydemrnkJfil6sd8AtvO81gJOTzYc1wFfgtco4zWDc=
 github.com/pulumi/providertest v0.7.0/go.mod h1:R7nigJF1sE3yUtNQSozNSfsUl/gK4xIDW0Mxmacl6IY=
 github.com/pulumi/pulumi/pkg/v3 v3.245.0 h1:ssZ0nHf6IuKMMnO4pxiC7E4R8OIVltXAf9V3ZN1cLYg=
