@@ -62,7 +62,7 @@ import (
 //			_, err = iap.NewAgentRegistryIamPolicy(ctx, "policy", &iap.AgentRegistryIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
 //				Location:   pulumi.String("us-central1"),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = iap.NewAgentRegistryIamPolicy(ctx, "policy", &iap.AgentRegistryIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
 //				Location:   pulumi.String("us-central1"),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -304,7 +304,7 @@ import (
 //			_, err = iap.NewAgentRegistryIamPolicy(ctx, "policy", &iap.AgentRegistryIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
 //				Location:   pulumi.String("us-central1"),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -351,7 +351,7 @@ import (
 //			_, err = iap.NewAgentRegistryIamPolicy(ctx, "policy", &iap.AgentRegistryIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
 //				Location:   pulumi.String("us-central1"),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

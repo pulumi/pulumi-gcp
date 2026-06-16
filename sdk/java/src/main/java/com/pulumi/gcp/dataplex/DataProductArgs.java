@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.inputs.DataProductAccessApprovalConfigArgs;
 import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupArgs;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DataProductArgs Empty = new DataProductArgs();
+
+    /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessApprovalConfig")
+    private @Nullable Output<DataProductAccessApprovalConfigArgs> accessApprovalConfig;
+
+    /**
+     * @return Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataProductAccessApprovalConfigArgs>> accessApprovalConfig() {
+        return Optional.ofNullable(this.accessApprovalConfig);
+    }
 
     /**
      * Custom user defined access groups at the data product level.
@@ -175,6 +193,7 @@ public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
     private DataProductArgs() {}
 
     private DataProductArgs(DataProductArgs $) {
+        this.accessApprovalConfig = $.accessApprovalConfig;
         this.accessGroups = $.accessGroups;
         this.dataProductId = $.dataProductId;
         this.deletionPolicy = $.deletionPolicy;
@@ -202,6 +221,29 @@ public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DataProductArgs defaults) {
             $ = new DataProductArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessApprovalConfig Configuration for access approval for the data product.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessApprovalConfig(@Nullable Output<DataProductAccessApprovalConfigArgs> accessApprovalConfig) {
+            $.accessApprovalConfig = accessApprovalConfig;
+            return this;
+        }
+
+        /**
+         * @param accessApprovalConfig Configuration for access approval for the data product.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessApprovalConfig(DataProductAccessApprovalConfigArgs accessApprovalConfig) {
+            return accessApprovalConfig(Output.of(accessApprovalConfig));
         }
 
         /**

@@ -161,6 +161,25 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
     }
 
     /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    @Import(name="regionalPropagationDisabled")
+    private @Nullable Output<Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    public Optional<Output<Boolean>> regionalPropagationDisabled() {
+        return Optional.ofNullable(this.regionalPropagationDisabled);
+    }
+
+    /**
      * Timestamp when the PromptTemplate state was last changed.
      * 
      */
@@ -233,6 +252,7 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
         this.model = $.model;
         this.name = $.name;
         this.project = $.project;
+        this.regionalPropagationDisabled = $.regionalPropagationDisabled;
         this.stateChangeTime = $.stateChangeTime;
         this.templateId = $.templateId;
         this.templateString = $.templateString;
@@ -447,6 +467,31 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the write operation (create,
+         * update, or delete) will apply to the global region only. Otherwise, the
+         * operation will also propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(@Nullable Output<Boolean> regionalPropagationDisabled) {
+            $.regionalPropagationDisabled = regionalPropagationDisabled;
+            return this;
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the write operation (create,
+         * update, or delete) will apply to the global region only. Otherwise, the
+         * operation will also propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(Boolean regionalPropagationDisabled) {
+            return regionalPropagationDisabled(Output.of(regionalPropagationDisabled));
         }
 
         /**

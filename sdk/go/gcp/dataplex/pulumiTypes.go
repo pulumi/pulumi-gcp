@@ -2032,6 +2032,143 @@ func (o DataAssetAccessGroupConfigArrayOutput) Index(i pulumi.IntInput) DataAsse
 	}).(DataAssetAccessGroupConfigOutput)
 }
 
+type DataProductAccessApprovalConfig struct {
+	// Specifies the email addresses of users who are potential approvers.
+	ApproverEmails []string `pulumi:"approverEmails"`
+}
+
+// DataProductAccessApprovalConfigInput is an input type that accepts DataProductAccessApprovalConfigArgs and DataProductAccessApprovalConfigOutput values.
+// You can construct a concrete instance of `DataProductAccessApprovalConfigInput` via:
+//
+//	DataProductAccessApprovalConfigArgs{...}
+type DataProductAccessApprovalConfigInput interface {
+	pulumi.Input
+
+	ToDataProductAccessApprovalConfigOutput() DataProductAccessApprovalConfigOutput
+	ToDataProductAccessApprovalConfigOutputWithContext(context.Context) DataProductAccessApprovalConfigOutput
+}
+
+type DataProductAccessApprovalConfigArgs struct {
+	// Specifies the email addresses of users who are potential approvers.
+	ApproverEmails pulumi.StringArrayInput `pulumi:"approverEmails"`
+}
+
+func (DataProductAccessApprovalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessApprovalConfig)(nil)).Elem()
+}
+
+func (i DataProductAccessApprovalConfigArgs) ToDataProductAccessApprovalConfigOutput() DataProductAccessApprovalConfigOutput {
+	return i.ToDataProductAccessApprovalConfigOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessApprovalConfigArgs) ToDataProductAccessApprovalConfigOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessApprovalConfigOutput)
+}
+
+func (i DataProductAccessApprovalConfigArgs) ToDataProductAccessApprovalConfigPtrOutput() DataProductAccessApprovalConfigPtrOutput {
+	return i.ToDataProductAccessApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessApprovalConfigArgs) ToDataProductAccessApprovalConfigPtrOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessApprovalConfigOutput).ToDataProductAccessApprovalConfigPtrOutputWithContext(ctx)
+}
+
+// DataProductAccessApprovalConfigPtrInput is an input type that accepts DataProductAccessApprovalConfigArgs, DataProductAccessApprovalConfigPtr and DataProductAccessApprovalConfigPtrOutput values.
+// You can construct a concrete instance of `DataProductAccessApprovalConfigPtrInput` via:
+//
+//	        DataProductAccessApprovalConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataProductAccessApprovalConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataProductAccessApprovalConfigPtrOutput() DataProductAccessApprovalConfigPtrOutput
+	ToDataProductAccessApprovalConfigPtrOutputWithContext(context.Context) DataProductAccessApprovalConfigPtrOutput
+}
+
+type dataProductAccessApprovalConfigPtrType DataProductAccessApprovalConfigArgs
+
+func DataProductAccessApprovalConfigPtr(v *DataProductAccessApprovalConfigArgs) DataProductAccessApprovalConfigPtrInput {
+	return (*dataProductAccessApprovalConfigPtrType)(v)
+}
+
+func (*dataProductAccessApprovalConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductAccessApprovalConfig)(nil)).Elem()
+}
+
+func (i *dataProductAccessApprovalConfigPtrType) ToDataProductAccessApprovalConfigPtrOutput() DataProductAccessApprovalConfigPtrOutput {
+	return i.ToDataProductAccessApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataProductAccessApprovalConfigPtrType) ToDataProductAccessApprovalConfigPtrOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessApprovalConfigPtrOutput)
+}
+
+type DataProductAccessApprovalConfigOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessApprovalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessApprovalConfig)(nil)).Elem()
+}
+
+func (o DataProductAccessApprovalConfigOutput) ToDataProductAccessApprovalConfigOutput() DataProductAccessApprovalConfigOutput {
+	return o
+}
+
+func (o DataProductAccessApprovalConfigOutput) ToDataProductAccessApprovalConfigOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigOutput {
+	return o
+}
+
+func (o DataProductAccessApprovalConfigOutput) ToDataProductAccessApprovalConfigPtrOutput() DataProductAccessApprovalConfigPtrOutput {
+	return o.ToDataProductAccessApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataProductAccessApprovalConfigOutput) ToDataProductAccessApprovalConfigPtrOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataProductAccessApprovalConfig) *DataProductAccessApprovalConfig {
+		return &v
+	}).(DataProductAccessApprovalConfigPtrOutput)
+}
+
+// Specifies the email addresses of users who are potential approvers.
+func (o DataProductAccessApprovalConfigOutput) ApproverEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataProductAccessApprovalConfig) []string { return v.ApproverEmails }).(pulumi.StringArrayOutput)
+}
+
+type DataProductAccessApprovalConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessApprovalConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductAccessApprovalConfig)(nil)).Elem()
+}
+
+func (o DataProductAccessApprovalConfigPtrOutput) ToDataProductAccessApprovalConfigPtrOutput() DataProductAccessApprovalConfigPtrOutput {
+	return o
+}
+
+func (o DataProductAccessApprovalConfigPtrOutput) ToDataProductAccessApprovalConfigPtrOutputWithContext(ctx context.Context) DataProductAccessApprovalConfigPtrOutput {
+	return o
+}
+
+func (o DataProductAccessApprovalConfigPtrOutput) Elem() DataProductAccessApprovalConfigOutput {
+	return o.ApplyT(func(v *DataProductAccessApprovalConfig) DataProductAccessApprovalConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataProductAccessApprovalConfig
+		return ret
+	}).(DataProductAccessApprovalConfigOutput)
+}
+
+// Specifies the email addresses of users who are potential approvers.
+func (o DataProductAccessApprovalConfigPtrOutput) ApproverEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataProductAccessApprovalConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ApproverEmails
+	}).(pulumi.StringArrayOutput)
+}
+
 type DataProductAccessGroup struct {
 	// Description of the access group.
 	Description *string `pulumi:"description"`
@@ -2333,6 +2470,332 @@ func (o DataProductDataAssetAccessGroupConfigArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataProductDataAssetAccessGroupConfig {
 		return vs[0].([]DataProductDataAssetAccessGroupConfig)[vs[1].(int)]
 	}).(DataProductDataAssetAccessGroupConfigOutput)
+}
+
+type DataProductIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DataProductIamBindingConditionInput is an input type that accepts DataProductIamBindingConditionArgs and DataProductIamBindingConditionOutput values.
+// You can construct a concrete instance of `DataProductIamBindingConditionInput` via:
+//
+//	DataProductIamBindingConditionArgs{...}
+type DataProductIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDataProductIamBindingConditionOutput() DataProductIamBindingConditionOutput
+	ToDataProductIamBindingConditionOutputWithContext(context.Context) DataProductIamBindingConditionOutput
+}
+
+type DataProductIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DataProductIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductIamBindingCondition)(nil)).Elem()
+}
+
+func (i DataProductIamBindingConditionArgs) ToDataProductIamBindingConditionOutput() DataProductIamBindingConditionOutput {
+	return i.ToDataProductIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DataProductIamBindingConditionArgs) ToDataProductIamBindingConditionOutputWithContext(ctx context.Context) DataProductIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamBindingConditionOutput)
+}
+
+func (i DataProductIamBindingConditionArgs) ToDataProductIamBindingConditionPtrOutput() DataProductIamBindingConditionPtrOutput {
+	return i.ToDataProductIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DataProductIamBindingConditionArgs) ToDataProductIamBindingConditionPtrOutputWithContext(ctx context.Context) DataProductIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamBindingConditionOutput).ToDataProductIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DataProductIamBindingConditionPtrInput is an input type that accepts DataProductIamBindingConditionArgs, DataProductIamBindingConditionPtr and DataProductIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DataProductIamBindingConditionPtrInput` via:
+//
+//	        DataProductIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataProductIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDataProductIamBindingConditionPtrOutput() DataProductIamBindingConditionPtrOutput
+	ToDataProductIamBindingConditionPtrOutputWithContext(context.Context) DataProductIamBindingConditionPtrOutput
+}
+
+type dataProductIamBindingConditionPtrType DataProductIamBindingConditionArgs
+
+func DataProductIamBindingConditionPtr(v *DataProductIamBindingConditionArgs) DataProductIamBindingConditionPtrInput {
+	return (*dataProductIamBindingConditionPtrType)(v)
+}
+
+func (*dataProductIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductIamBindingCondition)(nil)).Elem()
+}
+
+func (i *dataProductIamBindingConditionPtrType) ToDataProductIamBindingConditionPtrOutput() DataProductIamBindingConditionPtrOutput {
+	return i.ToDataProductIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataProductIamBindingConditionPtrType) ToDataProductIamBindingConditionPtrOutputWithContext(ctx context.Context) DataProductIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamBindingConditionPtrOutput)
+}
+
+type DataProductIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DataProductIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductIamBindingCondition)(nil)).Elem()
+}
+
+func (o DataProductIamBindingConditionOutput) ToDataProductIamBindingConditionOutput() DataProductIamBindingConditionOutput {
+	return o
+}
+
+func (o DataProductIamBindingConditionOutput) ToDataProductIamBindingConditionOutputWithContext(ctx context.Context) DataProductIamBindingConditionOutput {
+	return o
+}
+
+func (o DataProductIamBindingConditionOutput) ToDataProductIamBindingConditionPtrOutput() DataProductIamBindingConditionPtrOutput {
+	return o.ToDataProductIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DataProductIamBindingConditionOutput) ToDataProductIamBindingConditionPtrOutputWithContext(ctx context.Context) DataProductIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataProductIamBindingCondition) *DataProductIamBindingCondition {
+		return &v
+	}).(DataProductIamBindingConditionPtrOutput)
+}
+
+func (o DataProductIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataProductIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DataProductIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DataProductIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataProductIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductIamBindingCondition)(nil)).Elem()
+}
+
+func (o DataProductIamBindingConditionPtrOutput) ToDataProductIamBindingConditionPtrOutput() DataProductIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DataProductIamBindingConditionPtrOutput) ToDataProductIamBindingConditionPtrOutputWithContext(ctx context.Context) DataProductIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DataProductIamBindingConditionPtrOutput) Elem() DataProductIamBindingConditionOutput {
+	return o.ApplyT(func(v *DataProductIamBindingCondition) DataProductIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DataProductIamBindingCondition
+		return ret
+	}).(DataProductIamBindingConditionOutput)
+}
+
+func (o DataProductIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataProductIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DataProductIamMemberConditionInput is an input type that accepts DataProductIamMemberConditionArgs and DataProductIamMemberConditionOutput values.
+// You can construct a concrete instance of `DataProductIamMemberConditionInput` via:
+//
+//	DataProductIamMemberConditionArgs{...}
+type DataProductIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDataProductIamMemberConditionOutput() DataProductIamMemberConditionOutput
+	ToDataProductIamMemberConditionOutputWithContext(context.Context) DataProductIamMemberConditionOutput
+}
+
+type DataProductIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DataProductIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductIamMemberCondition)(nil)).Elem()
+}
+
+func (i DataProductIamMemberConditionArgs) ToDataProductIamMemberConditionOutput() DataProductIamMemberConditionOutput {
+	return i.ToDataProductIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DataProductIamMemberConditionArgs) ToDataProductIamMemberConditionOutputWithContext(ctx context.Context) DataProductIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamMemberConditionOutput)
+}
+
+func (i DataProductIamMemberConditionArgs) ToDataProductIamMemberConditionPtrOutput() DataProductIamMemberConditionPtrOutput {
+	return i.ToDataProductIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DataProductIamMemberConditionArgs) ToDataProductIamMemberConditionPtrOutputWithContext(ctx context.Context) DataProductIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamMemberConditionOutput).ToDataProductIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DataProductIamMemberConditionPtrInput is an input type that accepts DataProductIamMemberConditionArgs, DataProductIamMemberConditionPtr and DataProductIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DataProductIamMemberConditionPtrInput` via:
+//
+//	        DataProductIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataProductIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDataProductIamMemberConditionPtrOutput() DataProductIamMemberConditionPtrOutput
+	ToDataProductIamMemberConditionPtrOutputWithContext(context.Context) DataProductIamMemberConditionPtrOutput
+}
+
+type dataProductIamMemberConditionPtrType DataProductIamMemberConditionArgs
+
+func DataProductIamMemberConditionPtr(v *DataProductIamMemberConditionArgs) DataProductIamMemberConditionPtrInput {
+	return (*dataProductIamMemberConditionPtrType)(v)
+}
+
+func (*dataProductIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductIamMemberCondition)(nil)).Elem()
+}
+
+func (i *dataProductIamMemberConditionPtrType) ToDataProductIamMemberConditionPtrOutput() DataProductIamMemberConditionPtrOutput {
+	return i.ToDataProductIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataProductIamMemberConditionPtrType) ToDataProductIamMemberConditionPtrOutputWithContext(ctx context.Context) DataProductIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductIamMemberConditionPtrOutput)
+}
+
+type DataProductIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DataProductIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataProductIamMemberConditionOutput) ToDataProductIamMemberConditionOutput() DataProductIamMemberConditionOutput {
+	return o
+}
+
+func (o DataProductIamMemberConditionOutput) ToDataProductIamMemberConditionOutputWithContext(ctx context.Context) DataProductIamMemberConditionOutput {
+	return o
+}
+
+func (o DataProductIamMemberConditionOutput) ToDataProductIamMemberConditionPtrOutput() DataProductIamMemberConditionPtrOutput {
+	return o.ToDataProductIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DataProductIamMemberConditionOutput) ToDataProductIamMemberConditionPtrOutputWithContext(ctx context.Context) DataProductIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataProductIamMemberCondition) *DataProductIamMemberCondition {
+		return &v
+	}).(DataProductIamMemberConditionPtrOutput)
+}
+
+func (o DataProductIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataProductIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DataProductIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DataProductIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataProductIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataProductIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataProductIamMemberConditionPtrOutput) ToDataProductIamMemberConditionPtrOutput() DataProductIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataProductIamMemberConditionPtrOutput) ToDataProductIamMemberConditionPtrOutputWithContext(ctx context.Context) DataProductIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataProductIamMemberConditionPtrOutput) Elem() DataProductIamMemberConditionOutput {
+	return o.ApplyT(func(v *DataProductIamMemberCondition) DataProductIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DataProductIamMemberCondition
+		return ret
+	}).(DataProductIamMemberConditionOutput)
+}
+
+func (o DataProductIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataProductIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProductIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatascanData struct {
@@ -17451,11 +17914,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAssetAccessGroupConfigInput)(nil)).Elem(), DataAssetAccessGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAssetAccessGroupConfigArrayInput)(nil)).Elem(), DataAssetAccessGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessApprovalConfigInput)(nil)).Elem(), DataProductAccessApprovalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessApprovalConfigPtrInput)(nil)).Elem(), DataProductAccessApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupInput)(nil)).Elem(), DataProductAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupArrayInput)(nil)).Elem(), DataProductAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupPrincipalInput)(nil)).Elem(), DataProductAccessGroupPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductDataAssetAccessGroupConfigInput)(nil)).Elem(), DataProductDataAssetAccessGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductDataAssetAccessGroupConfigArrayInput)(nil)).Elem(), DataProductDataAssetAccessGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductIamBindingConditionInput)(nil)).Elem(), DataProductIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductIamBindingConditionPtrInput)(nil)).Elem(), DataProductIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductIamMemberConditionInput)(nil)).Elem(), DataProductIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductIamMemberConditionPtrInput)(nil)).Elem(), DataProductIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataInput)(nil)).Elem(), DatascanDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataPtrInput)(nil)).Elem(), DatascanDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecInput)(nil)).Elem(), DatascanDataDiscoverySpecArgs{})
@@ -17672,11 +18141,17 @@ func init() {
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
 	pulumi.RegisterOutputType(DataAssetAccessGroupConfigOutput{})
 	pulumi.RegisterOutputType(DataAssetAccessGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(DataProductAccessApprovalConfigOutput{})
+	pulumi.RegisterOutputType(DataProductAccessApprovalConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupPrincipalOutput{})
 	pulumi.RegisterOutputType(DataProductDataAssetAccessGroupConfigOutput{})
 	pulumi.RegisterOutputType(DataProductDataAssetAccessGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(DataProductIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DataProductIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DataProductIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DataProductIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataOutput{})
 	pulumi.RegisterOutputType(DatascanDataPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataDiscoverySpecOutput{})

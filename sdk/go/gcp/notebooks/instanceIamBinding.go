@@ -60,7 +60,7 @@ import (
 //				Project:      pulumi.Any(instance.Project),
 //				Location:     pulumi.Any(instance.Location),
 //				InstanceName: pulumi.Any(instance.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -186,7 +186,7 @@ import (
 //				Project:      pulumi.Any(instance.Project),
 //				Location:     pulumi.Any(instance.Location),
 //				InstanceName: pulumi.Any(instance.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

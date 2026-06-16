@@ -55,6 +55,41 @@ import (
 //	}
 //
 // ```
+// ### Firebaseailogic Prompt Template Lock Global Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			globalOnly, err := firebase.NewAiLogicPromptTemplate(ctx, "global_only", &firebase.AiLogicPromptTemplateArgs{
+//				Location:       pulumi.String("global"),
+//				TemplateId:     pulumi.String("global-only-lock-template"),
+//				TemplateString: pulumi.String("---\nmodel: googleai/gemini-1.5-flash\n---\nHello World\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAiLogicPromptTemplateLock(ctx, "global_only_lock", &firebase.AiLogicPromptTemplateLockArgs{
+//				Location:                    globalOnly.Location,
+//				TemplateId:                  globalOnly.TemplateId,
+//				RegionalPropagationDisabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -91,6 +126,10 @@ type AiLogicPromptTemplateLock struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// For the `global` location only. If true, the modifyLock operation will
+	// apply to the global region only. Otherwise, the operation will also
+	// propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrOutput `pulumi:"regionalPropagationDisabled"`
 	// The ID of the prompt template.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 }
@@ -148,6 +187,10 @@ type aiLogicPromptTemplateLockState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// For the `global` location only. If true, the modifyLock operation will
+	// apply to the global region only. Otherwise, the operation will also
+	// propagate to all applicable regions.
+	RegionalPropagationDisabled *bool `pulumi:"regionalPropagationDisabled"`
 	// The ID of the prompt template.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -170,6 +213,10 @@ type AiLogicPromptTemplateLockState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// For the `global` location only. If true, the modifyLock operation will
+	// apply to the global region only. Otherwise, the operation will also
+	// propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrInput
 	// The ID of the prompt template.
 	TemplateId pulumi.StringPtrInput
 }
@@ -191,6 +238,10 @@ type aiLogicPromptTemplateLockArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// For the `global` location only. If true, the modifyLock operation will
+	// apply to the global region only. Otherwise, the operation will also
+	// propagate to all applicable regions.
+	RegionalPropagationDisabled *bool `pulumi:"regionalPropagationDisabled"`
 	// The ID of the prompt template.
 	TemplateId string `pulumi:"templateId"`
 }
@@ -209,6 +260,10 @@ type AiLogicPromptTemplateLockArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// For the `global` location only. If true, the modifyLock operation will
+	// apply to the global region only. Otherwise, the operation will also
+	// propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrInput
 	// The ID of the prompt template.
 	TemplateId pulumi.StringInput
 }
@@ -330,6 +385,13 @@ func (o AiLogicPromptTemplateLockOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AiLogicPromptTemplateLockOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiLogicPromptTemplateLock) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// For the `global` location only. If true, the modifyLock operation will
+// apply to the global region only. Otherwise, the operation will also
+// propagate to all applicable regions.
+func (o AiLogicPromptTemplateLockOutput) RegionalPropagationDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiLogicPromptTemplateLock) pulumi.BoolPtrOutput { return v.RegionalPropagationDisabled }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the prompt template.

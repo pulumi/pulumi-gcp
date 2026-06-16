@@ -147,11 +147,8 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * (Output)
-     * The server URL of the Open API schema. This field is only set in tools in the
-     * environment dependencies during the export process if the schema contains a
-     * server url. During the import process, if this url is present in the environment
-     * dependencies and the schema has the $env_var placeholder, it will replace the
-     * placeholder in the schema.
+     * The URL where this interface is available. Must be a valid absolute
+     * HTTPS URL in production.
      * 
      */
     @Import(name="url")
@@ -159,11 +156,8 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return (Output)
-     * The server URL of the Open API schema. This field is only set in tools in the
-     * environment dependencies during the export process if the schema contains a
-     * server url. During the import process, if this url is present in the environment
-     * dependencies and the schema has the $env_var placeholder, it will replace the
-     * placeholder in the schema.
+     * The URL where this interface is available. Must be a valid absolute
+     * HTTPS URL in production.
      * 
      */
     public Optional<Output<String>> url() {
@@ -406,11 +400,8 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param url (Output)
-         * The server URL of the Open API schema. This field is only set in tools in the
-         * environment dependencies during the export process if the schema contains a
-         * server url. During the import process, if this url is present in the environment
-         * dependencies and the schema has the $env_var placeholder, it will replace the
-         * placeholder in the schema.
+         * The URL where this interface is available. Must be a valid absolute
+         * HTTPS URL in production.
          * 
          * @return builder
          * 
@@ -422,11 +413,8 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param url (Output)
-         * The server URL of the Open API schema. This field is only set in tools in the
-         * environment dependencies during the export process if the schema contains a
-         * server url. During the import process, if this url is present in the environment
-         * dependencies and the schema has the $env_var placeholder, it will replace the
-         * placeholder in the schema.
+         * The URL where this interface is available. Must be a valid absolute
+         * HTTPS URL in production.
          * 
          * @return builder
          * 

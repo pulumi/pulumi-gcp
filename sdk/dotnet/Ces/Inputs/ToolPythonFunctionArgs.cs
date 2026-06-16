@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the Python function to execute. Must match a Python function
+        /// Optional. The name of the Python function to execute. Must match a Python function
         /// name defined in the python code. Case sensitive. If the name is not
         /// provided, the first function defined in the python code will be used.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Python code to execute for the tool.
+        /// Optional. The Python code to execute for the tool.
         /// </summary>
         [Input("pythonCode")]
         public Input<string>? PythonCode { get; set; }

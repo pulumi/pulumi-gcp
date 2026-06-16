@@ -107,8 +107,8 @@ import * as utilities from "../utilities";
  *     service: "appengine-neg",
  *     runtime: "nodejs",
  *     flexibleRuntimeSettings: {
- *         operatingSystem: "ubuntu22",
- *         runtimeVersion: "20",
+ *         operatingSystem: "ubuntu24",
+ *         runtimeVersion: "24",
  *     },
  *     entrypoint: {
  *         shell: "node ./app.js",

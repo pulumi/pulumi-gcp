@@ -203,6 +203,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * // Mount NFS datastore on vSphere cluster
+ * // This code block is required to mount the datastore on ESXi hosts
  * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
  *     name: "ext-cluster",
  *     parent: cluster_pc.id,
@@ -328,6 +330,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * // Mount NFS datastore on vSphere cluster
+ * // This code block is required to mount the datastore on ESXi hosts
  * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
  *     name: "ext-cluster",
  *     parent: cluster_pc.id,

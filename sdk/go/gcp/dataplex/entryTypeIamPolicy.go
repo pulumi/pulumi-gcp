@@ -58,7 +58,7 @@ import (
 //				Project:     pulumi.Any(testEntryTypeBasic.Project),
 //				Location:    pulumi.Any(testEntryTypeBasic.Location),
 //				EntryTypeId: pulumi.Any(testEntryTypeBasic.EntryTypeId),
-//				PolicyData:  pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //				Project:     pulumi.Any(testEntryTypeBasic.Project),
 //				Location:    pulumi.Any(testEntryTypeBasic.Location),
 //				EntryTypeId: pulumi.Any(testEntryTypeBasic.EntryTypeId),
-//				PolicyData:  pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ToolDataStoreToolBoostSpec> BoostSpecs;
         /// <summary>
+        /// Optional. Search within a single specific DataStore.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ToolDataStoreToolDataStoreSource? DataStoreSource;
+        /// <summary>
         /// The tool description.
         /// </summary>
         public readonly string? Description;
@@ -28,6 +33,15 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ToolDataStoreToolEngineSource? EngineSource;
+        /// <summary>
+        /// Optional. The filter parameter behavior.
+        /// Possible values:
+        /// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+        /// ALWAYS_INCLUDE
+        /// NEVER_INCLUDE
+        /// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+        /// </summary>
+        public readonly string? FilterParameterBehavior;
         /// <summary>
         /// (Optional, Deprecated)
         /// Number of search results to return per query.
@@ -50,9 +64,13 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ToolDataStoreTool(
             ImmutableArray<Outputs.ToolDataStoreToolBoostSpec> boostSpecs,
 
+            Outputs.ToolDataStoreToolDataStoreSource? dataStoreSource,
+
             string? description,
 
             Outputs.ToolDataStoreToolEngineSource? engineSource,
+
+            string? filterParameterBehavior,
 
             int? maxResults,
 
@@ -61,8 +79,10 @@ namespace Pulumi.Gcp.Ces.Outputs
             string name)
         {
             BoostSpecs = boostSpecs;
+            DataStoreSource = dataStoreSource;
             Description = description;
             EngineSource = engineSource;
+            FilterParameterBehavior = filterParameterBehavior;
             MaxResults = maxResults;
             ModalityConfigs = modalityConfigs;
             Name = name;

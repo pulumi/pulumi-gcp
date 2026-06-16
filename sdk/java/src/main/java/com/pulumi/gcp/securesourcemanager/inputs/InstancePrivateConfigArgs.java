@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigCustomHostConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -83,6 +84,23 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. Additional allowed projects for setting up PSC connections.
+     * Instance host project is automatically allowed and does not need to be included in this list.
+     * 
+     */
+    @Import(name="pscAllowedProjects")
+    private @Nullable Output<List<String>> pscAllowedProjects;
+
+    /**
+     * @return Optional. Additional allowed projects for setting up PSC connections.
+     * Instance host project is automatically allowed and does not need to be included in this list.
+     * 
+     */
+    public Optional<Output<List<String>>> pscAllowedProjects() {
+        return Optional.ofNullable(this.pscAllowedProjects);
+    }
+
+    /**
      * (Output)
      * Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
      * 
@@ -106,6 +124,7 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
         this.customHostConfig = $.customHostConfig;
         this.httpServiceAttachment = $.httpServiceAttachment;
         this.isPrivate = $.isPrivate;
+        this.pscAllowedProjects = $.pscAllowedProjects;
         this.sshServiceAttachment = $.sshServiceAttachment;
     }
 
@@ -213,6 +232,40 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder isPrivate(Boolean isPrivate) {
             return isPrivate(Output.of(isPrivate));
+        }
+
+        /**
+         * @param pscAllowedProjects Optional. Additional allowed projects for setting up PSC connections.
+         * Instance host project is automatically allowed and does not need to be included in this list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAllowedProjects(@Nullable Output<List<String>> pscAllowedProjects) {
+            $.pscAllowedProjects = pscAllowedProjects;
+            return this;
+        }
+
+        /**
+         * @param pscAllowedProjects Optional. Additional allowed projects for setting up PSC connections.
+         * Instance host project is automatically allowed and does not need to be included in this list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAllowedProjects(List<String> pscAllowedProjects) {
+            return pscAllowedProjects(Output.of(pscAllowedProjects));
+        }
+
+        /**
+         * @param pscAllowedProjects Optional. Additional allowed projects for setting up PSC connections.
+         * Instance host project is automatically allowed and does not need to be included in this list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAllowedProjects(String... pscAllowedProjects) {
+            return pscAllowedProjects(List.of(pscAllowedProjects));
         }
 
         /**

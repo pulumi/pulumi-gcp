@@ -108,7 +108,7 @@ import (
 //				Topic: topic.Name,
 //				PushConfig: &pubsub.SubscriptionPushConfigArgs{
 //					PushEndpoint: _default.Statuses.ApplyT(func(statuses []cloudrun.ServiceStatus) (*string, error) {
-//						return &statuses[0].Url, nil
+//						return statuses[0].Url, nil
 //					}).(pulumi.StringPtrOutput),
 //					OidcToken: &pubsub.SubscriptionPushConfigOidcTokenArgs{
 //						ServiceAccountEmail: sa.Email,
@@ -328,7 +328,7 @@ import (
 //				Location:   _default.Location,
 //				Project:    _default.Project,
 //				Service:    _default.Name,
-//				PolicyData: pulumi.String(pulumi.String(noauth.PolicyData)),
+//				PolicyData: pulumi.String(noauth.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -479,7 +479,7 @@ import (
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{
-//							"run.googleapis.com/container-dependencies": pulumi.String(pulumi.String(json0)),
+//							"run.googleapis.com/container-dependencies": pulumi.String(json0),
 //						},
 //					},
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{

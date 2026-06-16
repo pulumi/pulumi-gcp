@@ -46,7 +46,7 @@ import (
 //				OdbNetworkId: pulumi.String("my-odbnetwork"),
 //				Location:     pulumi.String("us-west3"),
 //				Project:      pulumi.String("my-project"),
-//				Network:      pulumi.String(pulumi.String(_default.Id)),
+//				Network:      pulumi.String(_default.Id),
 //				Labels: pulumi.StringMap{
 //					"terraform_created": pulumi.String("true"),
 //				},
@@ -86,7 +86,7 @@ import (
 //				OdbNetworkId:  pulumi.String("my-odbnetwork"),
 //				Location:      pulumi.String("us-west3"),
 //				Project:       pulumi.String("my-project"),
-//				Network:       pulumi.String(pulumi.String(_default.Id)),
+//				Network:       pulumi.String(_default.Id),
 //				GcpOracleZone: pulumi.String("us-west3-a-r1"),
 //				Labels: pulumi.StringMap{
 //					"terraform_created": pulumi.String("true"),

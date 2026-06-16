@@ -465,13 +465,13 @@ import (
 //			}
 //			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 //				Name:    pulumi.String("example-topic"),
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-//				Parent:    pulumi.String(pulumi.String(project.Id)),
+//				Parent:    pulumi.String(project.Id),
 //				ShortName: pulumi.String("tag_key"),
 //			})
 //			if err != nil {

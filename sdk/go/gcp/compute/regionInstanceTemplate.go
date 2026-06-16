@@ -48,7 +48,7 @@ import (
 //			}
 //			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 //				Name:  pulumi.String("foo"),
-//				Image: pulumi.String(pulumi.String(myImage.SelfLink)),
+//				Image: pulumi.String(myImage.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),

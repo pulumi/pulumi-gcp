@@ -188,7 +188,7 @@ import (
 //				Instance:                   defaultInstance.SelfLink,
 //				Port:                       pulumi.Int(80),
 //				IpAddress: pulumi.String(defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//					return &networkInterfaces[0].NetworkIp, nil
+//					return networkInterfaces[0].NetworkIp, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ClientDestinationPort: pulumi.Int(8080),
 //			})

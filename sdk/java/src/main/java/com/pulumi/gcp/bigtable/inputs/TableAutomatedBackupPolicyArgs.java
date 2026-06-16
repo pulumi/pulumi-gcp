@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigtable.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,21 @@ public final class TableAutomatedBackupPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
+     * A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<String>> locations;
+
+    /**
+     * @return A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+     * 
+     */
+    public Optional<Output<List<String>>> locations() {
+        return Optional.ofNullable(this.locations);
+    }
+
+    /**
      * How long the automated backups should be retained.
      * 
      */
@@ -49,6 +65,7 @@ public final class TableAutomatedBackupPolicyArgs extends com.pulumi.resources.R
 
     private TableAutomatedBackupPolicyArgs(TableAutomatedBackupPolicyArgs $) {
         this.frequency = $.frequency;
+        this.locations = $.locations;
         this.retentionPeriod = $.retentionPeriod;
     }
 
@@ -89,6 +106,37 @@ public final class TableAutomatedBackupPolicyArgs extends com.pulumi.resources.R
          */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
+        }
+
+        /**
+         * @param locations A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<String>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<String> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(String... locations) {
+            return locations(List.of(locations));
         }
 
         /**

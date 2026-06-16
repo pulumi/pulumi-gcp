@@ -82,7 +82,7 @@ import (
 //			}, nil)
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Name: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//					return &token.Token, nil
+//					return token.Token, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Content: token.ApplyT(func(token siteverification.GetTokenResult) (string, error) {
 //					return fmt.Sprintf("google-site-verification: %v", token.Token), nil
@@ -104,14 +104,14 @@ import (
 //			example, err := siteverification.NewWebResource(ctx, "example", &siteverification.WebResourceArgs{
 //				Site: &siteverification.WebResourceSiteArgs{
 //					Type: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//						return &token.Type, nil
+//						return token.Type, nil
 //					}).(pulumi.StringPtrOutput),
 //					Identifier: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//						return &token.Identifier, nil
+//						return token.Identifier, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
 //				VerificationMethod: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//					return &token.VerificationMethod, nil
+//					return token.VerificationMethod, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {

@@ -92,14 +92,14 @@ import (
 //			}
 //			policy_pk, err := secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   private_key_secret.SecretId,
-//				PolicyData: pulumi.String(pulumi.String(p4sa_secretAccessor.PolicyData)),
+//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			policy_whs, err := secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   webhook_secret_secret.SecretId,
-//				PolicyData: pulumi.String(pulumi.String(p4sa_secretAccessor.PolicyData)),
+//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -190,7 +190,7 @@ import (
 //			}
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   github_token_secret.SecretId,
-//				PolicyData: pulumi.String(pulumi.String(p4sa_secretAccessor.PolicyData)),
+//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err

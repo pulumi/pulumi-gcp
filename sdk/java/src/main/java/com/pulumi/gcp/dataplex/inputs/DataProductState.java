@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataplex.inputs.DataProductAccessApprovalConfigArgs;
 import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class DataProductState extends com.pulumi.resources.ResourceArgs {
 
     public static final DataProductState Empty = new DataProductState();
+
+    /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessApprovalConfig")
+    private @Nullable Output<DataProductAccessApprovalConfigArgs> accessApprovalConfig;
+
+    /**
+     * @return Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataProductAccessApprovalConfigArgs>> accessApprovalConfig() {
+        return Optional.ofNullable(this.accessApprovalConfig);
+    }
 
     /**
      * Custom user defined access groups at the data product level.
@@ -201,6 +219,21 @@ public final class DataProductState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The relative resource name of the data product.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The relative resource name of the data product.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Emails of the owners.
      * 
      */
@@ -282,6 +315,7 @@ public final class DataProductState extends com.pulumi.resources.ResourceArgs {
     private DataProductState() {}
 
     private DataProductState(DataProductState $) {
+        this.accessApprovalConfig = $.accessApprovalConfig;
         this.accessGroups = $.accessGroups;
         this.assetCount = $.assetCount;
         this.createTime = $.createTime;
@@ -293,6 +327,7 @@ public final class DataProductState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.labels = $.labels;
         this.location = $.location;
+        this.name = $.name;
         this.ownerEmails = $.ownerEmails;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -316,6 +351,29 @@ public final class DataProductState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DataProductState defaults) {
             $ = new DataProductState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessApprovalConfig Configuration for access approval for the data product.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessApprovalConfig(@Nullable Output<DataProductAccessApprovalConfigArgs> accessApprovalConfig) {
+            $.accessApprovalConfig = accessApprovalConfig;
+            return this;
+        }
+
+        /**
+         * @param accessApprovalConfig Configuration for access approval for the data product.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessApprovalConfig(DataProductAccessApprovalConfigArgs accessApprovalConfig) {
+            return accessApprovalConfig(Output.of(accessApprovalConfig));
         }
 
         /**
@@ -574,6 +632,27 @@ public final class DataProductState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param name The relative resource name of the data product.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The relative resource name of the data product.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

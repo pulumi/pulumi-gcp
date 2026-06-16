@@ -14,6 +14,14 @@ import (
 
 // Description
 //
+// > **Note:** **Direct Management Restriction for Certain Tool Types:**
+//
+// Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `ces.Tool` resource.
+//
+// `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+//
+// Consequently, blocks like `openApiTool`, `mcpTool`, `connectorTool`, `remoteAgentTool`, and `systemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
+//
 // ## Example Usage
 //
 // ### Ces Tool Client Function Basic
@@ -172,23 +180,23 @@ import (
 //					Name:        pulumi.String("ces_tool_client_function_basic"),
 //					Description: pulumi.String("example-description"),
 //					Parameters: &ces.ToolClientFunctionParametersArgs{
-//						AdditionalProperties: pulumi.String(pulumi.String(json0)),
-//						AnyOf:                pulumi.String(pulumi.String(json1)),
-//						Default:              pulumi.String(pulumi.String(json2)),
-//						Defs:                 pulumi.String(pulumi.String(json3)),
+//						AdditionalProperties: pulumi.String(json0),
+//						AnyOf:                pulumi.String(json1),
+//						Default:              pulumi.String(json2),
+//						Defs:                 pulumi.String(json3),
 //						Description:          pulumi.String("schema description"),
 //						Enums: pulumi.StringArray{
 //							pulumi.String("VALUE_A"),
 //							pulumi.String("VALUE_B"),
 //						},
-//						Items:       pulumi.String(pulumi.String(json4)),
+//						Items:       pulumi.String(json4),
 //						MaxItems:    pulumi.Int(32),
 //						Maximum:     pulumi.Float64(64),
 //						MinItems:    pulumi.Int(1),
 //						Minimum:     pulumi.Float64(2),
 //						Nullable:    pulumi.Bool(true),
-//						PrefixItems: pulumi.String(pulumi.String(json5)),
-//						Properties:  pulumi.String(pulumi.String(json6)),
+//						PrefixItems: pulumi.String(json5),
+//						Properties:  pulumi.String(json6),
 //						Ref:         pulumi.String("#/defs/MyDefinition"),
 //						Requireds: pulumi.StringArray{
 //							pulumi.String("some_property"),
@@ -198,23 +206,23 @@ import (
 //						UniqueItems: pulumi.Bool(true),
 //					},
 //					Response: &ces.ToolClientFunctionResponseArgs{
-//						AdditionalProperties: pulumi.String(pulumi.String(json7)),
-//						AnyOf:                pulumi.String(pulumi.String(json8)),
-//						Default:              pulumi.String(pulumi.String(json9)),
-//						Defs:                 pulumi.String(pulumi.String(json10)),
+//						AdditionalProperties: pulumi.String(json7),
+//						AnyOf:                pulumi.String(json8),
+//						Default:              pulumi.String(json9),
+//						Defs:                 pulumi.String(json10),
 //						Description:          pulumi.String("schema description"),
 //						Enums: pulumi.StringArray{
 //							pulumi.String("VALUE_A"),
 //							pulumi.String("VALUE_B"),
 //						},
-//						Items:       pulumi.String(pulumi.String(json11)),
+//						Items:       pulumi.String(json11),
 //						MaxItems:    pulumi.Int(32),
 //						Maximum:     pulumi.Float64(64),
 //						MinItems:    pulumi.Int(1),
 //						Minimum:     pulumi.Float64(2),
 //						Nullable:    pulumi.Bool(true),
-//						PrefixItems: pulumi.String(pulumi.String(json12)),
-//						Properties:  pulumi.String(pulumi.String(json13)),
+//						PrefixItems: pulumi.String(json12),
+//						Properties:  pulumi.String(json13),
 //						Ref:         pulumi.String("#/defs/MyDefinition"),
 //						Requireds: pulumi.StringArray{
 //							pulumi.String("some_property"),
@@ -467,6 +475,197 @@ import (
 //	}
 //
 // ```
+// ### Ces Tool Agent Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				AppId:       pulumi.String("app-id"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetAgent, err := ces.NewAgent(ctx, "target_agent", &ces.AgentArgs{
+//				AgentId:     pulumi.String("target-agent"),
+//				Location:    pulumi.String("us"),
+//				App:         my_app.AppId,
+//				DisplayName: pulumi.String("Target Agent"),
+//				Instruction: pulumi.String("Target agent instruction"),
+//				LlmAgent:    &ces.AgentLlmAgentArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewTool(ctx, "ces_tool_agent_basic", &ces.ToolArgs{
+//				Location:      pulumi.String("us"),
+//				App:           my_app.Name,
+//				ToolId:        pulumi.String("ces_tool_basic5"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				AgentTool: &ces.ToolAgentToolArgs{
+//					Name:        pulumi.String("ces_tool_agent_basic"),
+//					Description: pulumi.String("example-description"),
+//					Agent: pulumi.All(my_app.Project, my_app.AppId, targetAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						appId := _args[1].(string)
+//						agentId := _args[2].(*string)
+//						return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Tool File Search Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				AppId:       pulumi.String("app-id"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewTool(ctx, "ces_tool_file_search_basic", &ces.ToolArgs{
+//				Location:      pulumi.String("us"),
+//				App:           my_app.Name,
+//				ToolId:        pulumi.String("ces_tool_basic6"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				FileSearchTool: &ces.ToolFileSearchToolArgs{
+//					Name:        pulumi.String("ces_tool_file_search_basic"),
+//					Description: pulumi.String("example-description"),
+//					CorpusType:  pulumi.String("FULLY_MANAGED"),
+//					FileCorpus: my_app.Project.ApplyT(func(project string) (string, error) {
+//						return fmt.Sprintf("projects/%v/locations/us/ragCorpora/tf-test-mock-corpus", project), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Tool Widget Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				AppId:       pulumi.String("app-id"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"displaySettings": map[string]interface{}{
+//					"showHeader": true,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"param1": map[string]interface{}{
+//					"type": "STRING",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = ces.NewTool(ctx, "ces_tool_widget_basic", &ces.ToolArgs{
+//				Location:      pulumi.String("us"),
+//				App:           my_app.Name,
+//				ToolId:        pulumi.String("ces_tool_basic7"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				WidgetTool: &ces.ToolWidgetToolArgs{
+//					Name:        pulumi.String("ces_tool_widget_basic"),
+//					Description: pulumi.String("example-description"),
+//					WidgetType:  pulumi.String("PRODUCT_CAROUSEL"),
+//					UiConfig:    pulumi.String(json0),
+//					DataMapping: &ces.ToolWidgetToolDataMappingArgs{
+//						Mode: pulumi.String("FIELD_MAPPING"),
+//						FieldMappings: pulumi.StringMap{
+//							"key1": pulumi.String("value1"),
+//							"key2": pulumi.String("value2"),
+//						},
+//					},
+//					TextResponseConfig: &ces.ToolWidgetToolTextResponseConfigArgs{
+//						Type:       pulumi.String("STATIC"),
+//						StaticText: pulumi.String("example-static-text"),
+//					},
+//					Parameters: &ces.ToolWidgetToolParametersArgs{
+//						Type:       pulumi.String("OBJECT"),
+//						Properties: pulumi.String(json1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -486,6 +685,9 @@ import (
 type Tool struct {
 	pulumi.CustomResourceState
 
+	// Represents a tool that allows the agent to call another agent.
+	// Structure is documented below.
+	AgentTool ToolAgentToolPtrOutput `pulumi:"agentTool"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringOutput `pulumi:"app"`
 	// Represents a client-side function that the agent can invoke. When the
@@ -494,6 +696,9 @@ type Tool struct {
 	// as a ToolResponse to continue the interaction with the agent.
 	// Structure is documented below.
 	ClientFunction ToolClientFunctionPtrOutput `pulumi:"clientFunction"`
+	// A ConnectorTool allows connections to different integrations.
+	// Structure is documented below.
+	ConnectorTools ToolConnectorToolArrayOutput `pulumi:"connectorTools"`
 	// Timestamp when the tool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -521,6 +726,10 @@ type Tool struct {
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
 	ExecutionType pulumi.StringPtrOutput `pulumi:"executionType"`
+	// The file search tool allows the agent to search across the files uploaded by the
+	// app/agent developer.
+	// Structure is documented below.
+	FileSearchTool ToolFileSearchToolPtrOutput `pulumi:"fileSearchTool"`
 	// If the tool is generated by the LLM assistant, this field contains a
 	// descriptive summary of the generation.
 	GeneratedSummary pulumi.StringOutput `pulumi:"generatedSummary"`
@@ -531,6 +740,9 @@ type Tool struct {
 	GoogleSearchTool ToolGoogleSearchToolPtrOutput `pulumi:"googleSearchTool"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// An MCP tool.
+	// Structure is documented below.
+	McpTools ToolMcpToolArrayOutput `pulumi:"mcpTools"`
 	// (Output)
 	// The name of the system tool.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -543,6 +755,9 @@ type Tool struct {
 	// A Python function tool.
 	// Structure is documented below.
 	PythonFunction ToolPythonFunctionPtrOutput `pulumi:"pythonFunction"`
+	// Represents a tool that allows the agent to call another remote agent.
+	// Structure is documented below.
+	RemoteAgentTools ToolRemoteAgentToolArrayOutput `pulumi:"remoteAgentTools"`
 	// The system tool.
 	// Structure is documented below.
 	SystemTools ToolSystemToolArrayOutput `pulumi:"systemTools"`
@@ -552,6 +767,9 @@ type Tool struct {
 	ToolId pulumi.StringOutput `pulumi:"toolId"`
 	// Timestamp when the tool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Represents a widget tool that the agent can invoke.
+	// Structure is documented below.
+	WidgetTool ToolWidgetToolPtrOutput `pulumi:"widgetTool"`
 }
 
 // NewTool registers a new resource with the given unique name, arguments, and options.
@@ -593,6 +811,9 @@ func GetTool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tool resources.
 type toolState struct {
+	// Represents a tool that allows the agent to call another agent.
+	// Structure is documented below.
+	AgentTool *ToolAgentTool `pulumi:"agentTool"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App *string `pulumi:"app"`
 	// Represents a client-side function that the agent can invoke. When the
@@ -601,6 +822,9 @@ type toolState struct {
 	// as a ToolResponse to continue the interaction with the agent.
 	// Structure is documented below.
 	ClientFunction *ToolClientFunction `pulumi:"clientFunction"`
+	// A ConnectorTool allows connections to different integrations.
+	// Structure is documented below.
+	ConnectorTools []ToolConnectorTool `pulumi:"connectorTools"`
 	// Timestamp when the tool was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -628,6 +852,10 @@ type toolState struct {
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
 	ExecutionType *string `pulumi:"executionType"`
+	// The file search tool allows the agent to search across the files uploaded by the
+	// app/agent developer.
+	// Structure is documented below.
+	FileSearchTool *ToolFileSearchTool `pulumi:"fileSearchTool"`
 	// If the tool is generated by the LLM assistant, this field contains a
 	// descriptive summary of the generation.
 	GeneratedSummary *string `pulumi:"generatedSummary"`
@@ -638,6 +866,9 @@ type toolState struct {
 	GoogleSearchTool *ToolGoogleSearchTool `pulumi:"googleSearchTool"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// An MCP tool.
+	// Structure is documented below.
+	McpTools []ToolMcpTool `pulumi:"mcpTools"`
 	// (Output)
 	// The name of the system tool.
 	Name *string `pulumi:"name"`
@@ -650,6 +881,9 @@ type toolState struct {
 	// A Python function tool.
 	// Structure is documented below.
 	PythonFunction *ToolPythonFunction `pulumi:"pythonFunction"`
+	// Represents a tool that allows the agent to call another remote agent.
+	// Structure is documented below.
+	RemoteAgentTools []ToolRemoteAgentTool `pulumi:"remoteAgentTools"`
 	// The system tool.
 	// Structure is documented below.
 	SystemTools []ToolSystemTool `pulumi:"systemTools"`
@@ -659,9 +893,15 @@ type toolState struct {
 	ToolId *string `pulumi:"toolId"`
 	// Timestamp when the tool was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Represents a widget tool that the agent can invoke.
+	// Structure is documented below.
+	WidgetTool *ToolWidgetTool `pulumi:"widgetTool"`
 }
 
 type ToolState struct {
+	// Represents a tool that allows the agent to call another agent.
+	// Structure is documented below.
+	AgentTool ToolAgentToolPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringPtrInput
 	// Represents a client-side function that the agent can invoke. When the
@@ -670,6 +910,9 @@ type ToolState struct {
 	// as a ToolResponse to continue the interaction with the agent.
 	// Structure is documented below.
 	ClientFunction ToolClientFunctionPtrInput
+	// A ConnectorTool allows connections to different integrations.
+	// Structure is documented below.
+	ConnectorTools ToolConnectorToolArrayInput
 	// Timestamp when the tool was created.
 	CreateTime pulumi.StringPtrInput
 	// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -697,6 +940,10 @@ type ToolState struct {
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
 	ExecutionType pulumi.StringPtrInput
+	// The file search tool allows the agent to search across the files uploaded by the
+	// app/agent developer.
+	// Structure is documented below.
+	FileSearchTool ToolFileSearchToolPtrInput
 	// If the tool is generated by the LLM assistant, this field contains a
 	// descriptive summary of the generation.
 	GeneratedSummary pulumi.StringPtrInput
@@ -707,6 +954,9 @@ type ToolState struct {
 	GoogleSearchTool ToolGoogleSearchToolPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// An MCP tool.
+	// Structure is documented below.
+	McpTools ToolMcpToolArrayInput
 	// (Output)
 	// The name of the system tool.
 	Name pulumi.StringPtrInput
@@ -719,6 +969,9 @@ type ToolState struct {
 	// A Python function tool.
 	// Structure is documented below.
 	PythonFunction ToolPythonFunctionPtrInput
+	// Represents a tool that allows the agent to call another remote agent.
+	// Structure is documented below.
+	RemoteAgentTools ToolRemoteAgentToolArrayInput
 	// The system tool.
 	// Structure is documented below.
 	SystemTools ToolSystemToolArrayInput
@@ -728,6 +981,9 @@ type ToolState struct {
 	ToolId pulumi.StringPtrInput
 	// Timestamp when the tool was last updated.
 	UpdateTime pulumi.StringPtrInput
+	// Represents a widget tool that the agent can invoke.
+	// Structure is documented below.
+	WidgetTool ToolWidgetToolPtrInput
 }
 
 func (ToolState) ElementType() reflect.Type {
@@ -735,6 +991,9 @@ func (ToolState) ElementType() reflect.Type {
 }
 
 type toolArgs struct {
+	// Represents a tool that allows the agent to call another agent.
+	// Structure is documented below.
+	AgentTool *ToolAgentTool `pulumi:"agentTool"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`
 	// Represents a client-side function that the agent can invoke. When the
@@ -760,6 +1019,10 @@ type toolArgs struct {
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
 	ExecutionType *string `pulumi:"executionType"`
+	// The file search tool allows the agent to search across the files uploaded by the
+	// app/agent developer.
+	// Structure is documented below.
+	FileSearchTool *ToolFileSearchTool `pulumi:"fileSearchTool"`
 	// Represents a tool to perform Google web searches for grounding.
 	// See
 	// https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -777,10 +1040,16 @@ type toolArgs struct {
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
 	ToolId string `pulumi:"toolId"`
+	// Represents a widget tool that the agent can invoke.
+	// Structure is documented below.
+	WidgetTool *ToolWidgetTool `pulumi:"widgetTool"`
 }
 
 // The set of arguments for constructing a Tool resource.
 type ToolArgs struct {
+	// Represents a tool that allows the agent to call another agent.
+	// Structure is documented below.
+	AgentTool ToolAgentToolPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringInput
 	// Represents a client-side function that the agent can invoke. When the
@@ -806,6 +1075,10 @@ type ToolArgs struct {
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
 	ExecutionType pulumi.StringPtrInput
+	// The file search tool allows the agent to search across the files uploaded by the
+	// app/agent developer.
+	// Structure is documented below.
+	FileSearchTool ToolFileSearchToolPtrInput
 	// Represents a tool to perform Google web searches for grounding.
 	// See
 	// https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -823,6 +1096,9 @@ type ToolArgs struct {
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
 	ToolId pulumi.StringInput
+	// Represents a widget tool that the agent can invoke.
+	// Structure is documented below.
+	WidgetTool ToolWidgetToolPtrInput
 }
 
 func (ToolArgs) ElementType() reflect.Type {
@@ -912,6 +1188,12 @@ func (o ToolOutput) ToToolOutputWithContext(ctx context.Context) ToolOutput {
 	return o
 }
 
+// Represents a tool that allows the agent to call another agent.
+// Structure is documented below.
+func (o ToolOutput) AgentTool() ToolAgentToolPtrOutput {
+	return o.ApplyT(func(v *Tool) ToolAgentToolPtrOutput { return v.AgentTool }).(ToolAgentToolPtrOutput)
+}
+
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o ToolOutput) App() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tool) pulumi.StringOutput { return v.App }).(pulumi.StringOutput)
@@ -924,6 +1206,12 @@ func (o ToolOutput) App() pulumi.StringOutput {
 // Structure is documented below.
 func (o ToolOutput) ClientFunction() ToolClientFunctionPtrOutput {
 	return o.ApplyT(func(v *Tool) ToolClientFunctionPtrOutput { return v.ClientFunction }).(ToolClientFunctionPtrOutput)
+}
+
+// A ConnectorTool allows connections to different integrations.
+// Structure is documented below.
+func (o ToolOutput) ConnectorTools() ToolConnectorToolArrayOutput {
+	return o.ApplyT(func(v *Tool) ToolConnectorToolArrayOutput { return v.ConnectorTools }).(ToolConnectorToolArrayOutput)
 }
 
 // Timestamp when the tool was created.
@@ -971,6 +1259,13 @@ func (o ToolOutput) ExecutionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Tool) pulumi.StringPtrOutput { return v.ExecutionType }).(pulumi.StringPtrOutput)
 }
 
+// The file search tool allows the agent to search across the files uploaded by the
+// app/agent developer.
+// Structure is documented below.
+func (o ToolOutput) FileSearchTool() ToolFileSearchToolPtrOutput {
+	return o.ApplyT(func(v *Tool) ToolFileSearchToolPtrOutput { return v.FileSearchTool }).(ToolFileSearchToolPtrOutput)
+}
+
 // If the tool is generated by the LLM assistant, this field contains a
 // descriptive summary of the generation.
 func (o ToolOutput) GeneratedSummary() pulumi.StringOutput {
@@ -988,6 +1283,12 @@ func (o ToolOutput) GoogleSearchTool() ToolGoogleSearchToolPtrOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o ToolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// An MCP tool.
+// Structure is documented below.
+func (o ToolOutput) McpTools() ToolMcpToolArrayOutput {
+	return o.ApplyT(func(v *Tool) ToolMcpToolArrayOutput { return v.McpTools }).(ToolMcpToolArrayOutput)
 }
 
 // (Output)
@@ -1014,6 +1315,12 @@ func (o ToolOutput) PythonFunction() ToolPythonFunctionPtrOutput {
 	return o.ApplyT(func(v *Tool) ToolPythonFunctionPtrOutput { return v.PythonFunction }).(ToolPythonFunctionPtrOutput)
 }
 
+// Represents a tool that allows the agent to call another remote agent.
+// Structure is documented below.
+func (o ToolOutput) RemoteAgentTools() ToolRemoteAgentToolArrayOutput {
+	return o.ApplyT(func(v *Tool) ToolRemoteAgentToolArrayOutput { return v.RemoteAgentTools }).(ToolRemoteAgentToolArrayOutput)
+}
+
 // The system tool.
 // Structure is documented below.
 func (o ToolOutput) SystemTools() ToolSystemToolArrayOutput {
@@ -1030,6 +1337,12 @@ func (o ToolOutput) ToolId() pulumi.StringOutput {
 // Timestamp when the tool was last updated.
 func (o ToolOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Represents a widget tool that the agent can invoke.
+// Structure is documented below.
+func (o ToolOutput) WidgetTool() ToolWidgetToolPtrOutput {
+	return o.ApplyT(func(v *Tool) ToolWidgetToolPtrOutput { return v.WidgetTool }).(ToolWidgetToolPtrOutput)
 }
 
 type ToolArrayOutput struct{ *pulumi.OutputState }

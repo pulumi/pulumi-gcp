@@ -60,7 +60,7 @@ import (
 //			_, err = compute.NewBackendBucketIamPolicy(ctx, "policy", &compute.BackendBucketIamPolicyArgs{
 //				Project:    pulumi.Any(imageBackend.Project),
 //				Name:       pulumi.Any(imageBackend.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //			_, err = compute.NewBackendBucketIamPolicy(ctx, "policy", &compute.BackendBucketIamPolicyArgs{
 //				Project:    pulumi.Any(imageBackend.Project),
 //				Name:       pulumi.Any(imageBackend.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

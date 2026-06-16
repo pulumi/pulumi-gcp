@@ -80,6 +80,7 @@ class ClusterArgs:
                  network_policy: pulumi.Input[Optional['ClusterNetworkPolicyArgs']] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_config: pulumi.Input[Optional['ClusterNodeConfigArgs']] = None,
+                 node_creation_config: pulumi.Input[Optional['ClusterNodeCreationConfigArgs']] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  node_pool_auto_config: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']] = None,
                  node_pool_defaults: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']] = None,
@@ -272,6 +273,7 @@ class ClusterArgs:
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
+        :param pulumi.Input['ClusterNodeCreationConfigArgs'] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -476,6 +478,8 @@ class ClusterArgs:
             pulumi.set(__self__, "networking_mode", networking_mode)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
+        if node_creation_config is not None:
+            pulumi.set(__self__, "node_creation_config", node_creation_config)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
         if node_pool_auto_config is not None:
@@ -1344,6 +1348,18 @@ class ClusterArgs:
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeCreationConfig")
+    def node_creation_config(self) -> pulumi.Input[Optional['ClusterNodeCreationConfigArgs']]:
+        """
+        Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        """
+        return pulumi.get(self, "node_creation_config")
+
+    @node_creation_config.setter
+    def node_creation_config(self, value: pulumi.Input[Optional['ClusterNodeCreationConfigArgs']]):
+        pulumi.set(self, "node_creation_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1789,6 +1805,7 @@ class _ClusterState:
                  network_policy: pulumi.Input[Optional['ClusterNetworkPolicyArgs']] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_config: pulumi.Input[Optional['ClusterNodeConfigArgs']] = None,
+                 node_creation_config: pulumi.Input[Optional['ClusterNodeCreationConfigArgs']] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  node_pool_auto_config: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']] = None,
                  node_pool_defaults: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']] = None,
@@ -1992,6 +2009,7 @@ class _ClusterState:
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
+        :param pulumi.Input['ClusterNodeCreationConfigArgs'] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -2213,6 +2231,8 @@ class _ClusterState:
             pulumi.set(__self__, "networking_mode", networking_mode)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
+        if node_creation_config is not None:
+            pulumi.set(__self__, "node_creation_config", node_creation_config)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
         if node_pool_auto_config is not None:
@@ -3141,6 +3161,18 @@ class _ClusterState:
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeCreationConfig")
+    def node_creation_config(self) -> pulumi.Input[Optional['ClusterNodeCreationConfigArgs']]:
+        """
+        Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        """
+        return pulumi.get(self, "node_creation_config")
+
+    @node_creation_config.setter
+    def node_creation_config(self, value: pulumi.Input[Optional['ClusterNodeCreationConfigArgs']]):
+        pulumi.set(self, "node_creation_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -3647,6 +3679,7 @@ class Cluster(pulumi.CustomResource):
                  network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
                  node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
@@ -3955,6 +3988,7 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -4234,6 +4268,7 @@ class Cluster(pulumi.CustomResource):
                  network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
                  node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
@@ -4329,6 +4364,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network_policy"] = network_policy
             __props__.__dict__["networking_mode"] = networking_mode
             __props__.__dict__["node_config"] = node_config
+            __props__.__dict__["node_creation_config"] = node_creation_config
             __props__.__dict__["node_locations"] = node_locations
             __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
             __props__.__dict__["node_pool_defaults"] = node_pool_defaults
@@ -4440,6 +4476,7 @@ class Cluster(pulumi.CustomResource):
             network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
             networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
             node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+            node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
             node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
             node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
@@ -4647,6 +4684,7 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -4806,6 +4844,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network_policy"] = network_policy
         __props__.__dict__["networking_mode"] = networking_mode
         __props__.__dict__["node_config"] = node_config
+        __props__.__dict__["node_creation_config"] = node_creation_config
         __props__.__dict__["node_locations"] = node_locations
         __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
         __props__.__dict__["node_pool_defaults"] = node_pool_defaults
@@ -5449,6 +5488,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "node_config")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCreationConfig")
+    def node_creation_config(self) -> pulumi.Output['outputs.ClusterNodeCreationConfig']:
+        """
+        Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        """
+        return pulumi.get(self, "node_creation_config")
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")

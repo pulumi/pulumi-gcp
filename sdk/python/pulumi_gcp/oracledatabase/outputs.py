@@ -154,6 +154,7 @@ __all__ = [
     'GetDbServersDbServerPropertyResult',
     'GetGoldengateConnectionTypesGoldengateConnectionTypeResult',
     'GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult',
+    'GetGoldengateDeploymentTypesGoldengateDeploymentTypeResult',
 ]
 
 @pulumi.output_type
@@ -19859,5 +19860,133 @@ class GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult(d
         The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
         """
         return pulumi.get(self, "storage_usage_limit_gb_per_cpu_core")
+
+
+@pulumi.output_type
+class GetGoldengateDeploymentTypesGoldengateDeploymentTypeResult(dict):
+    def __init__(__self__, *,
+                 category: _builtins.str,
+                 connection_types: Sequence[_builtins.str],
+                 default_username: _builtins.str,
+                 deployment_type: _builtins.str,
+                 display_name: _builtins.str,
+                 name: _builtins.str,
+                 ogg_version: _builtins.str,
+                 source_technologies: Sequence[_builtins.str],
+                 supported_capabilities: Sequence[_builtins.str],
+                 supported_technologies_url: _builtins.str,
+                 target_technologies: Sequence[_builtins.str]):
+        """
+        :param _builtins.str category: The category of the Goldengate Deployment Type resource.
+        :param Sequence[_builtins.str] connection_types: The connection types of the Goldengate Deployment Type resource.
+        :param _builtins.str default_username: The default username of the Goldengate Deployment Type resource.
+        :param _builtins.str deployment_type: The deployment type of the Goldengate Deployment Type resource.
+        :param _builtins.str display_name: The display name of the Goldengate Deployment Type resource.
+        :param _builtins.str name: The name of the Goldengate Deployment Type resource.
+        :param _builtins.str ogg_version: The OGG version of the Goldengate Deployment Type resource.
+        :param Sequence[_builtins.str] source_technologies: The source technologies of the Goldengate Deployment Type resource.
+        :param Sequence[_builtins.str] supported_capabilities: The supported capabilities of the Goldengate Deployment Type resource.
+        :param _builtins.str supported_technologies_url: The supported technologies URL of the Goldengate Deployment Type resource.
+        :param Sequence[_builtins.str] target_technologies: The target technologies of the Goldengate Deployment Type resource.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "connection_types", connection_types)
+        pulumi.set(__self__, "default_username", default_username)
+        pulumi.set(__self__, "deployment_type", deployment_type)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ogg_version", ogg_version)
+        pulumi.set(__self__, "source_technologies", source_technologies)
+        pulumi.set(__self__, "supported_capabilities", supported_capabilities)
+        pulumi.set(__self__, "supported_technologies_url", supported_technologies_url)
+        pulumi.set(__self__, "target_technologies", target_technologies)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionTypes")
+    def connection_types(self) -> Sequence[_builtins.str]:
+        """
+        The connection types of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "connection_types")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultUsername")
+    def default_username(self) -> _builtins.str:
+        """
+        The default username of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "default_username")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> _builtins.str:
+        """
+        The deployment type of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The display name of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="oggVersion")
+    def ogg_version(self) -> _builtins.str:
+        """
+        The OGG version of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "ogg_version")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceTechnologies")
+    def source_technologies(self) -> Sequence[_builtins.str]:
+        """
+        The source technologies of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "source_technologies")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedCapabilities")
+    def supported_capabilities(self) -> Sequence[_builtins.str]:
+        """
+        The supported capabilities of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "supported_capabilities")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedTechnologiesUrl")
+    def supported_technologies_url(self) -> _builtins.str:
+        """
+        The supported technologies URL of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "supported_technologies_url")
+
+    @_builtins.property
+    @pulumi.getter(name="targetTechnologies")
+    def target_technologies(self) -> Sequence[_builtins.str]:
+        """
+        The target technologies of the Goldengate Deployment Type resource.
+        """
+        return pulumi.get(self, "target_technologies")
 
 

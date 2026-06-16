@@ -39,6 +39,7 @@ __all__ = [
     'ApiProductOperationGroupOperationConfigOperation',
     'ApiProductOperationGroupOperationConfigQuota',
     'AppGroupAttribute',
+    'DatastoreDatastoreConfig',
     'DeveloperAppAttribute',
     'DeveloperAppCredential',
     'DeveloperAppCredentialApiProduct',
@@ -74,6 +75,7 @@ __all__ = [
     'SharedflowMetaData',
     'TargetServerSSlInfo',
     'TargetServerSSlInfoCommonName',
+    'GetInstanceAccessLoggingConfigResult',
 ]
 
 @pulumi.output_type
@@ -1211,6 +1213,95 @@ class AppGroupAttribute(dict):
         Value of the attribute
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DatastoreDatastoreConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "datasetName":
+            suggest = "dataset_name"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatastoreDatastoreConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatastoreDatastoreConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatastoreDatastoreConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 bucket_name: Optional[_builtins.str] = None,
+                 dataset_name: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
+                 table_prefix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str project_id: The GCP project ID that the datastore target resides in.
+        :param _builtins.str bucket_name: The name of the Cloud Storage bucket. Required for `gcs` target type.
+        :param _builtins.str dataset_name: The name of the BigQuery dataset. Required for `bigquery` target type.
+        :param _builtins.str path: The path within the Cloud Storage bucket. Used for `gcs` target type.
+        :param _builtins.str table_prefix: The prefix for BigQuery table names. Used for `bigquery` target type.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if dataset_name is not None:
+            pulumi.set(__self__, "dataset_name", dataset_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        The GCP project ID that the datastore target resides in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Cloud Storage bucket. Required for `gcs` target type.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="datasetName")
+    def dataset_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the BigQuery dataset. Required for `bigquery` target type.
+        """
+        return pulumi.get(self, "dataset_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        The path within the Cloud Storage bucket. Used for `gcs` target type.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> Optional[_builtins.str]:
+        """
+        The prefix for BigQuery table names. Used for `bigquery` target type.
+        """
+        return pulumi.get(self, "table_prefix")
 
 
 @pulumi.output_type
@@ -3352,5 +3443,40 @@ class TargetServerSSlInfoCommonName(dict):
         Indicates whether the cert should be matched against as a wildcard cert.
         """
         return pulumi.get(self, "wildcard_match")
+
+
+@pulumi.output_type
+class GetInstanceAccessLoggingConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 filter: _builtins.str):
+        """
+        :param _builtins.bool enabled: Boolean flag that specifies whether the customer access log feature is enabled.
+        :param _builtins.str filter: Ship the access log entries that match the statusCode defined in the filter.
+               The statusCode is the only expected/supported filter field. (Ex: statusCode)
+               The filter will parse it to the Common Expression Language semantics for expression
+               evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag that specifies whether the customer access log feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> _builtins.str:
+        """
+        Ship the access log entries that match the statusCode defined in the filter.
+        The statusCode is the only expected/supported filter field. (Ex: statusCode)
+        The filter will parse it to the Common Expression Language semantics for expression
+        evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        return pulumi.get(self, "filter")
 
 

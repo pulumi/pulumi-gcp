@@ -150,6 +150,132 @@ import (
 //	}
 //
 // ```
+// ### Dataform Repository Workflow Config With Disabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("my_secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			repository, err := dataform.NewRepository(ctx, "repository", &dataform.RepositoryArgs{
+//				Name:   pulumi.String("dataform_repository"),
+//				Region: pulumi.String("us-central1"),
+//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
+//					Url:                              gitRepository.Url,
+//					DefaultBranch:                    pulumi.String("main"),
+//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//				},
+//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
+//					DefaultDatabase: pulumi.String("database"),
+//					SchemaSuffix:    pulumi.String("_suffix"),
+//					TablePrefix:     pulumi.String("prefix_"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			releaseConfig, err := dataform.NewRepositoryReleaseConfig(ctx, "release_config", &dataform.RepositoryReleaseConfigArgs{
+//				Project:      repository.Project,
+//				Region:       repository.Region,
+//				Repository:   repository.Name,
+//				Name:         pulumi.String("my_release"),
+//				GitCommitish: pulumi.String("main"),
+//				CronSchedule: pulumi.String("0 7 * * *"),
+//				TimeZone:     pulumi.String("America/New_York"),
+//				CodeCompilationConfig: &dataform.RepositoryReleaseConfigCodeCompilationConfigArgs{
+//					DefaultDatabase: pulumi.String("gcp-example-project"),
+//					DefaultSchema:   pulumi.String("example-dataset"),
+//					DefaultLocation: pulumi.String("us-central1"),
+//					AssertionSchema: pulumi.String("example-assertion-dataset"),
+//					DatabaseSuffix:  pulumi.String(""),
+//					SchemaSuffix:    pulumi.String(""),
+//					TablePrefix:     pulumi.String(""),
+//					Vars: pulumi.StringMap{
+//						"var1": pulumi.String("value"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataformSa, err := serviceaccount.NewAccount(ctx, "dataform_sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("dataform-sa"),
+//				DisplayName: pulumi.String("Dataform Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataform.NewRepositoryWorkflowConfig(ctx, "workflow", &dataform.RepositoryWorkflowConfigArgs{
+//				Project:       repository.Project,
+//				Region:        repository.Region,
+//				Repository:    repository.Name,
+//				Name:          pulumi.String("my_workflow"),
+//				ReleaseConfig: releaseConfig.ID(),
+//				InvocationConfig: &dataform.RepositoryWorkflowConfigInvocationConfigArgs{
+//					IncludedTargets: dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{
+//						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{
+//							Database: pulumi.String("gcp-example-project"),
+//							Schema:   pulumi.String("example-dataset"),
+//							Name:     pulumi.String("target_1"),
+//						},
+//						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{
+//							Database: pulumi.String("gcp-example-project"),
+//							Schema:   pulumi.String("example-dataset"),
+//							Name:     pulumi.String("target_2"),
+//						},
+//					},
+//					IncludedTags: pulumi.StringArray{
+//						pulumi.String("tag_1"),
+//					},
+//					TransitiveDependenciesIncluded:       pulumi.Bool(true),
+//					TransitiveDependentsIncluded:         pulumi.Bool(true),
+//					FullyRefreshIncrementalTablesEnabled: pulumi.Bool(false),
+//					ServiceAccount:                       dataformSa.Email,
+//				},
+//				CronSchedule: pulumi.String("0 7 * * *"),
+//				TimeZone:     pulumi.String("America/New_York"),
+//				Disabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -180,6 +306,8 @@ type RepositoryWorkflowConfig struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// Disables automatic creation of workflow invocations.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Optional. If left unset, a default InvocationConfig will be used.
 	// Structure is documented below.
 	InvocationConfig RepositoryWorkflowConfigInvocationConfigPtrOutput `pulumi:"invocationConfig"`
@@ -243,6 +371,8 @@ type repositoryWorkflowConfigState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Disables automatic creation of workflow invocations.
+	Disabled *bool `pulumi:"disabled"`
 	// Optional. If left unset, a default InvocationConfig will be used.
 	// Structure is documented below.
 	InvocationConfig *RepositoryWorkflowConfigInvocationConfig `pulumi:"invocationConfig"`
@@ -274,6 +404,8 @@ type RepositoryWorkflowConfigState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// Disables automatic creation of workflow invocations.
+	Disabled pulumi.BoolPtrInput
 	// Optional. If left unset, a default InvocationConfig will be used.
 	// Structure is documented below.
 	InvocationConfig RepositoryWorkflowConfigInvocationConfigPtrInput
@@ -309,6 +441,8 @@ type repositoryWorkflowConfigArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Disables automatic creation of workflow invocations.
+	Disabled *bool `pulumi:"disabled"`
 	// Optional. If left unset, a default InvocationConfig will be used.
 	// Structure is documented below.
 	InvocationConfig *RepositoryWorkflowConfigInvocationConfig `pulumi:"invocationConfig"`
@@ -338,6 +472,8 @@ type RepositoryWorkflowConfigArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// Disables automatic creation of workflow invocations.
+	Disabled pulumi.BoolPtrInput
 	// Optional. If left unset, a default InvocationConfig will be used.
 	// Structure is documented below.
 	InvocationConfig RepositoryWorkflowConfigInvocationConfigPtrInput
@@ -456,6 +592,11 @@ func (o RepositoryWorkflowConfigOutput) CronSchedule() pulumi.StringPtrOutput {
 // When set to "DELETE", deleting the resource is allowed.
 func (o RepositoryWorkflowConfigOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Disables automatic creation of workflow invocations.
+func (o RepositoryWorkflowConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. If left unset, a default InvocationConfig will be used.

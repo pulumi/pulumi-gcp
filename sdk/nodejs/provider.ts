@@ -148,6 +148,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly integrationConnectorsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly integrationsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly kmsCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly licenseManagerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly loggingCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly lookerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly lustreCustomEndpoint: pulumi.Output<string | undefined>;
@@ -368,6 +369,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["integrationConnectorsCustomEndpoint"] = args?.integrationConnectorsCustomEndpoint;
             resourceInputs["integrationsCustomEndpoint"] = args?.integrationsCustomEndpoint;
             resourceInputs["kmsCustomEndpoint"] = args?.kmsCustomEndpoint;
+            resourceInputs["licenseManagerCustomEndpoint"] = args?.licenseManagerCustomEndpoint;
             resourceInputs["loggingCustomEndpoint"] = args?.loggingCustomEndpoint;
             resourceInputs["lookerCustomEndpoint"] = args?.lookerCustomEndpoint;
             resourceInputs["lustreCustomEndpoint"] = args?.lustreCustomEndpoint;
@@ -601,6 +603,7 @@ export interface ProviderArgs {
     integrationConnectorsCustomEndpoint?: pulumi.Input<string | undefined>;
     integrationsCustomEndpoint?: pulumi.Input<string | undefined>;
     kmsCustomEndpoint?: pulumi.Input<string | undefined>;
+    licenseManagerCustomEndpoint?: pulumi.Input<string | undefined>;
     loggingCustomEndpoint?: pulumi.Input<string | undefined>;
     lookerCustomEndpoint?: pulumi.Input<string | undefined>;
     lustreCustomEndpoint?: pulumi.Input<string | undefined>;

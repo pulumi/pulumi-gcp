@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = artifactregistry.NewRepository(ctx, "repo_one", &artifactregistry.RepositoryArgs{
-//				Location:     pulumi.String(pulumi.String(available.Locations[0])),
+//				Location:     pulumi.String(available.Locations[0]),
 //				RepositoryId: pulumi.String("repo-one"),
 //				Format:       pulumi.String("apt"),
 //			})
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = artifactregistry.NewRepository(ctx, "repo_two", &artifactregistry.RepositoryArgs{
-//				Location:     pulumi.String(pulumi.String(available.Locations[1])),
+//				Location:     pulumi.String(available.Locations[1]),
 //				RepositoryId: pulumi.String("repo-two"),
 //				Format:       pulumi.String("apt"),
 //			})

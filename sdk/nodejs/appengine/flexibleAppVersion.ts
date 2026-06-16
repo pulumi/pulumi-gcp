@@ -81,8 +81,8 @@ import * as utilities from "../utilities";
  *     service: "default",
  *     runtime: "nodejs",
  *     flexibleRuntimeSettings: {
- *         operatingSystem: "ubuntu22",
- *         runtimeVersion: "20",
+ *         operatingSystem: "ubuntu24",
+ *         runtimeVersion: "24",
  *     },
  *     entrypoint: {
  *         shell: "node ./app.js",

@@ -86,7 +86,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
 //				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[0].ServiceAttachment, nil
+//					return pscServiceAttachments[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -109,7 +109,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
 //				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[1].ServiceAttachment, nil
+//					return pscServiceAttachments[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -148,7 +148,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[0].ServiceAttachment, nil
+//					return pscServiceAttachments[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -171,7 +171,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[1].ServiceAttachment, nil
+//					return pscServiceAttachments[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -195,7 +195,7 @@ import (
 //									Network:         network1.ID(),
 //									ProjectId:       pulumi.String(project.ProjectId),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[0].ServiceAttachment, nil
+//										return pscServiceAttachments[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -206,7 +206,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network1.ID(),
 //									Network:         network1.ID(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[1].ServiceAttachment, nil
+//										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -221,7 +221,7 @@ import (
 //									ForwardingRule:  forwardingRule1Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[0].ServiceAttachment, nil
+//										return pscServiceAttachments[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -232,7 +232,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[1].ServiceAttachment, nil
+//										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -346,7 +346,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[0].ServiceAttachment, nil
+//					return pscServiceAttachments[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -369,7 +369,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//					return &pscServiceAttachments[1].ServiceAttachment, nil
+//					return pscServiceAttachments[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -388,7 +388,7 @@ import (
 //									ForwardingRule:  forwardingRule1Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[0].ServiceAttachment, nil
+//										return pscServiceAttachments[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -399,7 +399,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
-//										return &pscServiceAttachments[1].ServiceAttachment, nil
+//										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},

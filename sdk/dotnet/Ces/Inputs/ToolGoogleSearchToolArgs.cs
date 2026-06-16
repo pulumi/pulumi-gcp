@@ -70,6 +70,14 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _preferredDomains = value;
         }
 
+        /// <summary>
+        /// Optional. Prompt instructions passed to planner on how the search results should be
+        /// processed for text and voice.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("promptConfig")]
+        public Input<Inputs.ToolGoogleSearchToolPromptConfigArgs>? PromptConfig { get; set; }
+
         public ToolGoogleSearchToolArgs()
         {
         }

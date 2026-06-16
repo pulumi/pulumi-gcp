@@ -82,7 +82,7 @@ import (
 //				},
 //				Mysql: &databasemigrationservice.ConnectionProfileMysqlArgs{
 //					Host: cloudsqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-//						return &ipAddresses[0].IpAddress, nil
+//						return ipAddresses[0].IpAddress, nil
 //					}).(pulumi.StringPtrOutput),
 //					Port:     pulumi.Int(3306),
 //					Username: sqldbUser.Name,
@@ -195,7 +195,7 @@ import (
 //				},
 //				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 //					Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-//						return &ipAddresses[0].IpAddress, nil
+//						return ipAddresses[0].IpAddress, nil
 //					}).(pulumi.StringPtrOutput),
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,
@@ -273,7 +273,7 @@ import (
 //				},
 //				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 //					Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-//						return &ipAddresses[0].IpAddress, nil
+//						return ipAddresses[0].IpAddress, nil
 //					}).(pulumi.StringPtrOutput),
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,
@@ -348,7 +348,7 @@ import (
 //				},
 //				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 //					Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-//						return &ipAddresses[0].IpAddress, nil
+//						return ipAddresses[0].IpAddress, nil
 //					}).(pulumi.StringPtrOutput),
 //					Port:     pulumi.Int(5432),
 //					Username: sqldbUser.Name,

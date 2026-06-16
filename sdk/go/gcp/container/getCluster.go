@@ -169,6 +169,7 @@ type LookupClusterResult struct {
 	NetworkPolicies                          []GetClusterNetworkPolicy                           `pulumi:"networkPolicies"`
 	NetworkingMode                           string                                              `pulumi:"networkingMode"`
 	NodeConfigs                              []GetClusterNodeConfig                              `pulumi:"nodeConfigs"`
+	NodeCreationConfigs                      []GetClusterNodeCreationConfig                      `pulumi:"nodeCreationConfigs"`
 	NodeLocations                            []string                                            `pulumi:"nodeLocations"`
 	NodePoolAutoConfigs                      []GetClusterNodePoolAutoConfig                      `pulumi:"nodePoolAutoConfigs"`
 	NodePoolDefaults                         []GetClusterNodePoolDefault                         `pulumi:"nodePoolDefaults"`
@@ -511,6 +512,10 @@ func (o LookupClusterResultOutput) NetworkingMode() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) NodeConfigs() GetClusterNodeConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodeConfig { return v.NodeConfigs }).(GetClusterNodeConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) NodeCreationConfigs() GetClusterNodeCreationConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodeCreationConfig { return v.NodeCreationConfigs }).(GetClusterNodeCreationConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) NodeLocations() pulumi.StringArrayOutput {

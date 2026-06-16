@@ -17,10 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A datastore resource that can be mounted on a privatecloud cluster
+ * A datastore resource that can be mounted on a VMware Engine cluster.
  * 
- * ## Example Usage
+ * &gt; **Note:** To mount a datastore on a VMware Engine cluster, configure the
+ * `datastoreMountConfig` block within the `gcp.vmwareengine.Cluster` resource.
+ * A datastore cannot be mounted directly using the `gcp.vmwareengine.Datastore` resource.
  * 
+ * If you are mounting a datastore that was already created outside of Terraform (or in a
+ * separate Terraform configuration), reference it directly by its full resource URI in the
+ * `datastore_mount_config.datastore` field inside the cluster resource:
  * ### Vmware Engine Datastore Thirdparty
  * 
  * <pre>
@@ -54,7 +59,18 @@ import javax.annotation.Nullable;
  *             .name("default")
  *             .build());
  * 
- *         // create a thirdparty datastore
+ *         // Create a thirdparty datastore.
+ *         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+ *         // block within the `google_vmwareengine_cluster` resource. For example:
+ *         //
+ *         //  datastore_mount_config {
+ *         //    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+ *         //    datastore_network {
+ *         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+ *         //      connection_count = 4
+ *         //      mtu              = 1500
+ *         //    }
+ *         //  }
  *         var exampleThirdparty = new Datastore("exampleThirdparty", DatastoreArgs.builder()
  *             .name("thirdparty-datastore")
  *             .location("us-west1-a")
@@ -106,7 +122,18 @@ import javax.annotation.Nullable;
  *             .location("")
  *             .build());
  * 
- *         // Create a VmwareEngine Datastore, referencing the filestore instance
+ *         // Create a VmwareEngine Datastore, referencing the filestore instance.
+ *         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+ *         // block within the `google_vmwareengine_cluster` resource. For example:
+ *         //
+ *         //  datastore_mount_config {
+ *         //    datastore        = google_vmwareengine_datastore.example_filestore.id
+ *         //    datastore_network {
+ *         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+ *         //      connection_count = 4
+ *         //      mtu              = 1500
+ *         //    }
+ *         //  }
  *         var exampleFilestore = new Datastore("exampleFilestore", DatastoreArgs.builder()
  *             .name("filestore-datastore")
  *             .location("")
@@ -156,7 +183,18 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .build());
  * 
- *         // Create a VmwareEngine Datastore, referencing the netapp volume
+ *         // Create a VmwareEngine Datastore, referencing the netapp volume.
+ *         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+ *         // block within the `google_vmwareengine_cluster` resource. For example:
+ *         //
+ *         //  datastore_mount_config {
+ *         //    datastore        = google_vmwareengine_datastore.example_netapp.id
+ *         //    datastore_network {
+ *         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+ *         //      connection_count = 4
+ *         //      mtu              = 1500
+ *         //    }
+ *         //  }
  *         var exampleNetapp = new Datastore("exampleNetapp", DatastoreArgs.builder()
  *             .name("netapp-datastore")
  *             .location("us-west1")

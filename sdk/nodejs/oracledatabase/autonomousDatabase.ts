@@ -51,10 +51,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = gcp.compute.getNetwork({
- *     name: "new",
- *     project: "my-project",
- * });
  * const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
  *     autonomousDatabaseId: "my-instance",
  *     location: "us-east4",
@@ -62,8 +58,8 @@ import * as utilities from "../utilities";
  *     displayName: "autonomousDatabase displayname",
  *     database: "mydatabase",
  *     adminPassword: "123Abpassword",
- *     network: _default.then(_default => _default.id),
- *     cidr: "10.5.0.0/24",
+ *     odbNetwork: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+ *     odbSubnet: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
  *     labels: {
  *         "label-one": "value-one",
  *     },
@@ -89,6 +85,10 @@ import * as utilities from "../utilities";
  *         privateEndpointLabel: "myendpoint",
  *     },
  *     deletionProtection: true,
+ * });
+ * const _default = gcp.compute.getNetwork({
+ *     name: "new",
+ *     project: "my-project",
  * });
  * ```
  * ### Oracledatabase Autonomous Database Odbnetwork

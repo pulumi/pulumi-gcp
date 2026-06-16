@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecArgs;
+import com.pulumi.gcp.ces.inputs.ToolDataStoreToolDataStoreSourceArgs;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceArgs;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigArgs;
 import java.lang.Integer;
@@ -36,6 +37,23 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<List<ToolDataStoreToolBoostSpecArgs>>> boostSpecs() {
         return Optional.ofNullable(this.boostSpecs);
+    }
+
+    /**
+     * Optional. Search within a single specific DataStore.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dataStoreSource")
+    private @Nullable Output<ToolDataStoreToolDataStoreSourceArgs> dataStoreSource;
+
+    /**
+     * @return Optional. Search within a single specific DataStore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolDataStoreToolDataStoreSourceArgs>> dataStoreSource() {
+        return Optional.ofNullable(this.dataStoreSource);
     }
 
     /**
@@ -70,6 +88,31 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ToolDataStoreToolEngineSourceArgs>> engineSource() {
         return Optional.ofNullable(this.engineSource);
+    }
+
+    /**
+     * Optional. The filter parameter behavior.
+     * Possible values:
+     * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+     * ALWAYS_INCLUDE
+     * NEVER_INCLUDE
+     * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+     * 
+     */
+    @Import(name="filterParameterBehavior")
+    private @Nullable Output<String> filterParameterBehavior;
+
+    /**
+     * @return Optional. The filter parameter behavior.
+     * Possible values:
+     * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+     * ALWAYS_INCLUDE
+     * NEVER_INCLUDE
+     * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+     * 
+     */
+    public Optional<Output<String>> filterParameterBehavior() {
+        return Optional.ofNullable(this.filterParameterBehavior);
     }
 
     /**
@@ -139,8 +182,10 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
 
     private ToolDataStoreToolArgs(ToolDataStoreToolArgs $) {
         this.boostSpecs = $.boostSpecs;
+        this.dataStoreSource = $.dataStoreSource;
         this.description = $.description;
         this.engineSource = $.engineSource;
+        this.filterParameterBehavior = $.filterParameterBehavior;
         this.maxResults = $.maxResults;
         this.modalityConfigs = $.modalityConfigs;
         this.name = $.name;
@@ -199,6 +244,29 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param dataStoreSource Optional. Search within a single specific DataStore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataStoreSource(@Nullable Output<ToolDataStoreToolDataStoreSourceArgs> dataStoreSource) {
+            $.dataStoreSource = dataStoreSource;
+            return this;
+        }
+
+        /**
+         * @param dataStoreSource Optional. Search within a single specific DataStore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataStoreSource(ToolDataStoreToolDataStoreSourceArgs dataStoreSource) {
+            return dataStoreSource(Output.of(dataStoreSource));
+        }
+
+        /**
          * @param description The tool description.
          * 
          * @return builder
@@ -242,6 +310,37 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder engineSource(ToolDataStoreToolEngineSourceArgs engineSource) {
             return engineSource(Output.of(engineSource));
+        }
+
+        /**
+         * @param filterParameterBehavior Optional. The filter parameter behavior.
+         * Possible values:
+         * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+         * ALWAYS_INCLUDE
+         * NEVER_INCLUDE
+         * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterParameterBehavior(@Nullable Output<String> filterParameterBehavior) {
+            $.filterParameterBehavior = filterParameterBehavior;
+            return this;
+        }
+
+        /**
+         * @param filterParameterBehavior Optional. The filter parameter behavior.
+         * Possible values:
+         * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+         * ALWAYS_INCLUDE
+         * NEVER_INCLUDE
+         * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterParameterBehavior(String filterParameterBehavior) {
+            return filterParameterBehavior(Output.of(filterParameterBehavior));
         }
 
         /**

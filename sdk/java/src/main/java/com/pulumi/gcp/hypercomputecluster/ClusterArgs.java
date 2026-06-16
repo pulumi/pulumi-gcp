@@ -149,8 +149,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="networkResources")
-    private @Nullable Output<List<ClusterNetworkResourceArgs>> networkResources;
+    @Import(name="networkResources", required=true)
+    private Output<List<ClusterNetworkResourceArgs>> networkResources;
 
     /**
      * @return Network resources available to the cluster. Must contain at most one value.
@@ -161,8 +161,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<ClusterNetworkResourceArgs>>> networkResources() {
-        return Optional.ofNullable(this.networkResources);
+    public Output<List<ClusterNetworkResourceArgs>> networkResources() {
+        return this.networkResources;
     }
 
     /**
@@ -438,7 +438,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder networkResources(@Nullable Output<List<ClusterNetworkResourceArgs>> networkResources) {
+        public Builder networkResources(Output<List<ClusterNetworkResourceArgs>> networkResources) {
             $.networkResources = networkResources;
             return this;
         }
@@ -572,6 +572,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("ClusterArgs", "location");
+            }
+            if ($.networkResources == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "networkResources");
             }
             return $;
         }

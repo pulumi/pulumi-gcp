@@ -6,10 +6,21 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeDrainConfig {
+    /**
+     * @return The duration of the grace termination period for node drain.
+     * 
+     */
+    private String graceTerminationDuration;
+    /**
+     * @return The duration of the PDB timeout period for node drain.
+     * 
+     */
+    private String pdbTimeoutDuration;
     /**
      * @return Whether to respect PodDisruptionBudget policy during node pool deletion.
      * 
@@ -17,6 +28,20 @@ public final class GetClusterNodePoolNodeDrainConfig {
     private Boolean respectPdbDuringNodePoolDeletion;
 
     private GetClusterNodePoolNodeDrainConfig() {}
+    /**
+     * @return The duration of the grace termination period for node drain.
+     * 
+     */
+    public String graceTerminationDuration() {
+        return this.graceTerminationDuration;
+    }
+    /**
+     * @return The duration of the PDB timeout period for node drain.
+     * 
+     */
+    public String pdbTimeoutDuration() {
+        return this.pdbTimeoutDuration;
+    }
     /**
      * @return Whether to respect PodDisruptionBudget policy during node pool deletion.
      * 
@@ -34,13 +59,33 @@ public final class GetClusterNodePoolNodeDrainConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String graceTerminationDuration;
+        private String pdbTimeoutDuration;
         private Boolean respectPdbDuringNodePoolDeletion;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeDrainConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.graceTerminationDuration = defaults.graceTerminationDuration;
+    	      this.pdbTimeoutDuration = defaults.pdbTimeoutDuration;
     	      this.respectPdbDuringNodePoolDeletion = defaults.respectPdbDuringNodePoolDeletion;
         }
 
+        @CustomType.Setter
+        public Builder graceTerminationDuration(String graceTerminationDuration) {
+            if (graceTerminationDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeDrainConfig", "graceTerminationDuration");
+            }
+            this.graceTerminationDuration = graceTerminationDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pdbTimeoutDuration(String pdbTimeoutDuration) {
+            if (pdbTimeoutDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeDrainConfig", "pdbTimeoutDuration");
+            }
+            this.pdbTimeoutDuration = pdbTimeoutDuration;
+            return this;
+        }
         @CustomType.Setter
         public Builder respectPdbDuringNodePoolDeletion(Boolean respectPdbDuringNodePoolDeletion) {
             if (respectPdbDuringNodePoolDeletion == null) {
@@ -51,6 +96,8 @@ public final class GetClusterNodePoolNodeDrainConfig {
         }
         public GetClusterNodePoolNodeDrainConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeDrainConfig();
+            _resultValue.graceTerminationDuration = graceTerminationDuration;
+            _resultValue.pdbTimeoutDuration = pdbTimeoutDuration;
             _resultValue.respectPdbDuringNodePoolDeletion = respectPdbDuringNodePoolDeletion;
             return _resultValue;
         }

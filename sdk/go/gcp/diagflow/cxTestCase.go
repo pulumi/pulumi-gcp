@@ -152,12 +152,12 @@ import (
 //									Text: pulumi.String("training phrase"),
 //								},
 //							},
-//							InjectedParameters:      pulumi.String(pulumi.String(json0)),
+//							InjectedParameters:      pulumi.String(json0),
 //							IsWebhookEnabled:        pulumi.Bool(true),
 //							EnableSentimentAnalysis: pulumi.Bool(true),
 //						},
 //						VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
-//							SessionParameters: pulumi.String(pulumi.String(json1)),
+//							SessionParameters: pulumi.String(json1),
 //							TriggeredIntent: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{
 //								Name: intent.ID(),
 //							},

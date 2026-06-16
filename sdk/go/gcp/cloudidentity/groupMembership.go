@@ -72,7 +72,7 @@ import (
 //				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (*string, error) {
-//						return &groupKey.Id, nil
+//						return groupKey.Id, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
 //				Roles: cloudidentity.GroupMembershipRoleArray{

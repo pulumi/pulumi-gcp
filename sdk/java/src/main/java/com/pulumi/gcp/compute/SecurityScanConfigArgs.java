@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityScanConfigAuthenticationArgs;
 import com.pulumi.gcp.compute.inputs.SecurityScanConfigScheduleArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -113,6 +114,21 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> exportToSecurityCommandCenter() {
         return Optional.ofNullable(this.exportToSecurityCommandCenter);
+    }
+
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     * 
+     */
+    @Import(name="ignoreHttpStatusErrors")
+    private @Nullable Output<Boolean> ignoreHttpStatusErrors;
+
+    /**
+     * @return Whether to keep scanning even if most requests return HTTP error codes.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreHttpStatusErrors() {
+        return Optional.ofNullable(this.ignoreHttpStatusErrors);
     }
 
     /**
@@ -225,6 +241,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.exportToSecurityCommandCenter = $.exportToSecurityCommandCenter;
+        this.ignoreHttpStatusErrors = $.ignoreHttpStatusErrors;
         this.maxQps = $.maxQps;
         this.project = $.project;
         this.schedule = $.schedule;
@@ -385,6 +402,27 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder exportToSecurityCommandCenter(String exportToSecurityCommandCenter) {
             return exportToSecurityCommandCenter(Output.of(exportToSecurityCommandCenter));
+        }
+
+        /**
+         * @param ignoreHttpStatusErrors Whether to keep scanning even if most requests return HTTP error codes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreHttpStatusErrors(@Nullable Output<Boolean> ignoreHttpStatusErrors) {
+            $.ignoreHttpStatusErrors = ignoreHttpStatusErrors;
+            return this;
+        }
+
+        /**
+         * @param ignoreHttpStatusErrors Whether to keep scanning even if most requests return HTTP error codes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreHttpStatusErrors(Boolean ignoreHttpStatusErrors) {
+            return ignoreHttpStatusErrors(Output.of(ignoreHttpStatusErrors));
         }
 
         /**

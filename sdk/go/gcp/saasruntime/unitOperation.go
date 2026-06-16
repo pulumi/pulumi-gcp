@@ -39,10 +39,10 @@ import (
 //			tenantProjectId := "tenant"
 //			exampleSaas, err := saasruntime.NewSaaS(ctx, "example_saas", &saasruntime.SaaSArgs{
 //				SaasId:   pulumi.String("example-saas"),
-//				Location: pulumi.String(pulumi.String(location)),
+//				Location: pulumi.String(location),
 //				Locations: saasruntime.SaaSLocationArray{
 //					&saasruntime.SaaSLocationArgs{
-//						Name: pulumi.String(pulumi.String(location)),
+//						Name: pulumi.String(location),
 //					},
 //				},
 //			})
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
-//				Location:       pulumi.String(pulumi.String(location)),
+//				Location:       pulumi.String(location),
 //				UnitKindId:     pulumi.String("vm-unitkind"),
 //				Saas:           exampleSaas.ID(),
 //				DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			exampleRelease, err := saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
-//				Location:  pulumi.String(pulumi.String(location)),
+//				Location:  pulumi.String(location),
 //				ReleaseId: pulumi.String("example-release"),
 //				UnitKind:  clusterUnitKind.ID(),
 //				Blueprint: &saasruntime.ReleaseBlueprintArgs{
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			exampleUnit, err := saasruntime.NewUnit(ctx, "example_unit", &saasruntime.UnitArgs{
-//				Location: pulumi.String(pulumi.String(location)),
+//				Location: pulumi.String(location),
 //				UnitId:   pulumi.String("example-unit"),
 //				UnitKind: clusterUnitKind.ID(),
 //			})
@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			tenantProject, err := organizations.NewProject(ctx, "tenant_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String(pulumi.String(tenantProjectId)),
-//				Name:           pulumi.String(pulumi.String(tenantProjectId)),
+//				ProjectId:      pulumi.String(tenantProjectId),
+//				Name:           pulumi.String(tenantProjectId),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -141,7 +141,7 @@ import (
 //				return err
 //			}
 //			provisionUnitOperation, err := saasruntime.NewUnitOperation(ctx, "provision_unit_operation", &saasruntime.UnitOperationArgs{
-//				Location:          pulumi.String(pulumi.String(location)),
+//				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("provision-unit-operation"),
 //				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),
@@ -192,7 +192,7 @@ import (
 //				return err
 //			}
 //			noopUpgradeUnitOperation, err := saasruntime.NewUnitOperation(ctx, "noop_upgrade_unit_operation", &saasruntime.UnitOperationArgs{
-//				Location:          pulumi.String(pulumi.String(location)),
+//				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("upgrade-unit-operation"),
 //				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),
@@ -233,7 +233,7 @@ import (
 //				return err
 //			}
 //			_, err = saasruntime.NewUnitOperation(ctx, "deprovision_operation", &saasruntime.UnitOperationArgs{
-//				Location:          pulumi.String(pulumi.String(location)),
+//				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("deprovision-unit-operation"),
 //				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),

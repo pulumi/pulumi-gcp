@@ -161,7 +161,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     lifetime: `${5 * 365 * 24 * 3600}s`,
+ *     lifetime: "157680000s",
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_2048_SHA256",
  *     },

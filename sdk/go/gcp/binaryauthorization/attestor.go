@@ -139,14 +139,14 @@ import (
 //					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
 //						&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
 //							Id: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//								return &version.Id, nil
+//								return version.Id, nil
 //							}).(pulumi.StringPtrOutput),
 //							PkixPublicKey: &binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{
 //								PublicKeyPem: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//									return &version.PublicKeys[0].Pem, nil
+//									return version.PublicKeys[0].Pem, nil
 //								}).(pulumi.StringPtrOutput),
 //								SignatureAlgorithm: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//									return &version.PublicKeys[0].Algorithm, nil
+//									return version.PublicKeys[0].Algorithm, nil
 //								}).(pulumi.StringPtrOutput),
 //							},
 //						},

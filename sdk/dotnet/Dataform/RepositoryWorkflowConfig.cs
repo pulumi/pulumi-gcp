@@ -141,6 +141,125 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// });
     /// ```
+    /// ### Dataform Repository Workflow Config With Disabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
+    ///     {
+    ///         Name = "my/repository",
+    ///     });
+    /// 
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "my_secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
+    ///     {
+    ///         Secret = secret.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var repository = new Gcp.Dataform.Repository("repository", new()
+    ///     {
+    ///         Name = "dataform_repository",
+    ///         Region = "us-central1",
+    ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
+    ///         {
+    ///             Url = gitRepository.Url,
+    ///             DefaultBranch = "main",
+    ///             AuthenticationTokenSecretVersion = secretVersion.Id,
+    ///         },
+    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
+    ///         {
+    ///             DefaultDatabase = "database",
+    ///             SchemaSuffix = "_suffix",
+    ///             TablePrefix = "prefix_",
+    ///         },
+    ///     });
+    /// 
+    ///     var releaseConfig = new Gcp.Dataform.RepositoryReleaseConfig("release_config", new()
+    ///     {
+    ///         Project = repository.Project,
+    ///         Region = repository.Region,
+    ///         Repository = repository.Name,
+    ///         Name = "my_release",
+    ///         GitCommitish = "main",
+    ///         CronSchedule = "0 7 * * *",
+    ///         TimeZone = "America/New_York",
+    ///         CodeCompilationConfig = new Gcp.Dataform.Inputs.RepositoryReleaseConfigCodeCompilationConfigArgs
+    ///         {
+    ///             DefaultDatabase = "gcp-example-project",
+    ///             DefaultSchema = "example-dataset",
+    ///             DefaultLocation = "us-central1",
+    ///             AssertionSchema = "example-assertion-dataset",
+    ///             DatabaseSuffix = "",
+    ///             SchemaSuffix = "",
+    ///             TablePrefix = "",
+    ///             Vars = 
+    ///             {
+    ///                 { "var1", "value" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var dataformSa = new Gcp.ServiceAccount.Account("dataform_sa", new()
+    ///     {
+    ///         AccountId = "dataform-sa",
+    ///         DisplayName = "Dataform Service Account",
+    ///     });
+    /// 
+    ///     var workflow = new Gcp.Dataform.RepositoryWorkflowConfig("workflow", new()
+    ///     {
+    ///         Project = repository.Project,
+    ///         Region = repository.Region,
+    ///         Repository = repository.Name,
+    ///         Name = "my_workflow",
+    ///         ReleaseConfig = releaseConfig.Id,
+    ///         InvocationConfig = new Gcp.Dataform.Inputs.RepositoryWorkflowConfigInvocationConfigArgs
+    ///         {
+    ///             IncludedTargets = new[]
+    ///             {
+    ///                 new Gcp.Dataform.Inputs.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs
+    ///                 {
+    ///                     Database = "gcp-example-project",
+    ///                     Schema = "example-dataset",
+    ///                     Name = "target_1",
+    ///                 },
+    ///                 new Gcp.Dataform.Inputs.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs
+    ///                 {
+    ///                     Database = "gcp-example-project",
+    ///                     Schema = "example-dataset",
+    ///                     Name = "target_2",
+    ///                 },
+    ///             },
+    ///             IncludedTags = new[]
+    ///             {
+    ///                 "tag_1",
+    ///             },
+    ///             TransitiveDependenciesIncluded = true,
+    ///             TransitiveDependentsIncluded = true,
+    ///             FullyRefreshIncrementalTablesEnabled = false,
+    ///             ServiceAccount = dataformSa.Email,
+    ///         },
+    ///         CronSchedule = "0 7 * * *",
+    ///         TimeZone = "America/New_York",
+    ///         Disabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -179,6 +298,12 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Disables automatic creation of workflow invocations.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// Optional. If left unset, a default InvocationConfig will be used.
@@ -295,6 +420,12 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
+        /// Disables automatic creation of workflow invocations.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Optional. If left unset, a default InvocationConfig will be used.
         /// Structure is documented below.
         /// </summary>
@@ -362,6 +493,12 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// Disables automatic creation of workflow invocations.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// Optional. If left unset, a default InvocationConfig will be used.

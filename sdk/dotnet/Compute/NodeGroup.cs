@@ -78,8 +78,8 @@ namespace Pulumi.Gcp.Compute
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
     ///         Name = "soletenant-group",
-    ///         Zone = "us-central1-a",
-    ///         Description = "example google_compute_node_group for Google Provider",
+    ///         Zone = "us-central1-c",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
     ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///         MaintenanceInterval = "RECURRENT",

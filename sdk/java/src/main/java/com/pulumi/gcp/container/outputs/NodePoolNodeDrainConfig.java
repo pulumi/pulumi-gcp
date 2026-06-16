@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,12 +13,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNodeDrainConfig {
     /**
+     * @return The duration of the grace termination period for node drain.
+     * 
+     */
+    private @Nullable String graceTerminationDuration;
+    /**
+     * @return The duration of the PDB timeout period for node drain.
+     * 
+     */
+    private @Nullable String pdbTimeoutDuration;
+    /**
      * @return Whether to respect PodDisruptionBudget policy during node pool deletion.
      * 
      */
     private @Nullable Boolean respectPdbDuringNodePoolDeletion;
 
     private NodePoolNodeDrainConfig() {}
+    /**
+     * @return The duration of the grace termination period for node drain.
+     * 
+     */
+    public Optional<String> graceTerminationDuration() {
+        return Optional.ofNullable(this.graceTerminationDuration);
+    }
+    /**
+     * @return The duration of the PDB timeout period for node drain.
+     * 
+     */
+    public Optional<String> pdbTimeoutDuration() {
+        return Optional.ofNullable(this.pdbTimeoutDuration);
+    }
     /**
      * @return Whether to respect PodDisruptionBudget policy during node pool deletion.
      * 
@@ -35,13 +60,29 @@ public final class NodePoolNodeDrainConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String graceTerminationDuration;
+        private @Nullable String pdbTimeoutDuration;
         private @Nullable Boolean respectPdbDuringNodePoolDeletion;
         public Builder() {}
         public Builder(NodePoolNodeDrainConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.graceTerminationDuration = defaults.graceTerminationDuration;
+    	      this.pdbTimeoutDuration = defaults.pdbTimeoutDuration;
     	      this.respectPdbDuringNodePoolDeletion = defaults.respectPdbDuringNodePoolDeletion;
         }
 
+        @CustomType.Setter
+        public Builder graceTerminationDuration(@Nullable String graceTerminationDuration) {
+
+            this.graceTerminationDuration = graceTerminationDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pdbTimeoutDuration(@Nullable String pdbTimeoutDuration) {
+
+            this.pdbTimeoutDuration = pdbTimeoutDuration;
+            return this;
+        }
         @CustomType.Setter
         public Builder respectPdbDuringNodePoolDeletion(@Nullable Boolean respectPdbDuringNodePoolDeletion) {
 
@@ -50,6 +91,8 @@ public final class NodePoolNodeDrainConfig {
         }
         public NodePoolNodeDrainConfig build() {
             final var _resultValue = new NodePoolNodeDrainConfig();
+            _resultValue.graceTerminationDuration = graceTerminationDuration;
+            _resultValue.pdbTimeoutDuration = pdbTimeoutDuration;
             _resultValue.respectPdbDuringNodePoolDeletion = respectPdbDuringNodePoolDeletion;
             return _resultValue;
         }

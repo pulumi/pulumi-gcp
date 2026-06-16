@@ -6,10 +6,13 @@ package com.pulumi.gcp.ces;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.ces.inputs.ToolAgentToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolClientFunctionArgs;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolArgs;
+import com.pulumi.gcp.ces.inputs.ToolFileSearchToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolGoogleSearchToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolPythonFunctionArgs;
+import com.pulumi.gcp.ces.inputs.ToolWidgetToolArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +22,23 @@ import javax.annotation.Nullable;
 public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ToolArgs Empty = new ToolArgs();
+
+    /**
+     * Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="agentTool")
+    private @Nullable Output<ToolAgentToolArgs> agentTool;
+
+    /**
+     * @return Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolAgentToolArgs>> agentTool() {
+        return Optional.ofNullable(this.agentTool);
+    }
 
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -126,6 +146,25 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="fileSearchTool")
+    private @Nullable Output<ToolFileSearchToolArgs> fileSearchTool;
+
+    /**
+     * @return The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolFileSearchToolArgs>> fileSearchTool() {
+        return Optional.ofNullable(this.fileSearchTool);
+    }
+
+    /**
      * Represents a tool to perform Google web searches for grounding.
      * See
      * https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -214,19 +253,39 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
         return this.toolId;
     }
 
+    /**
+     * Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="widgetTool")
+    private @Nullable Output<ToolWidgetToolArgs> widgetTool;
+
+    /**
+     * @return Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolWidgetToolArgs>> widgetTool() {
+        return Optional.ofNullable(this.widgetTool);
+    }
+
     private ToolArgs() {}
 
     private ToolArgs(ToolArgs $) {
+        this.agentTool = $.agentTool;
         this.app = $.app;
         this.clientFunction = $.clientFunction;
         this.dataStoreTool = $.dataStoreTool;
         this.deletionPolicy = $.deletionPolicy;
         this.executionType = $.executionType;
+        this.fileSearchTool = $.fileSearchTool;
         this.googleSearchTool = $.googleSearchTool;
         this.location = $.location;
         this.project = $.project;
         this.pythonFunction = $.pythonFunction;
         this.toolId = $.toolId;
+        this.widgetTool = $.widgetTool;
     }
 
     public static Builder builder() {
@@ -245,6 +304,29 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ToolArgs defaults) {
             $ = new ToolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentTool Represents a tool that allows the agent to call another agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentTool(@Nullable Output<ToolAgentToolArgs> agentTool) {
+            $.agentTool = agentTool;
+            return this;
+        }
+
+        /**
+         * @param agentTool Represents a tool that allows the agent to call another agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentTool(ToolAgentToolArgs agentTool) {
+            return agentTool(Output.of(agentTool));
         }
 
         /**
@@ -383,6 +465,31 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param fileSearchTool The file search tool allows the agent to search across the files uploaded by the
+         * app/agent developer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSearchTool(@Nullable Output<ToolFileSearchToolArgs> fileSearchTool) {
+            $.fileSearchTool = fileSearchTool;
+            return this;
+        }
+
+        /**
+         * @param fileSearchTool The file search tool allows the agent to search across the files uploaded by the
+         * app/agent developer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSearchTool(ToolFileSearchToolArgs fileSearchTool) {
+            return fileSearchTool(Output.of(fileSearchTool));
+        }
+
+        /**
          * @param googleSearchTool Represents a tool to perform Google web searches for grounding.
          * See
          * https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -499,6 +606,29 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder toolId(String toolId) {
             return toolId(Output.of(toolId));
+        }
+
+        /**
+         * @param widgetTool Represents a widget tool that the agent can invoke.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder widgetTool(@Nullable Output<ToolWidgetToolArgs> widgetTool) {
+            $.widgetTool = widgetTool;
+            return this;
+        }
+
+        /**
+         * @param widgetTool Represents a widget tool that the agent can invoke.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder widgetTool(ToolWidgetToolArgs widgetTool) {
+            return widgetTool(Output.of(widgetTool));
         }
 
         public ToolArgs build() {

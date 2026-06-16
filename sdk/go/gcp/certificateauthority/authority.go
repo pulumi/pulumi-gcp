@@ -207,7 +207,7 @@ import (
 //						},
 //					},
 //				},
-//				Lifetime: pulumi.Sprintf("%vs", 5*365*24*3600),
+//				Lifetime: pulumi.String("157680000s"),
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_2048_SHA256"),
 //				},

@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  * 
  *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
- *             .zone("us-central1-a")
- *             .description("example google_compute_node_group for Google Provider")
+ *             .zone("us-central1-c")
+ *             .description("example google_compute_node_group for Terraform Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .maintenanceInterval("RECURRENT")

@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         /// </summary>
         public readonly bool IsPrivate;
         /// <summary>
+        /// Optional. Additional allowed projects for setting up PSC connections.
+        /// Instance host project is automatically allowed and does not need to be included in this list.
+        /// </summary>
+        public readonly ImmutableArray<string> PscAllowedProjects;
+        /// <summary>
         /// (Output)
         /// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         /// </summary>
@@ -47,12 +52,15 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
 
             bool isPrivate,
 
+            ImmutableArray<string> pscAllowedProjects,
+
             string? sshServiceAttachment)
         {
             CaPool = caPool;
             CustomHostConfig = customHostConfig;
             HttpServiceAttachment = httpServiceAttachment;
             IsPrivate = isPrivate;
+            PscAllowedProjects = pscAllowedProjects;
             SshServiceAttachment = sshServiceAttachment;
         }
     }

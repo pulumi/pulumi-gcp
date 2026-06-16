@@ -58,7 +58,7 @@ import (
 //				Project:    pulumi.Any(_default.Project),
 //				Zone:       pulumi.Any(_default.Zone),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //				Project:    pulumi.Any(_default.Project),
 //				Zone:       pulumi.Any(_default.Zone),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -40,13 +40,13 @@ import (
 //				return err
 //			}
 //			ctx.Export("recordNameToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
-//				return &dnsResourceRecords[0].Name, nil
+//				return dnsResourceRecords[0].Name, nil
 //			}).(pulumi.StringPtrOutput))
 //			ctx.Export("recordTypeToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
-//				return &dnsResourceRecords[0].Type, nil
+//				return dnsResourceRecords[0].Type, nil
 //			}).(pulumi.StringPtrOutput))
 //			ctx.Export("recordDataToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
-//				return &dnsResourceRecords[0].Data, nil
+//				return dnsResourceRecords[0].Data, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

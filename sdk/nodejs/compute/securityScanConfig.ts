@@ -33,6 +33,20 @@ import * as utilities from "../utilities";
  *     targetPlatforms: ["COMPUTE"],
  * });
  * ```
+ * ### Scan Config Ignore Http Status Errors
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scannerStaticIp = new gcp.compute.Address("scanner_static_ip", {name: "scan-ignore-http-ip"});
+ * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
+ *     displayName: "terraform-scan-config",
+ *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
+ *     targetPlatforms: ["COMPUTE"],
+ *     ignoreHttpStatusErrors: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -109,6 +123,10 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     declare public readonly exportToSecurityCommandCenter: pulumi.Output<string | undefined>;
     /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    declare public readonly ignoreHttpStatusErrors: pulumi.Output<boolean | undefined>;
+    /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
      * Defaults to 15.
      */
@@ -162,6 +180,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["exportToSecurityCommandCenter"] = state?.exportToSecurityCommandCenter;
+            resourceInputs["ignoreHttpStatusErrors"] = state?.ignoreHttpStatusErrors;
             resourceInputs["maxQps"] = state?.maxQps;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -182,6 +201,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["exportToSecurityCommandCenter"] = args?.exportToSecurityCommandCenter;
+            resourceInputs["ignoreHttpStatusErrors"] = args?.ignoreHttpStatusErrors;
             resourceInputs["maxQps"] = args?.maxQps;
             resourceInputs["project"] = args?.project;
             resourceInputs["schedule"] = args?.schedule;
@@ -229,6 +249,10 @@ export interface SecurityScanConfigState {
      * Possible values are: `ENABLED`, `DISABLED`.
      */
     exportToSecurityCommandCenter?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    ignoreHttpStatusErrors?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
      * Defaults to 15.
@@ -300,6 +324,10 @@ export interface SecurityScanConfigArgs {
      * Possible values are: `ENABLED`, `DISABLED`.
      */
     exportToSecurityCommandCenter?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    ignoreHttpStatusErrors?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
      * Defaults to 15.

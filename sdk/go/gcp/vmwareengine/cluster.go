@@ -308,6 +308,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Mount NFS datastore on vSphere cluster
+//			// This code block is required to mount the datastore on ESXi hosts
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
 //				Parent: cluster_pc.ID(),
@@ -440,7 +442,7 @@ import (
 //				Location:     pulumi.String("us-west1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(pulumi.String(npNetwork.Id)),
+//				Network:      pulumi.String(npNetwork.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -493,6 +495,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Mount NFS datastore on vSphere cluster
+//			// This code block is required to mount the datastore on ESXi hosts
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
 //				Parent: cluster_pc.ID(),

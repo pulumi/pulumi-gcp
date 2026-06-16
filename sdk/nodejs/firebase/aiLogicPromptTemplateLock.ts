@@ -34,6 +34,27 @@ import * as utilities from "../utilities";
  *     templateId: basic.templateId,
  * });
  * ```
+ * ### Firebaseailogic Prompt Template Lock Global Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const globalOnly = new gcp.firebase.AiLogicPromptTemplate("global_only", {
+ *     location: "global",
+ *     templateId: "global-only-lock-template",
+ *     templateString: `---
+ * model: googleai/gemini-1.5-flash
+ * ---
+ * Hello World
+ * `,
+ * });
+ * const globalOnlyLock = new gcp.firebase.AiLogicPromptTemplateLock("global_only_lock", {
+ *     location: globalOnly.location,
+ *     templateId: globalOnly.templateId,
+ *     regionalPropagationDisabled: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -107,6 +128,12 @@ export class AiLogicPromptTemplateLock extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     */
+    declare public readonly regionalPropagationDisabled: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the prompt template.
      */
     declare public readonly templateId: pulumi.Output<string>;
@@ -129,6 +156,7 @@ export class AiLogicPromptTemplateLock extends pulumi.CustomResource {
             resourceInputs["locked"] = state?.locked;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["regionalPropagationDisabled"] = state?.regionalPropagationDisabled;
             resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as AiLogicPromptTemplateLockArgs | undefined;
@@ -141,6 +169,7 @@ export class AiLogicPromptTemplateLock extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["regionalPropagationDisabled"] = args?.regionalPropagationDisabled;
             resourceInputs["templateId"] = args?.templateId;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -182,6 +211,12 @@ export interface AiLogicPromptTemplateLockState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     */
+    regionalPropagationDisabled?: pulumi.Input<boolean | undefined>;
+    /**
      * The ID of the prompt template.
      */
     templateId?: pulumi.Input<string | undefined>;
@@ -209,6 +244,12 @@ export interface AiLogicPromptTemplateLockArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     */
+    regionalPropagationDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the prompt template.
      */

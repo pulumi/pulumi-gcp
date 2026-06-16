@@ -27,6 +27,7 @@ class SecurityScanConfigArgs:
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']] = None,
@@ -51,6 +52,7 @@ class SecurityScanConfigArgs:
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input[_builtins.int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -73,6 +75,8 @@ class SecurityScanConfigArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if export_to_security_command_center is not None:
             pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
+        if ignore_http_status_errors is not None:
+            pulumi.set(__self__, "ignore_http_status_errors", ignore_http_status_errors)
         if max_qps is not None:
             pulumi.set(__self__, "max_qps", max_qps)
         if project is not None:
@@ -167,6 +171,18 @@ class SecurityScanConfigArgs:
         pulumi.set(self, "export_to_security_command_center", value)
 
     @_builtins.property
+    @pulumi.getter(name="ignoreHttpStatusErrors")
+    def ignore_http_status_errors(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to keep scanning even if most requests return HTTP error codes.
+        """
+        return pulumi.get(self, "ignore_http_status_errors")
+
+    @ignore_http_status_errors.setter
+    def ignore_http_status_errors(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_http_status_errors", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxQps")
     def max_qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -241,6 +257,7 @@ class _SecurityScanConfigState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -266,6 +283,7 @@ class _SecurityScanConfigState:
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input[_builtins.int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[_builtins.str] name: A server defined name for this index. Format:
@@ -291,6 +309,8 @@ class _SecurityScanConfigState:
             pulumi.set(__self__, "display_name", display_name)
         if export_to_security_command_center is not None:
             pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
+        if ignore_http_status_errors is not None:
+            pulumi.set(__self__, "ignore_http_status_errors", ignore_http_status_errors)
         if max_qps is not None:
             pulumi.set(__self__, "max_qps", max_qps)
         if name is not None:
@@ -375,6 +395,18 @@ class _SecurityScanConfigState:
     @export_to_security_command_center.setter
     def export_to_security_command_center(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_to_security_command_center", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreHttpStatusErrors")
+    def ignore_http_status_errors(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to keep scanning even if most requests return HTTP error codes.
+        """
+        return pulumi.get(self, "ignore_http_status_errors")
+
+    @ignore_http_status_errors.setter
+    def ignore_http_status_errors(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_http_status_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="maxQps")
@@ -479,6 +511,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
@@ -511,6 +544,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             display_name="scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
+        ```
+        ### Scan Config Ignore Http Status Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-ignore-http-ip")
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="terraform-scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            ignore_http_status_errors=True)
         ```
 
         ## Import
@@ -547,6 +593,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input[_builtins.int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -592,6 +639,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
+        ### Scan Config Ignore Http Status Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-ignore-http-ip")
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="terraform-scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            ignore_http_status_errors=True)
+        ```
 
         ## Import
 
@@ -630,6 +690,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
@@ -652,6 +713,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
+            __props__.__dict__["ignore_http_status_errors"] = ignore_http_status_errors
             __props__.__dict__["max_qps"] = max_qps
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
@@ -676,6 +738,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
             max_qps: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -705,6 +768,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input[_builtins.int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[_builtins.str] name: A server defined name for this index. Format:
@@ -729,6 +793,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
+        __props__.__dict__["ignore_http_status_errors"] = ignore_http_status_errors
         __props__.__dict__["max_qps"] = max_qps
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -787,6 +852,14 @@ class SecurityScanConfig(pulumi.CustomResource):
         Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "export_to_security_command_center")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreHttpStatusErrors")
+    def ignore_http_status_errors(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to keep scanning even if most requests return HTTP error codes.
+        """
+        return pulumi.get(self, "ignore_http_status_errors")
 
     @_builtins.property
     @pulumi.getter(name="maxQps")

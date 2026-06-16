@@ -162,7 +162,7 @@ import (
 //				ApplicationId: application.ApplicationId,
 //				ServiceId:     forwardingRule.Name,
 //				DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-//					return &catalog_service.Name, nil
+//					return catalog_service.Name, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -319,7 +319,7 @@ import (
 //				ApplicationId: application.ApplicationId,
 //				ServiceId:     forwardingRule.Name,
 //				DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-//					return &catalog_service.Name, nil
+//					return catalog_service.Name, nil
 //				}).(pulumi.StringPtrOutput)),
 //				DisplayName: pulumi.String("Example Service Full"),
 //				Description: pulumi.String("Register service for testing"),

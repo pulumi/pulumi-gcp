@@ -263,6 +263,7 @@ var moduleMapping = map[string]string{
 	"identity_platform":          gcpIdentityPlatform,
 	"integration_connectors":     gcpIntegrationConnectors,
 	"kms":                        gcpKMS,
+	"license_manager":            "LicenseManager",
 	"logging":                    gcpLogging,
 	"looker":                     gcpLooker,
 	"lustre":                     "Lustre",

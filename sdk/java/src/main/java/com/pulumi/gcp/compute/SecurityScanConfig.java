@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.SecurityScanConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityScanConfigState;
 import com.pulumi.gcp.compute.outputs.SecurityScanConfigAuthentication;
 import com.pulumi.gcp.compute.outputs.SecurityScanConfigSchedule;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -66,6 +67,47 @@ import javax.annotation.Nullable;
  *             .displayName("scan-config")
  *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
  *             .targetPlatforms("COMPUTE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Scan Config Ignore Http Status Errors
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.SecurityScanConfig;
+ * import com.pulumi.gcp.compute.SecurityScanConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var scannerStaticIp = new Address("scannerStaticIp", AddressArgs.builder()
+ *             .name("scan-ignore-http-ip")
+ *             .build());
+ * 
+ *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
+ *             .displayName("terraform-scan-config")
+ *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
+ *             .targetPlatforms("COMPUTE")
+ *             .ignoreHttpStatusErrors(true)
  *             .build());
  * 
  *     }
@@ -181,6 +223,20 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> exportToSecurityCommandCenter() {
         return Codegen.optional(this.exportToSecurityCommandCenter);
+    }
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     * 
+     */
+    @Export(name="ignoreHttpStatusErrors", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreHttpStatusErrors;
+
+    /**
+     * @return Whether to keep scanning even if most requests return HTTP error codes.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreHttpStatusErrors() {
+        return Codegen.optional(this.ignoreHttpStatusErrors);
     }
     /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.

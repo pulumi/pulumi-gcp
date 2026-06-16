@@ -206,8 +206,8 @@ import (
 //				BootDiskSizeGb:   pulumi.Int(150),
 //				NoPublicIp:       pulumi.Bool(true),
 //				NoProxyAccess:    pulumi.Bool(true),
-//				Network:          pulumi.String(pulumi.String(myNetwork.Id)),
-//				Subnet:           pulumi.String(pulumi.String(mySubnetwork.Id)),
+//				Network:          pulumi.String(myNetwork.Id),
+//				Subnet:           pulumi.String(mySubnetwork.Id),
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},

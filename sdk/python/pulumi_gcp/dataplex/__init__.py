@@ -17,6 +17,9 @@ from .asset_iam_policy import *
 from .data_asset import *
 from .data_product import *
 from .data_product_data_asset import *
+from .data_product_iam_binding import *
+from .data_product_iam_member import *
+from .data_product_iam_policy import *
 from .datascan import *
 from .datascan_iam_binding import *
 from .datascan_iam_member import *
@@ -33,6 +36,7 @@ from .entry_type_iam_member import *
 from .entry_type_iam_policy import *
 from .get_aspect_type_iam_policy import *
 from .get_asset_iam_policy import *
+from .get_data_product_iam_policy import *
 from .get_data_quality_rules import *
 from .get_datascan_iam_policy import *
 from .get_entry_group_iam_policy import *

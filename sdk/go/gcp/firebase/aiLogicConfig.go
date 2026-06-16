@@ -243,7 +243,7 @@ type AiLogicConfig struct {
 	TelemetryConfig AiLogicConfigTelemetryConfigPtrOutput `pulumi:"telemetryConfig"`
 	// Configuration for traffic filtering.
 	// Structure is documented below.
-	TrafficFilter AiLogicConfigTrafficFilterPtrOutput `pulumi:"trafficFilter"`
+	TrafficFilter AiLogicConfigTrafficFilterOutput `pulumi:"trafficFilter"`
 }
 
 // NewAiLogicConfig registers a new resource with the given unique name, arguments, and options.
@@ -537,8 +537,8 @@ func (o AiLogicConfigOutput) TelemetryConfig() AiLogicConfigTelemetryConfigPtrOu
 
 // Configuration for traffic filtering.
 // Structure is documented below.
-func (o AiLogicConfigOutput) TrafficFilter() AiLogicConfigTrafficFilterPtrOutput {
-	return o.ApplyT(func(v *AiLogicConfig) AiLogicConfigTrafficFilterPtrOutput { return v.TrafficFilter }).(AiLogicConfigTrafficFilterPtrOutput)
+func (o AiLogicConfigOutput) TrafficFilter() AiLogicConfigTrafficFilterOutput {
+	return o.ApplyT(func(v *AiLogicConfig) AiLogicConfigTrafficFilterOutput { return v.TrafficFilter }).(AiLogicConfigTrafficFilterOutput)
 }
 
 type AiLogicConfigArrayOutput struct{ *pulumi.OutputState }

@@ -565,6 +565,8 @@ class Cluster(pulumi.CustomResource):
                     "filestore_instance": test_instance.id,
                 },
             })
+        # Mount NFS datastore on vSphere cluster
+        # This code block is required to mount the datastore on ESXi hosts
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
@@ -675,6 +677,8 @@ class Cluster(pulumi.CustomResource):
                     "netapp_volume": test_volume.id,
                 },
             })
+        # Mount NFS datastore on vSphere cluster
+        # This code block is required to mount the datastore on ESXi hosts
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
@@ -917,6 +921,8 @@ class Cluster(pulumi.CustomResource):
                     "filestore_instance": test_instance.id,
                 },
             })
+        # Mount NFS datastore on vSphere cluster
+        # This code block is required to mount the datastore on ESXi hosts
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
@@ -1027,6 +1033,8 @@ class Cluster(pulumi.CustomResource):
                     "netapp_volume": test_volume.id,
                 },
             })
+        # Mount NFS datastore on vSphere cluster
+        # This code block is required to mount the datastore on ESXi hosts
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,

@@ -456,9 +456,6 @@ class UllMirroringCollector(pulumi.CustomResource):
         A Mirroring Collector is a logical representation of an appliance that collects
         mirrored traffic.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Network Security Ull Mirroring Collector Basic
@@ -558,9 +555,6 @@ class UllMirroringCollector(pulumi.CustomResource):
         """
         A Mirroring Collector is a logical representation of an appliance that collects
         mirrored traffic.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## Example Usage
 

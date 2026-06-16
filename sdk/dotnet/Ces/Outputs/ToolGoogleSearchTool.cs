@@ -43,6 +43,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// A maximum of 20 domains can be specified.
         /// </summary>
         public readonly ImmutableArray<string> PreferredDomains;
+        /// <summary>
+        /// Optional. Prompt instructions passed to planner on how the search results should be
+        /// processed for text and voice.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ToolGoogleSearchToolPromptConfig? PromptConfig;
 
         [OutputConstructor]
         private ToolGoogleSearchTool(
@@ -54,13 +60,16 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string name,
 
-            ImmutableArray<string> preferredDomains)
+            ImmutableArray<string> preferredDomains,
+
+            Outputs.ToolGoogleSearchToolPromptConfig? promptConfig)
         {
             ContextUrls = contextUrls;
             Description = description;
             ExcludeDomains = excludeDomains;
             Name = name;
             PreferredDomains = preferredDomains;
+            PromptConfig = promptConfig;
         }
     }
 }

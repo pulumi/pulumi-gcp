@@ -400,6 +400,9 @@ public final class Config {
     public Optional<String> kmsCustomEndpoint() {
         return Codegen.stringProp("kmsCustomEndpoint").config(config).get();
     }
+    public Optional<String> licenseManagerCustomEndpoint() {
+        return Codegen.stringProp("licenseManagerCustomEndpoint").config(config).get();
+    }
     public Optional<String> loggingCustomEndpoint() {
         return Codegen.stringProp("loggingCustomEndpoint").config(config).get();
     }

@@ -24,7 +24,8 @@ class AiLogicPromptTemplateArgs:
                  template_string: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AiLogicPromptTemplate resource.
 
@@ -41,6 +42,9 @@ class AiLogicPromptTemplateArgs:
         :param pulumi.Input[_builtins.str] display_name: The display name of the PromptTemplate.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the write operation (create,
+               update, or delete) will apply to the global region only. Otherwise, the
+               operation will also propagate to all applicable regions.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template_id", template_id)
@@ -51,6 +55,8 @@ class AiLogicPromptTemplateArgs:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if regional_propagation_disabled is not None:
+            pulumi.set(__self__, "regional_propagation_disabled", regional_propagation_disabled)
 
     @_builtins.property
     @pulumi.getter
@@ -131,6 +137,20 @@ class AiLogicPromptTemplateArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the write operation (create,
+        update, or delete) will apply to the global region only. Otherwise, the
+        operation will also propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
+
+    @regional_propagation_disabled.setter
+    def regional_propagation_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "regional_propagation_disabled", value)
+
 
 @pulumi.input_type
 class _AiLogicPromptTemplateState:
@@ -143,6 +163,7 @@ class _AiLogicPromptTemplateState:
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  state_change_time: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +191,9 @@ class _AiLogicPromptTemplateState:
                projects/{project}/locations/{location}/templates/{prompt_template}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the write operation (create,
+               update, or delete) will apply to the global region only. Otherwise, the
+               operation will also propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] state_change_time: Timestamp when the PromptTemplate state was last changed.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
@@ -192,6 +216,8 @@ class _AiLogicPromptTemplateState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if regional_propagation_disabled is not None:
+            pulumi.set(__self__, "regional_propagation_disabled", regional_propagation_disabled)
         if state_change_time is not None:
             pulumi.set(__self__, "state_change_time", state_change_time)
         if template_id is not None:
@@ -310,6 +336,20 @@ class _AiLogicPromptTemplateState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the write operation (create,
+        update, or delete) will apply to the global region only. Otherwise, the
+        operation will also propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
+
+    @regional_propagation_disabled.setter
+    def regional_propagation_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "regional_propagation_disabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="stateChangeTime")
     def state_change_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -369,6 +409,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_string: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -398,6 +439,19 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         file = gcp.firebase.AiLogicPromptTemplate("file",
             location="global",
             template_id="file-template",
+            template_string=std.file(input="test-fixtures/hello_world.prompt").result)
+        ```
+        ### Firebaseailogic Prompt Template Global Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        global_only = gcp.firebase.AiLogicPromptTemplate("global_only",
+            location="global",
+            template_id="global-only-template",
+            regional_propagation_disabled=True,
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
         ### Firebaseailogic Prompt Template Basic
@@ -445,6 +499,9 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the write operation (create,
+               update, or delete) will apply to the global region only. Otherwise, the
+               operation will also propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
         :param pulumi.Input[_builtins.str] template_string: The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
@@ -481,6 +538,19 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         file = gcp.firebase.AiLogicPromptTemplate("file",
             location="global",
             template_id="file-template",
+            template_string=std.file(input="test-fixtures/hello_world.prompt").result)
+        ```
+        ### Firebaseailogic Prompt Template Global Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        global_only = gcp.firebase.AiLogicPromptTemplate("global_only",
+            location="global",
+            template_id="global-only-template",
+            regional_propagation_disabled=True,
             template_string=std.file(input="test-fixtures/hello_world.prompt").result)
         ```
         ### Firebaseailogic Prompt Template Basic
@@ -535,6 +605,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_string: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -552,6 +623,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["regional_propagation_disabled"] = regional_propagation_disabled
             if template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'template_id'")
             __props__.__dict__["template_id"] = template_id
@@ -582,6 +654,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
             model: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             state_change_time: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             template_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -613,6 +686,9 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                projects/{project}/locations/{location}/templates/{prompt_template}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the write operation (create,
+               update, or delete) will apply to the global region only. Otherwise, the
+               operation will also propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] state_change_time: Timestamp when the PromptTemplate state was last changed.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
@@ -631,6 +707,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         __props__.__dict__["model"] = model
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["regional_propagation_disabled"] = regional_propagation_disabled
         __props__.__dict__["state_change_time"] = state_change_time
         __props__.__dict__["template_id"] = template_id
         __props__.__dict__["template_string"] = template_string
@@ -712,6 +789,16 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the write operation (create,
+        update, or delete) will apply to the global region only. Otherwise, the
+        operation will also propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
 
     @_builtins.property
     @pulumi.getter(name="stateChangeTime")

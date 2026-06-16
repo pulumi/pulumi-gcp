@@ -25,6 +25,7 @@ class DataProductArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  owner_emails: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 access_approval_config: pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['DataProductAccessGroupArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,8 @@ class DataProductArgs:
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[_builtins.str] location: The location for the data product.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owner_emails: Emails of the owners.
+        :param pulumi.Input['DataProductAccessApprovalConfigArgs'] access_approval_config: Configuration for access approval for the data product.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataProductAccessGroupArgs']]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -56,6 +59,8 @@ class DataProductArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "owner_emails", owner_emails)
+        if access_approval_config is not None:
+            pulumi.set(__self__, "access_approval_config", access_approval_config)
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
         if deletion_policy is not None:
@@ -114,6 +119,19 @@ class DataProductArgs:
     @owner_emails.setter
     def owner_emails(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "owner_emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessApprovalConfig")
+    def access_approval_config(self) -> pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']]:
+        """
+        Configuration for access approval for the data product.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_approval_config")
+
+    @access_approval_config.setter
+    def access_approval_config(self, value: pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']]):
+        pulumi.set(self, "access_approval_config", value)
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -188,6 +206,7 @@ class DataProductArgs:
 @pulumi.input_type
 class _DataProductState:
     def __init__(__self__, *,
+                 access_approval_config: pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['DataProductAccessGroupArgs']]]] = None,
                  asset_count: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -199,6 +218,7 @@ class _DataProductState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -207,6 +227,8 @@ class _DataProductState:
         """
         Input properties used for looking up and filtering DataProduct resources.
 
+        :param pulumi.Input['DataProductAccessApprovalConfigArgs'] access_approval_config: Configuration for access approval for the data product.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DataProductAccessGroupArgs']]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
@@ -226,6 +248,7 @@ class _DataProductState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the data product.
+        :param pulumi.Input[_builtins.str] name: The relative resource name of the data product.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owner_emails: Emails of the owners.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -234,6 +257,8 @@ class _DataProductState:
         :param pulumi.Input[_builtins.str] uid: System generated unique ID.
         :param pulumi.Input[_builtins.str] update_time: Last update timestamp.
         """
+        if access_approval_config is not None:
+            pulumi.set(__self__, "access_approval_config", access_approval_config)
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
         if asset_count is not None:
@@ -256,6 +281,8 @@ class _DataProductState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if owner_emails is not None:
             pulumi.set(__self__, "owner_emails", owner_emails)
         if project is not None:
@@ -266,6 +293,19 @@ class _DataProductState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="accessApprovalConfig")
+    def access_approval_config(self) -> pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']]:
+        """
+        Configuration for access approval for the data product.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_approval_config")
+
+    @access_approval_config.setter
+    def access_approval_config(self, value: pulumi.Input[Optional['DataProductAccessApprovalConfigArgs']]):
+        pulumi.set(self, "access_approval_config", value)
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -408,6 +448,18 @@ class _DataProductState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The relative resource name of the data product.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
     @pulumi.getter(name="ownerEmails")
     def owner_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -476,6 +528,7 @@ class DataProduct(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,6 +588,9 @@ class DataProduct(pulumi.CustomResource):
             display_name="DP Full Test: Special Chars !@#$",
             description="Updated with emojis 🚀 and brackets {test}",
             owner_emails=["gterraformtestuser@gmail.com"],
+            access_approval_config={
+                "approver_emails": ["gterraformtestuser@gmail.com"],
+            },
             labels={
                 "env": "manual-test",
             },
@@ -578,6 +634,8 @@ class DataProduct(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']] access_approval_config: Configuration for access approval for the data product.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
@@ -652,6 +710,9 @@ class DataProduct(pulumi.CustomResource):
             display_name="DP Full Test: Special Chars !@#$",
             description="Updated with emojis 🚀 and brackets {test}",
             owner_emails=["gterraformtestuser@gmail.com"],
+            access_approval_config={
+                "approver_emails": ["gterraformtestuser@gmail.com"],
+            },
             labels={
                 "env": "manual-test",
             },
@@ -708,6 +769,7 @@ class DataProduct(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -726,6 +788,7 @@ class DataProduct(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataProductArgs.__new__(DataProductArgs)
 
+            __props__.__dict__["access_approval_config"] = access_approval_config
             __props__.__dict__["access_groups"] = access_groups
             if data_product_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_product_id'")
@@ -747,6 +810,7 @@ class DataProduct(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -762,6 +826,7 @@ class DataProduct(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
             access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
             asset_count: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -773,6 +838,7 @@ class DataProduct(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             owner_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -785,6 +851,8 @@ class DataProduct(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']] access_approval_config: Configuration for access approval for the data product.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
@@ -804,6 +872,7 @@ class DataProduct(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the data product.
+        :param pulumi.Input[_builtins.str] name: The relative resource name of the data product.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owner_emails: Emails of the owners.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -816,6 +885,7 @@ class DataProduct(pulumi.CustomResource):
 
         __props__ = _DataProductState.__new__(_DataProductState)
 
+        __props__.__dict__["access_approval_config"] = access_approval_config
         __props__.__dict__["access_groups"] = access_groups
         __props__.__dict__["asset_count"] = asset_count
         __props__.__dict__["create_time"] = create_time
@@ -827,12 +897,22 @@ class DataProduct(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
         __props__.__dict__["owner_emails"] = owner_emails
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return DataProduct(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="accessApprovalConfig")
+    def access_approval_config(self) -> pulumi.Output[Optional['outputs.DataProductAccessApprovalConfig']]:
+        """
+        Configuration for access approval for the data product.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_approval_config")
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -929,6 +1009,14 @@ class DataProduct(pulumi.CustomResource):
         The location for the data product.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The relative resource name of the data product.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="ownerEmails")

@@ -741,7 +741,7 @@ class AiLogicConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="trafficFilter")
-    def traffic_filter(self) -> pulumi.Output[Optional['outputs.AiLogicConfigTrafficFilter']]:
+    def traffic_filter(self) -> pulumi.Output['outputs.AiLogicConfigTrafficFilter']:
         """
         Configuration for traffic filtering.
         Structure is documented below.

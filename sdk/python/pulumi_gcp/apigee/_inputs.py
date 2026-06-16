@@ -61,6 +61,8 @@ __all__ = [
     'ApiProductOperationGroupOperationConfigQuotaArgsDict',
     'AppGroupAttributeArgs',
     'AppGroupAttributeArgsDict',
+    'DatastoreDatastoreConfigArgs',
+    'DatastoreDatastoreConfigArgsDict',
     'DeveloperAppAttributeArgs',
     'DeveloperAppAttributeArgsDict',
     'DeveloperAppCredentialArgs',
@@ -1533,6 +1535,114 @@ class AppGroupAttributeArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class DatastoreDatastoreConfigArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The GCP project ID that the datastore target resides in.
+    """
+    bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the Cloud Storage bucket. Required for `gcs` target type.
+    """
+    dataset_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the BigQuery dataset. Required for `bigquery` target type.
+    """
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The path within the Cloud Storage bucket. Used for `gcs` target type.
+    """
+    table_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The prefix for BigQuery table names. Used for `bigquery` target type.
+    """
+
+@pulumi.input_type
+class DatastoreDatastoreConfigArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[_builtins.str],
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_prefix: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] project_id: The GCP project ID that the datastore target resides in.
+        :param pulumi.Input[_builtins.str] bucket_name: The name of the Cloud Storage bucket. Required for `gcs` target type.
+        :param pulumi.Input[_builtins.str] dataset_name: The name of the BigQuery dataset. Required for `bigquery` target type.
+        :param pulumi.Input[_builtins.str] path: The path within the Cloud Storage bucket. Used for `gcs` target type.
+        :param pulumi.Input[_builtins.str] table_prefix: The prefix for BigQuery table names. Used for `bigquery` target type.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if dataset_name is not None:
+            pulumi.set(__self__, "dataset_name", dataset_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The GCP project ID that the datastore target resides in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Cloud Storage bucket. Required for `gcs` target type.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetName")
+    def dataset_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the BigQuery dataset. Required for `bigquery` target type.
+        """
+        return pulumi.get(self, "dataset_name")
+
+    @dataset_name.setter
+    def dataset_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataset_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The path within the Cloud Storage bucket. Used for `gcs` target type.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The prefix for BigQuery table names. Used for `bigquery` target type.
+        """
+        return pulumi.get(self, "table_prefix")
+
+    @table_prefix.setter
+    def table_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "table_prefix", value)
 
 
 class DeveloperAppAttributeArgsDict(TypedDict):

@@ -290,10 +290,10 @@ import (
 //				MasterAuthorizedNetworksConfig: &container.ClusterMasterAuthorizedNetworksConfigArgs{},
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
 //					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
-//						return &secondaryIpRanges[0].RangeName, nil
+//						return secondaryIpRanges[0].RangeName, nil
 //					}).(pulumi.StringPtrOutput),
 //					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
-//						return &secondaryIpRanges[1].RangeName, nil
+//						return secondaryIpRanges[1].RangeName, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
 //				DeletionProtection: pulumi.Bool(true),

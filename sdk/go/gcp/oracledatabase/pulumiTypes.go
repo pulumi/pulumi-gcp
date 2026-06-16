@@ -37519,6 +37519,193 @@ func (o GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayO
 	}).(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput)
 }
 
+type GetGoldengateDeploymentTypesGoldengateDeploymentType struct {
+	// The category of the Goldengate Deployment Type resource.
+	Category string `pulumi:"category"`
+	// The connection types of the Goldengate Deployment Type resource.
+	ConnectionTypes []string `pulumi:"connectionTypes"`
+	// The default username of the Goldengate Deployment Type resource.
+	DefaultUsername string `pulumi:"defaultUsername"`
+	// The deployment type of the Goldengate Deployment Type resource.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The display name of the Goldengate Deployment Type resource.
+	DisplayName string `pulumi:"displayName"`
+	// The name of the Goldengate Deployment Type resource.
+	Name string `pulumi:"name"`
+	// The OGG version of the Goldengate Deployment Type resource.
+	OggVersion string `pulumi:"oggVersion"`
+	// The source technologies of the Goldengate Deployment Type resource.
+	SourceTechnologies []string `pulumi:"sourceTechnologies"`
+	// The supported capabilities of the Goldengate Deployment Type resource.
+	SupportedCapabilities []string `pulumi:"supportedCapabilities"`
+	// The supported technologies URL of the Goldengate Deployment Type resource.
+	SupportedTechnologiesUrl string `pulumi:"supportedTechnologiesUrl"`
+	// The target technologies of the Goldengate Deployment Type resource.
+	TargetTechnologies []string `pulumi:"targetTechnologies"`
+}
+
+// GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput is an input type that accepts GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs and GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput` via:
+//
+//	GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs{...}
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput
+	ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutputWithContext(context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput
+}
+
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs struct {
+	// The category of the Goldengate Deployment Type resource.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The connection types of the Goldengate Deployment Type resource.
+	ConnectionTypes pulumi.StringArrayInput `pulumi:"connectionTypes"`
+	// The default username of the Goldengate Deployment Type resource.
+	DefaultUsername pulumi.StringInput `pulumi:"defaultUsername"`
+	// The deployment type of the Goldengate Deployment Type resource.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// The display name of the Goldengate Deployment Type resource.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The name of the Goldengate Deployment Type resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The OGG version of the Goldengate Deployment Type resource.
+	OggVersion pulumi.StringInput `pulumi:"oggVersion"`
+	// The source technologies of the Goldengate Deployment Type resource.
+	SourceTechnologies pulumi.StringArrayInput `pulumi:"sourceTechnologies"`
+	// The supported capabilities of the Goldengate Deployment Type resource.
+	SupportedCapabilities pulumi.StringArrayInput `pulumi:"supportedCapabilities"`
+	// The supported technologies URL of the Goldengate Deployment Type resource.
+	SupportedTechnologiesUrl pulumi.StringInput `pulumi:"supportedTechnologiesUrl"`
+	// The target technologies of the Goldengate Deployment Type resource.
+	TargetTechnologies pulumi.StringArrayInput `pulumi:"targetTechnologies"`
+}
+
+func (GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentType)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput {
+	return i.ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutputWithContext(ctx context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput)
+}
+
+// GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayInput is an input type that accepts GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray and GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayInput` via:
+//
+//	GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray{ GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs{...} }
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput
+	ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutputWithContext(context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput
+}
+
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray []GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput
+
+func (GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentTypesGoldengateDeploymentType)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput {
+	return i.ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput)
+}
+
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentType)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeOutputWithContext(ctx context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput {
+	return o
+}
+
+// The category of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The connection types of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) ConnectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) []string { return v.ConnectionTypes }).(pulumi.StringArrayOutput)
+}
+
+// The default username of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) DefaultUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.DefaultUsername }).(pulumi.StringOutput)
+}
+
+// The deployment type of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The display name of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OGG version of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) OggVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.OggVersion }).(pulumi.StringOutput)
+}
+
+// The source technologies of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) SourceTechnologies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) []string { return v.SourceTechnologies }).(pulumi.StringArrayOutput)
+}
+
+// The supported capabilities of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) SupportedCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) []string { return v.SupportedCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// The supported technologies URL of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) SupportedTechnologiesUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) string { return v.SupportedTechnologiesUrl }).(pulumi.StringOutput)
+}
+
+// The target technologies of the Goldengate Deployment Type resource.
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput) TargetTechnologies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentTypesGoldengateDeploymentType) []string { return v.TargetTechnologies }).(pulumi.StringArrayOutput)
+}
+
+type GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentTypesGoldengateDeploymentType)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput() GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput) ToGetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput) Index(i pulumi.IntInput) GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGoldengateDeploymentTypesGoldengateDeploymentType {
+		return vs[0].([]GetGoldengateDeploymentTypesGoldengateDeploymentType)[vs[1].(int)]
+	}).(GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesPtrInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
@@ -37796,6 +37983,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput)(nil)).Elem(), GetGoldengateConnectionTypesGoldengateConnectionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput)(nil)).Elem(), GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayInput)(nil)).Elem(), GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesApexDetailOutput{})
@@ -38072,4 +38261,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput{})
 	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput{})
 }

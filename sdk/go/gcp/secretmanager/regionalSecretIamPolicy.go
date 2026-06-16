@@ -60,7 +60,7 @@ import (
 //				Project:    pulumi.Any(regional_secret_basic.Project),
 //				Location:   pulumi.Any(regional_secret_basic.Location),
 //				SecretId:   pulumi.Any(regional_secret_basic.SecretId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				Project:    pulumi.Any(regional_secret_basic.Project),
 //				Location:   pulumi.Any(regional_secret_basic.Location),
 //				SecretId:   pulumi.Any(regional_secret_basic.SecretId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -305,7 +305,7 @@ import (
 //				Project:    pulumi.Any(regional_secret_basic.Project),
 //				Location:   pulumi.Any(regional_secret_basic.Location),
 //				SecretId:   pulumi.Any(regional_secret_basic.SecretId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -353,7 +353,7 @@ import (
 //				Project:    pulumi.Any(regional_secret_basic.Project),
 //				Location:   pulumi.Any(regional_secret_basic.Location),
 //				SecretId:   pulumi.Any(regional_secret_basic.SecretId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -60,7 +60,7 @@ import (
 //			_, err = vertex.NewAiFeatureGroupIamPolicy(ctx, "policy", &vertex.AiFeatureGroupIamPolicyArgs{
 //				Region:       pulumi.Any(featureGroup.Region),
 //				FeatureGroup: pulumi.Any(featureGroup.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //			_, err = vertex.NewAiFeatureGroupIamPolicy(ctx, "policy", &vertex.AiFeatureGroupIamPolicyArgs{
 //				Region:       pulumi.Any(featureGroup.Region),
 //				FeatureGroup: pulumi.Any(featureGroup.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

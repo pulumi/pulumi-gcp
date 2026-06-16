@@ -381,6 +381,9 @@ namespace Pulumi.Gcp
         [Output("kmsCustomEndpoint")]
         public Output<string?> KmsCustomEndpoint { get; private set; } = null!;
 
+        [Output("licenseManagerCustomEndpoint")]
+        public Output<string?> LicenseManagerCustomEndpoint { get; private set; } = null!;
+
         [Output("loggingCustomEndpoint")]
         public Output<string?> LoggingCustomEndpoint { get; private set; } = null!;
 
@@ -1061,6 +1064,9 @@ namespace Pulumi.Gcp
 
         [Input("kmsCustomEndpoint")]
         public Input<string>? KmsCustomEndpoint { get; set; }
+
+        [Input("licenseManagerCustomEndpoint")]
+        public Input<string>? LicenseManagerCustomEndpoint { get; set; }
 
         [Input("loggingCustomEndpoint")]
         public Input<string>? LoggingCustomEndpoint { get; set; }

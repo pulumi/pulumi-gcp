@@ -66,6 +66,48 @@ import (
 //	}
 //
 // ```
+// ### Scan Config Ignore Http Status Errors
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scannerStaticIp, err := compute.NewAddress(ctx, "scanner_static_ip", &compute.AddressArgs{
+//				Name: pulumi.String("scan-ignore-http-ip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
+//				DisplayName: pulumi.String("terraform-scan-config"),
+//				StartingUrls: pulumi.StringArray{
+//					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
+//						return fmt.Sprintf("http://%v", address), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				TargetPlatforms: pulumi.StringArray{
+//					pulumi.String("COMPUTE"),
+//				},
+//				IgnoreHttpStatusErrors: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -105,6 +147,8 @@ type SecurityScanConfig struct {
 	// Default value is `ENABLED`.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrOutput `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrOutput `pulumi:"ignoreHttpStatusErrors"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps pulumi.IntPtrOutput `pulumi:"maxQps"`
@@ -184,6 +228,8 @@ type securityScanConfigState struct {
 	// Default value is `ENABLED`.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps *int `pulumi:"maxQps"`
@@ -228,6 +274,8 @@ type SecurityScanConfigState struct {
 	// Default value is `ENABLED`.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps pulumi.IntPtrInput
@@ -276,6 +324,8 @@ type securityScanConfigArgs struct {
 	// Default value is `ENABLED`.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps *int `pulumi:"maxQps"`
@@ -318,6 +368,8 @@ type SecurityScanConfigArgs struct {
 	// Default value is `ENABLED`.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps pulumi.IntPtrInput
@@ -458,6 +510,11 @@ func (o SecurityScanConfigOutput) DisplayName() pulumi.StringOutput {
 // Possible values are: `ENABLED`, `DISABLED`.
 func (o SecurityScanConfigOutput) ExportToSecurityCommandCenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringPtrOutput { return v.ExportToSecurityCommandCenter }).(pulumi.StringPtrOutput)
+}
+
+// Whether to keep scanning even if most requests return HTTP error codes.
+func (o SecurityScanConfigOutput) IgnoreHttpStatusErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfig) pulumi.BoolPtrOutput { return v.IgnoreHttpStatusErrors }).(pulumi.BoolPtrOutput)
 }
 
 // The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.

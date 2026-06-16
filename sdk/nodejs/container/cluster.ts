@@ -516,6 +516,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly nodeConfig: pulumi.Output<outputs.container.ClusterNodeConfig>;
     /**
+     * Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     */
+    declare public readonly nodeCreationConfig: pulumi.Output<outputs.container.ClusterNodeCreationConfig>;
+    /**
      * The list of zones in which the cluster's nodes
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster's zone for zonal clusters. If this is specified for
@@ -777,6 +781,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkPolicy"] = state?.networkPolicy;
             resourceInputs["networkingMode"] = state?.networkingMode;
             resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["nodeCreationConfig"] = state?.nodeCreationConfig;
             resourceInputs["nodeLocations"] = state?.nodeLocations;
             resourceInputs["nodePoolAutoConfig"] = state?.nodePoolAutoConfig;
             resourceInputs["nodePoolDefaults"] = state?.nodePoolDefaults;
@@ -870,6 +875,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkPolicy"] = args?.networkPolicy;
             resourceInputs["networkingMode"] = args?.networkingMode;
             resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["nodeCreationConfig"] = args?.nodeCreationConfig;
             resourceInputs["nodeLocations"] = args?.nodeLocations;
             resourceInputs["nodePoolAutoConfig"] = args?.nodePoolAutoConfig;
             resourceInputs["nodePoolDefaults"] = args?.nodePoolDefaults;
@@ -1277,6 +1283,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig | undefined>;
+    /**
+     * Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     */
+    nodeCreationConfig?: pulumi.Input<inputs.container.ClusterNodeCreationConfig | undefined>;
     /**
      * The list of zones in which the cluster's nodes
      * are located. Nodes must be in the region of their regional cluster or in the
@@ -1809,6 +1819,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig | undefined>;
+    /**
+     * Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     */
+    nodeCreationConfig?: pulumi.Input<inputs.container.ClusterNodeCreationConfig | undefined>;
     /**
      * The list of zones in which the cluster's nodes
      * are located. Nodes must be in the region of their regional cluster or in the

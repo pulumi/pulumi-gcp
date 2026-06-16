@@ -403,6 +403,9 @@ func GetIntegrationsCustomEndpoint(ctx *pulumi.Context) string {
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:kmsCustomEndpoint")
 }
+func GetLicenseManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:licenseManagerCustomEndpoint")
+}
 func GetLoggingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:loggingCustomEndpoint")
 }

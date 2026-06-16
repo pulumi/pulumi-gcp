@@ -60,7 +60,7 @@ import (
 //				Lake:         pulumi.Any(example.Lake),
 //				DataplexZone: pulumi.Any(example.DataplexZone),
 //				Asset:        pulumi.Any(example.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -191,7 +191,7 @@ import (
 //				Lake:         pulumi.Any(example.Lake),
 //				DataplexZone: pulumi.Any(example.DataplexZone),
 //				Asset:        pulumi.Any(example.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

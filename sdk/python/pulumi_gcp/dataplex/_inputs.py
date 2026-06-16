@@ -41,12 +41,18 @@ __all__ = [
     'AssetSecurityStatusArgsDict',
     'DataAssetAccessGroupConfigArgs',
     'DataAssetAccessGroupConfigArgsDict',
+    'DataProductAccessApprovalConfigArgs',
+    'DataProductAccessApprovalConfigArgsDict',
     'DataProductAccessGroupArgs',
     'DataProductAccessGroupArgsDict',
     'DataProductAccessGroupPrincipalArgs',
     'DataProductAccessGroupPrincipalArgsDict',
     'DataProductDataAssetAccessGroupConfigArgs',
     'DataProductDataAssetAccessGroupConfigArgsDict',
+    'DataProductIamBindingConditionArgs',
+    'DataProductIamBindingConditionArgsDict',
+    'DataProductIamMemberConditionArgs',
+    'DataProductIamMemberConditionArgsDict',
     'DatascanDataArgs',
     'DatascanDataArgsDict',
     'DatascanDataDiscoverySpecArgs',
@@ -1141,6 +1147,35 @@ class DataAssetAccessGroupConfigArgs:
         pulumi.set(self, "iam_roles", value)
 
 
+class DataProductAccessApprovalConfigArgsDict(TypedDict):
+    approver_emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Specifies the email addresses of users who are potential approvers.
+    """
+
+@pulumi.input_type
+class DataProductAccessApprovalConfigArgs:
+    def __init__(__self__, *,
+                 approver_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approver_emails: Specifies the email addresses of users who are potential approvers.
+        """
+        if approver_emails is not None:
+            pulumi.set(__self__, "approver_emails", approver_emails)
+
+    @_builtins.property
+    @pulumi.getter(name="approverEmails")
+    def approver_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies the email addresses of users who are potential approvers.
+        """
+        return pulumi.get(self, "approver_emails")
+
+    @approver_emails.setter
+    def approver_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "approver_emails", value)
+
+
 class DataProductAccessGroupArgsDict(TypedDict):
     display_name: pulumi.Input[_builtins.str]
     """
@@ -1344,6 +1379,94 @@ class DataProductDataAssetAccessGroupConfigArgs:
     @iam_roles.setter
     def iam_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "iam_roles", value)
+
+
+class DataProductIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class DataProductIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class DataProductIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class DataProductIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
 
 class DatascanDataArgsDict(TypedDict):

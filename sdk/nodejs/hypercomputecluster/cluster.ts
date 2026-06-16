@@ -176,7 +176,7 @@ export class Cluster extends pulumi.CustomResource {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    declare public readonly networkResources: pulumi.Output<outputs.hypercomputecluster.ClusterNetworkResource[] | undefined>;
+    declare public readonly networkResources: pulumi.Output<outputs.hypercomputecluster.ClusterNetworkResource[]>;
     /**
      * The component responsible for scheduling and running workloads on the
      * cluster as well as providing the user interface for interacting with the
@@ -249,6 +249,9 @@ export class Cluster extends pulumi.CustomResource {
             }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if (args?.networkResources === undefined && !opts.urn) {
+                throw new Error("Missing required property 'networkResources'");
             }
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["computeResources"] = args?.computeResources;
@@ -425,7 +428,7 @@ export interface ClusterArgs {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    networkResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[] | undefined>;
+    networkResources: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[]>;
     /**
      * The component responsible for scheduling and running workloads on the
      * cluster as well as providing the user interface for interacting with the

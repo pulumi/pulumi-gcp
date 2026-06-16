@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			keyMember, err := kms.NewCryptoKeyIAMMember(ctx, "key_member", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String(pulumi.String(key.Id)),
+//				CryptoKeyId: pulumi.String(key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number),
 //			})
@@ -69,7 +69,7 @@ import (
 //			_, err = eventarc.NewGoogleChannelConfig(ctx, "primary", &eventarc.GoogleChannelConfigArgs{
 //				Location:      pulumi.String("us-central1"),
 //				Name:          pulumi.String("googleChannelConfig"),
-//				CryptoKeyName: pulumi.String(pulumi.String(key.Id)),
+//				CryptoKeyName: pulumi.String(key.Id),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				keyMember,
 //			}))

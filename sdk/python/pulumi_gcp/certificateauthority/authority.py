@@ -1084,7 +1084,7 @@ class Authority(pulumi.CustomResource):
                     },
                 },
             },
-            lifetime=f"{5 * 365 * 24 * 3600}s",
+            lifetime="157680000s",
             key_spec={
                 "algorithm": "RSA_PKCS1_2048_SHA256",
             },
@@ -1469,7 +1469,7 @@ class Authority(pulumi.CustomResource):
                     },
                 },
             },
-            lifetime=f"{5 * 365 * 24 * 3600}s",
+            lifetime="157680000s",
             key_spec={
                 "algorithm": "RSA_PKCS1_2048_SHA256",
             },

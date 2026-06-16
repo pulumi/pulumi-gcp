@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securesourcemanager.outputs.InstancePrivateConfigCustomHostConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,12 @@ public final class InstancePrivateConfig {
      * 
      */
     private Boolean isPrivate;
+    /**
+     * @return Optional. Additional allowed projects for setting up PSC connections.
+     * Instance host project is automatically allowed and does not need to be included in this list.
+     * 
+     */
+    private @Nullable List<String> pscAllowedProjects;
     /**
      * @return (Output)
      * Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -75,6 +82,14 @@ public final class InstancePrivateConfig {
         return this.isPrivate;
     }
     /**
+     * @return Optional. Additional allowed projects for setting up PSC connections.
+     * Instance host project is automatically allowed and does not need to be included in this list.
+     * 
+     */
+    public List<String> pscAllowedProjects() {
+        return this.pscAllowedProjects == null ? List.of() : this.pscAllowedProjects;
+    }
+    /**
      * @return (Output)
      * Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
      * 
@@ -96,6 +111,7 @@ public final class InstancePrivateConfig {
         private @Nullable InstancePrivateConfigCustomHostConfig customHostConfig;
         private @Nullable String httpServiceAttachment;
         private Boolean isPrivate;
+        private @Nullable List<String> pscAllowedProjects;
         private @Nullable String sshServiceAttachment;
         public Builder() {}
         public Builder(InstancePrivateConfig defaults) {
@@ -104,6 +120,7 @@ public final class InstancePrivateConfig {
     	      this.customHostConfig = defaults.customHostConfig;
     	      this.httpServiceAttachment = defaults.httpServiceAttachment;
     	      this.isPrivate = defaults.isPrivate;
+    	      this.pscAllowedProjects = defaults.pscAllowedProjects;
     	      this.sshServiceAttachment = defaults.sshServiceAttachment;
         }
 
@@ -134,6 +151,15 @@ public final class InstancePrivateConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pscAllowedProjects(@Nullable List<String> pscAllowedProjects) {
+
+            this.pscAllowedProjects = pscAllowedProjects;
+            return this;
+        }
+        public Builder pscAllowedProjects(String... pscAllowedProjects) {
+            return pscAllowedProjects(List.of(pscAllowedProjects));
+        }
+        @CustomType.Setter
         public Builder sshServiceAttachment(@Nullable String sshServiceAttachment) {
 
             this.sshServiceAttachment = sshServiceAttachment;
@@ -145,6 +171,7 @@ public final class InstancePrivateConfig {
             _resultValue.customHostConfig = customHostConfig;
             _resultValue.httpServiceAttachment = httpServiceAttachment;
             _resultValue.isPrivate = isPrivate;
+            _resultValue.pscAllowedProjects = pscAllowedProjects;
             _resultValue.sshServiceAttachment = sshServiceAttachment;
             return _resultValue;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.ces.outputs.ToolGoogleSearchToolPromptConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +49,13 @@ public final class ToolGoogleSearchTool {
      * 
      */
     private @Nullable List<String> preferredDomains;
+    /**
+     * @return Optional. Prompt instructions passed to planner on how the search results should be
+     * processed for text and voice.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ToolGoogleSearchToolPromptConfig promptConfig;
 
     private ToolGoogleSearchTool() {}
     /**
@@ -95,6 +103,15 @@ public final class ToolGoogleSearchTool {
     public List<String> preferredDomains() {
         return this.preferredDomains == null ? List.of() : this.preferredDomains;
     }
+    /**
+     * @return Optional. Prompt instructions passed to planner on how the search results should be
+     * processed for text and voice.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ToolGoogleSearchToolPromptConfig> promptConfig() {
+        return Optional.ofNullable(this.promptConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -110,6 +127,7 @@ public final class ToolGoogleSearchTool {
         private @Nullable List<String> excludeDomains;
         private String name;
         private @Nullable List<String> preferredDomains;
+        private @Nullable ToolGoogleSearchToolPromptConfig promptConfig;
         public Builder() {}
         public Builder(ToolGoogleSearchTool defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,6 +136,7 @@ public final class ToolGoogleSearchTool {
     	      this.excludeDomains = defaults.excludeDomains;
     	      this.name = defaults.name;
     	      this.preferredDomains = defaults.preferredDomains;
+    	      this.promptConfig = defaults.promptConfig;
         }
 
         @CustomType.Setter
@@ -161,6 +180,12 @@ public final class ToolGoogleSearchTool {
         public Builder preferredDomains(String... preferredDomains) {
             return preferredDomains(List.of(preferredDomains));
         }
+        @CustomType.Setter
+        public Builder promptConfig(@Nullable ToolGoogleSearchToolPromptConfig promptConfig) {
+
+            this.promptConfig = promptConfig;
+            return this;
+        }
         public ToolGoogleSearchTool build() {
             final var _resultValue = new ToolGoogleSearchTool();
             _resultValue.contextUrls = contextUrls;
@@ -168,6 +193,7 @@ public final class ToolGoogleSearchTool {
             _resultValue.excludeDomains = excludeDomains;
             _resultValue.name = name;
             _resultValue.preferredDomains = preferredDomains;
+            _resultValue.promptConfig = promptConfig;
             return _resultValue;
         }
     }

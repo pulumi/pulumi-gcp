@@ -1033,6 +1033,14 @@ Object.defineProperty(exports, "kmsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const licenseManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "licenseManagerCustomEndpoint", {
+    get() {
+        return __config.get("licenseManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const loggingCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "loggingCustomEndpoint", {
     get() {

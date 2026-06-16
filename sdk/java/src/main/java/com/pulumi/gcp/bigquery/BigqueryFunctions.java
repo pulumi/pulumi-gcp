@@ -21,6 +21,8 @@ import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetsPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountPlainArgs;
+import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyPlainArgs;
@@ -33,6 +35,7 @@ import com.pulumi.gcp.bigquery.outputs.GetDatasetIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetsResult;
 import com.pulumi.gcp.bigquery.outputs.GetDefaultServiceAccountResult;
+import com.pulumi.gcp.bigquery.outputs.GetRoutineIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetTableIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetTableResult;
 import com.pulumi.gcp.bigquery.outputs.GetTablesResult;
@@ -1552,6 +1555,216 @@ public final class BigqueryFunctions {
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", TypeShape.of(GetDefaultServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for routine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+     *             .project(sproc.project())
+     *             .datasetId(sproc.datasetId())
+     *             .routineId(sproc.routineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineIamPolicyResult> getRoutineIamPolicy(GetRoutineIamPolicyArgs args) {
+        return getRoutineIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for routine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+     *             .project(sproc.project())
+     *             .datasetId(sproc.datasetId())
+     *             .routineId(sproc.routineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutineIamPolicyResult> getRoutineIamPolicyPlain(GetRoutineIamPolicyPlainArgs args) {
+        return getRoutineIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for routine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+     *             .project(sproc.project())
+     *             .datasetId(sproc.datasetId())
+     *             .routineId(sproc.routineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineIamPolicyResult> getRoutineIamPolicy(GetRoutineIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy", TypeShape.of(GetRoutineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for routine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+     *             .project(sproc.project())
+     *             .datasetId(sproc.datasetId())
+     *             .routineId(sproc.routineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutineIamPolicyResult> getRoutineIamPolicy(GetRoutineIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy", TypeShape.of(GetRoutineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for routine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+     *             .project(sproc.project())
+     *             .datasetId(sproc.datasetId())
+     *             .routineId(sproc.routineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutineIamPolicyResult> getRoutineIamPolicyPlain(GetRoutineIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy", TypeShape.of(GetRoutineIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a specific table in a BigQuery dataset. For more information see

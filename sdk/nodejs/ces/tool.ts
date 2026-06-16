@@ -9,6 +9,14 @@ import * as utilities from "../utilities";
 /**
  * Description
  *
+ * > **Note:** **Direct Management Restriction for Certain Tool Types:**
+ *
+ * Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `gcp.ces.Tool` resource.
+ *
+ * `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+ *
+ * Consequently, blocks like `openApiTool`, `mcpTool`, `connectorTool`, `remoteAgentTool`, and `systemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
+ *
  * ## Example Usage
  *
  * ### Ces Tool Client Function Basic
@@ -281,6 +289,117 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Tool Agent Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_app = new gcp.ces.App("my-app", {
+ *     location: "us",
+ *     displayName: "my-app",
+ *     appId: "app-id",
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const targetAgent = new gcp.ces.Agent("target_agent", {
+ *     agentId: "target-agent",
+ *     location: "us",
+ *     app: my_app.appId,
+ *     displayName: "Target Agent",
+ *     instruction: "Target agent instruction",
+ *     llmAgent: {},
+ * });
+ * const cesToolAgentBasic = new gcp.ces.Tool("ces_tool_agent_basic", {
+ *     location: "us",
+ *     app: my_app.name,
+ *     toolId: "ces_tool_basic5",
+ *     executionType: "SYNCHRONOUS",
+ *     agentTool: {
+ *         name: "ces_tool_agent_basic",
+ *         description: "example-description",
+ *         agent: pulumi.all([my_app.project, my_app.appId, targetAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+ *     },
+ * });
+ * ```
+ * ### Ces Tool File Search Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_app = new gcp.ces.App("my-app", {
+ *     location: "us",
+ *     displayName: "my-app",
+ *     appId: "app-id",
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolFileSearchBasic = new gcp.ces.Tool("ces_tool_file_search_basic", {
+ *     location: "us",
+ *     app: my_app.name,
+ *     toolId: "ces_tool_basic6",
+ *     executionType: "SYNCHRONOUS",
+ *     fileSearchTool: {
+ *         name: "ces_tool_file_search_basic",
+ *         description: "example-description",
+ *         corpusType: "FULLY_MANAGED",
+ *         fileCorpus: pulumi.interpolate`projects/${my_app.project}/locations/us/ragCorpora/tf-test-mock-corpus`,
+ *     },
+ * });
+ * ```
+ * ### Ces Tool Widget Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_app = new gcp.ces.App("my-app", {
+ *     location: "us",
+ *     displayName: "my-app",
+ *     appId: "app-id",
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolWidgetBasic = new gcp.ces.Tool("ces_tool_widget_basic", {
+ *     location: "us",
+ *     app: my_app.name,
+ *     toolId: "ces_tool_basic7",
+ *     executionType: "SYNCHRONOUS",
+ *     widgetTool: {
+ *         name: "ces_tool_widget_basic",
+ *         description: "example-description",
+ *         widgetType: "PRODUCT_CAROUSEL",
+ *         uiConfig: JSON.stringify({
+ *             displaySettings: {
+ *                 showHeader: true,
+ *             },
+ *         }),
+ *         dataMapping: {
+ *             mode: "FIELD_MAPPING",
+ *             fieldMappings: {
+ *                 key1: "value1",
+ *                 key2: "value2",
+ *             },
+ *         },
+ *         textResponseConfig: {
+ *             type: "STATIC",
+ *             staticText: "example-static-text",
+ *         },
+ *         parameters: {
+ *             type: "OBJECT",
+ *             properties: JSON.stringify({
+ *                 param1: {
+ *                     type: "STRING",
+ *                 },
+ *             }),
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -327,6 +446,11 @@ export class Tool extends pulumi.CustomResource {
     }
 
     /**
+     * Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     */
+    declare public readonly agentTool: pulumi.Output<outputs.ces.ToolAgentTool | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     declare public readonly app: pulumi.Output<string>;
@@ -338,6 +462,11 @@ export class Tool extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly clientFunction: pulumi.Output<outputs.ces.ToolClientFunction | undefined>;
+    /**
+     * A ConnectorTool allows connections to different integrations.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly connectorTools: pulumi.Output<outputs.ces.ToolConnectorTool[]>;
     /**
      * Timestamp when the tool was created.
      */
@@ -378,6 +507,12 @@ export class Tool extends pulumi.CustomResource {
      */
     declare public readonly executionType: pulumi.Output<string | undefined>;
     /**
+     * The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     */
+    declare public readonly fileSearchTool: pulumi.Output<outputs.ces.ToolFileSearchTool | undefined>;
+    /**
      * If the tool is generated by the LLM assistant, this field contains a
      * descriptive summary of the generation.
      */
@@ -393,6 +528,11 @@ export class Tool extends pulumi.CustomResource {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     declare public readonly location: pulumi.Output<string>;
+    /**
+     * An MCP tool.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly mcpTools: pulumi.Output<outputs.ces.ToolMcpTool[]>;
     /**
      * (Output)
      * The name of the system tool.
@@ -414,6 +554,11 @@ export class Tool extends pulumi.CustomResource {
      */
     declare public readonly pythonFunction: pulumi.Output<outputs.ces.ToolPythonFunction | undefined>;
     /**
+     * Represents a tool that allows the agent to call another remote agent.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly remoteAgentTools: pulumi.Output<outputs.ces.ToolRemoteAgentTool[]>;
+    /**
      * The system tool.
      * Structure is documented below.
      */
@@ -428,6 +573,11 @@ export class Tool extends pulumi.CustomResource {
      * Timestamp when the tool was last updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     */
+    declare public readonly widgetTool: pulumi.Output<outputs.ces.ToolWidgetTool | undefined>;
 
     /**
      * Create a Tool resource with the given unique name, arguments, and options.
@@ -442,24 +592,30 @@ export class Tool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ToolState | undefined;
+            resourceInputs["agentTool"] = state?.agentTool;
             resourceInputs["app"] = state?.app;
             resourceInputs["clientFunction"] = state?.clientFunction;
+            resourceInputs["connectorTools"] = state?.connectorTools;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreTool"] = state?.dataStoreTool;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["executionType"] = state?.executionType;
+            resourceInputs["fileSearchTool"] = state?.fileSearchTool;
             resourceInputs["generatedSummary"] = state?.generatedSummary;
             resourceInputs["googleSearchTool"] = state?.googleSearchTool;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mcpTools"] = state?.mcpTools;
             resourceInputs["name"] = state?.name;
             resourceInputs["openApiTools"] = state?.openApiTools;
             resourceInputs["project"] = state?.project;
             resourceInputs["pythonFunction"] = state?.pythonFunction;
+            resourceInputs["remoteAgentTools"] = state?.remoteAgentTools;
             resourceInputs["systemTools"] = state?.systemTools;
             resourceInputs["toolId"] = state?.toolId;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["widgetTool"] = state?.widgetTool;
         } else {
             const args = argsOrState as ToolArgs | undefined;
             if (args?.app === undefined && !opts.urn) {
@@ -471,22 +627,28 @@ export class Tool extends pulumi.CustomResource {
             if (args?.toolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'toolId'");
             }
+            resourceInputs["agentTool"] = args?.agentTool;
             resourceInputs["app"] = args?.app;
             resourceInputs["clientFunction"] = args?.clientFunction;
             resourceInputs["dataStoreTool"] = args?.dataStoreTool;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["executionType"] = args?.executionType;
+            resourceInputs["fileSearchTool"] = args?.fileSearchTool;
             resourceInputs["googleSearchTool"] = args?.googleSearchTool;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["pythonFunction"] = args?.pythonFunction;
             resourceInputs["toolId"] = args?.toolId;
+            resourceInputs["widgetTool"] = args?.widgetTool;
+            resourceInputs["connectorTools"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["generatedSummary"] = undefined /*out*/;
+            resourceInputs["mcpTools"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["openApiTools"] = undefined /*out*/;
+            resourceInputs["remoteAgentTools"] = undefined /*out*/;
             resourceInputs["systemTools"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -500,6 +662,11 @@ export class Tool extends pulumi.CustomResource {
  */
 export interface ToolState {
     /**
+     * Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     */
+    agentTool?: pulumi.Input<inputs.ces.ToolAgentTool | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     app?: pulumi.Input<string | undefined>;
@@ -511,6 +678,11 @@ export interface ToolState {
      * Structure is documented below.
      */
     clientFunction?: pulumi.Input<inputs.ces.ToolClientFunction | undefined>;
+    /**
+     * A ConnectorTool allows connections to different integrations.
+     * Structure is documented below.
+     */
+    connectorTools?: pulumi.Input<pulumi.Input<inputs.ces.ToolConnectorTool>[] | undefined>;
     /**
      * Timestamp when the tool was created.
      */
@@ -551,6 +723,12 @@ export interface ToolState {
      */
     executionType?: pulumi.Input<string | undefined>;
     /**
+     * The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     */
+    fileSearchTool?: pulumi.Input<inputs.ces.ToolFileSearchTool | undefined>;
+    /**
      * If the tool is generated by the LLM assistant, this field contains a
      * descriptive summary of the generation.
      */
@@ -566,6 +744,11 @@ export interface ToolState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * An MCP tool.
+     * Structure is documented below.
+     */
+    mcpTools?: pulumi.Input<pulumi.Input<inputs.ces.ToolMcpTool>[] | undefined>;
     /**
      * (Output)
      * The name of the system tool.
@@ -587,6 +770,11 @@ export interface ToolState {
      */
     pythonFunction?: pulumi.Input<inputs.ces.ToolPythonFunction | undefined>;
     /**
+     * Represents a tool that allows the agent to call another remote agent.
+     * Structure is documented below.
+     */
+    remoteAgentTools?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentTool>[] | undefined>;
+    /**
      * The system tool.
      * Structure is documented below.
      */
@@ -601,12 +789,22 @@ export interface ToolState {
      * Timestamp when the tool was last updated.
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     */
+    widgetTool?: pulumi.Input<inputs.ces.ToolWidgetTool | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Tool resource.
  */
 export interface ToolArgs {
+    /**
+     * Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     */
+    agentTool?: pulumi.Input<inputs.ces.ToolAgentTool | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -643,6 +841,12 @@ export interface ToolArgs {
      */
     executionType?: pulumi.Input<string | undefined>;
     /**
+     * The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     */
+    fileSearchTool?: pulumi.Input<inputs.ces.ToolFileSearchTool | undefined>;
+    /**
      * Represents a tool to perform Google web searches for grounding.
      * See
      * https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -669,4 +873,9 @@ export interface ToolArgs {
      * automatically assigned for the tool.
      */
     toolId: pulumi.Input<string>;
+    /**
+     * Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     */
+    widgetTool?: pulumi.Input<inputs.ces.ToolWidgetTool | undefined>;
 }

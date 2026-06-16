@@ -1922,6 +1922,8 @@ func (o SchemaBundleProtoSchemaPtrOutput) ProtoDescriptors() pulumi.StringPtrOut
 type TableAutomatedBackupPolicy struct {
 	// How frequently automated backups should occur.
 	Frequency *string `pulumi:"frequency"`
+	// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+	Locations []string `pulumi:"locations"`
 	// How long the automated backups should be retained.
 	RetentionPeriod *string `pulumi:"retentionPeriod"`
 }
@@ -1940,6 +1942,8 @@ type TableAutomatedBackupPolicyInput interface {
 type TableAutomatedBackupPolicyArgs struct {
 	// How frequently automated backups should occur.
 	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
 	// How long the automated backups should be retained.
 	RetentionPeriod pulumi.StringPtrInput `pulumi:"retentionPeriod"`
 }
@@ -2026,6 +2030,11 @@ func (o TableAutomatedBackupPolicyOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableAutomatedBackupPolicy) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+func (o TableAutomatedBackupPolicyOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableAutomatedBackupPolicy) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
 // How long the automated backups should be retained.
 func (o TableAutomatedBackupPolicyOutput) RetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableAutomatedBackupPolicy) *string { return v.RetentionPeriod }).(pulumi.StringPtrOutput)
@@ -2063,6 +2072,16 @@ func (o TableAutomatedBackupPolicyPtrOutput) Frequency() pulumi.StringPtrOutput 
 		}
 		return v.Frequency
 	}).(pulumi.StringPtrOutput)
+}
+
+// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+func (o TableAutomatedBackupPolicyPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableAutomatedBackupPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
 }
 
 // How long the automated backups should be retained.

@@ -272,7 +272,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .lifetime(String.format("%ss", 5 * 365 * 24 * 3600))
+ *             .lifetime("157680000s")
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .algorithm("RSA_PKCS1_2048_SHA256")
  *                 .build())

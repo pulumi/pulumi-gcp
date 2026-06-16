@@ -38,7 +38,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
     /**
      * Represents primitive types - string, bool etc.
      * Exactly one of `primitiveType` or `enumType` must be set
-     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
      * 
      */
     @Import(name="primitiveType")
@@ -47,7 +47,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
     /**
      * @return Represents primitive types - string, bool etc.
      * Exactly one of `primitiveType` or `enumType` must be set
-     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
      * 
      */
     public Optional<Output<String>> primitiveType() {
@@ -107,7 +107,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
         /**
          * @param primitiveType Represents primitive types - string, bool etc.
          * Exactly one of `primitiveType` or `enumType` must be set
-         * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+         * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
         /**
          * @param primitiveType Represents primitive types - string, bool etc.
          * Exactly one of `primitiveType` or `enumType` must be set
-         * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+         * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
          * 
          * @return builder
          * 

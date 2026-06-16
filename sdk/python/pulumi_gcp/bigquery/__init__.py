@@ -29,6 +29,7 @@ from .get_dataset import *
 from .get_dataset_iam_policy import *
 from .get_datasets import *
 from .get_default_service_account import *
+from .get_routine_iam_policy import *
 from .get_table import *
 from .get_table_iam_policy import *
 from .get_tables import *
@@ -40,6 +41,9 @@ from .reservation import *
 from .reservation_assignment import *
 from .reservation_group import *
 from .routine import *
+from .routine_iam_binding import *
+from .routine_iam_member import *
+from .routine_iam_policy import *
 from .row_access_policy import *
 from .table import *
 from ._inputs import *

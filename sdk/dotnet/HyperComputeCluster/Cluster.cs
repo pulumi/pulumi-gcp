@@ -373,7 +373,7 @@ namespace Pulumi.Gcp.HyperComputeCluster
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("networkResources")]
+        [Input("networkResources", required: true)]
         private InputList<Inputs.ClusterNetworkResourceArgs>? _networkResources;
 
         /// <summary>

@@ -106,6 +106,25 @@ public final class AiLogicPromptTemplateLockState extends com.pulumi.resources.R
     }
 
     /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    @Import(name="regionalPropagationDisabled")
+    private @Nullable Output<Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    public Optional<Output<Boolean>> regionalPropagationDisabled() {
+        return Optional.ofNullable(this.regionalPropagationDisabled);
+    }
+
+    /**
      * The ID of the prompt template.
      * 
      */
@@ -128,6 +147,7 @@ public final class AiLogicPromptTemplateLockState extends com.pulumi.resources.R
         this.locked = $.locked;
         this.name = $.name;
         this.project = $.project;
+        this.regionalPropagationDisabled = $.regionalPropagationDisabled;
         this.templateId = $.templateId;
     }
 
@@ -266,6 +286,31 @@ public final class AiLogicPromptTemplateLockState extends com.pulumi.resources.R
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the modifyLock operation will
+         * apply to the global region only. Otherwise, the operation will also
+         * propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(@Nullable Output<Boolean> regionalPropagationDisabled) {
+            $.regionalPropagationDisabled = regionalPropagationDisabled;
+            return this;
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the modifyLock operation will
+         * apply to the global region only. Otherwise, the operation will also
+         * propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(Boolean regionalPropagationDisabled) {
+            return regionalPropagationDisabled(Output.of(regionalPropagationDisabled));
         }
 
         /**

@@ -147,6 +147,7 @@ class ProviderArgs:
                  integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -489,6 +490,8 @@ class ProviderArgs:
             pulumi.set(__self__, "integrations_custom_endpoint", integrations_custom_endpoint)
         if kms_custom_endpoint is not None:
             pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
+        if license_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "license_manager_custom_endpoint", license_manager_custom_endpoint)
         if logging_custom_endpoint is not None:
             pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
         if looker_custom_endpoint is not None:
@@ -1810,6 +1813,15 @@ class ProviderArgs:
         pulumi.set(self, "kms_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="licenseManagerCustomEndpoint")
+    def license_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "license_manager_custom_endpoint")
+
+    @license_manager_custom_endpoint.setter
+    def license_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "license_manager_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="loggingCustomEndpoint")
     def logging_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "logging_custom_endpoint")
@@ -2708,6 +2720,7 @@ class Provider(pulumi.ProviderResource):
                  integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2959,6 +2972,7 @@ class Provider(pulumi.ProviderResource):
                  integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3180,6 +3194,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["integration_connectors_custom_endpoint"] = integration_connectors_custom_endpoint
             __props__.__dict__["integrations_custom_endpoint"] = integrations_custom_endpoint
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
+            __props__.__dict__["license_manager_custom_endpoint"] = license_manager_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
             __props__.__dict__["lustre_custom_endpoint"] = lustre_custom_endpoint
@@ -3883,6 +3898,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="kmsCustomEndpoint")
     def kms_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "kms_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="licenseManagerCustomEndpoint")
+    def license_manager_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "license_manager_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="loggingCustomEndpoint")

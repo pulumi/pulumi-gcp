@@ -385,7 +385,7 @@ namespace Pulumi.Gcp.Vertex
         /// The region of the index endpoint deployment. eg us-central1
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

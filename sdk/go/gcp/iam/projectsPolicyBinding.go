@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = iam.NewProjectsPolicyBinding(ctx, "binding-for-all-project-principals", &iam.ProjectsPolicyBindingArgs{
-//				Project:         pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:         pulumi.String(project.ProjectId),
 //				Location:        pulumi.String("global"),
 //				DisplayName:     pulumi.String("binding for all principals in the project"),
 //				PolicyKind:      pulumi.String("PRINCIPAL_ACCESS_BOUNDARY"),

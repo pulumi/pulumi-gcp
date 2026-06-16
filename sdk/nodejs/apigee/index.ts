@@ -40,6 +40,11 @@ export type DataCollector = import("./dataCollector").DataCollector;
 export const DataCollector: typeof import("./dataCollector").DataCollector = null as any;
 utilities.lazyLoad(exports, ["DataCollector"], () => require("./dataCollector"));
 
+export { DatastoreArgs, DatastoreState } from "./datastore";
+export type Datastore = import("./datastore").Datastore;
+export const Datastore: typeof import("./datastore").Datastore = null as any;
+utilities.lazyLoad(exports, ["Datastore"], () => require("./datastore"));
+
 export { DeveloperArgs, DeveloperState } from "./developer";
 export type Developer = import("./developer").Developer;
 export const Developer: typeof import("./developer").Developer = null as any;
@@ -129,6 +134,11 @@ export { GetEnvironmentIamPolicyArgs, GetEnvironmentIamPolicyResult, GetEnvironm
 export const getEnvironmentIamPolicy: typeof import("./getEnvironmentIamPolicy").getEnvironmentIamPolicy = null as any;
 export const getEnvironmentIamPolicyOutput: typeof import("./getEnvironmentIamPolicy").getEnvironmentIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironmentIamPolicy","getEnvironmentIamPolicyOutput"], () => require("./getEnvironmentIamPolicy"));
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
@@ -229,6 +239,8 @@ const _module = {
                 return new ControlPlaneAccess(name, <any>undefined, { urn })
             case "gcp:apigee/dataCollector:DataCollector":
                 return new DataCollector(name, <any>undefined, { urn })
+            case "gcp:apigee/datastore:Datastore":
+                return new Datastore(name, <any>undefined, { urn })
             case "gcp:apigee/developer:Developer":
                 return new Developer(name, <any>undefined, { urn })
             case "gcp:apigee/developerApp:DeveloperApp":
@@ -307,6 +319,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/dataCollector", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/datastore", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developerApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/dnsZone", _module)

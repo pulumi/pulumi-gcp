@@ -92,7 +92,7 @@ import (
 //				Instance:             endpoint_instance.Name,
 //				Port:                 pulumi.Any(neg.DefaultPort),
 //				IpAddress: pulumi.String(endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//					return &networkInterfaces[0].NetworkIp, nil
+//					return networkInterfaces[0].NetworkIp, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {

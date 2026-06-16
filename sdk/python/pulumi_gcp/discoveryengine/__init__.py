@@ -15,10 +15,14 @@ from .data_connector import *
 from .data_store import *
 from .get_data_store import *
 from .get_data_stores import *
+from .get_search_engine_iam_policy import *
 from .license_config import *
 from .recommendation_engine import *
 from .schema import *
 from .search_engine import *
+from .search_engine_iam_binding import *
+from .search_engine_iam_member import *
+from .search_engine_iam_policy import *
 from .serving_config import *
 from .sitemap import *
 from .target_site import *

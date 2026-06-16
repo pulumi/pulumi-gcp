@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			composer_worker, err := projects.NewIAMMember(ctx, "composer-worker", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/composer.worker"),
 //				Member: test.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil

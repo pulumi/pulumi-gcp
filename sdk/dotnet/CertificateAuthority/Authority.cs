@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 },
     ///             },
     ///         },
-    ///         Lifetime = $"{5 * 365 * 24 * 3600}s",
+    ///         Lifetime = "157680000s",
     ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///         {
     ///             Algorithm = "RSA_PKCS1_2048_SHA256",

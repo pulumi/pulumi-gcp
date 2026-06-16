@@ -35,7 +35,7 @@ import (
 //			}
 //			_, err = projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
 //				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String(pulumi.String(example.Name)),
+//				Role:    pulumi.String(example.Name),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {

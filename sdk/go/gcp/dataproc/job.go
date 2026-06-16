@@ -84,10 +84,10 @@ import (
 //				return err
 //			}
 //			ctx.Export("sparkStatus", spark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (*string, error) {
-//				return &statuses[0].State, nil
+//				return statuses[0].State, nil
 //			}).(pulumi.StringPtrOutput))
 //			ctx.Export("pysparkStatus", pyspark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (*string, error) {
-//				return &statuses[0].State, nil
+//				return statuses[0].State, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -300,6 +300,8 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         },
     ///     });
     /// 
+    ///     // Mount NFS datastore on vSphere cluster
+    ///     // This code block is required to mount the datastore on ESXi hosts
     ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
     ///     {
     ///         Name = "ext-cluster",
@@ -483,6 +485,8 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         },
     ///     });
     /// 
+    ///     // Mount NFS datastore on vSphere cluster
+    ///     // This code block is required to mount the datastore on ESXi hosts
     ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
     ///     {
     ///         Name = "ext-cluster",

@@ -126,7 +126,7 @@ import (
 //			_, err = compute.NewTargetInstance(ctx, "custom_network", &compute.TargetInstanceArgs{
 //				Name:     pulumi.String("custom-network"),
 //				Instance: target_vmInstance.ID(),
-//				Network:  pulumi.String(pulumi.String(target_vm.SelfLink)),
+//				Network:  pulumi.String(target_vm.SelfLink),
 //			})
 //			if err != nil {
 //				return err

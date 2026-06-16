@@ -261,7 +261,7 @@ namespace Pulumi.Gcp.Firebase
         /// Structure is documented below.
         /// </summary>
         [Output("trafficFilter")]
-        public Output<Outputs.AiLogicConfigTrafficFilter?> TrafficFilter { get; private set; } = null!;
+        public Output<Outputs.AiLogicConfigTrafficFilter> TrafficFilter { get; private set; } = null!;
 
 
         /// <summary>

@@ -6,6 +6,7 @@ package com.pulumi.gcp.firebase;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -89,6 +90,25 @@ public final class AiLogicPromptTemplateArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    @Import(name="regionalPropagationDisabled")
+    private @Nullable Output<Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    public Optional<Output<Boolean>> regionalPropagationDisabled() {
+        return Optional.ofNullable(this.regionalPropagationDisabled);
+    }
+
+    /**
      * The unique ID of the PromptTemplate, which is the final component of the
      * PromptTemplate&#39;s resource name.
      * 
@@ -127,6 +147,7 @@ public final class AiLogicPromptTemplateArgs extends com.pulumi.resources.Resour
         this.displayName = $.displayName;
         this.location = $.location;
         this.project = $.project;
+        this.regionalPropagationDisabled = $.regionalPropagationDisabled;
         this.templateId = $.templateId;
         this.templateString = $.templateString;
     }
@@ -243,6 +264,31 @@ public final class AiLogicPromptTemplateArgs extends com.pulumi.resources.Resour
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the write operation (create,
+         * update, or delete) will apply to the global region only. Otherwise, the
+         * operation will also propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(@Nullable Output<Boolean> regionalPropagationDisabled) {
+            $.regionalPropagationDisabled = regionalPropagationDisabled;
+            return this;
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the write operation (create,
+         * update, or delete) will apply to the global region only. Otherwise, the
+         * operation will also propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(Boolean regionalPropagationDisabled) {
+            return regionalPropagationDisabled(Output.of(regionalPropagationDisabled));
         }
 
         /**

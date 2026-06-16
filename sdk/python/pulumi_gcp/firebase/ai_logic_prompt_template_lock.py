@@ -22,7 +22,8 @@ class AiLogicPromptTemplateLockArgs:
                  location: pulumi.Input[_builtins.str],
                  template_id: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AiLogicPromptTemplateLock resource.
 
@@ -36,6 +37,9 @@ class AiLogicPromptTemplateLockArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the modifyLock operation will
+               apply to the global region only. Otherwise, the operation will also
+               propagate to all applicable regions.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template_id", template_id)
@@ -43,6 +47,8 @@ class AiLogicPromptTemplateLockArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if regional_propagation_disabled is not None:
+            pulumi.set(__self__, "regional_propagation_disabled", regional_propagation_disabled)
 
     @_builtins.property
     @pulumi.getter
@@ -98,6 +104,20 @@ class AiLogicPromptTemplateLockArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the modifyLock operation will
+        apply to the global region only. Otherwise, the operation will also
+        propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
+
+    @regional_propagation_disabled.setter
+    def regional_propagation_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "regional_propagation_disabled", value)
+
 
 @pulumi.input_type
 class _AiLogicPromptTemplateLockState:
@@ -107,6 +127,7 @@ class _AiLogicPromptTemplateLockState:
                  locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiLogicPromptTemplateLock resources.
@@ -123,6 +144,9 @@ class _AiLogicPromptTemplateLockState:
         :param pulumi.Input[_builtins.str] name: The resource name of the prompt template.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the modifyLock operation will
+               apply to the global region only. Otherwise, the operation will also
+               propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] template_id: The ID of the prompt template.
         """
         if deletion_policy is not None:
@@ -135,6 +159,8 @@ class _AiLogicPromptTemplateLockState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if regional_propagation_disabled is not None:
+            pulumi.set(__self__, "regional_propagation_disabled", regional_propagation_disabled)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
 
@@ -206,6 +232,20 @@ class _AiLogicPromptTemplateLockState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the modifyLock operation will
+        apply to the global region only. Otherwise, the operation will also
+        propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
+
+    @regional_propagation_disabled.setter
+    def regional_propagation_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "regional_propagation_disabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -227,6 +267,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -257,6 +298,25 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
             location=basic.location,
             template_id=basic.template_id)
         ```
+        ### Firebaseailogic Prompt Template Lock Global Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        global_only = gcp.firebase.AiLogicPromptTemplate("global_only",
+            location="global",
+            template_id="global-only-lock-template",
+            template_string=\"\"\"---
+        model: googleai/gemini-1.5-flash
+        ---
+        Hello World
+        \"\"\")
+        global_only_lock = gcp.firebase.AiLogicPromptTemplateLock("global_only_lock",
+            location=global_only.location,
+            template_id=global_only.template_id,
+            regional_propagation_disabled=True)
+        ```
 
         ## Import
 
@@ -286,6 +346,9 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the prompt template.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the modifyLock operation will
+               apply to the global region only. Otherwise, the operation will also
+               propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] template_id: The ID of the prompt template.
         """
         ...
@@ -321,6 +384,25 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         basic_lock = gcp.firebase.AiLogicPromptTemplateLock("basic_lock",
             location=basic.location,
             template_id=basic.template_id)
+        ```
+        ### Firebaseailogic Prompt Template Lock Global Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        global_only = gcp.firebase.AiLogicPromptTemplate("global_only",
+            location="global",
+            template_id="global-only-lock-template",
+            template_string=\"\"\"---
+        model: googleai/gemini-1.5-flash
+        ---
+        Hello World
+        \"\"\")
+        global_only_lock = gcp.firebase.AiLogicPromptTemplateLock("global_only_lock",
+            location=global_only.location,
+            template_id=global_only.template_id,
+            regional_propagation_disabled=True)
         ```
 
         ## Import
@@ -358,6 +440,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -373,6 +456,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["regional_propagation_disabled"] = regional_propagation_disabled
             if template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'template_id'")
             __props__.__dict__["template_id"] = template_id
@@ -393,6 +477,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
             locked: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            regional_propagation_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiLogicPromptTemplateLock':
         """
         Get an existing AiLogicPromptTemplateLock resource's state with the given name, id, and optional extra
@@ -413,6 +498,9 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name of the prompt template.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] regional_propagation_disabled: For the `global` location only. If true, the modifyLock operation will
+               apply to the global region only. Otherwise, the operation will also
+               propagate to all applicable regions.
         :param pulumi.Input[_builtins.str] template_id: The ID of the prompt template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -424,6 +512,7 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         __props__.__dict__["locked"] = locked
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["regional_propagation_disabled"] = regional_propagation_disabled
         __props__.__dict__["template_id"] = template_id
         return AiLogicPromptTemplateLock(resource_name, opts=opts, __props__=__props__)
 
@@ -473,6 +562,16 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="regionalPropagationDisabled")
+    def regional_propagation_disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        For the `global` location only. If true, the modifyLock operation will
+        apply to the global region only. Otherwise, the operation will also
+        propagate to all applicable regions.
+        """
+        return pulumi.get(self, "regional_propagation_disabled")
 
     @_builtins.property
     @pulumi.getter(name="templateId")

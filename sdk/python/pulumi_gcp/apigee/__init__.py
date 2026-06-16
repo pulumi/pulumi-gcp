@@ -13,6 +13,7 @@ from .api_product import *
 from .app_group import *
 from .control_plane_access import *
 from .data_collector import *
+from .datastore import *
 from .developer import *
 from .developer_app import *
 from .dns_zone import *
@@ -31,6 +32,7 @@ from .environment_keyvaluemaps import *
 from .environment_keyvaluemaps_entries import *
 from .flowhook import *
 from .get_environment_iam_policy import *
+from .get_instance import *
 from .instance import *
 from .instance_attachment import *
 from .keystores_aliases_key_cert_file import *

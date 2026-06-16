@@ -120,6 +120,11 @@ export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount
 export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
 
+export { GetRoutineIamPolicyArgs, GetRoutineIamPolicyResult, GetRoutineIamPolicyOutputArgs } from "./getRoutineIamPolicy";
+export const getRoutineIamPolicy: typeof import("./getRoutineIamPolicy").getRoutineIamPolicy = null as any;
+export const getRoutineIamPolicyOutput: typeof import("./getRoutineIamPolicy").getRoutineIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutineIamPolicy","getRoutineIamPolicyOutput"], () => require("./getRoutineIamPolicy"));
+
 export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
 export const getTable: typeof import("./getTable").getTable = null as any;
 export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
@@ -174,6 +179,21 @@ export { RoutineArgs, RoutineState } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
+
+export { RoutineIamBindingArgs, RoutineIamBindingState } from "./routineIamBinding";
+export type RoutineIamBinding = import("./routineIamBinding").RoutineIamBinding;
+export const RoutineIamBinding: typeof import("./routineIamBinding").RoutineIamBinding = null as any;
+utilities.lazyLoad(exports, ["RoutineIamBinding"], () => require("./routineIamBinding"));
+
+export { RoutineIamMemberArgs, RoutineIamMemberState } from "./routineIamMember";
+export type RoutineIamMember = import("./routineIamMember").RoutineIamMember;
+export const RoutineIamMember: typeof import("./routineIamMember").RoutineIamMember = null as any;
+utilities.lazyLoad(exports, ["RoutineIamMember"], () => require("./routineIamMember"));
+
+export { RoutineIamPolicyArgs, RoutineIamPolicyState } from "./routineIamPolicy";
+export type RoutineIamPolicy = import("./routineIamPolicy").RoutineIamPolicy;
+export const RoutineIamPolicy: typeof import("./routineIamPolicy").RoutineIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RoutineIamPolicy"], () => require("./routineIamPolicy"));
 
 export { RowAccessPolicyArgs, RowAccessPolicyState } from "./rowAccessPolicy";
 export type RowAccessPolicy = import("./rowAccessPolicy").RowAccessPolicy;
@@ -240,6 +260,12 @@ const _module = {
                 return new ReservationGroup(name, <any>undefined, { urn })
             case "gcp:bigquery/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
+            case "gcp:bigquery/routineIamBinding:RoutineIamBinding":
+                return new RoutineIamBinding(name, <any>undefined, { urn })
+            case "gcp:bigquery/routineIamMember:RoutineIamMember":
+                return new RoutineIamMember(name, <any>undefined, { urn })
+            case "gcp:bigquery/routineIamPolicy:RoutineIamPolicy":
+                return new RoutineIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/rowAccessPolicy:RowAccessPolicy":
                 return new RowAccessPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/table:Table":
@@ -274,5 +300,8 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/routine", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/routineIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/routineIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/routineIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/rowAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/table", _module)

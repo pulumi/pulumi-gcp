@@ -9,6 +9,7 @@ import typing
 from .assets_export_job import *
 from .discovery_client import *
 from .group import *
+from .import_job import *
 from .preference_set import *
 from .report import *
 from .report_config import *

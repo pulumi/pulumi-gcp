@@ -13,8 +13,11 @@ import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
 import com.pulumi.gcp.discoveryengine.inputs.GetDataStorePlainArgs;
 import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
 import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresPlainArgs;
+import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyPlainArgs;
 import com.pulumi.gcp.discoveryengine.outputs.GetDataStoreResult;
 import com.pulumi.gcp.discoveryengine.outputs.GetDataStoresResult;
+import com.pulumi.gcp.discoveryengine.outputs.GetSearchEngineIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DiscoveryengineFunctions {
@@ -850,5 +853,220 @@ public final class DiscoveryengineFunctions {
      */
     public static CompletableFuture<GetDataStoresResult> getDataStoresPlain(GetDataStoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:discoveryengine/getDataStores:getDataStores", TypeShape.of(GetDataStoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for searchengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
+     * import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .collectionId(basic.collectionId())
+     *             .engineId(basic.engineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs args) {
+        return getSearchEngineIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for searchengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
+     * import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .collectionId(basic.collectionId())
+     *             .engineId(basic.engineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicyPlain(GetSearchEngineIamPolicyPlainArgs args) {
+        return getSearchEngineIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for searchengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
+     * import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .collectionId(basic.collectionId())
+     *             .engineId(basic.engineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy", TypeShape.of(GetSearchEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for searchengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
+     * import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .collectionId(basic.collectionId())
+     *             .engineId(basic.engineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy", TypeShape.of(GetSearchEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for searchengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
+     * import com.pulumi.gcp.discoveryengine.inputs.GetSearchEngineIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .collectionId(basic.collectionId())
+     *             .engineId(basic.engineId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicyPlain(GetSearchEngineIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy", TypeShape.of(GetSearchEngineIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

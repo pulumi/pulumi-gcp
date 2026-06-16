@@ -206,7 +206,7 @@ export class AiLogicConfig extends pulumi.CustomResource {
      * Configuration for traffic filtering.
      * Structure is documented below.
      */
-    declare public readonly trafficFilter: pulumi.Output<outputs.firebase.AiLogicConfigTrafficFilter | undefined>;
+    declare public readonly trafficFilter: pulumi.Output<outputs.firebase.AiLogicConfigTrafficFilter>;
 
     /**
      * Create a AiLogicConfig resource with the given unique name, arguments, and options.
