@@ -57109,6 +57109,12 @@
             }
         }
     },
+    "default-resource-schema-fixups": {
+        "resources": {
+            "google_apigee_keystores_aliases_key_cert_file": {},
+            "google_storage_notification": {}
+        }
+    },
     "fix-label-names": {
         "resources": {
             "google_active_directory_domain": [
