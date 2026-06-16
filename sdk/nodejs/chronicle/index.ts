@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CustomListArgs, CustomListState } from "./customList";
+export type CustomList = import("./customList").CustomList;
+export const CustomList: typeof import("./customList").CustomList = null as any;
+utilities.lazyLoad(exports, ["CustomList"], () => require("./customList"));
+
 export { DashboardChartArgs, DashboardChartState } from "./dashboardChart";
 export type DashboardChart = import("./dashboardChart").DashboardChart;
 export const DashboardChart: typeof import("./dashboardChart").DashboardChart = null as any;
@@ -29,6 +34,11 @@ export { DataTableRowArgs, DataTableRowState } from "./dataTableRow";
 export type DataTableRow = import("./dataTableRow").DataTableRow;
 export const DataTableRow: typeof import("./dataTableRow").DataTableRow = null as any;
 utilities.lazyLoad(exports, ["DataTableRow"], () => require("./dataTableRow"));
+
+export { EnvironmentArgs, EnvironmentState } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { FeedArgs, FeedState } from "./feed";
 export type Feed = import("./feed").Feed;
@@ -75,6 +85,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:chronicle/customList:CustomList":
+                return new CustomList(name, <any>undefined, { urn })
             case "gcp:chronicle/dashboardChart:DashboardChart":
                 return new DashboardChart(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessLabel:DataAccessLabel":
@@ -85,6 +97,8 @@ const _module = {
                 return new DataTable(name, <any>undefined, { urn })
             case "gcp:chronicle/dataTableRow:DataTableRow":
                 return new DataTableRow(name, <any>undefined, { urn })
+            case "gcp:chronicle/environment:Environment":
+                return new Environment(name, <any>undefined, { urn })
             case "gcp:chronicle/feed:Feed":
                 return new Feed(name, <any>undefined, { urn })
             case "gcp:chronicle/findingsRefinement:FindingsRefinement":
@@ -106,11 +120,13 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "chronicle/customList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dashboardChart", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinement", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)

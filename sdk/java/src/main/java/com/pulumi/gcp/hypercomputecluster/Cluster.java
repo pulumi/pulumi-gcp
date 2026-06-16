@@ -314,7 +314,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networkResources", refs={List.class,ClusterNetworkResource.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ClusterNetworkResource>> networkResources;
+    private Output<List<ClusterNetworkResource>> networkResources;
 
     /**
      * @return Network resources available to the cluster. Must contain at most one value.
@@ -325,8 +325,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<List<ClusterNetworkResource>>> networkResources() {
-        return Codegen.optional(this.networkResources);
+    public Output<List<ClusterNetworkResource>> networkResources() {
+        return this.networkResources;
     }
     /**
      * The component responsible for scheduling and running workloads on the

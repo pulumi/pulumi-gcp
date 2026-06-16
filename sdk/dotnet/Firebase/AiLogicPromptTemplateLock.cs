@@ -48,6 +48,36 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebaseailogic Prompt Template Lock Global Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var globalOnly = new Gcp.Firebase.AiLogicPromptTemplate("global_only", new()
+    ///     {
+    ///         Location = "global",
+    ///         TemplateId = "global-only-lock-template",
+    ///         TemplateString = @"---
+    /// model: googleai/gemini-1.5-flash
+    /// ---
+    /// Hello World
+    /// ",
+    ///     });
+    /// 
+    ///     var globalOnlyLock = new Gcp.Firebase.AiLogicPromptTemplateLock("global_only_lock", new()
+    ///     {
+    ///         Location = globalOnly.Location,
+    ///         TemplateId = globalOnly.TemplateId,
+    ///         RegionalPropagationDisabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -104,6 +134,14 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// For the `Global` location only. If true, the modifyLock operation will
+        /// apply to the global region only. Otherwise, the operation will also
+        /// propagate to all applicable regions.
+        /// </summary>
+        [Output("regionalPropagationDisabled")]
+        public Output<bool?> RegionalPropagationDisabled { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the prompt template.
@@ -182,6 +220,14 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// For the `Global` location only. If true, the modifyLock operation will
+        /// apply to the global region only. Otherwise, the operation will also
+        /// propagate to all applicable regions.
+        /// </summary>
+        [Input("regionalPropagationDisabled")]
+        public Input<bool>? RegionalPropagationDisabled { get; set; }
+
+        /// <summary>
         /// The ID of the prompt template.
         /// </summary>
         [Input("templateId", required: true)]
@@ -231,6 +277,14 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// For the `Global` location only. If true, the modifyLock operation will
+        /// apply to the global region only. Otherwise, the operation will also
+        /// propagate to all applicable regions.
+        /// </summary>
+        [Input("regionalPropagationDisabled")]
+        public Input<bool>? RegionalPropagationDisabled { get; set; }
 
         /// <summary>
         /// The ID of the prompt template.

@@ -57,7 +57,7 @@ import (
 //			_, err = biglake.NewIcebergCatalogIamPolicy(ctx, "policy", &biglake.IcebergCatalogIamPolicyArgs{
 //				Project:    pulumi.Any(myIcebergCatalog.Project),
 //				Name:       pulumi.Any(myIcebergCatalog.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //			_, err = biglake.NewIcebergCatalogIamPolicy(ctx, "policy", &biglake.IcebergCatalogIamPolicyArgs{
 //				Project:    pulumi.Any(myIcebergCatalog.Project),
 //				Name:       pulumi.Any(myIcebergCatalog.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -513,7 +513,7 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewDatasetIamMember(ctx, "connector_sa_dataset_perms", &bigquery.DatasetIamMemberArgs{
-//				Project:   pulumi.String(pulumi.String(testProject.ProjectId)),
+//				Project:   pulumi.String(testProject.ProjectId),
 //				DatasetId: bqDataset.DatasetId,
 //				Role:      pulumi.String("roles/bigquery.dataEditor"),
 //				Member:    pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number),

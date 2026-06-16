@@ -122,7 +122,7 @@ import (
 //			_, err = organizations.NewAccessApprovalSettings(ctx, "organization_access_approval", &organizations.AccessApprovalSettingsArgs{
 //				OrganizationId: pulumi.String("123456789"),
 //				ActiveKeyVersion: pulumi.String(cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//					return &cryptoKeyVersion.Name, nil
+//					return cryptoKeyVersion.Name, nil
 //				}).(pulumi.StringPtrOutput)),
 //				EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
 //					&organizations.AccessApprovalSettingsEnrolledServiceArgs{

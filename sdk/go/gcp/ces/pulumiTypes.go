@@ -36686,6 +36686,185 @@ func (o SecuritySettingsEndpointControlPolicyPtrOutput) EnforcementScope() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type ToolAgentTool struct {
+	// Optional. The resource name of the agent that is the entry point of the tool.
+	// Format: projects/{project}/locations/{location}/agents/{agent}
+	Agent *string `pulumi:"agent"`
+	// Optional. Description of the tool's purpose.
+	Description *string `pulumi:"description"`
+	// Required. The name of the agent tool.
+	Name string `pulumi:"name"`
+}
+
+// ToolAgentToolInput is an input type that accepts ToolAgentToolArgs and ToolAgentToolOutput values.
+// You can construct a concrete instance of `ToolAgentToolInput` via:
+//
+//	ToolAgentToolArgs{...}
+type ToolAgentToolInput interface {
+	pulumi.Input
+
+	ToToolAgentToolOutput() ToolAgentToolOutput
+	ToToolAgentToolOutputWithContext(context.Context) ToolAgentToolOutput
+}
+
+type ToolAgentToolArgs struct {
+	// Optional. The resource name of the agent that is the entry point of the tool.
+	// Format: projects/{project}/locations/{location}/agents/{agent}
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+	// Optional. Description of the tool's purpose.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Required. The name of the agent tool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ToolAgentToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolAgentTool)(nil)).Elem()
+}
+
+func (i ToolAgentToolArgs) ToToolAgentToolOutput() ToolAgentToolOutput {
+	return i.ToToolAgentToolOutputWithContext(context.Background())
+}
+
+func (i ToolAgentToolArgs) ToToolAgentToolOutputWithContext(ctx context.Context) ToolAgentToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolAgentToolOutput)
+}
+
+func (i ToolAgentToolArgs) ToToolAgentToolPtrOutput() ToolAgentToolPtrOutput {
+	return i.ToToolAgentToolPtrOutputWithContext(context.Background())
+}
+
+func (i ToolAgentToolArgs) ToToolAgentToolPtrOutputWithContext(ctx context.Context) ToolAgentToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolAgentToolOutput).ToToolAgentToolPtrOutputWithContext(ctx)
+}
+
+// ToolAgentToolPtrInput is an input type that accepts ToolAgentToolArgs, ToolAgentToolPtr and ToolAgentToolPtrOutput values.
+// You can construct a concrete instance of `ToolAgentToolPtrInput` via:
+//
+//	        ToolAgentToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolAgentToolPtrInput interface {
+	pulumi.Input
+
+	ToToolAgentToolPtrOutput() ToolAgentToolPtrOutput
+	ToToolAgentToolPtrOutputWithContext(context.Context) ToolAgentToolPtrOutput
+}
+
+type toolAgentToolPtrType ToolAgentToolArgs
+
+func ToolAgentToolPtr(v *ToolAgentToolArgs) ToolAgentToolPtrInput {
+	return (*toolAgentToolPtrType)(v)
+}
+
+func (*toolAgentToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolAgentTool)(nil)).Elem()
+}
+
+func (i *toolAgentToolPtrType) ToToolAgentToolPtrOutput() ToolAgentToolPtrOutput {
+	return i.ToToolAgentToolPtrOutputWithContext(context.Background())
+}
+
+func (i *toolAgentToolPtrType) ToToolAgentToolPtrOutputWithContext(ctx context.Context) ToolAgentToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolAgentToolPtrOutput)
+}
+
+type ToolAgentToolOutput struct{ *pulumi.OutputState }
+
+func (ToolAgentToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolAgentTool)(nil)).Elem()
+}
+
+func (o ToolAgentToolOutput) ToToolAgentToolOutput() ToolAgentToolOutput {
+	return o
+}
+
+func (o ToolAgentToolOutput) ToToolAgentToolOutputWithContext(ctx context.Context) ToolAgentToolOutput {
+	return o
+}
+
+func (o ToolAgentToolOutput) ToToolAgentToolPtrOutput() ToolAgentToolPtrOutput {
+	return o.ToToolAgentToolPtrOutputWithContext(context.Background())
+}
+
+func (o ToolAgentToolOutput) ToToolAgentToolPtrOutputWithContext(ctx context.Context) ToolAgentToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolAgentTool) *ToolAgentTool {
+		return &v
+	}).(ToolAgentToolPtrOutput)
+}
+
+// Optional. The resource name of the agent that is the entry point of the tool.
+// Format: projects/{project}/locations/{location}/agents/{agent}
+func (o ToolAgentToolOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolAgentTool) *string { return v.Agent }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Description of the tool's purpose.
+func (o ToolAgentToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolAgentTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the agent tool.
+func (o ToolAgentToolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolAgentTool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ToolAgentToolPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolAgentToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolAgentTool)(nil)).Elem()
+}
+
+func (o ToolAgentToolPtrOutput) ToToolAgentToolPtrOutput() ToolAgentToolPtrOutput {
+	return o
+}
+
+func (o ToolAgentToolPtrOutput) ToToolAgentToolPtrOutputWithContext(ctx context.Context) ToolAgentToolPtrOutput {
+	return o
+}
+
+func (o ToolAgentToolPtrOutput) Elem() ToolAgentToolOutput {
+	return o.ApplyT(func(v *ToolAgentTool) ToolAgentTool {
+		if v != nil {
+			return *v
+		}
+		var ret ToolAgentTool
+		return ret
+	}).(ToolAgentToolOutput)
+}
+
+// Optional. The resource name of the agent that is the entry point of the tool.
+// Format: projects/{project}/locations/{location}/agents/{agent}
+func (o ToolAgentToolPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolAgentTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Description of the tool's purpose.
+func (o ToolAgentToolPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolAgentTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the agent tool.
+func (o ToolAgentToolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolAgentTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolClientFunction struct {
 	// The function description.
 	Description *string `pulumi:"description"`
@@ -38118,16 +38297,449 @@ func (o ToolClientFunctionResponsePtrOutput) UniqueItems() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ToolConnectorTool struct {
+	// (Output)
+	// Action for the tool to use.
+	// Structure is documented below.
+	Actions []ToolConnectorToolAction `pulumi:"actions"`
+	// (Output)
+	// Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the ConnectorTool creation will fail. See https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override for details. Represents a JSON object.
+	AuthConfig *string `pulumi:"authConfig"`
+	// (Output)
+	// The full resource name of the referenced Integration Connectors Connection. Format: projects/{project}/locations/{location}/connections/{connection}
+	Connection *string `pulumi:"connection"`
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+}
+
+// ToolConnectorToolInput is an input type that accepts ToolConnectorToolArgs and ToolConnectorToolOutput values.
+// You can construct a concrete instance of `ToolConnectorToolInput` via:
+//
+//	ToolConnectorToolArgs{...}
+type ToolConnectorToolInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolOutput() ToolConnectorToolOutput
+	ToToolConnectorToolOutputWithContext(context.Context) ToolConnectorToolOutput
+}
+
+type ToolConnectorToolArgs struct {
+	// (Output)
+	// Action for the tool to use.
+	// Structure is documented below.
+	Actions ToolConnectorToolActionArrayInput `pulumi:"actions"`
+	// (Output)
+	// Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the ConnectorTool creation will fail. See https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override for details. Represents a JSON object.
+	AuthConfig pulumi.StringPtrInput `pulumi:"authConfig"`
+	// (Output)
+	// The full resource name of the referenced Integration Connectors Connection. Format: projects/{project}/locations/{location}/connections/{connection}
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ToolConnectorToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorTool)(nil)).Elem()
+}
+
+func (i ToolConnectorToolArgs) ToToolConnectorToolOutput() ToolConnectorToolOutput {
+	return i.ToToolConnectorToolOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolArgs) ToToolConnectorToolOutputWithContext(ctx context.Context) ToolConnectorToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolOutput)
+}
+
+// ToolConnectorToolArrayInput is an input type that accepts ToolConnectorToolArray and ToolConnectorToolArrayOutput values.
+// You can construct a concrete instance of `ToolConnectorToolArrayInput` via:
+//
+//	ToolConnectorToolArray{ ToolConnectorToolArgs{...} }
+type ToolConnectorToolArrayInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolArrayOutput() ToolConnectorToolArrayOutput
+	ToToolConnectorToolArrayOutputWithContext(context.Context) ToolConnectorToolArrayOutput
+}
+
+type ToolConnectorToolArray []ToolConnectorToolInput
+
+func (ToolConnectorToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorTool)(nil)).Elem()
+}
+
+func (i ToolConnectorToolArray) ToToolConnectorToolArrayOutput() ToolConnectorToolArrayOutput {
+	return i.ToToolConnectorToolArrayOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolArray) ToToolConnectorToolArrayOutputWithContext(ctx context.Context) ToolConnectorToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolArrayOutput)
+}
+
+type ToolConnectorToolOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorTool)(nil)).Elem()
+}
+
+func (o ToolConnectorToolOutput) ToToolConnectorToolOutput() ToolConnectorToolOutput {
+	return o
+}
+
+func (o ToolConnectorToolOutput) ToToolConnectorToolOutputWithContext(ctx context.Context) ToolConnectorToolOutput {
+	return o
+}
+
+// (Output)
+// Action for the tool to use.
+// Structure is documented below.
+func (o ToolConnectorToolOutput) Actions() ToolConnectorToolActionArrayOutput {
+	return o.ApplyT(func(v ToolConnectorTool) []ToolConnectorToolAction { return v.Actions }).(ToolConnectorToolActionArrayOutput)
+}
+
+// (Output)
+// Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the ConnectorTool creation will fail. See https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override for details. Represents a JSON object.
+func (o ToolConnectorToolOutput) AuthConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorTool) *string { return v.AuthConfig }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The full resource name of the referenced Integration Connectors Connection. Format: projects/{project}/locations/{location}/connections/{connection}
+func (o ToolConnectorToolOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorTool) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolConnectorToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolConnectorToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ToolConnectorToolArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorTool)(nil)).Elem()
+}
+
+func (o ToolConnectorToolArrayOutput) ToToolConnectorToolArrayOutput() ToolConnectorToolArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolArrayOutput) ToToolConnectorToolArrayOutputWithContext(ctx context.Context) ToolConnectorToolArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolArrayOutput) Index(i pulumi.IntInput) ToolConnectorToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolConnectorTool {
+		return vs[0].([]ToolConnectorTool)[vs[1].(int)]
+	}).(ToolConnectorToolOutput)
+}
+
+type ToolConnectorToolAction struct {
+	// (Output)
+	// ID of a Connection action for the tool to use.
+	ConnectionActionId *string `pulumi:"connectionActionId"`
+	// (Output)
+	// Entity operation configuration for the tool to use.
+	// Structure is documented below.
+	EntityOperations []ToolConnectorToolActionEntityOperation `pulumi:"entityOperations"`
+	// (Output)
+	// Entity fields to use as inputs for the operation.
+	InputFields []string `pulumi:"inputFields"`
+	// (Output)
+	// Entity fields to return from the operation.
+	OutputFields []string `pulumi:"outputFields"`
+}
+
+// ToolConnectorToolActionInput is an input type that accepts ToolConnectorToolActionArgs and ToolConnectorToolActionOutput values.
+// You can construct a concrete instance of `ToolConnectorToolActionInput` via:
+//
+//	ToolConnectorToolActionArgs{...}
+type ToolConnectorToolActionInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolActionOutput() ToolConnectorToolActionOutput
+	ToToolConnectorToolActionOutputWithContext(context.Context) ToolConnectorToolActionOutput
+}
+
+type ToolConnectorToolActionArgs struct {
+	// (Output)
+	// ID of a Connection action for the tool to use.
+	ConnectionActionId pulumi.StringPtrInput `pulumi:"connectionActionId"`
+	// (Output)
+	// Entity operation configuration for the tool to use.
+	// Structure is documented below.
+	EntityOperations ToolConnectorToolActionEntityOperationArrayInput `pulumi:"entityOperations"`
+	// (Output)
+	// Entity fields to use as inputs for the operation.
+	InputFields pulumi.StringArrayInput `pulumi:"inputFields"`
+	// (Output)
+	// Entity fields to return from the operation.
+	OutputFields pulumi.StringArrayInput `pulumi:"outputFields"`
+}
+
+func (ToolConnectorToolActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorToolAction)(nil)).Elem()
+}
+
+func (i ToolConnectorToolActionArgs) ToToolConnectorToolActionOutput() ToolConnectorToolActionOutput {
+	return i.ToToolConnectorToolActionOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolActionArgs) ToToolConnectorToolActionOutputWithContext(ctx context.Context) ToolConnectorToolActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolActionOutput)
+}
+
+// ToolConnectorToolActionArrayInput is an input type that accepts ToolConnectorToolActionArray and ToolConnectorToolActionArrayOutput values.
+// You can construct a concrete instance of `ToolConnectorToolActionArrayInput` via:
+//
+//	ToolConnectorToolActionArray{ ToolConnectorToolActionArgs{...} }
+type ToolConnectorToolActionArrayInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolActionArrayOutput() ToolConnectorToolActionArrayOutput
+	ToToolConnectorToolActionArrayOutputWithContext(context.Context) ToolConnectorToolActionArrayOutput
+}
+
+type ToolConnectorToolActionArray []ToolConnectorToolActionInput
+
+func (ToolConnectorToolActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorToolAction)(nil)).Elem()
+}
+
+func (i ToolConnectorToolActionArray) ToToolConnectorToolActionArrayOutput() ToolConnectorToolActionArrayOutput {
+	return i.ToToolConnectorToolActionArrayOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolActionArray) ToToolConnectorToolActionArrayOutputWithContext(ctx context.Context) ToolConnectorToolActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolActionArrayOutput)
+}
+
+type ToolConnectorToolActionOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorToolAction)(nil)).Elem()
+}
+
+func (o ToolConnectorToolActionOutput) ToToolConnectorToolActionOutput() ToolConnectorToolActionOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionOutput) ToToolConnectorToolActionOutputWithContext(ctx context.Context) ToolConnectorToolActionOutput {
+	return o
+}
+
+// (Output)
+// ID of a Connection action for the tool to use.
+func (o ToolConnectorToolActionOutput) ConnectionActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorToolAction) *string { return v.ConnectionActionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Entity operation configuration for the tool to use.
+// Structure is documented below.
+func (o ToolConnectorToolActionOutput) EntityOperations() ToolConnectorToolActionEntityOperationArrayOutput {
+	return o.ApplyT(func(v ToolConnectorToolAction) []ToolConnectorToolActionEntityOperation { return v.EntityOperations }).(ToolConnectorToolActionEntityOperationArrayOutput)
+}
+
+// (Output)
+// Entity fields to use as inputs for the operation.
+func (o ToolConnectorToolActionOutput) InputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolConnectorToolAction) []string { return v.InputFields }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// Entity fields to return from the operation.
+func (o ToolConnectorToolActionOutput) OutputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolConnectorToolAction) []string { return v.OutputFields }).(pulumi.StringArrayOutput)
+}
+
+type ToolConnectorToolActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorToolAction)(nil)).Elem()
+}
+
+func (o ToolConnectorToolActionArrayOutput) ToToolConnectorToolActionArrayOutput() ToolConnectorToolActionArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionArrayOutput) ToToolConnectorToolActionArrayOutputWithContext(ctx context.Context) ToolConnectorToolActionArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionArrayOutput) Index(i pulumi.IntInput) ToolConnectorToolActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolConnectorToolAction {
+		return vs[0].([]ToolConnectorToolAction)[vs[1].(int)]
+	}).(ToolConnectorToolActionOutput)
+}
+
+type ToolConnectorToolActionEntityOperation struct {
+	// (Output)
+	// ID of the entity.
+	EntityId *string `pulumi:"entityId"`
+	// (Output)
+	// Operation to perform on the entity.
+	// Possible values:
+	// OPERATION_TYPE_UNSPECIFIED
+	// LIST
+	// GET
+	// CREATE
+	// UPDATE
+	// DELETE
+	Operation *string `pulumi:"operation"`
+}
+
+// ToolConnectorToolActionEntityOperationInput is an input type that accepts ToolConnectorToolActionEntityOperationArgs and ToolConnectorToolActionEntityOperationOutput values.
+// You can construct a concrete instance of `ToolConnectorToolActionEntityOperationInput` via:
+//
+//	ToolConnectorToolActionEntityOperationArgs{...}
+type ToolConnectorToolActionEntityOperationInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolActionEntityOperationOutput() ToolConnectorToolActionEntityOperationOutput
+	ToToolConnectorToolActionEntityOperationOutputWithContext(context.Context) ToolConnectorToolActionEntityOperationOutput
+}
+
+type ToolConnectorToolActionEntityOperationArgs struct {
+	// (Output)
+	// ID of the entity.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// (Output)
+	// Operation to perform on the entity.
+	// Possible values:
+	// OPERATION_TYPE_UNSPECIFIED
+	// LIST
+	// GET
+	// CREATE
+	// UPDATE
+	// DELETE
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+}
+
+func (ToolConnectorToolActionEntityOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorToolActionEntityOperation)(nil)).Elem()
+}
+
+func (i ToolConnectorToolActionEntityOperationArgs) ToToolConnectorToolActionEntityOperationOutput() ToolConnectorToolActionEntityOperationOutput {
+	return i.ToToolConnectorToolActionEntityOperationOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolActionEntityOperationArgs) ToToolConnectorToolActionEntityOperationOutputWithContext(ctx context.Context) ToolConnectorToolActionEntityOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolActionEntityOperationOutput)
+}
+
+// ToolConnectorToolActionEntityOperationArrayInput is an input type that accepts ToolConnectorToolActionEntityOperationArray and ToolConnectorToolActionEntityOperationArrayOutput values.
+// You can construct a concrete instance of `ToolConnectorToolActionEntityOperationArrayInput` via:
+//
+//	ToolConnectorToolActionEntityOperationArray{ ToolConnectorToolActionEntityOperationArgs{...} }
+type ToolConnectorToolActionEntityOperationArrayInput interface {
+	pulumi.Input
+
+	ToToolConnectorToolActionEntityOperationArrayOutput() ToolConnectorToolActionEntityOperationArrayOutput
+	ToToolConnectorToolActionEntityOperationArrayOutputWithContext(context.Context) ToolConnectorToolActionEntityOperationArrayOutput
+}
+
+type ToolConnectorToolActionEntityOperationArray []ToolConnectorToolActionEntityOperationInput
+
+func (ToolConnectorToolActionEntityOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorToolActionEntityOperation)(nil)).Elem()
+}
+
+func (i ToolConnectorToolActionEntityOperationArray) ToToolConnectorToolActionEntityOperationArrayOutput() ToolConnectorToolActionEntityOperationArrayOutput {
+	return i.ToToolConnectorToolActionEntityOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorToolActionEntityOperationArray) ToToolConnectorToolActionEntityOperationArrayOutputWithContext(ctx context.Context) ToolConnectorToolActionEntityOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorToolActionEntityOperationArrayOutput)
+}
+
+type ToolConnectorToolActionEntityOperationOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolActionEntityOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorToolActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolConnectorToolActionEntityOperationOutput) ToToolConnectorToolActionEntityOperationOutput() ToolConnectorToolActionEntityOperationOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionEntityOperationOutput) ToToolConnectorToolActionEntityOperationOutputWithContext(ctx context.Context) ToolConnectorToolActionEntityOperationOutput {
+	return o
+}
+
+// (Output)
+// ID of the entity.
+func (o ToolConnectorToolActionEntityOperationOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorToolActionEntityOperation) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Operation to perform on the entity.
+// Possible values:
+// OPERATION_TYPE_UNSPECIFIED
+// LIST
+// GET
+// CREATE
+// UPDATE
+// DELETE
+func (o ToolConnectorToolActionEntityOperationOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorToolActionEntityOperation) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+type ToolConnectorToolActionEntityOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorToolActionEntityOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorToolActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolConnectorToolActionEntityOperationArrayOutput) ToToolConnectorToolActionEntityOperationArrayOutput() ToolConnectorToolActionEntityOperationArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionEntityOperationArrayOutput) ToToolConnectorToolActionEntityOperationArrayOutputWithContext(ctx context.Context) ToolConnectorToolActionEntityOperationArrayOutput {
+	return o
+}
+
+func (o ToolConnectorToolActionEntityOperationArrayOutput) Index(i pulumi.IntInput) ToolConnectorToolActionEntityOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolConnectorToolActionEntityOperation {
+		return vs[0].([]ToolConnectorToolActionEntityOperation)[vs[1].(int)]
+	}).(ToolConnectorToolActionEntityOperationOutput)
+}
+
 type ToolDataStoreTool struct {
 	// Boost specification to boost certain documents.
 	// Structure is documented below.
 	BoostSpecs []ToolDataStoreToolBoostSpec `pulumi:"boostSpecs"`
+	// Optional. Search within a single specific DataStore.
+	// Structure is documented below.
+	DataStoreSource *ToolDataStoreToolDataStoreSource `pulumi:"dataStoreSource"`
 	// The tool description.
 	Description *string `pulumi:"description"`
 	// Configuration for searching within an Engine, potentially targeting
 	// specific DataStores.
 	// Structure is documented below.
 	EngineSource *ToolDataStoreToolEngineSource `pulumi:"engineSource"`
+	// Optional. The filter parameter behavior.
+	// Possible values:
+	// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+	// ALWAYS_INCLUDE
+	// NEVER_INCLUDE
+	// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+	FilterParameterBehavior *string `pulumi:"filterParameterBehavior"`
 	// (Optional, Deprecated)
 	// Number of search results to return per query.
 	// The default value is 10. The maximum allowed value is 10.
@@ -38158,12 +38770,22 @@ type ToolDataStoreToolArgs struct {
 	// Boost specification to boost certain documents.
 	// Structure is documented below.
 	BoostSpecs ToolDataStoreToolBoostSpecArrayInput `pulumi:"boostSpecs"`
+	// Optional. Search within a single specific DataStore.
+	// Structure is documented below.
+	DataStoreSource ToolDataStoreToolDataStoreSourcePtrInput `pulumi:"dataStoreSource"`
 	// The tool description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Configuration for searching within an Engine, potentially targeting
 	// specific DataStores.
 	// Structure is documented below.
 	EngineSource ToolDataStoreToolEngineSourcePtrInput `pulumi:"engineSource"`
+	// Optional. The filter parameter behavior.
+	// Possible values:
+	// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+	// ALWAYS_INCLUDE
+	// NEVER_INCLUDE
+	// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+	FilterParameterBehavior pulumi.StringPtrInput `pulumi:"filterParameterBehavior"`
 	// (Optional, Deprecated)
 	// Number of search results to return per query.
 	// The default value is 10. The maximum allowed value is 10.
@@ -38262,6 +38884,12 @@ func (o ToolDataStoreToolOutput) BoostSpecs() ToolDataStoreToolBoostSpecArrayOut
 	return o.ApplyT(func(v ToolDataStoreTool) []ToolDataStoreToolBoostSpec { return v.BoostSpecs }).(ToolDataStoreToolBoostSpecArrayOutput)
 }
 
+// Optional. Search within a single specific DataStore.
+// Structure is documented below.
+func (o ToolDataStoreToolOutput) DataStoreSource() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) *ToolDataStoreToolDataStoreSource { return v.DataStoreSource }).(ToolDataStoreToolDataStoreSourcePtrOutput)
+}
+
 // The tool description.
 func (o ToolDataStoreToolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolDataStoreTool) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -38272,6 +38900,16 @@ func (o ToolDataStoreToolOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ToolDataStoreToolOutput) EngineSource() ToolDataStoreToolEngineSourcePtrOutput {
 	return o.ApplyT(func(v ToolDataStoreTool) *ToolDataStoreToolEngineSource { return v.EngineSource }).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+// Optional. The filter parameter behavior.
+// Possible values:
+// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+// ALWAYS_INCLUDE
+// NEVER_INCLUDE
+// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+func (o ToolDataStoreToolOutput) FilterParameterBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) *string { return v.FilterParameterBehavior }).(pulumi.StringPtrOutput)
 }
 
 // (Optional, Deprecated)
@@ -38331,6 +38969,17 @@ func (o ToolDataStoreToolPtrOutput) BoostSpecs() ToolDataStoreToolBoostSpecArray
 	}).(ToolDataStoreToolBoostSpecArrayOutput)
 }
 
+// Optional. Search within a single specific DataStore.
+// Structure is documented below.
+func (o ToolDataStoreToolPtrOutput) DataStoreSource() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *ToolDataStoreToolDataStoreSource {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreSource
+	}).(ToolDataStoreToolDataStoreSourcePtrOutput)
+}
+
 // The tool description.
 func (o ToolDataStoreToolPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolDataStoreTool) *string {
@@ -38351,6 +39000,21 @@ func (o ToolDataStoreToolPtrOutput) EngineSource() ToolDataStoreToolEngineSource
 		}
 		return v.EngineSource
 	}).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+// Optional. The filter parameter behavior.
+// Possible values:
+// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+// ALWAYS_INCLUDE
+// NEVER_INCLUDE
+// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+func (o ToolDataStoreToolPtrOutput) FilterParameterBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterParameterBehavior
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Optional, Deprecated)
@@ -39148,6 +39812,606 @@ func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
 		return vs[0].([]ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)[vs[1].(int)]
 	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput)
+}
+
+type ToolDataStoreToolDataStoreSource struct {
+	// Optional. The data store.
+	// Structure is documented below.
+	DataStore *ToolDataStoreToolDataStoreSourceDataStore `pulumi:"dataStore"`
+	// Optional. Filter specification for the DataStore.
+	// See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter *string `pulumi:"filter"`
+}
+
+// ToolDataStoreToolDataStoreSourceInput is an input type that accepts ToolDataStoreToolDataStoreSourceArgs and ToolDataStoreToolDataStoreSourceOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourceInput` via:
+//
+//	ToolDataStoreToolDataStoreSourceArgs{...}
+type ToolDataStoreToolDataStoreSourceInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourceOutput() ToolDataStoreToolDataStoreSourceOutput
+	ToToolDataStoreToolDataStoreSourceOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourceOutput
+}
+
+type ToolDataStoreToolDataStoreSourceArgs struct {
+	// Optional. The data store.
+	// Structure is documented below.
+	DataStore ToolDataStoreToolDataStoreSourceDataStorePtrInput `pulumi:"dataStore"`
+	// Optional. Filter specification for the DataStore.
+	// See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (ToolDataStoreToolDataStoreSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSource)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolDataStoreSourceArgs) ToToolDataStoreToolDataStoreSourceOutput() ToolDataStoreToolDataStoreSourceOutput {
+	return i.ToToolDataStoreToolDataStoreSourceOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceArgs) ToToolDataStoreToolDataStoreSourceOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceOutput)
+}
+
+func (i ToolDataStoreToolDataStoreSourceArgs) ToToolDataStoreToolDataStoreSourcePtrOutput() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return i.ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceArgs) ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceOutput).ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolDataStoreSourcePtrInput is an input type that accepts ToolDataStoreToolDataStoreSourceArgs, ToolDataStoreToolDataStoreSourcePtr and ToolDataStoreToolDataStoreSourcePtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourcePtrInput` via:
+//
+//	        ToolDataStoreToolDataStoreSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolDataStoreSourcePtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourcePtrOutput() ToolDataStoreToolDataStoreSourcePtrOutput
+	ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourcePtrOutput
+}
+
+type toolDataStoreToolDataStoreSourcePtrType ToolDataStoreToolDataStoreSourceArgs
+
+func ToolDataStoreToolDataStoreSourcePtr(v *ToolDataStoreToolDataStoreSourceArgs) ToolDataStoreToolDataStoreSourcePtrInput {
+	return (*toolDataStoreToolDataStoreSourcePtrType)(v)
+}
+
+func (*toolDataStoreToolDataStoreSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolDataStoreSource)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolDataStoreSourcePtrType) ToToolDataStoreToolDataStoreSourcePtrOutput() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return i.ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolDataStoreSourcePtrType) ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourcePtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourceOutput) ToToolDataStoreToolDataStoreSourceOutput() ToolDataStoreToolDataStoreSourceOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceOutput) ToToolDataStoreToolDataStoreSourceOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceOutput) ToToolDataStoreToolDataStoreSourcePtrOutput() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o.ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolDataStoreSourceOutput) ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolDataStoreSource) *ToolDataStoreToolDataStoreSource {
+		return &v
+	}).(ToolDataStoreToolDataStoreSourcePtrOutput)
+}
+
+// Optional. The data store.
+// Structure is documented below.
+func (o ToolDataStoreToolDataStoreSourceOutput) DataStore() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSource) *ToolDataStoreToolDataStoreSourceDataStore {
+		return v.DataStore
+	}).(ToolDataStoreToolDataStoreSourceDataStorePtrOutput)
+}
+
+// Optional. Filter specification for the DataStore.
+// See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+func (o ToolDataStoreToolDataStoreSourceOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSource) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolDataStoreSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourcePtrOutput) ToToolDataStoreToolDataStoreSourcePtrOutput() ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourcePtrOutput) ToToolDataStoreToolDataStoreSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourcePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourcePtrOutput) Elem() ToolDataStoreToolDataStoreSourceOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSource) ToolDataStoreToolDataStoreSource {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolDataStoreSource
+		return ret
+	}).(ToolDataStoreToolDataStoreSourceOutput)
+}
+
+// Optional. The data store.
+// Structure is documented below.
+func (o ToolDataStoreToolDataStoreSourcePtrOutput) DataStore() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSource) *ToolDataStoreToolDataStoreSourceDataStore {
+		if v == nil {
+			return nil
+		}
+		return v.DataStore
+	}).(ToolDataStoreToolDataStoreSourceDataStorePtrOutput)
+}
+
+// Optional. Filter specification for the DataStore.
+// See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+func (o ToolDataStoreToolDataStoreSourcePtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStore struct {
+	// (Output)
+	// The connector config for the data store connection.
+	// Structure is documented below.
+	ConnectorConfigs []ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig `pulumi:"connectorConfigs"`
+	// (Output)
+	// Timestamp when the data store was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// The display name of the data store.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// The document processing mode for the data store connection.
+	// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+	// Possible values:
+	// DOCUMENTS
+	// CHUNKS
+	DocumentProcessingMode *string `pulumi:"documentProcessingMode"`
+	// Full resource name of the DataStore.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+	Name string `pulumi:"name"`
+	// (Output)
+	// The type of the data store. This field is readonly and populated by the
+	// server.
+	// Possible values:
+	// PUBLIC_WEB
+	// UNSTRUCTURED
+	// FAQ
+	// CONNECTOR
+	//
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	Type *string `pulumi:"type"`
+}
+
+// ToolDataStoreToolDataStoreSourceDataStoreInput is an input type that accepts ToolDataStoreToolDataStoreSourceDataStoreArgs and ToolDataStoreToolDataStoreSourceDataStoreOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourceDataStoreInput` via:
+//
+//	ToolDataStoreToolDataStoreSourceDataStoreArgs{...}
+type ToolDataStoreToolDataStoreSourceDataStoreInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourceDataStoreOutput() ToolDataStoreToolDataStoreSourceDataStoreOutput
+	ToToolDataStoreToolDataStoreSourceDataStoreOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourceDataStoreOutput
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreArgs struct {
+	// (Output)
+	// The connector config for the data store connection.
+	// Structure is documented below.
+	ConnectorConfigs ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayInput `pulumi:"connectorConfigs"`
+	// (Output)
+	// Timestamp when the data store was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// The display name of the data store.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// The document processing mode for the data store connection.
+	// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+	// Possible values:
+	// DOCUMENTS
+	// CHUNKS
+	DocumentProcessingMode pulumi.StringPtrInput `pulumi:"documentProcessingMode"`
+	// Full resource name of the DataStore.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Output)
+	// The type of the data store. This field is readonly and populated by the
+	// server.
+	// Possible values:
+	// PUBLIC_WEB
+	// UNSTRUCTURED
+	// FAQ
+	// CONNECTOR
+	//
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ToolDataStoreToolDataStoreSourceDataStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreArgs) ToToolDataStoreToolDataStoreSourceDataStoreOutput() ToolDataStoreToolDataStoreSourceDataStoreOutput {
+	return i.ToToolDataStoreToolDataStoreSourceDataStoreOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreArgs) ToToolDataStoreToolDataStoreSourceDataStoreOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceDataStoreOutput)
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreArgs) ToToolDataStoreToolDataStoreSourceDataStorePtrOutput() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return i.ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreArgs) ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceDataStoreOutput).ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolDataStoreSourceDataStorePtrInput is an input type that accepts ToolDataStoreToolDataStoreSourceDataStoreArgs, ToolDataStoreToolDataStoreSourceDataStorePtr and ToolDataStoreToolDataStoreSourceDataStorePtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourceDataStorePtrInput` via:
+//
+//	        ToolDataStoreToolDataStoreSourceDataStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolDataStoreSourceDataStorePtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourceDataStorePtrOutput() ToolDataStoreToolDataStoreSourceDataStorePtrOutput
+	ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourceDataStorePtrOutput
+}
+
+type toolDataStoreToolDataStoreSourceDataStorePtrType ToolDataStoreToolDataStoreSourceDataStoreArgs
+
+func ToolDataStoreToolDataStoreSourceDataStorePtr(v *ToolDataStoreToolDataStoreSourceDataStoreArgs) ToolDataStoreToolDataStoreSourceDataStorePtrInput {
+	return (*toolDataStoreToolDataStoreSourceDataStorePtrType)(v)
+}
+
+func (*toolDataStoreToolDataStoreSourceDataStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolDataStoreSourceDataStorePtrType) ToToolDataStoreToolDataStoreSourceDataStorePtrOutput() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return i.ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolDataStoreSourceDataStorePtrType) ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceDataStorePtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourceDataStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) ToToolDataStoreToolDataStoreSourceDataStoreOutput() ToolDataStoreToolDataStoreSourceDataStoreOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) ToToolDataStoreToolDataStoreSourceDataStoreOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) ToToolDataStoreToolDataStoreSourceDataStorePtrOutput() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o.ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolDataStoreSourceDataStore) *ToolDataStoreToolDataStoreSourceDataStore {
+		return &v
+	}).(ToolDataStoreToolDataStoreSourceDataStorePtrOutput)
+}
+
+// (Output)
+// The connector config for the data store connection.
+// Structure is documented below.
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) ConnectorConfigs() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) []ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig {
+		return v.ConnectorConfigs
+	}).(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+// (Output)
+// Timestamp when the data store was created.
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The display name of the data store.
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The document processing mode for the data store connection.
+// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+// Possible values:
+// DOCUMENTS
+// CHUNKS
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) *string { return v.DocumentProcessingMode }).(pulumi.StringPtrOutput)
+}
+
+// Full resource name of the DataStore.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The type of the data store. This field is readonly and populated by the
+// server.
+// Possible values:
+// PUBLIC_WEB
+// UNSTRUCTURED
+// FAQ
+// CONNECTOR
+//
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+func (o ToolDataStoreToolDataStoreSourceDataStoreOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStore) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStorePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourceDataStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) ToToolDataStoreToolDataStoreSourceDataStorePtrOutput() ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) ToToolDataStoreToolDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStorePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) Elem() ToolDataStoreToolDataStoreSourceDataStoreOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) ToolDataStoreToolDataStoreSourceDataStore {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolDataStoreSourceDataStore
+		return ret
+	}).(ToolDataStoreToolDataStoreSourceDataStoreOutput)
+}
+
+// (Output)
+// The connector config for the data store connection.
+// Structure is documented below.
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) ConnectorConfigs() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) []ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorConfigs
+	}).(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+// (Output)
+// Timestamp when the data store was created.
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The display name of the data store.
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The document processing mode for the data store connection.
+// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+// Possible values:
+// DOCUMENTS
+// CHUNKS
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentProcessingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full resource name of the DataStore.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the data store. This field is readonly and populated by the
+// server.
+// Possible values:
+// PUBLIC_WEB
+// UNSTRUCTURED
+// FAQ
+// CONNECTOR
+//
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+func (o ToolDataStoreToolDataStoreSourceDataStorePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig struct {
+	// Resource name of the collection the data store belongs to.
+	Collection *string `pulumi:"collection"`
+	// Display name of the collection the data store belongs to.
+	CollectionDisplayName *string `pulumi:"collectionDisplayName"`
+	// The name of the data source.
+	// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+	DataSource *string `pulumi:"dataSource"`
+}
+
+// ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigInput is an input type that accepts ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs and ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigInput` via:
+//
+//	ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs{...}
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput
+	ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs struct {
+	// Resource name of the collection the data store belongs to.
+	Collection pulumi.StringPtrInput `pulumi:"collection"`
+	// Display name of the collection the data store belongs to.
+	CollectionDisplayName pulumi.StringPtrInput `pulumi:"collectionDisplayName"`
+	// The name of the data source.
+	// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+}
+
+func (ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput {
+	return i.ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput)
+}
+
+// ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayInput is an input type that accepts ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray and ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayInput` via:
+//
+//	ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray{ ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs{...} }
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput
+	ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray []ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigInput
+
+func (ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return i.ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput {
+	return o
+}
+
+// Resource name of the collection the data store belongs to.
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig) *string { return v.Collection }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the collection the data store belongs to.
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) CollectionDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig) *string {
+		return v.CollectionDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the data source.
+// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput) ToToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig {
+		return vs[0].([]ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig)[vs[1].(int)]
+	}).(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput)
 }
 
 type ToolDataStoreToolEngineSource struct {
@@ -40948,6 +42212,224 @@ func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput
 	}).(pulumi.Float64PtrOutput)
 }
 
+type ToolFileSearchTool struct {
+	// Optional. The type of the corpus. Default is FULLY_MANAGED.
+	// Possible values:
+	// CORPUS_TYPE_UNSPECIFIED
+	// USER_OWNED
+	// FULLY_MANAGED
+	// Possible values are: `CORPUS_TYPE_UNSPECIFIED`, `USER_OWNED`, `FULLY_MANAGED`.
+	CorpusType *string `pulumi:"corpusType"`
+	// Optional. The tool description.
+	Description *string `pulumi:"description"`
+	// Optional. The corpus where files are stored.
+	// Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
+	FileCorpus *string `pulumi:"fileCorpus"`
+	// Required. The tool name.
+	Name string `pulumi:"name"`
+}
+
+// ToolFileSearchToolInput is an input type that accepts ToolFileSearchToolArgs and ToolFileSearchToolOutput values.
+// You can construct a concrete instance of `ToolFileSearchToolInput` via:
+//
+//	ToolFileSearchToolArgs{...}
+type ToolFileSearchToolInput interface {
+	pulumi.Input
+
+	ToToolFileSearchToolOutput() ToolFileSearchToolOutput
+	ToToolFileSearchToolOutputWithContext(context.Context) ToolFileSearchToolOutput
+}
+
+type ToolFileSearchToolArgs struct {
+	// Optional. The type of the corpus. Default is FULLY_MANAGED.
+	// Possible values:
+	// CORPUS_TYPE_UNSPECIFIED
+	// USER_OWNED
+	// FULLY_MANAGED
+	// Possible values are: `CORPUS_TYPE_UNSPECIFIED`, `USER_OWNED`, `FULLY_MANAGED`.
+	CorpusType pulumi.StringPtrInput `pulumi:"corpusType"`
+	// Optional. The tool description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. The corpus where files are stored.
+	// Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
+	FileCorpus pulumi.StringPtrInput `pulumi:"fileCorpus"`
+	// Required. The tool name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ToolFileSearchToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolFileSearchTool)(nil)).Elem()
+}
+
+func (i ToolFileSearchToolArgs) ToToolFileSearchToolOutput() ToolFileSearchToolOutput {
+	return i.ToToolFileSearchToolOutputWithContext(context.Background())
+}
+
+func (i ToolFileSearchToolArgs) ToToolFileSearchToolOutputWithContext(ctx context.Context) ToolFileSearchToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFileSearchToolOutput)
+}
+
+func (i ToolFileSearchToolArgs) ToToolFileSearchToolPtrOutput() ToolFileSearchToolPtrOutput {
+	return i.ToToolFileSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (i ToolFileSearchToolArgs) ToToolFileSearchToolPtrOutputWithContext(ctx context.Context) ToolFileSearchToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFileSearchToolOutput).ToToolFileSearchToolPtrOutputWithContext(ctx)
+}
+
+// ToolFileSearchToolPtrInput is an input type that accepts ToolFileSearchToolArgs, ToolFileSearchToolPtr and ToolFileSearchToolPtrOutput values.
+// You can construct a concrete instance of `ToolFileSearchToolPtrInput` via:
+//
+//	        ToolFileSearchToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolFileSearchToolPtrInput interface {
+	pulumi.Input
+
+	ToToolFileSearchToolPtrOutput() ToolFileSearchToolPtrOutput
+	ToToolFileSearchToolPtrOutputWithContext(context.Context) ToolFileSearchToolPtrOutput
+}
+
+type toolFileSearchToolPtrType ToolFileSearchToolArgs
+
+func ToolFileSearchToolPtr(v *ToolFileSearchToolArgs) ToolFileSearchToolPtrInput {
+	return (*toolFileSearchToolPtrType)(v)
+}
+
+func (*toolFileSearchToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolFileSearchTool)(nil)).Elem()
+}
+
+func (i *toolFileSearchToolPtrType) ToToolFileSearchToolPtrOutput() ToolFileSearchToolPtrOutput {
+	return i.ToToolFileSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (i *toolFileSearchToolPtrType) ToToolFileSearchToolPtrOutputWithContext(ctx context.Context) ToolFileSearchToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFileSearchToolPtrOutput)
+}
+
+type ToolFileSearchToolOutput struct{ *pulumi.OutputState }
+
+func (ToolFileSearchToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolFileSearchTool)(nil)).Elem()
+}
+
+func (o ToolFileSearchToolOutput) ToToolFileSearchToolOutput() ToolFileSearchToolOutput {
+	return o
+}
+
+func (o ToolFileSearchToolOutput) ToToolFileSearchToolOutputWithContext(ctx context.Context) ToolFileSearchToolOutput {
+	return o
+}
+
+func (o ToolFileSearchToolOutput) ToToolFileSearchToolPtrOutput() ToolFileSearchToolPtrOutput {
+	return o.ToToolFileSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (o ToolFileSearchToolOutput) ToToolFileSearchToolPtrOutputWithContext(ctx context.Context) ToolFileSearchToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolFileSearchTool) *ToolFileSearchTool {
+		return &v
+	}).(ToolFileSearchToolPtrOutput)
+}
+
+// Optional. The type of the corpus. Default is FULLY_MANAGED.
+// Possible values:
+// CORPUS_TYPE_UNSPECIFIED
+// USER_OWNED
+// FULLY_MANAGED
+// Possible values are: `CORPUS_TYPE_UNSPECIFIED`, `USER_OWNED`, `FULLY_MANAGED`.
+func (o ToolFileSearchToolOutput) CorpusType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFileSearchTool) *string { return v.CorpusType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The tool description.
+func (o ToolFileSearchToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFileSearchTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The corpus where files are stored.
+// Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
+func (o ToolFileSearchToolOutput) FileCorpus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFileSearchTool) *string { return v.FileCorpus }).(pulumi.StringPtrOutput)
+}
+
+// Required. The tool name.
+func (o ToolFileSearchToolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolFileSearchTool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ToolFileSearchToolPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolFileSearchToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolFileSearchTool)(nil)).Elem()
+}
+
+func (o ToolFileSearchToolPtrOutput) ToToolFileSearchToolPtrOutput() ToolFileSearchToolPtrOutput {
+	return o
+}
+
+func (o ToolFileSearchToolPtrOutput) ToToolFileSearchToolPtrOutputWithContext(ctx context.Context) ToolFileSearchToolPtrOutput {
+	return o
+}
+
+func (o ToolFileSearchToolPtrOutput) Elem() ToolFileSearchToolOutput {
+	return o.ApplyT(func(v *ToolFileSearchTool) ToolFileSearchTool {
+		if v != nil {
+			return *v
+		}
+		var ret ToolFileSearchTool
+		return ret
+	}).(ToolFileSearchToolOutput)
+}
+
+// Optional. The type of the corpus. Default is FULLY_MANAGED.
+// Possible values:
+// CORPUS_TYPE_UNSPECIFIED
+// USER_OWNED
+// FULLY_MANAGED
+// Possible values are: `CORPUS_TYPE_UNSPECIFIED`, `USER_OWNED`, `FULLY_MANAGED`.
+func (o ToolFileSearchToolPtrOutput) CorpusType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFileSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CorpusType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The tool description.
+func (o ToolFileSearchToolPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFileSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The corpus where files are stored.
+// Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
+func (o ToolFileSearchToolPtrOutput) FileCorpus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFileSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileCorpus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The tool name.
+func (o ToolFileSearchToolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFileSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolGoogleSearchTool struct {
 	// Content will be fetched directly from these URLs for context and grounding.
 	// More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
@@ -40969,6 +42451,10 @@ type ToolGoogleSearchTool struct {
 	// Example: "example.com", "another.site".
 	// A maximum of 20 domains can be specified.
 	PreferredDomains []string `pulumi:"preferredDomains"`
+	// Optional. Prompt instructions passed to planner on how the search results should be
+	// processed for text and voice.
+	// Structure is documented below.
+	PromptConfig *ToolGoogleSearchToolPromptConfig `pulumi:"promptConfig"`
 }
 
 // ToolGoogleSearchToolInput is an input type that accepts ToolGoogleSearchToolArgs and ToolGoogleSearchToolOutput values.
@@ -41003,6 +42489,10 @@ type ToolGoogleSearchToolArgs struct {
 	// Example: "example.com", "another.site".
 	// A maximum of 20 domains can be specified.
 	PreferredDomains pulumi.StringArrayInput `pulumi:"preferredDomains"`
+	// Optional. Prompt instructions passed to planner on how the search results should be
+	// processed for text and voice.
+	// Structure is documented below.
+	PromptConfig ToolGoogleSearchToolPromptConfigPtrInput `pulumi:"promptConfig"`
 }
 
 func (ToolGoogleSearchToolArgs) ElementType() reflect.Type {
@@ -41117,6 +42607,13 @@ func (o ToolGoogleSearchToolOutput) PreferredDomains() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v ToolGoogleSearchTool) []string { return v.PreferredDomains }).(pulumi.StringArrayOutput)
 }
 
+// Optional. Prompt instructions passed to planner on how the search results should be
+// processed for text and voice.
+// Structure is documented below.
+func (o ToolGoogleSearchToolOutput) PromptConfig() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o.ApplyT(func(v ToolGoogleSearchTool) *ToolGoogleSearchToolPromptConfig { return v.PromptConfig }).(ToolGoogleSearchToolPromptConfigPtrOutput)
+}
+
 type ToolGoogleSearchToolPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolGoogleSearchToolPtrOutput) ElementType() reflect.Type {
@@ -41201,6 +42698,1589 @@ func (o ToolGoogleSearchToolPtrOutput) PreferredDomains() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. Prompt instructions passed to planner on how the search results should be
+// processed for text and voice.
+// Structure is documented below.
+func (o ToolGoogleSearchToolPtrOutput) PromptConfig() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchTool) *ToolGoogleSearchToolPromptConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PromptConfig
+	}).(ToolGoogleSearchToolPromptConfigPtrOutput)
+}
+
+type ToolGoogleSearchToolPromptConfig struct {
+	// Optional. Defines the prompt used for the system instructions when interacting with the
+	// agent in chat conversations. If not set, default prompt will be used.
+	TextPrompt *string `pulumi:"textPrompt"`
+	// Optional. Defines the prompt used for the system instructions when interacting with the
+	// agent in voice conversations. If not set, default prompt will be used.
+	VoicePrompt *string `pulumi:"voicePrompt"`
+}
+
+// ToolGoogleSearchToolPromptConfigInput is an input type that accepts ToolGoogleSearchToolPromptConfigArgs and ToolGoogleSearchToolPromptConfigOutput values.
+// You can construct a concrete instance of `ToolGoogleSearchToolPromptConfigInput` via:
+//
+//	ToolGoogleSearchToolPromptConfigArgs{...}
+type ToolGoogleSearchToolPromptConfigInput interface {
+	pulumi.Input
+
+	ToToolGoogleSearchToolPromptConfigOutput() ToolGoogleSearchToolPromptConfigOutput
+	ToToolGoogleSearchToolPromptConfigOutputWithContext(context.Context) ToolGoogleSearchToolPromptConfigOutput
+}
+
+type ToolGoogleSearchToolPromptConfigArgs struct {
+	// Optional. Defines the prompt used for the system instructions when interacting with the
+	// agent in chat conversations. If not set, default prompt will be used.
+	TextPrompt pulumi.StringPtrInput `pulumi:"textPrompt"`
+	// Optional. Defines the prompt used for the system instructions when interacting with the
+	// agent in voice conversations. If not set, default prompt will be used.
+	VoicePrompt pulumi.StringPtrInput `pulumi:"voicePrompt"`
+}
+
+func (ToolGoogleSearchToolPromptConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolGoogleSearchToolPromptConfig)(nil)).Elem()
+}
+
+func (i ToolGoogleSearchToolPromptConfigArgs) ToToolGoogleSearchToolPromptConfigOutput() ToolGoogleSearchToolPromptConfigOutput {
+	return i.ToToolGoogleSearchToolPromptConfigOutputWithContext(context.Background())
+}
+
+func (i ToolGoogleSearchToolPromptConfigArgs) ToToolGoogleSearchToolPromptConfigOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolPromptConfigOutput)
+}
+
+func (i ToolGoogleSearchToolPromptConfigArgs) ToToolGoogleSearchToolPromptConfigPtrOutput() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return i.ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolGoogleSearchToolPromptConfigArgs) ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolPromptConfigOutput).ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(ctx)
+}
+
+// ToolGoogleSearchToolPromptConfigPtrInput is an input type that accepts ToolGoogleSearchToolPromptConfigArgs, ToolGoogleSearchToolPromptConfigPtr and ToolGoogleSearchToolPromptConfigPtrOutput values.
+// You can construct a concrete instance of `ToolGoogleSearchToolPromptConfigPtrInput` via:
+//
+//	        ToolGoogleSearchToolPromptConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolGoogleSearchToolPromptConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolGoogleSearchToolPromptConfigPtrOutput() ToolGoogleSearchToolPromptConfigPtrOutput
+	ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(context.Context) ToolGoogleSearchToolPromptConfigPtrOutput
+}
+
+type toolGoogleSearchToolPromptConfigPtrType ToolGoogleSearchToolPromptConfigArgs
+
+func ToolGoogleSearchToolPromptConfigPtr(v *ToolGoogleSearchToolPromptConfigArgs) ToolGoogleSearchToolPromptConfigPtrInput {
+	return (*toolGoogleSearchToolPromptConfigPtrType)(v)
+}
+
+func (*toolGoogleSearchToolPromptConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolGoogleSearchToolPromptConfig)(nil)).Elem()
+}
+
+func (i *toolGoogleSearchToolPromptConfigPtrType) ToToolGoogleSearchToolPromptConfigPtrOutput() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return i.ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolGoogleSearchToolPromptConfigPtrType) ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolPromptConfigPtrOutput)
+}
+
+type ToolGoogleSearchToolPromptConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolGoogleSearchToolPromptConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolGoogleSearchToolPromptConfig)(nil)).Elem()
+}
+
+func (o ToolGoogleSearchToolPromptConfigOutput) ToToolGoogleSearchToolPromptConfigOutput() ToolGoogleSearchToolPromptConfigOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPromptConfigOutput) ToToolGoogleSearchToolPromptConfigOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPromptConfigOutput) ToToolGoogleSearchToolPromptConfigPtrOutput() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o.ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolGoogleSearchToolPromptConfigOutput) ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolGoogleSearchToolPromptConfig) *ToolGoogleSearchToolPromptConfig {
+		return &v
+	}).(ToolGoogleSearchToolPromptConfigPtrOutput)
+}
+
+// Optional. Defines the prompt used for the system instructions when interacting with the
+// agent in chat conversations. If not set, default prompt will be used.
+func (o ToolGoogleSearchToolPromptConfigOutput) TextPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolGoogleSearchToolPromptConfig) *string { return v.TextPrompt }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines the prompt used for the system instructions when interacting with the
+// agent in voice conversations. If not set, default prompt will be used.
+func (o ToolGoogleSearchToolPromptConfigOutput) VoicePrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolGoogleSearchToolPromptConfig) *string { return v.VoicePrompt }).(pulumi.StringPtrOutput)
+}
+
+type ToolGoogleSearchToolPromptConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolGoogleSearchToolPromptConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolGoogleSearchToolPromptConfig)(nil)).Elem()
+}
+
+func (o ToolGoogleSearchToolPromptConfigPtrOutput) ToToolGoogleSearchToolPromptConfigPtrOutput() ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPromptConfigPtrOutput) ToToolGoogleSearchToolPromptConfigPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPromptConfigPtrOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPromptConfigPtrOutput) Elem() ToolGoogleSearchToolPromptConfigOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchToolPromptConfig) ToolGoogleSearchToolPromptConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolGoogleSearchToolPromptConfig
+		return ret
+	}).(ToolGoogleSearchToolPromptConfigOutput)
+}
+
+// Optional. Defines the prompt used for the system instructions when interacting with the
+// agent in chat conversations. If not set, default prompt will be used.
+func (o ToolGoogleSearchToolPromptConfigPtrOutput) TextPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchToolPromptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TextPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines the prompt used for the system instructions when interacting with the
+// agent in voice conversations. If not set, default prompt will be used.
+func (o ToolGoogleSearchToolPromptConfigPtrOutput) VoicePrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchToolPromptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VoicePrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpTool struct {
+	// (Output)
+	// Authentication information required for API calls.
+	// Structure is documented below.
+	ApiAuthentications []ToolMcpToolApiAuthentication `pulumi:"apiAuthentications"`
+	// (Output)
+	// The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.<name_of_variable>` and can be set in the session variables.
+	CustomHeaders map[string]string `pulumi:"customHeaders"`
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The schema of the input arguments of the MCP tool. Represents a JSON object.
+	InputSchema *string `pulumi:"inputSchema"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The name override of the MCP tool. This is populated if the name was overridden by a Toolset override.
+	NameOverride *string `pulumi:"nameOverride"`
+	// (Output)
+	// The schema of the output arguments of the MCP tool. Represents a JSON object.
+	OutputSchema *string `pulumi:"outputSchema"`
+	// (Output)
+	// The server address of the MCP server, e.g., "https://example.com/mcp/". If the server is built with the MCP SDK, the url should be suffixed with "/mcp/". Only Streamable HTTP transport based servers are supported. This is the same as the serverAddress in the McpToolset.
+	ServerAddress *string `pulumi:"serverAddress"`
+	// (Output)
+	// Configuration for tools using Service Directory.
+	// Structure is documented below.
+	ServiceDirectoryConfigs []ToolMcpToolServiceDirectoryConfig `pulumi:"serviceDirectoryConfigs"`
+	// (Output)
+	// The state of the MCP tool.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// INACTIVE
+	// STALE
+	State *string `pulumi:"state"`
+	// (Output)
+	// The TLS configuration.
+	// Structure is documented below.
+	TlsConfigs []ToolMcpToolTlsConfig `pulumi:"tlsConfigs"`
+}
+
+// ToolMcpToolInput is an input type that accepts ToolMcpToolArgs and ToolMcpToolOutput values.
+// You can construct a concrete instance of `ToolMcpToolInput` via:
+//
+//	ToolMcpToolArgs{...}
+type ToolMcpToolInput interface {
+	pulumi.Input
+
+	ToToolMcpToolOutput() ToolMcpToolOutput
+	ToToolMcpToolOutputWithContext(context.Context) ToolMcpToolOutput
+}
+
+type ToolMcpToolArgs struct {
+	// (Output)
+	// Authentication information required for API calls.
+	// Structure is documented below.
+	ApiAuthentications ToolMcpToolApiAuthenticationArrayInput `pulumi:"apiAuthentications"`
+	// (Output)
+	// The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.<name_of_variable>` and can be set in the session variables.
+	CustomHeaders pulumi.StringMapInput `pulumi:"customHeaders"`
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The schema of the input arguments of the MCP tool. Represents a JSON object.
+	InputSchema pulumi.StringPtrInput `pulumi:"inputSchema"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The name override of the MCP tool. This is populated if the name was overridden by a Toolset override.
+	NameOverride pulumi.StringPtrInput `pulumi:"nameOverride"`
+	// (Output)
+	// The schema of the output arguments of the MCP tool. Represents a JSON object.
+	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
+	// (Output)
+	// The server address of the MCP server, e.g., "https://example.com/mcp/". If the server is built with the MCP SDK, the url should be suffixed with "/mcp/". Only Streamable HTTP transport based servers are supported. This is the same as the serverAddress in the McpToolset.
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// (Output)
+	// Configuration for tools using Service Directory.
+	// Structure is documented below.
+	ServiceDirectoryConfigs ToolMcpToolServiceDirectoryConfigArrayInput `pulumi:"serviceDirectoryConfigs"`
+	// (Output)
+	// The state of the MCP tool.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// INACTIVE
+	// STALE
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// The TLS configuration.
+	// Structure is documented below.
+	TlsConfigs ToolMcpToolTlsConfigArrayInput `pulumi:"tlsConfigs"`
+}
+
+func (ToolMcpToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpTool)(nil)).Elem()
+}
+
+func (i ToolMcpToolArgs) ToToolMcpToolOutput() ToolMcpToolOutput {
+	return i.ToToolMcpToolOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolArgs) ToToolMcpToolOutputWithContext(ctx context.Context) ToolMcpToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolOutput)
+}
+
+// ToolMcpToolArrayInput is an input type that accepts ToolMcpToolArray and ToolMcpToolArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolArrayInput` via:
+//
+//	ToolMcpToolArray{ ToolMcpToolArgs{...} }
+type ToolMcpToolArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolArrayOutput() ToolMcpToolArrayOutput
+	ToToolMcpToolArrayOutputWithContext(context.Context) ToolMcpToolArrayOutput
+}
+
+type ToolMcpToolArray []ToolMcpToolInput
+
+func (ToolMcpToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpTool)(nil)).Elem()
+}
+
+func (i ToolMcpToolArray) ToToolMcpToolArrayOutput() ToolMcpToolArrayOutput {
+	return i.ToToolMcpToolArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolArray) ToToolMcpToolArrayOutputWithContext(ctx context.Context) ToolMcpToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolArrayOutput)
+}
+
+type ToolMcpToolOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpTool)(nil)).Elem()
+}
+
+func (o ToolMcpToolOutput) ToToolMcpToolOutput() ToolMcpToolOutput {
+	return o
+}
+
+func (o ToolMcpToolOutput) ToToolMcpToolOutputWithContext(ctx context.Context) ToolMcpToolOutput {
+	return o
+}
+
+// (Output)
+// Authentication information required for API calls.
+// Structure is documented below.
+func (o ToolMcpToolOutput) ApiAuthentications() ToolMcpToolApiAuthenticationArrayOutput {
+	return o.ApplyT(func(v ToolMcpTool) []ToolMcpToolApiAuthentication { return v.ApiAuthentications }).(ToolMcpToolApiAuthenticationArrayOutput)
+}
+
+// (Output)
+// The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.<name_of_variable>` and can be set in the session variables.
+func (o ToolMcpToolOutput) CustomHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ToolMcpTool) map[string]string { return v.CustomHeaders }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolMcpToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The schema of the input arguments of the MCP tool. Represents a JSON object.
+func (o ToolMcpToolOutput) InputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.InputSchema }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolMcpToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name override of the MCP tool. This is populated if the name was overridden by a Toolset override.
+func (o ToolMcpToolOutput) NameOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The schema of the output arguments of the MCP tool. Represents a JSON object.
+func (o ToolMcpToolOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.OutputSchema }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The server address of the MCP server, e.g., "https://example.com/mcp/". If the server is built with the MCP SDK, the url should be suffixed with "/mcp/". Only Streamable HTTP transport based servers are supported. This is the same as the serverAddress in the McpToolset.
+func (o ToolMcpToolOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Configuration for tools using Service Directory.
+// Structure is documented below.
+func (o ToolMcpToolOutput) ServiceDirectoryConfigs() ToolMcpToolServiceDirectoryConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpTool) []ToolMcpToolServiceDirectoryConfig { return v.ServiceDirectoryConfigs }).(ToolMcpToolServiceDirectoryConfigArrayOutput)
+}
+
+// (Output)
+// The state of the MCP tool.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// INACTIVE
+// STALE
+func (o ToolMcpToolOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpTool) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The TLS configuration.
+// Structure is documented below.
+func (o ToolMcpToolOutput) TlsConfigs() ToolMcpToolTlsConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpTool) []ToolMcpToolTlsConfig { return v.TlsConfigs }).(ToolMcpToolTlsConfigArrayOutput)
+}
+
+type ToolMcpToolArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpTool)(nil)).Elem()
+}
+
+func (o ToolMcpToolArrayOutput) ToToolMcpToolArrayOutput() ToolMcpToolArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolArrayOutput) ToToolMcpToolArrayOutputWithContext(ctx context.Context) ToolMcpToolArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolArrayOutput) Index(i pulumi.IntInput) ToolMcpToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpTool {
+		return vs[0].([]ToolMcpTool)[vs[1].(int)]
+	}).(ToolMcpToolOutput)
+}
+
+type ToolMcpToolApiAuthentication struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs []ToolMcpToolApiAuthenticationApiKeyConfig `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfigs []ToolMcpToolApiAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs []ToolMcpToolApiAuthenticationOauthConfig `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs []ToolMcpToolApiAuthenticationServiceAccountAuthConfig `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs []ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+// ToolMcpToolApiAuthenticationInput is an input type that accepts ToolMcpToolApiAuthenticationArgs and ToolMcpToolApiAuthenticationOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationInput` via:
+//
+//	ToolMcpToolApiAuthenticationArgs{...}
+type ToolMcpToolApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationOutput() ToolMcpToolApiAuthenticationOutput
+	ToToolMcpToolApiAuthenticationOutputWithContext(context.Context) ToolMcpToolApiAuthenticationOutput
+}
+
+type ToolMcpToolApiAuthenticationArgs struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs ToolMcpToolApiAuthenticationApiKeyConfigArrayInput `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfigs ToolMcpToolApiAuthenticationBearerTokenConfigArrayInput `pulumi:"bearerTokenConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs ToolMcpToolApiAuthenticationOauthConfigArrayInput `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayInput `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+func (ToolMcpToolApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationArgs) ToToolMcpToolApiAuthenticationOutput() ToolMcpToolApiAuthenticationOutput {
+	return i.ToToolMcpToolApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationArgs) ToToolMcpToolApiAuthenticationOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationOutput)
+}
+
+// ToolMcpToolApiAuthenticationArrayInput is an input type that accepts ToolMcpToolApiAuthenticationArray and ToolMcpToolApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationArray{ ToolMcpToolApiAuthenticationArgs{...} }
+type ToolMcpToolApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationArrayOutput() ToolMcpToolApiAuthenticationArrayOutput
+	ToToolMcpToolApiAuthenticationArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationArray []ToolMcpToolApiAuthenticationInput
+
+func (ToolMcpToolApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationArray) ToToolMcpToolApiAuthenticationArrayOutput() ToolMcpToolApiAuthenticationArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationArray) ToToolMcpToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationOutput) ToToolMcpToolApiAuthenticationOutput() ToolMcpToolApiAuthenticationOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationOutput) ToToolMcpToolApiAuthenticationOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOutput {
+	return o
+}
+
+// (Output)
+// Configurations for authentication with API key.
+// Structure is documented below.
+func (o ToolMcpToolApiAuthenticationOutput) ApiKeyConfigs() ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthentication) []ToolMcpToolApiAuthenticationApiKeyConfig {
+		return v.ApiKeyConfigs
+	}).(ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolMcpToolApiAuthenticationOutput) BearerTokenConfigs() ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthentication) []ToolMcpToolApiAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfigs
+	}).(ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with OAuth.
+// Structure is documented below.
+func (o ToolMcpToolApiAuthenticationOutput) OauthConfigs() ToolMcpToolApiAuthenticationOauthConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthentication) []ToolMcpToolApiAuthenticationOauthConfig { return v.OauthConfigs }).(ToolMcpToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication using a custom service account.
+// Structure is documented below.
+func (o ToolMcpToolApiAuthenticationOutput) ServiceAccountAuthConfigs() ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthentication) []ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
+		return v.ServiceAccountAuthConfigs
+	}).(ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with [ID
+// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+// from service agent.
+func (o ToolMcpToolApiAuthenticationOutput) ServiceAgentIdTokenAuthConfigs() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthentication) []ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return v.ServiceAgentIdTokenAuthConfigs
+	}).(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationArrayOutput) ToToolMcpToolApiAuthenticationArrayOutput() ToolMcpToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationArrayOutput) ToToolMcpToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthentication {
+		return vs[0].([]ToolMcpToolApiAuthentication)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationOutput)
+}
+
+type ToolMcpToolApiAuthenticationApiKeyConfig struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion *string `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName *string `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation *string `pulumi:"requestLocation"`
+}
+
+// ToolMcpToolApiAuthenticationApiKeyConfigInput is an input type that accepts ToolMcpToolApiAuthenticationApiKeyConfigArgs and ToolMcpToolApiAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationApiKeyConfigInput` via:
+//
+//	ToolMcpToolApiAuthenticationApiKeyConfigArgs{...}
+type ToolMcpToolApiAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationApiKeyConfigOutput() ToolMcpToolApiAuthenticationApiKeyConfigOutput
+	ToToolMcpToolApiAuthenticationApiKeyConfigOutputWithContext(context.Context) ToolMcpToolApiAuthenticationApiKeyConfigOutput
+}
+
+type ToolMcpToolApiAuthenticationApiKeyConfigArgs struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion pulumi.StringPtrInput `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation pulumi.StringPtrInput `pulumi:"requestLocation"`
+}
+
+func (ToolMcpToolApiAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationApiKeyConfigArgs) ToToolMcpToolApiAuthenticationApiKeyConfigOutput() ToolMcpToolApiAuthenticationApiKeyConfigOutput {
+	return i.ToToolMcpToolApiAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationApiKeyConfigArgs) ToToolMcpToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationApiKeyConfigOutput)
+}
+
+// ToolMcpToolApiAuthenticationApiKeyConfigArrayInput is an input type that accepts ToolMcpToolApiAuthenticationApiKeyConfigArray and ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationApiKeyConfigArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationApiKeyConfigArray{ ToolMcpToolApiAuthenticationApiKeyConfigArgs{...} }
+type ToolMcpToolApiAuthenticationApiKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutput() ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput
+	ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationApiKeyConfigArray []ToolMcpToolApiAuthenticationApiKeyConfigInput
+
+func (ToolMcpToolApiAuthenticationApiKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationApiKeyConfigArray) ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutput() ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationApiKeyConfigArray) ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationApiKeyConfigOutput) ToToolMcpToolApiAuthenticationApiKeyConfigOutput() ToolMcpToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationApiKeyConfigOutput) ToToolMcpToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the API key.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolMcpToolApiAuthenticationApiKeyConfigOutput) ApiKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationApiKeyConfig) *string { return v.ApiKeySecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolMcpToolApiAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationApiKeyConfig) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Key location in the request.
+// Possible values:
+// HEADER
+// QUERY_STRING
+func (o ToolMcpToolApiAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationApiKeyConfig) *string { return v.RequestLocation }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput) ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutput() ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput) ToToolMcpToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthenticationApiKeyConfig {
+		return vs[0].([]ToolMcpToolApiAuthenticationApiKeyConfig)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationApiKeyConfigOutput)
+}
+
+type ToolMcpToolApiAuthenticationBearerTokenConfig struct {
+	// (Output)
+	// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+	Token *string `pulumi:"token"`
+}
+
+// ToolMcpToolApiAuthenticationBearerTokenConfigInput is an input type that accepts ToolMcpToolApiAuthenticationBearerTokenConfigArgs and ToolMcpToolApiAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationBearerTokenConfigInput` via:
+//
+//	ToolMcpToolApiAuthenticationBearerTokenConfigArgs{...}
+type ToolMcpToolApiAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationBearerTokenConfigOutput() ToolMcpToolApiAuthenticationBearerTokenConfigOutput
+	ToToolMcpToolApiAuthenticationBearerTokenConfigOutputWithContext(context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigOutput
+}
+
+type ToolMcpToolApiAuthenticationBearerTokenConfigArgs struct {
+	// (Output)
+	// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (ToolMcpToolApiAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationBearerTokenConfigArgs) ToToolMcpToolApiAuthenticationBearerTokenConfigOutput() ToolMcpToolApiAuthenticationBearerTokenConfigOutput {
+	return i.ToToolMcpToolApiAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationBearerTokenConfigArgs) ToToolMcpToolApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationBearerTokenConfigOutput)
+}
+
+// ToolMcpToolApiAuthenticationBearerTokenConfigArrayInput is an input type that accepts ToolMcpToolApiAuthenticationBearerTokenConfigArray and ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationBearerTokenConfigArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationBearerTokenConfigArray{ ToolMcpToolApiAuthenticationBearerTokenConfigArgs{...} }
+type ToolMcpToolApiAuthenticationBearerTokenConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput() ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput
+	ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationBearerTokenConfigArray []ToolMcpToolApiAuthenticationBearerTokenConfigInput
+
+func (ToolMcpToolApiAuthenticationBearerTokenConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationBearerTokenConfigArray) ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput() ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationBearerTokenConfigArray) ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigOutput) ToToolMcpToolApiAuthenticationBearerTokenConfigOutput() ToolMcpToolApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigOutput) ToToolMcpToolApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+// (Output)
+// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput) ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput() ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput) ToToolMcpToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthenticationBearerTokenConfig {
+		return vs[0].([]ToolMcpToolApiAuthenticationBearerTokenConfig)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationBearerTokenConfigOutput)
+}
+
+type ToolMcpToolApiAuthenticationOauthConfig struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId *string `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion *string `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType *string `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+}
+
+// ToolMcpToolApiAuthenticationOauthConfigInput is an input type that accepts ToolMcpToolApiAuthenticationOauthConfigArgs and ToolMcpToolApiAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationOauthConfigInput` via:
+//
+//	ToolMcpToolApiAuthenticationOauthConfigArgs{...}
+type ToolMcpToolApiAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationOauthConfigOutput() ToolMcpToolApiAuthenticationOauthConfigOutput
+	ToToolMcpToolApiAuthenticationOauthConfigOutputWithContext(context.Context) ToolMcpToolApiAuthenticationOauthConfigOutput
+}
+
+type ToolMcpToolApiAuthenticationOauthConfigArgs struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion pulumi.StringPtrInput `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType pulumi.StringPtrInput `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+}
+
+func (ToolMcpToolApiAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationOauthConfigArgs) ToToolMcpToolApiAuthenticationOauthConfigOutput() ToolMcpToolApiAuthenticationOauthConfigOutput {
+	return i.ToToolMcpToolApiAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationOauthConfigArgs) ToToolMcpToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationOauthConfigOutput)
+}
+
+// ToolMcpToolApiAuthenticationOauthConfigArrayInput is an input type that accepts ToolMcpToolApiAuthenticationOauthConfigArray and ToolMcpToolApiAuthenticationOauthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationOauthConfigArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationOauthConfigArray{ ToolMcpToolApiAuthenticationOauthConfigArgs{...} }
+type ToolMcpToolApiAuthenticationOauthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationOauthConfigArrayOutput() ToolMcpToolApiAuthenticationOauthConfigArrayOutput
+	ToToolMcpToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationOauthConfigArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationOauthConfigArray []ToolMcpToolApiAuthenticationOauthConfigInput
+
+func (ToolMcpToolApiAuthenticationOauthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationOauthConfigArray) ToToolMcpToolApiAuthenticationOauthConfigArrayOutput() ToolMcpToolApiAuthenticationOauthConfigArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationOauthConfigArray) ToToolMcpToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOauthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) ToToolMcpToolApiAuthenticationOauthConfigOutput() ToolMcpToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) ToToolMcpToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+// (Output)
+// The client ID from the OAuth provider.
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the
+// client secret.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) ClientSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) *string { return v.ClientSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// OAuth grant types.
+// Possible values:
+// CLIENT_CREDENTIAL
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) *string { return v.OauthGrantType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The OAuth scopes to grant.
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolMcpToolApiAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolApiAuthenticationOauthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationOauthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationOauthConfigArrayOutput) ToToolMcpToolApiAuthenticationOauthConfigArrayOutput() ToolMcpToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationOauthConfigArrayOutput) ToToolMcpToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationOauthConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationOauthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthenticationOauthConfig {
+		return vs[0].([]ToolMcpToolApiAuthenticationOauthConfig)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationOauthConfigOutput)
+}
+
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfig struct {
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// ToolMcpToolApiAuthenticationServiceAccountAuthConfigInput is an input type that accepts ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs and ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationServiceAccountAuthConfigInput` via:
+//
+//	ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs{...}
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput
+	ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput
+}
+
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return i.ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayInput is an input type that accepts ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray and ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray{ ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs{...} }
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+	ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray []ToolMcpToolApiAuthenticationServiceAccountAuthConfigInput
+
+func (ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+// (Output)
+// The email address of the service account used for authenticatation. CES
+// uses this service account to exchange an access token and the access token
+// is then sent in the `Authorization` header of the request.
+// The service account must have the
+// `roles/iam.serviceAccountTokenCreator` role granted to the
+// CES service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolApiAuthenticationServiceAccountAuthConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
+		return vs[0].([]ToolMcpToolApiAuthenticationServiceAccountAuthConfig)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig struct {
+}
+
+// ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigInput is an input type that accepts ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs and ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigInput` via:
+//
+//	ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...}
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+	ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+}
+
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs struct {
+}
+
+func (ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return i.ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+// ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput is an input type that accepts ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray and ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput` via:
+//
+//	ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{ ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...} }
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+	ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+}
+
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray []ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigInput
+
+func (ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return i.ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+type ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return vs[0].([]ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfig)[vs[1].(int)]
+	}).(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+type ToolMcpToolServiceDirectoryConfig struct {
+	// (Output)
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service *string `pulumi:"service"`
+}
+
+// ToolMcpToolServiceDirectoryConfigInput is an input type that accepts ToolMcpToolServiceDirectoryConfigArgs and ToolMcpToolServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolServiceDirectoryConfigInput` via:
+//
+//	ToolMcpToolServiceDirectoryConfigArgs{...}
+type ToolMcpToolServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolServiceDirectoryConfigOutput() ToolMcpToolServiceDirectoryConfigOutput
+	ToToolMcpToolServiceDirectoryConfigOutputWithContext(context.Context) ToolMcpToolServiceDirectoryConfigOutput
+}
+
+type ToolMcpToolServiceDirectoryConfigArgs struct {
+	// (Output)
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ToolMcpToolServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolServiceDirectoryConfigArgs) ToToolMcpToolServiceDirectoryConfigOutput() ToolMcpToolServiceDirectoryConfigOutput {
+	return i.ToToolMcpToolServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolServiceDirectoryConfigArgs) ToToolMcpToolServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolMcpToolServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolServiceDirectoryConfigOutput)
+}
+
+// ToolMcpToolServiceDirectoryConfigArrayInput is an input type that accepts ToolMcpToolServiceDirectoryConfigArray and ToolMcpToolServiceDirectoryConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolServiceDirectoryConfigArrayInput` via:
+//
+//	ToolMcpToolServiceDirectoryConfigArray{ ToolMcpToolServiceDirectoryConfigArgs{...} }
+type ToolMcpToolServiceDirectoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolServiceDirectoryConfigArrayOutput() ToolMcpToolServiceDirectoryConfigArrayOutput
+	ToToolMcpToolServiceDirectoryConfigArrayOutputWithContext(context.Context) ToolMcpToolServiceDirectoryConfigArrayOutput
+}
+
+type ToolMcpToolServiceDirectoryConfigArray []ToolMcpToolServiceDirectoryConfigInput
+
+func (ToolMcpToolServiceDirectoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolServiceDirectoryConfigArray) ToToolMcpToolServiceDirectoryConfigArrayOutput() ToolMcpToolServiceDirectoryConfigArrayOutput {
+	return i.ToToolMcpToolServiceDirectoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolServiceDirectoryConfigArray) ToToolMcpToolServiceDirectoryConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolServiceDirectoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolServiceDirectoryConfigArrayOutput)
+}
+
+type ToolMcpToolServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolServiceDirectoryConfigOutput) ToToolMcpToolServiceDirectoryConfigOutput() ToolMcpToolServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolServiceDirectoryConfigOutput) ToToolMcpToolServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolMcpToolServiceDirectoryConfigOutput {
+	return o
+}
+
+// (Output)
+// The name of [Service
+// Directory](https://cloud.google.com/service-directory) service.
+// Format:
+// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+// Location of the service directory must be the same as the location of the
+// app.
+func (o ToolMcpToolServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolServiceDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolServiceDirectoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolServiceDirectoryConfigArrayOutput) ToToolMcpToolServiceDirectoryConfigArrayOutput() ToolMcpToolServiceDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolServiceDirectoryConfigArrayOutput) ToToolMcpToolServiceDirectoryConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolServiceDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolServiceDirectoryConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolServiceDirectoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolServiceDirectoryConfig {
+		return vs[0].([]ToolMcpToolServiceDirectoryConfig)[vs[1].(int)]
+	}).(ToolMcpToolServiceDirectoryConfigOutput)
+}
+
+type ToolMcpToolTlsConfig struct {
+	// (Output)
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts []ToolMcpToolTlsConfigCaCert `pulumi:"caCerts"`
+}
+
+// ToolMcpToolTlsConfigInput is an input type that accepts ToolMcpToolTlsConfigArgs and ToolMcpToolTlsConfigOutput values.
+// You can construct a concrete instance of `ToolMcpToolTlsConfigInput` via:
+//
+//	ToolMcpToolTlsConfigArgs{...}
+type ToolMcpToolTlsConfigInput interface {
+	pulumi.Input
+
+	ToToolMcpToolTlsConfigOutput() ToolMcpToolTlsConfigOutput
+	ToToolMcpToolTlsConfigOutputWithContext(context.Context) ToolMcpToolTlsConfigOutput
+}
+
+type ToolMcpToolTlsConfigArgs struct {
+	// (Output)
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts ToolMcpToolTlsConfigCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (ToolMcpToolTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolTlsConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolTlsConfigArgs) ToToolMcpToolTlsConfigOutput() ToolMcpToolTlsConfigOutput {
+	return i.ToToolMcpToolTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolTlsConfigArgs) ToToolMcpToolTlsConfigOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolTlsConfigOutput)
+}
+
+// ToolMcpToolTlsConfigArrayInput is an input type that accepts ToolMcpToolTlsConfigArray and ToolMcpToolTlsConfigArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolTlsConfigArrayInput` via:
+//
+//	ToolMcpToolTlsConfigArray{ ToolMcpToolTlsConfigArgs{...} }
+type ToolMcpToolTlsConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolTlsConfigArrayOutput() ToolMcpToolTlsConfigArrayOutput
+	ToToolMcpToolTlsConfigArrayOutputWithContext(context.Context) ToolMcpToolTlsConfigArrayOutput
+}
+
+type ToolMcpToolTlsConfigArray []ToolMcpToolTlsConfigInput
+
+func (ToolMcpToolTlsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolTlsConfig)(nil)).Elem()
+}
+
+func (i ToolMcpToolTlsConfigArray) ToToolMcpToolTlsConfigArrayOutput() ToolMcpToolTlsConfigArrayOutput {
+	return i.ToToolMcpToolTlsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolTlsConfigArray) ToToolMcpToolTlsConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolTlsConfigArrayOutput)
+}
+
+type ToolMcpToolTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolTlsConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolTlsConfigOutput) ToToolMcpToolTlsConfigOutput() ToolMcpToolTlsConfigOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigOutput) ToToolMcpToolTlsConfigOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigOutput {
+	return o
+}
+
+// (Output)
+// Specifies a list of allowed custom CA certificates for HTTPS
+// verification.
+// Structure is documented below.
+func (o ToolMcpToolTlsConfigOutput) CaCerts() ToolMcpToolTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v ToolMcpToolTlsConfig) []ToolMcpToolTlsConfigCaCert { return v.CaCerts }).(ToolMcpToolTlsConfigCaCertArrayOutput)
+}
+
+type ToolMcpToolTlsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolTlsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolTlsConfig)(nil)).Elem()
+}
+
+func (o ToolMcpToolTlsConfigArrayOutput) ToToolMcpToolTlsConfigArrayOutput() ToolMcpToolTlsConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigArrayOutput) ToToolMcpToolTlsConfigArrayOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigArrayOutput) Index(i pulumi.IntInput) ToolMcpToolTlsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolTlsConfig {
+		return vs[0].([]ToolMcpToolTlsConfig)[vs[1].(int)]
+	}).(ToolMcpToolTlsConfigOutput)
+}
+
+type ToolMcpToolTlsConfigCaCert struct {
+	// (Output)
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// A base64-encoded string.
+	Cert *string `pulumi:"cert"`
+	// (Output)
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// ToolMcpToolTlsConfigCaCertInput is an input type that accepts ToolMcpToolTlsConfigCaCertArgs and ToolMcpToolTlsConfigCaCertOutput values.
+// You can construct a concrete instance of `ToolMcpToolTlsConfigCaCertInput` via:
+//
+//	ToolMcpToolTlsConfigCaCertArgs{...}
+type ToolMcpToolTlsConfigCaCertInput interface {
+	pulumi.Input
+
+	ToToolMcpToolTlsConfigCaCertOutput() ToolMcpToolTlsConfigCaCertOutput
+	ToToolMcpToolTlsConfigCaCertOutputWithContext(context.Context) ToolMcpToolTlsConfigCaCertOutput
+}
+
+type ToolMcpToolTlsConfigCaCertArgs struct {
+	// (Output)
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// A base64-encoded string.
+	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// (Output)
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (ToolMcpToolTlsConfigCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolMcpToolTlsConfigCaCertArgs) ToToolMcpToolTlsConfigCaCertOutput() ToolMcpToolTlsConfigCaCertOutput {
+	return i.ToToolMcpToolTlsConfigCaCertOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolTlsConfigCaCertArgs) ToToolMcpToolTlsConfigCaCertOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolTlsConfigCaCertOutput)
+}
+
+// ToolMcpToolTlsConfigCaCertArrayInput is an input type that accepts ToolMcpToolTlsConfigCaCertArray and ToolMcpToolTlsConfigCaCertArrayOutput values.
+// You can construct a concrete instance of `ToolMcpToolTlsConfigCaCertArrayInput` via:
+//
+//	ToolMcpToolTlsConfigCaCertArray{ ToolMcpToolTlsConfigCaCertArgs{...} }
+type ToolMcpToolTlsConfigCaCertArrayInput interface {
+	pulumi.Input
+
+	ToToolMcpToolTlsConfigCaCertArrayOutput() ToolMcpToolTlsConfigCaCertArrayOutput
+	ToToolMcpToolTlsConfigCaCertArrayOutputWithContext(context.Context) ToolMcpToolTlsConfigCaCertArrayOutput
+}
+
+type ToolMcpToolTlsConfigCaCertArray []ToolMcpToolTlsConfigCaCertInput
+
+func (ToolMcpToolTlsConfigCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolMcpToolTlsConfigCaCertArray) ToToolMcpToolTlsConfigCaCertArrayOutput() ToolMcpToolTlsConfigCaCertArrayOutput {
+	return i.ToToolMcpToolTlsConfigCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i ToolMcpToolTlsConfigCaCertArray) ToToolMcpToolTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolMcpToolTlsConfigCaCertArrayOutput)
+}
+
+type ToolMcpToolTlsConfigCaCertOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolTlsConfigCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolMcpToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolMcpToolTlsConfigCaCertOutput) ToToolMcpToolTlsConfigCaCertOutput() ToolMcpToolTlsConfigCaCertOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigCaCertOutput) ToToolMcpToolTlsConfigCaCertOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigCaCertOutput {
+	return o
+}
+
+// (Output)
+// The allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, CES will use Google's default trust
+// store to verify certificates. N.B. Make sure the HTTPS server
+// certificates are signed with "subject alt name". For instance a
+// certificate can be self-signed using the following command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+// A base64-encoded string.
+func (o ToolMcpToolTlsConfigCaCertOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolTlsConfigCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the allowed custom CA certificates. This
+// can be used to disambiguate the custom CA certificates.
+func (o ToolMcpToolTlsConfigCaCertOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolMcpToolTlsConfigCaCert) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type ToolMcpToolTlsConfigCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolMcpToolTlsConfigCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolMcpToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolMcpToolTlsConfigCaCertArrayOutput) ToToolMcpToolTlsConfigCaCertArrayOutput() ToolMcpToolTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigCaCertArrayOutput) ToToolMcpToolTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolMcpToolTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolMcpToolTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) ToolMcpToolTlsConfigCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolMcpToolTlsConfigCaCert {
+		return vs[0].([]ToolMcpToolTlsConfigCaCert)[vs[1].(int)]
+	}).(ToolMcpToolTlsConfigCaCertOutput)
+}
+
 type ToolOpenApiTool struct {
 	// (Output)
 	// Authentication information required for API calls.
@@ -41227,11 +44307,8 @@ type ToolOpenApiTool struct {
 	// Structure is documented below.
 	TlsConfigs []ToolOpenApiToolTlsConfig `pulumi:"tlsConfigs"`
 	// (Output)
-	// The server URL of the Open API schema. This field is only set in tools in the
-	// environment dependencies during the export process if the schema contains a
-	// server url. During the import process, if this url is present in the environment
-	// dependencies and the schema has the $env_var placeholder, it will replace the
-	// placeholder in the schema.
+	// The URL where this interface is available. Must be a valid absolute
+	// HTTPS URL in production.
 	Url *string `pulumi:"url"`
 }
 
@@ -41272,11 +44349,8 @@ type ToolOpenApiToolArgs struct {
 	// Structure is documented below.
 	TlsConfigs ToolOpenApiToolTlsConfigArrayInput `pulumi:"tlsConfigs"`
 	// (Output)
-	// The server URL of the Open API schema. This field is only set in tools in the
-	// environment dependencies during the export process if the schema contains a
-	// server url. During the import process, if this url is present in the environment
-	// dependencies and the schema has the $env_var placeholder, it will replace the
-	// placeholder in the schema.
+	// The URL where this interface is available. Must be a valid absolute
+	// HTTPS URL in production.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -41377,11 +44451,8 @@ func (o ToolOpenApiToolOutput) TlsConfigs() ToolOpenApiToolTlsConfigArrayOutput 
 }
 
 // (Output)
-// The server URL of the Open API schema. This field is only set in tools in the
-// environment dependencies during the export process if the schema contains a
-// server url. During the import process, if this url is present in the environment
-// dependencies and the schema has the $env_var placeholder, it will replace the
-// placeholder in the schema.
+// The URL where this interface is available. Must be a valid absolute
+// HTTPS URL in production.
 func (o ToolOpenApiToolOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolOpenApiTool) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -42576,11 +45647,11 @@ type ToolPythonFunction struct {
 	// The description of the Python function, parsed from the python code's
 	// docstring.
 	Description *string `pulumi:"description"`
-	// The name of the Python function to execute. Must match a Python function
+	// Optional. The name of the Python function to execute. Must match a Python function
 	// name defined in the python code. Case sensitive. If the name is not
 	// provided, the first function defined in the python code will be used.
 	Name *string `pulumi:"name"`
-	// The Python code to execute for the tool.
+	// Optional. The Python code to execute for the tool.
 	PythonCode *string `pulumi:"pythonCode"`
 }
 
@@ -42600,11 +45671,11 @@ type ToolPythonFunctionArgs struct {
 	// The description of the Python function, parsed from the python code's
 	// docstring.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of the Python function to execute. Must match a Python function
+	// Optional. The name of the Python function to execute. Must match a Python function
 	// name defined in the python code. Case sensitive. If the name is not
 	// provided, the first function defined in the python code will be used.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Python code to execute for the tool.
+	// Optional. The Python code to execute for the tool.
 	PythonCode pulumi.StringPtrInput `pulumi:"pythonCode"`
 }
 
@@ -42692,14 +45763,14 @@ func (o ToolPythonFunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolPythonFunction) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Python function to execute. Must match a Python function
+// Optional. The name of the Python function to execute. Must match a Python function
 // name defined in the python code. Case sensitive. If the name is not
 // provided, the first function defined in the python code will be used.
 func (o ToolPythonFunctionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolPythonFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The Python code to execute for the tool.
+// Optional. The Python code to execute for the tool.
 func (o ToolPythonFunctionOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolPythonFunction) *string { return v.PythonCode }).(pulumi.StringPtrOutput)
 }
@@ -42740,7 +45811,7 @@ func (o ToolPythonFunctionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Python function to execute. Must match a Python function
+// Optional. The name of the Python function to execute. Must match a Python function
 // name defined in the python code. Case sensitive. If the name is not
 // provided, the first function defined in the python code will be used.
 func (o ToolPythonFunctionPtrOutput) Name() pulumi.StringPtrOutput {
@@ -42752,7 +45823,7 @@ func (o ToolPythonFunctionPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Python code to execute for the tool.
+// Optional. The Python code to execute for the tool.
 func (o ToolPythonFunctionPtrOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolPythonFunction) *string {
 		if v == nil {
@@ -42760,6 +45831,618 @@ func (o ToolPythonFunctionPtrOutput) PythonCode() pulumi.StringPtrOutput {
 		}
 		return v.PythonCode
 	}).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentTool struct {
+	// (Output)
+	// The agent card of the remote agent that this tool invokes.
+	// Structure is documented below.
+	AgentCards []ToolRemoteAgentToolAgentCard `pulumi:"agentCards"`
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+}
+
+// ToolRemoteAgentToolInput is an input type that accepts ToolRemoteAgentToolArgs and ToolRemoteAgentToolOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolInput` via:
+//
+//	ToolRemoteAgentToolArgs{...}
+type ToolRemoteAgentToolInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolOutput() ToolRemoteAgentToolOutput
+	ToToolRemoteAgentToolOutputWithContext(context.Context) ToolRemoteAgentToolOutput
+}
+
+type ToolRemoteAgentToolArgs struct {
+	// (Output)
+	// The agent card of the remote agent that this tool invokes.
+	// Structure is documented below.
+	AgentCards ToolRemoteAgentToolAgentCardArrayInput `pulumi:"agentCards"`
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ToolRemoteAgentToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentTool)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolArgs) ToToolRemoteAgentToolOutput() ToolRemoteAgentToolOutput {
+	return i.ToToolRemoteAgentToolOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolArgs) ToToolRemoteAgentToolOutputWithContext(ctx context.Context) ToolRemoteAgentToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolOutput)
+}
+
+// ToolRemoteAgentToolArrayInput is an input type that accepts ToolRemoteAgentToolArray and ToolRemoteAgentToolArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolArrayInput` via:
+//
+//	ToolRemoteAgentToolArray{ ToolRemoteAgentToolArgs{...} }
+type ToolRemoteAgentToolArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolArrayOutput() ToolRemoteAgentToolArrayOutput
+	ToToolRemoteAgentToolArrayOutputWithContext(context.Context) ToolRemoteAgentToolArrayOutput
+}
+
+type ToolRemoteAgentToolArray []ToolRemoteAgentToolInput
+
+func (ToolRemoteAgentToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentTool)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolArray) ToToolRemoteAgentToolArrayOutput() ToolRemoteAgentToolArrayOutput {
+	return i.ToToolRemoteAgentToolArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolArray) ToToolRemoteAgentToolArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolArrayOutput)
+}
+
+type ToolRemoteAgentToolOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentTool)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolOutput) ToToolRemoteAgentToolOutput() ToolRemoteAgentToolOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolOutput) ToToolRemoteAgentToolOutputWithContext(ctx context.Context) ToolRemoteAgentToolOutput {
+	return o
+}
+
+// (Output)
+// The agent card of the remote agent that this tool invokes.
+// Structure is documented below.
+func (o ToolRemoteAgentToolOutput) AgentCards() ToolRemoteAgentToolAgentCardArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) []ToolRemoteAgentToolAgentCard { return v.AgentCards }).(ToolRemoteAgentToolAgentCardArrayOutput)
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolRemoteAgentToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolRemoteAgentToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentTool)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolArrayOutput) ToToolRemoteAgentToolArrayOutput() ToolRemoteAgentToolArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolArrayOutput) ToToolRemoteAgentToolArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentTool {
+		return vs[0].([]ToolRemoteAgentTool)[vs[1].(int)]
+	}).(ToolRemoteAgentToolOutput)
+}
+
+type ToolRemoteAgentToolAgentCard struct {
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// Skills represent a unit of ability an agent can perform. This may
+	// somewhat abstract but represents a more focused set of actions that the agent is highly
+	// likely to succeed at.
+	// Structure is documented below.
+	Skills []ToolRemoteAgentToolAgentCardSkill `pulumi:"skills"`
+	// (Output)
+	// Ordered list of supported interfaces. The first entry is preferred.
+	// Structure is documented below.
+	SupportedInterfaces []ToolRemoteAgentToolAgentCardSupportedInterface `pulumi:"supportedInterfaces"`
+	// (Output)
+	// The version of the agent.
+	Version *string `pulumi:"version"`
+}
+
+// ToolRemoteAgentToolAgentCardInput is an input type that accepts ToolRemoteAgentToolAgentCardArgs and ToolRemoteAgentToolAgentCardOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardInput` via:
+//
+//	ToolRemoteAgentToolAgentCardArgs{...}
+type ToolRemoteAgentToolAgentCardInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardOutput() ToolRemoteAgentToolAgentCardOutput
+	ToToolRemoteAgentToolAgentCardOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardOutput
+}
+
+type ToolRemoteAgentToolAgentCardArgs struct {
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// Skills represent a unit of ability an agent can perform. This may
+	// somewhat abstract but represents a more focused set of actions that the agent is highly
+	// likely to succeed at.
+	// Structure is documented below.
+	Skills ToolRemoteAgentToolAgentCardSkillArrayInput `pulumi:"skills"`
+	// (Output)
+	// Ordered list of supported interfaces. The first entry is preferred.
+	// Structure is documented below.
+	SupportedInterfaces ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput `pulumi:"supportedInterfaces"`
+	// (Output)
+	// The version of the agent.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ToolRemoteAgentToolAgentCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCard)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardArgs) ToToolRemoteAgentToolAgentCardOutput() ToolRemoteAgentToolAgentCardOutput {
+	return i.ToToolRemoteAgentToolAgentCardOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardArgs) ToToolRemoteAgentToolAgentCardOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardOutput)
+}
+
+// ToolRemoteAgentToolAgentCardArrayInput is an input type that accepts ToolRemoteAgentToolAgentCardArray and ToolRemoteAgentToolAgentCardArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardArrayInput` via:
+//
+//	ToolRemoteAgentToolAgentCardArray{ ToolRemoteAgentToolAgentCardArgs{...} }
+type ToolRemoteAgentToolAgentCardArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardArrayOutput() ToolRemoteAgentToolAgentCardArrayOutput
+	ToToolRemoteAgentToolAgentCardArrayOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardArrayOutput
+}
+
+type ToolRemoteAgentToolAgentCardArray []ToolRemoteAgentToolAgentCardInput
+
+func (ToolRemoteAgentToolAgentCardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCard)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardArray) ToToolRemoteAgentToolAgentCardArrayOutput() ToolRemoteAgentToolAgentCardArrayOutput {
+	return i.ToToolRemoteAgentToolAgentCardArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardArray) ToToolRemoteAgentToolAgentCardArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardArrayOutput)
+}
+
+type ToolRemoteAgentToolAgentCardOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCard)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardOutput) ToToolRemoteAgentToolAgentCardOutput() ToolRemoteAgentToolAgentCardOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardOutput) ToToolRemoteAgentToolAgentCardOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardOutput {
+	return o
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolRemoteAgentToolAgentCardOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCard) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolRemoteAgentToolAgentCardOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCard) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Skills represent a unit of ability an agent can perform. This may
+// somewhat abstract but represents a more focused set of actions that the agent is highly
+// likely to succeed at.
+// Structure is documented below.
+func (o ToolRemoteAgentToolAgentCardOutput) Skills() ToolRemoteAgentToolAgentCardSkillArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCard) []ToolRemoteAgentToolAgentCardSkill { return v.Skills }).(ToolRemoteAgentToolAgentCardSkillArrayOutput)
+}
+
+// (Output)
+// Ordered list of supported interfaces. The first entry is preferred.
+// Structure is documented below.
+func (o ToolRemoteAgentToolAgentCardOutput) SupportedInterfaces() ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCard) []ToolRemoteAgentToolAgentCardSupportedInterface {
+		return v.SupportedInterfaces
+	}).(ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput)
+}
+
+// (Output)
+// The version of the agent.
+func (o ToolRemoteAgentToolAgentCardOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCard) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolAgentCardArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCard)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardArrayOutput) ToToolRemoteAgentToolAgentCardArrayOutput() ToolRemoteAgentToolAgentCardArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardArrayOutput) ToToolRemoteAgentToolAgentCardArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolAgentCardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolAgentCard {
+		return vs[0].([]ToolRemoteAgentToolAgentCard)[vs[1].(int)]
+	}).(ToolRemoteAgentToolAgentCardOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSkill struct {
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// Example prompts or scenarios that this skill can handle.
+	Examples []string `pulumi:"examples"`
+	// (Output)
+	// A unique identifier for the agent's skill.
+	Id *string `pulumi:"id"`
+	// (Output)
+	// The set of supported input media types for this skill, overriding the agent's
+	// defaults.
+	InputModes []string `pulumi:"inputModes"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The set of supported output media types for this skill, overriding the agent's
+	// defaults.
+	OutputModes []string `pulumi:"outputModes"`
+	// (Output)
+	// A set of keywords describing the skill's capabilities.
+	Tags []string `pulumi:"tags"`
+}
+
+// ToolRemoteAgentToolAgentCardSkillInput is an input type that accepts ToolRemoteAgentToolAgentCardSkillArgs and ToolRemoteAgentToolAgentCardSkillOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardSkillInput` via:
+//
+//	ToolRemoteAgentToolAgentCardSkillArgs{...}
+type ToolRemoteAgentToolAgentCardSkillInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardSkillOutput() ToolRemoteAgentToolAgentCardSkillOutput
+	ToToolRemoteAgentToolAgentCardSkillOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardSkillOutput
+}
+
+type ToolRemoteAgentToolAgentCardSkillArgs struct {
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// Example prompts or scenarios that this skill can handle.
+	Examples pulumi.StringArrayInput `pulumi:"examples"`
+	// (Output)
+	// A unique identifier for the agent's skill.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// (Output)
+	// The set of supported input media types for this skill, overriding the agent's
+	// defaults.
+	InputModes pulumi.StringArrayInput `pulumi:"inputModes"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The set of supported output media types for this skill, overriding the agent's
+	// defaults.
+	OutputModes pulumi.StringArrayInput `pulumi:"outputModes"`
+	// (Output)
+	// A set of keywords describing the skill's capabilities.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (ToolRemoteAgentToolAgentCardSkillArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCardSkill)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardSkillArgs) ToToolRemoteAgentToolAgentCardSkillOutput() ToolRemoteAgentToolAgentCardSkillOutput {
+	return i.ToToolRemoteAgentToolAgentCardSkillOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardSkillArgs) ToToolRemoteAgentToolAgentCardSkillOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSkillOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardSkillOutput)
+}
+
+// ToolRemoteAgentToolAgentCardSkillArrayInput is an input type that accepts ToolRemoteAgentToolAgentCardSkillArray and ToolRemoteAgentToolAgentCardSkillArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardSkillArrayInput` via:
+//
+//	ToolRemoteAgentToolAgentCardSkillArray{ ToolRemoteAgentToolAgentCardSkillArgs{...} }
+type ToolRemoteAgentToolAgentCardSkillArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardSkillArrayOutput() ToolRemoteAgentToolAgentCardSkillArrayOutput
+	ToToolRemoteAgentToolAgentCardSkillArrayOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardSkillArrayOutput
+}
+
+type ToolRemoteAgentToolAgentCardSkillArray []ToolRemoteAgentToolAgentCardSkillInput
+
+func (ToolRemoteAgentToolAgentCardSkillArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCardSkill)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardSkillArray) ToToolRemoteAgentToolAgentCardSkillArrayOutput() ToolRemoteAgentToolAgentCardSkillArrayOutput {
+	return i.ToToolRemoteAgentToolAgentCardSkillArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardSkillArray) ToToolRemoteAgentToolAgentCardSkillArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSkillArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardSkillArrayOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSkillOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardSkillOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCardSkill)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardSkillOutput) ToToolRemoteAgentToolAgentCardSkillOutput() ToolRemoteAgentToolAgentCardSkillOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSkillOutput) ToToolRemoteAgentToolAgentCardSkillOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSkillOutput {
+	return o
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Example prompts or scenarios that this skill can handle.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) Examples() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) []string { return v.Examples }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// A unique identifier for the agent's skill.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The set of supported input media types for this skill, overriding the agent's
+// defaults.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) InputModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) []string { return v.InputModes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The set of supported output media types for this skill, overriding the agent's
+// defaults.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) OutputModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) []string { return v.OutputModes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// A set of keywords describing the skill's capabilities.
+func (o ToolRemoteAgentToolAgentCardSkillOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSkill) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSkillArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardSkillArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCardSkill)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardSkillArrayOutput) ToToolRemoteAgentToolAgentCardSkillArrayOutput() ToolRemoteAgentToolAgentCardSkillArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSkillArrayOutput) ToToolRemoteAgentToolAgentCardSkillArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSkillArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSkillArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolAgentCardSkillOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolAgentCardSkill {
+		return vs[0].([]ToolRemoteAgentToolAgentCardSkill)[vs[1].(int)]
+	}).(ToolRemoteAgentToolAgentCardSkillOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSupportedInterface struct {
+	// (Output)
+	// The protocol binding supported at this URL. The core ones officially
+	// supported are JSONRPC, GRPC and HTTP+JSON.
+	ProtocolBinding *string `pulumi:"protocolBinding"`
+	// (Output)
+	// The version of the A2A protocol this interface exposes.
+	// Examples: "0.3", "1.0"
+	ProtocolVersion *string `pulumi:"protocolVersion"`
+	// (Output)
+	// Tenant ID to be used in the request when calling the agent.
+	Tenant *string `pulumi:"tenant"`
+	// (Output)
+	// The URL where this interface is available. Must be a valid absolute
+	// HTTPS URL in production.
+	Url *string `pulumi:"url"`
+}
+
+// ToolRemoteAgentToolAgentCardSupportedInterfaceInput is an input type that accepts ToolRemoteAgentToolAgentCardSupportedInterfaceArgs and ToolRemoteAgentToolAgentCardSupportedInterfaceOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardSupportedInterfaceInput` via:
+//
+//	ToolRemoteAgentToolAgentCardSupportedInterfaceArgs{...}
+type ToolRemoteAgentToolAgentCardSupportedInterfaceInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardSupportedInterfaceOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceOutput
+	ToToolRemoteAgentToolAgentCardSupportedInterfaceOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceOutput
+}
+
+type ToolRemoteAgentToolAgentCardSupportedInterfaceArgs struct {
+	// (Output)
+	// The protocol binding supported at this URL. The core ones officially
+	// supported are JSONRPC, GRPC and HTTP+JSON.
+	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
+	// (Output)
+	// The version of the A2A protocol this interface exposes.
+	// Examples: "0.3", "1.0"
+	ProtocolVersion pulumi.StringPtrInput `pulumi:"protocolVersion"`
+	// (Output)
+	// Tenant ID to be used in the request when calling the agent.
+	Tenant pulumi.StringPtrInput `pulumi:"tenant"`
+	// (Output)
+	// The URL where this interface is available. Must be a valid absolute
+	// HTTPS URL in production.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ToolRemoteAgentToolAgentCardSupportedInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterface)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardSupportedInterfaceArgs) ToToolRemoteAgentToolAgentCardSupportedInterfaceOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceOutput {
+	return i.ToToolRemoteAgentToolAgentCardSupportedInterfaceOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardSupportedInterfaceArgs) ToToolRemoteAgentToolAgentCardSupportedInterfaceOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardSupportedInterfaceOutput)
+}
+
+// ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput is an input type that accepts ToolRemoteAgentToolAgentCardSupportedInterfaceArray and ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput` via:
+//
+//	ToolRemoteAgentToolAgentCardSupportedInterfaceArray{ ToolRemoteAgentToolAgentCardSupportedInterfaceArgs{...} }
+type ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput
+	ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutputWithContext(context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput
+}
+
+type ToolRemoteAgentToolAgentCardSupportedInterfaceArray []ToolRemoteAgentToolAgentCardSupportedInterfaceInput
+
+func (ToolRemoteAgentToolAgentCardSupportedInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCardSupportedInterface)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolAgentCardSupportedInterfaceArray) ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput {
+	return i.ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolAgentCardSupportedInterfaceArray) ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSupportedInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterface)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) ToToolRemoteAgentToolAgentCardSupportedInterfaceOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) ToToolRemoteAgentToolAgentCardSupportedInterfaceOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceOutput {
+	return o
+}
+
+// (Output)
+// The protocol binding supported at this URL. The core ones officially
+// supported are JSONRPC, GRPC and HTTP+JSON.
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) ProtocolBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSupportedInterface) *string { return v.ProtocolBinding }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The version of the A2A protocol this interface exposes.
+// Examples: "0.3", "1.0"
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) ProtocolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSupportedInterface) *string { return v.ProtocolVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Tenant ID to be used in the request when calling the agent.
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSupportedInterface) *string { return v.Tenant }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The URL where this interface is available. Must be a valid absolute
+// HTTPS URL in production.
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolAgentCardSupportedInterface) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolAgentCardSupportedInterface)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput) ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput() ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput) ToToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolAgentCardSupportedInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolAgentCardSupportedInterface {
+		return vs[0].([]ToolRemoteAgentToolAgentCardSupportedInterface)[vs[1].(int)]
+	}).(ToolRemoteAgentToolAgentCardSupportedInterfaceOutput)
 }
 
 type ToolSystemTool struct {
@@ -42872,6 +46555,1572 @@ func (o ToolSystemToolArrayOutput) Index(i pulumi.IntInput) ToolSystemToolOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolSystemTool {
 		return vs[0].([]ToolSystemTool)[vs[1].(int)]
 	}).(ToolSystemToolOutput)
+}
+
+type ToolWidgetTool struct {
+	// Optional. The mapping that defines how data from a source tool is mapped to the
+	// widget's input parameters.
+	// Structure is documented below.
+	DataMapping *ToolWidgetToolDataMapping `pulumi:"dataMapping"`
+	// Optional. The description of the widget tool.
+	Description *string `pulumi:"description"`
+	// Required. The display name of the widget tool.
+	Name string `pulumi:"name"`
+	// Optional. The input parameters of the widget tool. Represents a Schema object.
+	// Structure is documented below.
+	Parameters *ToolWidgetToolParameters `pulumi:"parameters"`
+	// Optional. Configuration for always-included text responses.
+	// Structure is documented below.
+	TextResponseConfig *ToolWidgetToolTextResponseConfig `pulumi:"textResponseConfig"`
+	// Optional. Configuration for rendering the widget. Represents a JSON object.
+	UiConfig *string `pulumi:"uiConfig"`
+	// Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED.
+	// Possible values:
+	// WIDGET_TYPE_UNSPECIFIED
+	// CUSTOM
+	// PRODUCT_CAROUSEL
+	// PRODUCT_DETAILS
+	// QUICK_ACTIONS
+	// PRODUCT_COMPARISON
+	// ADVANCED_PRODUCT_DETAILS
+	// SHORT_FORM
+	// OVERALL_SATISFACTION
+	// ORDER_SUMMARY
+	// APPOINTMENT_DETAILS
+	// APPOINTMENT_SCHEDULER
+	// CONTACT_FORM
+	// Possible values are: `WIDGET_TYPE_UNSPECIFIED`, `CUSTOM`, `PRODUCT_CAROUSEL`, `PRODUCT_DETAILS`, `QUICK_ACTIONS`, `PRODUCT_COMPARISON`, `ADVANCED_PRODUCT_DETAILS`, `SHORT_FORM`, `OVERALL_SATISFACTION`, `ORDER_SUMMARY`, `APPOINTMENT_DETAILS`, `APPOINTMENT_SCHEDULER`, `CONTACT_FORM`.
+	WidgetType *string `pulumi:"widgetType"`
+}
+
+// ToolWidgetToolInput is an input type that accepts ToolWidgetToolArgs and ToolWidgetToolOutput values.
+// You can construct a concrete instance of `ToolWidgetToolInput` via:
+//
+//	ToolWidgetToolArgs{...}
+type ToolWidgetToolInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolOutput() ToolWidgetToolOutput
+	ToToolWidgetToolOutputWithContext(context.Context) ToolWidgetToolOutput
+}
+
+type ToolWidgetToolArgs struct {
+	// Optional. The mapping that defines how data from a source tool is mapped to the
+	// widget's input parameters.
+	// Structure is documented below.
+	DataMapping ToolWidgetToolDataMappingPtrInput `pulumi:"dataMapping"`
+	// Optional. The description of the widget tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Required. The display name of the widget tool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. The input parameters of the widget tool. Represents a Schema object.
+	// Structure is documented below.
+	Parameters ToolWidgetToolParametersPtrInput `pulumi:"parameters"`
+	// Optional. Configuration for always-included text responses.
+	// Structure is documented below.
+	TextResponseConfig ToolWidgetToolTextResponseConfigPtrInput `pulumi:"textResponseConfig"`
+	// Optional. Configuration for rendering the widget. Represents a JSON object.
+	UiConfig pulumi.StringPtrInput `pulumi:"uiConfig"`
+	// Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED.
+	// Possible values:
+	// WIDGET_TYPE_UNSPECIFIED
+	// CUSTOM
+	// PRODUCT_CAROUSEL
+	// PRODUCT_DETAILS
+	// QUICK_ACTIONS
+	// PRODUCT_COMPARISON
+	// ADVANCED_PRODUCT_DETAILS
+	// SHORT_FORM
+	// OVERALL_SATISFACTION
+	// ORDER_SUMMARY
+	// APPOINTMENT_DETAILS
+	// APPOINTMENT_SCHEDULER
+	// CONTACT_FORM
+	// Possible values are: `WIDGET_TYPE_UNSPECIFIED`, `CUSTOM`, `PRODUCT_CAROUSEL`, `PRODUCT_DETAILS`, `QUICK_ACTIONS`, `PRODUCT_COMPARISON`, `ADVANCED_PRODUCT_DETAILS`, `SHORT_FORM`, `OVERALL_SATISFACTION`, `ORDER_SUMMARY`, `APPOINTMENT_DETAILS`, `APPOINTMENT_SCHEDULER`, `CONTACT_FORM`.
+	WidgetType pulumi.StringPtrInput `pulumi:"widgetType"`
+}
+
+func (ToolWidgetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetTool)(nil)).Elem()
+}
+
+func (i ToolWidgetToolArgs) ToToolWidgetToolOutput() ToolWidgetToolOutput {
+	return i.ToToolWidgetToolOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolArgs) ToToolWidgetToolOutputWithContext(ctx context.Context) ToolWidgetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolOutput)
+}
+
+func (i ToolWidgetToolArgs) ToToolWidgetToolPtrOutput() ToolWidgetToolPtrOutput {
+	return i.ToToolWidgetToolPtrOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolArgs) ToToolWidgetToolPtrOutputWithContext(ctx context.Context) ToolWidgetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolOutput).ToToolWidgetToolPtrOutputWithContext(ctx)
+}
+
+// ToolWidgetToolPtrInput is an input type that accepts ToolWidgetToolArgs, ToolWidgetToolPtr and ToolWidgetToolPtrOutput values.
+// You can construct a concrete instance of `ToolWidgetToolPtrInput` via:
+//
+//	        ToolWidgetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolWidgetToolPtrInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolPtrOutput() ToolWidgetToolPtrOutput
+	ToToolWidgetToolPtrOutputWithContext(context.Context) ToolWidgetToolPtrOutput
+}
+
+type toolWidgetToolPtrType ToolWidgetToolArgs
+
+func ToolWidgetToolPtr(v *ToolWidgetToolArgs) ToolWidgetToolPtrInput {
+	return (*toolWidgetToolPtrType)(v)
+}
+
+func (*toolWidgetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetTool)(nil)).Elem()
+}
+
+func (i *toolWidgetToolPtrType) ToToolWidgetToolPtrOutput() ToolWidgetToolPtrOutput {
+	return i.ToToolWidgetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *toolWidgetToolPtrType) ToToolWidgetToolPtrOutputWithContext(ctx context.Context) ToolWidgetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolPtrOutput)
+}
+
+type ToolWidgetToolOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetTool)(nil)).Elem()
+}
+
+func (o ToolWidgetToolOutput) ToToolWidgetToolOutput() ToolWidgetToolOutput {
+	return o
+}
+
+func (o ToolWidgetToolOutput) ToToolWidgetToolOutputWithContext(ctx context.Context) ToolWidgetToolOutput {
+	return o
+}
+
+func (o ToolWidgetToolOutput) ToToolWidgetToolPtrOutput() ToolWidgetToolPtrOutput {
+	return o.ToToolWidgetToolPtrOutputWithContext(context.Background())
+}
+
+func (o ToolWidgetToolOutput) ToToolWidgetToolPtrOutputWithContext(ctx context.Context) ToolWidgetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolWidgetTool) *ToolWidgetTool {
+		return &v
+	}).(ToolWidgetToolPtrOutput)
+}
+
+// Optional. The mapping that defines how data from a source tool is mapped to the
+// widget's input parameters.
+// Structure is documented below.
+func (o ToolWidgetToolOutput) DataMapping() ToolWidgetToolDataMappingPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *ToolWidgetToolDataMapping { return v.DataMapping }).(ToolWidgetToolDataMappingPtrOutput)
+}
+
+// Optional. The description of the widget tool.
+func (o ToolWidgetToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Required. The display name of the widget tool.
+func (o ToolWidgetToolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolWidgetTool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The input parameters of the widget tool. Represents a Schema object.
+// Structure is documented below.
+func (o ToolWidgetToolOutput) Parameters() ToolWidgetToolParametersPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *ToolWidgetToolParameters { return v.Parameters }).(ToolWidgetToolParametersPtrOutput)
+}
+
+// Optional. Configuration for always-included text responses.
+// Structure is documented below.
+func (o ToolWidgetToolOutput) TextResponseConfig() ToolWidgetToolTextResponseConfigPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *ToolWidgetToolTextResponseConfig { return v.TextResponseConfig }).(ToolWidgetToolTextResponseConfigPtrOutput)
+}
+
+// Optional. Configuration for rendering the widget. Represents a JSON object.
+func (o ToolWidgetToolOutput) UiConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *string { return v.UiConfig }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED.
+// Possible values:
+// WIDGET_TYPE_UNSPECIFIED
+// CUSTOM
+// PRODUCT_CAROUSEL
+// PRODUCT_DETAILS
+// QUICK_ACTIONS
+// PRODUCT_COMPARISON
+// ADVANCED_PRODUCT_DETAILS
+// SHORT_FORM
+// OVERALL_SATISFACTION
+// ORDER_SUMMARY
+// APPOINTMENT_DETAILS
+// APPOINTMENT_SCHEDULER
+// CONTACT_FORM
+// Possible values are: `WIDGET_TYPE_UNSPECIFIED`, `CUSTOM`, `PRODUCT_CAROUSEL`, `PRODUCT_DETAILS`, `QUICK_ACTIONS`, `PRODUCT_COMPARISON`, `ADVANCED_PRODUCT_DETAILS`, `SHORT_FORM`, `OVERALL_SATISFACTION`, `ORDER_SUMMARY`, `APPOINTMENT_DETAILS`, `APPOINTMENT_SCHEDULER`, `CONTACT_FORM`.
+func (o ToolWidgetToolOutput) WidgetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetTool) *string { return v.WidgetType }).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetTool)(nil)).Elem()
+}
+
+func (o ToolWidgetToolPtrOutput) ToToolWidgetToolPtrOutput() ToolWidgetToolPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolPtrOutput) ToToolWidgetToolPtrOutputWithContext(ctx context.Context) ToolWidgetToolPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolPtrOutput) Elem() ToolWidgetToolOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) ToolWidgetTool {
+		if v != nil {
+			return *v
+		}
+		var ret ToolWidgetTool
+		return ret
+	}).(ToolWidgetToolOutput)
+}
+
+// Optional. The mapping that defines how data from a source tool is mapped to the
+// widget's input parameters.
+// Structure is documented below.
+func (o ToolWidgetToolPtrOutput) DataMapping() ToolWidgetToolDataMappingPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *ToolWidgetToolDataMapping {
+		if v == nil {
+			return nil
+		}
+		return v.DataMapping
+	}).(ToolWidgetToolDataMappingPtrOutput)
+}
+
+// Optional. The description of the widget tool.
+func (o ToolWidgetToolPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The display name of the widget tool.
+func (o ToolWidgetToolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The input parameters of the widget tool. Represents a Schema object.
+// Structure is documented below.
+func (o ToolWidgetToolPtrOutput) Parameters() ToolWidgetToolParametersPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *ToolWidgetToolParameters {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(ToolWidgetToolParametersPtrOutput)
+}
+
+// Optional. Configuration for always-included text responses.
+// Structure is documented below.
+func (o ToolWidgetToolPtrOutput) TextResponseConfig() ToolWidgetToolTextResponseConfigPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *ToolWidgetToolTextResponseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TextResponseConfig
+	}).(ToolWidgetToolTextResponseConfigPtrOutput)
+}
+
+// Optional. Configuration for rendering the widget. Represents a JSON object.
+func (o ToolWidgetToolPtrOutput) UiConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UiConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED.
+// Possible values:
+// WIDGET_TYPE_UNSPECIFIED
+// CUSTOM
+// PRODUCT_CAROUSEL
+// PRODUCT_DETAILS
+// QUICK_ACTIONS
+// PRODUCT_COMPARISON
+// ADVANCED_PRODUCT_DETAILS
+// SHORT_FORM
+// OVERALL_SATISFACTION
+// ORDER_SUMMARY
+// APPOINTMENT_DETAILS
+// APPOINTMENT_SCHEDULER
+// CONTACT_FORM
+// Possible values are: `WIDGET_TYPE_UNSPECIFIED`, `CUSTOM`, `PRODUCT_CAROUSEL`, `PRODUCT_DETAILS`, `QUICK_ACTIONS`, `PRODUCT_COMPARISON`, `ADVANCED_PRODUCT_DETAILS`, `SHORT_FORM`, `OVERALL_SATISFACTION`, `ORDER_SUMMARY`, `APPOINTMENT_DETAILS`, `APPOINTMENT_SCHEDULER`, `CONTACT_FORM`.
+func (o ToolWidgetToolPtrOutput) WidgetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WidgetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolDataMapping struct {
+	// Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	FieldMappings map[string]string `pulumi:"fieldMappings"`
+	// Optional. The mode of the data mapping.
+	// Possible values:
+	// MODE_UNSPECIFIED
+	// FIELD_MAPPING
+	// PYTHON_SCRIPT
+	// Possible values are: `MODE_UNSPECIFIED`, `FIELD_MAPPING`, `PYTHON_SCRIPT`.
+	Mode *string `pulumi:"mode"`
+	// Optional. Configuration for a Python function used to transform the source tool's
+	// output into the widget's input format.
+	// Structure is documented below.
+	PythonFunction *ToolWidgetToolDataMappingPythonFunction `pulumi:"pythonFunction"`
+	// Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function).
+	// Format: projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
+	SourceToolName *string `pulumi:"sourceToolName"`
+}
+
+// ToolWidgetToolDataMappingInput is an input type that accepts ToolWidgetToolDataMappingArgs and ToolWidgetToolDataMappingOutput values.
+// You can construct a concrete instance of `ToolWidgetToolDataMappingInput` via:
+//
+//	ToolWidgetToolDataMappingArgs{...}
+type ToolWidgetToolDataMappingInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolDataMappingOutput() ToolWidgetToolDataMappingOutput
+	ToToolWidgetToolDataMappingOutputWithContext(context.Context) ToolWidgetToolDataMappingOutput
+}
+
+type ToolWidgetToolDataMappingArgs struct {
+	// Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	FieldMappings pulumi.StringMapInput `pulumi:"fieldMappings"`
+	// Optional. The mode of the data mapping.
+	// Possible values:
+	// MODE_UNSPECIFIED
+	// FIELD_MAPPING
+	// PYTHON_SCRIPT
+	// Possible values are: `MODE_UNSPECIFIED`, `FIELD_MAPPING`, `PYTHON_SCRIPT`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Optional. Configuration for a Python function used to transform the source tool's
+	// output into the widget's input format.
+	// Structure is documented below.
+	PythonFunction ToolWidgetToolDataMappingPythonFunctionPtrInput `pulumi:"pythonFunction"`
+	// Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function).
+	// Format: projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
+	SourceToolName pulumi.StringPtrInput `pulumi:"sourceToolName"`
+}
+
+func (ToolWidgetToolDataMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolDataMapping)(nil)).Elem()
+}
+
+func (i ToolWidgetToolDataMappingArgs) ToToolWidgetToolDataMappingOutput() ToolWidgetToolDataMappingOutput {
+	return i.ToToolWidgetToolDataMappingOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolDataMappingArgs) ToToolWidgetToolDataMappingOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingOutput)
+}
+
+func (i ToolWidgetToolDataMappingArgs) ToToolWidgetToolDataMappingPtrOutput() ToolWidgetToolDataMappingPtrOutput {
+	return i.ToToolWidgetToolDataMappingPtrOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolDataMappingArgs) ToToolWidgetToolDataMappingPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingOutput).ToToolWidgetToolDataMappingPtrOutputWithContext(ctx)
+}
+
+// ToolWidgetToolDataMappingPtrInput is an input type that accepts ToolWidgetToolDataMappingArgs, ToolWidgetToolDataMappingPtr and ToolWidgetToolDataMappingPtrOutput values.
+// You can construct a concrete instance of `ToolWidgetToolDataMappingPtrInput` via:
+//
+//	        ToolWidgetToolDataMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolWidgetToolDataMappingPtrInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolDataMappingPtrOutput() ToolWidgetToolDataMappingPtrOutput
+	ToToolWidgetToolDataMappingPtrOutputWithContext(context.Context) ToolWidgetToolDataMappingPtrOutput
+}
+
+type toolWidgetToolDataMappingPtrType ToolWidgetToolDataMappingArgs
+
+func ToolWidgetToolDataMappingPtr(v *ToolWidgetToolDataMappingArgs) ToolWidgetToolDataMappingPtrInput {
+	return (*toolWidgetToolDataMappingPtrType)(v)
+}
+
+func (*toolWidgetToolDataMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolDataMapping)(nil)).Elem()
+}
+
+func (i *toolWidgetToolDataMappingPtrType) ToToolWidgetToolDataMappingPtrOutput() ToolWidgetToolDataMappingPtrOutput {
+	return i.ToToolWidgetToolDataMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *toolWidgetToolDataMappingPtrType) ToToolWidgetToolDataMappingPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingPtrOutput)
+}
+
+type ToolWidgetToolDataMappingOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolDataMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolDataMapping)(nil)).Elem()
+}
+
+func (o ToolWidgetToolDataMappingOutput) ToToolWidgetToolDataMappingOutput() ToolWidgetToolDataMappingOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingOutput) ToToolWidgetToolDataMappingOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingOutput) ToToolWidgetToolDataMappingPtrOutput() ToolWidgetToolDataMappingPtrOutput {
+	return o.ToToolWidgetToolDataMappingPtrOutputWithContext(context.Background())
+}
+
+func (o ToolWidgetToolDataMappingOutput) ToToolWidgetToolDataMappingPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolWidgetToolDataMapping) *ToolWidgetToolDataMapping {
+		return &v
+	}).(ToolWidgetToolDataMappingPtrOutput)
+}
+
+// Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o ToolWidgetToolDataMappingOutput) FieldMappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMapping) map[string]string { return v.FieldMappings }).(pulumi.StringMapOutput)
+}
+
+// Optional. The mode of the data mapping.
+// Possible values:
+// MODE_UNSPECIFIED
+// FIELD_MAPPING
+// PYTHON_SCRIPT
+// Possible values are: `MODE_UNSPECIFIED`, `FIELD_MAPPING`, `PYTHON_SCRIPT`.
+func (o ToolWidgetToolDataMappingOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMapping) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration for a Python function used to transform the source tool's
+// output into the widget's input format.
+// Structure is documented below.
+func (o ToolWidgetToolDataMappingOutput) PythonFunction() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMapping) *ToolWidgetToolDataMappingPythonFunction { return v.PythonFunction }).(ToolWidgetToolDataMappingPythonFunctionPtrOutput)
+}
+
+// Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function).
+// Format: projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
+func (o ToolWidgetToolDataMappingOutput) SourceToolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMapping) *string { return v.SourceToolName }).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolDataMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolDataMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolDataMapping)(nil)).Elem()
+}
+
+func (o ToolWidgetToolDataMappingPtrOutput) ToToolWidgetToolDataMappingPtrOutput() ToolWidgetToolDataMappingPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPtrOutput) ToToolWidgetToolDataMappingPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPtrOutput) Elem() ToolWidgetToolDataMappingOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMapping) ToolWidgetToolDataMapping {
+		if v != nil {
+			return *v
+		}
+		var ret ToolWidgetToolDataMapping
+		return ret
+	}).(ToolWidgetToolDataMappingOutput)
+}
+
+// Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o ToolWidgetToolDataMappingPtrOutput) FieldMappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMapping) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldMappings
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The mode of the data mapping.
+// Possible values:
+// MODE_UNSPECIFIED
+// FIELD_MAPPING
+// PYTHON_SCRIPT
+// Possible values are: `MODE_UNSPECIFIED`, `FIELD_MAPPING`, `PYTHON_SCRIPT`.
+func (o ToolWidgetToolDataMappingPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration for a Python function used to transform the source tool's
+// output into the widget's input format.
+// Structure is documented below.
+func (o ToolWidgetToolDataMappingPtrOutput) PythonFunction() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMapping) *ToolWidgetToolDataMappingPythonFunction {
+		if v == nil {
+			return nil
+		}
+		return v.PythonFunction
+	}).(ToolWidgetToolDataMappingPythonFunctionPtrOutput)
+}
+
+// Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function).
+// Format: projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
+func (o ToolWidgetToolDataMappingPtrOutput) SourceToolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceToolName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolDataMappingPythonFunction struct {
+	// (Output)
+	// The description of the Python function, parsed from the python code's
+	// docstring.
+	Description *string `pulumi:"description"`
+	// Optional. The name of the Python function to execute. Must match a Python function
+	// name defined in the python code. Case sensitive. If the name is not
+	// provided, the first function defined in the python code will be used.
+	Name *string `pulumi:"name"`
+	// Optional. The Python code to execute for the tool.
+	PythonCode *string `pulumi:"pythonCode"`
+}
+
+// ToolWidgetToolDataMappingPythonFunctionInput is an input type that accepts ToolWidgetToolDataMappingPythonFunctionArgs and ToolWidgetToolDataMappingPythonFunctionOutput values.
+// You can construct a concrete instance of `ToolWidgetToolDataMappingPythonFunctionInput` via:
+//
+//	ToolWidgetToolDataMappingPythonFunctionArgs{...}
+type ToolWidgetToolDataMappingPythonFunctionInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolDataMappingPythonFunctionOutput() ToolWidgetToolDataMappingPythonFunctionOutput
+	ToToolWidgetToolDataMappingPythonFunctionOutputWithContext(context.Context) ToolWidgetToolDataMappingPythonFunctionOutput
+}
+
+type ToolWidgetToolDataMappingPythonFunctionArgs struct {
+	// (Output)
+	// The description of the Python function, parsed from the python code's
+	// docstring.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. The name of the Python function to execute. Must match a Python function
+	// name defined in the python code. Case sensitive. If the name is not
+	// provided, the first function defined in the python code will be used.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The Python code to execute for the tool.
+	PythonCode pulumi.StringPtrInput `pulumi:"pythonCode"`
+}
+
+func (ToolWidgetToolDataMappingPythonFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolDataMappingPythonFunction)(nil)).Elem()
+}
+
+func (i ToolWidgetToolDataMappingPythonFunctionArgs) ToToolWidgetToolDataMappingPythonFunctionOutput() ToolWidgetToolDataMappingPythonFunctionOutput {
+	return i.ToToolWidgetToolDataMappingPythonFunctionOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolDataMappingPythonFunctionArgs) ToToolWidgetToolDataMappingPythonFunctionOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingPythonFunctionOutput)
+}
+
+func (i ToolWidgetToolDataMappingPythonFunctionArgs) ToToolWidgetToolDataMappingPythonFunctionPtrOutput() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return i.ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolDataMappingPythonFunctionArgs) ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingPythonFunctionOutput).ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(ctx)
+}
+
+// ToolWidgetToolDataMappingPythonFunctionPtrInput is an input type that accepts ToolWidgetToolDataMappingPythonFunctionArgs, ToolWidgetToolDataMappingPythonFunctionPtr and ToolWidgetToolDataMappingPythonFunctionPtrOutput values.
+// You can construct a concrete instance of `ToolWidgetToolDataMappingPythonFunctionPtrInput` via:
+//
+//	        ToolWidgetToolDataMappingPythonFunctionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolWidgetToolDataMappingPythonFunctionPtrInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolDataMappingPythonFunctionPtrOutput() ToolWidgetToolDataMappingPythonFunctionPtrOutput
+	ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(context.Context) ToolWidgetToolDataMappingPythonFunctionPtrOutput
+}
+
+type toolWidgetToolDataMappingPythonFunctionPtrType ToolWidgetToolDataMappingPythonFunctionArgs
+
+func ToolWidgetToolDataMappingPythonFunctionPtr(v *ToolWidgetToolDataMappingPythonFunctionArgs) ToolWidgetToolDataMappingPythonFunctionPtrInput {
+	return (*toolWidgetToolDataMappingPythonFunctionPtrType)(v)
+}
+
+func (*toolWidgetToolDataMappingPythonFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolDataMappingPythonFunction)(nil)).Elem()
+}
+
+func (i *toolWidgetToolDataMappingPythonFunctionPtrType) ToToolWidgetToolDataMappingPythonFunctionPtrOutput() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return i.ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *toolWidgetToolDataMappingPythonFunctionPtrType) ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolDataMappingPythonFunctionPtrOutput)
+}
+
+type ToolWidgetToolDataMappingPythonFunctionOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolDataMappingPythonFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolDataMappingPythonFunction)(nil)).Elem()
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) ToToolWidgetToolDataMappingPythonFunctionOutput() ToolWidgetToolDataMappingPythonFunctionOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) ToToolWidgetToolDataMappingPythonFunctionOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) ToToolWidgetToolDataMappingPythonFunctionPtrOutput() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o.ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolWidgetToolDataMappingPythonFunction) *ToolWidgetToolDataMappingPythonFunction {
+		return &v
+	}).(ToolWidgetToolDataMappingPythonFunctionPtrOutput)
+}
+
+// (Output)
+// The description of the Python function, parsed from the python code's
+// docstring.
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMappingPythonFunction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the Python function to execute. Must match a Python function
+// name defined in the python code. Case sensitive. If the name is not
+// provided, the first function defined in the python code will be used.
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMappingPythonFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Python code to execute for the tool.
+func (o ToolWidgetToolDataMappingPythonFunctionOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolDataMappingPythonFunction) *string { return v.PythonCode }).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolDataMappingPythonFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolDataMappingPythonFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolDataMappingPythonFunction)(nil)).Elem()
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) ToToolWidgetToolDataMappingPythonFunctionPtrOutput() ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) ToToolWidgetToolDataMappingPythonFunctionPtrOutputWithContext(ctx context.Context) ToolWidgetToolDataMappingPythonFunctionPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) Elem() ToolWidgetToolDataMappingPythonFunctionOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMappingPythonFunction) ToolWidgetToolDataMappingPythonFunction {
+		if v != nil {
+			return *v
+		}
+		var ret ToolWidgetToolDataMappingPythonFunction
+		return ret
+	}).(ToolWidgetToolDataMappingPythonFunctionOutput)
+}
+
+// (Output)
+// The description of the Python function, parsed from the python code's
+// docstring.
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMappingPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the Python function to execute. Must match a Python function
+// name defined in the python code. Case sensitive. If the name is not
+// provided, the first function defined in the python code will be used.
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMappingPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Python code to execute for the tool.
+func (o ToolWidgetToolDataMappingPythonFunctionPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolDataMappingPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolParameters struct {
+	// Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties *string `pulumi:"additionalProperties"`
+	// The instance value should be valid against at least one of the schemas in this list.
+	AnyOf *string `pulumi:"anyOf"`
+	// Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default *string `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs *string `pulumi:"defs"`
+	// The description of the data.
+	Description *string `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums []string `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items *string `pulumi:"items"`
+	// Maximum number of the elements for Type.ARRAY. (int64 format)
+	MaxItems *int `pulumi:"maxItems"`
+	// Maximum value for Type.INTEGER and Type.NUMBER.
+	Maximum *float64 `pulumi:"maximum"`
+	// Minimum number of the elements for Type.ARRAY. (int64 format)
+	MinItems *int `pulumi:"minItems"`
+	// Minimum value for Type.INTEGER and Type.NUMBER.
+	Minimum *float64 `pulumi:"minimum"`
+	// Indicates if the value may be null.
+	Nullable *bool `pulumi:"nullable"`
+	// Schemas of initial elements of Type.ARRAY.
+	PrefixItems *string `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties *string `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref *string `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds []string `pulumi:"requireds"`
+	// The title of the schema.
+	Title *string `pulumi:"title"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type string `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems *bool `pulumi:"uniqueItems"`
+}
+
+// ToolWidgetToolParametersInput is an input type that accepts ToolWidgetToolParametersArgs and ToolWidgetToolParametersOutput values.
+// You can construct a concrete instance of `ToolWidgetToolParametersInput` via:
+//
+//	ToolWidgetToolParametersArgs{...}
+type ToolWidgetToolParametersInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolParametersOutput() ToolWidgetToolParametersOutput
+	ToToolWidgetToolParametersOutputWithContext(context.Context) ToolWidgetToolParametersOutput
+}
+
+type ToolWidgetToolParametersArgs struct {
+	// Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
+	// The instance value should be valid against at least one of the schemas in this list.
+	AnyOf pulumi.StringPtrInput `pulumi:"anyOf"`
+	// Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs pulumi.StringPtrInput `pulumi:"defs"`
+	// The description of the data.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items pulumi.StringPtrInput `pulumi:"items"`
+	// Maximum number of the elements for Type.ARRAY. (int64 format)
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Maximum value for Type.INTEGER and Type.NUMBER.
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// Minimum number of the elements for Type.ARRAY. (int64 format)
+	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// Minimum value for Type.INTEGER and Type.NUMBER.
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+	// Indicates if the value may be null.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// Schemas of initial elements of Type.ARRAY.
+	PrefixItems pulumi.StringPtrInput `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds pulumi.StringArrayInput `pulumi:"requireds"`
+	// The title of the schema.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems pulumi.BoolPtrInput `pulumi:"uniqueItems"`
+}
+
+func (ToolWidgetToolParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolParameters)(nil)).Elem()
+}
+
+func (i ToolWidgetToolParametersArgs) ToToolWidgetToolParametersOutput() ToolWidgetToolParametersOutput {
+	return i.ToToolWidgetToolParametersOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolParametersArgs) ToToolWidgetToolParametersOutputWithContext(ctx context.Context) ToolWidgetToolParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolParametersOutput)
+}
+
+func (i ToolWidgetToolParametersArgs) ToToolWidgetToolParametersPtrOutput() ToolWidgetToolParametersPtrOutput {
+	return i.ToToolWidgetToolParametersPtrOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolParametersArgs) ToToolWidgetToolParametersPtrOutputWithContext(ctx context.Context) ToolWidgetToolParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolParametersOutput).ToToolWidgetToolParametersPtrOutputWithContext(ctx)
+}
+
+// ToolWidgetToolParametersPtrInput is an input type that accepts ToolWidgetToolParametersArgs, ToolWidgetToolParametersPtr and ToolWidgetToolParametersPtrOutput values.
+// You can construct a concrete instance of `ToolWidgetToolParametersPtrInput` via:
+//
+//	        ToolWidgetToolParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolWidgetToolParametersPtrInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolParametersPtrOutput() ToolWidgetToolParametersPtrOutput
+	ToToolWidgetToolParametersPtrOutputWithContext(context.Context) ToolWidgetToolParametersPtrOutput
+}
+
+type toolWidgetToolParametersPtrType ToolWidgetToolParametersArgs
+
+func ToolWidgetToolParametersPtr(v *ToolWidgetToolParametersArgs) ToolWidgetToolParametersPtrInput {
+	return (*toolWidgetToolParametersPtrType)(v)
+}
+
+func (*toolWidgetToolParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolParameters)(nil)).Elem()
+}
+
+func (i *toolWidgetToolParametersPtrType) ToToolWidgetToolParametersPtrOutput() ToolWidgetToolParametersPtrOutput {
+	return i.ToToolWidgetToolParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *toolWidgetToolParametersPtrType) ToToolWidgetToolParametersPtrOutputWithContext(ctx context.Context) ToolWidgetToolParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolParametersPtrOutput)
+}
+
+type ToolWidgetToolParametersOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolParameters)(nil)).Elem()
+}
+
+func (o ToolWidgetToolParametersOutput) ToToolWidgetToolParametersOutput() ToolWidgetToolParametersOutput {
+	return o
+}
+
+func (o ToolWidgetToolParametersOutput) ToToolWidgetToolParametersOutputWithContext(ctx context.Context) ToolWidgetToolParametersOutput {
+	return o
+}
+
+func (o ToolWidgetToolParametersOutput) ToToolWidgetToolParametersPtrOutput() ToolWidgetToolParametersPtrOutput {
+	return o.ToToolWidgetToolParametersPtrOutputWithContext(context.Background())
+}
+
+func (o ToolWidgetToolParametersOutput) ToToolWidgetToolParametersPtrOutputWithContext(ctx context.Context) ToolWidgetToolParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolWidgetToolParameters) *ToolWidgetToolParameters {
+		return &v
+	}).(ToolWidgetToolParametersPtrOutput)
+}
+
+// Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolWidgetToolParametersOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
+}
+
+// The instance value should be valid against at least one of the schemas in this list.
+func (o ToolWidgetToolParametersOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.AnyOf }).(pulumi.StringPtrOutput)
+}
+
+// Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolWidgetToolParametersOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolWidgetToolParametersOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Defs }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolWidgetToolParametersOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolWidgetToolParametersOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolWidgetToolParametersOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Items }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of the elements for Type.ARRAY. (int64 format)
+func (o ToolWidgetToolParametersOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Maximum value for Type.INTEGER and Type.NUMBER.
+func (o ToolWidgetToolParametersOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of the elements for Type.ARRAY. (int64 format)
+func (o ToolWidgetToolParametersOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+// Minimum value for Type.INTEGER and Type.NUMBER.
+func (o ToolWidgetToolParametersOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolWidgetToolParametersOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// Schemas of initial elements of Type.ARRAY.
+func (o ToolWidgetToolParametersOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.PrefixItems }).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolWidgetToolParametersOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolWidgetToolParametersOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolWidgetToolParametersOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) []string { return v.Requireds }).(pulumi.StringArrayOutput)
+}
+
+// The title of the schema.
+func (o ToolWidgetToolParametersOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolWidgetToolParametersOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolWidgetToolParametersOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolParameters) *bool { return v.UniqueItems }).(pulumi.BoolPtrOutput)
+}
+
+type ToolWidgetToolParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolParameters)(nil)).Elem()
+}
+
+func (o ToolWidgetToolParametersPtrOutput) ToToolWidgetToolParametersPtrOutput() ToolWidgetToolParametersPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolParametersPtrOutput) ToToolWidgetToolParametersPtrOutputWithContext(ctx context.Context) ToolWidgetToolParametersPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolParametersPtrOutput) Elem() ToolWidgetToolParametersOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) ToolWidgetToolParameters {
+		if v != nil {
+			return *v
+		}
+		var ret ToolWidgetToolParameters
+		return ret
+	}).(ToolWidgetToolParametersOutput)
+}
+
+// Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolWidgetToolParametersPtrOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance value should be valid against at least one of the schemas in this list.
+func (o ToolWidgetToolParametersPtrOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnyOf
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolWidgetToolParametersPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolWidgetToolParametersPtrOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Defs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolWidgetToolParametersPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolWidgetToolParametersPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
+	}).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolWidgetToolParametersPtrOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of the elements for Type.ARRAY. (int64 format)
+func (o ToolWidgetToolParametersPtrOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxItems
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum value for Type.INTEGER and Type.NUMBER.
+func (o ToolWidgetToolParametersPtrOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of the elements for Type.ARRAY. (int64 format)
+func (o ToolWidgetToolParametersPtrOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinItems
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum value for Type.INTEGER and Type.NUMBER.
+func (o ToolWidgetToolParametersPtrOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Minimum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolWidgetToolParametersPtrOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Schemas of initial elements of Type.ARRAY.
+func (o ToolWidgetToolParametersPtrOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixItems
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolWidgetToolParametersPtrOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolWidgetToolParametersPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolWidgetToolParametersPtrOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Requireds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The title of the schema.
+func (o ToolWidgetToolParametersPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolWidgetToolParametersPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolWidgetToolParametersPtrOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UniqueItems
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ToolWidgetToolTextResponseConfig struct {
+	// Optional. The static text response to return when type is STATIC.
+	StaticText *string `pulumi:"staticText"`
+	// Optional. Instruction for the LLM on how to generate the text response. Used as
+	// the description for the text response parameter if type is LLM_GENERATED.
+	TextResponseInstruction *string `pulumi:"textResponseInstruction"`
+	// Optional. The strategy for providing the text response.
+	// Possible values:
+	// TYPE_UNSPECIFIED
+	// NONE
+	// LLM_GENERATED
+	// STATIC
+	// Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
+	Type *string `pulumi:"type"`
+}
+
+// ToolWidgetToolTextResponseConfigInput is an input type that accepts ToolWidgetToolTextResponseConfigArgs and ToolWidgetToolTextResponseConfigOutput values.
+// You can construct a concrete instance of `ToolWidgetToolTextResponseConfigInput` via:
+//
+//	ToolWidgetToolTextResponseConfigArgs{...}
+type ToolWidgetToolTextResponseConfigInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolTextResponseConfigOutput() ToolWidgetToolTextResponseConfigOutput
+	ToToolWidgetToolTextResponseConfigOutputWithContext(context.Context) ToolWidgetToolTextResponseConfigOutput
+}
+
+type ToolWidgetToolTextResponseConfigArgs struct {
+	// Optional. The static text response to return when type is STATIC.
+	StaticText pulumi.StringPtrInput `pulumi:"staticText"`
+	// Optional. Instruction for the LLM on how to generate the text response. Used as
+	// the description for the text response parameter if type is LLM_GENERATED.
+	TextResponseInstruction pulumi.StringPtrInput `pulumi:"textResponseInstruction"`
+	// Optional. The strategy for providing the text response.
+	// Possible values:
+	// TYPE_UNSPECIFIED
+	// NONE
+	// LLM_GENERATED
+	// STATIC
+	// Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ToolWidgetToolTextResponseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolTextResponseConfig)(nil)).Elem()
+}
+
+func (i ToolWidgetToolTextResponseConfigArgs) ToToolWidgetToolTextResponseConfigOutput() ToolWidgetToolTextResponseConfigOutput {
+	return i.ToToolWidgetToolTextResponseConfigOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolTextResponseConfigArgs) ToToolWidgetToolTextResponseConfigOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolTextResponseConfigOutput)
+}
+
+func (i ToolWidgetToolTextResponseConfigArgs) ToToolWidgetToolTextResponseConfigPtrOutput() ToolWidgetToolTextResponseConfigPtrOutput {
+	return i.ToToolWidgetToolTextResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolWidgetToolTextResponseConfigArgs) ToToolWidgetToolTextResponseConfigPtrOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolTextResponseConfigOutput).ToToolWidgetToolTextResponseConfigPtrOutputWithContext(ctx)
+}
+
+// ToolWidgetToolTextResponseConfigPtrInput is an input type that accepts ToolWidgetToolTextResponseConfigArgs, ToolWidgetToolTextResponseConfigPtr and ToolWidgetToolTextResponseConfigPtrOutput values.
+// You can construct a concrete instance of `ToolWidgetToolTextResponseConfigPtrInput` via:
+//
+//	        ToolWidgetToolTextResponseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolWidgetToolTextResponseConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolWidgetToolTextResponseConfigPtrOutput() ToolWidgetToolTextResponseConfigPtrOutput
+	ToToolWidgetToolTextResponseConfigPtrOutputWithContext(context.Context) ToolWidgetToolTextResponseConfigPtrOutput
+}
+
+type toolWidgetToolTextResponseConfigPtrType ToolWidgetToolTextResponseConfigArgs
+
+func ToolWidgetToolTextResponseConfigPtr(v *ToolWidgetToolTextResponseConfigArgs) ToolWidgetToolTextResponseConfigPtrInput {
+	return (*toolWidgetToolTextResponseConfigPtrType)(v)
+}
+
+func (*toolWidgetToolTextResponseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolTextResponseConfig)(nil)).Elem()
+}
+
+func (i *toolWidgetToolTextResponseConfigPtrType) ToToolWidgetToolTextResponseConfigPtrOutput() ToolWidgetToolTextResponseConfigPtrOutput {
+	return i.ToToolWidgetToolTextResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolWidgetToolTextResponseConfigPtrType) ToToolWidgetToolTextResponseConfigPtrOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolWidgetToolTextResponseConfigPtrOutput)
+}
+
+type ToolWidgetToolTextResponseConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolTextResponseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolWidgetToolTextResponseConfig)(nil)).Elem()
+}
+
+func (o ToolWidgetToolTextResponseConfigOutput) ToToolWidgetToolTextResponseConfigOutput() ToolWidgetToolTextResponseConfigOutput {
+	return o
+}
+
+func (o ToolWidgetToolTextResponseConfigOutput) ToToolWidgetToolTextResponseConfigOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigOutput {
+	return o
+}
+
+func (o ToolWidgetToolTextResponseConfigOutput) ToToolWidgetToolTextResponseConfigPtrOutput() ToolWidgetToolTextResponseConfigPtrOutput {
+	return o.ToToolWidgetToolTextResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolWidgetToolTextResponseConfigOutput) ToToolWidgetToolTextResponseConfigPtrOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolWidgetToolTextResponseConfig) *ToolWidgetToolTextResponseConfig {
+		return &v
+	}).(ToolWidgetToolTextResponseConfigPtrOutput)
+}
+
+// Optional. The static text response to return when type is STATIC.
+func (o ToolWidgetToolTextResponseConfigOutput) StaticText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolTextResponseConfig) *string { return v.StaticText }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Instruction for the LLM on how to generate the text response. Used as
+// the description for the text response parameter if type is LLM_GENERATED.
+func (o ToolWidgetToolTextResponseConfigOutput) TextResponseInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolTextResponseConfig) *string { return v.TextResponseInstruction }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The strategy for providing the text response.
+// Possible values:
+// TYPE_UNSPECIFIED
+// NONE
+// LLM_GENERATED
+// STATIC
+// Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
+func (o ToolWidgetToolTextResponseConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolWidgetToolTextResponseConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ToolWidgetToolTextResponseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolWidgetToolTextResponseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolWidgetToolTextResponseConfig)(nil)).Elem()
+}
+
+func (o ToolWidgetToolTextResponseConfigPtrOutput) ToToolWidgetToolTextResponseConfigPtrOutput() ToolWidgetToolTextResponseConfigPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolTextResponseConfigPtrOutput) ToToolWidgetToolTextResponseConfigPtrOutputWithContext(ctx context.Context) ToolWidgetToolTextResponseConfigPtrOutput {
+	return o
+}
+
+func (o ToolWidgetToolTextResponseConfigPtrOutput) Elem() ToolWidgetToolTextResponseConfigOutput {
+	return o.ApplyT(func(v *ToolWidgetToolTextResponseConfig) ToolWidgetToolTextResponseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolWidgetToolTextResponseConfig
+		return ret
+	}).(ToolWidgetToolTextResponseConfigOutput)
+}
+
+// Optional. The static text response to return when type is STATIC.
+func (o ToolWidgetToolTextResponseConfigPtrOutput) StaticText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolTextResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StaticText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Instruction for the LLM on how to generate the text response. Used as
+// the description for the text response parameter if type is LLM_GENERATED.
+func (o ToolWidgetToolTextResponseConfigPtrOutput) TextResponseInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolTextResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TextResponseInstruction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The strategy for providing the text response.
+// Possible values:
+// TYPE_UNSPECIFIED
+// NONE
+// LLM_GENERATED
+// STATIC
+// Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
+func (o ToolWidgetToolTextResponseConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolWidgetToolTextResponseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ToolsetMcpToolset struct {
@@ -47013,12 +52262,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetySafetySettingArrayInput)(nil)).Elem(), GuardrailModelSafetySafetySettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsEndpointControlPolicyInput)(nil)).Elem(), SecuritySettingsEndpointControlPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsEndpointControlPolicyPtrInput)(nil)).Elem(), SecuritySettingsEndpointControlPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolAgentToolInput)(nil)).Elem(), ToolAgentToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolAgentToolPtrInput)(nil)).Elem(), ToolAgentToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionInput)(nil)).Elem(), ToolClientFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionPtrInput)(nil)).Elem(), ToolClientFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionParametersInput)(nil)).Elem(), ToolClientFunctionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionParametersPtrInput)(nil)).Elem(), ToolClientFunctionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionResponseInput)(nil)).Elem(), ToolClientFunctionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionResponsePtrInput)(nil)).Elem(), ToolClientFunctionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolInput)(nil)).Elem(), ToolConnectorToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolArrayInput)(nil)).Elem(), ToolConnectorToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolActionInput)(nil)).Elem(), ToolConnectorToolActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolActionArrayInput)(nil)).Elem(), ToolConnectorToolActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolActionEntityOperationInput)(nil)).Elem(), ToolConnectorToolActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorToolActionEntityOperationArrayInput)(nil)).Elem(), ToolConnectorToolActionEntityOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolInput)(nil)).Elem(), ToolDataStoreToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolPtrInput)(nil)).Elem(), ToolDataStoreToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecInput)(nil)).Elem(), ToolDataStoreToolBoostSpecArgs{})
@@ -47031,6 +52288,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourceInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourcePtrInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStoreInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceDataStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStorePtrInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceDataStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayInput)(nil)).Elem(), ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceInput)(nil)).Elem(), ToolDataStoreToolEngineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourcePtrInput)(nil)).Elem(), ToolDataStoreToolEngineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceArgs{})
@@ -47051,8 +52314,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolFileSearchToolInput)(nil)).Elem(), ToolFileSearchToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolFileSearchToolPtrInput)(nil)).Elem(), ToolFileSearchToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolInput)(nil)).Elem(), ToolGoogleSearchToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolPtrInput)(nil)).Elem(), ToolGoogleSearchToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolPromptConfigInput)(nil)).Elem(), ToolGoogleSearchToolPromptConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolPromptConfigPtrInput)(nil)).Elem(), ToolGoogleSearchToolPromptConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolInput)(nil)).Elem(), ToolMcpToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolArrayInput)(nil)).Elem(), ToolMcpToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationInput)(nil)).Elem(), ToolMcpToolApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolMcpToolApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationApiKeyConfigArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationApiKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationBearerTokenConfigInput)(nil)).Elem(), ToolMcpToolApiAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationBearerTokenConfigArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationBearerTokenConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationOauthConfigInput)(nil)).Elem(), ToolMcpToolApiAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationOauthConfigArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationOauthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAccountAuthConfigInput)(nil)).Elem(), ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationServiceAccountAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigInput)(nil)).Elem(), ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput)(nil)).Elem(), ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolServiceDirectoryConfigInput)(nil)).Elem(), ToolMcpToolServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolServiceDirectoryConfigArrayInput)(nil)).Elem(), ToolMcpToolServiceDirectoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolTlsConfigInput)(nil)).Elem(), ToolMcpToolTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolTlsConfigArrayInput)(nil)).Elem(), ToolMcpToolTlsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolTlsConfigCaCertInput)(nil)).Elem(), ToolMcpToolTlsConfigCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolMcpToolTlsConfigCaCertArrayInput)(nil)).Elem(), ToolMcpToolTlsConfigCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolInput)(nil)).Elem(), ToolOpenApiToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolArrayInput)(nil)).Elem(), ToolOpenApiToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationArgs{})
@@ -47075,8 +52362,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCertArrayInput)(nil)).Elem(), ToolOpenApiToolTlsConfigCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionInput)(nil)).Elem(), ToolPythonFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionPtrInput)(nil)).Elem(), ToolPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolInput)(nil)).Elem(), ToolRemoteAgentToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolArrayInput)(nil)).Elem(), ToolRemoteAgentToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSkillInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSkillArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSkillArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSkillArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterfaceInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSupportedInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSupportedInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolInput)(nil)).Elem(), ToolSystemToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolArrayInput)(nil)).Elem(), ToolSystemToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolInput)(nil)).Elem(), ToolWidgetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolPtrInput)(nil)).Elem(), ToolWidgetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolDataMappingInput)(nil)).Elem(), ToolWidgetToolDataMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolDataMappingPtrInput)(nil)).Elem(), ToolWidgetToolDataMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolDataMappingPythonFunctionInput)(nil)).Elem(), ToolWidgetToolDataMappingPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolDataMappingPythonFunctionPtrInput)(nil)).Elem(), ToolWidgetToolDataMappingPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolParametersInput)(nil)).Elem(), ToolWidgetToolParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolParametersPtrInput)(nil)).Elem(), ToolWidgetToolParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolTextResponseConfigInput)(nil)).Elem(), ToolWidgetToolTextResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolTextResponseConfigPtrInput)(nil)).Elem(), ToolWidgetToolTextResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetPtrInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationArgs{})
@@ -47564,12 +52869,20 @@ func init() {
 	pulumi.RegisterOutputType(GuardrailModelSafetySafetySettingArrayOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsEndpointControlPolicyOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsEndpointControlPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ToolAgentToolOutput{})
+	pulumi.RegisterOutputType(ToolAgentToolPtrOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionPtrOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionParametersOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionParametersPtrOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionResponseOutput{})
 	pulumi.RegisterOutputType(ToolClientFunctionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolActionOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolActionArrayOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolActionEntityOperationOutput{})
+	pulumi.RegisterOutputType(ToolConnectorToolActionEntityOperationArrayOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecOutput{})
@@ -47582,6 +52895,12 @@ func init() {
 	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourceOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourcePtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourceDataStoreOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourceDataStorePtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolDataStoreSourceDataStoreConnectorConfigArrayOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourcePtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceOutput{})
@@ -47602,8 +52921,32 @@ func init() {
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ToolFileSearchToolOutput{})
+	pulumi.RegisterOutputType(ToolFileSearchToolPtrOutput{})
 	pulumi.RegisterOutputType(ToolGoogleSearchToolOutput{})
 	pulumi.RegisterOutputType(ToolGoogleSearchToolPtrOutput{})
+	pulumi.RegisterOutputType(ToolGoogleSearchToolPromptConfigOutput{})
+	pulumi.RegisterOutputType(ToolGoogleSearchToolPromptConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationApiKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationBearerTokenConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationOauthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationServiceAccountAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationServiceAccountAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolServiceDirectoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolTlsConfigOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolTlsConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolTlsConfigCaCertOutput{})
+	pulumi.RegisterOutputType(ToolMcpToolTlsConfigCaCertArrayOutput{})
 	pulumi.RegisterOutputType(ToolOpenApiToolOutput{})
 	pulumi.RegisterOutputType(ToolOpenApiToolArrayOutput{})
 	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationOutput{})
@@ -47626,8 +52969,26 @@ func init() {
 	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigCaCertArrayOutput{})
 	pulumi.RegisterOutputType(ToolPythonFunctionOutput{})
 	pulumi.RegisterOutputType(ToolPythonFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSkillOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSkillArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSupportedInterfaceOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolPtrOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolDataMappingOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolDataMappingPtrOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolDataMappingPythonFunctionOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolDataMappingPythonFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolParametersOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolParametersPtrOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolTextResponseConfigOutput{})
+	pulumi.RegisterOutputType(ToolWidgetToolTextResponseConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationOutput{})

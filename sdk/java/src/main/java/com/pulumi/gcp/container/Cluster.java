@@ -41,6 +41,7 @@ import com.pulumi.gcp.container.outputs.ClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodeCreationConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePool;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaults;
@@ -1366,6 +1367,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterNodeConfig> nodeConfig() {
         return this.nodeConfig;
+    }
+    /**
+     * Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     * 
+     */
+    @Export(name="nodeCreationConfig", refs={ClusterNodeCreationConfig.class}, tree="[0]")
+    private Output<ClusterNodeCreationConfig> nodeCreationConfig;
+
+    /**
+     * @return Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     * 
+     */
+    public Output<ClusterNodeCreationConfig> nodeCreationConfig() {
+        return this.nodeCreationConfig;
     }
     /**
      * The list of zones in which the cluster&#39;s nodes

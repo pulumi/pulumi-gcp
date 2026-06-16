@@ -339,6 +339,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Mount NFS datastore on vSphere cluster
+ *         // This code block is required to mount the datastore on ESXi hosts
  *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()
  *             .name("ext-cluster")
  *             .parent(cluster_pc.id())
@@ -524,6 +526,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Mount NFS datastore on vSphere cluster
+ *         // This code block is required to mount the datastore on ESXi hosts
  *         var vmw_ext_cluster = new Cluster("vmw-ext-cluster", ClusterArgs.builder()
  *             .name("ext-cluster")
  *             .parent(cluster_pc.id())

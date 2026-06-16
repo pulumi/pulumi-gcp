@@ -417,7 +417,7 @@ class InstanceGceSetupAcceleratorConfigArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Type of this accelerator.
-    Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+    Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_RTX6000`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
     """
 
 @pulumi.input_type
@@ -428,7 +428,7 @@ class InstanceGceSetupAcceleratorConfigArgs:
         """
         :param pulumi.Input[_builtins.str] core_count: Optional. Count of cores of this accelerator.
         :param pulumi.Input[_builtins.str] type: Optional. Type of this accelerator.
-               Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+               Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_RTX6000`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
         """
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
@@ -452,7 +452,7 @@ class InstanceGceSetupAcceleratorConfigArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Type of this accelerator.
-        Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+        Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_RTX6000`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
         """
         return pulumi.get(self, "type")
 

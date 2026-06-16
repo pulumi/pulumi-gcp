@@ -68,12 +68,6 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "new",
-    ///         Project = "my-project",
-    ///     });
-    /// 
     ///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
     ///     {
     ///         AutonomousDatabaseId = "my-instance",
@@ -82,8 +76,8 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         DisplayName = "autonomousDatabase displayname",
     ///         Database = "mydatabase",
     ///         AdminPassword = "123Abpassword",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         Cidr = "10.5.0.0/24",
+    ///         OdbNetwork = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+    ///         OdbSubnet = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
@@ -115,6 +109,12 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             PrivateEndpointLabel = "myendpoint",
     ///         },
     ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "new",
+    ///         Project = "my-project",
     ///     });
     /// 
     /// });

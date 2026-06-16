@@ -220,6 +220,8 @@ class InstancePrivateConfig(dict):
             suggest = "custom_host_config"
         elif key == "httpServiceAttachment":
             suggest = "http_service_attachment"
+        elif key == "pscAllowedProjects":
+            suggest = "psc_allowed_projects"
         elif key == "sshServiceAttachment":
             suggest = "ssh_service_attachment"
 
@@ -239,6 +241,7 @@ class InstancePrivateConfig(dict):
                  ca_pool: Optional[_builtins.str] = None,
                  custom_host_config: Optional['outputs.InstancePrivateConfigCustomHostConfig'] = None,
                  http_service_attachment: Optional[_builtins.str] = None,
+                 psc_allowed_projects: Optional[Sequence[_builtins.str]] = None,
                  ssh_service_attachment: Optional[_builtins.str] = None):
         """
         :param _builtins.bool is_private: 'Indicate if it's private instance.'
@@ -247,6 +250,8 @@ class InstancePrivateConfig(dict):
                Structure is documented below.
         :param _builtins.str http_service_attachment: (Output)
                Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        :param Sequence[_builtins.str] psc_allowed_projects: Optional. Additional allowed projects for setting up PSC connections.
+               Instance host project is automatically allowed and does not need to be included in this list.
         :param _builtins.str ssh_service_attachment: (Output)
                Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
@@ -257,6 +262,8 @@ class InstancePrivateConfig(dict):
             pulumi.set(__self__, "custom_host_config", custom_host_config)
         if http_service_attachment is not None:
             pulumi.set(__self__, "http_service_attachment", http_service_attachment)
+        if psc_allowed_projects is not None:
+            pulumi.set(__self__, "psc_allowed_projects", psc_allowed_projects)
         if ssh_service_attachment is not None:
             pulumi.set(__self__, "ssh_service_attachment", ssh_service_attachment)
 
@@ -293,6 +300,15 @@ class InstancePrivateConfig(dict):
         Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
         return pulumi.get(self, "http_service_attachment")
+
+    @_builtins.property
+    @pulumi.getter(name="pscAllowedProjects")
+    def psc_allowed_projects(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. Additional allowed projects for setting up PSC connections.
+        Instance host project is automatically allowed and does not need to be included in this list.
+        """
+        return pulumi.get(self, "psc_allowed_projects")
 
     @_builtins.property
     @pulumi.getter(name="sshServiceAttachment")

@@ -61,7 +61,7 @@ import (
 //				EnablementState: pulumi.String("ENABLED"),
 //				Type:            pulumi.String("CONFIGURABLE_BAD_IP"),
 //				Description:     "My Event Threat Detection Custom Module",
-//				Config:          pulumi.String(pulumi.String(json0)),
+//				Config:          pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err

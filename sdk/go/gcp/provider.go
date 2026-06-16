@@ -139,6 +139,7 @@ type Provider struct {
 	IntegrationConnectorsCustomEndpoint    pulumi.StringPtrOutput `pulumi:"integrationConnectorsCustomEndpoint"`
 	IntegrationsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"integrationsCustomEndpoint"`
 	KmsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
+	LicenseManagerCustomEndpoint           pulumi.StringPtrOutput `pulumi:"licenseManagerCustomEndpoint"`
 	LoggingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
 	LustreCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lustreCustomEndpoint"`
@@ -388,6 +389,7 @@ type providerArgs struct {
 	IntegrationConnectorsCustomEndpoint    *string                      `pulumi:"integrationConnectorsCustomEndpoint"`
 	IntegrationsCustomEndpoint             *string                      `pulumi:"integrationsCustomEndpoint"`
 	KmsCustomEndpoint                      *string                      `pulumi:"kmsCustomEndpoint"`
+	LicenseManagerCustomEndpoint           *string                      `pulumi:"licenseManagerCustomEndpoint"`
 	LoggingCustomEndpoint                  *string                      `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   *string                      `pulumi:"lookerCustomEndpoint"`
 	LustreCustomEndpoint                   *string                      `pulumi:"lustreCustomEndpoint"`
@@ -604,6 +606,7 @@ type ProviderArgs struct {
 	IntegrationConnectorsCustomEndpoint    pulumi.StringPtrInput
 	IntegrationsCustomEndpoint             pulumi.StringPtrInput
 	KmsCustomEndpoint                      pulumi.StringPtrInput
+	LicenseManagerCustomEndpoint           pulumi.StringPtrInput
 	LoggingCustomEndpoint                  pulumi.StringPtrInput
 	LookerCustomEndpoint                   pulumi.StringPtrInput
 	LustreCustomEndpoint                   pulumi.StringPtrInput
@@ -1233,6 +1236,10 @@ func (o ProviderOutput) IntegrationsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) KmsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KmsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) LicenseManagerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LicenseManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) LoggingCustomEndpoint() pulumi.StringPtrOutput {

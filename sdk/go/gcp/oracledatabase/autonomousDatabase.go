@@ -50,7 +50,7 @@ import (
 //				Project:              pulumi.String("my-project"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				Network:              pulumi.String(pulumi.String(_default.Id)),
+//				Network:              pulumi.String(_default.Id),
 //				Cidr:                 pulumi.String("10.5.0.0/24"),
 //				Properties: &oracledatabase.AutonomousDatabasePropertiesArgs{
 //					ComputeCount:      pulumi.Float64(2),
@@ -84,22 +84,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name:    pulumi.StringRef("new"),
-//				Project: pulumi.StringRef("my-project"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
+//			_, err := oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
 //				AutonomousDatabaseId: pulumi.String("my-instance"),
 //				Location:             pulumi.String("us-east4"),
 //				Project:              pulumi.String("my-project"),
 //				DisplayName:          pulumi.String("autonomousDatabase displayname"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				Network:              pulumi.String(pulumi.String(_default.Id)),
-//				Cidr:                 pulumi.String("10.5.0.0/24"),
+//				OdbNetwork:           pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork"),
+//				OdbSubnet:            pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -128,6 +121,13 @@ import (
 //				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name:    pulumi.StringRef("new"),
+//				Project: pulumi.StringRef("my-project"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}

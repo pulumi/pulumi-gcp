@@ -1585,7 +1585,7 @@ import (
 //				return err
 //			}
 //			blmtConnection, err := bigquery.NewConnection(ctx, "blmt_connection", &bigquery.ConnectionArgs{
-//				Project:       pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:       pulumi.String(project.ProjectId),
 //				Location:      pulumi.String("us-central1"),
 //				ConnectionId:  pulumi.String("blmt-connection"),
 //				FriendlyName:  pulumi.String("Datastream BLMT Test Connection"),

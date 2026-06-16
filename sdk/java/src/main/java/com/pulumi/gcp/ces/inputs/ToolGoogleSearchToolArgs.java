@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.ces.inputs.ToolGoogleSearchToolPromptConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -112,6 +113,25 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.preferredDomains);
     }
 
+    /**
+     * Optional. Prompt instructions passed to planner on how the search results should be
+     * processed for text and voice.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="promptConfig")
+    private @Nullable Output<ToolGoogleSearchToolPromptConfigArgs> promptConfig;
+
+    /**
+     * @return Optional. Prompt instructions passed to planner on how the search results should be
+     * processed for text and voice.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolGoogleSearchToolPromptConfigArgs>> promptConfig() {
+        return Optional.ofNullable(this.promptConfig);
+    }
+
     private ToolGoogleSearchToolArgs() {}
 
     private ToolGoogleSearchToolArgs(ToolGoogleSearchToolArgs $) {
@@ -120,6 +140,7 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
         this.excludeDomains = $.excludeDomains;
         this.name = $.name;
         this.preferredDomains = $.preferredDomains;
+        this.promptConfig = $.promptConfig;
     }
 
     public static Builder builder() {
@@ -303,6 +324,31 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
          */
         public Builder preferredDomains(String... preferredDomains) {
             return preferredDomains(List.of(preferredDomains));
+        }
+
+        /**
+         * @param promptConfig Optional. Prompt instructions passed to planner on how the search results should be
+         * processed for text and voice.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promptConfig(@Nullable Output<ToolGoogleSearchToolPromptConfigArgs> promptConfig) {
+            $.promptConfig = promptConfig;
+            return this;
+        }
+
+        /**
+         * @param promptConfig Optional. Prompt instructions passed to planner on how the search results should be
+         * processed for text and voice.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promptConfig(ToolGoogleSearchToolPromptConfigArgs promptConfig) {
+            return promptConfig(Output.of(promptConfig));
         }
 
         public ToolGoogleSearchToolArgs build() {

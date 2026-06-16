@@ -154,8 +154,8 @@ namespace Pulumi.Gcp.Compute
     ///         Runtime = "nodejs",
     ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
     ///         {
-    ///             OperatingSystem = "ubuntu22",
-    ///             RuntimeVersion = "20",
+    ///             OperatingSystem = "ubuntu24",
+    ///             RuntimeVersion = "24",
     ///         },
     ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
     ///         {

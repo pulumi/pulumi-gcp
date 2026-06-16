@@ -60,6 +60,21 @@ export type DataProductDataAsset = import("./dataProductDataAsset").DataProductD
 export const DataProductDataAsset: typeof import("./dataProductDataAsset").DataProductDataAsset = null as any;
 utilities.lazyLoad(exports, ["DataProductDataAsset"], () => require("./dataProductDataAsset"));
 
+export { DataProductIamBindingArgs, DataProductIamBindingState } from "./dataProductIamBinding";
+export type DataProductIamBinding = import("./dataProductIamBinding").DataProductIamBinding;
+export const DataProductIamBinding: typeof import("./dataProductIamBinding").DataProductIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataProductIamBinding"], () => require("./dataProductIamBinding"));
+
+export { DataProductIamMemberArgs, DataProductIamMemberState } from "./dataProductIamMember";
+export type DataProductIamMember = import("./dataProductIamMember").DataProductIamMember;
+export const DataProductIamMember: typeof import("./dataProductIamMember").DataProductIamMember = null as any;
+utilities.lazyLoad(exports, ["DataProductIamMember"], () => require("./dataProductIamMember"));
+
+export { DataProductIamPolicyArgs, DataProductIamPolicyState } from "./dataProductIamPolicy";
+export type DataProductIamPolicy = import("./dataProductIamPolicy").DataProductIamPolicy;
+export const DataProductIamPolicy: typeof import("./dataProductIamPolicy").DataProductIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataProductIamPolicy"], () => require("./dataProductIamPolicy"));
+
 export { DatascanArgs, DatascanState } from "./datascan";
 export type Datascan = import("./datascan").Datascan;
 export const Datascan: typeof import("./datascan").Datascan = null as any;
@@ -139,6 +154,11 @@ export { GetAssetIamPolicyArgs, GetAssetIamPolicyResult, GetAssetIamPolicyOutput
 export const getAssetIamPolicy: typeof import("./getAssetIamPolicy").getAssetIamPolicy = null as any;
 export const getAssetIamPolicyOutput: typeof import("./getAssetIamPolicy").getAssetIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAssetIamPolicy","getAssetIamPolicyOutput"], () => require("./getAssetIamPolicy"));
+
+export { GetDataProductIamPolicyArgs, GetDataProductIamPolicyResult, GetDataProductIamPolicyOutputArgs } from "./getDataProductIamPolicy";
+export const getDataProductIamPolicy: typeof import("./getDataProductIamPolicy").getDataProductIamPolicy = null as any;
+export const getDataProductIamPolicyOutput: typeof import("./getDataProductIamPolicy").getDataProductIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataProductIamPolicy","getDataProductIamPolicyOutput"], () => require("./getDataProductIamPolicy"));
 
 export { GetDataQualityRulesArgs, GetDataQualityRulesResult, GetDataQualityRulesOutputArgs } from "./getDataQualityRules";
 export const getDataQualityRules: typeof import("./getDataQualityRules").getDataQualityRules = null as any;
@@ -297,6 +317,12 @@ const _module = {
                 return new DataProduct(name, <any>undefined, { urn })
             case "gcp:dataplex/dataProductDataAsset:DataProductDataAsset":
                 return new DataProductDataAsset(name, <any>undefined, { urn })
+            case "gcp:dataplex/dataProductIamBinding:DataProductIamBinding":
+                return new DataProductIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/dataProductIamMember:DataProductIamMember":
+                return new DataProductIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/dataProductIamPolicy:DataProductIamPolicy":
+                return new DataProductIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/datascan:Datascan":
                 return new Datascan(name, <any>undefined, { urn })
             case "gcp:dataplex/datascanIamBinding:DatascanIamBinding":
@@ -377,6 +403,9 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataAsset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProductDataAsset", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProductIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProductIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProductIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamMember", _module)

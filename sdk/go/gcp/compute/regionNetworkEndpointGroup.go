@@ -179,8 +179,8 @@ import (
 //				Service:   pulumi.String("appengine-neg"),
 //				Runtime:   pulumi.String("nodejs"),
 //				FlexibleRuntimeSettings: &appengine.FlexibleAppVersionFlexibleRuntimeSettingsArgs{
-//					OperatingSystem: pulumi.String("ubuntu22"),
-//					RuntimeVersion:  pulumi.String("20"),
+//					OperatingSystem: pulumi.String("ubuntu24"),
+//					RuntimeVersion:  pulumi.String("24"),
 //				},
 //				Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),

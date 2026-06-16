@@ -59,7 +59,7 @@ import (
 //				Catalog:    pulumi.Any(myIcebergTable.Catalog),
 //				Namespace:  pulumi.Any(myIcebergTable.Namespace),
 //				Name:       pulumi.Any(myIcebergTable.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -187,7 +187,7 @@ import (
 //				Catalog:    pulumi.Any(myIcebergTable.Catalog),
 //				Namespace:  pulumi.Any(myIcebergTable.Namespace),
 //				Name:       pulumi.Any(myIcebergTable.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

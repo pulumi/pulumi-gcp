@@ -10,12 +10,18 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.ToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolState;
+import com.pulumi.gcp.ces.outputs.ToolAgentTool;
 import com.pulumi.gcp.ces.outputs.ToolClientFunction;
+import com.pulumi.gcp.ces.outputs.ToolConnectorTool;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreTool;
+import com.pulumi.gcp.ces.outputs.ToolFileSearchTool;
 import com.pulumi.gcp.ces.outputs.ToolGoogleSearchTool;
+import com.pulumi.gcp.ces.outputs.ToolMcpTool;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiTool;
 import com.pulumi.gcp.ces.outputs.ToolPythonFunction;
+import com.pulumi.gcp.ces.outputs.ToolRemoteAgentTool;
 import com.pulumi.gcp.ces.outputs.ToolSystemTool;
+import com.pulumi.gcp.ces.outputs.ToolWidgetTool;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +29,14 @@ import javax.annotation.Nullable;
 
 /**
  * Description
+ * 
+ * &gt; **Note:** **Direct Management Restriction for Certain Tool Types:**
+ * 
+ * Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `gcp.ces.Tool` resource.
+ * 
+ * `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+ * 
+ * Consequently, blocks like `openApiTool`, `mcpTool`, `connectorTool`, `remoteAgentTool`, and `systemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
  * 
  * ## Example Usage
  * 
@@ -438,6 +452,214 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Tool Agent Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Agent;
+ * import com.pulumi.gcp.ces.AgentArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentLlmAgentArgs;
+ * import com.pulumi.gcp.ces.Tool;
+ * import com.pulumi.gcp.ces.ToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolAgentToolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_app = new App("my-app", AppArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .appId("app-id")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var targetAgent = new Agent("targetAgent", AgentArgs.builder()
+ *             .agentId("target-agent")
+ *             .location("us")
+ *             .app(my_app.appId())
+ *             .displayName("Target Agent")
+ *             .instruction("Target agent instruction")
+ *             .llmAgent(AgentLlmAgentArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolAgentBasic = new Tool("cesToolAgentBasic", ToolArgs.builder()
+ *             .location("us")
+ *             .app(my_app.name())
+ *             .toolId("ces_tool_basic5")
+ *             .executionType("SYNCHRONOUS")
+ *             .agentTool(ToolAgentToolArgs.builder()
+ *                 .name("ces_tool_agent_basic")
+ *                 .description("example-description")
+ *                 .agent(Output.tuple(my_app.project(), my_app.appId(), targetAgent.agentId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     var agentId = values.t3;
+ *                     return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+ *                 }))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Tool File Search Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Tool;
+ * import com.pulumi.gcp.ces.ToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolFileSearchToolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_app = new App("my-app", AppArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .appId("app-id")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolFileSearchBasic = new Tool("cesToolFileSearchBasic", ToolArgs.builder()
+ *             .location("us")
+ *             .app(my_app.name())
+ *             .toolId("ces_tool_basic6")
+ *             .executionType("SYNCHRONOUS")
+ *             .fileSearchTool(ToolFileSearchToolArgs.builder()
+ *                 .name("ces_tool_file_search_basic")
+ *                 .description("example-description")
+ *                 .corpusType("FULLY_MANAGED")
+ *                 .fileCorpus(my_app.project().applyValue(_project -> String.format("projects/%s/locations/us/ragCorpora/tf-test-mock-corpus", _project)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Tool Widget Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Tool;
+ * import com.pulumi.gcp.ces.ToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolWidgetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolWidgetToolDataMappingArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolWidgetToolTextResponseConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolWidgetToolParametersArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_app = new App("my-app", AppArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .appId("app-id")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolWidgetBasic = new Tool("cesToolWidgetBasic", ToolArgs.builder()
+ *             .location("us")
+ *             .app(my_app.name())
+ *             .toolId("ces_tool_basic7")
+ *             .executionType("SYNCHRONOUS")
+ *             .widgetTool(ToolWidgetToolArgs.builder()
+ *                 .name("ces_tool_widget_basic")
+ *                 .description("example-description")
+ *                 .widgetType("PRODUCT_CAROUSEL")
+ *                 .uiConfig(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("displaySettings", jsonObject(
+ *                             jsonProperty("showHeader", true)
+ *                         ))
+ *                     )))
+ *                 .dataMapping(ToolWidgetToolDataMappingArgs.builder()
+ *                     .mode("FIELD_MAPPING")
+ *                     .fieldMappings(Map.ofEntries(
+ *                         Map.entry("key1", "value1"),
+ *                         Map.entry("key2", "value2")
+ *                     ))
+ *                     .build())
+ *                 .textResponseConfig(ToolWidgetToolTextResponseConfigArgs.builder()
+ *                     .type("STATIC")
+ *                     .staticText("example-static-text")
+ *                     .build())
+ *                 .parameters(ToolWidgetToolParametersArgs.builder()
+ *                     .type("OBJECT")
+ *                     .properties(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("param1", jsonObject(
+ *                                 jsonProperty("type", "STRING")
+ *                             ))
+ *                         )))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -458,6 +680,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:ces/tool:Tool")
 public class Tool extends com.pulumi.resources.CustomResource {
+    /**
+     * Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="agentTool", refs={ToolAgentTool.class}, tree="[0]")
+    private Output</* @Nullable */ ToolAgentTool> agentTool;
+
+    /**
+     * @return Represents a tool that allows the agent to call another agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolAgentTool>> agentTool() {
+        return Codegen.optional(this.agentTool);
+    }
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
@@ -493,6 +731,22 @@ public class Tool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ToolClientFunction>> clientFunction() {
         return Codegen.optional(this.clientFunction);
+    }
+    /**
+     * A ConnectorTool allows connections to different integrations.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="connectorTools", refs={List.class,ToolConnectorTool.class}, tree="[0,1]")
+    private Output<List<ToolConnectorTool>> connectorTools;
+
+    /**
+     * @return A ConnectorTool allows connections to different integrations.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ToolConnectorTool>> connectorTools() {
+        return this.connectorTools;
     }
     /**
      * Timestamp when the tool was created.
@@ -609,6 +863,24 @@ public class Tool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.executionType);
     }
     /**
+     * The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="fileSearchTool", refs={ToolFileSearchTool.class}, tree="[0]")
+    private Output</* @Nullable */ ToolFileSearchTool> fileSearchTool;
+
+    /**
+     * @return The file search tool allows the agent to search across the files uploaded by the
+     * app/agent developer.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolFileSearchTool>> fileSearchTool() {
+        return Codegen.optional(this.fileSearchTool);
+    }
+    /**
      * If the tool is generated by the LLM assistant, this field contains a
      * descriptive summary of the generation.
      * 
@@ -657,6 +929,22 @@ public class Tool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * An MCP tool.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="mcpTools", refs={List.class,ToolMcpTool.class}, tree="[0,1]")
+    private Output<List<ToolMcpTool>> mcpTools;
+
+    /**
+     * @return An MCP tool.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ToolMcpTool>> mcpTools() {
+        return this.mcpTools;
     }
     /**
      * (Output)
@@ -723,6 +1011,22 @@ public class Tool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pythonFunction);
     }
     /**
+     * Represents a tool that allows the agent to call another remote agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="remoteAgentTools", refs={List.class,ToolRemoteAgentTool.class}, tree="[0,1]")
+    private Output<List<ToolRemoteAgentTool>> remoteAgentTools;
+
+    /**
+     * @return Represents a tool that allows the agent to call another remote agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ToolRemoteAgentTool>> remoteAgentTools() {
+        return this.remoteAgentTools;
+    }
+    /**
      * The system tool.
      * Structure is documented below.
      * 
@@ -769,6 +1073,22 @@ public class Tool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="widgetTool", refs={ToolWidgetTool.class}, tree="[0]")
+    private Output</* @Nullable */ ToolWidgetTool> widgetTool;
+
+    /**
+     * @return Represents a widget tool that the agent can invoke.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolWidgetTool>> widgetTool() {
+        return Codegen.optional(this.widgetTool);
     }
 
     /**

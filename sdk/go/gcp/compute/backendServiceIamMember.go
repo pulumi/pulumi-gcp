@@ -62,7 +62,7 @@ import (
 //			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
 //				Project:    pulumi.Any(_default.Project),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
 //				Project:    pulumi.Any(_default.Project),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -304,7 +304,7 @@ import (
 //			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
 //				Project:    pulumi.Any(_default.Project),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -351,7 +351,7 @@ import (
 //			_, err = compute.NewBackendServiceIamPolicy(ctx, "policy", &compute.BackendServiceIamPolicyArgs{
 //				Project:    pulumi.Any(_default.Project),
 //				Name:       pulumi.Any(_default.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

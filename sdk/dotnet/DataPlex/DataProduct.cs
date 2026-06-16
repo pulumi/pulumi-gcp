@@ -85,6 +85,13 @@ namespace Pulumi.Gcp.DataPlex
     ///         {
     ///             "gterraformtestuser@gmail.com",
     ///         },
+    ///         AccessApprovalConfig = new Gcp.DataPlex.Inputs.DataProductAccessApprovalConfigArgs
+    ///         {
+    ///             ApproverEmails = new[]
+    ///             {
+    ///                 "gterraformtestuser@gmail.com",
+    ///             },
+    ///         },
     ///         Labels = 
     ///         {
     ///             { "env", "manual-test" },
@@ -137,6 +144,13 @@ namespace Pulumi.Gcp.DataPlex
     [GcpResourceType("gcp:dataplex/dataProduct:DataProduct")]
     public partial class DataProduct : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration for access approval for the data product.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("accessApprovalConfig")]
+        public Output<Outputs.DataProductAccessApprovalConfig?> AccessApprovalConfig { get; private set; } = null!;
+
         /// <summary>
         /// Custom user defined access groups at the data product level.
         /// Structure is documented below.
@@ -210,6 +224,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// The relative resource name of the data product.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Emails of the owners.
@@ -294,6 +314,13 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class DataProductArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for access approval for the data product.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessApprovalConfig")]
+        public Input<Inputs.DataProductAccessApprovalConfigArgs>? AccessApprovalConfig { get; set; }
+
         [Input("accessGroups")]
         private InputList<Inputs.DataProductAccessGroupArgs>? _accessGroups;
 
@@ -383,6 +410,13 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class DataProductState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for access approval for the data product.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessApprovalConfig")]
+        public Input<Inputs.DataProductAccessApprovalConfigGetArgs>? AccessApprovalConfig { get; set; }
+
         [Input("accessGroups")]
         private InputList<Inputs.DataProductAccessGroupGetArgs>? _accessGroups;
 
@@ -478,6 +512,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The relative resource name of the data product.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("ownerEmails")]
         private InputList<string>? _ownerEmails;

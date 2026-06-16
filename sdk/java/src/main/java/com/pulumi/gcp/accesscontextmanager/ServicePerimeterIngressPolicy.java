@@ -27,10 +27,7 @@ import javax.annotation.Nullable;
  * Individual ingress policies can be limited by restricting which services and/
  * or actions they match using the ingressTo field.
  * 
- * &gt; **Note:** By default, updates to this resource will remove the IngressPolicy from the
- * from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
- * is added before the old one is removed, add a `lifecycle` block with `createBeforeDestroy = true` to this resource.
- * **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
+ * &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
  * the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [status[0].ingress_policies]` so
  * they don&#39;t fight over which ingress rules should be in the policy.
  * 

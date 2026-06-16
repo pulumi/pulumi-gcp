@@ -22,7 +22,7 @@ public final class TagTemplateFieldType {
     /**
      * @return Represents primitive types - string, bool etc.
      * Exactly one of `primitiveType` or `enumType` must be set
-     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
      * 
      */
     private @Nullable String primitiveType;
@@ -40,7 +40,7 @@ public final class TagTemplateFieldType {
     /**
      * @return Represents primitive types - string, bool etc.
      * Exactly one of `primitiveType` or `enumType` must be set
-     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+     * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
      * 
      */
     public Optional<String> primitiveType() {

@@ -61,6 +61,41 @@ import (
 //	}
 //
 // ```
+// ### Firebaseailogic Prompt Template Global Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/hello_world.prompt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAiLogicPromptTemplate(ctx, "global_only", &firebase.AiLogicPromptTemplateArgs{
+//				Location:                    pulumi.String("global"),
+//				TemplateId:                  pulumi.String("global-only-template"),
+//				RegionalPropagationDisabled: pulumi.Bool(true),
+//				TemplateString:              pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firebaseailogic Prompt Template Basic
 //
 // ```go
@@ -135,6 +170,10 @@ type AiLogicPromptTemplate struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// For the `global` location only. If true, the write operation (create,
+	// update, or delete) will apply to the global region only. Otherwise, the
+	// operation will also propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrOutput `pulumi:"regionalPropagationDisabled"`
 	// Timestamp when the PromptTemplate state was last changed.
 	StateChangeTime pulumi.StringOutput `pulumi:"stateChangeTime"`
 	// The unique ID of the PromptTemplate, which is the final component of the
@@ -213,6 +252,10 @@ type aiLogicPromptTemplateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// For the `global` location only. If true, the write operation (create,
+	// update, or delete) will apply to the global region only. Otherwise, the
+	// operation will also propagate to all applicable regions.
+	RegionalPropagationDisabled *bool `pulumi:"regionalPropagationDisabled"`
 	// Timestamp when the PromptTemplate state was last changed.
 	StateChangeTime *string `pulumi:"stateChangeTime"`
 	// The unique ID of the PromptTemplate, which is the final component of the
@@ -253,6 +296,10 @@ type AiLogicPromptTemplateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// For the `global` location only. If true, the write operation (create,
+	// update, or delete) will apply to the global region only. Otherwise, the
+	// operation will also propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrInput
 	// Timestamp when the PromptTemplate state was last changed.
 	StateChangeTime pulumi.StringPtrInput
 	// The unique ID of the PromptTemplate, which is the final component of the
@@ -283,6 +330,10 @@ type aiLogicPromptTemplateArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// For the `global` location only. If true, the write operation (create,
+	// update, or delete) will apply to the global region only. Otherwise, the
+	// operation will also propagate to all applicable regions.
+	RegionalPropagationDisabled *bool `pulumi:"regionalPropagationDisabled"`
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId string `pulumi:"templateId"`
@@ -306,6 +357,10 @@ type AiLogicPromptTemplateArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// For the `global` location only. If true, the write operation (create,
+	// update, or delete) will apply to the global region only. Otherwise, the
+	// operation will also propagate to all applicable regions.
+	RegionalPropagationDisabled pulumi.BoolPtrInput
 	// The unique ID of the PromptTemplate, which is the final component of the
 	// PromptTemplate's resource name.
 	TemplateId pulumi.StringInput
@@ -450,6 +505,13 @@ func (o AiLogicPromptTemplateOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AiLogicPromptTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiLogicPromptTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// For the `global` location only. If true, the write operation (create,
+// update, or delete) will apply to the global region only. Otherwise, the
+// operation will also propagate to all applicable regions.
+func (o AiLogicPromptTemplateOutput) RegionalPropagationDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiLogicPromptTemplate) pulumi.BoolPtrOutput { return v.RegionalPropagationDisabled }).(pulumi.BoolPtrOutput)
 }
 
 // Timestamp when the PromptTemplate state was last changed.

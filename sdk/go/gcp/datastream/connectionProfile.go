@@ -160,7 +160,7 @@ import (
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						Network: privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//							return &vpcPeeringConfig.Vpc, nil
+//							return vpcPeeringConfig.Vpc, nil
 //						}).(pulumi.StringPtrOutput),
 //						Subnetwork: defaultSubnetwork.SelfLink,
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
@@ -202,7 +202,7 @@ import (
 //			_, err = compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
 //				Name: pulumi.String("ingress-rule"),
 //				Network: pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//					return &vpcPeeringConfig.Vpc, nil
+//					return vpcPeeringConfig.Vpc, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Description: pulumi.String("Allow traffic into NAT VM"),
 //				Direction:   pulumi.String("INGRESS"),
@@ -216,7 +216,7 @@ import (
 //				},
 //				SourceRanges: pulumi.StringArray{
 //					pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//						return &vpcPeeringConfig.Subnet, nil
+//						return vpcPeeringConfig.Subnet, nil
 //					}).(pulumi.StringPtrOutput)),
 //				},
 //			})
@@ -229,7 +229,7 @@ import (
 //				ConnectionProfileId: pulumi.String("my-profile"),
 //				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
 //					Hostname: natVm.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//						return &networkInterfaces[0].NetworkIp, nil
+//						return networkInterfaces[0].NetworkIp, nil
 //					}).(pulumi.StringPtrOutput),
 //					Username: user.Name,
 //					Password: user.Password,

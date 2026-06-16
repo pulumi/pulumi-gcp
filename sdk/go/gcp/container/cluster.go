@@ -431,6 +431,8 @@ type Cluster struct {
 	// manages the default node pool, which isn't recommended to be used.
 	// Structure is documented below.
 	NodeConfig ClusterNodeConfigOutput `pulumi:"nodeConfig"`
+	// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+	NodeCreationConfig ClusterNodeCreationConfigOutput `pulumi:"nodeCreationConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -824,6 +826,8 @@ type clusterState struct {
 	// manages the default node pool, which isn't recommended to be used.
 	// Structure is documented below.
 	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
+	// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+	NodeCreationConfig *ClusterNodeCreationConfig `pulumi:"nodeCreationConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1183,6 +1187,8 @@ type ClusterState struct {
 	// manages the default node pool, which isn't recommended to be used.
 	// Structure is documented below.
 	NodeConfig ClusterNodeConfigPtrInput
+	// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+	NodeCreationConfig ClusterNodeCreationConfigPtrInput
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1536,6 +1542,8 @@ type clusterArgs struct {
 	// manages the default node pool, which isn't recommended to be used.
 	// Structure is documented below.
 	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
+	// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+	NodeCreationConfig *ClusterNodeCreationConfig `pulumi:"nodeCreationConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1872,6 +1880,8 @@ type ClusterArgs struct {
 	// manages the default node pool, which isn't recommended to be used.
 	// Structure is documented below.
 	NodeConfig ClusterNodeConfigPtrInput
+	// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+	NodeCreationConfig ClusterNodeCreationConfigPtrInput
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -2492,6 +2502,11 @@ func (o ClusterOutput) NetworkingMode() pulumi.StringOutput {
 // Structure is documented below.
 func (o ClusterOutput) NodeConfig() ClusterNodeConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeConfigOutput { return v.NodeConfig }).(ClusterNodeConfigOutput)
+}
+
+// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+func (o ClusterOutput) NodeCreationConfig() ClusterNodeCreationConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterNodeCreationConfigOutput { return v.NodeCreationConfig }).(ClusterNodeCreationConfigOutput)
 }
 
 // The list of zones in which the cluster's nodes

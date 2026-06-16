@@ -183,6 +183,8 @@ if typing.TYPE_CHECKING:
     integrationconnectors = __integrationconnectors
     import pulumi_gcp.kms as __kms
     kms = __kms
+    import pulumi_gcp.licensemanager as __licensemanager
+    licensemanager = __licensemanager
     import pulumi_gcp.logging as __logging
     logging = __logging
     import pulumi_gcp.looker as __looker
@@ -380,6 +382,7 @@ else:
     identityplatform = _utilities.lazy_import('pulumi_gcp.identityplatform')
     integrationconnectors = _utilities.lazy_import('pulumi_gcp.integrationconnectors')
     kms = _utilities.lazy_import('pulumi_gcp.kms')
+    licensemanager = _utilities.lazy_import('pulumi_gcp.licensemanager')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
     lustre = _utilities.lazy_import('pulumi_gcp.lustre')
@@ -797,6 +800,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/dataCollector:DataCollector": "DataCollector"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/datastore",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/datastore:Datastore": "Datastore"
   }
  },
  {
@@ -1737,6 +1748,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/routineIamBinding",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/routineIamBinding:RoutineIamBinding": "RoutineIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/routineIamMember",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/routineIamMember:RoutineIamMember": "RoutineIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/routineIamPolicy",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/routineIamPolicy:RoutineIamPolicy": "RoutineIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/rowAccessPolicy",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -2289,6 +2324,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/customList",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/customList:CustomList": "CustomList"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/dashboardChart",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2325,6 +2368,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/dataTableRow:DataTableRow": "DataTableRow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/environment",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/environment:Environment": "Environment"
   }
  },
  {
@@ -5049,6 +5100,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/dataProductIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProductIamBinding:DataProductIamBinding": "DataProductIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/dataProductIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProductIamMember:DataProductIamMember": "DataProductIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/dataProductIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProductIamPolicy:DataProductIamPolicy": "DataProductIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/datascan",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -5909,6 +5984,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/searchEngine:SearchEngine": "SearchEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/searchEngineIamBinding",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/searchEngineIamBinding:SearchEngineIamBinding": "SearchEngineIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/searchEngineIamMember",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/searchEngineIamMember:SearchEngineIamMember": "SearchEngineIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/searchEngineIamPolicy",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy": "SearchEngineIamPolicy"
   }
  },
  {
@@ -7249,6 +7348,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/organizationAccessPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/organizationAccessPolicy:OrganizationAccessPolicy": "OrganizationAccessPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/organizationsPolicyBinding",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -8057,6 +8164,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "licensemanager/configuration",
+  "fqn": "pulumi_gcp.licensemanager",
+  "classes": {
+   "gcp:licensemanager/configuration:Configuration": "Configuration"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "logging/billingAccountBucketConfig",
   "fqn": "pulumi_gcp.logging",
   "classes": {
@@ -8333,6 +8448,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.migrationcenter",
   "classes": {
    "gcp:migrationcenter/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/importJob",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/importJob:ImportJob": "ImportJob"
   }
  },
  {

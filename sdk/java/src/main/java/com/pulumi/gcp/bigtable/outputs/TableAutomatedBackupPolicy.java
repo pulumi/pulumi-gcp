@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class TableAutomatedBackupPolicy {
      * 
      */
     private @Nullable String frequency;
+    /**
+     * @return A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+     * 
+     */
+    private @Nullable List<String> locations;
     /**
      * @return How long the automated backups should be retained.
      * 
@@ -29,6 +35,13 @@ public final class TableAutomatedBackupPolicy {
      */
     public Optional<String> frequency() {
         return Optional.ofNullable(this.frequency);
+    }
+    /**
+     * @return A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+     * 
+     */
+    public List<String> locations() {
+        return this.locations == null ? List.of() : this.locations;
     }
     /**
      * @return How long the automated backups should be retained.
@@ -48,11 +61,13 @@ public final class TableAutomatedBackupPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String frequency;
+        private @Nullable List<String> locations;
         private @Nullable String retentionPeriod;
         public Builder() {}
         public Builder(TableAutomatedBackupPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.frequency = defaults.frequency;
+    	      this.locations = defaults.locations;
     	      this.retentionPeriod = defaults.retentionPeriod;
         }
 
@@ -63,6 +78,15 @@ public final class TableAutomatedBackupPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder locations(@Nullable List<String> locations) {
+
+            this.locations = locations;
+            return this;
+        }
+        public Builder locations(String... locations) {
+            return locations(List.of(locations));
+        }
+        @CustomType.Setter
         public Builder retentionPeriod(@Nullable String retentionPeriod) {
 
             this.retentionPeriod = retentionPeriod;
@@ -71,6 +95,7 @@ public final class TableAutomatedBackupPolicy {
         public TableAutomatedBackupPolicy build() {
             final var _resultValue = new TableAutomatedBackupPolicy();
             _resultValue.frequency = frequency;
+            _resultValue.locations = locations;
             _resultValue.retentionPeriod = retentionPeriod;
             return _resultValue;
         }

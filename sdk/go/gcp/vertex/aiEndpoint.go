@@ -115,7 +115,7 @@ import (
 //					Enabled:      pulumi.Bool(true),
 //					SamplingRate: pulumi.Float64(0.1),
 //				},
-//				TrafficSplit: pulumi.String(pulumi.String(json0)),
+//				TrafficSplit: pulumi.String(json0),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vertexVpcConnection,
 //			}))

@@ -14,13 +14,28 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeDrainConfig
     {
         /// <summary>
+        /// The duration of the grace termination period for node drain.
+        /// </summary>
+        public readonly string? GraceTerminationDuration;
+        /// <summary>
+        /// The duration of the PDB timeout period for node drain.
+        /// </summary>
+        public readonly string? PdbTimeoutDuration;
+        /// <summary>
         /// Whether to respect PodDisruptionBudget policy during node pool deletion.
         /// </summary>
         public readonly bool? RespectPdbDuringNodePoolDeletion;
 
         [OutputConstructor]
-        private NodePoolNodeDrainConfig(bool? respectPdbDuringNodePoolDeletion)
+        private NodePoolNodeDrainConfig(
+            string? graceTerminationDuration,
+
+            string? pdbTimeoutDuration,
+
+            bool? respectPdbDuringNodePoolDeletion)
         {
+            GraceTerminationDuration = graceTerminationDuration;
+            PdbTimeoutDuration = pdbTimeoutDuration;
             RespectPdbDuringNodePoolDeletion = respectPdbDuringNodePoolDeletion;
         }
     }

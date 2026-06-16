@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodeConfigTaint struct {
+	// Effect for taint.
+	Effect string `pulumi:"effect"`
+	// Key for taint.
+	Key string `pulumi:"key"`
+	// Value for taint.
+	Value string `pulumi:"value"`
+}
+
+// GetClusterNodeConfigTaintInput is an input type that accepts GetClusterNodeConfigTaintArgs and GetClusterNodeConfigTaintOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigTaintInput` via:
+//
+//	GetClusterNodeConfigTaintArgs{...}
+type GetClusterNodeConfigTaintInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigTaintOutput() GetClusterNodeConfigTaintOutput
+	ToGetClusterNodeConfigTaintOutputWithContext(context.Context) GetClusterNodeConfigTaintOutput
+}
+
+type GetClusterNodeConfigTaintArgs struct {
+	// Effect for taint.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Key for taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value for taint.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetClusterNodeConfigTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigTaintArgs) ToGetClusterNodeConfigTaintOutput() GetClusterNodeConfigTaintOutput {
+	return i.ToGetClusterNodeConfigTaintOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigTaintArgs) ToGetClusterNodeConfigTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigTaintOutput)
+}
+
+// GetClusterNodeConfigTaintArrayInput is an input type that accepts GetClusterNodeConfigTaintArray and GetClusterNodeConfigTaintArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigTaintArrayInput` via:
+//
+//	GetClusterNodeConfigTaintArray{ GetClusterNodeConfigTaintArgs{...} }
+type GetClusterNodeConfigTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigTaintArrayOutput() GetClusterNodeConfigTaintArrayOutput
+	ToGetClusterNodeConfigTaintArrayOutputWithContext(context.Context) GetClusterNodeConfigTaintArrayOutput
+}
+
+type GetClusterNodeConfigTaintArray []GetClusterNodeConfigTaintInput
+
+func (GetClusterNodeConfigTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigTaint)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigTaintArray) ToGetClusterNodeConfigTaintArrayOutput() GetClusterNodeConfigTaintArrayOutput {
+	return i.ToGetClusterNodeConfigTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigTaintArray) ToGetClusterNodeConfigTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigTaintArrayOutput)
+}
+
+type GetClusterNodeConfigTaintOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigTaintOutput) ToGetClusterNodeConfigTaintOutput() GetClusterNodeConfigTaintOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigTaintOutput) ToGetClusterNodeConfigTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigTaintOutput {
+	return o
+}
+
+// Effect for taint.
+func (o GetClusterNodeConfigTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// Key for taint.
+func (o GetClusterNodeConfigTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value for taint.
+func (o GetClusterNodeConfigTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigTaint)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigTaintArrayOutput) ToGetClusterNodeConfigTaintArrayOutput() GetClusterNodeConfigTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigTaintArrayOutput) ToGetClusterNodeConfigTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigTaintArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigTaint {
+		return vs[0].([]GetClusterNodeConfigTaint)[vs[1].(int)]
+	}).(GetClusterNodeConfigTaintOutput)
+}
+
 type GetClusterNodeConfigWindowsNodeConfig struct {
 	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
 	Osversion string `pulumi:"osversion"`
@@ -205,6 +320,114 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigWorkloadMetadataConfig {
 		return vs[0].([]GetClusterNodeConfigWorkloadMetadataConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigWorkloadMetadataConfigOutput)
+}
+
+type GetClusterNodeCreationConfig struct {
+	// NodeCreationMode defines the settings of node creation mode.
+	//  Accepted values are:
+	// * VIA_KUBELET: Kubelet registers itself.
+	// * VIA_CONTROL_PLANE: gcp-controller-manager automatically creates the node object after CSR approval.
+	NodeCreationMode string `pulumi:"nodeCreationMode"`
+}
+
+// GetClusterNodeCreationConfigInput is an input type that accepts GetClusterNodeCreationConfigArgs and GetClusterNodeCreationConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeCreationConfigInput` via:
+//
+//	GetClusterNodeCreationConfigArgs{...}
+type GetClusterNodeCreationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeCreationConfigOutput() GetClusterNodeCreationConfigOutput
+	ToGetClusterNodeCreationConfigOutputWithContext(context.Context) GetClusterNodeCreationConfigOutput
+}
+
+type GetClusterNodeCreationConfigArgs struct {
+	// NodeCreationMode defines the settings of node creation mode.
+	//  Accepted values are:
+	// * VIA_KUBELET: Kubelet registers itself.
+	// * VIA_CONTROL_PLANE: gcp-controller-manager automatically creates the node object after CSR approval.
+	NodeCreationMode pulumi.StringInput `pulumi:"nodeCreationMode"`
+}
+
+func (GetClusterNodeCreationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeCreationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeCreationConfigArgs) ToGetClusterNodeCreationConfigOutput() GetClusterNodeCreationConfigOutput {
+	return i.ToGetClusterNodeCreationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeCreationConfigArgs) ToGetClusterNodeCreationConfigOutputWithContext(ctx context.Context) GetClusterNodeCreationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeCreationConfigOutput)
+}
+
+// GetClusterNodeCreationConfigArrayInput is an input type that accepts GetClusterNodeCreationConfigArray and GetClusterNodeCreationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeCreationConfigArrayInput` via:
+//
+//	GetClusterNodeCreationConfigArray{ GetClusterNodeCreationConfigArgs{...} }
+type GetClusterNodeCreationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeCreationConfigArrayOutput() GetClusterNodeCreationConfigArrayOutput
+	ToGetClusterNodeCreationConfigArrayOutputWithContext(context.Context) GetClusterNodeCreationConfigArrayOutput
+}
+
+type GetClusterNodeCreationConfigArray []GetClusterNodeCreationConfigInput
+
+func (GetClusterNodeCreationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeCreationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeCreationConfigArray) ToGetClusterNodeCreationConfigArrayOutput() GetClusterNodeCreationConfigArrayOutput {
+	return i.ToGetClusterNodeCreationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeCreationConfigArray) ToGetClusterNodeCreationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeCreationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeCreationConfigArrayOutput)
+}
+
+type GetClusterNodeCreationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeCreationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeCreationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeCreationConfigOutput) ToGetClusterNodeCreationConfigOutput() GetClusterNodeCreationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeCreationConfigOutput) ToGetClusterNodeCreationConfigOutputWithContext(ctx context.Context) GetClusterNodeCreationConfigOutput {
+	return o
+}
+
+// NodeCreationMode defines the settings of node creation mode.
+//
+//	Accepted values are:
+//
+// * VIA_KUBELET: Kubelet registers itself.
+// * VIA_CONTROL_PLANE: gcp-controller-manager automatically creates the node object after CSR approval.
+func (o GetClusterNodeCreationConfigOutput) NodeCreationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeCreationConfig) string { return v.NodeCreationMode }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeCreationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeCreationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeCreationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeCreationConfigArrayOutput) ToGetClusterNodeCreationConfigArrayOutput() GetClusterNodeCreationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeCreationConfigArrayOutput) ToGetClusterNodeCreationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeCreationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeCreationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeCreationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeCreationConfig {
+		return vs[0].([]GetClusterNodeCreationConfig)[vs[1].(int)]
+	}).(GetClusterNodeCreationConfigOutput)
 }
 
 type GetClusterNodePool struct {
@@ -9851,6 +10074,10 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolNodeDrainConfig struct {
+	// The duration of the grace termination period for node drain.
+	GraceTerminationDuration string `pulumi:"graceTerminationDuration"`
+	// The duration of the PDB timeout period for node drain.
+	PdbTimeoutDuration string `pulumi:"pdbTimeoutDuration"`
 	// Whether to respect PodDisruptionBudget policy during node pool deletion.
 	RespectPdbDuringNodePoolDeletion bool `pulumi:"respectPdbDuringNodePoolDeletion"`
 }
@@ -9867,6 +10094,10 @@ type GetClusterNodePoolNodeDrainConfigInput interface {
 }
 
 type GetClusterNodePoolNodeDrainConfigArgs struct {
+	// The duration of the grace termination period for node drain.
+	GraceTerminationDuration pulumi.StringInput `pulumi:"graceTerminationDuration"`
+	// The duration of the PDB timeout period for node drain.
+	PdbTimeoutDuration pulumi.StringInput `pulumi:"pdbTimeoutDuration"`
 	// Whether to respect PodDisruptionBudget policy during node pool deletion.
 	RespectPdbDuringNodePoolDeletion pulumi.BoolInput `pulumi:"respectPdbDuringNodePoolDeletion"`
 }
@@ -9920,6 +10151,16 @@ func (o GetClusterNodePoolNodeDrainConfigOutput) ToGetClusterNodePoolNodeDrainCo
 
 func (o GetClusterNodePoolNodeDrainConfigOutput) ToGetClusterNodePoolNodeDrainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeDrainConfigOutput {
 	return o
+}
+
+// The duration of the grace termination period for node drain.
+func (o GetClusterNodePoolNodeDrainConfigOutput) GraceTerminationDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeDrainConfig) string { return v.GraceTerminationDuration }).(pulumi.StringOutput)
+}
+
+// The duration of the PDB timeout period for node drain.
+func (o GetClusterNodePoolNodeDrainConfigOutput) PdbTimeoutDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeDrainConfig) string { return v.PdbTimeoutDuration }).(pulumi.StringOutput)
 }
 
 // Whether to respect PodDisruptionBudget policy during node pool deletion.
@@ -13240,10 +13481,14 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintInput)(nil)).Elem(), GetClusterNodeConfigTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigWindowsNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWindowsNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigWindowsNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeCreationConfigInput)(nil)).Elem(), GetClusterNodeCreationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeCreationConfigArrayInput)(nil)).Elem(), GetClusterNodeCreationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolInput)(nil)).Elem(), GetClusterNodePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolArrayInput)(nil)).Elem(), GetClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArgs{})
@@ -13466,10 +13711,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigTaintOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWindowsNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWindowsNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeCreationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeCreationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigOutput{})

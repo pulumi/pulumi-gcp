@@ -36,6 +36,7 @@ import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeCreationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolDefaultsArgs;
@@ -1170,6 +1171,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     * 
+     */
+    @Import(name="nodeCreationConfig")
+    private @Nullable Output<ClusterNodeCreationConfigArgs> nodeCreationConfig;
+
+    /**
+     * @return Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeCreationConfigArgs>> nodeCreationConfig() {
+        return Optional.ofNullable(this.nodeCreationConfig);
+    }
+
+    /**
      * The list of zones in which the cluster&#39;s nodes
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
@@ -1746,6 +1762,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.networkPolicy = $.networkPolicy;
         this.networkingMode = $.networkingMode;
         this.nodeConfig = $.nodeConfig;
+        this.nodeCreationConfig = $.nodeCreationConfig;
         this.nodeLocations = $.nodeLocations;
         this.nodePoolAutoConfig = $.nodePoolAutoConfig;
         this.nodePoolDefaults = $.nodePoolDefaults;
@@ -3259,6 +3276,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeConfig(ClusterNodeConfigArgs nodeConfig) {
             return nodeConfig(Output.of(nodeConfig));
+        }
+
+        /**
+         * @param nodeCreationConfig Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCreationConfig(@Nullable Output<ClusterNodeCreationConfigArgs> nodeCreationConfig) {
+            $.nodeCreationConfig = nodeCreationConfig;
+            return this;
+        }
+
+        /**
+         * @param nodeCreationConfig Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCreationConfig(ClusterNodeCreationConfigArgs nodeCreationConfig) {
+            return nodeCreationConfig(Output.of(nodeCreationConfig));
         }
 
         /**

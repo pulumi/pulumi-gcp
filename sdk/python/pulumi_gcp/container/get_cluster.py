@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_creation_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -220,6 +220,9 @@ class GetClusterResult:
         if node_configs and not isinstance(node_configs, list):
             raise TypeError("Expected argument 'node_configs' to be a list")
         pulumi.set(__self__, "node_configs", node_configs)
+        if node_creation_configs and not isinstance(node_creation_configs, list):
+            raise TypeError("Expected argument 'node_creation_configs' to be a list")
+        pulumi.set(__self__, "node_creation_configs", node_creation_configs)
         if node_locations and not isinstance(node_locations, list):
             raise TypeError("Expected argument 'node_locations' to be a list")
         pulumi.set(__self__, "node_locations", node_locations)
@@ -641,6 +644,11 @@ class GetClusterResult:
         return pulumi.get(self, "node_configs")
 
     @_builtins.property
+    @pulumi.getter(name="nodeCreationConfigs")
+    def node_creation_configs(self) -> Sequence['outputs.GetClusterNodeCreationConfigResult']:
+        return pulumi.get(self, "node_creation_configs")
+
+    @_builtins.property
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "node_locations")
@@ -871,6 +879,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             network_policies=self.network_policies,
             networking_mode=self.networking_mode,
             node_configs=self.node_configs,
+            node_creation_configs=self.node_creation_configs,
             node_locations=self.node_locations,
             node_pool_auto_configs=self.node_pool_auto_configs,
             node_pool_defaults=self.node_pool_defaults,
@@ -1021,6 +1030,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
         network_policies=pulumi.get(__ret__, 'network_policies'),
         networking_mode=pulumi.get(__ret__, 'networking_mode'),
         node_configs=pulumi.get(__ret__, 'node_configs'),
+        node_creation_configs=pulumi.get(__ret__, 'node_creation_configs'),
         node_locations=pulumi.get(__ret__, 'node_locations'),
         node_pool_auto_configs=pulumi.get(__ret__, 'node_pool_auto_configs'),
         node_pool_defaults=pulumi.get(__ret__, 'node_pool_defaults'),
@@ -1168,6 +1178,7 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         network_policies=pulumi.get(__response__, 'network_policies'),
         networking_mode=pulumi.get(__response__, 'networking_mode'),
         node_configs=pulumi.get(__response__, 'node_configs'),
+        node_creation_configs=pulumi.get(__response__, 'node_creation_configs'),
         node_locations=pulumi.get(__response__, 'node_locations'),
         node_pool_auto_configs=pulumi.get(__response__, 'node_pool_auto_configs'),
         node_pool_defaults=pulumi.get(__response__, 'node_pool_defaults'),

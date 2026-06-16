@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
-//				User: pulumi.String(pulumi.String(me.Email)),
+//				User: pulumi.String(me.Email),
 //				Key:  pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {

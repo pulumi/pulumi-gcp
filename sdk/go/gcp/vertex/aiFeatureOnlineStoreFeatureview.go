@@ -342,7 +342,7 @@ import (
 //				return err
 //			}
 //			viewer, err := bigquery.NewDatasetIamMember(ctx, "viewer", &bigquery.DatasetIamMemberArgs{
-//				Project:   pulumi.String(pulumi.String(testProject.ProjectId)),
+//				Project:   pulumi.String(testProject.ProjectId),
 //				DatasetId: sampleDataset.DatasetId,
 //				Role:      pulumi.String("roles/bigquery.dataViewer"),
 //				Member: project.Number.ApplyT(func(number string) (string, error) {

@@ -105,6 +105,92 @@ import * as utilities from "../utilities";
  *     timeZone: "America/New_York",
  * });
  * ```
+ * ### Dataform Repository Workflow Config With Disabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "my_secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
+ *     secret: secret.id,
+ *     secretData: "secret-data",
+ * });
+ * const repository = new gcp.dataform.Repository("repository", {
+ *     name: "dataform_repository",
+ *     region: "us-central1",
+ *     gitRemoteSettings: {
+ *         url: gitRepository.url,
+ *         defaultBranch: "main",
+ *         authenticationTokenSecretVersion: secretVersion.id,
+ *     },
+ *     workspaceCompilationOverrides: {
+ *         defaultDatabase: "database",
+ *         schemaSuffix: "_suffix",
+ *         tablePrefix: "prefix_",
+ *     },
+ * });
+ * const releaseConfig = new gcp.dataform.RepositoryReleaseConfig("release_config", {
+ *     project: repository.project,
+ *     region: repository.region,
+ *     repository: repository.name,
+ *     name: "my_release",
+ *     gitCommitish: "main",
+ *     cronSchedule: "0 7 * * *",
+ *     timeZone: "America/New_York",
+ *     codeCompilationConfig: {
+ *         defaultDatabase: "gcp-example-project",
+ *         defaultSchema: "example-dataset",
+ *         defaultLocation: "us-central1",
+ *         assertionSchema: "example-assertion-dataset",
+ *         databaseSuffix: "",
+ *         schemaSuffix: "",
+ *         tablePrefix: "",
+ *         vars: {
+ *             var1: "value",
+ *         },
+ *     },
+ * });
+ * const dataformSa = new gcp.serviceaccount.Account("dataform_sa", {
+ *     accountId: "dataform-sa",
+ *     displayName: "Dataform Service Account",
+ * });
+ * const workflow = new gcp.dataform.RepositoryWorkflowConfig("workflow", {
+ *     project: repository.project,
+ *     region: repository.region,
+ *     repository: repository.name,
+ *     name: "my_workflow",
+ *     releaseConfig: releaseConfig.id,
+ *     invocationConfig: {
+ *         includedTargets: [
+ *             {
+ *                 database: "gcp-example-project",
+ *                 schema: "example-dataset",
+ *                 name: "target_1",
+ *             },
+ *             {
+ *                 database: "gcp-example-project",
+ *                 schema: "example-dataset",
+ *                 name: "target_2",
+ *             },
+ *         ],
+ *         includedTags: ["tag_1"],
+ *         transitiveDependenciesIncluded: true,
+ *         transitiveDependentsIncluded: true,
+ *         fullyRefreshIncrementalTablesEnabled: false,
+ *         serviceAccount: dataformSa.email,
+ *     },
+ *     cronSchedule: "0 7 * * *",
+ *     timeZone: "America/New_York",
+ *     disabled: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -166,6 +252,10 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
+     * Disables automatic creation of workflow invocations.
+     */
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
+    /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
      */
@@ -216,6 +306,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
             const state = argsOrState as RepositoryWorkflowConfigState | undefined;
             resourceInputs["cronSchedule"] = state?.cronSchedule;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["disabled"] = state?.disabled;
             resourceInputs["invocationConfig"] = state?.invocationConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -231,6 +322,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
             }
             resourceInputs["cronSchedule"] = args?.cronSchedule;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["disabled"] = args?.disabled;
             resourceInputs["invocationConfig"] = args?.invocationConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -262,6 +354,10 @@ export interface RepositoryWorkflowConfigState {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Disables automatic creation of workflow invocations.
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
@@ -316,6 +412,10 @@ export interface RepositoryWorkflowConfigArgs {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Disables automatic creation of workflow invocations.
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.

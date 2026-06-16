@@ -89,7 +89,7 @@ import (
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format", &parametermanager.RegionalParameterVersionArgs{
 //				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
-//				ParameterData:      pulumi.String(pulumi.String(json0)),
+//				ParameterData:      pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err

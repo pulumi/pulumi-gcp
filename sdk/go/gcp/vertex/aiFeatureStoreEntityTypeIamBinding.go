@@ -60,7 +60,7 @@ import (
 //			_, err = vertex.NewAiFeatureStoreEntityTypeIamPolicy(ctx, "policy", &vertex.AiFeatureStoreEntityTypeIamPolicyArgs{
 //				Featurestore: pulumi.Any(entity.Featurestore),
 //				Entitytype:   pulumi.Any(entity.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -186,7 +186,7 @@ import (
 //			_, err = vertex.NewAiFeatureStoreEntityTypeIamPolicy(ctx, "policy", &vertex.AiFeatureStoreEntityTypeIamPolicyArgs{
 //				Featurestore: pulumi.Any(entity.Featurestore),
 //				Entitytype:   pulumi.Any(entity.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

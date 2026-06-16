@@ -35,6 +35,27 @@ __all__ = [
     'AssetsExportJobSignedUriDestination',
     'DiscoveryClientError',
     'DiscoveryClientErrorDetail',
+    'ImportJobExecutionReport',
+    'ImportJobExecutionReportExecutionError',
+    'ImportJobExecutionReportExecutionErrorFileValidation',
+    'ImportJobExecutionReportExecutionErrorFileValidationFileError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorError',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError',
+    'ImportJobExecutionReportExecutionErrorJobError',
+    'ImportJobValidationReport',
+    'ImportJobValidationReportFileValidation',
+    'ImportJobValidationReportFileValidationFileError',
+    'ImportJobValidationReportFileValidationRowError',
+    'ImportJobValidationReportFileValidationRowErrorArchiveError',
+    'ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError',
+    'ImportJobValidationReportFileValidationRowErrorCsvError',
+    'ImportJobValidationReportFileValidationRowErrorError',
+    'ImportJobValidationReportFileValidationRowErrorXlsxError',
+    'ImportJobValidationReportJobError',
     'PreferenceSetVirtualMachinePreferences',
     'PreferenceSetVirtualMachinePreferencesComputeEnginePreferences',
     'PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences',
@@ -894,6 +915,1418 @@ class DiscoveryClientError(dict):
 class DiscoveryClientErrorDetail(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class ImportJobExecutionReport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executionErrors":
+            suggest = "execution_errors"
+        elif key == "framesReported":
+            suggest = "frames_reported"
+        elif key == "totalRowsCount":
+            suggest = "total_rows_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execution_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionError']] = None,
+                 frames_reported: Optional[_builtins.int] = None,
+                 total_rows_count: Optional[_builtins.int] = None):
+        """
+        :param Sequence['ImportJobExecutionReportExecutionErrorArgs'] execution_errors: (Output)
+               A resource that aggregates errors across import job files.
+               Structure is documented below.
+        :param _builtins.int frames_reported: (Output)
+               Total number of asset frames reported for the import job.
+        :param _builtins.int total_rows_count: (Output)
+               Total number of rows in the import job.
+        """
+        if execution_errors is not None:
+            pulumi.set(__self__, "execution_errors", execution_errors)
+        if frames_reported is not None:
+            pulumi.set(__self__, "frames_reported", frames_reported)
+        if total_rows_count is not None:
+            pulumi.set(__self__, "total_rows_count", total_rows_count)
+
+    @_builtins.property
+    @pulumi.getter(name="executionErrors")
+    def execution_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionError']]:
+        """
+        (Output)
+        A resource that aggregates errors across import job files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="framesReported")
+    def frames_reported(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Total number of asset frames reported for the import job.
+        """
+        return pulumi.get(self, "frames_reported")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowsCount")
+    def total_rows_count(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Total number of rows in the import job.
+        """
+        return pulumi.get(self, "total_rows_count")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileValidations":
+            suggest = "file_validations"
+        elif key == "jobErrors":
+            suggest = "job_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_validations: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidation']] = None,
+                 job_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorJobError']] = None):
+        """
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationArgs'] file_validations: (Output)
+               List of errors found in files.
+               Structure is documented below.
+        :param Sequence['ImportJobExecutionReportExecutionErrorJobErrorArgs'] job_errors: (Output)
+               List of job level errors.
+               Structure is documented below.
+        """
+        if file_validations is not None:
+            pulumi.set(__self__, "file_validations", file_validations)
+        if job_errors is not None:
+            pulumi.set(__self__, "job_errors", job_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileValidations")
+    def file_validations(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidation']]:
+        """
+        (Output)
+        List of errors found in files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_validations")
+
+    @_builtins.property
+    @pulumi.getter(name="jobErrors")
+    def job_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorJobError']]:
+        """
+        (Output)
+        List of job level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "job_errors")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileErrors":
+            suggest = "file_errors"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "partialReport":
+            suggest = "partial_report"
+        elif key == "rowErrors":
+            suggest = "row_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationFileError']] = None,
+                 file_name: Optional[_builtins.str] = None,
+                 partial_report: Optional[_builtins.bool] = None,
+                 row_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowError']] = None):
+        """
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs'] file_errors: (Output)
+               List of file level errors.
+               Structure is documented below.
+        :param _builtins.str file_name: (Output)
+               The name of the file.
+        :param _builtins.bool partial_report: (Output)
+               Flag indicating that processing was aborted due to maximum number of
+               errors.
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs'] row_errors: (Output)
+               Partial list of rows that encountered validation error.
+               Structure is documented below.
+        """
+        if file_errors is not None:
+            pulumi.set(__self__, "file_errors", file_errors)
+        if file_name is not None:
+            pulumi.set(__self__, "file_name", file_name)
+        if partial_report is not None:
+            pulumi.set(__self__, "partial_report", partial_report)
+        if row_errors is not None:
+            pulumi.set(__self__, "row_errors", row_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileErrors")
+    def file_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationFileError']]:
+        """
+        (Output)
+        List of file level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the file.
+        """
+        return pulumi.get(self, "file_name")
+
+    @_builtins.property
+    @pulumi.getter(name="partialReport")
+    def partial_report(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Flag indicating that processing was aborted due to maximum number of
+        errors.
+        """
+        return pulumi.get(self, "partial_report")
+
+    @_builtins.property
+    @pulumi.getter(name="rowErrors")
+    def row_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowError']]:
+        """
+        (Output)
+        Partial list of rows that encountered validation error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_errors")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationFileError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationFileError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationFileError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationFileError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveErrors":
+            suggest = "archive_errors"
+        elif key == "assetTitle":
+            suggest = "asset_title"
+        elif key == "csvErrors":
+            suggest = "csv_errors"
+        elif key == "rowNumber":
+            suggest = "row_number"
+        elif key == "vmName":
+            suggest = "vm_name"
+        elif key == "vmUuid":
+            suggest = "vm_uuid"
+        elif key == "xlsxErrors":
+            suggest = "xlsx_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError']] = None,
+                 asset_title: Optional[_builtins.str] = None,
+                 csv_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError']] = None,
+                 errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorError']] = None,
+                 row_number: Optional[_builtins.int] = None,
+                 vm_name: Optional[_builtins.str] = None,
+                 vm_uuid: Optional[_builtins.str] = None,
+                 xlsx_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError']] = None):
+        """
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs'] archive_errors: (Output)
+               Error details for an archive file.
+               Structure is documented below.
+        :param _builtins.str asset_title: (Output)
+               The asset title.
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs'] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs'] errors: (Output)
+               The list of errors detected in the row.
+               Structure is documented below.
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        :param _builtins.str vm_name: (Output)
+               The name of the VM in the row.
+        :param _builtins.str vm_uuid: (Output)
+               The VM UUID.
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs'] xlsx_errors: (Output)
+               Error details for an XLSX file.
+               Structure is documented below.
+        """
+        if archive_errors is not None:
+            pulumi.set(__self__, "archive_errors", archive_errors)
+        if asset_title is not None:
+            pulumi.set(__self__, "asset_title", asset_title)
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if vm_name is not None:
+            pulumi.set(__self__, "vm_name", vm_name)
+        if vm_uuid is not None:
+            pulumi.set(__self__, "vm_uuid", vm_uuid)
+        if xlsx_errors is not None:
+            pulumi.set(__self__, "xlsx_errors", xlsx_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveErrors")
+    def archive_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError']]:
+        """
+        (Output)
+        Error details for an archive file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "archive_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="assetTitle")
+    def asset_title(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The asset title.
+        """
+        return pulumi.get(self, "asset_title")
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError']]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorError']]:
+        """
+        (Output)
+        The list of errors detected in the row.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @_builtins.property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the VM in the row.
+        """
+        return pulumi.get(self, "vm_name")
+
+    @_builtins.property
+    @pulumi.getter(name="vmUuid")
+    def vm_uuid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The VM UUID.
+        """
+        return pulumi.get(self, "vm_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="xlsxErrors")
+    def xlsx_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError']]:
+        """
+        (Output)
+        Error details for an XLSX file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xlsx_errors")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "csvErrors":
+            suggest = "csv_errors"
+        elif key == "filePath":
+            suggest = "file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 csv_errors: Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError']] = None,
+                 file_path: Optional[_builtins.str] = None):
+        """
+        :param Sequence['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs'] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param _builtins.str file_path: (Output)
+               The file path inside the archive where the error was detected.
+        """
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> Optional[Sequence['outputs.ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError']]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The file path inside the archive where the error was detected.
+        """
+        return pulumi.get(self, "file_path")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowErrorError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None,
+                 sheet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        :param _builtins.str sheet: (Output)
+               The name of the sheet where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if sheet is not None:
+            pulumi.set(__self__, "sheet", sheet)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def sheet(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the sheet where the error was detected.
+        """
+        return pulumi.get(self, "sheet")
+
+
+@pulumi.output_type
+class ImportJobExecutionReportExecutionErrorJobError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobExecutionReportExecutionErrorJobError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobExecutionReportExecutionErrorJobError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobExecutionReportExecutionErrorJobError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class ImportJobValidationReport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileValidations":
+            suggest = "file_validations"
+        elif key == "jobErrors":
+            suggest = "job_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_validations: Optional[Sequence['outputs.ImportJobValidationReportFileValidation']] = None,
+                 job_errors: Optional[Sequence['outputs.ImportJobValidationReportJobError']] = None):
+        """
+        :param Sequence['ImportJobValidationReportFileValidationArgs'] file_validations: (Output)
+               List of errors found in files.
+               Structure is documented below.
+        :param Sequence['ImportJobValidationReportJobErrorArgs'] job_errors: (Output)
+               List of job level errors.
+               Structure is documented below.
+        """
+        if file_validations is not None:
+            pulumi.set(__self__, "file_validations", file_validations)
+        if job_errors is not None:
+            pulumi.set(__self__, "job_errors", job_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileValidations")
+    def file_validations(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidation']]:
+        """
+        (Output)
+        List of errors found in files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_validations")
+
+    @_builtins.property
+    @pulumi.getter(name="jobErrors")
+    def job_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportJobError']]:
+        """
+        (Output)
+        List of job level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "job_errors")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileErrors":
+            suggest = "file_errors"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "partialReport":
+            suggest = "partial_report"
+        elif key == "rowErrors":
+            suggest = "row_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationFileError']] = None,
+                 file_name: Optional[_builtins.str] = None,
+                 partial_report: Optional[_builtins.bool] = None,
+                 row_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowError']] = None):
+        """
+        :param Sequence['ImportJobValidationReportFileValidationFileErrorArgs'] file_errors: (Output)
+               List of file level errors.
+               Structure is documented below.
+        :param _builtins.str file_name: (Output)
+               The name of the file.
+        :param _builtins.bool partial_report: (Output)
+               Flag indicating that processing was aborted due to maximum number of
+               errors.
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorArgs'] row_errors: (Output)
+               Partial list of rows that encountered validation error.
+               Structure is documented below.
+        """
+        if file_errors is not None:
+            pulumi.set(__self__, "file_errors", file_errors)
+        if file_name is not None:
+            pulumi.set(__self__, "file_name", file_name)
+        if partial_report is not None:
+            pulumi.set(__self__, "partial_report", partial_report)
+        if row_errors is not None:
+            pulumi.set(__self__, "row_errors", row_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileErrors")
+    def file_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationFileError']]:
+        """
+        (Output)
+        List of file level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the file.
+        """
+        return pulumi.get(self, "file_name")
+
+    @_builtins.property
+    @pulumi.getter(name="partialReport")
+    def partial_report(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Flag indicating that processing was aborted due to maximum number of
+        errors.
+        """
+        return pulumi.get(self, "partial_report")
+
+    @_builtins.property
+    @pulumi.getter(name="rowErrors")
+    def row_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowError']]:
+        """
+        (Output)
+        Partial list of rows that encountered validation error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_errors")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationFileError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationFileError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationFileError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationFileError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveErrors":
+            suggest = "archive_errors"
+        elif key == "assetTitle":
+            suggest = "asset_title"
+        elif key == "csvErrors":
+            suggest = "csv_errors"
+        elif key == "rowNumber":
+            suggest = "row_number"
+        elif key == "vmName":
+            suggest = "vm_name"
+        elif key == "vmUuid":
+            suggest = "vm_uuid"
+        elif key == "xlsxErrors":
+            suggest = "xlsx_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorArchiveError']] = None,
+                 asset_title: Optional[_builtins.str] = None,
+                 csv_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorCsvError']] = None,
+                 errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorError']] = None,
+                 row_number: Optional[_builtins.int] = None,
+                 vm_name: Optional[_builtins.str] = None,
+                 vm_uuid: Optional[_builtins.str] = None,
+                 xlsx_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorXlsxError']] = None):
+        """
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs'] archive_errors: (Output)
+               Error details for an archive file.
+               Structure is documented below.
+        :param _builtins.str asset_title: (Output)
+               The asset title.
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorCsvErrorArgs'] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorErrorArgs'] errors: (Output)
+               The list of errors detected in the row.
+               Structure is documented below.
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        :param _builtins.str vm_name: (Output)
+               The name of the VM in the row.
+        :param _builtins.str vm_uuid: (Output)
+               The VM UUID.
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs'] xlsx_errors: (Output)
+               Error details for an XLSX file.
+               Structure is documented below.
+        """
+        if archive_errors is not None:
+            pulumi.set(__self__, "archive_errors", archive_errors)
+        if asset_title is not None:
+            pulumi.set(__self__, "asset_title", asset_title)
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if vm_name is not None:
+            pulumi.set(__self__, "vm_name", vm_name)
+        if vm_uuid is not None:
+            pulumi.set(__self__, "vm_uuid", vm_uuid)
+        if xlsx_errors is not None:
+            pulumi.set(__self__, "xlsx_errors", xlsx_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveErrors")
+    def archive_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorArchiveError']]:
+        """
+        (Output)
+        Error details for an archive file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "archive_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="assetTitle")
+    def asset_title(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The asset title.
+        """
+        return pulumi.get(self, "asset_title")
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorCsvError']]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorError']]:
+        """
+        (Output)
+        The list of errors detected in the row.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @_builtins.property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the VM in the row.
+        """
+        return pulumi.get(self, "vm_name")
+
+    @_builtins.property
+    @pulumi.getter(name="vmUuid")
+    def vm_uuid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The VM UUID.
+        """
+        return pulumi.get(self, "vm_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="xlsxErrors")
+    def xlsx_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorXlsxError']]:
+        """
+        (Output)
+        Error details for an XLSX file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xlsx_errors")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowErrorArchiveError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "csvErrors":
+            suggest = "csv_errors"
+        elif key == "filePath":
+            suggest = "file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowErrorArchiveError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowErrorArchiveError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowErrorArchiveError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 csv_errors: Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError']] = None,
+                 file_path: Optional[_builtins.str] = None):
+        """
+        :param Sequence['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs'] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param _builtins.str file_path: (Output)
+               The file path inside the archive where the error was detected.
+        """
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> Optional[Sequence['outputs.ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError']]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The file path inside the archive where the error was detected.
+        """
+        return pulumi.get(self, "file_path")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowErrorCsvError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowErrorCsvError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowErrorCsvError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowErrorCsvError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowErrorError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowErrorError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowErrorError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowErrorError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class ImportJobValidationReportFileValidationRowErrorXlsxError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowNumber":
+            suggest = "row_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportFileValidationRowErrorXlsxError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportFileValidationRowErrorXlsxError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportFileValidationRowErrorXlsxError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 row_number: Optional[_builtins.int] = None,
+                 sheet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int row_number: (Output)
+               The row number where the error was detected.
+        :param _builtins.str sheet: (Output)
+               The name of the sheet where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if sheet is not None:
+            pulumi.set(__self__, "sheet", sheet)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def sheet(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the sheet where the error was detected.
+        """
+        return pulumi.get(self, "sheet")
+
+
+@pulumi.output_type
+class ImportJobValidationReportJobError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportJobValidationReportJobError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportJobValidationReportJobError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportJobValidationReportJobError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[_builtins.str] = None,
+                 severity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str error_details: (Output)
+               The error information.
+        :param _builtins.str severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
 
 
 @pulumi.output_type

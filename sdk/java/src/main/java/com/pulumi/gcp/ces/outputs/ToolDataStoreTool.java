@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolBoostSpec;
+import com.pulumi.gcp.ces.outputs.ToolDataStoreToolDataStoreSource;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolEngineSource;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolModalityConfig;
 import java.lang.Integer;
@@ -24,6 +25,12 @@ public final class ToolDataStoreTool {
      */
     private @Nullable List<ToolDataStoreToolBoostSpec> boostSpecs;
     /**
+     * @return Optional. Search within a single specific DataStore.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ToolDataStoreToolDataStoreSource dataStoreSource;
+    /**
      * @return The tool description.
      * 
      */
@@ -35,6 +42,16 @@ public final class ToolDataStoreTool {
      * 
      */
     private @Nullable ToolDataStoreToolEngineSource engineSource;
+    /**
+     * @return Optional. The filter parameter behavior.
+     * Possible values:
+     * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+     * ALWAYS_INCLUDE
+     * NEVER_INCLUDE
+     * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+     * 
+     */
+    private @Nullable String filterParameterBehavior;
     /**
      * @return (Optional, Deprecated)
      * Number of search results to return per query.
@@ -70,6 +87,14 @@ public final class ToolDataStoreTool {
         return this.boostSpecs == null ? List.of() : this.boostSpecs;
     }
     /**
+     * @return Optional. Search within a single specific DataStore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ToolDataStoreToolDataStoreSource> dataStoreSource() {
+        return Optional.ofNullable(this.dataStoreSource);
+    }
+    /**
      * @return The tool description.
      * 
      */
@@ -84,6 +109,18 @@ public final class ToolDataStoreTool {
      */
     public Optional<ToolDataStoreToolEngineSource> engineSource() {
         return Optional.ofNullable(this.engineSource);
+    }
+    /**
+     * @return Optional. The filter parameter behavior.
+     * Possible values:
+     * FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+     * ALWAYS_INCLUDE
+     * NEVER_INCLUDE
+     * Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+     * 
+     */
+    public Optional<String> filterParameterBehavior() {
+        return Optional.ofNullable(this.filterParameterBehavior);
     }
     /**
      * @return (Optional, Deprecated)
@@ -126,8 +163,10 @@ public final class ToolDataStoreTool {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ToolDataStoreToolBoostSpec> boostSpecs;
+        private @Nullable ToolDataStoreToolDataStoreSource dataStoreSource;
         private @Nullable String description;
         private @Nullable ToolDataStoreToolEngineSource engineSource;
+        private @Nullable String filterParameterBehavior;
         private @Nullable Integer maxResults;
         private @Nullable List<ToolDataStoreToolModalityConfig> modalityConfigs;
         private String name;
@@ -135,8 +174,10 @@ public final class ToolDataStoreTool {
         public Builder(ToolDataStoreTool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.boostSpecs = defaults.boostSpecs;
+    	      this.dataStoreSource = defaults.dataStoreSource;
     	      this.description = defaults.description;
     	      this.engineSource = defaults.engineSource;
+    	      this.filterParameterBehavior = defaults.filterParameterBehavior;
     	      this.maxResults = defaults.maxResults;
     	      this.modalityConfigs = defaults.modalityConfigs;
     	      this.name = defaults.name;
@@ -152,6 +193,12 @@ public final class ToolDataStoreTool {
             return boostSpecs(List.of(boostSpecs));
         }
         @CustomType.Setter
+        public Builder dataStoreSource(@Nullable ToolDataStoreToolDataStoreSource dataStoreSource) {
+
+            this.dataStoreSource = dataStoreSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
 
             this.description = description;
@@ -161,6 +208,12 @@ public final class ToolDataStoreTool {
         public Builder engineSource(@Nullable ToolDataStoreToolEngineSource engineSource) {
 
             this.engineSource = engineSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filterParameterBehavior(@Nullable String filterParameterBehavior) {
+
+            this.filterParameterBehavior = filterParameterBehavior;
             return this;
         }
         @CustomType.Setter
@@ -189,8 +242,10 @@ public final class ToolDataStoreTool {
         public ToolDataStoreTool build() {
             final var _resultValue = new ToolDataStoreTool();
             _resultValue.boostSpecs = boostSpecs;
+            _resultValue.dataStoreSource = dataStoreSource;
             _resultValue.description = description;
             _resultValue.engineSource = engineSource;
+            _resultValue.filterParameterBehavior = filterParameterBehavior;
             _resultValue.maxResults = maxResults;
             _resultValue.modalityConfigs = modalityConfigs;
             _resultValue.name = name;

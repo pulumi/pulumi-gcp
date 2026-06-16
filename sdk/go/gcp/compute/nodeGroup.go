@@ -93,8 +93,8 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:                pulumi.String("soletenant-group"),
-//				Zone:                pulumi.String("us-central1-a"),
-//				Description:         pulumi.String("example google_compute_node_group for Google Provider"),
+//				Zone:                pulumi.String("us-central1-c"),
+//				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:         pulumi.Int(1),
 //				NodeTemplate:        soletenant_tmpl.ID(),
 //				MaintenanceInterval: pulumi.String("RECURRENT"),

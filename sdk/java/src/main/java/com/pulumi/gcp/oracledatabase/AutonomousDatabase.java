@@ -93,12 +93,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
  * import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
  * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
  * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesCustomerContactArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -112,11 +112,6 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name("new")
- *             .project("my-project")
- *             .build());
- * 
  *         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
  *             .autonomousDatabaseId("my-instance")
  *             .location("us-east4")
@@ -124,8 +119,8 @@ import javax.annotation.Nullable;
  *             .displayName("autonomousDatabase displayname")
  *             .database("mydatabase")
  *             .adminPassword("123Abpassword")
- *             .network(default_.id())
- *             .cidr("10.5.0.0/24")
+ *             .odbNetwork("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork")
+ *             .odbSubnet("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
  *             .labels(Map.of("label-one", "value-one"))
  *             .properties(AutonomousDatabasePropertiesArgs.builder()
  *                 .computeCount(2.0)
@@ -149,6 +144,11 @@ import javax.annotation.Nullable;
  *                 .privateEndpointLabel("myendpoint")
  *                 .build())
  *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("new")
+ *             .project("my-project")
  *             .build());
  * 
  *     }}{@code

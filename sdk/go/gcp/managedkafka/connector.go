@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			mkcSecondarySubnet, err := compute.NewSubnetwork(ctx, "mkc_secondary_subnet", &compute.SubnetworkArgs{
-//				Project:     pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:     pulumi.String(project.ProjectId),
 //				Name:        pulumi.String("my-secondary-subnetwork-00"),
 //				IpCidrRange: pulumi.String("10.5.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			cpsTopic, err := pubsub.NewTopic(ctx, "cps_topic", &pubsub.TopicArgs{
-//				Project:                  pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:                  pulumi.String(project.ProjectId),
 //				Name:                     pulumi.String("my-cps-topic"),
 //				MessageRetentionDuration: pulumi.String("86600s"),
 //			})
@@ -131,7 +131,7 @@ import (
 //					"tasks.max":       pulumi.String("3"),
 //					"topics":          gmkTopic.TopicId,
 //					"cps.topic":       cpsTopic.Name,
-//					"cps.project":     pulumi.String(pulumi.String(project.ProjectId)),
+//					"cps.project":     pulumi.String(project.ProjectId),
 //					"value.converter": pulumi.String("org.apache.kafka.connect.storage.StringConverter"),
 //					"key.converter":   pulumi.String("org.apache.kafka.connect.storage.StringConverter"),
 //				},

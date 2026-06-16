@@ -36,6 +36,7 @@ import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeCreationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePool;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefault;
@@ -135,6 +136,7 @@ public final class GetClusterResult {
     private List<GetClusterNetworkPolicy> networkPolicies;
     private String networkingMode;
     private List<GetClusterNodeConfig> nodeConfigs;
+    private List<GetClusterNodeCreationConfig> nodeCreationConfigs;
     private List<String> nodeLocations;
     private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
     private List<GetClusterNodePoolDefault> nodePoolDefaults;
@@ -365,6 +367,9 @@ public final class GetClusterResult {
     public List<GetClusterNodeConfig> nodeConfigs() {
         return this.nodeConfigs;
     }
+    public List<GetClusterNodeCreationConfig> nodeCreationConfigs() {
+        return this.nodeCreationConfigs;
+    }
     public List<String> nodeLocations() {
         return this.nodeLocations;
     }
@@ -535,6 +540,7 @@ public final class GetClusterResult {
         private List<GetClusterNetworkPolicy> networkPolicies;
         private String networkingMode;
         private List<GetClusterNodeConfig> nodeConfigs;
+        private List<GetClusterNodeCreationConfig> nodeCreationConfigs;
         private List<String> nodeLocations;
         private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
         private List<GetClusterNodePoolDefault> nodePoolDefaults;
@@ -634,6 +640,7 @@ public final class GetClusterResult {
     	      this.networkPolicies = defaults.networkPolicies;
     	      this.networkingMode = defaults.networkingMode;
     	      this.nodeConfigs = defaults.nodeConfigs;
+    	      this.nodeCreationConfigs = defaults.nodeCreationConfigs;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.nodePoolAutoConfigs = defaults.nodePoolAutoConfigs;
     	      this.nodePoolDefaults = defaults.nodePoolDefaults;
@@ -1275,6 +1282,17 @@ public final class GetClusterResult {
             return nodeConfigs(List.of(nodeConfigs));
         }
         @CustomType.Setter
+        public Builder nodeCreationConfigs(List<GetClusterNodeCreationConfig> nodeCreationConfigs) {
+            if (nodeCreationConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "nodeCreationConfigs");
+            }
+            this.nodeCreationConfigs = nodeCreationConfigs;
+            return this;
+        }
+        public Builder nodeCreationConfigs(GetClusterNodeCreationConfig... nodeCreationConfigs) {
+            return nodeCreationConfigs(List.of(nodeCreationConfigs));
+        }
+        @CustomType.Setter
         public Builder nodeLocations(List<String> nodeLocations) {
             if (nodeLocations == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "nodeLocations");
@@ -1657,6 +1675,7 @@ public final class GetClusterResult {
             _resultValue.networkPolicies = networkPolicies;
             _resultValue.networkingMode = networkingMode;
             _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.nodeCreationConfigs = nodeCreationConfigs;
             _resultValue.nodeLocations = nodeLocations;
             _resultValue.nodePoolAutoConfigs = nodePoolAutoConfigs;
             _resultValue.nodePoolDefaults = nodePoolDefaults;

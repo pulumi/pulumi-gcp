@@ -289,7 +289,7 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     /**
      * The region of the index endpoint deployment. eg us-central1
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.

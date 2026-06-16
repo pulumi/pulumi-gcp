@@ -19,14 +19,14 @@ public final class ToolPythonFunction {
      */
     private @Nullable String description;
     /**
-     * @return The name of the Python function to execute. Must match a Python function
+     * @return Optional. The name of the Python function to execute. Must match a Python function
      * name defined in the python code. Case sensitive. If the name is not
      * provided, the first function defined in the python code will be used.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The Python code to execute for the tool.
+     * @return Optional. The Python code to execute for the tool.
      * 
      */
     private @Nullable String pythonCode;
@@ -42,7 +42,7 @@ public final class ToolPythonFunction {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of the Python function to execute. Must match a Python function
+     * @return Optional. The name of the Python function to execute. Must match a Python function
      * name defined in the python code. Case sensitive. If the name is not
      * provided, the first function defined in the python code will be used.
      * 
@@ -51,7 +51,7 @@ public final class ToolPythonFunction {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The Python code to execute for the tool.
+     * @return Optional. The Python code to execute for the tool.
      * 
      */
     public Optional<String> pythonCode() {

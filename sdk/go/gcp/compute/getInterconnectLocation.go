@@ -35,8 +35,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterconnect(ctx, "this", &compute.InterconnectArgs{
-//				Project:  pulumi.String(pulumi.String(this.Project)),
-//				Location: pulumi.String(pulumi.String(this.SelfLink)),
+//				Project:  pulumi.String(this.Project),
+//				Location: pulumi.String(this.SelfLink),
 //				Name:     pulumi.String("my-dedicated-connection-1"),
 //			})
 //			if err != nil {

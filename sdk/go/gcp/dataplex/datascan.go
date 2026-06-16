@@ -1188,12 +1188,12 @@ import (
 //				EntryGroupId: testGroup.EntryGroupId,
 //				EntryId:      pulumi.String("test-entry-_32081"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
-//				Project:      pulumi.String(pulumi.String(project.Number)),
+//				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{
 //					&dataplex.EntryAspectArgs{
 //						AspectKey: pulumi.String("655216118709.global.data-quality-rule-template"),
 //						Aspect: &dataplex.EntryAspectAspectArgs{
-//							Data: pulumi.String(pulumi.String(json0)),
+//							Data: pulumi.String(json0),
 //						},
 //					},
 //				},
@@ -1211,7 +1211,7 @@ import (
 //			}
 //			bqTableEntry, err := dataplex.NewEntry(ctx, "bq_table_entry", &dataplex.EntryArgs{
 //				EntryGroupId: pulumi.String("@bigquery"),
-//				Project:      pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:      pulumi.String(project.ProjectId),
 //				Location:     pulumi.String("us-central1"),
 //				EntryId: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 //					datasetId := _args[0].(string)
@@ -1331,7 +1331,7 @@ import (
 //					EnableCatalogBasedRules: pulumi.Bool(true),
 //					Filter:                  pulumi.String("attributes.priority = \"high\""),
 //				},
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				waitForAspectPropagation,
 //			}))
@@ -1374,7 +1374,7 @@ import (
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("tf-test-sa-_10393"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
-//				Project:     pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:     pulumi.String(project.ProjectId),
 //			})
 //			if err != nil {
 //				return err
@@ -1396,7 +1396,7 @@ import (
 //				return err
 //			}
 //			saBqDataViewer, err := projects.NewIAMMember(ctx, "sa_bq_data_viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataViewer"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -1406,7 +1406,7 @@ import (
 //				return err
 //			}
 //			saBqJobUser, err := projects.NewIAMMember(ctx, "sa_bq_job_user", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.jobUser"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -1418,7 +1418,7 @@ import (
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: pulumi.String("test-group-_33052"),
-//				Project:      pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:      pulumi.String(project.ProjectId),
 //			})
 //			if err != nil {
 //				return err
@@ -1440,12 +1440,12 @@ import (
 //				EntryGroupId: testGroup.EntryGroupId,
 //				EntryId:      pulumi.String("test-entry-_3684"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
-//				Project:      pulumi.String(pulumi.String(project.Number)),
+//				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{
 //					&dataplex.EntryAspectArgs{
 //						AspectKey: pulumi.String("655216118709.global.data-quality-rule-template"),
 //						Aspect: &dataplex.EntryAspectAspectArgs{
-//							Data: pulumi.String(pulumi.String(json0)),
+//							Data: pulumi.String(json0),
 //						},
 //					},
 //				},
@@ -1457,7 +1457,7 @@ import (
 //				DatasetId:                pulumi.String("tf_test_dataset_id__10719"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				Location:                 pulumi.String("us-central1"),
-//				Project:                  pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:                  pulumi.String(project.ProjectId),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dataplexSaImpersonate,
 //				saBqDataViewer,
@@ -1470,7 +1470,7 @@ import (
 //				DatasetId:          tfTestDataset.DatasetId,
 //				TableId:            pulumi.String("tf_test_table_id__1443"),
 //				DeletionProtection: pulumi.Bool(false),
-//				Project:            pulumi.String(pulumi.String(project.ProjectId)),
+//				Project:            pulumi.String(project.ProjectId),
 //				Schema: pulumi.String(`    [
 //	    {
 //	      \"name\": \"name\",
@@ -1523,7 +1523,7 @@ import (
 //						},
 //					},
 //				},
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				tfTestTable,
 //				wait120Seconds,

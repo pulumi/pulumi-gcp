@@ -3278,6 +3278,219 @@ func (o AppGroupAttributeArrayOutput) Index(i pulumi.IntInput) AppGroupAttribute
 	}).(AppGroupAttributeOutput)
 }
 
+type DatastoreDatastoreConfig struct {
+	// The name of the Cloud Storage bucket. Required for `gcs` target type.
+	BucketName *string `pulumi:"bucketName"`
+	// The name of the BigQuery dataset. Required for `bigquery` target type.
+	DatasetName *string `pulumi:"datasetName"`
+	// The path within the Cloud Storage bucket. Used for `gcs` target type.
+	Path *string `pulumi:"path"`
+	// The GCP project ID that the datastore target resides in.
+	ProjectId string `pulumi:"projectId"`
+	// The prefix for BigQuery table names. Used for `bigquery` target type.
+	TablePrefix *string `pulumi:"tablePrefix"`
+}
+
+// DatastoreDatastoreConfigInput is an input type that accepts DatastoreDatastoreConfigArgs and DatastoreDatastoreConfigOutput values.
+// You can construct a concrete instance of `DatastoreDatastoreConfigInput` via:
+//
+//	DatastoreDatastoreConfigArgs{...}
+type DatastoreDatastoreConfigInput interface {
+	pulumi.Input
+
+	ToDatastoreDatastoreConfigOutput() DatastoreDatastoreConfigOutput
+	ToDatastoreDatastoreConfigOutputWithContext(context.Context) DatastoreDatastoreConfigOutput
+}
+
+type DatastoreDatastoreConfigArgs struct {
+	// The name of the Cloud Storage bucket. Required for `gcs` target type.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The name of the BigQuery dataset. Required for `bigquery` target type.
+	DatasetName pulumi.StringPtrInput `pulumi:"datasetName"`
+	// The path within the Cloud Storage bucket. Used for `gcs` target type.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The GCP project ID that the datastore target resides in.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The prefix for BigQuery table names. Used for `bigquery` target type.
+	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
+}
+
+func (DatastoreDatastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreDatastoreConfig)(nil)).Elem()
+}
+
+func (i DatastoreDatastoreConfigArgs) ToDatastoreDatastoreConfigOutput() DatastoreDatastoreConfigOutput {
+	return i.ToDatastoreDatastoreConfigOutputWithContext(context.Background())
+}
+
+func (i DatastoreDatastoreConfigArgs) ToDatastoreDatastoreConfigOutputWithContext(ctx context.Context) DatastoreDatastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreDatastoreConfigOutput)
+}
+
+func (i DatastoreDatastoreConfigArgs) ToDatastoreDatastoreConfigPtrOutput() DatastoreDatastoreConfigPtrOutput {
+	return i.ToDatastoreDatastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatastoreDatastoreConfigArgs) ToDatastoreDatastoreConfigPtrOutputWithContext(ctx context.Context) DatastoreDatastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreDatastoreConfigOutput).ToDatastoreDatastoreConfigPtrOutputWithContext(ctx)
+}
+
+// DatastoreDatastoreConfigPtrInput is an input type that accepts DatastoreDatastoreConfigArgs, DatastoreDatastoreConfigPtr and DatastoreDatastoreConfigPtrOutput values.
+// You can construct a concrete instance of `DatastoreDatastoreConfigPtrInput` via:
+//
+//	        DatastoreDatastoreConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatastoreDatastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatastoreDatastoreConfigPtrOutput() DatastoreDatastoreConfigPtrOutput
+	ToDatastoreDatastoreConfigPtrOutputWithContext(context.Context) DatastoreDatastoreConfigPtrOutput
+}
+
+type datastoreDatastoreConfigPtrType DatastoreDatastoreConfigArgs
+
+func DatastoreDatastoreConfigPtr(v *DatastoreDatastoreConfigArgs) DatastoreDatastoreConfigPtrInput {
+	return (*datastoreDatastoreConfigPtrType)(v)
+}
+
+func (*datastoreDatastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreDatastoreConfig)(nil)).Elem()
+}
+
+func (i *datastoreDatastoreConfigPtrType) ToDatastoreDatastoreConfigPtrOutput() DatastoreDatastoreConfigPtrOutput {
+	return i.ToDatastoreDatastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *datastoreDatastoreConfigPtrType) ToDatastoreDatastoreConfigPtrOutputWithContext(ctx context.Context) DatastoreDatastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreDatastoreConfigPtrOutput)
+}
+
+type DatastoreDatastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (DatastoreDatastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreDatastoreConfig)(nil)).Elem()
+}
+
+func (o DatastoreDatastoreConfigOutput) ToDatastoreDatastoreConfigOutput() DatastoreDatastoreConfigOutput {
+	return o
+}
+
+func (o DatastoreDatastoreConfigOutput) ToDatastoreDatastoreConfigOutputWithContext(ctx context.Context) DatastoreDatastoreConfigOutput {
+	return o
+}
+
+func (o DatastoreDatastoreConfigOutput) ToDatastoreDatastoreConfigPtrOutput() DatastoreDatastoreConfigPtrOutput {
+	return o.ToDatastoreDatastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatastoreDatastoreConfigOutput) ToDatastoreDatastoreConfigPtrOutputWithContext(ctx context.Context) DatastoreDatastoreConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatastoreDatastoreConfig) *DatastoreDatastoreConfig {
+		return &v
+	}).(DatastoreDatastoreConfigPtrOutput)
+}
+
+// The name of the Cloud Storage bucket. Required for `gcs` target type.
+func (o DatastoreDatastoreConfigOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreDatastoreConfig) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery dataset. Required for `bigquery` target type.
+func (o DatastoreDatastoreConfigOutput) DatasetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreDatastoreConfig) *string { return v.DatasetName }).(pulumi.StringPtrOutput)
+}
+
+// The path within the Cloud Storage bucket. Used for `gcs` target type.
+func (o DatastoreDatastoreConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreDatastoreConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The GCP project ID that the datastore target resides in.
+func (o DatastoreDatastoreConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatastoreDatastoreConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The prefix for BigQuery table names. Used for `bigquery` target type.
+func (o DatastoreDatastoreConfigOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreDatastoreConfig) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
+}
+
+type DatastoreDatastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatastoreDatastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreDatastoreConfig)(nil)).Elem()
+}
+
+func (o DatastoreDatastoreConfigPtrOutput) ToDatastoreDatastoreConfigPtrOutput() DatastoreDatastoreConfigPtrOutput {
+	return o
+}
+
+func (o DatastoreDatastoreConfigPtrOutput) ToDatastoreDatastoreConfigPtrOutputWithContext(ctx context.Context) DatastoreDatastoreConfigPtrOutput {
+	return o
+}
+
+func (o DatastoreDatastoreConfigPtrOutput) Elem() DatastoreDatastoreConfigOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) DatastoreDatastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatastoreDatastoreConfig
+		return ret
+	}).(DatastoreDatastoreConfigOutput)
+}
+
+// The name of the Cloud Storage bucket. Required for `gcs` target type.
+func (o DatastoreDatastoreConfigPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery dataset. Required for `bigquery` target type.
+func (o DatastoreDatastoreConfigPtrOutput) DatasetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path within the Cloud Storage bucket. Used for `gcs` target type.
+func (o DatastoreDatastoreConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP project ID that the datastore target resides in.
+func (o DatastoreDatastoreConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix for BigQuery table names. Used for `bigquery` target type.
+func (o DatastoreDatastoreConfigPtrOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreDatastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TablePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeveloperAppAttribute struct {
 	// Key of the attribute
 	Name *string `pulumi:"name"`
@@ -8764,6 +8977,121 @@ func (o TargetServerSSlInfoCommonNamePtrOutput) WildcardMatch() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetInstanceAccessLoggingConfig struct {
+	// Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Ship the access log entries that match the statusCode defined in the filter.
+	// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+	// The filter will parse it to the Common Expression Language semantics for expression
+	// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+	Filter string `pulumi:"filter"`
+}
+
+// GetInstanceAccessLoggingConfigInput is an input type that accepts GetInstanceAccessLoggingConfigArgs and GetInstanceAccessLoggingConfigOutput values.
+// You can construct a concrete instance of `GetInstanceAccessLoggingConfigInput` via:
+//
+//	GetInstanceAccessLoggingConfigArgs{...}
+type GetInstanceAccessLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceAccessLoggingConfigOutput() GetInstanceAccessLoggingConfigOutput
+	ToGetInstanceAccessLoggingConfigOutputWithContext(context.Context) GetInstanceAccessLoggingConfigOutput
+}
+
+type GetInstanceAccessLoggingConfigArgs struct {
+	// Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Ship the access log entries that match the statusCode defined in the filter.
+	// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+	// The filter will parse it to the Common Expression Language semantics for expression
+	// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (GetInstanceAccessLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAccessLoggingConfigArgs) ToGetInstanceAccessLoggingConfigOutput() GetInstanceAccessLoggingConfigOutput {
+	return i.ToGetInstanceAccessLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAccessLoggingConfigArgs) ToGetInstanceAccessLoggingConfigOutputWithContext(ctx context.Context) GetInstanceAccessLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAccessLoggingConfigOutput)
+}
+
+// GetInstanceAccessLoggingConfigArrayInput is an input type that accepts GetInstanceAccessLoggingConfigArray and GetInstanceAccessLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAccessLoggingConfigArrayInput` via:
+//
+//	GetInstanceAccessLoggingConfigArray{ GetInstanceAccessLoggingConfigArgs{...} }
+type GetInstanceAccessLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAccessLoggingConfigArrayOutput() GetInstanceAccessLoggingConfigArrayOutput
+	ToGetInstanceAccessLoggingConfigArrayOutputWithContext(context.Context) GetInstanceAccessLoggingConfigArrayOutput
+}
+
+type GetInstanceAccessLoggingConfigArray []GetInstanceAccessLoggingConfigInput
+
+func (GetInstanceAccessLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAccessLoggingConfigArray) ToGetInstanceAccessLoggingConfigArrayOutput() GetInstanceAccessLoggingConfigArrayOutput {
+	return i.ToGetInstanceAccessLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAccessLoggingConfigArray) ToGetInstanceAccessLoggingConfigArrayOutputWithContext(ctx context.Context) GetInstanceAccessLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAccessLoggingConfigArrayOutput)
+}
+
+type GetInstanceAccessLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAccessLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAccessLoggingConfigOutput) ToGetInstanceAccessLoggingConfigOutput() GetInstanceAccessLoggingConfigOutput {
+	return o
+}
+
+func (o GetInstanceAccessLoggingConfigOutput) ToGetInstanceAccessLoggingConfigOutputWithContext(ctx context.Context) GetInstanceAccessLoggingConfigOutput {
+	return o
+}
+
+// Boolean flag that specifies whether the customer access log feature is enabled.
+func (o GetInstanceAccessLoggingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAccessLoggingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Ship the access log entries that match the statusCode defined in the filter.
+// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+// The filter will parse it to the Common Expression Language semantics for expression
+// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+func (o GetInstanceAccessLoggingConfigOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAccessLoggingConfig) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+type GetInstanceAccessLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAccessLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAccessLoggingConfigArrayOutput) ToGetInstanceAccessLoggingConfigArrayOutput() GetInstanceAccessLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAccessLoggingConfigArrayOutput) ToGetInstanceAccessLoggingConfigArrayOutputWithContext(ctx context.Context) GetInstanceAccessLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAccessLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceAccessLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAccessLoggingConfig {
+		return vs[0].([]GetInstanceAccessLoggingConfig)[vs[1].(int)]
+	}).(GetInstanceAccessLoggingConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
@@ -8811,6 +9139,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuotaPtrInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeInput)(nil)).Elem(), AppGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreDatastoreConfigInput)(nil)).Elem(), DatastoreDatastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreDatastoreConfigPtrInput)(nil)).Elem(), DatastoreDatastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppAttributeInput)(nil)).Elem(), DeveloperAppAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppAttributeArrayInput)(nil)).Elem(), DeveloperAppAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialInput)(nil)).Elem(), DeveloperAppCredentialArgs{})
@@ -8881,6 +9211,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoPtrInput)(nil)).Elem(), TargetServerSSlInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoCommonNameInput)(nil)).Elem(), TargetServerSSlInfoCommonNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoCommonNamePtrInput)(nil)).Elem(), TargetServerSSlInfoCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessLoggingConfigInput)(nil)).Elem(), GetInstanceAccessLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessLoggingConfigArrayInput)(nil)).Elem(), GetInstanceAccessLoggingConfigArray{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput{})
@@ -8927,6 +9259,8 @@ func init() {
 	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigQuotaPtrOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DatastoreDatastoreConfigOutput{})
+	pulumi.RegisterOutputType(DatastoreDatastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeveloperAppAttributeOutput{})
 	pulumi.RegisterOutputType(DeveloperAppAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DeveloperAppCredentialOutput{})
@@ -8997,4 +9331,6 @@ func init() {
 	pulumi.RegisterOutputType(TargetServerSSlInfoPtrOutput{})
 	pulumi.RegisterOutputType(TargetServerSSlInfoCommonNameOutput{})
 	pulumi.RegisterOutputType(TargetServerSSlInfoCommonNamePtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceAccessLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceAccessLoggingConfigArrayOutput{})
 }

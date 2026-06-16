@@ -61,7 +61,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(pulumi.String(_default.Id)),
+//				Network:      pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

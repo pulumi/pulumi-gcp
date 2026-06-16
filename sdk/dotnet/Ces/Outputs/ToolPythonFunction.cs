@@ -20,13 +20,13 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The name of the Python function to execute. Must match a Python function
+        /// Optional. The name of the Python function to execute. Must match a Python function
         /// name defined in the python code. Case sensitive. If the name is not
         /// provided, the first function defined in the python code will be used.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Python code to execute for the tool.
+        /// Optional. The Python code to execute for the tool.
         /// </summary>
         public readonly string? PythonCode;
 

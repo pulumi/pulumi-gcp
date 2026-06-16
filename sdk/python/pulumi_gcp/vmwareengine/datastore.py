@@ -398,10 +398,15 @@ class Datastore(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        A datastore resource that can be mounted on a privatecloud cluster
+        A datastore resource that can be mounted on a VMware Engine cluster.
 
-        ## Example Usage
+        > **Note:** To mount a datastore on a VMware Engine cluster, configure the
+        `datastore_mount_config` block within the `vmwareengine.Cluster` resource.
+        A datastore cannot be mounted directly using the `vmwareengine.Datastore` resource.
 
+        If you are mounting a datastore that was already created outside of Terraform (or in a
+        separate Terraform configuration), reference it directly by its full resource URI in the
+        `datastore_mount_config.datastore` field inside the cluster resource:
         ### Vmware Engine Datastore Thirdparty
 
         ```python
@@ -410,7 +415,18 @@ class Datastore(pulumi.CustomResource):
 
         # use existing network with connectivity to the thirdparty datastore
         default = gcp.compute.get_network(name="default")
-        # create a thirdparty datastore
+        # Create a thirdparty datastore.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_thirdparty = gcp.vmwareengine.Datastore("example_thirdparty",
             name="thirdparty-datastore",
             location="us-west1-a",
@@ -432,7 +448,18 @@ class Datastore(pulumi.CustomResource):
         # Use existing filestore instance
         test_instance = gcp.filestore.get_instance(name="fs-instance",
             location="")
-        # Create a VmwareEngine Datastore, referencing the filestore instance
+        # Create a VmwareEngine Datastore, referencing the filestore instance.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_filestore.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_filestore = gcp.vmwareengine.Datastore("example_filestore",
             name="filestore-datastore",
             location="",
@@ -453,7 +480,18 @@ class Datastore(pulumi.CustomResource):
         test_volume = gcp.netapp.Volume("test_volume",
             name="netapp-volume",
             location="us-west1")
-        # Create a VmwareEngine Datastore, referencing the netapp volume
+        # Create a VmwareEngine Datastore, referencing the netapp volume.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_netapp.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_netapp = gcp.vmwareengine.Datastore("example_netapp",
             name="netapp-datastore",
             location="us-west1",
@@ -514,10 +552,15 @@ class Datastore(pulumi.CustomResource):
                  args: DatastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A datastore resource that can be mounted on a privatecloud cluster
+        A datastore resource that can be mounted on a VMware Engine cluster.
 
-        ## Example Usage
+        > **Note:** To mount a datastore on a VMware Engine cluster, configure the
+        `datastore_mount_config` block within the `vmwareengine.Cluster` resource.
+        A datastore cannot be mounted directly using the `vmwareengine.Datastore` resource.
 
+        If you are mounting a datastore that was already created outside of Terraform (or in a
+        separate Terraform configuration), reference it directly by its full resource URI in the
+        `datastore_mount_config.datastore` field inside the cluster resource:
         ### Vmware Engine Datastore Thirdparty
 
         ```python
@@ -526,7 +569,18 @@ class Datastore(pulumi.CustomResource):
 
         # use existing network with connectivity to the thirdparty datastore
         default = gcp.compute.get_network(name="default")
-        # create a thirdparty datastore
+        # Create a thirdparty datastore.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_thirdparty = gcp.vmwareengine.Datastore("example_thirdparty",
             name="thirdparty-datastore",
             location="us-west1-a",
@@ -548,7 +602,18 @@ class Datastore(pulumi.CustomResource):
         # Use existing filestore instance
         test_instance = gcp.filestore.get_instance(name="fs-instance",
             location="")
-        # Create a VmwareEngine Datastore, referencing the filestore instance
+        # Create a VmwareEngine Datastore, referencing the filestore instance.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_filestore.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_filestore = gcp.vmwareengine.Datastore("example_filestore",
             name="filestore-datastore",
             location="",
@@ -569,7 +634,18 @@ class Datastore(pulumi.CustomResource):
         test_volume = gcp.netapp.Volume("test_volume",
             name="netapp-volume",
             location="us-west1")
-        # Create a VmwareEngine Datastore, referencing the netapp volume
+        # Create a VmwareEngine Datastore, referencing the netapp volume.
+        # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+        # block within the `google_vmwareengine_cluster` resource. For example:
+        #
+        #  datastore_mount_config {
+        #    datastore        = google_vmwareengine_datastore.example_netapp.id
+        #    datastore_network {
+        #      subnet           = google_vmwareengine_subnet.example_subnet.id
+        #      connection_count = 4
+        #      mtu              = 1500
+        #    }
+        #  }
         example_netapp = gcp.vmwareengine.Datastore("example_netapp",
             name="netapp-datastore",
             location="us-west1",

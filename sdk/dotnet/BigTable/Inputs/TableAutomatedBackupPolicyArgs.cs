@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.BigTable.Inputs
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
+        [Input("locations")]
+        private InputList<string>? _locations;
+
+        /// <summary>
+        /// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+        /// </summary>
+        public InputList<string> Locations
+        {
+            get => _locations ?? (_locations = new InputList<string>());
+            set => _locations = value;
+        }
+
         /// <summary>
         /// How long the automated backups should be retained.
         /// </summary>

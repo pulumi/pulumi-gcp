@@ -64,14 +64,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
     }
 
     /**
-     * The comparison to apply between the time
-     * series (indicated by filter and aggregation)
-     * and the threshold (indicated by
-     * threshold_value). The comparison is applied
-     * on each time series, with the time series on
-     * the left-hand side and the threshold on the
-     * right-hand side. Only COMPARISON_LT and
-     * COMPARISON_GT are supported currently.
+     * The comparison to apply between the time series
+     * (indicated by filter and aggregation) and the threshold
+     * (indicated by threshold_value). The comparison is
+     * applied on each time series, with the time series on
+     * the left-hand side and the threshold on the right-hand
+     * side.
+     * The Cloud Monitoring API only supports `COMPARISON_LT`
+     * and `COMPARISON_GT` for metric-threshold conditions; the
+     * other values are kept in the schema for backward
+     * compatibility with imported state but will be rejected
+     * by the API. See
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
      * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
      * 
      */
@@ -79,14 +83,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
     private Output<String> comparison;
 
     /**
-     * @return The comparison to apply between the time
-     * series (indicated by filter and aggregation)
-     * and the threshold (indicated by
-     * threshold_value). The comparison is applied
-     * on each time series, with the time series on
-     * the left-hand side and the threshold on the
-     * right-hand side. Only COMPARISON_LT and
-     * COMPARISON_GT are supported currently.
+     * @return The comparison to apply between the time series
+     * (indicated by filter and aggregation) and the threshold
+     * (indicated by threshold_value). The comparison is
+     * applied on each time series, with the time series on
+     * the left-hand side and the threshold on the right-hand
+     * side.
+     * The Cloud Monitoring API only supports `COMPARISON_LT`
+     * and `COMPARISON_GT` for metric-threshold conditions; the
+     * other values are kept in the schema for backward
+     * compatibility with imported state but will be rejected
+     * by the API. See
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
      * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
      * 
      */
@@ -464,14 +472,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         }
 
         /**
-         * @param comparison The comparison to apply between the time
-         * series (indicated by filter and aggregation)
-         * and the threshold (indicated by
-         * threshold_value). The comparison is applied
-         * on each time series, with the time series on
-         * the left-hand side and the threshold on the
-         * right-hand side. Only COMPARISON_LT and
-         * COMPARISON_GT are supported currently.
+         * @param comparison The comparison to apply between the time series
+         * (indicated by filter and aggregation) and the threshold
+         * (indicated by threshold_value). The comparison is
+         * applied on each time series, with the time series on
+         * the left-hand side and the threshold on the right-hand
+         * side.
+         * The Cloud Monitoring API only supports `COMPARISON_LT`
+         * and `COMPARISON_GT` for metric-threshold conditions; the
+         * other values are kept in the schema for backward
+         * compatibility with imported state but will be rejected
+         * by the API. See
+         * https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
          * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
          * 
          * @return builder
@@ -483,14 +495,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         }
 
         /**
-         * @param comparison The comparison to apply between the time
-         * series (indicated by filter and aggregation)
-         * and the threshold (indicated by
-         * threshold_value). The comparison is applied
-         * on each time series, with the time series on
-         * the left-hand side and the threshold on the
-         * right-hand side. Only COMPARISON_LT and
-         * COMPARISON_GT are supported currently.
+         * @param comparison The comparison to apply between the time series
+         * (indicated by filter and aggregation) and the threshold
+         * (indicated by threshold_value). The comparison is
+         * applied on each time series, with the time series on
+         * the left-hand side and the threshold on the right-hand
+         * side.
+         * The Cloud Monitoring API only supports `COMPARISON_LT`
+         * and `COMPARISON_GT` for metric-threshold conditions; the
+         * other values are kept in the schema for backward
+         * compatibility with imported state but will be rejected
+         * by the API. See
+         * https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
          * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
          * 
          * @return builder

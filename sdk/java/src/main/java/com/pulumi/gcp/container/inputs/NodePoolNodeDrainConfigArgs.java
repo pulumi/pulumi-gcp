@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,36 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeDrainConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeDrainConfigArgs Empty = new NodePoolNodeDrainConfigArgs();
+
+    /**
+     * The duration of the grace termination period for node drain.
+     * 
+     */
+    @Import(name="graceTerminationDuration")
+    private @Nullable Output<String> graceTerminationDuration;
+
+    /**
+     * @return The duration of the grace termination period for node drain.
+     * 
+     */
+    public Optional<Output<String>> graceTerminationDuration() {
+        return Optional.ofNullable(this.graceTerminationDuration);
+    }
+
+    /**
+     * The duration of the PDB timeout period for node drain.
+     * 
+     */
+    @Import(name="pdbTimeoutDuration")
+    private @Nullable Output<String> pdbTimeoutDuration;
+
+    /**
+     * @return The duration of the PDB timeout period for node drain.
+     * 
+     */
+    public Optional<Output<String>> pdbTimeoutDuration() {
+        return Optional.ofNullable(this.pdbTimeoutDuration);
+    }
 
     /**
      * Whether to respect PodDisruptionBudget policy during node pool deletion.
@@ -33,6 +64,8 @@ public final class NodePoolNodeDrainConfigArgs extends com.pulumi.resources.Reso
     private NodePoolNodeDrainConfigArgs() {}
 
     private NodePoolNodeDrainConfigArgs(NodePoolNodeDrainConfigArgs $) {
+        this.graceTerminationDuration = $.graceTerminationDuration;
+        this.pdbTimeoutDuration = $.pdbTimeoutDuration;
         this.respectPdbDuringNodePoolDeletion = $.respectPdbDuringNodePoolDeletion;
     }
 
@@ -52,6 +85,48 @@ public final class NodePoolNodeDrainConfigArgs extends com.pulumi.resources.Reso
 
         public Builder(NodePoolNodeDrainConfigArgs defaults) {
             $ = new NodePoolNodeDrainConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param graceTerminationDuration The duration of the grace termination period for node drain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder graceTerminationDuration(@Nullable Output<String> graceTerminationDuration) {
+            $.graceTerminationDuration = graceTerminationDuration;
+            return this;
+        }
+
+        /**
+         * @param graceTerminationDuration The duration of the grace termination period for node drain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder graceTerminationDuration(String graceTerminationDuration) {
+            return graceTerminationDuration(Output.of(graceTerminationDuration));
+        }
+
+        /**
+         * @param pdbTimeoutDuration The duration of the PDB timeout period for node drain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pdbTimeoutDuration(@Nullable Output<String> pdbTimeoutDuration) {
+            $.pdbTimeoutDuration = pdbTimeoutDuration;
+            return this;
+        }
+
+        /**
+         * @param pdbTimeoutDuration The duration of the PDB timeout period for node drain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pdbTimeoutDuration(String pdbTimeoutDuration) {
+            return pdbTimeoutDuration(Output.of(pdbTimeoutDuration));
         }
 
         /**

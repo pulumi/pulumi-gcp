@@ -85,7 +85,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
 //				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[0].ServiceAttachment, nil
+//					return pscAttachmentDetails[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network1.ID(),
 //				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[1].ServiceAttachment, nil
+//					return pscAttachmentDetails[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -147,7 +147,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[0].ServiceAttachment, nil
+//					return pscAttachmentDetails[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -170,7 +170,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[1].ServiceAttachment, nil
+//					return pscAttachmentDetails[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -189,7 +189,7 @@ import (
 //									ForwardingRule:  forwardingRule1Network1.ID(),
 //									Network:         network1.ID(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[0].ServiceAttachment, nil
+//										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -200,7 +200,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network1.ID(),
 //									Network:         network1.ID(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[1].ServiceAttachment, nil
+//										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -215,7 +215,7 @@ import (
 //									ForwardingRule:  forwardingRule1Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[0].ServiceAttachment, nil
+//										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -226,7 +226,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[1].ServiceAttachment, nil
+//										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -349,7 +349,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[0].ServiceAttachment, nil
+//					return pscAttachmentDetails[0].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -372,7 +372,7 @@ import (
 //				LoadBalancingScheme: pulumi.String(""),
 //				Network:             network2.ID(),
 //				Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//					return &pscAttachmentDetails[1].ServiceAttachment, nil
+//					return pscAttachmentDetails[1].ServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
@@ -391,7 +391,7 @@ import (
 //									ForwardingRule:  forwardingRule1Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[0].ServiceAttachment, nil
+//										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},
@@ -402,7 +402,7 @@ import (
 //									ForwardingRule:  forwardingRule2Network2.ID(),
 //									Network:         network2.ID(),
 //									ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
-//										return &pscAttachmentDetails[1].ServiceAttachment, nil
+//										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
 //								},
 //							},

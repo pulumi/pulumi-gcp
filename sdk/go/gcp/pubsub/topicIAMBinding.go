@@ -57,7 +57,7 @@ import (
 //			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
 //				Project:    pulumi.Any(example.Project),
 //				Topic:      pulumi.Any(example.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
 //				Project:    pulumi.Any(example.Project),
 //				Topic:      pulumi.Any(example.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

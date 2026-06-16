@@ -57,6 +57,9 @@ import * as utilities from "../utilities";
  *     displayName: "DP Full Test: Special Chars !@#$",
  *     description: "Updated with emojis 🚀 and brackets {test}",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
+ *     accessApprovalConfig: {
+ *         approverEmails: ["gterraformtestuser@gmail.com"],
+ *     },
  *     labels: {
  *         env: "manual-test",
  *     },
@@ -127,6 +130,11 @@ export class DataProduct extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     */
+    declare public readonly accessApprovalConfig: pulumi.Output<outputs.dataplex.DataProductAccessApprovalConfig | undefined>;
+    /**
      * Custom user defined access groups at the data product level.
      * Structure is documented below.
      */
@@ -179,6 +187,10 @@ export class DataProduct extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The relative resource name of the data product.
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
      * Emails of the owners.
      */
     declare public readonly ownerEmails: pulumi.Output<string[]>;
@@ -214,6 +226,7 @@ export class DataProduct extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataProductState | undefined;
+            resourceInputs["accessApprovalConfig"] = state?.accessApprovalConfig;
             resourceInputs["accessGroups"] = state?.accessGroups;
             resourceInputs["assetCount"] = state?.assetCount;
             resourceInputs["createTime"] = state?.createTime;
@@ -225,6 +238,7 @@ export class DataProduct extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
             resourceInputs["ownerEmails"] = state?.ownerEmails;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
@@ -244,6 +258,7 @@ export class DataProduct extends pulumi.CustomResource {
             if (args?.ownerEmails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ownerEmails'");
             }
+            resourceInputs["accessApprovalConfig"] = args?.accessApprovalConfig;
             resourceInputs["accessGroups"] = args?.accessGroups;
             resourceInputs["dataProductId"] = args?.dataProductId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -257,6 +272,7 @@ export class DataProduct extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -272,6 +288,11 @@ export class DataProduct extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DataProduct resources.
  */
 export interface DataProductState {
+    /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     */
+    accessApprovalConfig?: pulumi.Input<inputs.dataplex.DataProductAccessApprovalConfig | undefined>;
     /**
      * Custom user defined access groups at the data product level.
      * Structure is documented below.
@@ -325,6 +346,10 @@ export interface DataProductState {
      */
     location?: pulumi.Input<string | undefined>;
     /**
+     * The relative resource name of the data product.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
      * Emails of the owners.
      */
     ownerEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -352,6 +377,11 @@ export interface DataProductState {
  * The set of arguments for constructing a DataProduct resource.
  */
 export interface DataProductArgs {
+    /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     */
+    accessApprovalConfig?: pulumi.Input<inputs.dataplex.DataProductAccessApprovalConfig | undefined>;
     /**
      * Custom user defined access groups at the data product level.
      * Structure is documented below.

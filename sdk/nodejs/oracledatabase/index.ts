@@ -85,6 +85,11 @@ export const getGoldengateDeploymentEnvironments: typeof import("./getGoldengate
 export const getGoldengateDeploymentEnvironmentsOutput: typeof import("./getGoldengateDeploymentEnvironments").getGoldengateDeploymentEnvironmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getGoldengateDeploymentEnvironments","getGoldengateDeploymentEnvironmentsOutput"], () => require("./getGoldengateDeploymentEnvironments"));
 
+export { GetGoldengateDeploymentTypesArgs, GetGoldengateDeploymentTypesResult, GetGoldengateDeploymentTypesOutputArgs } from "./getGoldengateDeploymentTypes";
+export const getGoldengateDeploymentTypes: typeof import("./getGoldengateDeploymentTypes").getGoldengateDeploymentTypes = null as any;
+export const getGoldengateDeploymentTypesOutput: typeof import("./getGoldengateDeploymentTypes").getGoldengateDeploymentTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getGoldengateDeploymentTypes","getGoldengateDeploymentTypesOutput"], () => require("./getGoldengateDeploymentTypes"));
+
 export { GetOdbNetworkArgs, GetOdbNetworkResult, GetOdbNetworkOutputArgs } from "./getOdbNetwork";
 export const getOdbNetwork: typeof import("./getOdbNetwork").getOdbNetwork = null as any;
 export const getOdbNetworkOutput: typeof import("./getOdbNetwork").getOdbNetworkOutput = null as any;

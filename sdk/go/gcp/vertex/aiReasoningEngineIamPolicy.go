@@ -58,7 +58,7 @@ import (
 //				Project:         pulumi.Any(reasoningEngine.Project),
 //				Region:          pulumi.Any(reasoningEngine.Region),
 //				ReasoningEngine: pulumi.Any(reasoningEngine.Name),
-//				PolicyData:      pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:      pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //				Project:         pulumi.Any(reasoningEngine.Project),
 //				Region:          pulumi.Any(reasoningEngine.Region),
 //				ReasoningEngine: pulumi.Any(reasoningEngine.Name),
-//				PolicyData:      pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:      pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

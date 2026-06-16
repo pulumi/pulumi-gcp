@@ -11,7 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.inputs.GetEnvironmentIamPolicyArgs;
 import com.pulumi.gcp.apigee.inputs.GetEnvironmentIamPolicyPlainArgs;
+import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+import com.pulumi.gcp.apigee.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.apigee.outputs.GetEnvironmentIamPolicyResult;
+import com.pulumi.gcp.apigee.outputs.GetInstanceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ApigeeFunctions {
@@ -219,5 +222,210 @@ public final class ApigeeFunctions {
      */
     public static CompletableFuture<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyPlain(GetEnvironmentIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", TypeShape.of(GetEnvironmentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Apigee Instance.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apigee.ApigeeFunctions;
+     * import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = ApigeeFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-instance-name")
+     *             .orgId("organizations/my-org-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
+        return getInstance(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Apigee Instance.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apigee.ApigeeFunctions;
+     * import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = ApigeeFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-instance-name")
+     *             .orgId("organizations/my-org-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
+        return getInstancePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Apigee Instance.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apigee.ApigeeFunctions;
+     * import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = ApigeeFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-instance-name")
+     *             .orgId("organizations/my-org-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:apigee/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Apigee Instance.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apigee.ApigeeFunctions;
+     * import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = ApigeeFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-instance-name")
+     *             .orgId("organizations/my-org-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:apigee/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Apigee Instance.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apigee.ApigeeFunctions;
+     * import com.pulumi.gcp.apigee.inputs.GetInstanceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = ApigeeFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-instance-name")
+     *             .orgId("organizations/my-org-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:apigee/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -38,6 +38,19 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
         [Input("isPrivate", required: true)]
         public Input<bool> IsPrivate { get; set; } = null!;
 
+        [Input("pscAllowedProjects")]
+        private InputList<string>? _pscAllowedProjects;
+
+        /// <summary>
+        /// Optional. Additional allowed projects for setting up PSC connections.
+        /// Instance host project is automatically allowed and does not need to be included in this list.
+        /// </summary>
+        public InputList<string> PscAllowedProjects
+        {
+            get => _pscAllowedProjects ?? (_pscAllowedProjects = new InputList<string>());
+            set => _pscAllowedProjects = value;
+        }
+
         /// <summary>
         /// (Output)
         /// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.

@@ -97,6 +97,7 @@ import * as iap from "./iap";
 import * as identityplatform from "./identityplatform";
 import * as integrationconnectors from "./integrationconnectors";
 import * as kms from "./kms";
+import * as licensemanager from "./licensemanager";
 import * as logging from "./logging";
 import * as looker from "./looker";
 import * as lustre from "./lustre";
@@ -241,6 +242,7 @@ export {
     identityplatform,
     integrationconnectors,
     kms,
+    licensemanager,
     logging,
     looker,
     lustre,

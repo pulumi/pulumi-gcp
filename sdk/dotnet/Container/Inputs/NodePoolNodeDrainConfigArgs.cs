@@ -13,6 +13,18 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeDrainConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The duration of the grace termination period for node drain.
+        /// </summary>
+        [Input("graceTerminationDuration")]
+        public Input<string>? GraceTerminationDuration { get; set; }
+
+        /// <summary>
+        /// The duration of the PDB timeout period for node drain.
+        /// </summary>
+        [Input("pdbTimeoutDuration")]
+        public Input<string>? PdbTimeoutDuration { get; set; }
+
+        /// <summary>
         /// Whether to respect PodDisruptionBudget policy during node pool deletion.
         /// </summary>
         [Input("respectPdbDuringNodePoolDeletion")]

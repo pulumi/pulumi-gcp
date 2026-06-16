@@ -18,6 +18,7 @@ from .get_workload_identity_pool_iam_policy import *
 from .get_workload_identity_pool_provider import *
 from .oauth_client import *
 from .oauth_client_credential import *
+from .organization_access_policy import *
 from .organizations_policy_binding import *
 from .principal_access_boundary_policy import *
 from .project_access_policy import *

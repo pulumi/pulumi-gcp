@@ -2050,6 +2050,658 @@ func (o FoldersPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type OrganizationAccessPolicyDetails struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules []OrganizationAccessPolicyDetailsRule `pulumi:"rules"`
+}
+
+// OrganizationAccessPolicyDetailsInput is an input type that accepts OrganizationAccessPolicyDetailsArgs and OrganizationAccessPolicyDetailsOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsInput` via:
+//
+//	OrganizationAccessPolicyDetailsArgs{...}
+type OrganizationAccessPolicyDetailsInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsOutput() OrganizationAccessPolicyDetailsOutput
+	ToOrganizationAccessPolicyDetailsOutputWithContext(context.Context) OrganizationAccessPolicyDetailsOutput
+}
+
+type OrganizationAccessPolicyDetailsArgs struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules OrganizationAccessPolicyDetailsRuleArrayInput `pulumi:"rules"`
+}
+
+func (OrganizationAccessPolicyDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsArgs) ToOrganizationAccessPolicyDetailsOutput() OrganizationAccessPolicyDetailsOutput {
+	return i.ToOrganizationAccessPolicyDetailsOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsArgs) ToOrganizationAccessPolicyDetailsOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsOutput)
+}
+
+func (i OrganizationAccessPolicyDetailsArgs) ToOrganizationAccessPolicyDetailsPtrOutput() OrganizationAccessPolicyDetailsPtrOutput {
+	return i.ToOrganizationAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsArgs) ToOrganizationAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsOutput).ToOrganizationAccessPolicyDetailsPtrOutputWithContext(ctx)
+}
+
+// OrganizationAccessPolicyDetailsPtrInput is an input type that accepts OrganizationAccessPolicyDetailsArgs, OrganizationAccessPolicyDetailsPtr and OrganizationAccessPolicyDetailsPtrOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsPtrInput` via:
+//
+//	        OrganizationAccessPolicyDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationAccessPolicyDetailsPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsPtrOutput() OrganizationAccessPolicyDetailsPtrOutput
+	ToOrganizationAccessPolicyDetailsPtrOutputWithContext(context.Context) OrganizationAccessPolicyDetailsPtrOutput
+}
+
+type organizationAccessPolicyDetailsPtrType OrganizationAccessPolicyDetailsArgs
+
+func OrganizationAccessPolicyDetailsPtr(v *OrganizationAccessPolicyDetailsArgs) OrganizationAccessPolicyDetailsPtrInput {
+	return (*organizationAccessPolicyDetailsPtrType)(v)
+}
+
+func (*organizationAccessPolicyDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i *organizationAccessPolicyDetailsPtrType) ToOrganizationAccessPolicyDetailsPtrOutput() OrganizationAccessPolicyDetailsPtrOutput {
+	return i.ToOrganizationAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationAccessPolicyDetailsPtrType) ToOrganizationAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsPtrOutput)
+}
+
+type OrganizationAccessPolicyDetailsOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsOutput) ToOrganizationAccessPolicyDetailsOutput() OrganizationAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsOutput) ToOrganizationAccessPolicyDetailsOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsOutput) ToOrganizationAccessPolicyDetailsPtrOutput() OrganizationAccessPolicyDetailsPtrOutput {
+	return o.ToOrganizationAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAccessPolicyDetailsOutput) ToOrganizationAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationAccessPolicyDetails) *OrganizationAccessPolicyDetails {
+		return &v
+	}).(OrganizationAccessPolicyDetailsPtrOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o OrganizationAccessPolicyDetailsOutput) Rules() OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetails) []OrganizationAccessPolicyDetailsRule { return v.Rules }).(OrganizationAccessPolicyDetailsRuleArrayOutput)
+}
+
+type OrganizationAccessPolicyDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsPtrOutput) ToOrganizationAccessPolicyDetailsPtrOutput() OrganizationAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsPtrOutput) ToOrganizationAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsPtrOutput) Elem() OrganizationAccessPolicyDetailsOutput {
+	return o.ApplyT(func(v *OrganizationAccessPolicyDetails) OrganizationAccessPolicyDetails {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationAccessPolicyDetails
+		return ret
+	}).(OrganizationAccessPolicyDetailsOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o OrganizationAccessPolicyDetailsPtrOutput) Rules() OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v *OrganizationAccessPolicyDetails) []OrganizationAccessPolicyDetailsRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(OrganizationAccessPolicyDetailsRuleArrayOutput)
+}
+
+type OrganizationAccessPolicyDetailsRule struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions []OrganizationAccessPolicyDetailsRuleCondition `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description *string `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect string `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation OrganizationAccessPolicyDetailsRuleOperation `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals []string `pulumi:"principals"`
+}
+
+// OrganizationAccessPolicyDetailsRuleInput is an input type that accepts OrganizationAccessPolicyDetailsRuleArgs and OrganizationAccessPolicyDetailsRuleOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsRuleInput` via:
+//
+//	OrganizationAccessPolicyDetailsRuleArgs{...}
+type OrganizationAccessPolicyDetailsRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsRuleOutput() OrganizationAccessPolicyDetailsRuleOutput
+	ToOrganizationAccessPolicyDetailsRuleOutputWithContext(context.Context) OrganizationAccessPolicyDetailsRuleOutput
+}
+
+type OrganizationAccessPolicyDetailsRuleArgs struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions OrganizationAccessPolicyDetailsRuleConditionArrayInput `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation OrganizationAccessPolicyDetailsRuleOperationInput `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (OrganizationAccessPolicyDetailsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsRuleArgs) ToOrganizationAccessPolicyDetailsRuleOutput() OrganizationAccessPolicyDetailsRuleOutput {
+	return i.ToOrganizationAccessPolicyDetailsRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsRuleArgs) ToOrganizationAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsRuleOutput)
+}
+
+// OrganizationAccessPolicyDetailsRuleArrayInput is an input type that accepts OrganizationAccessPolicyDetailsRuleArray and OrganizationAccessPolicyDetailsRuleArrayOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsRuleArrayInput` via:
+//
+//	OrganizationAccessPolicyDetailsRuleArray{ OrganizationAccessPolicyDetailsRuleArgs{...} }
+type OrganizationAccessPolicyDetailsRuleArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsRuleArrayOutput() OrganizationAccessPolicyDetailsRuleArrayOutput
+	ToOrganizationAccessPolicyDetailsRuleArrayOutputWithContext(context.Context) OrganizationAccessPolicyDetailsRuleArrayOutput
+}
+
+type OrganizationAccessPolicyDetailsRuleArray []OrganizationAccessPolicyDetailsRuleInput
+
+func (OrganizationAccessPolicyDetailsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsRuleArray) ToOrganizationAccessPolicyDetailsRuleArrayOutput() OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return i.ToOrganizationAccessPolicyDetailsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsRuleArray) ToOrganizationAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsRuleArrayOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsRuleOutput) ToOrganizationAccessPolicyDetailsRuleOutput() OrganizationAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleOutput) ToOrganizationAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+// The conditions that determine whether this rule applies to a request.
+// Conditions are identified by their key, which is the FQDN of the service
+// that they are relevant to. For example:
+//
+// Each rule is evaluated independently. If this rule does not apply
+// to a request, other rules might still apply.
+// Currently supported keys are as follows:
+//   - `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+//     resource fields.
+//   - `iam.googleapis.com`: Can use `CEL` functions that evaluate
+//     [resource
+//     tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+//     combine them using boolean and logical operators. Other functions and
+//     operators are not supported.
+//     Structure is documented below.
+func (o OrganizationAccessPolicyDetailsRuleOutput) Conditions() OrganizationAccessPolicyDetailsRuleConditionArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) []OrganizationAccessPolicyDetailsRuleCondition {
+		return v.Conditions
+	}).(OrganizationAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+// Customer specified description of the rule. Must be less than or equal to
+// 256 characters.
+func (o OrganizationAccessPolicyDetailsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The effect of the rule.
+// Possible values:
+// DENY
+// ALLOW
+// Possible values are: `DENY`, `ALLOW`.
+func (o OrganizationAccessPolicyDetailsRuleOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The identities that are excluded from the access policy rule, even if they
+// are listed in the `principals`. For example, you could add a Google
+// group to the `principals`, then exclude specific users who belong to
+// that group.
+func (o OrganizationAccessPolicyDetailsRuleOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
+}
+
+// Attributes that are used to determine whether this rule applies to a
+// request.
+// Structure is documented below.
+func (o OrganizationAccessPolicyDetailsRuleOutput) Operation() OrganizationAccessPolicyDetailsRuleOperationOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) OrganizationAccessPolicyDetailsRuleOperation {
+		return v.Operation
+	}).(OrganizationAccessPolicyDetailsRuleOperationOutput)
+}
+
+// The identities for which this rule's effect governs using one or more
+// permissions on Google Cloud resources. This field can contain the
+// following values:
+//   - `principal://goog/subject/{email_id}`: A specific Google Account.
+//     Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+//     example, `principal://goog/subject/alice@example.com`.
+//   - `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+//     A Google Cloud service account. For example,
+//     `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+//   - `principalSet://goog/group/{group_id}`: A Google group. For example,
+//     `principalSet://goog/group/admins@example.com`.
+//   - `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+//     principals associated with the specified Google Workspace or Cloud
+//     Identity customer ID. For example,
+//     `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+//     If an identifier that was previously set on a policy is soft deleted, then
+//     calls to read that policy will return the identifier with a deleted
+//     prefix. Users cannot set identifiers with this syntax.
+//   - `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+//     Google Account that was deleted recently. For example,
+//     `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+//     the Google Account is recovered, this identifier reverts to the standard
+//     identifier for a Google Account.
+//   - `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+//     that was deleted recently. For example,
+//     `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+//     If the Google group is restored, this identifier reverts to the standard
+//     identifier for a Google group.
+//   - `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+//     A Google Cloud service account that was deleted recently. For example,
+//     `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+//     If the service account is undeleted, this identifier reverts to the
+//     standard identifier for a service account.
+func (o OrganizationAccessPolicyDetailsRuleOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsRuleArrayOutput) ToOrganizationAccessPolicyDetailsRuleArrayOutput() OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleArrayOutput) ToOrganizationAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleArrayOutput) Index(i pulumi.IntInput) OrganizationAccessPolicyDetailsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationAccessPolicyDetailsRule {
+		return vs[0].([]OrganizationAccessPolicyDetailsRule)[vs[1].(int)]
+	}).(OrganizationAccessPolicyDetailsRuleOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleCondition struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression *string `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service string `pulumi:"service"`
+}
+
+// OrganizationAccessPolicyDetailsRuleConditionInput is an input type that accepts OrganizationAccessPolicyDetailsRuleConditionArgs and OrganizationAccessPolicyDetailsRuleConditionOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsRuleConditionInput` via:
+//
+//	OrganizationAccessPolicyDetailsRuleConditionArgs{...}
+type OrganizationAccessPolicyDetailsRuleConditionInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsRuleConditionOutput() OrganizationAccessPolicyDetailsRuleConditionOutput
+	ToOrganizationAccessPolicyDetailsRuleConditionOutputWithContext(context.Context) OrganizationAccessPolicyDetailsRuleConditionOutput
+}
+
+type OrganizationAccessPolicyDetailsRuleConditionArgs struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (OrganizationAccessPolicyDetailsRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsRuleConditionArgs) ToOrganizationAccessPolicyDetailsRuleConditionOutput() OrganizationAccessPolicyDetailsRuleConditionOutput {
+	return i.ToOrganizationAccessPolicyDetailsRuleConditionOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsRuleConditionArgs) ToOrganizationAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsRuleConditionOutput)
+}
+
+// OrganizationAccessPolicyDetailsRuleConditionArrayInput is an input type that accepts OrganizationAccessPolicyDetailsRuleConditionArray and OrganizationAccessPolicyDetailsRuleConditionArrayOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsRuleConditionArrayInput` via:
+//
+//	OrganizationAccessPolicyDetailsRuleConditionArray{ OrganizationAccessPolicyDetailsRuleConditionArgs{...} }
+type OrganizationAccessPolicyDetailsRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsRuleConditionArrayOutput() OrganizationAccessPolicyDetailsRuleConditionArrayOutput
+	ToOrganizationAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Context) OrganizationAccessPolicyDetailsRuleConditionArrayOutput
+}
+
+type OrganizationAccessPolicyDetailsRuleConditionArray []OrganizationAccessPolicyDetailsRuleConditionInput
+
+func (OrganizationAccessPolicyDetailsRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsRuleConditionArray) ToOrganizationAccessPolicyDetailsRuleConditionArrayOutput() OrganizationAccessPolicyDetailsRuleConditionArrayOutput {
+	return i.ToOrganizationAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsRuleConditionArray) ToOrganizationAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsRuleConditionOutput) ToOrganizationAccessPolicyDetailsRuleConditionOutput() OrganizationAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleConditionOutput) ToOrganizationAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+// Textual representation of an expression in Common Expression Language
+// syntax.
+func (o OrganizationAccessPolicyDetailsRuleConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRuleCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o OrganizationAccessPolicyDetailsRuleConditionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRuleCondition) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsRuleConditionArrayOutput) ToOrganizationAccessPolicyDetailsRuleConditionArrayOutput() OrganizationAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleConditionArrayOutput) ToOrganizationAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleConditionArrayOutput) Index(i pulumi.IntInput) OrganizationAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationAccessPolicyDetailsRuleCondition {
+		return vs[0].([]OrganizationAccessPolicyDetailsRuleCondition)[vs[1].(int)]
+	}).(OrganizationAccessPolicyDetailsRuleConditionOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleOperation struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions []string `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// OrganizationAccessPolicyDetailsRuleOperationInput is an input type that accepts OrganizationAccessPolicyDetailsRuleOperationArgs and OrganizationAccessPolicyDetailsRuleOperationOutput values.
+// You can construct a concrete instance of `OrganizationAccessPolicyDetailsRuleOperationInput` via:
+//
+//	OrganizationAccessPolicyDetailsRuleOperationArgs{...}
+type OrganizationAccessPolicyDetailsRuleOperationInput interface {
+	pulumi.Input
+
+	ToOrganizationAccessPolicyDetailsRuleOperationOutput() OrganizationAccessPolicyDetailsRuleOperationOutput
+	ToOrganizationAccessPolicyDetailsRuleOperationOutputWithContext(context.Context) OrganizationAccessPolicyDetailsRuleOperationOutput
+}
+
+type OrganizationAccessPolicyDetailsRuleOperationArgs struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions pulumi.StringArrayInput `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+}
+
+func (OrganizationAccessPolicyDetailsRuleOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (i OrganizationAccessPolicyDetailsRuleOperationArgs) ToOrganizationAccessPolicyDetailsRuleOperationOutput() OrganizationAccessPolicyDetailsRuleOperationOutput {
+	return i.ToOrganizationAccessPolicyDetailsRuleOperationOutputWithContext(context.Background())
+}
+
+func (i OrganizationAccessPolicyDetailsRuleOperationArgs) ToOrganizationAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAccessPolicyDetailsRuleOperationOutput)
+}
+
+type OrganizationAccessPolicyDetailsRuleOperationOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAccessPolicyDetailsRuleOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (o OrganizationAccessPolicyDetailsRuleOperationOutput) ToOrganizationAccessPolicyDetailsRuleOperationOutput() OrganizationAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+func (o OrganizationAccessPolicyDetailsRuleOperationOutput) ToOrganizationAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) OrganizationAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+// Specifies the permissions that this rule excludes from the set of
+// affected permissions given by `permissions`. If a permission appears in
+// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+// subject to the policy effect.
+// The excluded permissions can be specified using the same syntax as
+// `permissions`.
+func (o OrganizationAccessPolicyDetailsRuleOperationOutput) ExcludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRuleOperation) []string { return v.ExcludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The permissions that are explicitly affected by this rule. Each
+// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+// `{service_fqdn}` is the fully qualified domain name for the service.
+// Currently supported permissions are as follows:
+// * `eventarc.googleapis.com/messageBuses.publish`.
+func (o OrganizationAccessPolicyDetailsRuleOperationOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationAccessPolicyDetailsRuleOperation) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
 type OrganizationsPolicyBindingCondition struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -11224,6 +11876,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingConditionPtrInput)(nil)).Elem(), FoldersPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingTargetInput)(nil)).Elem(), FoldersPolicyBindingTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingTargetPtrInput)(nil)).Elem(), FoldersPolicyBindingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsInput)(nil)).Elem(), OrganizationAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsPtrInput)(nil)).Elem(), OrganizationAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleInput)(nil)).Elem(), OrganizationAccessPolicyDetailsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleArrayInput)(nil)).Elem(), OrganizationAccessPolicyDetailsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleConditionInput)(nil)).Elem(), OrganizationAccessPolicyDetailsRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleConditionArrayInput)(nil)).Elem(), OrganizationAccessPolicyDetailsRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAccessPolicyDetailsRuleOperationInput)(nil)).Elem(), OrganizationAccessPolicyDetailsRuleOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingConditionInput)(nil)).Elem(), OrganizationsPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingConditionPtrInput)(nil)).Elem(), OrganizationsPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingTargetInput)(nil)).Elem(), OrganizationsPolicyBindingTargetArgs{})
@@ -11362,6 +12021,13 @@ func init() {
 	pulumi.RegisterOutputType(FoldersPolicyBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FoldersPolicyBindingTargetOutput{})
 	pulumi.RegisterOutputType(FoldersPolicyBindingTargetPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsRuleArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsRuleConditionOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationAccessPolicyDetailsRuleOperationOutput{})
 	pulumi.RegisterOutputType(OrganizationsPolicyBindingConditionOutput{})
 	pulumi.RegisterOutputType(OrganizationsPolicyBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationsPolicyBindingTargetOutput{})

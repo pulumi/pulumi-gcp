@@ -184,7 +184,7 @@ import (
 //				return err
 //			}
 //			vertexArReader, err := projects.NewIAMMember(ctx, "vertex_ar_reader", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.Number),
 //			})
@@ -221,11 +221,11 @@ import (
 //				ReasoningEngineId: tenantMdsAiReasoningEngine.Name,
 //			}, nil)
 //			tenantArReader, err := projects.NewIAMMember(ctx, "tenant_ar_reader", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
 //					Input: tenantMds.ApplyT(func(tenantMds vertex.GetAiReasoningEngineQueryResult) (*string, error) {
-//						return &tenantMds.Output, nil
+//						return tenantMds.Output, nil
 //					}).(pulumi.StringPtrOutput),
 //				}, nil).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
@@ -471,7 +471,7 @@ import (
 //			}
 //			saIamObjectViewer, err := projects.NewIAMMember(ctx, "sa_iam_object_viewer", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/storage.objectViewer"),
-//				Project: pulumi.String(pulumi.String(project.Id)),
+//				Project: pulumi.String(project.Id),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -479,7 +479,7 @@ import (
 //			}
 //			saIamAiPlatformUser, err := projects.NewIAMMember(ctx, "sa_iam_ai_platform_user", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/aiplatform.user"),
-//				Project: pulumi.String(pulumi.String(project.Id)),
+//				Project: pulumi.String(project.Id),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -487,7 +487,7 @@ import (
 //			}
 //			saIamViewer, err := projects.NewIAMMember(ctx, "sa_iam_viewer", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/viewer"),
-//				Project: pulumi.String(pulumi.String(project.Id)),
+//				Project: pulumi.String(project.Id),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -553,7 +553,7 @@ import (
 //				},
 //				Spec: &vertex.AiReasoningEngineSpecArgs{
 //					AgentFramework: pulumi.String("google-adk"),
-//					ClassMethods:   pulumi.String(pulumi.String(json0)),
+//					ClassMethods:   pulumi.String(json0),
 //					ServiceAccount: serviceAccount.Email,
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						MinInstances:         pulumi.Int(1),

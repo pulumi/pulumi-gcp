@@ -95,6 +95,11 @@ import (
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
 //				},
+//				AccessApprovalConfig: &dataplex.DataProductAccessApprovalConfigArgs{
+//					ApproverEmails: pulumi.StringArray{
+//						pulumi.String("gterraformtestuser@gmail.com"),
+//					},
+//				},
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("manual-test"),
 //				},
@@ -145,6 +150,9 @@ import (
 type DataProduct struct {
 	pulumi.CustomResourceState
 
+	// Configuration for access approval for the data product.
+	// Structure is documented below.
+	AccessApprovalConfig DataProductAccessApprovalConfigPtrOutput `pulumi:"accessApprovalConfig"`
 	// Custom user defined access groups at the data product level.
 	// Structure is documented below.
 	AccessGroups DataProductAccessGroupArrayOutput `pulumi:"accessGroups"`
@@ -175,6 +183,8 @@ type DataProduct struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the data product.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The relative resource name of the data product.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails of the owners.
 	OwnerEmails pulumi.StringArrayOutput `pulumi:"ownerEmails"`
 	// The ID of the project in which the resource belongs.
@@ -236,6 +246,9 @@ func GetDataProduct(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataProduct resources.
 type dataProductState struct {
+	// Configuration for access approval for the data product.
+	// Structure is documented below.
+	AccessApprovalConfig *DataProductAccessApprovalConfig `pulumi:"accessApprovalConfig"`
 	// Custom user defined access groups at the data product level.
 	// Structure is documented below.
 	AccessGroups []DataProductAccessGroup `pulumi:"accessGroups"`
@@ -266,6 +279,8 @@ type dataProductState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the data product.
 	Location *string `pulumi:"location"`
+	// The relative resource name of the data product.
+	Name *string `pulumi:"name"`
 	// Emails of the owners.
 	OwnerEmails []string `pulumi:"ownerEmails"`
 	// The ID of the project in which the resource belongs.
@@ -281,6 +296,9 @@ type dataProductState struct {
 }
 
 type DataProductState struct {
+	// Configuration for access approval for the data product.
+	// Structure is documented below.
+	AccessApprovalConfig DataProductAccessApprovalConfigPtrInput
 	// Custom user defined access groups at the data product level.
 	// Structure is documented below.
 	AccessGroups DataProductAccessGroupArrayInput
@@ -311,6 +329,8 @@ type DataProductState struct {
 	Labels pulumi.StringMapInput
 	// The location for the data product.
 	Location pulumi.StringPtrInput
+	// The relative resource name of the data product.
+	Name pulumi.StringPtrInput
 	// Emails of the owners.
 	OwnerEmails pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -330,6 +350,9 @@ func (DataProductState) ElementType() reflect.Type {
 }
 
 type dataProductArgs struct {
+	// Configuration for access approval for the data product.
+	// Structure is documented below.
+	AccessApprovalConfig *DataProductAccessApprovalConfig `pulumi:"accessApprovalConfig"`
 	// Custom user defined access groups at the data product level.
 	// Structure is documented below.
 	AccessGroups []DataProductAccessGroup `pulumi:"accessGroups"`
@@ -361,6 +384,9 @@ type dataProductArgs struct {
 
 // The set of arguments for constructing a DataProduct resource.
 type DataProductArgs struct {
+	// Configuration for access approval for the data product.
+	// Structure is documented below.
+	AccessApprovalConfig DataProductAccessApprovalConfigPtrInput
 	// Custom user defined access groups at the data product level.
 	// Structure is documented below.
 	AccessGroups DataProductAccessGroupArrayInput
@@ -477,6 +503,12 @@ func (o DataProductOutput) ToDataProductOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// Configuration for access approval for the data product.
+// Structure is documented below.
+func (o DataProductOutput) AccessApprovalConfig() DataProductAccessApprovalConfigPtrOutput {
+	return o.ApplyT(func(v *DataProduct) DataProductAccessApprovalConfigPtrOutput { return v.AccessApprovalConfig }).(DataProductAccessApprovalConfigPtrOutput)
+}
+
 // Custom user defined access groups at the data product level.
 // Structure is documented below.
 func (o DataProductOutput) AccessGroups() DataProductAccessGroupArrayOutput {
@@ -538,6 +570,11 @@ func (o DataProductOutput) Labels() pulumi.StringMapOutput {
 // The location for the data product.
 func (o DataProductOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataProduct) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the data product.
+func (o DataProductOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataProduct) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Emails of the owners.

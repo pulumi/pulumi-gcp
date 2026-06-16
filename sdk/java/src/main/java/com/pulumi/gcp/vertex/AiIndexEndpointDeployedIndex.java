@@ -536,14 +536,14 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region of the index endpoint deployment. eg us-central1
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

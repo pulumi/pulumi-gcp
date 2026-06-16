@@ -53,6 +53,48 @@ __all__ = [
     'DiscoveryClientErrorArgsDict',
     'DiscoveryClientErrorDetailArgs',
     'DiscoveryClientErrorDetailArgsDict',
+    'ImportJobExecutionReportArgs',
+    'ImportJobExecutionReportArgsDict',
+    'ImportJobExecutionReportExecutionErrorArgs',
+    'ImportJobExecutionReportExecutionErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs',
+    'ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgsDict',
+    'ImportJobExecutionReportExecutionErrorJobErrorArgs',
+    'ImportJobExecutionReportExecutionErrorJobErrorArgsDict',
+    'ImportJobValidationReportArgs',
+    'ImportJobValidationReportArgsDict',
+    'ImportJobValidationReportFileValidationArgs',
+    'ImportJobValidationReportFileValidationArgsDict',
+    'ImportJobValidationReportFileValidationFileErrorArgs',
+    'ImportJobValidationReportFileValidationFileErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorArchiveErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorCsvErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorCsvErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorErrorArgsDict',
+    'ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs',
+    'ImportJobValidationReportFileValidationRowErrorXlsxErrorArgsDict',
+    'ImportJobValidationReportJobErrorArgs',
+    'ImportJobValidationReportJobErrorArgsDict',
     'PreferenceSetVirtualMachinePreferencesArgs',
     'PreferenceSetVirtualMachinePreferencesArgsDict',
     'PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs',
@@ -1185,6 +1227,1595 @@ class DiscoveryClientErrorDetailArgsDict(TypedDict):
 class DiscoveryClientErrorDetailArgs:
     def __init__(__self__):
         pass
+
+
+class ImportJobExecutionReportArgsDict(TypedDict):
+    execution_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorArgsDict']]]]]
+    """
+    (Output)
+    A resource that aggregates errors across import job files.
+    Structure is documented below.
+    """
+    frames_reported: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Total number of asset frames reported for the import job.
+    """
+    total_rows_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    Total number of rows in the import job.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportArgs:
+    def __init__(__self__, *,
+                 execution_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorArgs']]]] = None,
+                 frames_reported: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_rows_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorArgs']]] execution_errors: (Output)
+               A resource that aggregates errors across import job files.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] frames_reported: (Output)
+               Total number of asset frames reported for the import job.
+        :param pulumi.Input[_builtins.int] total_rows_count: (Output)
+               Total number of rows in the import job.
+        """
+        if execution_errors is not None:
+            pulumi.set(__self__, "execution_errors", execution_errors)
+        if frames_reported is not None:
+            pulumi.set(__self__, "frames_reported", frames_reported)
+        if total_rows_count is not None:
+            pulumi.set(__self__, "total_rows_count", total_rows_count)
+
+    @_builtins.property
+    @pulumi.getter(name="executionErrors")
+    def execution_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorArgs']]]]:
+        """
+        (Output)
+        A resource that aggregates errors across import job files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_errors")
+
+    @execution_errors.setter
+    def execution_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorArgs']]]]):
+        pulumi.set(self, "execution_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="framesReported")
+    def frames_reported(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Total number of asset frames reported for the import job.
+        """
+        return pulumi.get(self, "frames_reported")
+
+    @frames_reported.setter
+    def frames_reported(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "frames_reported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowsCount")
+    def total_rows_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        Total number of rows in the import job.
+        """
+        return pulumi.get(self, "total_rows_count")
+
+    @total_rows_count.setter
+    def total_rows_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "total_rows_count", value)
+
+
+class ImportJobExecutionReportExecutionErrorArgsDict(TypedDict):
+    file_validations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationArgsDict']]]]]
+    """
+    (Output)
+    List of errors found in files.
+    Structure is documented below.
+    """
+    job_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorJobErrorArgsDict']]]]]
+    """
+    (Output)
+    List of job level errors.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorArgs:
+    def __init__(__self__, *,
+                 file_validations: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationArgs']]]] = None,
+                 job_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorJobErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationArgs']]] file_validations: (Output)
+               List of errors found in files.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorJobErrorArgs']]] job_errors: (Output)
+               List of job level errors.
+               Structure is documented below.
+        """
+        if file_validations is not None:
+            pulumi.set(__self__, "file_validations", file_validations)
+        if job_errors is not None:
+            pulumi.set(__self__, "job_errors", job_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileValidations")
+    def file_validations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationArgs']]]]:
+        """
+        (Output)
+        List of errors found in files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_validations")
+
+    @file_validations.setter
+    def file_validations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationArgs']]]]):
+        pulumi.set(self, "file_validations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobErrors")
+    def job_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorJobErrorArgs']]]]:
+        """
+        (Output)
+        List of job level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "job_errors")
+
+    @job_errors.setter
+    def job_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorJobErrorArgs']]]]):
+        pulumi.set(self, "job_errors", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationArgsDict(TypedDict):
+    file_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgsDict']]]]]
+    """
+    (Output)
+    List of file level errors.
+    Structure is documented below.
+    """
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the file.
+    """
+    partial_report: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Flag indicating that processing was aborted due to maximum number of
+    errors.
+    """
+    row_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgsDict']]]]]
+    """
+    (Output)
+    Partial list of rows that encountered validation error.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationArgs:
+    def __init__(__self__, *,
+                 file_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs']]]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partial_report: pulumi.Input[Optional[_builtins.bool]] = None,
+                 row_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs']]] file_errors: (Output)
+               List of file level errors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] file_name: (Output)
+               The name of the file.
+        :param pulumi.Input[_builtins.bool] partial_report: (Output)
+               Flag indicating that processing was aborted due to maximum number of
+               errors.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs']]] row_errors: (Output)
+               Partial list of rows that encountered validation error.
+               Structure is documented below.
+        """
+        if file_errors is not None:
+            pulumi.set(__self__, "file_errors", file_errors)
+        if file_name is not None:
+            pulumi.set(__self__, "file_name", file_name)
+        if partial_report is not None:
+            pulumi.set(__self__, "partial_report", partial_report)
+        if row_errors is not None:
+            pulumi.set(__self__, "row_errors", row_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileErrors")
+    def file_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs']]]]:
+        """
+        (Output)
+        List of file level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_errors")
+
+    @file_errors.setter
+    def file_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs']]]]):
+        pulumi.set(self, "file_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the file.
+        """
+        return pulumi.get(self, "file_name")
+
+    @file_name.setter
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="partialReport")
+    def partial_report(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Flag indicating that processing was aborted due to maximum number of
+        errors.
+        """
+        return pulumi.get(self, "partial_report")
+
+    @partial_report.setter
+    def partial_report(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "partial_report", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowErrors")
+    def row_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs']]]]:
+        """
+        (Output)
+        Partial list of rows that encountered validation error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_errors")
+
+    @row_errors.setter
+    def row_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs']]]]):
+        pulumi.set(self, "row_errors", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgsDict(TypedDict):
+    archive_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for an archive file.
+    Structure is documented below.
+    """
+    asset_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The asset title.
+    """
+    csv_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for a CSV file.
+    Structure is documented below.
+    """
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgsDict']]]]]
+    """
+    (Output)
+    The list of errors detected in the row.
+    Structure is documented below.
+    """
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+    vm_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the VM in the row.
+    """
+    vm_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The VM UUID.
+    """
+    xlsx_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for an XLSX file.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs:
+    def __init__(__self__, *,
+                 archive_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs']]]] = None,
+                 asset_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs']]]] = None,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 xlsx_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs']]] archive_errors: (Output)
+               Error details for an archive file.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] asset_title: (Output)
+               The asset title.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs']]] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs']]] errors: (Output)
+               The list of errors detected in the row.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        :param pulumi.Input[_builtins.str] vm_name: (Output)
+               The name of the VM in the row.
+        :param pulumi.Input[_builtins.str] vm_uuid: (Output)
+               The VM UUID.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs']]] xlsx_errors: (Output)
+               Error details for an XLSX file.
+               Structure is documented below.
+        """
+        if archive_errors is not None:
+            pulumi.set(__self__, "archive_errors", archive_errors)
+        if asset_title is not None:
+            pulumi.set(__self__, "asset_title", asset_title)
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if vm_name is not None:
+            pulumi.set(__self__, "vm_name", vm_name)
+        if vm_uuid is not None:
+            pulumi.set(__self__, "vm_uuid", vm_uuid)
+        if xlsx_errors is not None:
+            pulumi.set(__self__, "xlsx_errors", xlsx_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveErrors")
+    def archive_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs']]]]:
+        """
+        (Output)
+        Error details for an archive file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "archive_errors")
+
+    @archive_errors.setter
+    def archive_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs']]]]):
+        pulumi.set(self, "archive_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetTitle")
+    def asset_title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The asset title.
+        """
+        return pulumi.get(self, "asset_title")
+
+    @asset_title.setter
+    def asset_title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "asset_title", value)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs']]]]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @csv_errors.setter
+    def csv_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs']]]]):
+        pulumi.set(self, "csv_errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs']]]]:
+        """
+        (Output)
+        The list of errors detected in the row.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the VM in the row.
+        """
+        return pulumi.get(self, "vm_name")
+
+    @vm_name.setter
+    def vm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vm_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmUuid")
+    def vm_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The VM UUID.
+        """
+        return pulumi.get(self, "vm_uuid")
+
+    @vm_uuid.setter
+    def vm_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vm_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xlsxErrors")
+    def xlsx_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs']]]]:
+        """
+        (Output)
+        Error details for an XLSX file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xlsx_errors")
+
+    @xlsx_errors.setter
+    def xlsx_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs']]]]):
+        pulumi.set(self, "xlsx_errors", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgsDict(TypedDict):
+    csv_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for a CSV file.
+    Structure is documented below.
+    """
+    file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The file path inside the archive where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs:
+    def __init__(__self__, *,
+                 csv_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs']]]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs']]] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] file_path: (Output)
+               The file path inside the archive where the error was detected.
+        """
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs']]]]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @csv_errors.setter
+    def csv_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs']]]]):
+        pulumi.set(self, "csv_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The file path inside the archive where the error was detected.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_path", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+    sheet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the sheet where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 sheet: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        :param pulumi.Input[_builtins.str] sheet: (Output)
+               The name of the sheet where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if sheet is not None:
+            pulumi.set(__self__, "sheet", sheet)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sheet(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the sheet where the error was detected.
+        """
+        return pulumi.get(self, "sheet")
+
+    @sheet.setter
+    def sheet(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sheet", value)
+
+
+class ImportJobExecutionReportExecutionErrorJobErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobExecutionReportExecutionErrorJobErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class ImportJobValidationReportArgsDict(TypedDict):
+    file_validations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationArgsDict']]]]]
+    """
+    (Output)
+    List of errors found in files.
+    Structure is documented below.
+    """
+    job_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportJobErrorArgsDict']]]]]
+    """
+    (Output)
+    List of job level errors.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportArgs:
+    def __init__(__self__, *,
+                 file_validations: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationArgs']]]] = None,
+                 job_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportJobErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationArgs']]] file_validations: (Output)
+               List of errors found in files.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportJobErrorArgs']]] job_errors: (Output)
+               List of job level errors.
+               Structure is documented below.
+        """
+        if file_validations is not None:
+            pulumi.set(__self__, "file_validations", file_validations)
+        if job_errors is not None:
+            pulumi.set(__self__, "job_errors", job_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileValidations")
+    def file_validations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationArgs']]]]:
+        """
+        (Output)
+        List of errors found in files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_validations")
+
+    @file_validations.setter
+    def file_validations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationArgs']]]]):
+        pulumi.set(self, "file_validations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobErrors")
+    def job_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportJobErrorArgs']]]]:
+        """
+        (Output)
+        List of job level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "job_errors")
+
+    @job_errors.setter
+    def job_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportJobErrorArgs']]]]):
+        pulumi.set(self, "job_errors", value)
+
+
+class ImportJobValidationReportFileValidationArgsDict(TypedDict):
+    file_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationFileErrorArgsDict']]]]]
+    """
+    (Output)
+    List of file level errors.
+    Structure is documented below.
+    """
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the file.
+    """
+    partial_report: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Flag indicating that processing was aborted due to maximum number of
+    errors.
+    """
+    row_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArgsDict']]]]]
+    """
+    (Output)
+    Partial list of rows that encountered validation error.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationArgs:
+    def __init__(__self__, *,
+                 file_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationFileErrorArgs']]]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partial_report: pulumi.Input[Optional[_builtins.bool]] = None,
+                 row_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationFileErrorArgs']]] file_errors: (Output)
+               List of file level errors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] file_name: (Output)
+               The name of the file.
+        :param pulumi.Input[_builtins.bool] partial_report: (Output)
+               Flag indicating that processing was aborted due to maximum number of
+               errors.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArgs']]] row_errors: (Output)
+               Partial list of rows that encountered validation error.
+               Structure is documented below.
+        """
+        if file_errors is not None:
+            pulumi.set(__self__, "file_errors", file_errors)
+        if file_name is not None:
+            pulumi.set(__self__, "file_name", file_name)
+        if partial_report is not None:
+            pulumi.set(__self__, "partial_report", partial_report)
+        if row_errors is not None:
+            pulumi.set(__self__, "row_errors", row_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="fileErrors")
+    def file_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationFileErrorArgs']]]]:
+        """
+        (Output)
+        List of file level errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_errors")
+
+    @file_errors.setter
+    def file_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationFileErrorArgs']]]]):
+        pulumi.set(self, "file_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the file.
+        """
+        return pulumi.get(self, "file_name")
+
+    @file_name.setter
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="partialReport")
+    def partial_report(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Flag indicating that processing was aborted due to maximum number of
+        errors.
+        """
+        return pulumi.get(self, "partial_report")
+
+    @partial_report.setter
+    def partial_report(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "partial_report", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowErrors")
+    def row_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArgs']]]]:
+        """
+        (Output)
+        Partial list of rows that encountered validation error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_errors")
+
+    @row_errors.setter
+    def row_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArgs']]]]):
+        pulumi.set(self, "row_errors", value)
+
+
+class ImportJobValidationReportFileValidationFileErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationFileErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorArgsDict(TypedDict):
+    archive_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for an archive file.
+    Structure is documented below.
+    """
+    asset_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The asset title.
+    """
+    csv_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorCsvErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for a CSV file.
+    Structure is documented below.
+    """
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorErrorArgsDict']]]]]
+    """
+    (Output)
+    The list of errors detected in the row.
+    Structure is documented below.
+    """
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+    vm_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the VM in the row.
+    """
+    vm_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The VM UUID.
+    """
+    xlsx_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for an XLSX file.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorArgs:
+    def __init__(__self__, *,
+                 archive_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs']]]] = None,
+                 asset_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorCsvErrorArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorErrorArgs']]]] = None,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 xlsx_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs']]] archive_errors: (Output)
+               Error details for an archive file.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] asset_title: (Output)
+               The asset title.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorCsvErrorArgs']]] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorErrorArgs']]] errors: (Output)
+               The list of errors detected in the row.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        :param pulumi.Input[_builtins.str] vm_name: (Output)
+               The name of the VM in the row.
+        :param pulumi.Input[_builtins.str] vm_uuid: (Output)
+               The VM UUID.
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs']]] xlsx_errors: (Output)
+               Error details for an XLSX file.
+               Structure is documented below.
+        """
+        if archive_errors is not None:
+            pulumi.set(__self__, "archive_errors", archive_errors)
+        if asset_title is not None:
+            pulumi.set(__self__, "asset_title", asset_title)
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if vm_name is not None:
+            pulumi.set(__self__, "vm_name", vm_name)
+        if vm_uuid is not None:
+            pulumi.set(__self__, "vm_uuid", vm_uuid)
+        if xlsx_errors is not None:
+            pulumi.set(__self__, "xlsx_errors", xlsx_errors)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveErrors")
+    def archive_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs']]]]:
+        """
+        (Output)
+        Error details for an archive file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "archive_errors")
+
+    @archive_errors.setter
+    def archive_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs']]]]):
+        pulumi.set(self, "archive_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetTitle")
+    def asset_title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The asset title.
+        """
+        return pulumi.get(self, "asset_title")
+
+    @asset_title.setter
+    def asset_title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "asset_title", value)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorCsvErrorArgs']]]]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @csv_errors.setter
+    def csv_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorCsvErrorArgs']]]]):
+        pulumi.set(self, "csv_errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorErrorArgs']]]]:
+        """
+        (Output)
+        The list of errors detected in the row.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the VM in the row.
+        """
+        return pulumi.get(self, "vm_name")
+
+    @vm_name.setter
+    def vm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vm_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmUuid")
+    def vm_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The VM UUID.
+        """
+        return pulumi.get(self, "vm_uuid")
+
+    @vm_uuid.setter
+    def vm_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vm_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xlsxErrors")
+    def xlsx_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs']]]]:
+        """
+        (Output)
+        Error details for an XLSX file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xlsx_errors")
+
+    @xlsx_errors.setter
+    def xlsx_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs']]]]):
+        pulumi.set(self, "xlsx_errors", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorArchiveErrorArgsDict(TypedDict):
+    csv_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgsDict']]]]]
+    """
+    (Output)
+    Error details for a CSV file.
+    Structure is documented below.
+    """
+    file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The file path inside the archive where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs:
+    def __init__(__self__, *,
+                 csv_errors: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs']]]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs']]] csv_errors: (Output)
+               Error details for a CSV file.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] file_path: (Output)
+               The file path inside the archive where the error was detected.
+        """
+        if csv_errors is not None:
+            pulumi.set(__self__, "csv_errors", csv_errors)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+
+    @_builtins.property
+    @pulumi.getter(name="csvErrors")
+    def csv_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs']]]]:
+        """
+        (Output)
+        Error details for a CSV file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csv_errors")
+
+    @csv_errors.setter
+    def csv_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs']]]]):
+        pulumi.set(self, "csv_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The file path inside the archive where the error was detected.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_path", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorCsvErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorCsvErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class ImportJobValidationReportFileValidationRowErrorXlsxErrorArgsDict(TypedDict):
+    row_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The row number where the error was detected.
+    """
+    sheet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the sheet where the error was detected.
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs:
+    def __init__(__self__, *,
+                 row_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 sheet: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] row_number: (Output)
+               The row number where the error was detected.
+        :param pulumi.Input[_builtins.str] sheet: (Output)
+               The name of the sheet where the error was detected.
+        """
+        if row_number is not None:
+            pulumi.set(__self__, "row_number", row_number)
+        if sheet is not None:
+            pulumi.set(__self__, "sheet", sheet)
+
+    @_builtins.property
+    @pulumi.getter(name="rowNumber")
+    def row_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The row number where the error was detected.
+        """
+        return pulumi.get(self, "row_number")
+
+    @row_number.setter
+    def row_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "row_number", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sheet(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the sheet where the error was detected.
+        """
+        return pulumi.get(self, "sheet")
+
+    @sheet.setter
+    def sheet(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sheet", value)
+
+
+class ImportJobValidationReportJobErrorArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The error information.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The severity of the error.
+    Possible values:
+    ERROR
+    WARNING
+    INFO
+    """
+
+@pulumi.input_type
+class ImportJobValidationReportJobErrorArgs:
+    def __init__(__self__, *,
+                 error_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] error_details: (Output)
+               The error information.
+        :param pulumi.Input[_builtins.str] severity: (Output)
+               The severity of the error.
+               Possible values:
+               ERROR
+               WARNING
+               INFO
+        """
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The error information.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The severity of the error.
+        Possible values:
+        ERROR
+        WARNING
+        INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
 
 
 class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):

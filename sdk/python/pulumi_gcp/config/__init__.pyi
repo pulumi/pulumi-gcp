@@ -271,6 +271,8 @@ integrationsCustomEndpoint: Optional[str]
 
 kmsCustomEndpoint: Optional[str]
 
+licenseManagerCustomEndpoint: Optional[str]
+
 loggingCustomEndpoint: Optional[str]
 
 lookerCustomEndpoint: Optional[str]

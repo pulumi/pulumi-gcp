@@ -749,6 +749,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> kmsCustomEndpoint() {
         return Codegen.optional(this.kmsCustomEndpoint);
     }
+    @Export(name="licenseManagerCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> licenseManagerCustomEndpoint;
+
+    public Output<Optional<String>> licenseManagerCustomEndpoint() {
+        return Codegen.optional(this.licenseManagerCustomEndpoint);
+    }
     @Export(name="loggingCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loggingCustomEndpoint;
 

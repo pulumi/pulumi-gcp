@@ -788,8 +788,6 @@ class AutonomousDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="new",
-            project="my-project")
         my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
             autonomous_database_id="my-instance",
             location="us-east4",
@@ -797,8 +795,8 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
-            network=default.id,
-            cidr="10.5.0.0/24",
+            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             labels={
                 "label-one": "value-one",
             },
@@ -824,6 +822,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "private_endpoint_label": "myendpoint",
             },
             deletion_protection=True)
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
         ```
         ### Oracledatabase Autonomous Database Odbnetwork
 
@@ -1008,8 +1008,6 @@ class AutonomousDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="new",
-            project="my-project")
         my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
             autonomous_database_id="my-instance",
             location="us-east4",
@@ -1017,8 +1015,8 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
-            network=default.id,
-            cidr="10.5.0.0/24",
+            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             labels={
                 "label-one": "value-one",
             },
@@ -1044,6 +1042,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "private_endpoint_label": "myendpoint",
             },
             deletion_protection=True)
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
         ```
         ### Oracledatabase Autonomous Database Odbnetwork
 

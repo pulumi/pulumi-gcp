@@ -6,6 +6,7 @@ package com.pulumi.gcp.firebase;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,6 +75,25 @@ public final class AiLogicPromptTemplateLockArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    @Import(name="regionalPropagationDisabled")
+    private @Nullable Output<Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    public Optional<Output<Boolean>> regionalPropagationDisabled() {
+        return Optional.ofNullable(this.regionalPropagationDisabled);
+    }
+
+    /**
      * The ID of the prompt template.
      * 
      */
@@ -94,6 +114,7 @@ public final class AiLogicPromptTemplateLockArgs extends com.pulumi.resources.Re
         this.deletionPolicy = $.deletionPolicy;
         this.location = $.location;
         this.project = $.project;
+        this.regionalPropagationDisabled = $.regionalPropagationDisabled;
         this.templateId = $.templateId;
     }
 
@@ -188,6 +209,31 @@ public final class AiLogicPromptTemplateLockArgs extends com.pulumi.resources.Re
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the modifyLock operation will
+         * apply to the global region only. Otherwise, the operation will also
+         * propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(@Nullable Output<Boolean> regionalPropagationDisabled) {
+            $.regionalPropagationDisabled = regionalPropagationDisabled;
+            return this;
+        }
+
+        /**
+         * @param regionalPropagationDisabled For the `global` location only. If true, the modifyLock operation will
+         * apply to the global region only. Otherwise, the operation will also
+         * propagate to all applicable regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionalPropagationDisabled(Boolean regionalPropagationDisabled) {
+            return regionalPropagationDisabled(Output.of(regionalPropagationDisabled));
         }
 
         /**

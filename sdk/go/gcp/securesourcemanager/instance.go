@@ -449,7 +449,7 @@ import (
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
 //				PscTargetService: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-//					return &privateConfig.HttpServiceAttachment, nil
+//					return privateConfig.HttpServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Network:    network.ID(),
 //				Subnetwork: subnet.ID(),
@@ -713,7 +713,7 @@ import (
 //				IpAddress:           address.ID(),
 //				Network:             network.ID(),
 //				Target: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-//					return &privateConfig.HttpServiceAttachment, nil
+//					return privateConfig.HttpServiceAttachment, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {

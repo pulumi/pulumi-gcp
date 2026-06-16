@@ -377,7 +377,7 @@ import (
 //				return err
 //			}
 //			bigqueryMetadataViewer, err := projects.NewIAMMember(ctx, "bigquery_metadata_viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
 //				Member: bqWriteServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -387,7 +387,7 @@ import (
 //				return err
 //			}
 //			bigqueryDataEditor, err := projects.NewIAMMember(ctx, "bigquery_data_editor", &projects.IAMMemberArgs{
-//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
 //				Member: bqWriteServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -856,7 +856,7 @@ import (
 //				return err
 //			}
 //			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-//				Parent:    pulumi.String(pulumi.String(project.Id)),
+//				Parent:    pulumi.String(project.Id),
 //				ShortName: pulumi.String("tag_key"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,

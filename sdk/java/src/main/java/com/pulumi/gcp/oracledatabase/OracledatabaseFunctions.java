@@ -29,6 +29,8 @@ import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
@@ -43,6 +45,7 @@ import com.pulumi.gcp.oracledatabase.outputs.GetDbNodesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbServersResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateConnectionTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentEnvironmentsResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbNetworkResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbSubnetResult;
 import java.util.concurrent.CompletableFuture;
@@ -2842,6 +2845,371 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironmentsPlain(GetGoldengateDeploymentEnvironmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", TypeShape.of(GetGoldengateDeploymentEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentTypes&#34;&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+     * 
+     * * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+     * 
+     * * `category` - The category of the GoldenGate Deployment Type resource.
+     * 
+     * * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Type resource.
+     * 
+     * * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+     * 
+     * * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+     * 
+     * * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs args) {
+        return getGoldengateDeploymentTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Deployment Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentTypes&#34;&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+     * 
+     * * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+     * 
+     * * `category` - The category of the GoldenGate Deployment Type resource.
+     * 
+     * * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Type resource.
+     * 
+     * * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+     * 
+     * * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+     * 
+     * * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesPlain(GetGoldengateDeploymentTypesPlainArgs args) {
+        return getGoldengateDeploymentTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Deployment Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentTypes&#34;&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+     * 
+     * * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+     * 
+     * * `category` - The category of the GoldenGate Deployment Type resource.
+     * 
+     * * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Type resource.
+     * 
+     * * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+     * 
+     * * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+     * 
+     * * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", TypeShape.of(GetGoldengateDeploymentTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentTypes&#34;&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+     * 
+     * * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+     * 
+     * * `category` - The category of the GoldenGate Deployment Type resource.
+     * 
+     * * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Type resource.
+     * 
+     * * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+     * 
+     * * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+     * 
+     * * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", TypeShape.of(GetGoldengateDeploymentTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentTypes&#34;&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+     * 
+     * * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+     * 
+     * * `category` - The category of the GoldenGate Deployment Type resource.
+     * 
+     * * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Type resource.
+     * 
+     * * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+     * 
+     * * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+     * 
+     * * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+     * 
+     * * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesPlain(GetGoldengateDeploymentTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", TypeShape.of(GetGoldengateDeploymentTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about an ODB Network.

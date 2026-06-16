@@ -910,6 +910,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.kmsCustomEndpoint);
     }
 
+    @Import(name="licenseManagerCustomEndpoint")
+    private @Nullable Output<String> licenseManagerCustomEndpoint;
+
+    public Optional<Output<String>> licenseManagerCustomEndpoint() {
+        return Optional.ofNullable(this.licenseManagerCustomEndpoint);
+    }
+
     @Import(name="loggingCustomEndpoint")
     private @Nullable Output<String> loggingCustomEndpoint;
 
@@ -1635,6 +1642,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.integrationConnectorsCustomEndpoint = $.integrationConnectorsCustomEndpoint;
         this.integrationsCustomEndpoint = $.integrationsCustomEndpoint;
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
+        this.licenseManagerCustomEndpoint = $.licenseManagerCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
         this.lustreCustomEndpoint = $.lustreCustomEndpoint;
@@ -2885,6 +2893,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder kmsCustomEndpoint(String kmsCustomEndpoint) {
             return kmsCustomEndpoint(Output.of(kmsCustomEndpoint));
+        }
+
+        public Builder licenseManagerCustomEndpoint(@Nullable Output<String> licenseManagerCustomEndpoint) {
+            $.licenseManagerCustomEndpoint = licenseManagerCustomEndpoint;
+            return this;
+        }
+
+        public Builder licenseManagerCustomEndpoint(String licenseManagerCustomEndpoint) {
+            return licenseManagerCustomEndpoint(Output.of(licenseManagerCustomEndpoint));
         }
 
         public Builder loggingCustomEndpoint(@Nullable Output<String> loggingCustomEndpoint) {

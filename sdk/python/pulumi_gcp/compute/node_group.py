@@ -596,8 +596,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-c",
+            description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
@@ -768,8 +768,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-c",
+            description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")

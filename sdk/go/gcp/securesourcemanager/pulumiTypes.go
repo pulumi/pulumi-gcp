@@ -635,6 +635,9 @@ type InstancePrivateConfig struct {
 	HttpServiceAttachment *string `pulumi:"httpServiceAttachment"`
 	// 'Indicate if it's private instance.'
 	IsPrivate bool `pulumi:"isPrivate"`
+	// Optional. Additional allowed projects for setting up PSC connections.
+	// Instance host project is automatically allowed and does not need to be included in this list.
+	PscAllowedProjects []string `pulumi:"pscAllowedProjects"`
 	// (Output)
 	// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	SshServiceAttachment *string `pulumi:"sshServiceAttachment"`
@@ -662,6 +665,9 @@ type InstancePrivateConfigArgs struct {
 	HttpServiceAttachment pulumi.StringPtrInput `pulumi:"httpServiceAttachment"`
 	// 'Indicate if it's private instance.'
 	IsPrivate pulumi.BoolInput `pulumi:"isPrivate"`
+	// Optional. Additional allowed projects for setting up PSC connections.
+	// Instance host project is automatically allowed and does not need to be included in this list.
+	PscAllowedProjects pulumi.StringArrayInput `pulumi:"pscAllowedProjects"`
 	// (Output)
 	// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	SshServiceAttachment pulumi.StringPtrInput `pulumi:"sshServiceAttachment"`
@@ -766,6 +772,12 @@ func (o InstancePrivateConfigOutput) IsPrivate() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstancePrivateConfig) bool { return v.IsPrivate }).(pulumi.BoolOutput)
 }
 
+// Optional. Additional allowed projects for setting up PSC connections.
+// Instance host project is automatically allowed and does not need to be included in this list.
+func (o InstancePrivateConfigOutput) PscAllowedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) []string { return v.PscAllowedProjects }).(pulumi.StringArrayOutput)
+}
+
 // (Output)
 // Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 func (o InstancePrivateConfigOutput) SshServiceAttachment() pulumi.StringPtrOutput {
@@ -836,6 +848,17 @@ func (o InstancePrivateConfigPtrOutput) IsPrivate() pulumi.BoolPtrOutput {
 		}
 		return &v.IsPrivate
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Additional allowed projects for setting up PSC connections.
+// Instance host project is automatically allowed and does not need to be included in this list.
+func (o InstancePrivateConfigPtrOutput) PscAllowedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PscAllowedProjects
+	}).(pulumi.StringArrayOutput)
 }
 
 // (Output)

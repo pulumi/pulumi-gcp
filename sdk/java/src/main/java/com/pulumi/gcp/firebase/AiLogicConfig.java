@@ -344,15 +344,15 @@ public class AiLogicConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="trafficFilter", refs={AiLogicConfigTrafficFilter.class}, tree="[0]")
-    private Output</* @Nullable */ AiLogicConfigTrafficFilter> trafficFilter;
+    private Output<AiLogicConfigTrafficFilter> trafficFilter;
 
     /**
      * @return Configuration for traffic filtering.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AiLogicConfigTrafficFilter>> trafficFilter() {
-        return Codegen.optional(this.trafficFilter);
+    public Output<AiLogicConfigTrafficFilter> trafficFilter() {
+        return this.trafficFilter;
     }
 
     /**

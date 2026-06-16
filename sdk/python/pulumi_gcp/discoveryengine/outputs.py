@@ -66,6 +66,8 @@ __all__ = [
     'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig',
     'RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig',
     'SearchEngineCommonConfig',
+    'SearchEngineIamBindingCondition',
+    'SearchEngineIamMemberCondition',
     'SearchEngineKnowledgeGraphConfig',
     'SearchEngineKnowledgeGraphConfigFeatureConfig',
     'SearchEngineSearchEngineConfig',
@@ -2873,6 +2875,60 @@ class SearchEngineCommonConfig(dict):
         The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
         """
         return pulumi.get(self, "company_name")
+
+
+@pulumi.output_type
+class SearchEngineIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SearchEngineIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

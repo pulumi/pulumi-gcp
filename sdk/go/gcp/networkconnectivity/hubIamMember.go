@@ -57,7 +57,7 @@ import (
 //			_, err = networkconnectivity.NewHubIamPolicy(ctx, "policy", &networkconnectivity.HubIamPolicyArgs{
 //				Project:    pulumi.Any(primary.Project),
 //				Hub:        pulumi.Any(primary.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //			_, err = networkconnectivity.NewHubIamPolicy(ctx, "policy", &networkconnectivity.HubIamPolicyArgs{
 //				Project:    pulumi.Any(primary.Project),
 //				Hub:        pulumi.Any(primary.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

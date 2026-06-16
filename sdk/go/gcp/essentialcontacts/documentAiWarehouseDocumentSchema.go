@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_text", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber:    pulumi.String(pulumi.String(project.Number)),
+//				ProjectNumber:    pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-text"),
 //				Location:         pulumi.String("us"),
 //				DocumentIsFolder: pulumi.Bool(false),

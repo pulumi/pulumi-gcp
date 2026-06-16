@@ -2318,6 +2318,2687 @@ func (o DiscoveryClientErrorDetailArrayOutput) Index(i pulumi.IntInput) Discover
 	}).(DiscoveryClientErrorDetailOutput)
 }
 
+type ImportJobExecutionReport struct {
+	// (Output)
+	// A resource that aggregates errors across import job files.
+	// Structure is documented below.
+	ExecutionErrors []ImportJobExecutionReportExecutionError `pulumi:"executionErrors"`
+	// (Output)
+	// Total number of asset frames reported for the import job.
+	FramesReported *int `pulumi:"framesReported"`
+	// (Output)
+	// Total number of rows in the import job.
+	TotalRowsCount *int `pulumi:"totalRowsCount"`
+}
+
+// ImportJobExecutionReportInput is an input type that accepts ImportJobExecutionReportArgs and ImportJobExecutionReportOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportInput` via:
+//
+//	ImportJobExecutionReportArgs{...}
+type ImportJobExecutionReportInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportOutput() ImportJobExecutionReportOutput
+	ToImportJobExecutionReportOutputWithContext(context.Context) ImportJobExecutionReportOutput
+}
+
+type ImportJobExecutionReportArgs struct {
+	// (Output)
+	// A resource that aggregates errors across import job files.
+	// Structure is documented below.
+	ExecutionErrors ImportJobExecutionReportExecutionErrorArrayInput `pulumi:"executionErrors"`
+	// (Output)
+	// Total number of asset frames reported for the import job.
+	FramesReported pulumi.IntPtrInput `pulumi:"framesReported"`
+	// (Output)
+	// Total number of rows in the import job.
+	TotalRowsCount pulumi.IntPtrInput `pulumi:"totalRowsCount"`
+}
+
+func (ImportJobExecutionReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReport)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportArgs) ToImportJobExecutionReportOutput() ImportJobExecutionReportOutput {
+	return i.ToImportJobExecutionReportOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportArgs) ToImportJobExecutionReportOutputWithContext(ctx context.Context) ImportJobExecutionReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportOutput)
+}
+
+// ImportJobExecutionReportArrayInput is an input type that accepts ImportJobExecutionReportArray and ImportJobExecutionReportArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportArrayInput` via:
+//
+//	ImportJobExecutionReportArray{ ImportJobExecutionReportArgs{...} }
+type ImportJobExecutionReportArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportArrayOutput() ImportJobExecutionReportArrayOutput
+	ToImportJobExecutionReportArrayOutputWithContext(context.Context) ImportJobExecutionReportArrayOutput
+}
+
+type ImportJobExecutionReportArray []ImportJobExecutionReportInput
+
+func (ImportJobExecutionReportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReport)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportArray) ToImportJobExecutionReportArrayOutput() ImportJobExecutionReportArrayOutput {
+	return i.ToImportJobExecutionReportArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportArray) ToImportJobExecutionReportArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportArrayOutput)
+}
+
+type ImportJobExecutionReportOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReport)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportOutput) ToImportJobExecutionReportOutput() ImportJobExecutionReportOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportOutput) ToImportJobExecutionReportOutputWithContext(ctx context.Context) ImportJobExecutionReportOutput {
+	return o
+}
+
+// (Output)
+// A resource that aggregates errors across import job files.
+// Structure is documented below.
+func (o ImportJobExecutionReportOutput) ExecutionErrors() ImportJobExecutionReportExecutionErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReport) []ImportJobExecutionReportExecutionError { return v.ExecutionErrors }).(ImportJobExecutionReportExecutionErrorArrayOutput)
+}
+
+// (Output)
+// Total number of asset frames reported for the import job.
+func (o ImportJobExecutionReportOutput) FramesReported() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReport) *int { return v.FramesReported }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Total number of rows in the import job.
+func (o ImportJobExecutionReportOutput) TotalRowsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReport) *int { return v.TotalRowsCount }).(pulumi.IntPtrOutput)
+}
+
+type ImportJobExecutionReportArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReport)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportArrayOutput) ToImportJobExecutionReportArrayOutput() ImportJobExecutionReportArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportArrayOutput) ToImportJobExecutionReportArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReport {
+		return vs[0].([]ImportJobExecutionReport)[vs[1].(int)]
+	}).(ImportJobExecutionReportOutput)
+}
+
+type ImportJobExecutionReportExecutionError struct {
+	// (Output)
+	// List of errors found in files.
+	// Structure is documented below.
+	FileValidations []ImportJobExecutionReportExecutionErrorFileValidation `pulumi:"fileValidations"`
+	// (Output)
+	// List of job level errors.
+	// Structure is documented below.
+	JobErrors []ImportJobExecutionReportExecutionErrorJobError `pulumi:"jobErrors"`
+}
+
+// ImportJobExecutionReportExecutionErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorArgs and ImportJobExecutionReportExecutionErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorOutput() ImportJobExecutionReportExecutionErrorOutput
+	ToImportJobExecutionReportExecutionErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorArgs struct {
+	// (Output)
+	// List of errors found in files.
+	// Structure is documented below.
+	FileValidations ImportJobExecutionReportExecutionErrorFileValidationArrayInput `pulumi:"fileValidations"`
+	// (Output)
+	// List of job level errors.
+	// Structure is documented below.
+	JobErrors ImportJobExecutionReportExecutionErrorJobErrorArrayInput `pulumi:"jobErrors"`
+}
+
+func (ImportJobExecutionReportExecutionErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorArgs) ToImportJobExecutionReportExecutionErrorOutput() ImportJobExecutionReportExecutionErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorArgs) ToImportJobExecutionReportExecutionErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorArray and ImportJobExecutionReportExecutionErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorArray{ ImportJobExecutionReportExecutionErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorArrayOutput() ImportJobExecutionReportExecutionErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorArray []ImportJobExecutionReportExecutionErrorInput
+
+func (ImportJobExecutionReportExecutionErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorArray) ToImportJobExecutionReportExecutionErrorArrayOutput() ImportJobExecutionReportExecutionErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorArray) ToImportJobExecutionReportExecutionErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorOutput) ToImportJobExecutionReportExecutionErrorOutput() ImportJobExecutionReportExecutionErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorOutput) ToImportJobExecutionReportExecutionErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorOutput {
+	return o
+}
+
+// (Output)
+// List of errors found in files.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorOutput) FileValidations() ImportJobExecutionReportExecutionErrorFileValidationArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionError) []ImportJobExecutionReportExecutionErrorFileValidation {
+		return v.FileValidations
+	}).(ImportJobExecutionReportExecutionErrorFileValidationArrayOutput)
+}
+
+// (Output)
+// List of job level errors.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorOutput) JobErrors() ImportJobExecutionReportExecutionErrorJobErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionError) []ImportJobExecutionReportExecutionErrorJobError {
+		return v.JobErrors
+	}).(ImportJobExecutionReportExecutionErrorJobErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorArrayOutput) ToImportJobExecutionReportExecutionErrorArrayOutput() ImportJobExecutionReportExecutionErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorArrayOutput) ToImportJobExecutionReportExecutionErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionError {
+		return vs[0].([]ImportJobExecutionReportExecutionError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidation struct {
+	// (Output)
+	// List of file level errors.
+	// Structure is documented below.
+	FileErrors []ImportJobExecutionReportExecutionErrorFileValidationFileError `pulumi:"fileErrors"`
+	// (Output)
+	// The name of the file.
+	FileName *string `pulumi:"fileName"`
+	// (Output)
+	// Flag indicating that processing was aborted due to maximum number of
+	// errors.
+	PartialReport *bool `pulumi:"partialReport"`
+	// (Output)
+	// Partial list of rows that encountered validation error.
+	// Structure is documented below.
+	RowErrors []ImportJobExecutionReportExecutionErrorFileValidationRowError `pulumi:"rowErrors"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationArgs and ImportJobExecutionReportExecutionErrorFileValidationOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationOutput() ImportJobExecutionReportExecutionErrorFileValidationOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationArgs struct {
+	// (Output)
+	// List of file level errors.
+	// Structure is documented below.
+	FileErrors ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayInput `pulumi:"fileErrors"`
+	// (Output)
+	// The name of the file.
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// (Output)
+	// Flag indicating that processing was aborted due to maximum number of
+	// errors.
+	PartialReport pulumi.BoolPtrInput `pulumi:"partialReport"`
+	// (Output)
+	// Partial list of rows that encountered validation error.
+	// Structure is documented below.
+	RowErrors ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayInput `pulumi:"rowErrors"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidation)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationArgs) ToImportJobExecutionReportExecutionErrorFileValidationOutput() ImportJobExecutionReportExecutionErrorFileValidationOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationArgs) ToImportJobExecutionReportExecutionErrorFileValidationOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationArray and ImportJobExecutionReportExecutionErrorFileValidationArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationArray{ ImportJobExecutionReportExecutionErrorFileValidationArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationArray []ImportJobExecutionReportExecutionErrorFileValidationInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidation)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationArray) ToImportJobExecutionReportExecutionErrorFileValidationArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationArray) ToImportJobExecutionReportExecutionErrorFileValidationArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidation)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) ToImportJobExecutionReportExecutionErrorFileValidationOutput() ImportJobExecutionReportExecutionErrorFileValidationOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) ToImportJobExecutionReportExecutionErrorFileValidationOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationOutput {
+	return o
+}
+
+// (Output)
+// List of file level errors.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) FileErrors() ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidation) []ImportJobExecutionReportExecutionErrorFileValidationFileError {
+		return v.FileErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput)
+}
+
+// (Output)
+// The name of the file.
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidation) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Flag indicating that processing was aborted due to maximum number of
+// errors.
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) PartialReport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidation) *bool { return v.PartialReport }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Partial list of rows that encountered validation error.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationOutput) RowErrors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidation) []ImportJobExecutionReportExecutionErrorFileValidationRowError {
+		return v.RowErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidation)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidation {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidation)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationFileError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationFileErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationFileErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationFileError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray and ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray []ImportJobExecutionReportExecutionErrorFileValidationFileErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationFileError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationFileError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationFileError) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationFileError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationFileError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationFileError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationFileError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowError struct {
+	// (Output)
+	// Error details for an archive file.
+	// Structure is documented below.
+	ArchiveErrors []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError `pulumi:"archiveErrors"`
+	// (Output)
+	// The asset title.
+	AssetTitle *string `pulumi:"assetTitle"`
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors []ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError `pulumi:"csvErrors"`
+	// (Output)
+	// The list of errors detected in the row.
+	// Structure is documented below.
+	Errors []ImportJobExecutionReportExecutionErrorFileValidationRowErrorError `pulumi:"errors"`
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the VM in the row.
+	VmName *string `pulumi:"vmName"`
+	// (Output)
+	// The VM UUID.
+	VmUuid *string `pulumi:"vmUuid"`
+	// (Output)
+	// Error details for an XLSX file.
+	// Structure is documented below.
+	XlsxErrors []ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError `pulumi:"xlsxErrors"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs struct {
+	// (Output)
+	// Error details for an archive file.
+	// Structure is documented below.
+	ArchiveErrors ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayInput `pulumi:"archiveErrors"`
+	// (Output)
+	// The asset title.
+	AssetTitle pulumi.StringPtrInput `pulumi:"assetTitle"`
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayInput `pulumi:"csvErrors"`
+	// (Output)
+	// The list of errors detected in the row.
+	// Structure is documented below.
+	Errors ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the VM in the row.
+	VmName pulumi.StringPtrInput `pulumi:"vmName"`
+	// (Output)
+	// The VM UUID.
+	VmUuid pulumi.StringPtrInput `pulumi:"vmUuid"`
+	// (Output)
+	// Error details for an XLSX file.
+	// Structure is documented below.
+	XlsxErrors ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayInput `pulumi:"xlsxErrors"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput {
+	return o
+}
+
+// (Output)
+// Error details for an archive file.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) ArchiveErrors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError {
+		return v.ArchiveErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput)
+}
+
+// (Output)
+// The asset title.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) AssetTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) *string { return v.AssetTitle }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error details for a CSV file.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) CsvErrors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) []ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError {
+		return v.CsvErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput)
+}
+
+// (Output)
+// The list of errors detected in the row.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) Errors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) []ImportJobExecutionReportExecutionErrorFileValidationRowErrorError {
+		return v.Errors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput)
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The name of the VM in the row.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The VM UUID.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) VmUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) *string { return v.VmUuid }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error details for an XLSX file.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput) XlsxErrors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowError) []ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError {
+		return v.XlsxErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError struct {
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError `pulumi:"csvErrors"`
+	// (Output)
+	// The file path inside the archive where the error was detected.
+	FilePath *string `pulumi:"filePath"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs struct {
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayInput `pulumi:"csvErrors"`
+	// (Output)
+	// The file path inside the archive where the error was detected.
+	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput {
+	return o
+}
+
+// (Output)
+// Error details for a CSV file.
+// Structure is documented below.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput) CsvErrors() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError) []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError {
+		return v.CsvErrors
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput)
+}
+
+// (Output)
+// The file path inside the archive where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError) *string {
+		return v.FilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError) *int {
+		return v.RowNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorError) *string {
+		return v.ErrorDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowErrorError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowErrorError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the sheet where the error was detected.
+	Sheet *string `pulumi:"sheet"`
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs and ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the sheet where the error was detected.
+	Sheet pulumi.StringPtrInput `pulumi:"sheet"`
+}
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray and ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray{ ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray []ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorInput
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The name of the sheet where the error was detected.
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput) Sheet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError) *string { return v.Sheet }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput() ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput) ToImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorJobError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobExecutionReportExecutionErrorJobErrorInput is an input type that accepts ImportJobExecutionReportExecutionErrorJobErrorArgs and ImportJobExecutionReportExecutionErrorJobErrorOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorJobErrorInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorJobErrorArgs{...}
+type ImportJobExecutionReportExecutionErrorJobErrorInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorJobErrorOutput() ImportJobExecutionReportExecutionErrorJobErrorOutput
+	ToImportJobExecutionReportExecutionErrorJobErrorOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorJobErrorOutput
+}
+
+type ImportJobExecutionReportExecutionErrorJobErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobExecutionReportExecutionErrorJobErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorJobError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorJobErrorArgs) ToImportJobExecutionReportExecutionErrorJobErrorOutput() ImportJobExecutionReportExecutionErrorJobErrorOutput {
+	return i.ToImportJobExecutionReportExecutionErrorJobErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorJobErrorArgs) ToImportJobExecutionReportExecutionErrorJobErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorJobErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorJobErrorOutput)
+}
+
+// ImportJobExecutionReportExecutionErrorJobErrorArrayInput is an input type that accepts ImportJobExecutionReportExecutionErrorJobErrorArray and ImportJobExecutionReportExecutionErrorJobErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobExecutionReportExecutionErrorJobErrorArrayInput` via:
+//
+//	ImportJobExecutionReportExecutionErrorJobErrorArray{ ImportJobExecutionReportExecutionErrorJobErrorArgs{...} }
+type ImportJobExecutionReportExecutionErrorJobErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobExecutionReportExecutionErrorJobErrorArrayOutput() ImportJobExecutionReportExecutionErrorJobErrorArrayOutput
+	ToImportJobExecutionReportExecutionErrorJobErrorArrayOutputWithContext(context.Context) ImportJobExecutionReportExecutionErrorJobErrorArrayOutput
+}
+
+type ImportJobExecutionReportExecutionErrorJobErrorArray []ImportJobExecutionReportExecutionErrorJobErrorInput
+
+func (ImportJobExecutionReportExecutionErrorJobErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorJobError)(nil)).Elem()
+}
+
+func (i ImportJobExecutionReportExecutionErrorJobErrorArray) ToImportJobExecutionReportExecutionErrorJobErrorArrayOutput() ImportJobExecutionReportExecutionErrorJobErrorArrayOutput {
+	return i.ToImportJobExecutionReportExecutionErrorJobErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobExecutionReportExecutionErrorJobErrorArray) ToImportJobExecutionReportExecutionErrorJobErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorJobErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobExecutionReportExecutionErrorJobErrorArrayOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorJobErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorJobErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobExecutionReportExecutionErrorJobError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorJobErrorOutput) ToImportJobExecutionReportExecutionErrorJobErrorOutput() ImportJobExecutionReportExecutionErrorJobErrorOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorJobErrorOutput) ToImportJobExecutionReportExecutionErrorJobErrorOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorJobErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobExecutionReportExecutionErrorJobErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorJobError) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobExecutionReportExecutionErrorJobErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobExecutionReportExecutionErrorJobError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobExecutionReportExecutionErrorJobErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobExecutionReportExecutionErrorJobErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobExecutionReportExecutionErrorJobError)(nil)).Elem()
+}
+
+func (o ImportJobExecutionReportExecutionErrorJobErrorArrayOutput) ToImportJobExecutionReportExecutionErrorJobErrorArrayOutput() ImportJobExecutionReportExecutionErrorJobErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorJobErrorArrayOutput) ToImportJobExecutionReportExecutionErrorJobErrorArrayOutputWithContext(ctx context.Context) ImportJobExecutionReportExecutionErrorJobErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobExecutionReportExecutionErrorJobErrorArrayOutput) Index(i pulumi.IntInput) ImportJobExecutionReportExecutionErrorJobErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobExecutionReportExecutionErrorJobError {
+		return vs[0].([]ImportJobExecutionReportExecutionErrorJobError)[vs[1].(int)]
+	}).(ImportJobExecutionReportExecutionErrorJobErrorOutput)
+}
+
+type ImportJobValidationReport struct {
+	// (Output)
+	// List of errors found in files.
+	// Structure is documented below.
+	FileValidations []ImportJobValidationReportFileValidation `pulumi:"fileValidations"`
+	// (Output)
+	// List of job level errors.
+	// Structure is documented below.
+	JobErrors []ImportJobValidationReportJobError `pulumi:"jobErrors"`
+}
+
+// ImportJobValidationReportInput is an input type that accepts ImportJobValidationReportArgs and ImportJobValidationReportOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportInput` via:
+//
+//	ImportJobValidationReportArgs{...}
+type ImportJobValidationReportInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportOutput() ImportJobValidationReportOutput
+	ToImportJobValidationReportOutputWithContext(context.Context) ImportJobValidationReportOutput
+}
+
+type ImportJobValidationReportArgs struct {
+	// (Output)
+	// List of errors found in files.
+	// Structure is documented below.
+	FileValidations ImportJobValidationReportFileValidationArrayInput `pulumi:"fileValidations"`
+	// (Output)
+	// List of job level errors.
+	// Structure is documented below.
+	JobErrors ImportJobValidationReportJobErrorArrayInput `pulumi:"jobErrors"`
+}
+
+func (ImportJobValidationReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReport)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportArgs) ToImportJobValidationReportOutput() ImportJobValidationReportOutput {
+	return i.ToImportJobValidationReportOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportArgs) ToImportJobValidationReportOutputWithContext(ctx context.Context) ImportJobValidationReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportOutput)
+}
+
+// ImportJobValidationReportArrayInput is an input type that accepts ImportJobValidationReportArray and ImportJobValidationReportArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportArrayInput` via:
+//
+//	ImportJobValidationReportArray{ ImportJobValidationReportArgs{...} }
+type ImportJobValidationReportArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportArrayOutput() ImportJobValidationReportArrayOutput
+	ToImportJobValidationReportArrayOutputWithContext(context.Context) ImportJobValidationReportArrayOutput
+}
+
+type ImportJobValidationReportArray []ImportJobValidationReportInput
+
+func (ImportJobValidationReportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReport)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportArray) ToImportJobValidationReportArrayOutput() ImportJobValidationReportArrayOutput {
+	return i.ToImportJobValidationReportArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportArray) ToImportJobValidationReportArrayOutputWithContext(ctx context.Context) ImportJobValidationReportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportArrayOutput)
+}
+
+type ImportJobValidationReportOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReport)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportOutput) ToImportJobValidationReportOutput() ImportJobValidationReportOutput {
+	return o
+}
+
+func (o ImportJobValidationReportOutput) ToImportJobValidationReportOutputWithContext(ctx context.Context) ImportJobValidationReportOutput {
+	return o
+}
+
+// (Output)
+// List of errors found in files.
+// Structure is documented below.
+func (o ImportJobValidationReportOutput) FileValidations() ImportJobValidationReportFileValidationArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReport) []ImportJobValidationReportFileValidation { return v.FileValidations }).(ImportJobValidationReportFileValidationArrayOutput)
+}
+
+// (Output)
+// List of job level errors.
+// Structure is documented below.
+func (o ImportJobValidationReportOutput) JobErrors() ImportJobValidationReportJobErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReport) []ImportJobValidationReportJobError { return v.JobErrors }).(ImportJobValidationReportJobErrorArrayOutput)
+}
+
+type ImportJobValidationReportArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReport)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportArrayOutput) ToImportJobValidationReportArrayOutput() ImportJobValidationReportArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportArrayOutput) ToImportJobValidationReportArrayOutputWithContext(ctx context.Context) ImportJobValidationReportArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReport {
+		return vs[0].([]ImportJobValidationReport)[vs[1].(int)]
+	}).(ImportJobValidationReportOutput)
+}
+
+type ImportJobValidationReportFileValidation struct {
+	// (Output)
+	// List of file level errors.
+	// Structure is documented below.
+	FileErrors []ImportJobValidationReportFileValidationFileError `pulumi:"fileErrors"`
+	// (Output)
+	// The name of the file.
+	FileName *string `pulumi:"fileName"`
+	// (Output)
+	// Flag indicating that processing was aborted due to maximum number of
+	// errors.
+	PartialReport *bool `pulumi:"partialReport"`
+	// (Output)
+	// Partial list of rows that encountered validation error.
+	// Structure is documented below.
+	RowErrors []ImportJobValidationReportFileValidationRowError `pulumi:"rowErrors"`
+}
+
+// ImportJobValidationReportFileValidationInput is an input type that accepts ImportJobValidationReportFileValidationArgs and ImportJobValidationReportFileValidationOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationInput` via:
+//
+//	ImportJobValidationReportFileValidationArgs{...}
+type ImportJobValidationReportFileValidationInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationOutput() ImportJobValidationReportFileValidationOutput
+	ToImportJobValidationReportFileValidationOutputWithContext(context.Context) ImportJobValidationReportFileValidationOutput
+}
+
+type ImportJobValidationReportFileValidationArgs struct {
+	// (Output)
+	// List of file level errors.
+	// Structure is documented below.
+	FileErrors ImportJobValidationReportFileValidationFileErrorArrayInput `pulumi:"fileErrors"`
+	// (Output)
+	// The name of the file.
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// (Output)
+	// Flag indicating that processing was aborted due to maximum number of
+	// errors.
+	PartialReport pulumi.BoolPtrInput `pulumi:"partialReport"`
+	// (Output)
+	// Partial list of rows that encountered validation error.
+	// Structure is documented below.
+	RowErrors ImportJobValidationReportFileValidationRowErrorArrayInput `pulumi:"rowErrors"`
+}
+
+func (ImportJobValidationReportFileValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidation)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationArgs) ToImportJobValidationReportFileValidationOutput() ImportJobValidationReportFileValidationOutput {
+	return i.ToImportJobValidationReportFileValidationOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationArgs) ToImportJobValidationReportFileValidationOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationOutput)
+}
+
+// ImportJobValidationReportFileValidationArrayInput is an input type that accepts ImportJobValidationReportFileValidationArray and ImportJobValidationReportFileValidationArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationArray{ ImportJobValidationReportFileValidationArgs{...} }
+type ImportJobValidationReportFileValidationArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationArrayOutput() ImportJobValidationReportFileValidationArrayOutput
+	ToImportJobValidationReportFileValidationArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationArrayOutput
+}
+
+type ImportJobValidationReportFileValidationArray []ImportJobValidationReportFileValidationInput
+
+func (ImportJobValidationReportFileValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidation)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationArray) ToImportJobValidationReportFileValidationArrayOutput() ImportJobValidationReportFileValidationArrayOutput {
+	return i.ToImportJobValidationReportFileValidationArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationArray) ToImportJobValidationReportFileValidationArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidation)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationOutput) ToImportJobValidationReportFileValidationOutput() ImportJobValidationReportFileValidationOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationOutput) ToImportJobValidationReportFileValidationOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationOutput {
+	return o
+}
+
+// (Output)
+// List of file level errors.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationOutput) FileErrors() ImportJobValidationReportFileValidationFileErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidation) []ImportJobValidationReportFileValidationFileError {
+		return v.FileErrors
+	}).(ImportJobValidationReportFileValidationFileErrorArrayOutput)
+}
+
+// (Output)
+// The name of the file.
+func (o ImportJobValidationReportFileValidationOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidation) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Flag indicating that processing was aborted due to maximum number of
+// errors.
+func (o ImportJobValidationReportFileValidationOutput) PartialReport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidation) *bool { return v.PartialReport }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Partial list of rows that encountered validation error.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationOutput) RowErrors() ImportJobValidationReportFileValidationRowErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidation) []ImportJobValidationReportFileValidationRowError {
+		return v.RowErrors
+	}).(ImportJobValidationReportFileValidationRowErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidation)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationArrayOutput) ToImportJobValidationReportFileValidationArrayOutput() ImportJobValidationReportFileValidationArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationArrayOutput) ToImportJobValidationReportFileValidationArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidation {
+		return vs[0].([]ImportJobValidationReportFileValidation)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationOutput)
+}
+
+type ImportJobValidationReportFileValidationFileError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobValidationReportFileValidationFileErrorInput is an input type that accepts ImportJobValidationReportFileValidationFileErrorArgs and ImportJobValidationReportFileValidationFileErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationFileErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationFileErrorArgs{...}
+type ImportJobValidationReportFileValidationFileErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationFileErrorOutput() ImportJobValidationReportFileValidationFileErrorOutput
+	ToImportJobValidationReportFileValidationFileErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationFileErrorOutput
+}
+
+type ImportJobValidationReportFileValidationFileErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobValidationReportFileValidationFileErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationFileError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationFileErrorArgs) ToImportJobValidationReportFileValidationFileErrorOutput() ImportJobValidationReportFileValidationFileErrorOutput {
+	return i.ToImportJobValidationReportFileValidationFileErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationFileErrorArgs) ToImportJobValidationReportFileValidationFileErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationFileErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationFileErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationFileErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationFileErrorArray and ImportJobValidationReportFileValidationFileErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationFileErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationFileErrorArray{ ImportJobValidationReportFileValidationFileErrorArgs{...} }
+type ImportJobValidationReportFileValidationFileErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationFileErrorArrayOutput() ImportJobValidationReportFileValidationFileErrorArrayOutput
+	ToImportJobValidationReportFileValidationFileErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationFileErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationFileErrorArray []ImportJobValidationReportFileValidationFileErrorInput
+
+func (ImportJobValidationReportFileValidationFileErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationFileError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationFileErrorArray) ToImportJobValidationReportFileValidationFileErrorArrayOutput() ImportJobValidationReportFileValidationFileErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationFileErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationFileErrorArray) ToImportJobValidationReportFileValidationFileErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationFileErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationFileErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationFileErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationFileErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationFileError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationFileErrorOutput) ToImportJobValidationReportFileValidationFileErrorOutput() ImportJobValidationReportFileValidationFileErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationFileErrorOutput) ToImportJobValidationReportFileValidationFileErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationFileErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobValidationReportFileValidationFileErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationFileError) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobValidationReportFileValidationFileErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationFileError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationFileErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationFileErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationFileError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationFileErrorArrayOutput) ToImportJobValidationReportFileValidationFileErrorArrayOutput() ImportJobValidationReportFileValidationFileErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationFileErrorArrayOutput) ToImportJobValidationReportFileValidationFileErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationFileErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationFileErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationFileErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationFileError {
+		return vs[0].([]ImportJobValidationReportFileValidationFileError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationFileErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowError struct {
+	// (Output)
+	// Error details for an archive file.
+	// Structure is documented below.
+	ArchiveErrors []ImportJobValidationReportFileValidationRowErrorArchiveError `pulumi:"archiveErrors"`
+	// (Output)
+	// The asset title.
+	AssetTitle *string `pulumi:"assetTitle"`
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors []ImportJobValidationReportFileValidationRowErrorCsvError `pulumi:"csvErrors"`
+	// (Output)
+	// The list of errors detected in the row.
+	// Structure is documented below.
+	Errors []ImportJobValidationReportFileValidationRowErrorError `pulumi:"errors"`
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the VM in the row.
+	VmName *string `pulumi:"vmName"`
+	// (Output)
+	// The VM UUID.
+	VmUuid *string `pulumi:"vmUuid"`
+	// (Output)
+	// Error details for an XLSX file.
+	// Structure is documented below.
+	XlsxErrors []ImportJobValidationReportFileValidationRowErrorXlsxError `pulumi:"xlsxErrors"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArgs and ImportJobValidationReportFileValidationRowErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorOutput() ImportJobValidationReportFileValidationRowErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArgs struct {
+	// (Output)
+	// Error details for an archive file.
+	// Structure is documented below.
+	ArchiveErrors ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayInput `pulumi:"archiveErrors"`
+	// (Output)
+	// The asset title.
+	AssetTitle pulumi.StringPtrInput `pulumi:"assetTitle"`
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors ImportJobValidationReportFileValidationRowErrorCsvErrorArrayInput `pulumi:"csvErrors"`
+	// (Output)
+	// The list of errors detected in the row.
+	// Structure is documented below.
+	Errors ImportJobValidationReportFileValidationRowErrorErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the VM in the row.
+	VmName pulumi.StringPtrInput `pulumi:"vmName"`
+	// (Output)
+	// The VM UUID.
+	VmUuid pulumi.StringPtrInput `pulumi:"vmUuid"`
+	// (Output)
+	// Error details for an XLSX file.
+	// Structure is documented below.
+	XlsxErrors ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayInput `pulumi:"xlsxErrors"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArgs) ToImportJobValidationReportFileValidationRowErrorOutput() ImportJobValidationReportFileValidationRowErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArgs) ToImportJobValidationReportFileValidationRowErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArray and ImportJobValidationReportFileValidationRowErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArray{ ImportJobValidationReportFileValidationRowErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArray []ImportJobValidationReportFileValidationRowErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArray) ToImportJobValidationReportFileValidationRowErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArray) ToImportJobValidationReportFileValidationRowErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorOutput) ToImportJobValidationReportFileValidationRowErrorOutput() ImportJobValidationReportFileValidationRowErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorOutput) ToImportJobValidationReportFileValidationRowErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorOutput {
+	return o
+}
+
+// (Output)
+// Error details for an archive file.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) ArchiveErrors() ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) []ImportJobValidationReportFileValidationRowErrorArchiveError {
+		return v.ArchiveErrors
+	}).(ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput)
+}
+
+// (Output)
+// The asset title.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) AssetTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) *string { return v.AssetTitle }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error details for a CSV file.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) CsvErrors() ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) []ImportJobValidationReportFileValidationRowErrorCsvError {
+		return v.CsvErrors
+	}).(ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput)
+}
+
+// (Output)
+// The list of errors detected in the row.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) Errors() ImportJobValidationReportFileValidationRowErrorErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) []ImportJobValidationReportFileValidationRowErrorError {
+		return v.Errors
+	}).(ImportJobValidationReportFileValidationRowErrorErrorArrayOutput)
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The name of the VM in the row.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The VM UUID.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) VmUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) *string { return v.VmUuid }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error details for an XLSX file.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationRowErrorOutput) XlsxErrors() ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowError) []ImportJobValidationReportFileValidationRowErrorXlsxError {
+		return v.XlsxErrors
+	}).(ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveError struct {
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors []ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError `pulumi:"csvErrors"`
+	// (Output)
+	// The file path inside the archive where the error was detected.
+	FilePath *string `pulumi:"filePath"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorArchiveErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs and ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorArchiveErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs struct {
+	// (Output)
+	// Error details for a CSV file.
+	// Structure is documented below.
+	CsvErrors ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayInput `pulumi:"csvErrors"`
+	// (Output)
+	// The file path inside the archive where the error was detected.
+	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs) ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs) ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArchiveErrorArray and ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArchiveErrorArray{ ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorArray []ImportJobValidationReportFileValidationRowErrorArchiveErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorArray) ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorArray) ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput {
+	return o
+}
+
+// (Output)
+// Error details for a CSV file.
+// Structure is documented below.
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput) CsvErrors() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorArchiveError) []ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError {
+		return v.CsvErrors
+	}).(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput)
+}
+
+// (Output)
+// The file path inside the archive where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorArchiveError) *string { return v.FilePath }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorArchiveError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowErrorArchiveError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowErrorArchiveError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs and ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray and ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray{ ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray []ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorCsvError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorCsvErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorCsvErrorArgs and ImportJobValidationReportFileValidationRowErrorCsvErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorCsvErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorCsvErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorCsvErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorCsvErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorCsvErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorCsvErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorCsvErrorArgs) ToImportJobValidationReportFileValidationRowErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorCsvErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorCsvErrorArgs) ToImportJobValidationReportFileValidationRowErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorCsvErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorCsvErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorCsvErrorArray and ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorCsvErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorCsvErrorArray{ ImportJobValidationReportFileValidationRowErrorCsvErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorCsvErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorCsvErrorArray []ImportJobValidationReportFileValidationRowErrorCsvErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorCsvErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorCsvErrorArray) ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorCsvErrorArray) ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorCsvErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorCsvErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorOutput) ToImportJobValidationReportFileValidationRowErrorCsvErrorOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorOutput) ToImportJobValidationReportFileValidationRowErrorCsvErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorCsvError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorCsvError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorCsvErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowErrorCsvError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowErrorCsvError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorCsvErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorErrorArgs and ImportJobValidationReportFileValidationRowErrorErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorErrorOutput() ImportJobValidationReportFileValidationRowErrorErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorErrorArgs) ToImportJobValidationReportFileValidationRowErrorErrorOutput() ImportJobValidationReportFileValidationRowErrorErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorErrorArgs) ToImportJobValidationReportFileValidationRowErrorErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorErrorArray and ImportJobValidationReportFileValidationRowErrorErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorErrorArray{ ImportJobValidationReportFileValidationRowErrorErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorErrorArray []ImportJobValidationReportFileValidationRowErrorErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorErrorArray) ToImportJobValidationReportFileValidationRowErrorErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorErrorArray) ToImportJobValidationReportFileValidationRowErrorErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorErrorOutput) ToImportJobValidationReportFileValidationRowErrorErrorOutput() ImportJobValidationReportFileValidationRowErrorErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorErrorOutput) ToImportJobValidationReportFileValidationRowErrorErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobValidationReportFileValidationRowErrorErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorError) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobValidationReportFileValidationRowErrorErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowErrorError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowErrorError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorErrorOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorXlsxError struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber *int `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the sheet where the error was detected.
+	Sheet *string `pulumi:"sheet"`
+}
+
+// ImportJobValidationReportFileValidationRowErrorXlsxErrorInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs and ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorXlsxErrorInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs{...}
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput
+	ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs struct {
+	// (Output)
+	// The row number where the error was detected.
+	RowNumber pulumi.IntPtrInput `pulumi:"rowNumber"`
+	// (Output)
+	// The name of the sheet where the error was detected.
+	Sheet pulumi.StringPtrInput `pulumi:"sheet"`
+}
+
+func (ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs) ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs) ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput)
+}
+
+// ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayInput is an input type that accepts ImportJobValidationReportFileValidationRowErrorXlsxErrorArray and ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayInput` via:
+//
+//	ImportJobValidationReportFileValidationRowErrorXlsxErrorArray{ ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs{...} }
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput
+	ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutputWithContext(context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput
+}
+
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorArray []ImportJobValidationReportFileValidationRowErrorXlsxErrorInput
+
+func (ImportJobValidationReportFileValidationRowErrorXlsxErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorXlsxErrorArray) ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput {
+	return i.ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportFileValidationRowErrorXlsxErrorArray) ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput) ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput) ToImportJobValidationReportFileValidationRowErrorXlsxErrorOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput {
+	return o
+}
+
+// (Output)
+// The row number where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput) RowNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorXlsxError) *int { return v.RowNumber }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The name of the sheet where the error was detected.
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput) Sheet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportFileValidationRowErrorXlsxError) *string { return v.Sheet }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportFileValidationRowErrorXlsxError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput() ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput) ToImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportFileValidationRowErrorXlsxError {
+		return vs[0].([]ImportJobValidationReportFileValidationRowErrorXlsxError)[vs[1].(int)]
+	}).(ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput)
+}
+
+type ImportJobValidationReportJobError struct {
+	// (Output)
+	// The error information.
+	ErrorDetails *string `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity *string `pulumi:"severity"`
+}
+
+// ImportJobValidationReportJobErrorInput is an input type that accepts ImportJobValidationReportJobErrorArgs and ImportJobValidationReportJobErrorOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportJobErrorInput` via:
+//
+//	ImportJobValidationReportJobErrorArgs{...}
+type ImportJobValidationReportJobErrorInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportJobErrorOutput() ImportJobValidationReportJobErrorOutput
+	ToImportJobValidationReportJobErrorOutputWithContext(context.Context) ImportJobValidationReportJobErrorOutput
+}
+
+type ImportJobValidationReportJobErrorArgs struct {
+	// (Output)
+	// The error information.
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	// (Output)
+	// The severity of the error.
+	// Possible values:
+	// ERROR
+	// WARNING
+	// INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (ImportJobValidationReportJobErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportJobError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportJobErrorArgs) ToImportJobValidationReportJobErrorOutput() ImportJobValidationReportJobErrorOutput {
+	return i.ToImportJobValidationReportJobErrorOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportJobErrorArgs) ToImportJobValidationReportJobErrorOutputWithContext(ctx context.Context) ImportJobValidationReportJobErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportJobErrorOutput)
+}
+
+// ImportJobValidationReportJobErrorArrayInput is an input type that accepts ImportJobValidationReportJobErrorArray and ImportJobValidationReportJobErrorArrayOutput values.
+// You can construct a concrete instance of `ImportJobValidationReportJobErrorArrayInput` via:
+//
+//	ImportJobValidationReportJobErrorArray{ ImportJobValidationReportJobErrorArgs{...} }
+type ImportJobValidationReportJobErrorArrayInput interface {
+	pulumi.Input
+
+	ToImportJobValidationReportJobErrorArrayOutput() ImportJobValidationReportJobErrorArrayOutput
+	ToImportJobValidationReportJobErrorArrayOutputWithContext(context.Context) ImportJobValidationReportJobErrorArrayOutput
+}
+
+type ImportJobValidationReportJobErrorArray []ImportJobValidationReportJobErrorInput
+
+func (ImportJobValidationReportJobErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportJobError)(nil)).Elem()
+}
+
+func (i ImportJobValidationReportJobErrorArray) ToImportJobValidationReportJobErrorArrayOutput() ImportJobValidationReportJobErrorArrayOutput {
+	return i.ToImportJobValidationReportJobErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ImportJobValidationReportJobErrorArray) ToImportJobValidationReportJobErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportJobErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportJobValidationReportJobErrorArrayOutput)
+}
+
+type ImportJobValidationReportJobErrorOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportJobErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobValidationReportJobError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportJobErrorOutput) ToImportJobValidationReportJobErrorOutput() ImportJobValidationReportJobErrorOutput {
+	return o
+}
+
+func (o ImportJobValidationReportJobErrorOutput) ToImportJobValidationReportJobErrorOutputWithContext(ctx context.Context) ImportJobValidationReportJobErrorOutput {
+	return o
+}
+
+// (Output)
+// The error information.
+func (o ImportJobValidationReportJobErrorOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportJobError) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The severity of the error.
+// Possible values:
+// ERROR
+// WARNING
+// INFO
+func (o ImportJobValidationReportJobErrorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportJobValidationReportJobError) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type ImportJobValidationReportJobErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportJobValidationReportJobErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportJobValidationReportJobError)(nil)).Elem()
+}
+
+func (o ImportJobValidationReportJobErrorArrayOutput) ToImportJobValidationReportJobErrorArrayOutput() ImportJobValidationReportJobErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportJobErrorArrayOutput) ToImportJobValidationReportJobErrorArrayOutputWithContext(ctx context.Context) ImportJobValidationReportJobErrorArrayOutput {
+	return o
+}
+
+func (o ImportJobValidationReportJobErrorArrayOutput) Index(i pulumi.IntInput) ImportJobValidationReportJobErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportJobValidationReportJobError {
+		return vs[0].([]ImportJobValidationReportJobError)[vs[1].(int)]
+	}).(ImportJobValidationReportJobErrorOutput)
+}
+
 type PreferenceSetVirtualMachinePreferences struct {
 	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 	CommitmentPlan *string `pulumi:"commitmentPlan"`
@@ -10895,6 +13576,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorArrayInput)(nil)).Elem(), DiscoveryClientErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailInput)(nil)).Elem(), DiscoveryClientErrorDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailArrayInput)(nil)).Elem(), DiscoveryClientErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportInput)(nil)).Elem(), ImportJobExecutionReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportArrayInput)(nil)).Elem(), ImportJobExecutionReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationFileErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationFileErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationFileErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorJobErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorJobErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorJobErrorArrayInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorJobErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportInput)(nil)).Elem(), ImportJobValidationReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportArrayInput)(nil)).Elem(), ImportJobValidationReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationInput)(nil)).Elem(), ImportJobValidationReportFileValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationFileErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationFileErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationFileErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationFileErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArchiveErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArchiveErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorCsvErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorCsvErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorCsvErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorCsvErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorXlsxErrorInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorXlsxErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayInput)(nil)).Elem(), ImportJobValidationReportFileValidationRowErrorXlsxErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportJobErrorInput)(nil)).Elem(), ImportJobValidationReportJobErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobValidationReportJobErrorArrayInput)(nil)).Elem(), ImportJobValidationReportJobErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesPtrInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesInput)(nil)).Elem(), PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs{})
@@ -11055,6 +13778,48 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryClientErrorArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveryClientErrorDetailOutput{})
 	pulumi.RegisterOutputType(DiscoveryClientErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationFileErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationFileErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveErrorCsvErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorJobErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorJobErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationFileErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationFileErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorArchiveErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorArchiveErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorCsvErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorCsvErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorXlsxErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportFileValidationRowErrorXlsxErrorArrayOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportJobErrorOutput{})
+	pulumi.RegisterOutputType(ImportJobValidationReportJobErrorArrayOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesPtrOutput{})
 	pulumi.RegisterOutputType(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput{})

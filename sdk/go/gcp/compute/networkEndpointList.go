@@ -117,14 +117,14 @@ import (
 //						Instance: endpoint_instance1.Name,
 //						Port:     pulumi.Any(neg.DefaultPort),
 //						IpAddress: endpoint_instance1.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//							return &networkInterfaces[0].NetworkIp, nil
+//							return networkInterfaces[0].NetworkIp, nil
 //						}).(pulumi.StringPtrOutput),
 //					},
 //					&compute.NetworkEndpointListNetworkEndpointArgs{
 //						Instance: endpoint_instance2.Name,
 //						Port:     pulumi.Any(neg.DefaultPort),
 //						IpAddress: endpoint_instance2.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-//							return &networkInterfaces[0].NetworkIp, nil
+//							return networkInterfaces[0].NetworkIp, nil
 //						}).(pulumi.StringPtrOutput),
 //					},
 //				},

@@ -29,9 +29,12 @@ __all__ = [
     'AssetResourceStatus',
     'AssetSecurityStatus',
     'DataAssetAccessGroupConfig',
+    'DataProductAccessApprovalConfig',
     'DataProductAccessGroup',
     'DataProductAccessGroupPrincipal',
     'DataProductDataAssetAccessGroupConfig',
+    'DataProductIamBindingCondition',
+    'DataProductIamMemberCondition',
     'DatascanData',
     'DatascanDataDiscoverySpec',
     'DatascanDataDiscoverySpecBigqueryPublishingConfig',
@@ -868,6 +871,42 @@ class DataAssetAccessGroupConfig(dict):
 
 
 @pulumi.output_type
+class DataProductAccessApprovalConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approverEmails":
+            suggest = "approver_emails"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataProductAccessApprovalConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataProductAccessApprovalConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataProductAccessApprovalConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approver_emails: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] approver_emails: Specifies the email addresses of users who are potential approvers.
+        """
+        if approver_emails is not None:
+            pulumi.set(__self__, "approver_emails", approver_emails)
+
+    @_builtins.property
+    @pulumi.getter(name="approverEmails")
+    def approver_emails(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the email addresses of users who are potential approvers.
+        """
+        return pulumi.get(self, "approver_emails")
+
+
+@pulumi.output_type
 class DataProductAccessGroup(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1048,6 +1087,60 @@ class DataProductDataAssetAccessGroupConfig(dict):
         IAM roles granted on the resource.
         """
         return pulumi.get(self, "iam_roles")
+
+
+@pulumi.output_type
+class DataProductIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DataProductIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

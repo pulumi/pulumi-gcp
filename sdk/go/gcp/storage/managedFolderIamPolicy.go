@@ -59,7 +59,7 @@ import (
 //			_, err = storage.NewManagedFolderIamPolicy(ctx, "policy", &storage.ManagedFolderIamPolicyArgs{
 //				Bucket:        pulumi.Any(folder.Bucket),
 //				ManagedFolder: pulumi.Any(folder.Name),
-//				PolicyData:    pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:    pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //			_, err = storage.NewManagedFolderIamPolicy(ctx, "policy", &storage.ManagedFolderIamPolicyArgs{
 //				Bucket:        pulumi.Any(folder.Bucket),
 //				ManagedFolder: pulumi.Any(folder.Name),
-//				PolicyData:    pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:    pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -298,7 +298,7 @@ import (
 //			_, err = storage.NewManagedFolderIamPolicy(ctx, "policy", &storage.ManagedFolderIamPolicyArgs{
 //				Bucket:        pulumi.Any(folder.Bucket),
 //				ManagedFolder: pulumi.Any(folder.Name),
-//				PolicyData:    pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:    pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -345,7 +345,7 @@ import (
 //			_, err = storage.NewManagedFolderIamPolicy(ctx, "policy", &storage.ManagedFolderIamPolicyArgs{
 //				Bucket:        pulumi.Any(folder.Bucket),
 //				ManagedFolder: pulumi.Any(folder.Name),
-//				PolicyData:    pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:    pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

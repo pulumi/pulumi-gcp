@@ -534,6 +534,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('kmsCustomEndpoint')
 
     @_builtins.property
+    def license_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('licenseManagerCustomEndpoint')
+
+    @_builtins.property
     def logging_custom_endpoint(self) -> Optional[str]:
         return __config__.get('loggingCustomEndpoint')
 

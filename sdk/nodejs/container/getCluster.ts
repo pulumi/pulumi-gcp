@@ -143,6 +143,7 @@ export interface GetClusterResult {
     readonly networkPolicies: outputs.container.GetClusterNetworkPolicy[];
     readonly networkingMode: string;
     readonly nodeConfigs: outputs.container.GetClusterNodeConfig[];
+    readonly nodeCreationConfigs: outputs.container.GetClusterNodeCreationConfig[];
     readonly nodeLocations: string[];
     readonly nodePoolAutoConfigs: outputs.container.GetClusterNodePoolAutoConfig[];
     readonly nodePoolDefaults: outputs.container.GetClusterNodePoolDefault[];

@@ -65,6 +65,11 @@ export type OauthClientCredential = import("./oauthClientCredential").OauthClien
 export const OauthClientCredential: typeof import("./oauthClientCredential").OauthClientCredential = null as any;
 utilities.lazyLoad(exports, ["OauthClientCredential"], () => require("./oauthClientCredential"));
 
+export { OrganizationAccessPolicyArgs, OrganizationAccessPolicyState } from "./organizationAccessPolicy";
+export type OrganizationAccessPolicy = import("./organizationAccessPolicy").OrganizationAccessPolicy;
+export const OrganizationAccessPolicy: typeof import("./organizationAccessPolicy").OrganizationAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationAccessPolicy"], () => require("./organizationAccessPolicy"));
+
 export { OrganizationsPolicyBindingArgs, OrganizationsPolicyBindingState } from "./organizationsPolicyBinding";
 export type OrganizationsPolicyBinding = import("./organizationsPolicyBinding").OrganizationsPolicyBinding;
 export const OrganizationsPolicyBinding: typeof import("./organizationsPolicyBinding").OrganizationsPolicyBinding = null as any;
@@ -182,6 +187,8 @@ const _module = {
                 return new OauthClient(name, <any>undefined, { urn })
             case "gcp:iam/oauthClientCredential:OauthClientCredential":
                 return new OauthClientCredential(name, <any>undefined, { urn })
+            case "gcp:iam/organizationAccessPolicy:OrganizationAccessPolicy":
+                return new OrganizationAccessPolicy(name, <any>undefined, { urn })
             case "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding":
                 return new OrganizationsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
@@ -233,6 +240,7 @@ pulumi.runtime.registerResourceModule("gcp", "iam/folderAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/foldersPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/oauthClient", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/oauthClientCredential", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/organizationAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/projectAccessPolicy", _module)

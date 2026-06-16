@@ -35,6 +35,22 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ * ### Firebaseailogic Prompt Template Global Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const globalOnly = new gcp.firebase.AiLogicPromptTemplate("global_only", {
+ *     location: "global",
+ *     templateId: "global-only-template",
+ *     regionalPropagationDisabled: true,
+ *     templateString: std.file({
+ *         input: "test-fixtures/hello_world.prompt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
  * ### Firebaseailogic Prompt Template Basic
  *
  * ```typescript
@@ -141,6 +157,12 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     */
+    declare public readonly regionalPropagationDisabled: pulumi.Output<boolean | undefined>;
+    /**
      * Timestamp when the PromptTemplate state was last changed.
      */
     declare public /*out*/ readonly stateChangeTime: pulumi.Output<string>;
@@ -179,6 +201,7 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
             resourceInputs["model"] = state?.model;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["regionalPropagationDisabled"] = state?.regionalPropagationDisabled;
             resourceInputs["stateChangeTime"] = state?.stateChangeTime;
             resourceInputs["templateId"] = state?.templateId;
             resourceInputs["templateString"] = state?.templateString;
@@ -198,6 +221,7 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["regionalPropagationDisabled"] = args?.regionalPropagationDisabled;
             resourceInputs["templateId"] = args?.templateId;
             resourceInputs["templateString"] = args?.templateString;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -261,6 +285,12 @@ export interface AiLogicPromptTemplateState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     */
+    regionalPropagationDisabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Timestamp when the PromptTemplate state was last changed.
      */
     stateChangeTime?: pulumi.Input<string | undefined>;
@@ -305,6 +335,12 @@ export interface AiLogicPromptTemplateArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     */
+    regionalPropagationDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique ID of the PromptTemplate, which is the final component of the
      * PromptTemplate's resource name.

@@ -162,7 +162,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  pulumi.String(pulumi.String(versions.ValidVersions[0])),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -329,7 +329,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  pulumi.String(pulumi.String(versions.ValidVersions[0])),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -491,7 +491,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  pulumi.String(pulumi.String(versions.ValidVersions[0])),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},

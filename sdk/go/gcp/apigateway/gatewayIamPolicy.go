@@ -61,7 +61,7 @@ import (
 //				Project:    pulumi.Any(apiGw.Project),
 //				Region:     pulumi.Any(apiGw.Region),
 //				Gateway:    pulumi.Any(apiGw.GatewayId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				Project:    pulumi.Any(apiGw.Project),
 //				Region:     pulumi.Any(apiGw.Region),
 //				Gateway:    pulumi.Any(apiGw.GatewayId),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

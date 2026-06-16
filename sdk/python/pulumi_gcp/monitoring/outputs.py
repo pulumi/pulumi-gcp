@@ -1543,14 +1543,19 @@ class AlertPolicyConditionConditionSqlRowCountTest(dict):
                  comparison: _builtins.str,
                  threshold: _builtins.int):
         """
-        :param _builtins.str comparison: The comparison to apply between the time
-               series (indicated by filter and aggregation)
-               and the threshold (indicated by
-               threshold_value). The comparison is applied
-               on each time series, with the time series on
-               the left-hand side and the threshold on the
-               right-hand side. Only COMPARISON_LT and
-               COMPARISON_GT are supported currently.
+        :param _builtins.str comparison: The comparison to apply between the time series
+               (indicated by filter and aggregation) and the
+               threshold (indicated by threshold_value). The
+               comparison is applied on each time series, with
+               the time series on the left-hand side and the
+               threshold on the right-hand side.
+               The Cloud Monitoring API only supports
+               `COMPARISON_LT` and `COMPARISON_GT` for SQL
+               row-count thresholds; the other values are kept
+               in the schema for backward compatibility with
+               imported state but will be rejected by the API.
+               See
+               https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
                Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         :param _builtins.int threshold: The value against which to compare the row count.
         """
@@ -1561,14 +1566,19 @@ class AlertPolicyConditionConditionSqlRowCountTest(dict):
     @pulumi.getter
     def comparison(self) -> _builtins.str:
         """
-        The comparison to apply between the time
-        series (indicated by filter and aggregation)
-        and the threshold (indicated by
-        threshold_value). The comparison is applied
-        on each time series, with the time series on
-        the left-hand side and the threshold on the
-        right-hand side. Only COMPARISON_LT and
-        COMPARISON_GT are supported currently.
+        The comparison to apply between the time series
+        (indicated by filter and aggregation) and the
+        threshold (indicated by threshold_value). The
+        comparison is applied on each time series, with
+        the time series on the left-hand side and the
+        threshold on the right-hand side.
+        The Cloud Monitoring API only supports
+        `COMPARISON_LT` and `COMPARISON_GT` for SQL
+        row-count thresholds; the other values are kept
+        in the schema for backward compatibility with
+        imported state but will be rejected by the API.
+        See
+        https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
         Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         """
         return pulumi.get(self, "comparison")
@@ -1621,14 +1631,18 @@ class AlertPolicyConditionConditionThreshold(dict):
                  threshold_value: Optional[_builtins.float] = None,
                  trigger: Optional['outputs.AlertPolicyConditionConditionThresholdTrigger'] = None):
         """
-        :param _builtins.str comparison: The comparison to apply between the time
-               series (indicated by filter and aggregation)
-               and the threshold (indicated by
-               threshold_value). The comparison is applied
-               on each time series, with the time series on
-               the left-hand side and the threshold on the
-               right-hand side. Only COMPARISON_LT and
-               COMPARISON_GT are supported currently.
+        :param _builtins.str comparison: The comparison to apply between the time series
+               (indicated by filter and aggregation) and the threshold
+               (indicated by threshold_value). The comparison is
+               applied on each time series, with the time series on
+               the left-hand side and the threshold on the right-hand
+               side.
+               The Cloud Monitoring API only supports `COMPARISON_LT`
+               and `COMPARISON_GT` for metric-threshold conditions; the
+               other values are kept in the schema for backward
+               compatibility with imported state but will be rejected
+               by the API. See
+               https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
                Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         :param _builtins.str duration: The amount of time that a time series must
                violate the threshold to be considered
@@ -1749,14 +1763,18 @@ class AlertPolicyConditionConditionThreshold(dict):
     @pulumi.getter
     def comparison(self) -> _builtins.str:
         """
-        The comparison to apply between the time
-        series (indicated by filter and aggregation)
-        and the threshold (indicated by
-        threshold_value). The comparison is applied
-        on each time series, with the time series on
-        the left-hand side and the threshold on the
-        right-hand side. Only COMPARISON_LT and
-        COMPARISON_GT are supported currently.
+        The comparison to apply between the time series
+        (indicated by filter and aggregation) and the threshold
+        (indicated by threshold_value). The comparison is
+        applied on each time series, with the time series on
+        the left-hand side and the threshold on the right-hand
+        side.
+        The Cloud Monitoring API only supports `COMPARISON_LT`
+        and `COMPARISON_GT` for metric-threshold conditions; the
+        other values are kept in the schema for backward
+        compatibility with imported state but will be rejected
+        by the API. See
+        https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
         Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         """
         return pulumi.get(self, "comparison")

@@ -21,9 +21,6 @@ import javax.annotation.Nullable;
  * A Mirroring Engine is a logical representation of the underlying infrastructure
  * that is used to manage and monitor the ULL Mirroring setup.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## Example Usage
  * 
  * ### Network Security Ull Mirroring Engine Basic

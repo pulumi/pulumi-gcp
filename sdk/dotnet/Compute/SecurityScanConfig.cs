@@ -53,6 +53,37 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Scan Config Ignore Http Status Errors
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scannerStaticIp = new Gcp.Compute.Address("scanner_static_ip", new()
+    ///     {
+    ///         Name = "scan-ignore-http-ip",
+    ///     });
+    /// 
+    ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
+    ///     {
+    ///         DisplayName = "terraform-scan-config",
+    ///         StartingUrls = new[]
+    ///         {
+    ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
+    ///         },
+    ///         TargetPlatforms = new[]
+    ///         {
+    ///             "COMPUTE",
+    ///         },
+    ///         IgnoreHttpStatusErrors = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -112,6 +143,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("exportToSecurityCommandCenter")]
         public Output<string?> ExportToSecurityCommandCenter { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to keep scanning even if most requests return HTTP error codes.
+        /// </summary>
+        [Output("ignoreHttpStatusErrors")]
+        public Output<bool?> IgnoreHttpStatusErrors { get; private set; } = null!;
 
         /// <summary>
         /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
@@ -255,6 +292,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>
+        /// Whether to keep scanning even if most requests return HTTP error codes.
+        /// </summary>
+        [Input("ignoreHttpStatusErrors")]
+        public Input<bool>? IgnoreHttpStatusErrors { get; set; }
+
+        /// <summary>
         /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
         /// Defaults to 15.
         /// </summary>
@@ -361,6 +404,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
+
+        /// <summary>
+        /// Whether to keep scanning even if most requests return HTTP error codes.
+        /// </summary>
+        [Input("ignoreHttpStatusErrors")]
+        public Input<bool>? IgnoreHttpStatusErrors { get; set; }
 
         /// <summary>
         /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.

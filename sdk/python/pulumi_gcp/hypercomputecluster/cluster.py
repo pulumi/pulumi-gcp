@@ -23,11 +23,11 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 network_resources: pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]],
                  compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComputeResourceArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]]] = None,
                  orchestrator: pulumi.Input[Optional['ClusterOrchestratorArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceArgs']]]] = None):
@@ -37,6 +37,12 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
                use only lowercase letters and numbers, and be at most 10 characters long.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]] network_resources: Network resources available to the cluster. Must contain at most one value.
+               Keys specify the ID of the network resource by which it can be referenced
+               elsewhere, and must conform to
+               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
+               alphanumeric, and at most 63 characters).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterComputeResourceArgs']]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
@@ -54,12 +60,6 @@ class ClusterArgs:
                in queries.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]] network_resources: Network resources available to the cluster. Must contain at most one value.
-               Keys specify the ID of the network resource by which it can be referenced
-               elsewhere, and must conform to
-               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-               alphanumeric, and at most 63 characters).
-               Structure is documented below.
         :param pulumi.Input['ClusterOrchestratorArgs'] orchestrator: The component responsible for scheduling and running workloads on the
                cluster as well as providing the user interface for interacting with the
                cluster at runtime.
@@ -74,6 +74,7 @@ class ClusterArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "network_resources", network_resources)
         if compute_resources is not None:
             pulumi.set(__self__, "compute_resources", compute_resources)
         if deletion_policy is not None:
@@ -82,8 +83,6 @@ class ClusterArgs:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if network_resources is not None:
-            pulumi.set(__self__, "network_resources", network_resources)
         if orchestrator is not None:
             pulumi.set(__self__, "orchestrator", orchestrator)
         if project is not None:
@@ -115,6 +114,23 @@ class ClusterArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkResources")
+    def network_resources(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]]:
+        """
+        Network resources available to the cluster. Must contain at most one value.
+        Keys specify the ID of the network resource by which it can be referenced
+        elsewhere, and must conform to
+        [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
+        alphanumeric, and at most 63 characters).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_resources")
+
+    @network_resources.setter
+    def network_resources(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]]):
+        pulumi.set(self, "network_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="computeResources")
@@ -176,23 +192,6 @@ class ClusterArgs:
     @labels.setter
     def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
-
-    @_builtins.property
-    @pulumi.getter(name="networkResources")
-    def network_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]]]:
-        """
-        Network resources available to the cluster. Must contain at most one value.
-        Keys specify the ID of the network resource by which it can be referenced
-        elsewhere, and must conform to
-        [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        alphanumeric, and at most 63 characters).
-        Structure is documented below.
-        """
-        return pulumi.get(self, "network_resources")
-
-    @network_resources.setter
-    def network_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceArgs']]]]):
-        pulumi.set(self, "network_resources", value)
 
     @_builtins.property
     @pulumi.getter
@@ -839,6 +838,8 @@ class Cluster(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if network_resources is None and not opts.urn:
+                raise TypeError("Missing required property 'network_resources'")
             __props__.__dict__["network_resources"] = network_resources
             __props__.__dict__["orchestrator"] = orchestrator
             __props__.__dict__["project"] = project
@@ -1043,7 +1044,7 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="networkResources")
-    def network_resources(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterNetworkResource']]]:
+    def network_resources(self) -> pulumi.Output[Sequence['outputs.ClusterNetworkResource']]:
         """
         Network resources available to the cluster. Must contain at most one value.
         Keys specify the ID of the network resource by which it can be referenced

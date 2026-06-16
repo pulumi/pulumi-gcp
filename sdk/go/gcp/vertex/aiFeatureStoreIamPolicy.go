@@ -61,7 +61,7 @@ import (
 //				Project:      pulumi.Any(featurestore.Project),
 //				Region:       pulumi.Any(featurestore.Region),
 //				Featurestore: pulumi.Any(featurestore.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				Project:      pulumi.Any(featurestore.Project),
 //				Region:       pulumi.Any(featurestore.Region),
 //				Featurestore: pulumi.Any(featurestore.Name),
-//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

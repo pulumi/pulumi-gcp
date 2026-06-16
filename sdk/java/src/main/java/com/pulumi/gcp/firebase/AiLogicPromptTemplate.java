@@ -69,6 +69,45 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Firebaseailogic Prompt Template Global Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplate;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var globalOnly = new AiLogicPromptTemplate("globalOnly", AiLogicPromptTemplateArgs.builder()
+ *             .location("global")
+ *             .templateId("global-only-template")
+ *             .regionalPropagationDisabled(true)
+ *             .templateString(StdFunctions.file(FileArgs.builder()
+ *                 .input("test-fixtures/hello_world.prompt")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Firebaseailogic Prompt Template Basic
  * 
  * <pre>
@@ -263,6 +302,24 @@ public class AiLogicPromptTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    @Export(name="regionalPropagationDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the write operation (create,
+     * update, or delete) will apply to the global region only. Otherwise, the
+     * operation will also propagate to all applicable regions.
+     * 
+     */
+    public Output<Optional<Boolean>> regionalPropagationDisabled() {
+        return Codegen.optional(this.regionalPropagationDisabled);
     }
     /**
      * Timestamp when the PromptTemplate state was last changed.

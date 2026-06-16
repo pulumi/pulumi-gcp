@@ -121,7 +121,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
-//				Version:  pulumi.String(pulumi.String(versions.ValidVersions[0])),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"annotation-one": pulumi.String("value-one"),
 //				},

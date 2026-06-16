@@ -20,6 +20,11 @@ export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
+export { ImportJobArgs, ImportJobState } from "./importJob";
+export type ImportJob = import("./importJob").ImportJob;
+export const ImportJob: typeof import("./importJob").ImportJob = null as any;
+utilities.lazyLoad(exports, ["ImportJob"], () => require("./importJob"));
+
 export { PreferenceSetArgs, PreferenceSetState } from "./preferenceSet";
 export type PreferenceSet = import("./preferenceSet").PreferenceSet;
 export const PreferenceSet: typeof import("./preferenceSet").PreferenceSet = null as any;
@@ -56,6 +61,8 @@ const _module = {
                 return new DiscoveryClient(name, <any>undefined, { urn })
             case "gcp:migrationcenter/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "gcp:migrationcenter/importJob:ImportJob":
+                return new ImportJob(name, <any>undefined, { urn })
             case "gcp:migrationcenter/preferenceSet:PreferenceSet":
                 return new PreferenceSet(name, <any>undefined, { urn })
             case "gcp:migrationcenter/report:Report":
@@ -74,6 +81,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/assetsExportJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/discoveryClient", _module)
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/group", _module)
+pulumi.runtime.registerResourceModule("gcp", "migrationcenter/importJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/preferenceSet", _module)
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/report", _module)
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/reportConfig", _module)

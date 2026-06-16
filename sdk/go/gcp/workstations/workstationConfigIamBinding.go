@@ -59,7 +59,7 @@ import (
 //				Location:             pulumi.Any(_default.Location),
 //				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
 //				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
-//				PolicyData:           pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:           pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -187,7 +187,7 @@ import (
 //				Location:             pulumi.Any(_default.Location),
 //				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
 //				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
-//				PolicyData:           pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData:           pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

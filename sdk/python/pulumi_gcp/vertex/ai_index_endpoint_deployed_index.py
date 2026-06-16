@@ -1228,7 +1228,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region of the index endpoint deployment. eg us-central1
         """

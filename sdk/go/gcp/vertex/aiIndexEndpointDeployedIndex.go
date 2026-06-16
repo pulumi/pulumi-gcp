@@ -338,7 +338,7 @@ type AiIndexEndpointDeployedIndex struct {
 	// Structure is documented below.
 	PrivateEndpoints AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput `pulumi:"privateEndpoints"`
 	// The region of the index endpoint deployment. eg us-central1
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
 	// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
 	// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -772,8 +772,8 @@ func (o AiIndexEndpointDeployedIndexOutput) PrivateEndpoints() AiIndexEndpointDe
 }
 
 // The region of the index endpoint deployment. eg us-central1
-func (o AiIndexEndpointDeployedIndexOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o AiIndexEndpointDeployedIndexOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

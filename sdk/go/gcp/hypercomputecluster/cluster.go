@@ -203,6 +203,9 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	if args.NetworkResources == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkResources'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",

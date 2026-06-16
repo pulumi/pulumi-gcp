@@ -699,13 +699,17 @@ class TableAutomatedBackupPolicy(dict):
 
     def __init__(__self__, *,
                  frequency: Optional[_builtins.str] = None,
+                 locations: Optional[Sequence[_builtins.str]] = None,
                  retention_period: Optional[_builtins.str] = None):
         """
         :param _builtins.str frequency: How frequently automated backups should occur.
+        :param Sequence[_builtins.str] locations: A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
         :param _builtins.str retention_period: How long the automated backups should be retained.
         """
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
 
@@ -716,6 +720,14 @@ class TableAutomatedBackupPolicy(dict):
         How frequently automated backups should occur.
         """
         return pulumi.get(self, "frequency")
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
+        """
+        return pulumi.get(self, "locations")
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")

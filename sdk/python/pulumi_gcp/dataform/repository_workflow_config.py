@@ -24,6 +24,7 @@ class RepositoryWorkflowConfigArgs:
                  release_config: pulumi.Input[_builtins.str],
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,7 @@ class RepositoryWorkflowConfigArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -55,6 +57,8 @@ class RepositoryWorkflowConfigArgs:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if invocation_config is not None:
             pulumi.set(__self__, "invocation_config", invocation_config)
         if name is not None:
@@ -108,6 +112,18 @@ class RepositoryWorkflowConfigArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Disables automatic creation of workflow invocations.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
@@ -189,6 +205,7 @@ class _RepositoryWorkflowConfigState:
     def __init__(__self__, *,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -207,6 +224,7 @@ class _RepositoryWorkflowConfigState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -223,6 +241,8 @@ class _RepositoryWorkflowConfigState:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if invocation_config is not None:
             pulumi.set(__self__, "invocation_config", invocation_config)
         if name is not None:
@@ -268,6 +288,18 @@ class _RepositoryWorkflowConfigState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Disables automatic creation of workflow invocations.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
@@ -377,6 +409,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -478,6 +511,86 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+        ### Dataform Repository Workflow Config With Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication={
+                "auto": {},
+            })
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
+            secret=secret.id,
+            secret_data="secret-data")
+        repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
+            region="us-central1",
+            git_remote_settings={
+                "url": git_repository.url,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
+            })
+        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_release",
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            code_compilation_config={
+                "default_database": "gcp-example-project",
+                "default_schema": "example-dataset",
+                "default_location": "us-central1",
+                "assertion_schema": "example-assertion-dataset",
+                "database_suffix": "",
+                "schema_suffix": "",
+                "table_prefix": "",
+                "vars": {
+                    "var1": "value",
+                },
+            })
+        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
+            account_id="dataform-sa",
+            display_name="Dataform Service Account")
+        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_workflow",
+            release_config=release_config.id,
+            invocation_config={
+                "included_targets": [
+                    {
+                        "database": "gcp-example-project",
+                        "schema": "example-dataset",
+                        "name": "target_1",
+                    },
+                    {
+                        "database": "gcp-example-project",
+                        "schema": "example-dataset",
+                        "name": "target_2",
+                    },
+                ],
+                "included_tags": ["tag_1"],
+                "transitive_dependencies_included": True,
+                "transitive_dependents_included": True,
+                "fully_refresh_incremental_tables_enabled": False,
+                "service_account": dataform_sa.email,
+            },
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            disabled=True)
+        ```
 
         ## Import
 
@@ -507,6 +620,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
         :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -616,6 +730,86 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+        ### Dataform Repository Workflow Config With Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication={
+                "auto": {},
+            })
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
+            secret=secret.id,
+            secret_data="secret-data")
+        repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
+            region="us-central1",
+            git_remote_settings={
+                "url": git_repository.url,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
+            })
+        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_release",
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            code_compilation_config={
+                "default_database": "gcp-example-project",
+                "default_schema": "example-dataset",
+                "default_location": "us-central1",
+                "assertion_schema": "example-assertion-dataset",
+                "database_suffix": "",
+                "schema_suffix": "",
+                "table_prefix": "",
+                "vars": {
+                    "var1": "value",
+                },
+            })
+        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
+            account_id="dataform-sa",
+            display_name="Dataform Service Account")
+        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_workflow",
+            release_config=release_config.id,
+            invocation_config={
+                "included_targets": [
+                    {
+                        "database": "gcp-example-project",
+                        "schema": "example-dataset",
+                        "name": "target_1",
+                    },
+                    {
+                        "database": "gcp-example-project",
+                        "schema": "example-dataset",
+                        "name": "target_2",
+                    },
+                ],
+                "included_tags": ["tag_1"],
+                "transitive_dependencies_included": True,
+                "transitive_dependents_included": True,
+                "fully_refresh_incremental_tables_enabled": False,
+                "service_account": dataform_sa.email,
+            },
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            disabled=True)
+        ```
 
         ## Import
 
@@ -653,6 +847,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -671,6 +866,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
 
             __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["disabled"] = disabled
             __props__.__dict__["invocation_config"] = invocation_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -693,6 +889,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -715,6 +912,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
         :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -733,6 +931,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
 
         __props__.__dict__["cron_schedule"] = cron_schedule
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["disabled"] = disabled
         __props__.__dict__["invocation_config"] = invocation_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -763,6 +962,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Disables automatic creation of workflow invocations.
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")

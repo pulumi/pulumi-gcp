@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataplex.DataProductArgs;
 import com.pulumi.gcp.dataplex.inputs.DataProductState;
+import com.pulumi.gcp.dataplex.outputs.DataProductAccessApprovalConfig;
 import com.pulumi.gcp.dataplex.outputs.DataProductAccessGroup;
 import java.lang.Integer;
 import java.lang.String;
@@ -89,6 +90,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.dataplex.DataProduct;
  * import com.pulumi.gcp.dataplex.DataProductArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DataProductAccessApprovalConfigArgs;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupArgs;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupPrincipalArgs;
  * import java.util.ArrayList;
@@ -116,6 +118,9 @@ import javax.annotation.Nullable;
  *             .displayName("DP Full Test: Special Chars !}{@literal @}{@code #$")
  *             .description("Updated with emojis 🚀 and brackets }{{@code test}}{@code ")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
+ *             .accessApprovalConfig(DataProductAccessApprovalConfigArgs.builder()
+ *                 .approverEmails("gterraformtestuser}{@literal @}{@code gmail.com")
+ *                 .build())
  *             .labels(Map.of("env", "manual-test"))
  *             .accessGroups(            
  *                 DataProductAccessGroupArgs.builder()
@@ -161,6 +166,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataplex/dataProduct:DataProduct")
 public class DataProduct extends com.pulumi.resources.CustomResource {
+    /**
+     * Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="accessApprovalConfig", refs={DataProductAccessApprovalConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataProductAccessApprovalConfig> accessApprovalConfig;
+
+    /**
+     * @return Configuration for access approval for the data product.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataProductAccessApprovalConfig>> accessApprovalConfig() {
+        return Codegen.optional(this.accessApprovalConfig);
+    }
     /**
      * Custom user defined access groups at the data product level.
      * Structure is documented below.
@@ -330,6 +351,20 @@ public class DataProduct extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The relative resource name of the data product.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The relative resource name of the data product.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Emails of the owners.

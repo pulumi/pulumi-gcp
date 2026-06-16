@@ -12,6 +12,7 @@ import com.pulumi.gcp.firebase.AiLogicPromptTemplateLockArgs;
 import com.pulumi.gcp.firebase.inputs.AiLogicPromptTemplateLockState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -64,6 +65,53 @@ import javax.annotation.Nullable;
  *         var basicLock = new AiLogicPromptTemplateLock("basicLock", AiLogicPromptTemplateLockArgs.builder()
  *             .location(basic.location())
  *             .templateId(basic.templateId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firebaseailogic Prompt Template Lock Global Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplate;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplateArgs;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplateLock;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplateLockArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var globalOnly = new AiLogicPromptTemplate("globalOnly", AiLogicPromptTemplateArgs.builder()
+ *             .location("global")
+ *             .templateId("global-only-lock-template")
+ *             .templateString("""
+ * ---
+ * model: googleai/gemini-1.5-flash
+ * ---
+ * Hello World
+ *             """)
+ *             .build());
+ * 
+ *         var globalOnlyLock = new AiLogicPromptTemplateLock("globalOnlyLock", AiLogicPromptTemplateLockArgs.builder()
+ *             .location(globalOnly.location())
+ *             .templateId(globalOnly.templateId())
+ *             .regionalPropagationDisabled(true)
  *             .build());
  * 
  *     }
@@ -173,6 +221,24 @@ public class AiLogicPromptTemplateLock extends com.pulumi.resources.CustomResour
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    @Export(name="regionalPropagationDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> regionalPropagationDisabled;
+
+    /**
+     * @return For the `global` location only. If true, the modifyLock operation will
+     * apply to the global region only. Otherwise, the operation will also
+     * propagate to all applicable regions.
+     * 
+     */
+    public Output<Optional<Boolean>> regionalPropagationDisabled() {
+        return Codegen.optional(this.regionalPropagationDisabled);
     }
     /**
      * The ID of the prompt template.

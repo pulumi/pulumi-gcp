@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: pulumi.String(pulumi.String(baz.HealthChecks[0])),
+//				HealthChecks: pulumi.String(baz.HealthChecks[0]),
 //			})
 //			if err != nil {
 //				return err

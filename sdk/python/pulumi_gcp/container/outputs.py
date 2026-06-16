@@ -213,6 +213,7 @@ __all__ = [
     'ClusterNodeConfigTaint',
     'ClusterNodeConfigWindowsNodeConfig',
     'ClusterNodeConfigWorkloadMetadataConfig',
+    'ClusterNodeCreationConfig',
     'ClusterNodePool',
     'ClusterNodePoolAutoConfig',
     'ClusterNodePoolAutoConfigLinuxNodeConfig',
@@ -518,6 +519,7 @@ __all__ = [
     'GetClusterNodeConfigTaintResult',
     'GetClusterNodeConfigWindowsNodeConfigResult',
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
+    'GetClusterNodeCreationConfigResult',
     'GetClusterNodePoolResult',
     'GetClusterNodePoolAutoConfigResult',
     'GetClusterNodePoolAutoConfigLinuxNodeConfigResult',
@@ -11530,6 +11532,41 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodeCreationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeCreationMode":
+            suggest = "node_creation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeCreationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeCreationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeCreationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_creation_mode: _builtins.str):
+        """
+        :param _builtins.str node_creation_mode: Sets the node creation mode. Available options include `VIA_KUBELET` and `VIA_CONTROL_PLANE`.
+        """
+        pulumi.set(__self__, "node_creation_mode", node_creation_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCreationMode")
+    def node_creation_mode(self) -> _builtins.str:
+        """
+        Sets the node creation mode. Available options include `VIA_KUBELET` and `VIA_CONTROL_PLANE`.
+        """
+        return pulumi.get(self, "node_creation_mode")
+
+
+@pulumi.output_type
 class ClusterNodePool(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16777,7 +16814,11 @@ class ClusterNodePoolNodeDrainConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "respectPdbDuringNodePoolDeletion":
+        if key == "graceTerminationDuration":
+            suggest = "grace_termination_duration"
+        elif key == "pdbTimeoutDuration":
+            suggest = "pdb_timeout_duration"
+        elif key == "respectPdbDuringNodePoolDeletion":
             suggest = "respect_pdb_during_node_pool_deletion"
 
         if suggest:
@@ -16792,12 +16833,36 @@ class ClusterNodePoolNodeDrainConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 grace_termination_duration: Optional[_builtins.str] = None,
+                 pdb_timeout_duration: Optional[_builtins.str] = None,
                  respect_pdb_during_node_pool_deletion: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str grace_termination_duration: The duration of the grace termination period for node drain.
+        :param _builtins.str pdb_timeout_duration: The duration of the PDB timeout period for node drain.
         :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
         """
+        if grace_termination_duration is not None:
+            pulumi.set(__self__, "grace_termination_duration", grace_termination_duration)
+        if pdb_timeout_duration is not None:
+            pulumi.set(__self__, "pdb_timeout_duration", pdb_timeout_duration)
         if respect_pdb_during_node_pool_deletion is not None:
             pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="graceTerminationDuration")
+    def grace_termination_duration(self) -> Optional[_builtins.str]:
+        """
+        The duration of the grace termination period for node drain.
+        """
+        return pulumi.get(self, "grace_termination_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="pdbTimeoutDuration")
+    def pdb_timeout_duration(self) -> Optional[_builtins.str]:
+        """
+        The duration of the PDB timeout period for node drain.
+        """
+        return pulumi.get(self, "pdb_timeout_duration")
 
     @_builtins.property
     @pulumi.getter(name="respectPdbDuringNodePoolDeletion")
@@ -22158,7 +22223,11 @@ class NodePoolNodeDrainConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "respectPdbDuringNodePoolDeletion":
+        if key == "graceTerminationDuration":
+            suggest = "grace_termination_duration"
+        elif key == "pdbTimeoutDuration":
+            suggest = "pdb_timeout_duration"
+        elif key == "respectPdbDuringNodePoolDeletion":
             suggest = "respect_pdb_during_node_pool_deletion"
 
         if suggest:
@@ -22173,12 +22242,36 @@ class NodePoolNodeDrainConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 grace_termination_duration: Optional[_builtins.str] = None,
+                 pdb_timeout_duration: Optional[_builtins.str] = None,
                  respect_pdb_during_node_pool_deletion: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str grace_termination_duration: The duration of the grace termination period for node drain.
+        :param _builtins.str pdb_timeout_duration: The duration of the PDB timeout period for node drain.
         :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
         """
+        if grace_termination_duration is not None:
+            pulumi.set(__self__, "grace_termination_duration", grace_termination_duration)
+        if pdb_timeout_duration is not None:
+            pulumi.set(__self__, "pdb_timeout_duration", pdb_timeout_duration)
         if respect_pdb_during_node_pool_deletion is not None:
             pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="graceTerminationDuration")
+    def grace_termination_duration(self) -> Optional[_builtins.str]:
+        """
+        The duration of the grace termination period for node drain.
+        """
+        return pulumi.get(self, "grace_termination_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="pdbTimeoutDuration")
+    def pdb_timeout_duration(self) -> Optional[_builtins.str]:
+        """
+        The duration of the PDB timeout period for node drain.
+        """
+        return pulumi.get(self, "pdb_timeout_duration")
 
     @_builtins.property
     @pulumi.getter(name="respectPdbDuringNodePoolDeletion")
@@ -27302,6 +27395,30 @@ class GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodeCreationConfigResult(dict):
+    def __init__(__self__, *,
+                 node_creation_mode: _builtins.str):
+        """
+        :param _builtins.str node_creation_mode: NodeCreationMode defines the settings of node creation mode.
+                Accepted values are:
+               * VIA_KUBELET: Kubelet registers itself.
+               * VIA_CONTROL_PLANE: gcp-controller-manager automatically creates the node object after CSR approval.
+        """
+        pulumi.set(__self__, "node_creation_mode", node_creation_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCreationMode")
+    def node_creation_mode(self) -> _builtins.str:
+        """
+        NodeCreationMode defines the settings of node creation mode.
+         Accepted values are:
+        * VIA_KUBELET: Kubelet registers itself.
+        * VIA_CONTROL_PLANE: gcp-controller-manager automatically creates the node object after CSR approval.
+        """
+        return pulumi.get(self, "node_creation_mode")
+
+
+@pulumi.output_type
 class GetClusterNodePoolResult(dict):
     def __init__(__self__, *,
                  autoscalings: Sequence['outputs.GetClusterNodePoolAutoscalingResult'],
@@ -30784,11 +30901,33 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeDrainConfigResult(dict):
     def __init__(__self__, *,
+                 grace_termination_duration: _builtins.str,
+                 pdb_timeout_duration: _builtins.str,
                  respect_pdb_during_node_pool_deletion: _builtins.bool):
         """
+        :param _builtins.str grace_termination_duration: The duration of the grace termination period for node drain.
+        :param _builtins.str pdb_timeout_duration: The duration of the PDB timeout period for node drain.
         :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
         """
+        pulumi.set(__self__, "grace_termination_duration", grace_termination_duration)
+        pulumi.set(__self__, "pdb_timeout_duration", pdb_timeout_duration)
         pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="graceTerminationDuration")
+    def grace_termination_duration(self) -> _builtins.str:
+        """
+        The duration of the grace termination period for node drain.
+        """
+        return pulumi.get(self, "grace_termination_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="pdbTimeoutDuration")
+    def pdb_timeout_duration(self) -> _builtins.str:
+        """
+        The duration of the PDB timeout period for node drain.
+        """
+        return pulumi.get(self, "pdb_timeout_duration")
 
     @_builtins.property
     @pulumi.getter(name="respectPdbDuringNodePoolDeletion")

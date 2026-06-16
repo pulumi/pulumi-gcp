@@ -60,7 +60,7 @@ import (
 //				Project:    pulumi.Any(test_storage_pool_basic.Project),
 //				Zone:       pulumi.Any(test_storage_pool_basic.Zone),
 //				Name:       pulumi.Any(test_storage_pool_basic.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				Project:    pulumi.Any(test_storage_pool_basic.Project),
 //				Zone:       pulumi.Any(test_storage_pool_basic.Zone),
 //				Name:       pulumi.Any(test_storage_pool_basic.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -305,7 +305,7 @@ import (
 //				Project:    pulumi.Any(test_storage_pool_basic.Project),
 //				Zone:       pulumi.Any(test_storage_pool_basic.Zone),
 //				Name:       pulumi.Any(test_storage_pool_basic.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -353,7 +353,7 @@ import (
 //				Project:    pulumi.Any(test_storage_pool_basic.Project),
 //				Zone:       pulumi.Any(test_storage_pool_basic.Zone),
 //				Name:       pulumi.Any(test_storage_pool_basic.Name),
-//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

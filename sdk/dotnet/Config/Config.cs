@@ -928,6 +928,13 @@ namespace Pulumi.Gcp
             set => _kmsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _licenseManagerCustomEndpoint = new __Value<string?>(() => __config.Get("licenseManagerCustomEndpoint"));
+        public static string? LicenseManagerCustomEndpoint
+        {
+            get => _licenseManagerCustomEndpoint.Get();
+            set => _licenseManagerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _loggingCustomEndpoint = new __Value<string?>(() => __config.Get("loggingCustomEndpoint"));
         public static string? LoggingCustomEndpoint
         {

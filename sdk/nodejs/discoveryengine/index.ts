@@ -50,6 +50,11 @@ export const getDataStores: typeof import("./getDataStores").getDataStores = nul
 export const getDataStoresOutput: typeof import("./getDataStores").getDataStoresOutput = null as any;
 utilities.lazyLoad(exports, ["getDataStores","getDataStoresOutput"], () => require("./getDataStores"));
 
+export { GetSearchEngineIamPolicyArgs, GetSearchEngineIamPolicyResult, GetSearchEngineIamPolicyOutputArgs } from "./getSearchEngineIamPolicy";
+export const getSearchEngineIamPolicy: typeof import("./getSearchEngineIamPolicy").getSearchEngineIamPolicy = null as any;
+export const getSearchEngineIamPolicyOutput: typeof import("./getSearchEngineIamPolicy").getSearchEngineIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSearchEngineIamPolicy","getSearchEngineIamPolicyOutput"], () => require("./getSearchEngineIamPolicy"));
+
 export { LicenseConfigArgs, LicenseConfigState } from "./licenseConfig";
 export type LicenseConfig = import("./licenseConfig").LicenseConfig;
 export const LicenseConfig: typeof import("./licenseConfig").LicenseConfig = null as any;
@@ -69,6 +74,21 @@ export { SearchEngineArgs, SearchEngineState } from "./searchEngine";
 export type SearchEngine = import("./searchEngine").SearchEngine;
 export const SearchEngine: typeof import("./searchEngine").SearchEngine = null as any;
 utilities.lazyLoad(exports, ["SearchEngine"], () => require("./searchEngine"));
+
+export { SearchEngineIamBindingArgs, SearchEngineIamBindingState } from "./searchEngineIamBinding";
+export type SearchEngineIamBinding = import("./searchEngineIamBinding").SearchEngineIamBinding;
+export const SearchEngineIamBinding: typeof import("./searchEngineIamBinding").SearchEngineIamBinding = null as any;
+utilities.lazyLoad(exports, ["SearchEngineIamBinding"], () => require("./searchEngineIamBinding"));
+
+export { SearchEngineIamMemberArgs, SearchEngineIamMemberState } from "./searchEngineIamMember";
+export type SearchEngineIamMember = import("./searchEngineIamMember").SearchEngineIamMember;
+export const SearchEngineIamMember: typeof import("./searchEngineIamMember").SearchEngineIamMember = null as any;
+utilities.lazyLoad(exports, ["SearchEngineIamMember"], () => require("./searchEngineIamMember"));
+
+export { SearchEngineIamPolicyArgs, SearchEngineIamPolicyState } from "./searchEngineIamPolicy";
+export type SearchEngineIamPolicy = import("./searchEngineIamPolicy").SearchEngineIamPolicy;
+export const SearchEngineIamPolicy: typeof import("./searchEngineIamPolicy").SearchEngineIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SearchEngineIamPolicy"], () => require("./searchEngineIamPolicy"));
 
 export { ServingConfigArgs, ServingConfigState } from "./servingConfig";
 export type ServingConfig = import("./servingConfig").ServingConfig;
@@ -122,6 +142,12 @@ const _module = {
                 return new Schema(name, <any>undefined, { urn })
             case "gcp:discoveryengine/searchEngine:SearchEngine":
                 return new SearchEngine(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/searchEngineIamBinding:SearchEngineIamBinding":
+                return new SearchEngineIamBinding(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/searchEngineIamMember:SearchEngineIamMember":
+                return new SearchEngineIamMember(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy":
+                return new SearchEngineIamPolicy(name, <any>undefined, { urn })
             case "gcp:discoveryengine/servingConfig:ServingConfig":
                 return new ServingConfig(name, <any>undefined, { urn })
             case "gcp:discoveryengine/sitemap:Sitemap":
@@ -148,6 +174,9 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/licenseConfig", _m
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/recommendationEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngineIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngineIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngineIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/servingConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/sitemap", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/targetSite", _module)

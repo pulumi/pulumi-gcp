@@ -657,6 +657,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterNodeConfig> NodeConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        /// </summary>
+        [Output("nodeCreationConfig")]
+        public Output<Outputs.ClusterNodeCreationConfig> NodeCreationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The list of zones in which the cluster's nodes
         /// are located. Nodes must be in the region of their regional cluster or in the
         /// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1419,6 +1425,12 @@ namespace Pulumi.Gcp.Container
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodeConfigArgs>? NodeConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        /// </summary>
+        [Input("nodeCreationConfig")]
+        public Input<Inputs.ClusterNodeCreationConfigArgs>? NodeCreationConfig { get; set; }
+
         [Input("nodeLocations")]
         private InputList<string>? _nodeLocations;
 
@@ -2160,6 +2172,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodeConfigGetArgs>? NodeConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        /// </summary>
+        [Input("nodeCreationConfig")]
+        public Input<Inputs.ClusterNodeCreationConfigGetArgs>? NodeCreationConfig { get; set; }
 
         [Input("nodeLocations")]
         private InputList<string>? _nodeLocations;

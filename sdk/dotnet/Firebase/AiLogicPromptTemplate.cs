@@ -48,6 +48,30 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebaseailogic Prompt Template Global Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var globalOnly = new Gcp.Firebase.AiLogicPromptTemplate("global_only", new()
+    ///     {
+    ///         Location = "global",
+    ///         TemplateId = "global-only-template",
+    ///         RegionalPropagationDisabled = true,
+    ///         TemplateString = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "test-fixtures/hello_world.prompt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firebaseailogic Prompt Template Basic
     /// 
     /// ```csharp
@@ -152,6 +176,14 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// For the `Global` location only. If true, the write operation (create,
+        /// update, or delete) will apply to the global region only. Otherwise, the
+        /// operation will also propagate to all applicable regions.
+        /// </summary>
+        [Output("regionalPropagationDisabled")]
+        public Output<bool?> RegionalPropagationDisabled { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the PromptTemplate state was last changed.
         /// </summary>
         [Output("stateChangeTime")]
@@ -253,6 +285,14 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// For the `Global` location only. If true, the write operation (create,
+        /// update, or delete) will apply to the global region only. Otherwise, the
+        /// operation will also propagate to all applicable regions.
+        /// </summary>
+        [Input("regionalPropagationDisabled")]
+        public Input<bool>? RegionalPropagationDisabled { get; set; }
+
+        /// <summary>
         /// The unique ID of the PromptTemplate, which is the final component of the
         /// PromptTemplate's resource name.
         /// </summary>
@@ -332,6 +372,14 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// For the `Global` location only. If true, the write operation (create,
+        /// update, or delete) will apply to the global region only. Otherwise, the
+        /// operation will also propagate to all applicable regions.
+        /// </summary>
+        [Input("regionalPropagationDisabled")]
+        public Input<bool>? RegionalPropagationDisabled { get; set; }
 
         /// <summary>
         /// Timestamp when the PromptTemplate state was last changed.

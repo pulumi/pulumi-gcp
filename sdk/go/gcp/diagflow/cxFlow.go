@@ -468,16 +468,16 @@ import (
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("another-param"),
-//									Value:     pulumi.String(pulumi.String(json0)),
+//									Value:     pulumi.String(json0),
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("other-param"),
-//									Value:     pulumi.String(pulumi.String(json1)),
+//									Value:     pulumi.String(json1),
 //								},
 //							},
 //							ConditionalCases: diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray{
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs{
-//									Cases: pulumi.String(pulumi.String(json2)),
+//									Cases: pulumi.String(json2),
 //								},
 //							},
 //							EnableGenerativeFallback: pulumi.Bool(true),
@@ -539,16 +539,16 @@ import (
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("another-param"),
-//									Value:     pulumi.String(pulumi.String(json3)),
+//									Value:     pulumi.String(json3),
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("other-param"),
-//									Value:     pulumi.String(pulumi.String(json4)),
+//									Value:     pulumi.String(json4),
 //								},
 //							},
 //							ConditionalCases: diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray{
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs{
-//									Cases: pulumi.String(pulumi.String(json5)),
+//									Cases: pulumi.String(json5),
 //								},
 //							},
 //						},
@@ -639,7 +639,7 @@ import (
 //						},
 //						ConditionalCases: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{
-//								Cases: pulumi.String(pulumi.String(json6)),
+//								Cases: pulumi.String(json6),
 //							},
 //						},
 //						AdvancedSettings: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{

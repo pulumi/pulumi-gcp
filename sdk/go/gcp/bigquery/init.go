@@ -71,6 +71,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReservationGroup{}
 	case "gcp:bigquery/routine:Routine":
 		r = &Routine{}
+	case "gcp:bigquery/routineIamBinding:RoutineIamBinding":
+		r = &RoutineIamBinding{}
+	case "gcp:bigquery/routineIamMember:RoutineIamMember":
+		r = &RoutineIamMember{}
+	case "gcp:bigquery/routineIamPolicy:RoutineIamPolicy":
+		r = &RoutineIamPolicy{}
 	case "gcp:bigquery/rowAccessPolicy:RowAccessPolicy":
 		r = &RowAccessPolicy{}
 	case "gcp:bigquery/table:Table":
@@ -211,6 +217,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/routine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/routineIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/routineIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/routineIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -12,6 +12,14 @@ namespace Pulumi.Gcp.Ces
     /// <summary>
     /// Description
     /// 
+    /// &gt; **Note:** **Direct Management Restriction for Certain Tool Types:**
+    /// 
+    /// Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `gcp.ces.Tool` resource.
+    /// 
+    /// `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+    /// 
+    /// Consequently, blocks like `OpenApiTool`, `McpTool`, `ConnectorTool`, `RemoteAgentTool`, and `SystemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Ces Tool Client Function Basic
@@ -415,6 +423,167 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Tool Agent Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_app = new Gcp.Ces.App("my-app", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app",
+    ///         AppId = "app-id",
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var targetAgent = new Gcp.Ces.Agent("target_agent", new()
+    ///     {
+    ///         AgentId = "target-agent",
+    ///         Location = "us",
+    ///         App = my_app.AppId,
+    ///         DisplayName = "Target Agent",
+    ///         Instruction = "Target agent instruction",
+    ///         LlmAgent = null,
+    ///     });
+    /// 
+    ///     var cesToolAgentBasic = new Gcp.Ces.Tool("ces_tool_agent_basic", new()
+    ///     {
+    ///         Location = "us",
+    ///         App = my_app.Name,
+    ///         ToolId = "ces_tool_basic5",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         AgentTool = new Gcp.Ces.Inputs.ToolAgentToolArgs
+    ///         {
+    ///             Name = "ces_tool_agent_basic",
+    ///             Description = "example-description",
+    ///             Agent = Output.Tuple(my_app.Project, my_app.AppId, targetAgent.AgentId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var appId = values.Item2;
+    ///                 var agentId = values.Item3;
+    ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Tool File Search Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_app = new Gcp.Ces.App("my-app", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app",
+    ///         AppId = "app-id",
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolFileSearchBasic = new Gcp.Ces.Tool("ces_tool_file_search_basic", new()
+    ///     {
+    ///         Location = "us",
+    ///         App = my_app.Name,
+    ///         ToolId = "ces_tool_basic6",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         FileSearchTool = new Gcp.Ces.Inputs.ToolFileSearchToolArgs
+    ///         {
+    ///             Name = "ces_tool_file_search_basic",
+    ///             Description = "example-description",
+    ///             CorpusType = "FULLY_MANAGED",
+    ///             FileCorpus = my_app.Project.Apply(project =&gt; $"projects/{project}/locations/us/ragCorpora/tf-test-mock-corpus"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Tool Widget Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_app = new Gcp.Ces.App("my-app", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app",
+    ///         AppId = "app-id",
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolWidgetBasic = new Gcp.Ces.Tool("ces_tool_widget_basic", new()
+    ///     {
+    ///         Location = "us",
+    ///         App = my_app.Name,
+    ///         ToolId = "ces_tool_basic7",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         WidgetTool = new Gcp.Ces.Inputs.ToolWidgetToolArgs
+    ///         {
+    ///             Name = "ces_tool_widget_basic",
+    ///             Description = "example-description",
+    ///             WidgetType = "PRODUCT_CAROUSEL",
+    ///             UiConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["displaySettings"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["showHeader"] = true,
+    ///                 },
+    ///             }),
+    ///             DataMapping = new Gcp.Ces.Inputs.ToolWidgetToolDataMappingArgs
+    ///             {
+    ///                 Mode = "FIELD_MAPPING",
+    ///                 FieldMappings = 
+    ///                 {
+    ///                     { "key1", "value1" },
+    ///                     { "key2", "value2" },
+    ///                 },
+    ///             },
+    ///             TextResponseConfig = new Gcp.Ces.Inputs.ToolWidgetToolTextResponseConfigArgs
+    ///             {
+    ///                 Type = "STATIC",
+    ///                 StaticText = "example-static-text",
+    ///             },
+    ///             Parameters = new Gcp.Ces.Inputs.ToolWidgetToolParametersArgs
+    ///             {
+    ///                 Type = "OBJECT",
+    ///                 Properties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["param1"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "STRING",
+    ///                     },
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -436,6 +605,13 @@ namespace Pulumi.Gcp.Ces
     public partial class Tool : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Represents a tool that allows the agent to call another agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("agentTool")]
+        public Output<Outputs.ToolAgentTool?> AgentTool { get; private set; } = null!;
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("app")]
@@ -450,6 +626,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("clientFunction")]
         public Output<Outputs.ToolClientFunction?> ClientFunction { get; private set; } = null!;
+
+        /// <summary>
+        /// A ConnectorTool allows connections to different integrations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectorTools")]
+        public Output<ImmutableArray<Outputs.ToolConnectorTool>> ConnectorTools { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the tool was created.
@@ -503,6 +686,14 @@ namespace Pulumi.Gcp.Ces
         public Output<string?> ExecutionType { get; private set; } = null!;
 
         /// <summary>
+        /// The file search tool allows the agent to search across the files uploaded by the
+        /// app/agent developer.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("fileSearchTool")]
+        public Output<Outputs.ToolFileSearchTool?> FileSearchTool { get; private set; } = null!;
+
+        /// <summary>
         /// If the tool is generated by the LLM assistant, this field contains a
         /// descriptive summary of the generation.
         /// </summary>
@@ -523,6 +714,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// An MCP tool.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("mcpTools")]
+        public Output<ImmutableArray<Outputs.ToolMcpTool>> McpTools { get; private set; } = null!;
 
         /// <summary>
         /// (Output)
@@ -553,6 +751,13 @@ namespace Pulumi.Gcp.Ces
         public Output<Outputs.ToolPythonFunction?> PythonFunction { get; private set; } = null!;
 
         /// <summary>
+        /// Represents a tool that allows the agent to call another remote agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("remoteAgentTools")]
+        public Output<ImmutableArray<Outputs.ToolRemoteAgentTool>> RemoteAgentTools { get; private set; } = null!;
+
+        /// <summary>
         /// The system tool.
         /// Structure is documented below.
         /// </summary>
@@ -572,6 +777,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents a widget tool that the agent can invoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("widgetTool")]
+        public Output<Outputs.ToolWidgetTool?> WidgetTool { get; private set; } = null!;
 
 
         /// <summary>
@@ -620,6 +832,13 @@ namespace Pulumi.Gcp.Ces
     public sealed class ToolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Represents a tool that allows the agent to call another agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentTool")]
+        public Input<Inputs.ToolAgentToolArgs>? AgentTool { get; set; }
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("app", required: true)]
@@ -665,6 +884,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? ExecutionType { get; set; }
 
         /// <summary>
+        /// The file search tool allows the agent to search across the files uploaded by the
+        /// app/agent developer.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("fileSearchTool")]
+        public Input<Inputs.ToolFileSearchToolArgs>? FileSearchTool { get; set; }
+
+        /// <summary>
         /// Represents a tool to perform Google web searches for grounding.
         /// See
         /// https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
@@ -701,6 +928,13 @@ namespace Pulumi.Gcp.Ces
         [Input("toolId", required: true)]
         public Input<string> ToolId { get; set; } = null!;
 
+        /// <summary>
+        /// Represents a widget tool that the agent can invoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("widgetTool")]
+        public Input<Inputs.ToolWidgetToolArgs>? WidgetTool { get; set; }
+
         public ToolArgs()
         {
         }
@@ -709,6 +943,13 @@ namespace Pulumi.Gcp.Ces
 
     public sealed class ToolState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Represents a tool that allows the agent to call another agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentTool")]
+        public Input<Inputs.ToolAgentToolGetArgs>? AgentTool { get; set; }
+
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
@@ -724,6 +965,19 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("clientFunction")]
         public Input<Inputs.ToolClientFunctionGetArgs>? ClientFunction { get; set; }
+
+        [Input("connectorTools")]
+        private InputList<Inputs.ToolConnectorToolGetArgs>? _connectorTools;
+
+        /// <summary>
+        /// A ConnectorTool allows connections to different integrations.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ToolConnectorToolGetArgs> ConnectorTools
+        {
+            get => _connectorTools ?? (_connectorTools = new InputList<Inputs.ToolConnectorToolGetArgs>());
+            set => _connectorTools = value;
+        }
 
         /// <summary>
         /// Timestamp when the tool was created.
@@ -777,6 +1031,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? ExecutionType { get; set; }
 
         /// <summary>
+        /// The file search tool allows the agent to search across the files uploaded by the
+        /// app/agent developer.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("fileSearchTool")]
+        public Input<Inputs.ToolFileSearchToolGetArgs>? FileSearchTool { get; set; }
+
+        /// <summary>
         /// If the tool is generated by the LLM assistant, this field contains a
         /// descriptive summary of the generation.
         /// </summary>
@@ -797,6 +1059,19 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("mcpTools")]
+        private InputList<Inputs.ToolMcpToolGetArgs>? _mcpTools;
+
+        /// <summary>
+        /// An MCP tool.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ToolMcpToolGetArgs> McpTools
+        {
+            get => _mcpTools ?? (_mcpTools = new InputList<Inputs.ToolMcpToolGetArgs>());
+            set => _mcpTools = value;
+        }
 
         /// <summary>
         /// (Output)
@@ -832,6 +1107,19 @@ namespace Pulumi.Gcp.Ces
         [Input("pythonFunction")]
         public Input<Inputs.ToolPythonFunctionGetArgs>? PythonFunction { get; set; }
 
+        [Input("remoteAgentTools")]
+        private InputList<Inputs.ToolRemoteAgentToolGetArgs>? _remoteAgentTools;
+
+        /// <summary>
+        /// Represents a tool that allows the agent to call another remote agent.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ToolRemoteAgentToolGetArgs> RemoteAgentTools
+        {
+            get => _remoteAgentTools ?? (_remoteAgentTools = new InputList<Inputs.ToolRemoteAgentToolGetArgs>());
+            set => _remoteAgentTools = value;
+        }
+
         [Input("systemTools")]
         private InputList<Inputs.ToolSystemToolGetArgs>? _systemTools;
 
@@ -858,6 +1146,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Represents a widget tool that the agent can invoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("widgetTool")]
+        public Input<Inputs.ToolWidgetToolGetArgs>? WidgetTool { get; set; }
 
         public ToolState()
         {

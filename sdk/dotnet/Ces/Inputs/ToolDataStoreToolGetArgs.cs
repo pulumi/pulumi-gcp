@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         }
 
         /// <summary>
+        /// Optional. Search within a single specific DataStore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataStoreSource")]
+        public Input<Inputs.ToolDataStoreToolDataStoreSourceGetArgs>? DataStoreSource { get; set; }
+
+        /// <summary>
         /// The tool description.
         /// </summary>
         [Input("description")]
@@ -38,6 +45,17 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// </summary>
         [Input("engineSource")]
         public Input<Inputs.ToolDataStoreToolEngineSourceGetArgs>? EngineSource { get; set; }
+
+        /// <summary>
+        /// Optional. The filter parameter behavior.
+        /// Possible values:
+        /// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+        /// ALWAYS_INCLUDE
+        /// NEVER_INCLUDE
+        /// Possible values are: `FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED`, `ALWAYS_INCLUDE`, `NEVER_INCLUDE`.
+        /// </summary>
+        [Input("filterParameterBehavior")]
+        public Input<string>? FilterParameterBehavior { get; set; }
 
         /// <summary>
         /// (Optional, Deprecated)

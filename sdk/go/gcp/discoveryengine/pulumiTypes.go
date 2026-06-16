@@ -8043,6 +8043,332 @@ func (o SearchEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type SearchEngineIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SearchEngineIamBindingConditionInput is an input type that accepts SearchEngineIamBindingConditionArgs and SearchEngineIamBindingConditionOutput values.
+// You can construct a concrete instance of `SearchEngineIamBindingConditionInput` via:
+//
+//	SearchEngineIamBindingConditionArgs{...}
+type SearchEngineIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToSearchEngineIamBindingConditionOutput() SearchEngineIamBindingConditionOutput
+	ToSearchEngineIamBindingConditionOutputWithContext(context.Context) SearchEngineIamBindingConditionOutput
+}
+
+type SearchEngineIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SearchEngineIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineIamBindingCondition)(nil)).Elem()
+}
+
+func (i SearchEngineIamBindingConditionArgs) ToSearchEngineIamBindingConditionOutput() SearchEngineIamBindingConditionOutput {
+	return i.ToSearchEngineIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SearchEngineIamBindingConditionArgs) ToSearchEngineIamBindingConditionOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamBindingConditionOutput)
+}
+
+func (i SearchEngineIamBindingConditionArgs) ToSearchEngineIamBindingConditionPtrOutput() SearchEngineIamBindingConditionPtrOutput {
+	return i.ToSearchEngineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SearchEngineIamBindingConditionArgs) ToSearchEngineIamBindingConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamBindingConditionOutput).ToSearchEngineIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SearchEngineIamBindingConditionPtrInput is an input type that accepts SearchEngineIamBindingConditionArgs, SearchEngineIamBindingConditionPtr and SearchEngineIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SearchEngineIamBindingConditionPtrInput` via:
+//
+//	        SearchEngineIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SearchEngineIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSearchEngineIamBindingConditionPtrOutput() SearchEngineIamBindingConditionPtrOutput
+	ToSearchEngineIamBindingConditionPtrOutputWithContext(context.Context) SearchEngineIamBindingConditionPtrOutput
+}
+
+type searchEngineIamBindingConditionPtrType SearchEngineIamBindingConditionArgs
+
+func SearchEngineIamBindingConditionPtr(v *SearchEngineIamBindingConditionArgs) SearchEngineIamBindingConditionPtrInput {
+	return (*searchEngineIamBindingConditionPtrType)(v)
+}
+
+func (*searchEngineIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineIamBindingCondition)(nil)).Elem()
+}
+
+func (i *searchEngineIamBindingConditionPtrType) ToSearchEngineIamBindingConditionPtrOutput() SearchEngineIamBindingConditionPtrOutput {
+	return i.ToSearchEngineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *searchEngineIamBindingConditionPtrType) ToSearchEngineIamBindingConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamBindingConditionPtrOutput)
+}
+
+type SearchEngineIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineIamBindingCondition)(nil)).Elem()
+}
+
+func (o SearchEngineIamBindingConditionOutput) ToSearchEngineIamBindingConditionOutput() SearchEngineIamBindingConditionOutput {
+	return o
+}
+
+func (o SearchEngineIamBindingConditionOutput) ToSearchEngineIamBindingConditionOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionOutput {
+	return o
+}
+
+func (o SearchEngineIamBindingConditionOutput) ToSearchEngineIamBindingConditionPtrOutput() SearchEngineIamBindingConditionPtrOutput {
+	return o.ToSearchEngineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEngineIamBindingConditionOutput) ToSearchEngineIamBindingConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchEngineIamBindingCondition) *SearchEngineIamBindingCondition {
+		return &v
+	}).(SearchEngineIamBindingConditionPtrOutput)
+}
+
+func (o SearchEngineIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchEngineIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchEngineIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SearchEngineIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchEngineIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SearchEngineIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineIamBindingCondition)(nil)).Elem()
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) ToSearchEngineIamBindingConditionPtrOutput() SearchEngineIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) ToSearchEngineIamBindingConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) Elem() SearchEngineIamBindingConditionOutput {
+	return o.ApplyT(func(v *SearchEngineIamBindingCondition) SearchEngineIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SearchEngineIamBindingCondition
+		return ret
+	}).(SearchEngineIamBindingConditionOutput)
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchEngineIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SearchEngineIamMemberConditionInput is an input type that accepts SearchEngineIamMemberConditionArgs and SearchEngineIamMemberConditionOutput values.
+// You can construct a concrete instance of `SearchEngineIamMemberConditionInput` via:
+//
+//	SearchEngineIamMemberConditionArgs{...}
+type SearchEngineIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToSearchEngineIamMemberConditionOutput() SearchEngineIamMemberConditionOutput
+	ToSearchEngineIamMemberConditionOutputWithContext(context.Context) SearchEngineIamMemberConditionOutput
+}
+
+type SearchEngineIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SearchEngineIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineIamMemberCondition)(nil)).Elem()
+}
+
+func (i SearchEngineIamMemberConditionArgs) ToSearchEngineIamMemberConditionOutput() SearchEngineIamMemberConditionOutput {
+	return i.ToSearchEngineIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SearchEngineIamMemberConditionArgs) ToSearchEngineIamMemberConditionOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamMemberConditionOutput)
+}
+
+func (i SearchEngineIamMemberConditionArgs) ToSearchEngineIamMemberConditionPtrOutput() SearchEngineIamMemberConditionPtrOutput {
+	return i.ToSearchEngineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SearchEngineIamMemberConditionArgs) ToSearchEngineIamMemberConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamMemberConditionOutput).ToSearchEngineIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SearchEngineIamMemberConditionPtrInput is an input type that accepts SearchEngineIamMemberConditionArgs, SearchEngineIamMemberConditionPtr and SearchEngineIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SearchEngineIamMemberConditionPtrInput` via:
+//
+//	        SearchEngineIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SearchEngineIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSearchEngineIamMemberConditionPtrOutput() SearchEngineIamMemberConditionPtrOutput
+	ToSearchEngineIamMemberConditionPtrOutputWithContext(context.Context) SearchEngineIamMemberConditionPtrOutput
+}
+
+type searchEngineIamMemberConditionPtrType SearchEngineIamMemberConditionArgs
+
+func SearchEngineIamMemberConditionPtr(v *SearchEngineIamMemberConditionArgs) SearchEngineIamMemberConditionPtrInput {
+	return (*searchEngineIamMemberConditionPtrType)(v)
+}
+
+func (*searchEngineIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineIamMemberCondition)(nil)).Elem()
+}
+
+func (i *searchEngineIamMemberConditionPtrType) ToSearchEngineIamMemberConditionPtrOutput() SearchEngineIamMemberConditionPtrOutput {
+	return i.ToSearchEngineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *searchEngineIamMemberConditionPtrType) ToSearchEngineIamMemberConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineIamMemberConditionPtrOutput)
+}
+
+type SearchEngineIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineIamMemberCondition)(nil)).Elem()
+}
+
+func (o SearchEngineIamMemberConditionOutput) ToSearchEngineIamMemberConditionOutput() SearchEngineIamMemberConditionOutput {
+	return o
+}
+
+func (o SearchEngineIamMemberConditionOutput) ToSearchEngineIamMemberConditionOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionOutput {
+	return o
+}
+
+func (o SearchEngineIamMemberConditionOutput) ToSearchEngineIamMemberConditionPtrOutput() SearchEngineIamMemberConditionPtrOutput {
+	return o.ToSearchEngineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEngineIamMemberConditionOutput) ToSearchEngineIamMemberConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchEngineIamMemberCondition) *SearchEngineIamMemberCondition {
+		return &v
+	}).(SearchEngineIamMemberConditionPtrOutput)
+}
+
+func (o SearchEngineIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchEngineIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchEngineIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SearchEngineIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchEngineIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SearchEngineIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineIamMemberCondition)(nil)).Elem()
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) ToSearchEngineIamMemberConditionPtrOutput() SearchEngineIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) ToSearchEngineIamMemberConditionPtrOutputWithContext(ctx context.Context) SearchEngineIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) Elem() SearchEngineIamMemberConditionOutput {
+	return o.ApplyT(func(v *SearchEngineIamMemberCondition) SearchEngineIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SearchEngineIamMemberCondition
+		return ret
+	}).(SearchEngineIamMemberConditionOutput)
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SearchEngineIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type SearchEngineKnowledgeGraphConfig struct {
 	// Specify entity types to support.
 	CloudKnowledgeGraphTypes []string `pulumi:"cloudKnowledgeGraphTypes"`
@@ -12652,6 +12978,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigPtrInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineIamBindingConditionInput)(nil)).Elem(), SearchEngineIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineIamBindingConditionPtrInput)(nil)).Elem(), SearchEngineIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineIamMemberConditionInput)(nil)).Elem(), SearchEngineIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineIamMemberConditionPtrInput)(nil)).Elem(), SearchEngineIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigPtrInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigFeatureConfigInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigFeatureConfigArgs{})
@@ -12812,6 +13142,10 @@ func init() {
 	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(SearchEngineIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SearchEngineIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SearchEngineIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SearchEngineIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigFeatureConfigOutput{})
