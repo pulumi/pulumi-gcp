@@ -4958,8 +4958,12 @@ type DatabaseInstanceSettingsIpConfigurationPscConfig struct {
 	NetworkAttachmentUri *string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled *bool `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled *bool `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+	PscWriteEndpointDnsEnabled *bool `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 // DatabaseInstanceSettingsIpConfigurationPscConfigInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigArgs and DatabaseInstanceSettingsIpConfigurationPscConfigOutput values.
@@ -4980,8 +4984,12 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigArgs struct {
 	NetworkAttachmentUri pulumi.StringPtrInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled pulumi.BoolPtrInput `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+	PscWriteEndpointDnsEnabled pulumi.BoolPtrInput `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 func (DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ElementType() reflect.Type {
@@ -5052,9 +5060,19 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscAutoConnectio
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput)
 }
 
+// Whether PSC auto DNS is enabled for this instance.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscAutoDnsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *bool { return v.PscAutoDnsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscWriteEndpointDnsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *bool { return v.PscWriteEndpointDnsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }
@@ -10083,8 +10101,12 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfig struct {
 	NetworkAttachmentUri string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled bool `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled bool `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance.
+	PscWriteEndpointDnsEnabled bool `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 // GetDatabaseInstanceSettingIpConfigurationPscConfigInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigArgs and GetDatabaseInstanceSettingIpConfigurationPscConfigOutput values.
@@ -10105,8 +10127,12 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigArgs struct {
 	NetworkAttachmentUri pulumi.StringInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled pulumi.BoolInput `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance.
+	PscWriteEndpointDnsEnabled pulumi.BoolInput `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 func (GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ElementType() reflect.Type {
@@ -10177,9 +10203,19 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscAutoConnect
 	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
 }
 
+// Whether PSC auto DNS is enabled for this instance.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscAutoDnsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) bool { return v.PscAutoDnsEnabled }).(pulumi.BoolOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether PSC write endpoint DNS is enabled for this instance.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscWriteEndpointDnsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) bool { return v.PscWriteEndpointDnsEnabled }).(pulumi.BoolOutput)
 }
 
 type GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }
@@ -14706,8 +14742,12 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig struct {
 	NetworkAttachmentUri string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled bool `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled bool `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance.
+	PscWriteEndpointDnsEnabled bool `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 // GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput values.
@@ -14728,8 +14768,12 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs struct {
 	NetworkAttachmentUri pulumi.StringInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
+	// Whether PSC auto DNS is enabled for this instance.
+	PscAutoDnsEnabled pulumi.BoolInput `pulumi:"pscAutoDnsEnabled"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
+	// Whether PSC write endpoint DNS is enabled for this instance.
+	PscWriteEndpointDnsEnabled pulumi.BoolInput `pulumi:"pscWriteEndpointDnsEnabled"`
 }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ElementType() reflect.Type {
@@ -14804,9 +14848,21 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscAu
 	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
 }
 
+// Whether PSC auto DNS is enabled for this instance.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscAutoDnsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) bool { return v.PscAutoDnsEnabled }).(pulumi.BoolOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether PSC write endpoint DNS is enabled for this instance.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscWriteEndpointDnsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) bool {
+		return v.PscWriteEndpointDnsEnabled
+	}).(pulumi.BoolOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }

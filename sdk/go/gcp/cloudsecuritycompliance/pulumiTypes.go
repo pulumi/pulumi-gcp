@@ -6201,7 +6201,7 @@ type FrameworkCloudControlDetail struct {
 	// Major revision of cloudcontrol
 	MajorRevisionId string `pulumi:"majorRevisionId"`
 	// The name of the CloudControl in the format:
-	// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+	// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 	Name string `pulumi:"name"`
 	// Parameters is a key-value pair that is required by the CloudControl. The
 	// specification of these parameters will be present in cloudcontrol.Eg: {
@@ -6225,7 +6225,7 @@ type FrameworkCloudControlDetailArgs struct {
 	// Major revision of cloudcontrol
 	MajorRevisionId pulumi.StringInput `pulumi:"majorRevisionId"`
 	// The name of the CloudControl in the format:
-	// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+	// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 	Name pulumi.StringInput `pulumi:"name"`
 	// Parameters is a key-value pair that is required by the CloudControl. The
 	// specification of these parameters will be present in cloudcontrol.Eg: {
@@ -6291,7 +6291,7 @@ func (o FrameworkCloudControlDetailOutput) MajorRevisionId() pulumi.StringOutput
 }
 
 // The name of the CloudControl in the format:
-// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 func (o FrameworkCloudControlDetailOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FrameworkCloudControlDetail) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7180,7 +7180,7 @@ func (o FrameworkCloudControlDetailParameterParameterValueStringListValuePtrOutp
 type FrameworkDeploymentCloudControlDeploymentReference struct {
 	// (Output)
 	// The name of the CloudControlDeployment. The format is:
-	// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+	// {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
 	CloudControlDeployment *string `pulumi:"cloudControlDeployment"`
 }
 
@@ -7198,7 +7198,7 @@ type FrameworkDeploymentCloudControlDeploymentReferenceInput interface {
 type FrameworkDeploymentCloudControlDeploymentReferenceArgs struct {
 	// (Output)
 	// The name of the CloudControlDeployment. The format is:
-	// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+	// {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
 	CloudControlDeployment pulumi.StringPtrInput `pulumi:"cloudControlDeployment"`
 }
 
@@ -7255,7 +7255,7 @@ func (o FrameworkDeploymentCloudControlDeploymentReferenceOutput) ToFrameworkDep
 
 // (Output)
 // The name of the CloudControlDeployment. The format is:
-// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+// {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
 func (o FrameworkDeploymentCloudControlDeploymentReferenceOutput) CloudControlDeployment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrameworkDeploymentCloudControlDeploymentReference) *string { return v.CloudControlDeployment }).(pulumi.StringPtrOutput)
 }
@@ -7407,8 +7407,7 @@ type FrameworkDeploymentCloudControlMetadataCloudControlDetails struct {
 	// Major revision of cloudcontrol
 	MajorRevisionId string `pulumi:"majorRevisionId"`
 	// The name of the CloudControl in the format:
-	// “organizations/{organization}/locations/{location}/
-	// cloudControls/{cloud-control}”
+	// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 	Name string `pulumi:"name"`
 	// Parameters is a key-value pair that is required by the CloudControl. The
 	// specification of these parameters will be present in cloudcontrol.Eg: {
@@ -7432,8 +7431,7 @@ type FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs struct {
 	// Major revision of cloudcontrol
 	MajorRevisionId pulumi.StringInput `pulumi:"majorRevisionId"`
 	// The name of the CloudControl in the format:
-	// “organizations/{organization}/locations/{location}/
-	// cloudControls/{cloud-control}”
+	// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 	Name pulumi.StringInput `pulumi:"name"`
 	// Parameters is a key-value pair that is required by the CloudControl. The
 	// specification of these parameters will be present in cloudcontrol.Eg: {
@@ -7474,8 +7472,7 @@ func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsOutput) MajorR
 }
 
 // The name of the CloudControl in the format:
-// “organizations/{organization}/locations/{location}/
-// cloudControls/{cloud-control}”
+// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetails) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8355,7 +8352,7 @@ func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParam
 
 type FrameworkDeploymentFramework struct {
 	// In the format:
-	// organizations/{org}/locations/{location}/frameworks/{framework}
+	// {parent}/locations/{location}/frameworks/{framework}
 	Framework string `pulumi:"framework"`
 	// Major revision id of the framework.
 	MajorRevisionId string `pulumi:"majorRevisionId"`
@@ -8374,7 +8371,7 @@ type FrameworkDeploymentFrameworkInput interface {
 
 type FrameworkDeploymentFrameworkArgs struct {
 	// In the format:
-	// organizations/{org}/locations/{location}/frameworks/{framework}
+	// {parent}/locations/{location}/frameworks/{framework}
 	Framework pulumi.StringInput `pulumi:"framework"`
 	// Major revision id of the framework.
 	MajorRevisionId pulumi.StringInput `pulumi:"majorRevisionId"`
@@ -8458,7 +8455,7 @@ func (o FrameworkDeploymentFrameworkOutput) ToFrameworkDeploymentFrameworkPtrOut
 }
 
 // In the format:
-// organizations/{org}/locations/{location}/frameworks/{framework}
+// {parent}/locations/{location}/frameworks/{framework}
 func (o FrameworkDeploymentFrameworkOutput) Framework() pulumi.StringOutput {
 	return o.ApplyT(func(v FrameworkDeploymentFramework) string { return v.Framework }).(pulumi.StringOutput)
 }
@@ -8493,7 +8490,7 @@ func (o FrameworkDeploymentFrameworkPtrOutput) Elem() FrameworkDeploymentFramewo
 }
 
 // In the format:
-// organizations/{org}/locations/{location}/frameworks/{framework}
+// {parent}/locations/{location}/frameworks/{framework}
 func (o FrameworkDeploymentFrameworkPtrOutput) Framework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FrameworkDeploymentFramework) *string {
 		if v == nil {

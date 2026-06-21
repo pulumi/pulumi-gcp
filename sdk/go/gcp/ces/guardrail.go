@@ -288,6 +288,65 @@ import (
 //	}
 //
 // ```
+// ### Ces Guardrail Llm Prompt Security Default Settings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForGuardrail, err := ces.NewApp(ctx, "ces_app_for_guardrail", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewGuardrail(ctx, "ces_guardrail_llm_prompt_security_default_settings", &ces.GuardrailArgs{
+//				GuardrailId: pulumi.String("guardrail-id"),
+//				Location:    cesAppForGuardrail.Location,
+//				App:         cesAppForGuardrail.AppId,
+//				DisplayName: pulumi.String("my-guardrail"),
+//				Description: pulumi.String("Guardrail description"),
+//				Action: &ces.GuardrailActionArgs{
+//					GenerativeAnswer: &ces.GuardrailActionGenerativeAnswerArgs{
+//						Prompt: pulumi.String("example_prompt"),
+//					},
+//				},
+//				Enabled: pulumi.Bool(true),
+//				LlmPromptSecurity: &ces.GuardrailLlmPromptSecurityArgs{
+//					DefaultSettings: &ces.GuardrailLlmPromptSecurityDefaultSettingsArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Ces Guardrail Code Callback
 //
 // ```go

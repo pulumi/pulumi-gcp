@@ -28,18 +28,710 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Cloudsecuritycompliance Framework Deployment Org Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentTargetResourceConfigArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("An Terraform description for the framework")
+ *             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
+ *                 .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
+ *                 .majorRevisionId("2")
+ *                 .parameters(                
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringValue("us-central1")
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("oneof-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("test-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .stringValue("test-value")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("bool-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("bool-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .boolValue(true)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("number-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("number-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .numberValue(123.45)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("string-list-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("string-list-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .stringListValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "value1",
+ *                                             "value2")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleFrameworkDeployment = new FrameworkDeployment("exampleFrameworkDeployment", FrameworkDeploymentArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .frameworkDeploymentId("example-deployment")
+ *             .description("A framework deployment for cloud security compliance")
+ *             .framework(FrameworkDeploymentFrameworkArgs.builder()
+ *                 .framework(example.name())
+ *                 .majorRevisionId("1")
+ *                 .build())
+ *             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
+ *                 .existingTargetResource("organizations/123456789")
+ *                 .build())
+ *             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
+ *                 .enforcementMode("DETECTIVE")
+ *                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
+ *                     .majorRevisionId("2")
+ *                     .parameters(                    
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("enabled")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .boolValue(true)
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("regions")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .stringListValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs.builder()
+ *                                     .values(                                    
+ *                                         "us-central1",
+ *                                         "us-west1",
+ *                                         "us-east1")
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("location")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .stringValue("us-central1")
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("oneof-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("test-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .stringValue("test-value")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("bool-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("bool-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .boolValue(true)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("number-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("number-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .numberValue(123.45)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("string-list-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("string-list-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .stringListValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
+ *                                             .values(                                            
+ *                                                 "value1",
+ *                                                 "value2")
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Deployment Project Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentTargetResourceConfigArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("An Terraform description for the framework")
+ *             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
+ *                 .name(String.format("projects/%s/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.number()))
+ *                 .majorRevisionId("2")
+ *                 .parameters(                
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringValue("us-central1")
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("oneof-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("test-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .stringValue("test-value")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("bool-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("bool-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .boolValue(true)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("number-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("number-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .numberValue(123.45)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("string-list-parameter")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs.builder()
+ *                                 .name("string-list-oneof")
+ *                                 .parameterValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                     .stringListValue(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "value1",
+ *                                             "value2")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleFrameworkDeployment = new FrameworkDeployment("exampleFrameworkDeployment", FrameworkDeploymentArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .frameworkDeploymentId("example-deployment")
+ *             .description("A framework deployment for cloud security compliance")
+ *             .framework(FrameworkDeploymentFrameworkArgs.builder()
+ *                 .framework(example.name())
+ *                 .majorRevisionId("1")
+ *                 .build())
+ *             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
+ *                 .existingTargetResource(String.format("projects/%s", project.projectId()))
+ *                 .build())
+ *             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
+ *                 .enforcementMode("DETECTIVE")
+ *                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.number()))
+ *                     .majorRevisionId("2")
+ *                     .parameters(                    
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("enabled")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .boolValue(true)
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("regions")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .stringListValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs.builder()
+ *                                     .values(                                    
+ *                                         "us-central1",
+ *                                         "us-west1",
+ *                                         "us-east1")
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("location")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .stringValue("us-central1")
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("oneof-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("test-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .stringValue("test-value")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("bool-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("bool-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .boolValue(true)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("number-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("number-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .numberValue(123.45)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                             .name("string-list-parameter")
+ *                             .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                                 .oneofValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs.builder()
+ *                                     .name("string-list-oneof")
+ *                                     .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs.builder()
+ *                                         .stringListValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs.builder()
+ *                                             .values(                                            
+ *                                                 "value1",
+ *                                                 "value2")
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentTargetResourceConfigArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("A Terraform description for the framework")
+ *             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
+ *                 .name("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets")
+ *                 .majorRevisionId("2")
+ *                 .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                     .name("location")
+ *                     .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                         .numberValue(1.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleFrameworkDeployment = new FrameworkDeployment("exampleFrameworkDeployment", FrameworkDeploymentArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .frameworkDeploymentId("example-deployment")
+ *             .description("A framework deployment with org parent targeting a project")
+ *             .framework(FrameworkDeploymentFrameworkArgs.builder()
+ *                 .framework(example.name())
+ *                 .majorRevisionId("1")
+ *                 .build())
+ *             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
+ *                 .existingTargetResource(String.format("projects/%s", project.projectId()))
+ *                 .build())
+ *             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
+ *                 .enforcementMode("DETECTIVE")
+ *                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets")
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                             .numberValue(1.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.apphub.Application;
+ * import com.pulumi.gcp.apphub.ApplicationArgs;
+ * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentTargetResourceConfigArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         // App Hub Application resource to act as the target
+ *         var application = new Application("application", ApplicationArgs.builder()
+ *             .location("us-central1")
+ *             .applicationId("example-app")
+ *             .scope(ApplicationScopeArgs.builder()
+ *                 .type("REGIONAL")
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("A Terraform description for the framework")
+ *             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
+ *                 .name(String.format("projects/%s/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.number()))
+ *                 .majorRevisionId("2")
+ *                 .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                     .name("location")
+ *                     .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                         .numberValue(1.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleFrameworkDeployment = new FrameworkDeployment("exampleFrameworkDeployment", FrameworkDeploymentArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .frameworkDeploymentId("example-deployment")
+ *             .description("A framework deployment with project parent targeting an application")
+ *             .framework(FrameworkDeploymentFrameworkArgs.builder()
+ *                 .framework(example.name())
+ *                 .majorRevisionId("1")
+ *                 .build())
+ *             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
+ *                 .existingTargetResource(application.applicationId().applyValue(_applicationId -> String.format("projects/%s/locations/us-central1/applications/%s", project.number(),_applicationId)))
+ *                 .build())
+ *             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
+ *                 .enforcementMode("DETECTIVE")
+ *                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.number()))
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                             .numberValue(1.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeployment;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkDeploymentArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentFrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentTargetResourceConfigArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("An Terraform description for the framework")
+ *             .cloudControlDetails(FrameworkCloudControlDetailArgs.builder()
+ *                 .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
+ *                 .majorRevisionId("2")
+ *                 .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                     .name("location")
+ *                     .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                         .stringValue("us-central1")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleFrameworkDeployment = new FrameworkDeployment("exampleFrameworkDeployment", FrameworkDeploymentArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .frameworkDeploymentId("example-deployment")
+ *             .description("A framework deployment for cloud security compliance")
+ *             .framework(FrameworkDeploymentFrameworkArgs.builder()
+ *                 .framework(example.name())
+ *                 .majorRevisionId("1")
+ *                 .build())
+ *             .targetResourceConfig(FrameworkDeploymentTargetResourceConfigArgs.builder()
+ *                 .existingTargetResource("organizations/123456789")
+ *                 .build())
+ *             .cloudControlMetadatas(FrameworkDeploymentCloudControlMetadataArgs.builder()
+ *                 .enforcementMode("DETECTIVE")
+ *                 .cloudControlDetails(FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown")
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs.builder()
+ *                         .name("enabled")
+ *                         .parameterValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs.builder()
+ *                             .boolValue(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * FrameworkDeployment can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
- * * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+ * * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
  * 
  * When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
  * ```
  * 
  */
@@ -268,18 +960,18 @@ public class FrameworkDeployment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output<String> location;
+    private Output</* @Nullable */ String> location;
 
     /**
      * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -287,25 +979,55 @@ public class FrameworkDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
+     * 
      */
+    @Deprecated /* Use `parent` instead. */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * 
+     * &gt; **Warning:** Use `parent` instead.
      * 
      */
     public Output<String> organization() {
         return this.organization;
+    }
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * TargetResourceConfig contains either the name of the targetResource or

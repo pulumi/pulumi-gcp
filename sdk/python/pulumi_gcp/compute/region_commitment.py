@@ -1089,7 +1089,7 @@ class RegionCommitment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="existingReservations")
-    def existing_reservations(self) -> pulumi.Output[_builtins.str]:
+    def existing_reservations(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specifies the already existing reservations to attach to the Commitment.
         """

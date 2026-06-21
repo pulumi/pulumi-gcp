@@ -26,7 +26,378 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Cloudsecuritycompliance Cloudcontrol Basic
+ * ### Cloudsecuritycompliance Cloudcontrol Org Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudsecuritycompliance.CloudControl;
+ * import com.pulumi.gcp.cloudsecuritycompliance.CloudControlArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecDefaultValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationRegexpPatternArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationIntRangeArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecDefaultValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new CloudControl("example", CloudControlArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .cloudControlId("example-cloudcontrol")
+ *             .displayName("TF test CloudControl Name")
+ *             .description("A test cloud control for security compliance")
+ *             .categories("CC_CATEGORY_INFRASTRUCTURE")
+ *             .severity("HIGH")
+ *             .findingCategory("SECURITY_POLICY")
+ *             .remediationSteps("Review and update the security configuration according to best practices.")
+ *             .supportedCloudProviders("GCP")
+ *             .rules(CloudControlRuleArgs.builder()
+ *                 .description("Ensure compute instances have secure boot enabled")
+ *                 .ruleActionTypes("RULE_ACTION_TYPE_DETECTIVE")
+ *                 .celExpression(CloudControlRuleCelExpressionArgs.builder()
+ *                     .expression("resource.data.shieldedInstanceConfig.enableSecureBoot == true")
+ *                     .resourceTypesValues(CloudControlRuleCelExpressionResourceTypesValuesArgs.builder()
+ *                         .values("compute.googleapis.com/Instance")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parameterSpecs(            
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("location")
+ *                     .displayName("Resource Location")
+ *                     .description("The location where the resource should be deployed")
+ *                     .valueType("STRING")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringValue("us-central1")
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .regexpPattern(CloudControlParameterSpecValidationRegexpPatternArgs.builder()
+ *                             .pattern("^[a-z]+-[a-z]+[0-9]$")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("enable_secure_boot")
+ *                     .displayName("Enable Secure Boot")
+ *                     .description("Whether to enable secure boot for instances")
+ *                     .valueType("BOOLEAN")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .boolValue(true)
+ *                         .build())
+ *                     .substitutionRules(CloudControlParameterSpecSubstitutionRuleArgs.builder()
+ *                         .attributeSubstitutionRule(CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs.builder()
+ *                             .attribute("rules[0].cel_expression.expression")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                 .boolValue(true)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("max_instances")
+ *                     .displayName("Maximum Instances")
+ *                     .description("Maximum number of instances allowed")
+ *                     .valueType("NUMBER")
+ *                     .isRequired(false)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .numberValue(10.0)
+ *                         .build())
+ *                     .substitutionRules(CloudControlParameterSpecSubstitutionRuleArgs.builder()
+ *                         .placeholderSubstitutionRule(CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs.builder()
+ *                             .attribute("rules[0].description")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .intRange(CloudControlParameterSpecValidationIntRangeArgs.builder()
+ *                             .min("1")
+ *                             .max("100")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("allowed_regions")
+ *                     .displayName("Allowed Regions")
+ *                     .description("List of regions where resources can be deployed")
+ *                     .valueType("STRINGLIST")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringListValue(CloudControlParameterSpecDefaultValueStringListValueArgs.builder()
+ *                             .values(                            
+ *                                 "us-central1",
+ *                                 "us-east1",
+ *                                 "us-west1")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(                            
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringListValue(CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "us-central1",
+ *                                             "us-east1")
+ *                                         .build())
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringListValue(CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "us-west1",
+ *                                             "us-west2")
+ *                                         .build())
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("environment_type")
+ *                     .displayName("Environment Type")
+ *                     .description("The type of environment")
+ *                     .valueType("STRING")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringValue("production")
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(                            
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringValue("production")
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringValue("staging")
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .numberValue(1.0)
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Cloudcontrol Project Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.CloudControl;
+ * import com.pulumi.gcp.cloudsecuritycompliance.CloudControlArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecDefaultValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationRegexpPatternArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationIntRangeArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecDefaultValueStringListValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new CloudControl("example", CloudControlArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .cloudControlId("example-cloudcontrol")
+ *             .displayName("TF test CloudControl Name")
+ *             .description("A test cloud control for security compliance")
+ *             .categories("CC_CATEGORY_INFRASTRUCTURE")
+ *             .severity("HIGH")
+ *             .findingCategory("SECURITY_POLICY")
+ *             .remediationSteps("Review and update the security configuration according to best practices.")
+ *             .supportedCloudProviders("GCP")
+ *             .rules(CloudControlRuleArgs.builder()
+ *                 .description("Ensure compute instances have secure boot enabled")
+ *                 .ruleActionTypes("RULE_ACTION_TYPE_DETECTIVE")
+ *                 .celExpression(CloudControlRuleCelExpressionArgs.builder()
+ *                     .expression("resource.data.shieldedInstanceConfig.enableSecureBoot == true")
+ *                     .resourceTypesValues(CloudControlRuleCelExpressionResourceTypesValuesArgs.builder()
+ *                         .values("compute.googleapis.com/Instance")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parameterSpecs(            
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("location")
+ *                     .displayName("Resource Location")
+ *                     .description("The location where the resource should be deployed")
+ *                     .valueType("STRING")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringValue("us-central1")
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .regexpPattern(CloudControlParameterSpecValidationRegexpPatternArgs.builder()
+ *                             .pattern("^[a-z]+-[a-z]+[0-9]$")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("enable_secure_boot")
+ *                     .displayName("Enable Secure Boot")
+ *                     .description("Whether to enable secure boot for instances")
+ *                     .valueType("BOOLEAN")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .boolValue(true)
+ *                         .build())
+ *                     .substitutionRules(CloudControlParameterSpecSubstitutionRuleArgs.builder()
+ *                         .attributeSubstitutionRule(CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs.builder()
+ *                             .attribute("rules[0].cel_expression.expression")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                 .boolValue(true)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("max_instances")
+ *                     .displayName("Maximum Instances")
+ *                     .description("Maximum number of instances allowed")
+ *                     .valueType("NUMBER")
+ *                     .isRequired(false)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .numberValue(10.0)
+ *                         .build())
+ *                     .substitutionRules(CloudControlParameterSpecSubstitutionRuleArgs.builder()
+ *                         .placeholderSubstitutionRule(CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs.builder()
+ *                             .attribute("rules[0].description")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .intRange(CloudControlParameterSpecValidationIntRangeArgs.builder()
+ *                             .min("1")
+ *                             .max("100")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("allowed_regions")
+ *                     .displayName("Allowed Regions")
+ *                     .description("List of regions where resources can be deployed")
+ *                     .valueType("STRINGLIST")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringListValue(CloudControlParameterSpecDefaultValueStringListValueArgs.builder()
+ *                             .values(                            
+ *                                 "us-central1",
+ *                                 "us-east1",
+ *                                 "us-west1")
+ *                             .build())
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(                            
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringListValue(CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "us-central1",
+ *                                             "us-east1")
+ *                                         .build())
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringListValue(CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs.builder()
+ *                                         .values(                                        
+ *                                             "us-west1",
+ *                                             "us-west2")
+ *                                         .build())
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CloudControlParameterSpecArgs.builder()
+ *                     .name("environment_type")
+ *                     .displayName("Environment Type")
+ *                     .description("The type of environment")
+ *                     .valueType("STRING")
+ *                     .isRequired(true)
+ *                     .defaultValue(CloudControlParameterSpecDefaultValueArgs.builder()
+ *                         .stringValue("production")
+ *                         .build())
+ *                     .validation(CloudControlParameterSpecValidationArgs.builder()
+ *                         .allowedValues(CloudControlParameterSpecValidationAllowedValuesArgs.builder()
+ *                             .values(                            
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringValue("production")
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .stringValue("staging")
+ *                                     .build(),
+ *                                 CloudControlParameterSpecValidationAllowedValuesValueArgs.builder()
+ *                                     .numberValue(1.0)
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
  * 
  * <pre>
  * {@code
@@ -215,13 +586,13 @@ import javax.annotation.Nullable;
  * CloudControl can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
- * * `{{organization}}/{{location}}/{{cloud_control_id}}`
+ * * `{{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
  * 
  * When using the `pulumi import` command, CloudControl can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
  * ```
  * 
  */
@@ -394,14 +765,24 @@ public class CloudControl extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
+     * 
      */
+    @Deprecated /* Use `parent` instead. */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * 
+     * &gt; **Warning:** Use `parent` instead.
      * 
      */
     public Output<String> organization() {
@@ -422,6 +803,26 @@ public class CloudControl extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<CloudControlParameterSpec>>> parameterSpecs() {
         return Codegen.optional(this.parameterSpecs);
+    }
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * The Frameworks that include this CloudControl

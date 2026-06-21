@@ -5,8 +5,11 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RestoreWorkloadDiskTargetEnvironment {
@@ -15,6 +18,11 @@ public final class RestoreWorkloadDiskTargetEnvironment {
      * 
      */
     private String project;
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    private @Nullable Boolean useProjectServiceAccount;
     /**
      * @return Required. Target zone for the disk.
      * 
@@ -28,6 +36,13 @@ public final class RestoreWorkloadDiskTargetEnvironment {
      */
     public String project() {
         return this.project;
+    }
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    public Optional<Boolean> useProjectServiceAccount() {
+        return Optional.ofNullable(this.useProjectServiceAccount);
     }
     /**
      * @return Required. Target zone for the disk.
@@ -47,11 +62,13 @@ public final class RestoreWorkloadDiskTargetEnvironment {
     @CustomType.Builder
     public static final class Builder {
         private String project;
+        private @Nullable Boolean useProjectServiceAccount;
         private String zone;
         public Builder() {}
         public Builder(RestoreWorkloadDiskTargetEnvironment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.project = defaults.project;
+    	      this.useProjectServiceAccount = defaults.useProjectServiceAccount;
     	      this.zone = defaults.zone;
         }
 
@@ -61,6 +78,12 @@ public final class RestoreWorkloadDiskTargetEnvironment {
               throw new MissingRequiredPropertyException("RestoreWorkloadDiskTargetEnvironment", "project");
             }
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder useProjectServiceAccount(@Nullable Boolean useProjectServiceAccount) {
+
+            this.useProjectServiceAccount = useProjectServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class RestoreWorkloadDiskTargetEnvironment {
         public RestoreWorkloadDiskTargetEnvironment build() {
             final var _resultValue = new RestoreWorkloadDiskTargetEnvironment();
             _resultValue.project = project;
+            _resultValue.useProjectServiceAccount = useProjectServiceAccount;
             _resultValue.zone = zone;
             return _resultValue;
         }

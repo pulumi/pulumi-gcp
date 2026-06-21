@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult
     {
         /// <summary>
+        /// The name of the Cloud Run v2 Worker Pool.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// Required. The header field name
         /// </summary>
         public readonly int Port;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(
+            string name,
+
             int port,
 
             string value)
         {
+            Name = name;
             Port = port;
             Value = value;
         }

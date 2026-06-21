@@ -31,6 +31,8 @@ import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsA
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
@@ -46,6 +48,7 @@ import com.pulumi.gcp.oracledatabase.outputs.GetDbServersResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateConnectionTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentEnvironmentsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentTypesResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentVersionsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbNetworkResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbSubnetResult;
 import java.util.concurrent.CompletableFuture;
@@ -3210,6 +3213,361 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesPlain(GetGoldengateDeploymentTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", TypeShape.of(GetGoldengateDeploymentTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all Goldengate Deployment Versions in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentVersions&#34;&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+     * 
+     * * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+     * 
+     * * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+     * 
+     * * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * 
+     * * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+     * 
+     * * `securityFix` - Specifies whether this version has a security fix.
+     * 
+     * * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseType` - The release type of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+     * 
+     * * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs args) {
+        return getGoldengateDeploymentVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all Goldengate Deployment Versions in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentVersions&#34;&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+     * 
+     * * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+     * 
+     * * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+     * 
+     * * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * 
+     * * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+     * 
+     * * `securityFix` - Specifies whether this version has a security fix.
+     * 
+     * * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseType` - The release type of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+     * 
+     * * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersionsPlain(GetGoldengateDeploymentVersionsPlainArgs args) {
+        return getGoldengateDeploymentVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all Goldengate Deployment Versions in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentVersions&#34;&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+     * 
+     * * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+     * 
+     * * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+     * 
+     * * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * 
+     * * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+     * 
+     * * `securityFix` - Specifies whether this version has a security fix.
+     * 
+     * * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseType` - The release type of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+     * 
+     * * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", TypeShape.of(GetGoldengateDeploymentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all Goldengate Deployment Versions in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentVersions&#34;&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+     * 
+     * * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+     * 
+     * * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+     * 
+     * * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * 
+     * * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+     * 
+     * * `securityFix` - Specifies whether this version has a security fix.
+     * 
+     * * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseType` - The release type of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+     * 
+     * * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", TypeShape.of(GetGoldengateDeploymentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all Goldengate Deployment Versions in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentVersions&#34;&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+     * 
+     * * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+     * 
+     * * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+     * 
+     * * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * 
+     * * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+     * 
+     * * `securityFix` - Specifies whether this version has a security fix.
+     * 
+     * * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseType` - The release type of the Goldengate Deployment Version resource.
+     * 
+     * * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+     * 
+     * * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersionsPlain(GetGoldengateDeploymentVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", TypeShape.of(GetGoldengateDeploymentVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about an ODB Network.

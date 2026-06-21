@@ -900,6 +900,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/environmentDebugmask",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentDebugmask:EnvironmentDebugmask": "EnvironmentDebugmask"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/environmentIamBinding",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -2404,6 +2412,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/parser",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/parser:Parser": "Parser"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/referenceList",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2432,6 +2448,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/ruleDeployment:RuleDeployment": "RuleDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/soarNetwork",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/soarNetwork:SoarNetwork": "SoarNetwork"
   }
  },
  {
@@ -8452,6 +8476,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "migrationcenter/importDataFile",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/importDataFile:ImportDataFile": "ImportDataFile"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "migrationcenter/importJob",
   "fqn": "pulumi_gcp.migrationcenter",
   "classes": {
@@ -11512,6 +11544,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiTensorboard:AiTensorboard": "AiTensorboard"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiTensorboardExperiment",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment": "AiTensorboardExperiment"
   }
  },
  {

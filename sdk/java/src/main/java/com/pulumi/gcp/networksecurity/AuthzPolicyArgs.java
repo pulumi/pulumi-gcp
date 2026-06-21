@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyCustomProviderArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleArgs;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyTargetArgs;
 import java.lang.String;
 import java.util.List;
@@ -180,6 +181,25 @@ public final class AuthzPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkRules")
+    private @Nullable Output<List<AuthzPolicyNetworkRuleArgs>> networkRules;
+
+    /**
+     * @return A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AuthzPolicyNetworkRuleArgs>>> networkRules() {
+        return Optional.ofNullable(this.networkRules);
+    }
+
+    /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
      * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -251,6 +271,7 @@ public final class AuthzPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
+        this.networkRules = $.networkRules;
         this.policyProfile = $.policyProfile;
         this.project = $.project;
         this.target = $.target;
@@ -490,6 +511,43 @@ public final class AuthzPolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkRules(@Nullable Output<List<AuthzPolicyNetworkRuleArgs>> networkRules) {
+            $.networkRules = networkRules;
+            return this;
+        }
+
+        /**
+         * @param networkRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkRules(List<AuthzPolicyNetworkRuleArgs> networkRules) {
+            return networkRules(Output.of(networkRules));
+        }
+
+        /**
+         * @param networkRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkRules(AuthzPolicyNetworkRuleArgs... networkRules) {
+            return networkRules(List.of(networkRules));
         }
 
         /**

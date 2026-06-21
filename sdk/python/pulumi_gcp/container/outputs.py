@@ -106,6 +106,7 @@ __all__ = [
     'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig',
     'ClusterAddonsConfigSliceControllerConfig',
+    'ClusterAddonsConfigSlurmOperatorConfig',
     'ClusterAddonsConfigStatefulHaConfig',
     'ClusterAnonymousAuthenticationConfig',
     'ClusterAuthenticatorGroupsConfig',
@@ -204,6 +205,7 @@ __all__ = [
     'ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig',
     'ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile',
     'ClusterNodeConfigLocalNvmeSsdBlockConfig',
+    'ClusterNodeConfigNodeImageConfig',
     'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
     'ClusterNodeConfigSecondaryBootDisk',
@@ -285,6 +287,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
+    'ClusterNodePoolNodeConfigNodeImageConfig',
     'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
     'ClusterNodePoolNodeConfigSecondaryBootDisk',
@@ -375,6 +378,7 @@ __all__ = [
     'NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig',
     'NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
+    'NodePoolNodeConfigNodeImageConfig',
     'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
     'NodePoolNodeConfigSecondaryBootDisk',
@@ -412,6 +416,7 @@ __all__ = [
     'GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult',
     'GetClusterAddonsConfigSliceControllerConfigResult',
+    'GetClusterAddonsConfigSlurmOperatorConfigResult',
     'GetClusterAddonsConfigStatefulHaConfigResult',
     'GetClusterAnonymousAuthenticationConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
@@ -510,6 +515,7 @@ __all__ = [
     'GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileResult',
     'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
+    'GetClusterNodeConfigNodeImageConfigResult',
     'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
     'GetClusterNodeConfigSecondaryBootDiskResult',
@@ -591,6 +597,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileResult',
     'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
+    'GetClusterNodePoolNodeConfigNodeImageConfigResult',
     'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
     'GetClusterNodePoolNodeConfigSecondaryBootDiskResult',
@@ -4097,6 +4104,8 @@ class ClusterAddonsConfig(dict):
             suggest = "ray_operator_configs"
         elif key == "sliceControllerConfig":
             suggest = "slice_controller_config"
+        elif key == "slurmOperatorConfig":
+            suggest = "slurm_operator_config"
         elif key == "statefulHaConfig":
             suggest = "stateful_ha_config"
 
@@ -4130,6 +4139,7 @@ class ClusterAddonsConfig(dict):
                  pod_snapshot_config: Optional['outputs.ClusterAddonsConfigPodSnapshotConfig'] = None,
                  ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
                  slice_controller_config: Optional['outputs.ClusterAddonsConfigSliceControllerConfig'] = None,
+                 slurm_operator_config: Optional['outputs.ClusterAddonsConfigSlurmOperatorConfig'] = None,
                  stateful_ha_config: Optional['outputs.ClusterAddonsConfigStatefulHaConfig'] = None):
         """
         :param 'ClusterAddonsConfigAgentSandboxConfigArgs' agent_sandbox_config: Configuration for the Agent Sandbox addon. Structure is documented below:
@@ -4186,8 +4196,6 @@ class ClusterAddonsConfig(dict):
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-               
-               This example `addons_config` disables two addons:
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -4203,6 +4211,12 @@ class ClusterAddonsConfig(dict):
         :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: . 
                The status of the slice controller addon.
                It is disabled by default. Set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigSlurmOperatorConfigArgs' slurm_operator_config: The status of the Slurm Operator addon,
+               which creates slurm related CRDs and KCP pods to manage them.
+               Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+               It can not be enabled for Autopilot clusters.
+               
+               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4243,6 +4257,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if slice_controller_config is not None:
             pulumi.set(__self__, "slice_controller_config", slice_controller_config)
+        if slurm_operator_config is not None:
+            pulumi.set(__self__, "slurm_operator_config", slurm_operator_config)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
@@ -4409,8 +4425,6 @@ class ClusterAddonsConfig(dict):
     def pod_snapshot_config(self) -> Optional['outputs.ClusterAddonsConfigPodSnapshotConfig']:
         """
         The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "pod_snapshot_config")
 
@@ -4442,6 +4456,19 @@ class ClusterAddonsConfig(dict):
         It is disabled by default. Set `enabled = true` to enable.
         """
         return pulumi.get(self, "slice_controller_config")
+
+    @_builtins.property
+    @pulumi.getter(name="slurmOperatorConfig")
+    def slurm_operator_config(self) -> Optional['outputs.ClusterAddonsConfigSlurmOperatorConfig']:
+        """
+        The status of the Slurm Operator addon,
+        which creates slurm related CRDs and KCP pods to manage them.
+        Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+        It can not be enabled for Autopilot clusters.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "slurm_operator_config")
 
     @_builtins.property
     @pulumi.getter(name="statefulHaConfig")
@@ -4879,6 +4906,18 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig(dict):
 
 @pulumi.output_type
 class ClusterAddonsConfigSliceControllerConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigSlurmOperatorConfig(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -7981,6 +8020,8 @@ class ClusterNodeConfig(dict):
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
             suggest = "node_group"
+        elif key == "nodeImageConfigs":
+            suggest = "node_image_configs"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
@@ -8049,6 +8090,7 @@ class ClusterNodeConfig(dict):
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
                  min_cpu_platform: Optional[_builtins.str] = None,
                  node_group: Optional[_builtins.str] = None,
+                 node_image_configs: Optional[Sequence['outputs.ClusterNodeConfigNodeImageConfig']] = None,
                  oauth_scopes: Optional[Sequence[_builtins.str]] = None,
                  preemptible: Optional[_builtins.bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodeConfigReservationAffinity'] = None,
@@ -8140,6 +8182,7 @@ class ClusterNodeConfig(dict):
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param _builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        :param Sequence['ClusterNodeConfigNodeImageConfigArgs'] node_image_configs: The node image configuration to use for this node pool. Structure is documented below.
         :param Sequence[_builtins.str] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -8238,6 +8281,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -8561,6 +8606,14 @@ class ClusterNodeConfig(dict):
         Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         """
         return pulumi.get(self, "node_group")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> Optional[Sequence['outputs.ClusterNodeConfigNodeImageConfig']]:
+        """
+        The node image configuration to use for this node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_image_configs")
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -11121,6 +11174,54 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodeConfigNodeImageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageProject":
+            suggest = "image_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigNodeImageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigNodeImageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigNodeImageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image: Optional[_builtins.str] = None,
+                 image_project: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image: The name of the image to use for this node.
+        :param _builtins.str image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[_builtins.str]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> Optional[_builtins.str]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+
+@pulumi.output_type
 class ClusterNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -13259,6 +13360,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
             suggest = "node_group"
+        elif key == "nodeImageConfigs":
+            suggest = "node_image_configs"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
@@ -13327,6 +13430,7 @@ class ClusterNodePoolNodeConfig(dict):
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
                  min_cpu_platform: Optional[_builtins.str] = None,
                  node_group: Optional[_builtins.str] = None,
+                 node_image_configs: Optional[Sequence['outputs.ClusterNodePoolNodeConfigNodeImageConfig']] = None,
                  oauth_scopes: Optional[Sequence[_builtins.str]] = None,
                  preemptible: Optional[_builtins.bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity'] = None,
@@ -13418,6 +13522,7 @@ class ClusterNodePoolNodeConfig(dict):
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param _builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        :param Sequence['ClusterNodePoolNodeConfigNodeImageConfigArgs'] node_image_configs: The node image configuration to use for this node pool. Structure is documented below.
         :param Sequence[_builtins.str] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -13516,6 +13621,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -13839,6 +13946,14 @@ class ClusterNodePoolNodeConfig(dict):
         Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         """
         return pulumi.get(self, "node_group")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigNodeImageConfig']]:
+        """
+        The node image configuration to use for this node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_image_configs")
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -16399,6 +16514,54 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigNodeImageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageProject":
+            suggest = "image_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigNodeImageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigNodeImageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigNodeImageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image: Optional[_builtins.str] = None,
+                 image_project: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image: The name of the image to use for this node.
+        :param _builtins.str image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[_builtins.str]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> Optional[_builtins.str]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18904,6 +19067,8 @@ class NodePoolNodeConfig(dict):
             suggest = "min_cpu_platform"
         elif key == "nodeGroup":
             suggest = "node_group"
+        elif key == "nodeImageConfigs":
+            suggest = "node_image_configs"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
@@ -18972,6 +19137,7 @@ class NodePoolNodeConfig(dict):
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
                  min_cpu_platform: Optional[_builtins.str] = None,
                  node_group: Optional[_builtins.str] = None,
+                 node_image_configs: Optional[Sequence['outputs.NodePoolNodeConfigNodeImageConfig']] = None,
                  oauth_scopes: Optional[Sequence[_builtins.str]] = None,
                  preemptible: Optional[_builtins.bool] = None,
                  reservation_affinity: Optional['outputs.NodePoolNodeConfigReservationAffinity'] = None,
@@ -19020,6 +19186,7 @@ class NodePoolNodeConfig(dict):
         :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param _builtins.str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param _builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        :param Sequence['NodePoolNodeConfigNodeImageConfigArgs'] node_image_configs: The node image configuration to use for this node pool.
         :param Sequence[_builtins.str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param _builtins.bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param 'NodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The reservation affinity configuration for the node pool.
@@ -19099,6 +19266,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -19379,6 +19548,14 @@ class NodePoolNodeConfig(dict):
         Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         """
         return pulumi.get(self, "node_group")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> Optional[Sequence['outputs.NodePoolNodeConfigNodeImageConfig']]:
+        """
+        The node image configuration to use for this node pool.
+        """
+        return pulumi.get(self, "node_image_configs")
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -21836,6 +22013,54 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
+class NodePoolNodeConfigNodeImageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageProject":
+            suggest = "image_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigNodeImageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigNodeImageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigNodeImageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image: Optional[_builtins.str] = None,
+                 image_project: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str image: The name of the image to use for this node.
+        :param _builtins.str image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[_builtins.str]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> Optional[_builtins.str]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+
+@pulumi.output_type
 class NodePoolNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -22646,6 +22871,7 @@ class GetClusterAddonsConfigResult(dict):
                  pod_snapshot_configs: Sequence['outputs.GetClusterAddonsConfigPodSnapshotConfigResult'],
                  ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
                  slice_controller_configs: Sequence['outputs.GetClusterAddonsConfigSliceControllerConfigResult'],
+                 slurm_operator_configs: Sequence['outputs.GetClusterAddonsConfigSlurmOperatorConfigResult'],
                  stateful_ha_configs: Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']):
         """
         :param Sequence['GetClusterAddonsConfigAgentSandboxConfigArgs'] agent_sandbox_configs: The status of the Agent Sandbox addon. It is disabled by default. Set enabled = true to enable.
@@ -22666,6 +22892,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigPodSnapshotConfigArgs'] pod_snapshot_configs: Configuration for the Pod Snapshot feature.
         :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigSliceControllerConfigArgs'] slice_controller_configs: The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigSlurmOperatorConfigArgs'] slurm_operator_configs: The status of the Slurm Operator addon, which creates slurm related CRDs and KCP pods to manage them. Defaults to disabled for Standard clusters; set enabled = true to enable. It can not be enabled for Autopilot clusters.
         :param Sequence['GetClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_configs: The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         """
         pulumi.set(__self__, "agent_sandbox_configs", agent_sandbox_configs)
@@ -22686,6 +22913,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "pod_snapshot_configs", pod_snapshot_configs)
         pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         pulumi.set(__self__, "slice_controller_configs", slice_controller_configs)
+        pulumi.set(__self__, "slurm_operator_configs", slurm_operator_configs)
         pulumi.set(__self__, "stateful_ha_configs", stateful_ha_configs)
 
     @_builtins.property
@@ -22831,6 +23059,14 @@ class GetClusterAddonsConfigResult(dict):
         The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
         """
         return pulumi.get(self, "slice_controller_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="slurmOperatorConfigs")
+    def slurm_operator_configs(self) -> Sequence['outputs.GetClusterAddonsConfigSlurmOperatorConfigResult']:
+        """
+        The status of the Slurm Operator addon, which creates slurm related CRDs and KCP pods to manage them. Defaults to disabled for Standard clusters; set enabled = true to enable. It can not be enabled for Autopilot clusters.
+        """
+        return pulumi.get(self, "slurm_operator_configs")
 
     @_builtins.property
     @pulumi.getter(name="statefulHaConfigs")
@@ -23163,6 +23399,18 @@ class GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult(di
 
 @pulumi.output_type
 class GetClusterAddonsConfigSliceControllerConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigSlurmOperatorConfigResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -25029,6 +25277,7 @@ class GetClusterNodeConfigResult(dict):
                  metadata: Mapping[str, _builtins.str],
                  min_cpu_platform: _builtins.str,
                  node_group: _builtins.str,
+                 node_image_configs: Sequence['outputs.GetClusterNodeConfigNodeImageConfigResult'],
                  oauth_scopes: Sequence[_builtins.str],
                  preemptible: _builtins.bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodeConfigReservationAffinityResult'],
@@ -25077,6 +25326,7 @@ class GetClusterNodeConfigResult(dict):
         :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param _builtins.str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param _builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        :param Sequence['GetClusterNodeConfigNodeImageConfigArgs'] node_image_configs: The node image configuration to use for this node pool.
         :param Sequence[_builtins.str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param _builtins.bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
@@ -25125,6 +25375,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "node_group", node_group)
+        pulumi.set(__self__, "node_image_configs", node_image_configs)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
@@ -25389,6 +25640,14 @@ class GetClusterNodeConfigResult(dict):
         Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         """
         return pulumi.get(self, "node_group")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> Sequence['outputs.GetClusterNodeConfigNodeImageConfigResult']:
+        """
+        The node image configuration to use for this node pool.
+        """
+        return pulumi.get(self, "node_image_configs")
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -27123,6 +27382,35 @@ class GetClusterNodeConfigLocalNvmeSsdBlockConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodeConfigNodeImageConfigResult(dict):
+    def __init__(__self__, *,
+                 image: _builtins.str,
+                 image_project: _builtins.str):
+        """
+        :param _builtins.str image: The name of the image to use for this node.
+        :param _builtins.str image_project: The project containing the image to use for this node.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> _builtins.str:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+
+@pulumi.output_type
 class GetClusterNodeConfigReservationAffinityResult(dict):
     def __init__(__self__, *,
                  consume_reservation_type: _builtins.str,
@@ -28533,6 +28821,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  metadata: Mapping[str, _builtins.str],
                  min_cpu_platform: _builtins.str,
                  node_group: _builtins.str,
+                 node_image_configs: Sequence['outputs.GetClusterNodePoolNodeConfigNodeImageConfigResult'],
                  oauth_scopes: Sequence[_builtins.str],
                  preemptible: _builtins.bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult'],
@@ -28581,6 +28870,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param _builtins.str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param _builtins.str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        :param Sequence['GetClusterNodePoolNodeConfigNodeImageConfigArgs'] node_image_configs: The node image configuration to use for this node pool.
         :param Sequence[_builtins.str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param _builtins.bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodePoolNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
@@ -28629,6 +28919,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "node_group", node_group)
+        pulumi.set(__self__, "node_image_configs", node_image_configs)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
@@ -28893,6 +29184,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         """
         return pulumi.get(self, "node_group")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigNodeImageConfigResult']:
+        """
+        The node image configuration to use for this node pool.
+        """
+        return pulumi.get(self, "node_image_configs")
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -30624,6 +30923,35 @@ class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult(dict):
         Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
         """
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigNodeImageConfigResult(dict):
+    def __init__(__self__, *,
+                 image: _builtins.str,
+                 image_project: _builtins.str):
+        """
+        :param _builtins.str image: The name of the image to use for this node.
+        :param _builtins.str image_project: The project containing the image to use for this node.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> _builtins.str:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
 
 
 @pulumi.output_type

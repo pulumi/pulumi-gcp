@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// Required. Target URLs of the replica zones for the disk.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaZones;
+        /// <summary>
+        /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        /// </summary>
+        public readonly bool? UseProjectServiceAccount;
 
         [OutputConstructor]
         private RestoreWorkloadRegionDiskTargetEnvironment(
@@ -32,11 +36,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
 
             string region,
 
-            ImmutableArray<string> replicaZones)
+            ImmutableArray<string> replicaZones,
+
+            bool? useProjectServiceAccount)
         {
             Project = project;
             Region = region;
             ReplicaZones = replicaZones;
+            UseProjectServiceAccount = useProjectServiceAccount;
         }
     }
 }

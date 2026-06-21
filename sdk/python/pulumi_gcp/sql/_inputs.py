@@ -2935,9 +2935,17 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
     """
     A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
     """
+    psc_auto_dns_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether PSC auto DNS is enabled for this instance.
+    """
     psc_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether PSC connectivity is enabled for this instance.
+    """
+    psc_write_endpoint_dns_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
     """
 
 @pulumi.input_type
@@ -2946,12 +2954,16 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
                  allowed_consumer_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  network_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]] = None,
-                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 psc_auto_dns_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 psc_write_endpoint_dns_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param pulumi.Input[_builtins.str] network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+        :param pulumi.Input[_builtins.bool] psc_auto_dns_enabled: Whether PSC auto DNS is enabled for this instance.
         :param pulumi.Input[_builtins.bool] psc_enabled: Whether PSC connectivity is enabled for this instance.
+        :param pulumi.Input[_builtins.bool] psc_write_endpoint_dns_enabled: Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
@@ -2959,8 +2971,12 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
             pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
         if psc_auto_connections is not None:
             pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
+        if psc_auto_dns_enabled is not None:
+            pulumi.set(__self__, "psc_auto_dns_enabled", psc_auto_dns_enabled)
         if psc_enabled is not None:
             pulumi.set(__self__, "psc_enabled", psc_enabled)
+        if psc_write_endpoint_dns_enabled is not None:
+            pulumi.set(__self__, "psc_write_endpoint_dns_enabled", psc_write_endpoint_dns_enabled)
 
     @_builtins.property
     @pulumi.getter(name="allowedConsumerProjects")
@@ -2999,6 +3015,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
         pulumi.set(self, "psc_auto_connections", value)
 
     @_builtins.property
+    @pulumi.getter(name="pscAutoDnsEnabled")
+    def psc_auto_dns_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether PSC auto DNS is enabled for this instance.
+        """
+        return pulumi.get(self, "psc_auto_dns_enabled")
+
+    @psc_auto_dns_enabled.setter
+    def psc_auto_dns_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "psc_auto_dns_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="pscEnabled")
     def psc_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -3009,6 +3037,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     @psc_enabled.setter
     def psc_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psc_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscWriteEndpointDnsEnabled")
+    def psc_write_endpoint_dns_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+        """
+        return pulumi.get(self, "psc_write_endpoint_dns_enabled")
+
+    @psc_write_endpoint_dns_enabled.setter
+    def psc_write_endpoint_dns_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "psc_write_endpoint_dns_enabled", value)
 
 
 class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(TypedDict):

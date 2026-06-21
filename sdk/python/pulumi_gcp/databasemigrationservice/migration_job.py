@@ -26,6 +26,7 @@ class MigrationJobArgs:
                  source: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional['MigrationJobDumpFlagsArgs']] = None,
                  dump_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,7 @@ class MigrationJobArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reverse_ssh_connectivity: pulumi.Input[Optional['MigrationJobReverseSshConnectivityArgs']] = None,
                  static_ip_connectivity: pulumi.Input[Optional['MigrationJobStaticIpConnectivityArgs']] = None,
+                 stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  vpc_peering_connectivity: pulumi.Input[Optional['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
@@ -53,6 +55,8 @@ class MigrationJobArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+               Possible values are: `NOT_STARTED`, `RUNNING`.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input['MigrationJobDumpFlagsArgs'] dump_flags: The initial dump flags.
                Structure is documented below.
@@ -82,6 +86,7 @@ class MigrationJobArgs:
                connections from the public IP of the destination database.
                You can retrieve the public IP of the Cloud SQL instance from the
                Cloud SQL console or using Cloud SQL APIs.
+        :param pulumi.Input[_builtins.bool] stop_on_warnings: If set to true, will stop the pulumi up if there are validation warnings.
         :param pulumi.Input['MigrationJobVpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
                Structure is documented below.
         """
@@ -91,6 +96,8 @@ class MigrationJobArgs:
         pulumi.set(__self__, "type", type)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if dump_flags is not None:
@@ -115,6 +122,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "reverse_ssh_connectivity", reverse_ssh_connectivity)
         if static_ip_connectivity is not None:
             pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
+        if stop_on_warnings is not None:
+            pulumi.set(__self__, "stop_on_warnings", stop_on_warnings)
         if vpc_peering_connectivity is not None:
             pulumi.set(__self__, "vpc_peering_connectivity", vpc_peering_connectivity)
 
@@ -183,6 +192,19 @@ class MigrationJobArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        Possible values are: `NOT_STARTED`, `RUNNING`.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -346,6 +368,18 @@ class MigrationJobArgs:
         pulumi.set(self, "static_ip_connectivity", value)
 
     @_builtins.property
+    @pulumi.getter(name="stopOnWarnings")
+    def stop_on_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, will stop the pulumi up if there are validation warnings.
+        """
+        return pulumi.get(self, "stop_on_warnings")
+
+    @stop_on_warnings.setter
+    def stop_on_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "stop_on_warnings", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcPeeringConnectivity")
     def vpc_peering_connectivity(self) -> pulumi.Input[Optional['MigrationJobVpcPeeringConnectivityArgs']]:
         """
@@ -364,6 +398,7 @@ class _MigrationJobState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional['MigrationJobDumpFlagsArgs']] = None,
@@ -385,6 +420,7 @@ class _MigrationJobState:
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_connectivity: pulumi.Input[Optional['MigrationJobStaticIpConnectivityArgs']] = None,
+                 stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_peering_connectivity: pulumi.Input[Optional['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
@@ -397,6 +433,8 @@ class _MigrationJobState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+               Possible values are: `NOT_STARTED`, `RUNNING`.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input['MigrationJobDumpFlagsArgs'] dump_flags: The initial dump flags.
@@ -437,6 +475,7 @@ class _MigrationJobState:
                connections from the public IP of the destination database.
                You can retrieve the public IP of the Cloud SQL instance from the
                Cloud SQL console or using Cloud SQL APIs.
+        :param pulumi.Input[_builtins.bool] stop_on_warnings: If set to true, will stop the pulumi up if there are validation warnings.
         :param pulumi.Input[_builtins.str] type: The type of the migration job.
                Possible values are: `ONE_TIME`, `CONTINUOUS`.
         :param pulumi.Input['MigrationJobVpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
@@ -446,6 +485,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if display_name is not None:
@@ -488,6 +529,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "state", state)
         if static_ip_connectivity is not None:
             pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
+        if stop_on_warnings is not None:
+            pulumi.set(__self__, "stop_on_warnings", stop_on_warnings)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vpc_peering_connectivity is not None:
@@ -521,6 +564,19 @@ class _MigrationJobState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        Possible values are: `NOT_STARTED`, `RUNNING`.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter
@@ -794,6 +850,18 @@ class _MigrationJobState:
         pulumi.set(self, "static_ip_connectivity", value)
 
     @_builtins.property
+    @pulumi.getter(name="stopOnWarnings")
+    def stop_on_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, will stop the pulumi up if there are validation warnings.
+        """
+        return pulumi.get(self, "stop_on_warnings")
+
+    @stop_on_warnings.setter
+    def stop_on_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "stop_on_warnings", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -827,6 +895,7 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -842,6 +911,7 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_connectivity: pulumi.Input[Optional[Union['MigrationJobStaticIpConnectivityArgs', 'MigrationJobStaticIpConnectivityArgsDict']]] = None,
+                 stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_peering_connectivity: pulumi.Input[Optional[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict']]] = None,
                  __props__=None):
@@ -1243,6 +1313,8 @@ class MigrationJob(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+               Possible values are: `NOT_STARTED`, `RUNNING`.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']] dump_flags: The initial dump flags.
@@ -1275,6 +1347,7 @@ class MigrationJob(pulumi.CustomResource):
                connections from the public IP of the destination database.
                You can retrieve the public IP of the Cloud SQL instance from the
                Cloud SQL console or using Cloud SQL APIs.
+        :param pulumi.Input[_builtins.bool] stop_on_warnings: If set to true, will stop the pulumi up if there are validation warnings.
         :param pulumi.Input[_builtins.str] type: The type of the migration job.
                Possible values are: `ONE_TIME`, `CONTINUOUS`.
         :param pulumi.Input[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
@@ -1692,6 +1765,7 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -1707,6 +1781,7 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_connectivity: pulumi.Input[Optional[Union['MigrationJobStaticIpConnectivityArgs', 'MigrationJobStaticIpConnectivityArgsDict']]] = None,
+                 stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_peering_connectivity: pulumi.Input[Optional[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict']]] = None,
                  __props__=None):
@@ -1719,6 +1794,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["desired_state"] = desired_state
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -1740,6 +1816,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             __props__.__dict__["static_ip_connectivity"] = static_ip_connectivity
+            __props__.__dict__["stop_on_warnings"] = stop_on_warnings
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -1765,6 +1842,7 @@ class MigrationJob(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             destination: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -1786,6 +1864,7 @@ class MigrationJob(pulumi.CustomResource):
             source: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             static_ip_connectivity: pulumi.Input[Optional[Union['MigrationJobStaticIpConnectivityArgs', 'MigrationJobStaticIpConnectivityArgsDict']]] = None,
+            stop_on_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_peering_connectivity: pulumi.Input[Optional[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict']]] = None) -> 'MigrationJob':
         """
@@ -1802,6 +1881,8 @@ class MigrationJob(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+               Possible values are: `NOT_STARTED`, `RUNNING`.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']] dump_flags: The initial dump flags.
@@ -1842,6 +1923,7 @@ class MigrationJob(pulumi.CustomResource):
                connections from the public IP of the destination database.
                You can retrieve the public IP of the Cloud SQL instance from the
                Cloud SQL console or using Cloud SQL APIs.
+        :param pulumi.Input[_builtins.bool] stop_on_warnings: If set to true, will stop the pulumi up if there are validation warnings.
         :param pulumi.Input[_builtins.str] type: The type of the migration job.
                Possible values are: `ONE_TIME`, `CONTINUOUS`.
         :param pulumi.Input[Union['MigrationJobVpcPeeringConnectivityArgs', 'MigrationJobVpcPeeringConnectivityArgsDict']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
@@ -1853,6 +1935,7 @@ class MigrationJob(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["destination"] = destination
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["dump_flags"] = dump_flags
@@ -1874,6 +1957,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ip_connectivity"] = static_ip_connectivity
+        __props__.__dict__["stop_on_warnings"] = stop_on_warnings
         __props__.__dict__["type"] = type
         __props__.__dict__["vpc_peering_connectivity"] = vpc_peering_connectivity
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
@@ -1898,6 +1982,15 @@ class MigrationJob(pulumi.CustomResource):
         When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        Possible values are: `NOT_STARTED`, `RUNNING`.
+        """
+        return pulumi.get(self, "desired_state")
 
     @_builtins.property
     @pulumi.getter
@@ -2085,6 +2178,14 @@ class MigrationJob(pulumi.CustomResource):
         Cloud SQL console or using Cloud SQL APIs.
         """
         return pulumi.get(self, "static_ip_connectivity")
+
+    @_builtins.property
+    @pulumi.getter(name="stopOnWarnings")
+    def stop_on_warnings(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to true, will stop the pulumi up if there are validation warnings.
+        """
+        return pulumi.get(self, "stop_on_warnings")
 
     @_builtins.property
     @pulumi.getter

@@ -18,18 +18,757 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// ## Example Usage
     /// 
+    /// ### Cloudsecuritycompliance Framework Deployment Org Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "An Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringValue = "us-central1",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "oneof-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "test-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     StringValue = "test-value",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "bool-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "bool-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     BoolValue = true,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "number-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "number-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     NumberValue = 123.45,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "string-list-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "string-list-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs
+    ///                                     {
+    ///                                         Values = new[]
+    ///                                         {
+    ///                                             "value1",
+    ///                                             "value2",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFrameworkDeployment = new Gcp.CloudSecurityCompliance.FrameworkDeployment("example", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         FrameworkDeploymentId = "example-deployment",
+    ///         Description = "A framework deployment for cloud security compliance",
+    ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
+    ///         {
+    ///             Framework = example.Name,
+    ///             MajorRevisionId = "1",
+    ///         },
+    ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
+    ///         {
+    ///             ExistingTargetResource = "organizations/123456789",
+    ///         },
+    ///         CloudControlMetadatas = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataArgs
+    ///             {
+    ///                 EnforcementMode = "DETECTIVE",
+    ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
+    ///                 {
+    ///                     Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                     MajorRevisionId = "2",
+    ///                     Parameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "enabled",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 BoolValue = true,
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "regions",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-central1",
+    ///                                         "us-west1",
+    ///                                         "us-east1",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "location",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 StringValue = "us-central1",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "oneof-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "test-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         StringValue = "test-value",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "bool-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "bool-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         BoolValue = true,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "number-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "number-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         NumberValue = 123.45,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "string-list-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "string-list-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs
+    ///                                         {
+    ///                                             Values = new[]
+    ///                                             {
+    ///                                                 "value1",
+    ///                                                 "value2",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Deployment Project Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "An Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringValue = "us-central1",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "oneof-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "test-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     StringValue = "test-value",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "bool-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "bool-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     BoolValue = true,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "number-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "number-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     NumberValue = 123.45,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "string-list-parameter",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+    ///                             {
+    ///                                 Name = "string-list-oneof",
+    ///                                 ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+    ///                                 {
+    ///                                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs
+    ///                                     {
+    ///                                         Values = new[]
+    ///                                         {
+    ///                                             "value1",
+    ///                                             "value2",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFrameworkDeployment = new Gcp.CloudSecurityCompliance.FrameworkDeployment("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         FrameworkDeploymentId = "example-deployment",
+    ///         Description = "A framework deployment for cloud security compliance",
+    ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
+    ///         {
+    ///             Framework = example.Name,
+    ///             MajorRevisionId = "1",
+    ///         },
+    ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
+    ///         {
+    ///             ExistingTargetResource = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}",
+    ///         },
+    ///         CloudControlMetadatas = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataArgs
+    ///             {
+    ///                 EnforcementMode = "DETECTIVE",
+    ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
+    ///                 {
+    ///                     Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                     MajorRevisionId = "2",
+    ///                     Parameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "enabled",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 BoolValue = true,
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "regions",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-central1",
+    ///                                         "us-west1",
+    ///                                         "us-east1",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "location",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 StringValue = "us-central1",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "oneof-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "test-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         StringValue = "test-value",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "bool-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "bool-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         BoolValue = true,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "number-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "number-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         NumberValue = 123.45,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "string-list-parameter",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 OneofValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+    ///                                 {
+    ///                                     Name = "string-list-oneof",
+    ///                                     ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+    ///                                     {
+    ///                                         StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs
+    ///                                         {
+    ///                                             Values = new[]
+    ///                                             {
+    ///                                                 "value1",
+    ///                                                 "value2",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "A Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             NumberValue = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFrameworkDeployment = new Gcp.CloudSecurityCompliance.FrameworkDeployment("example", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         FrameworkDeploymentId = "example-deployment",
+    ///         Description = "A framework deployment with org parent targeting a project",
+    ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
+    ///         {
+    ///             Framework = example.Name,
+    ///             MajorRevisionId = "1",
+    ///         },
+    ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
+    ///         {
+    ///             ExistingTargetResource = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}",
+    ///         },
+    ///         CloudControlMetadatas = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataArgs
+    ///             {
+    ///                 EnforcementMode = "DETECTIVE",
+    ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
+    ///                 {
+    ///                     Name = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                     MajorRevisionId = "2",
+    ///                     Parameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "location",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 NumberValue = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     // App Hub Application resource to act as the target
+    ///     var application = new Gcp.Apphub.Application("application", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ApplicationId = "example-app",
+    ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+    ///         {
+    ///             Type = "REGIONAL",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "A Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             NumberValue = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFrameworkDeployment = new Gcp.CloudSecurityCompliance.FrameworkDeployment("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         FrameworkDeploymentId = "example-deployment",
+    ///         Description = "A framework deployment with project parent targeting an application",
+    ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
+    ///         {
+    ///             Framework = example.Name,
+    ///             MajorRevisionId = "1",
+    ///         },
+    ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
+    ///         {
+    ///             ExistingTargetResource = Output.Tuple(project, application.ApplicationId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var applicationId = values.Item2;
+    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/us-central1/applications/{applicationId}";
+    ///             }),
+    ///         },
+    ///         CloudControlMetadatas = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataArgs
+    ///             {
+    ///                 EnforcementMode = "DETECTIVE",
+    ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
+    ///                 {
+    ///                     Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                     MajorRevisionId = "2",
+    ///                     Parameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "location",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 NumberValue = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "An Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringValue = "us-central1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFrameworkDeployment = new Gcp.CloudSecurityCompliance.FrameworkDeployment("example", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         FrameworkDeploymentId = "example-deployment",
+    ///         Description = "A framework deployment for cloud security compliance",
+    ///         Framework = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentFrameworkArgs
+    ///         {
+    ///             Framework = example.Name,
+    ///             MajorRevisionId = "1",
+    ///         },
+    ///         TargetResourceConfig = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentTargetResourceConfigArgs
+    ///         {
+    ///             ExistingTargetResource = "organizations/123456789",
+    ///         },
+    ///         CloudControlMetadatas = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataArgs
+    ///             {
+    ///                 EnforcementMode = "DETECTIVE",
+    ///                 CloudControlDetails = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs
+    ///                 {
+    ///                     Name = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+    ///                     MajorRevisionId = "2",
+    ///                     Parameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs
+    ///                         {
+    ///                             Name = "enabled",
+    ///                             ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs
+    ///                             {
+    ///                                 BoolValue = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FrameworkDeployment can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-    /// * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+    /// * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
     /// 
     /// When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-    /// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+    /// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment")]
@@ -138,20 +877,32 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
-        public Output<string> Location { get; private set; } = null!;
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. FrameworkDeployment name in the following format:
-        /// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        /// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// TargetResourceConfig contains either the name of the TargetResource or
@@ -268,14 +1019,26 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
-        [Input("organization", required: true)]
-        public Input<string> Organization { get; set; } = null!;
+        [Input("organization")]
+        public Input<string>? Organization { get; set; }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// TargetResourceConfig contains either the name of the TargetResource or
@@ -412,16 +1175,28 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
 
         /// <summary>
         /// Identifier. FrameworkDeployment name in the following format:
-        /// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        /// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// TargetResourceConfig contains either the name of the TargetResource or

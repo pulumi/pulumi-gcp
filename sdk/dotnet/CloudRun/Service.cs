@@ -165,13 +165,6 @@ namespace Pulumi.Gcp.CloudRun
     ///     {
     ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
-    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///         {
-    ///             Annotations = 
-    ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
-    ///             },
-    ///         },
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
     ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
@@ -180,6 +173,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                 {
     ///                     { "autoscaling.knative.dev/maxScale", "1" },
     ///                     { "run.googleapis.com/cpu-throttling", "false" },
+    ///                     { "run.googleapis.com/gpu-zonal-redundancy-disabled", "true" },
     ///                 },
     ///             },
     ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -388,13 +382,6 @@ namespace Pulumi.Gcp.CloudRun
     ///     {
     ///         Name = "cloudrun-srv-rp",
     ///         Location = "us-central1",
-    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///         {
-    ///             Annotations = 
-    ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
-    ///             },
-    ///         },
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
     ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs

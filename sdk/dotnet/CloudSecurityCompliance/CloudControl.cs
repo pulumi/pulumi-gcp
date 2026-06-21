@@ -18,7 +18,459 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// ## Example Usage
     /// 
-    /// ### Cloudsecuritycompliance Cloudcontrol Basic
+    /// ### Cloudsecuritycompliance Cloudcontrol Org Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.CloudSecurityCompliance.CloudControl("example", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         CloudControlId = "example-cloudcontrol",
+    ///         DisplayName = "TF test CloudControl Name",
+    ///         Description = "A test cloud control for security compliance",
+    ///         Categories = new[]
+    ///         {
+    ///             "CC_CATEGORY_INFRASTRUCTURE",
+    ///         },
+    ///         Severity = "HIGH",
+    ///         FindingCategory = "SECURITY_POLICY",
+    ///         RemediationSteps = "Review and update the security configuration according to best practices.",
+    ///         SupportedCloudProviders = new[]
+    ///         {
+    ///             "GCP",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleArgs
+    ///             {
+    ///                 Description = "Ensure compute instances have secure boot enabled",
+    ///                 RuleActionTypes = new[]
+    ///                 {
+    ///                     "RULE_ACTION_TYPE_DETECTIVE",
+    ///                 },
+    ///                 CelExpression = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionArgs
+    ///                 {
+    ///                     Expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+    ///                     ResourceTypesValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             "compute.googleapis.com/Instance",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ParameterSpecs = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "location",
+    ///                 DisplayName = "Resource Location",
+    ///                 Description = "The location where the resource should be deployed",
+    ///                 ValueType = "STRING",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringValue = "us-central1",
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     RegexpPattern = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationRegexpPatternArgs
+    ///                     {
+    ///                         Pattern = "^[a-z]+-[a-z]+[0-9]$",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "enable_secure_boot",
+    ///                 DisplayName = "Enable Secure Boot",
+    ///                 Description = "Whether to enable secure boot for instances",
+    ///                 ValueType = "BOOLEAN",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     BoolValue = true,
+    ///                 },
+    ///                 SubstitutionRules = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleArgs
+    ///                     {
+    ///                         AttributeSubstitutionRule = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs
+    ///                         {
+    ///                             Attribute = "rules[0].cel_expression.expression",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 BoolValue = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "max_instances",
+    ///                 DisplayName = "Maximum Instances",
+    ///                 Description = "Maximum number of instances allowed",
+    ///                 ValueType = "NUMBER",
+    ///                 IsRequired = false,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     NumberValue = 10,
+    ///                 },
+    ///                 SubstitutionRules = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleArgs
+    ///                     {
+    ///                         PlaceholderSubstitutionRule = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs
+    ///                         {
+    ///                             Attribute = "rules[0].description",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     IntRange = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationIntRangeArgs
+    ///                     {
+    ///                         Min = "1",
+    ///                         Max = "100",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "allowed_regions",
+    ///                 DisplayName = "Allowed Regions",
+    ///                 Description = "List of regions where resources can be deployed",
+    ///                 ValueType = "STRINGLIST",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueStringListValueArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             "us-central1",
+    ///                             "us-east1",
+    ///                             "us-west1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-central1",
+    ///                                         "us-east1",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-west1",
+    ///                                         "us-west2",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "environment_type",
+    ///                 DisplayName = "Environment Type",
+    ///                 Description = "The type of environment",
+    ///                 ValueType = "STRING",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringValue = "production",
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringValue = "production",
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringValue = "staging",
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 NumberValue = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Cloudcontrol Project Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.CloudSecurityCompliance.CloudControl("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         CloudControlId = "example-cloudcontrol",
+    ///         DisplayName = "TF test CloudControl Name",
+    ///         Description = "A test cloud control for security compliance",
+    ///         Categories = new[]
+    ///         {
+    ///             "CC_CATEGORY_INFRASTRUCTURE",
+    ///         },
+    ///         Severity = "HIGH",
+    ///         FindingCategory = "SECURITY_POLICY",
+    ///         RemediationSteps = "Review and update the security configuration according to best practices.",
+    ///         SupportedCloudProviders = new[]
+    ///         {
+    ///             "GCP",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleArgs
+    ///             {
+    ///                 Description = "Ensure compute instances have secure boot enabled",
+    ///                 RuleActionTypes = new[]
+    ///                 {
+    ///                     "RULE_ACTION_TYPE_DETECTIVE",
+    ///                 },
+    ///                 CelExpression = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionArgs
+    ///                 {
+    ///                     Expression = "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+    ///                     ResourceTypesValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlRuleCelExpressionResourceTypesValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             "compute.googleapis.com/Instance",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ParameterSpecs = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "location",
+    ///                 DisplayName = "Resource Location",
+    ///                 Description = "The location where the resource should be deployed",
+    ///                 ValueType = "STRING",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringValue = "us-central1",
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     RegexpPattern = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationRegexpPatternArgs
+    ///                     {
+    ///                         Pattern = "^[a-z]+-[a-z]+[0-9]$",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "enable_secure_boot",
+    ///                 DisplayName = "Enable Secure Boot",
+    ///                 Description = "Whether to enable secure boot for instances",
+    ///                 ValueType = "BOOLEAN",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     BoolValue = true,
+    ///                 },
+    ///                 SubstitutionRules = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleArgs
+    ///                     {
+    ///                         AttributeSubstitutionRule = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs
+    ///                         {
+    ///                             Attribute = "rules[0].cel_expression.expression",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 BoolValue = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "max_instances",
+    ///                 DisplayName = "Maximum Instances",
+    ///                 Description = "Maximum number of instances allowed",
+    ///                 ValueType = "NUMBER",
+    ///                 IsRequired = false,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     NumberValue = 10,
+    ///                 },
+    ///                 SubstitutionRules = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRuleArgs
+    ///                     {
+    ///                         PlaceholderSubstitutionRule = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs
+    ///                         {
+    ///                             Attribute = "rules[0].description",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     IntRange = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationIntRangeArgs
+    ///                     {
+    ///                         Min = "1",
+    ///                         Max = "100",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "allowed_regions",
+    ///                 DisplayName = "Allowed Regions",
+    ///                 Description = "List of regions where resources can be deployed",
+    ///                 ValueType = "STRINGLIST",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueStringListValueArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             "us-central1",
+    ///                             "us-east1",
+    ///                             "us-west1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-central1",
+    ///                                         "us-east1",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringListValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs
+    ///                                 {
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "us-west1",
+    ///                                         "us-west2",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecArgs
+    ///             {
+    ///                 Name = "environment_type",
+    ///                 DisplayName = "Environment Type",
+    ///                 Description = "The type of environment",
+    ///                 ValueType = "STRING",
+    ///                 IsRequired = true,
+    ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
+    ///                 {
+    ///                     StringValue = "production",
+    ///                 },
+    ///                 Validation = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationArgs
+    ///                 {
+    ///                     AllowedValues = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringValue = "production",
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 StringValue = "staging",
+    ///                             },
+    ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
+    ///                             {
+    ///                                 NumberValue = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -249,13 +701,13 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// CloudControl can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
-    /// * `{{organization}}/{{location}}/{{cloud_control_id}}`
+    /// * `{{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
     /// 
     /// When using the `pulumi import` command, CloudControl can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
-    /// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
+    /// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudsecuritycompliance/cloudControl:CloudControl")]
@@ -335,7 +787,10 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -346,6 +801,15 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// </summary>
         [Output("parameterSpecs")]
         public Output<ImmutableArray<Outputs.CloudControlParameterSpec>> ParameterSpecs { get; private set; } = null!;
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// The Frameworks that include this CloudControl
@@ -499,10 +963,13 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
-        [Input("organization", required: true)]
-        public Input<string> Organization { get; set; } = null!;
+        [Input("organization")]
+        public Input<string>? Organization { get; set; }
 
         [Input("parameterSpecs")]
         private InputList<Inputs.CloudControlParameterSpecArgs>? _parameterSpecs;
@@ -516,6 +983,15 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
             get => _parameterSpecs ?? (_parameterSpecs = new InputList<Inputs.CloudControlParameterSpecArgs>());
             set => _parameterSpecs = value;
         }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// The remediation steps for the findings generated by the cloud control. The
@@ -647,7 +1123,10 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
@@ -664,6 +1143,15 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
             get => _parameterSpecs ?? (_parameterSpecs = new InputList<Inputs.CloudControlParameterSpecGetArgs>());
             set => _parameterSpecs = value;
         }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         [Input("relatedFrameworks")]
         private InputList<string>? _relatedFrameworks;

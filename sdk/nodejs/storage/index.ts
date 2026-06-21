@@ -130,6 +130,16 @@ export const getControlProjectIntelligenceConfig: typeof import("./getControlPro
 export const getControlProjectIntelligenceConfigOutput: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getControlProjectIntelligenceConfig","getControlProjectIntelligenceConfigOutput"], () => require("./getControlProjectIntelligenceConfig"));
 
+export { GetControlProjectIntelligenceFindingArgs, GetControlProjectIntelligenceFindingResult, GetControlProjectIntelligenceFindingOutputArgs } from "./getControlProjectIntelligenceFinding";
+export const getControlProjectIntelligenceFinding: typeof import("./getControlProjectIntelligenceFinding").getControlProjectIntelligenceFinding = null as any;
+export const getControlProjectIntelligenceFindingOutput: typeof import("./getControlProjectIntelligenceFinding").getControlProjectIntelligenceFindingOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceFinding","getControlProjectIntelligenceFindingOutput"], () => require("./getControlProjectIntelligenceFinding"));
+
+export { GetControlProjectIntelligenceFindingsArgs, GetControlProjectIntelligenceFindingsResult, GetControlProjectIntelligenceFindingsOutputArgs } from "./getControlProjectIntelligenceFindings";
+export const getControlProjectIntelligenceFindings: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindings = null as any;
+export const getControlProjectIntelligenceFindingsOutput: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindingsOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceFindings","getControlProjectIntelligenceFindingsOutput"], () => require("./getControlProjectIntelligenceFindings"));
+
 export { GetInsightsDatasetConfigArgs, GetInsightsDatasetConfigResult, GetInsightsDatasetConfigOutputArgs } from "./getInsightsDatasetConfig";
 export const getInsightsDatasetConfig: typeof import("./getInsightsDatasetConfig").getInsightsDatasetConfig = null as any;
 export const getInsightsDatasetConfigOutput: typeof import("./getInsightsDatasetConfig").getInsightsDatasetConfigOutput = null as any;

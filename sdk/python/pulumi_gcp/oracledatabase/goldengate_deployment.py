@@ -585,7 +585,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                     "admin_username": "admin",
                     "admin_password": "123Abpassword!",
                     "deployment": "deployment",
-                    "ogg_version": "oggoracle:21.18.0.0.0_250405.0903_12211",
+                    "ogg_version": "oggoracle:23.26.2.0.0_260417.1915_14223",
                 },
                 "maintenance_window": {
                     "day": "MONDAY",
@@ -708,7 +708,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                     "admin_username": "admin",
                     "admin_password": "123Abpassword!",
                     "deployment": "deployment",
-                    "ogg_version": "oggoracle:21.18.0.0.0_250405.0903_12211",
+                    "ogg_version": "oggoracle:23.26.2.0.0_260417.1915_14223",
                 },
                 "maintenance_window": {
                     "day": "MONDAY",

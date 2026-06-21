@@ -84,8 +84,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Address;
  * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.compute.SecurityScanConfig;
  * import com.pulumi.gcp.compute.SecurityScanConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -103,12 +106,20 @@ import javax.annotation.Nullable;
  *             .name("scan-ignore-http-ip")
  *             .build());
  * 
+ *         var wait15Seconds = new Sleep("wait15Seconds", SleepArgs.builder()
+ *             .createDuration("15s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(scannerStaticIp)
+ *                 .build());
+ * 
  *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
  *             .displayName("terraform-scan-config")
  *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
  *             .targetPlatforms("COMPUTE")
  *             .ignoreHttpStatusErrors(true)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait15Seconds)
+ *                 .build());
  * 
  *     }
  * }

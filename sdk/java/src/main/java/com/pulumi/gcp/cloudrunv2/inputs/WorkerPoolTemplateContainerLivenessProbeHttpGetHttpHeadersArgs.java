@@ -5,7 +5,6 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,44 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArg
      * Required. The header field name
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Required. The header field name
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * (Optional, Deprecated)
+     * Required. The header field name
+     * 
+     * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     * @deprecated
+     * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     */
+    @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return (Optional, Deprecated)
+     * Required. The header field name
+     * 
+     * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     * @deprecated
+     * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     */
+    @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -50,6 +78,7 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArg
     private WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs() {}
 
     private WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs $) {
+        this.name = $.name;
         this.port = $.port;
         this.value = $.value;
     }
@@ -73,22 +102,57 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArg
         }
 
         /**
-         * @param port Required. The header field name
+         * @param name Required. The header field name
          * 
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Required. The header field name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param port (Optional, Deprecated)
+         * Required. The header field name
+         * 
+         * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+         * 
+         */
+        @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port Required. The header field name
+         * @param port (Optional, Deprecated)
+         * Required. The header field name
+         * 
+         * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+         * 
          */
+        @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
@@ -115,9 +179,6 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArg
         }
 
         public WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs build() {
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs", "port");
-            }
             return $;
         }
     }

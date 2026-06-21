@@ -100,6 +100,11 @@ export type EnvironmentApiRevisionDeployment = import("./environmentApiRevisionD
 export const EnvironmentApiRevisionDeployment: typeof import("./environmentApiRevisionDeployment").EnvironmentApiRevisionDeployment = null as any;
 utilities.lazyLoad(exports, ["EnvironmentApiRevisionDeployment"], () => require("./environmentApiRevisionDeployment"));
 
+export { EnvironmentDebugmaskArgs, EnvironmentDebugmaskState } from "./environmentDebugmask";
+export type EnvironmentDebugmask = import("./environmentDebugmask").EnvironmentDebugmask;
+export const EnvironmentDebugmask: typeof import("./environmentDebugmask").EnvironmentDebugmask = null as any;
+utilities.lazyLoad(exports, ["EnvironmentDebugmask"], () => require("./environmentDebugmask"));
+
 export { EnvironmentIamBindingArgs, EnvironmentIamBindingState } from "./environmentIamBinding";
 export type EnvironmentIamBinding = import("./environmentIamBinding").EnvironmentIamBinding;
 export const EnvironmentIamBinding: typeof import("./environmentIamBinding").EnvironmentIamBinding = null as any;
@@ -263,6 +268,8 @@ const _module = {
                 return new EnvironmentAddonsConfig(name, <any>undefined, { urn })
             case "gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment":
                 return new EnvironmentApiRevisionDeployment(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentDebugmask:EnvironmentDebugmask":
+                return new EnvironmentDebugmask(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
                 return new EnvironmentIamBinding(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
@@ -331,6 +338,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/envReferences", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentAddonsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentApiRevisionDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentDebugmask", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)

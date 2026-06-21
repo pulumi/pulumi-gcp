@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ReservationDeleteAfterDurationArgs;
+import com.pulumi.gcp.compute.inputs.ReservationParamsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationReservationSharingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
@@ -140,6 +141,23 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<ReservationParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -250,6 +268,7 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.enableEmergentMaintenance = $.enableEmergentMaintenance;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.reservationSharingPolicy = $.reservationSharingPolicy;
         this.shareSettings = $.shareSettings;
@@ -428,6 +447,29 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<ReservationParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(ReservationParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

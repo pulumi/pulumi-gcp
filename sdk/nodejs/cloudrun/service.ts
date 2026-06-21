@@ -102,16 +102,12 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrun.Service("default", {
  *     name: "cloudrun-srv",
  *     location: "us-central1",
- *     metadata: {
- *         annotations: {
- *             "run.googleapis.com/launch-stage": "BETA",
- *         },
- *     },
  *     template: {
  *         metadata: {
  *             annotations: {
  *                 "autoscaling.knative.dev/maxScale": "1",
  *                 "run.googleapis.com/cpu-throttling": "false",
+ *                 "run.googleapis.com/gpu-zonal-redundancy-disabled": "true",
  *             },
  *         },
  *         spec: {
@@ -242,11 +238,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrun.Service("default", {
  *     name: "cloudrun-srv-rp",
  *     location: "us-central1",
- *     metadata: {
- *         annotations: {
- *             "run.googleapis.com/launch-stage": "BETA",
- *         },
- *     },
  *     template: {
  *         spec: {
  *             containers: [{

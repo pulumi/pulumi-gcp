@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
         /// <summary>
         /// (Output)
         /// The name of the CloudControlDeployment. The format is:
-        /// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+        /// {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
         /// </summary>
         [Input("cloudControlDeployment")]
         public Input<string>? CloudControlDeployment { get; set; }

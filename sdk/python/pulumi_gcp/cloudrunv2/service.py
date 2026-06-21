@@ -1511,7 +1511,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -2172,7 +2171,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",

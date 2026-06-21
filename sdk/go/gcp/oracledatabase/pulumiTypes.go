@@ -37706,6 +37706,273 @@ func (o GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput) Index(i
 	}).(GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput)
 }
 
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersion struct {
+	// The name of the Goldengate Deployment Version resource.
+	Name string `pulumi:"name"`
+	// The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+	Ocid string `pulumi:"ocid"`
+	// The properties of the Goldengate Deployment Version resource.
+	Properties []GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty `pulumi:"properties"`
+}
+
+// GetGoldengateDeploymentVersionsGoldengateDeploymentVersionInput is an input type that accepts GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs and GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentVersionsGoldengateDeploymentVersionInput` via:
+//
+//	GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs{...}
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutputWithContext(context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs struct {
+	// The name of the Goldengate Deployment Version resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+	Ocid pulumi.StringInput `pulumi:"ocid"`
+	// The properties of the Goldengate Deployment Version resource.
+	Properties GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayInput `pulumi:"properties"`
+}
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersion)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput {
+	return i.ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput)
+}
+
+// GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayInput is an input type that accepts GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray and GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayInput` via:
+//
+//	GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray{ GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs{...} }
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutputWithContext(context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray []GetGoldengateDeploymentVersionsGoldengateDeploymentVersionInput
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentVersionsGoldengateDeploymentVersion)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput {
+	return i.ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput)
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersion)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput {
+	return o
+}
+
+// The name of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) Ocid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersion) string { return v.Ocid }).(pulumi.StringOutput)
+}
+
+// The properties of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput) Properties() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersion) []GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty {
+		return v.Properties
+	}).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput)
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentVersionsGoldengateDeploymentVersion)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput) Index(i pulumi.IntInput) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGoldengateDeploymentVersionsGoldengateDeploymentVersion {
+		return vs[0].([]GetGoldengateDeploymentVersionsGoldengateDeploymentVersion)[vs[1].(int)]
+	}).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput)
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty struct {
+	// The deployment type of the Goldengate Deployment Version resource.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The OGG version of the Goldengate Deployment Version resource.
+	OggVersion string `pulumi:"oggVersion"`
+	// The release time of the Goldengate Deployment Version resource.
+	ReleaseTime string `pulumi:"releaseTime"`
+	// The release type of the Goldengate Deployment Version resource.
+	ReleaseType string `pulumi:"releaseType"`
+	// Specifies whether this version has a security fix.
+	SecurityFix bool `pulumi:"securityFix"`
+	// The support end time of the Goldengate Deployment Version resource.
+	SupportEndTime string `pulumi:"supportEndTime"`
+}
+
+// GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyInput is an input type that accepts GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs and GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyInput` via:
+//
+//	GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs{...}
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutputWithContext(context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs struct {
+	// The deployment type of the Goldengate Deployment Version resource.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// The OGG version of the Goldengate Deployment Version resource.
+	OggVersion pulumi.StringInput `pulumi:"oggVersion"`
+	// The release time of the Goldengate Deployment Version resource.
+	ReleaseTime pulumi.StringInput `pulumi:"releaseTime"`
+	// The release type of the Goldengate Deployment Version resource.
+	ReleaseType pulumi.StringInput `pulumi:"releaseType"`
+	// Specifies whether this version has a security fix.
+	SecurityFix pulumi.BoolInput `pulumi:"securityFix"`
+	// The support end time of the Goldengate Deployment Version resource.
+	SupportEndTime pulumi.StringInput `pulumi:"supportEndTime"`
+}
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput {
+	return i.ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput)
+}
+
+// GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayInput is an input type that accepts GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray and GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput values.
+// You can construct a concrete instance of `GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayInput` via:
+//
+//	GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray{ GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs{...} }
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput
+	ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutputWithContext(context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray []GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyInput
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty)(nil)).Elem()
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput {
+	return i.ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput)
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput {
+	return o
+}
+
+// The deployment type of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) string {
+		return v.DeploymentType
+	}).(pulumi.StringOutput)
+}
+
+// The OGG version of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) OggVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) string { return v.OggVersion }).(pulumi.StringOutput)
+}
+
+// The release time of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) ReleaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) string {
+		return v.ReleaseTime
+	}).(pulumi.StringOutput)
+}
+
+// The release type of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) ReleaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) string {
+		return v.ReleaseType
+	}).(pulumi.StringOutput)
+}
+
+// Specifies whether this version has a security fix.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) SecurityFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) bool { return v.SecurityFix }).(pulumi.BoolOutput)
+}
+
+// The support end time of the Goldengate Deployment Version resource.
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput) SupportEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty) string {
+		return v.SupportEndTime
+	}).(pulumi.StringOutput)
+}
+
+type GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty)(nil)).Elem()
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput() GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput) ToGetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutputWithContext(ctx context.Context) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput {
+	return o
+}
+
+func (o GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput) Index(i pulumi.IntInput) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty {
+		return vs[0].([]GetGoldengateDeploymentVersionsGoldengateDeploymentVersionProperty)[vs[1].(int)]
+	}).(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesPtrInput)(nil)).Elem(), AutonomousDatabasePropertiesArgs{})
@@ -37985,6 +38252,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentTypeInput)(nil)).Elem(), GetGoldengateDeploymentTypesGoldengateDeploymentTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayInput)(nil)).Elem(), GetGoldengateDeploymentTypesGoldengateDeploymentTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionInput)(nil)).Elem(), GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayInput)(nil)).Elem(), GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyInput)(nil)).Elem(), GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayInput)(nil)).Elem(), GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArray{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesApexDetailOutput{})
@@ -38263,4 +38534,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(GetGoldengateDeploymentTypesGoldengateDeploymentTypeOutput{})
 	pulumi.RegisterOutputType(GetGoldengateDeploymentTypesGoldengateDeploymentTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyOutput{})
+	pulumi.RegisterOutputType(GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArrayOutput{})
 }

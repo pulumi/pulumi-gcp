@@ -113,6 +113,10 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Location = "us-west1",
     ///         Service = "iap.googleapis.com",
     ///         Timeout = "0.1s",
+    ///         Metadata = 
+    ///         {
+    ///             { "iapPolicyVersion", "V1" },
+    ///         },
     ///     });
     /// 
     /// });

@@ -2570,7 +2570,7 @@ class FrameworkCloudControlDetailArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
     The name of the CloudControl in the format:
-    “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+    "{parent}/locations/{location}/cloudControls/{cloud-control}"
     """
     parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgsDict']]]]]
     """
@@ -2589,7 +2589,7 @@ class FrameworkCloudControlDetailArgs:
         """
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of cloudcontrol
         :param pulumi.Input[_builtins.str] name: The name of the CloudControl in the format:
-               “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+               "{parent}/locations/{location}/cloudControls/{cloud-control}"
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]] parameters: Parameters is a key-value pair that is required by the CloudControl. The
                specification of these parameters will be present in cloudcontrol.Eg: {
                "name": "location","value": "us-west-1"}.
@@ -2617,7 +2617,7 @@ class FrameworkCloudControlDetailArgs:
     def name(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+        "{parent}/locations/{location}/cloudControls/{cloud-control}"
         """
         return pulumi.get(self, "name")
 
@@ -3011,7 +3011,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgsDict(TypedDict):
     """
     (Output)
     The name of the CloudControlDeployment. The format is:
-    organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+    {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
     """
 
 @pulumi.input_type
@@ -3021,7 +3021,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
         """
         :param pulumi.Input[_builtins.str] cloud_control_deployment: (Output)
                The name of the CloudControlDeployment. The format is:
-               organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+               {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
         """
         if cloud_control_deployment is not None:
             pulumi.set(__self__, "cloud_control_deployment", cloud_control_deployment)
@@ -3032,7 +3032,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
         """
         (Output)
         The name of the CloudControlDeployment. The format is:
-        organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+        {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
         """
         return pulumi.get(self, "cloud_control_deployment")
 
@@ -3111,8 +3111,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict(TypedDi
     name: pulumi.Input[_builtins.str]
     """
     The name of the CloudControl in the format:
-    “organizations/{organization}/locations/{location}/
-    cloudControls/{cloud-control}”
+    "{parent}/locations/{location}/cloudControls/{cloud-control}"
     """
     parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict']]]]]
     """
@@ -3131,8 +3130,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
         """
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of cloudcontrol
         :param pulumi.Input[_builtins.str] name: The name of the CloudControl in the format:
-               “organizations/{organization}/locations/{location}/
-               cloudControls/{cloud-control}”
+               "{parent}/locations/{location}/cloudControls/{cloud-control}"
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]] parameters: Parameters is a key-value pair that is required by the CloudControl. The
                specification of these parameters will be present in cloudcontrol.Eg: {
                "name": "location","value": "us-west-1"}.
@@ -3160,8 +3158,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
     def name(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/
-        cloudControls/{cloud-control}”
+        "{parent}/locations/{location}/cloudControls/{cloud-control}"
         """
         return pulumi.get(self, "name")
 
@@ -3554,7 +3551,7 @@ class FrameworkDeploymentFrameworkArgsDict(TypedDict):
     framework: pulumi.Input[_builtins.str]
     """
     In the format:
-    organizations/{org}/locations/{location}/frameworks/{framework}
+    {parent}/locations/{location}/frameworks/{framework}
     """
     major_revision_id: pulumi.Input[_builtins.str]
     """
@@ -3568,7 +3565,7 @@ class FrameworkDeploymentFrameworkArgs:
                  major_revision_id: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] framework: In the format:
-               organizations/{org}/locations/{location}/frameworks/{framework}
+               {parent}/locations/{location}/frameworks/{framework}
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision id of the framework.
         """
         pulumi.set(__self__, "framework", framework)
@@ -3579,7 +3576,7 @@ class FrameworkDeploymentFrameworkArgs:
     def framework(self) -> pulumi.Input[_builtins.str]:
         """
         In the format:
-        organizations/{org}/locations/{location}/frameworks/{framework}
+        {parent}/locations/{location}/frameworks/{framework}
         """
         return pulumi.get(self, "framework")
 

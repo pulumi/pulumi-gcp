@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Cloudsecuritycompliance Framework Basic
+ * ### Cloudsecuritycompliance Framework Org Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.cloudsecuritycompliance.Framework("example", {
- *     organization: "123456789",
+ *     parent: "organizations/123456789",
  *     location: "global",
  *     frameworkId: "example-framework",
  *     displayName: "Terraform Framework Name",
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     cloudControlDetails: [
  *         {
  *             name: "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
- *             majorRevisionId: "1",
+ *             majorRevisionId: "2",
  *             parameters: [{
  *                 name: "location",
  *                 parameterValue: {
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             name: "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
- *             majorRevisionId: "1",
+ *             majorRevisionId: "3",
  *             parameters: [{
  *                 name: "location",
  *                 parameterValue: {
@@ -65,7 +65,130 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             name: "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     numberValue: 1,
+ *                 },
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Project Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "An Terraform description for the framework",
+ *     cloudControlDetails: [
+ *         {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-assess-resource-availability`),
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringValue: "us-central1",
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table`),
  *             majorRevisionId: "1",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringListValue: {
+ *                         values: [
+ *                             "us-central1",
+ *                             "us-west1",
+ *                         ],
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql`),
+ *             majorRevisionId: "3",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     boolValue: true,
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets`),
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     numberValue: 1,
+ *                 },
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Org Basic Backward
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "An Terraform description for the framework",
+ *     cloudControlDetails: [
+ *         {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringValue: "us-central1",
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
+ *             majorRevisionId: "1",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringListValue: {
+ *                         values: [
+ *                             "us-central1",
+ *                             "us-west1",
+ *                         ],
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+ *             majorRevisionId: "3",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     boolValue: true,
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+ *             majorRevisionId: "2",
  *             parameters: [{
  *                 name: "location",
  *                 parameterValue: {
@@ -82,13 +205,13 @@ import * as utilities from "../utilities";
  * Framework can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
- * * `{{organization}}/{{location}}/{{framework_id}}`
+ * * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
  *
  * When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
  * ```
  */
 export class Framework extends pulumi.CustomResource {
@@ -163,13 +286,25 @@ export class Framework extends pulumi.CustomResource {
     /**
      * Identifier. The name of the framework.
      * Format:
-     * organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+     * {parent}/locations/{location}/frameworks/{framework_id}
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     declare public readonly organization: pulumi.Output<string>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * cloud providers supported
      */
@@ -213,6 +348,7 @@ export class Framework extends pulumi.CustomResource {
             resourceInputs["majorRevisionId"] = state?.majorRevisionId;
             resourceInputs["name"] = state?.name;
             resourceInputs["organization"] = state?.organization;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["supportedCloudProviders"] = state?.supportedCloudProviders;
             resourceInputs["supportedEnforcementModes"] = state?.supportedEnforcementModes;
             resourceInputs["supportedTargetResourceTypes"] = state?.supportedTargetResourceTypes;
@@ -225,9 +361,6 @@ export class Framework extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if (args?.organization === undefined && !opts.urn) {
-                throw new Error("Missing required property 'organization'");
-            }
             resourceInputs["cloudControlDetails"] = args?.cloudControlDetails;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
@@ -235,6 +368,7 @@ export class Framework extends pulumi.CustomResource {
             resourceInputs["frameworkId"] = args?.frameworkId;
             resourceInputs["location"] = args?.location;
             resourceInputs["organization"] = args?.organization;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["categories"] = undefined /*out*/;
             resourceInputs["majorRevisionId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -296,13 +430,25 @@ export interface FrameworkState {
     /**
      * Identifier. The name of the framework.
      * Format:
-     * organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+     * {parent}/locations/{location}/frameworks/{framework_id}
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     organization?: pulumi.Input<string | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * cloud providers supported
      */
@@ -362,7 +508,19 @@ export interface FrameworkArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
-    organization: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
 }

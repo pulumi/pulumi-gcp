@@ -316,7 +316,7 @@ type RestoreWorkload struct {
 	// Optional. Compute Engine instance properties to be overridden during restore.
 	// Structure is documented below.
 	ComputeInstanceRestoreProperties RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput `pulumi:"computeInstanceRestoreProperties"`
-	// Optional. The destination environment for GCE VM restoration.
+	// The destination environment for GCE VM restoration.
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
@@ -334,7 +334,7 @@ type RestoreWorkload struct {
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrOutput `pulumi:"diskRestoreProperties"`
-	// Optional. The destination environment for zonal disk restoration.
+	// The destination environment for zonal disk restoration.
 	// Structure is documented below.
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrOutput `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
@@ -346,7 +346,7 @@ type RestoreWorkload struct {
 	//
 	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Optional. The destination environment for regional disk restoration.
+	// The destination environment for regional disk restoration.
 	// Structure is documented below.
 	RegionDiskTargetEnvironment RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput `pulumi:"regionDiskTargetEnvironment"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -409,7 +409,7 @@ type restoreWorkloadState struct {
 	// Optional. Compute Engine instance properties to be overridden during restore.
 	// Structure is documented below.
 	ComputeInstanceRestoreProperties *RestoreWorkloadComputeInstanceRestoreProperties `pulumi:"computeInstanceRestoreProperties"`
-	// Optional. The destination environment for GCE VM restoration.
+	// The destination environment for GCE VM restoration.
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
@@ -427,7 +427,7 @@ type restoreWorkloadState struct {
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
-	// Optional. The destination environment for zonal disk restoration.
+	// The destination environment for zonal disk restoration.
 	// Structure is documented below.
 	DiskTargetEnvironment *RestoreWorkloadDiskTargetEnvironment `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
@@ -439,7 +439,7 @@ type restoreWorkloadState struct {
 	//
 	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name *string `pulumi:"name"`
-	// Optional. The destination environment for regional disk restoration.
+	// The destination environment for regional disk restoration.
 	// Structure is documented below.
 	RegionDiskTargetEnvironment *RestoreWorkloadRegionDiskTargetEnvironment `pulumi:"regionDiskTargetEnvironment"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -461,7 +461,7 @@ type RestoreWorkloadState struct {
 	// Optional. Compute Engine instance properties to be overridden during restore.
 	// Structure is documented below.
 	ComputeInstanceRestoreProperties RestoreWorkloadComputeInstanceRestorePropertiesPtrInput
-	// Optional. The destination environment for GCE VM restoration.
+	// The destination environment for GCE VM restoration.
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
@@ -479,7 +479,7 @@ type RestoreWorkloadState struct {
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrInput
-	// Optional. The destination environment for zonal disk restoration.
+	// The destination environment for zonal disk restoration.
 	// Structure is documented below.
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrInput
 	// Required. The location for the backup vault.
@@ -491,7 +491,7 @@ type RestoreWorkloadState struct {
 	//
 	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringPtrInput
-	// Optional. The destination environment for regional disk restoration.
+	// The destination environment for regional disk restoration.
 	// Structure is documented below.
 	RegionDiskTargetEnvironment RestoreWorkloadRegionDiskTargetEnvironmentPtrInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -517,7 +517,7 @@ type restoreWorkloadArgs struct {
 	// Optional. Compute Engine instance properties to be overridden during restore.
 	// Structure is documented below.
 	ComputeInstanceRestoreProperties *RestoreWorkloadComputeInstanceRestoreProperties `pulumi:"computeInstanceRestoreProperties"`
-	// Optional. The destination environment for GCE VM restoration.
+	// The destination environment for GCE VM restoration.
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
@@ -535,7 +535,7 @@ type restoreWorkloadArgs struct {
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
-	// Optional. The destination environment for zonal disk restoration.
+	// The destination environment for zonal disk restoration.
 	// Structure is documented below.
 	DiskTargetEnvironment *RestoreWorkloadDiskTargetEnvironment `pulumi:"diskTargetEnvironment"`
 	// Required. The location for the backup vault.
@@ -547,7 +547,7 @@ type restoreWorkloadArgs struct {
 	//
 	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name *string `pulumi:"name"`
-	// Optional. The destination environment for regional disk restoration.
+	// The destination environment for regional disk restoration.
 	// Structure is documented below.
 	RegionDiskTargetEnvironment *RestoreWorkloadRegionDiskTargetEnvironment `pulumi:"regionDiskTargetEnvironment"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -567,7 +567,7 @@ type RestoreWorkloadArgs struct {
 	// Optional. Compute Engine instance properties to be overridden during restore.
 	// Structure is documented below.
 	ComputeInstanceRestoreProperties RestoreWorkloadComputeInstanceRestorePropertiesPtrInput
-	// Optional. The destination environment for GCE VM restoration.
+	// The destination environment for GCE VM restoration.
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
@@ -585,7 +585,7 @@ type RestoreWorkloadArgs struct {
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrInput
-	// Optional. The destination environment for zonal disk restoration.
+	// The destination environment for zonal disk restoration.
 	// Structure is documented below.
 	DiskTargetEnvironment RestoreWorkloadDiskTargetEnvironmentPtrInput
 	// Required. The location for the backup vault.
@@ -597,7 +597,7 @@ type RestoreWorkloadArgs struct {
 	//
 	// Deprecated: `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
 	Name pulumi.StringPtrInput
-	// Optional. The destination environment for regional disk restoration.
+	// The destination environment for regional disk restoration.
 	// Structure is documented below.
 	RegionDiskTargetEnvironment RestoreWorkloadRegionDiskTargetEnvironmentPtrInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -716,7 +716,7 @@ func (o RestoreWorkloadOutput) ComputeInstanceRestoreProperties() RestoreWorkloa
 	}).(RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput)
 }
 
-// Optional. The destination environment for GCE VM restoration.
+// The destination environment for GCE VM restoration.
 // Structure is documented below.
 func (o RestoreWorkloadOutput) ComputeInstanceTargetEnvironment() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
@@ -751,7 +751,7 @@ func (o RestoreWorkloadOutput) DiskRestoreProperties() RestoreWorkloadDiskRestor
 	return o.ApplyT(func(v *RestoreWorkload) RestoreWorkloadDiskRestorePropertiesPtrOutput { return v.DiskRestoreProperties }).(RestoreWorkloadDiskRestorePropertiesPtrOutput)
 }
 
-// Optional. The destination environment for zonal disk restoration.
+// The destination environment for zonal disk restoration.
 // Structure is documented below.
 func (o RestoreWorkloadOutput) DiskTargetEnvironment() RestoreWorkloadDiskTargetEnvironmentPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) RestoreWorkloadDiskTargetEnvironmentPtrOutput { return v.DiskTargetEnvironment }).(RestoreWorkloadDiskTargetEnvironmentPtrOutput)
@@ -772,7 +772,7 @@ func (o RestoreWorkloadOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The destination environment for regional disk restoration.
+// The destination environment for regional disk restoration.
 // Structure is documented below.
 func (o RestoreWorkloadOutput) RegionDiskTargetEnvironment() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {

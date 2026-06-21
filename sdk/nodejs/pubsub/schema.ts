@@ -143,6 +143,10 @@ export class Schema extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Output only. The revision ID of the schema.
+     */
+    declare public /*out*/ readonly revisionId: pulumi.Output<string>;
+    /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -166,6 +170,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["revisionId"] = state?.revisionId;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
@@ -174,6 +179,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
+            resourceInputs["revisionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schema.__pulumiType, name, resourceInputs, opts);
@@ -212,6 +218,10 @@ export interface SchemaState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Output only. The revision ID of the schema.
+     */
+    revisionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.

@@ -22,6 +22,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigParallelstoreCsiDrive
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigSliceControllerConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigSlurmOperatorConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
@@ -146,8 +147,6 @@ public final class ClusterAddonsConfig {
     /**
      * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
     /**
@@ -173,6 +172,16 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig;
+    /**
+     * @return The status of the Slurm Operator addon,
+     * which creates slurm related CRDs and KCP pods to manage them.
+     * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+     * It can not be enabled for Autopilot clusters.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigSlurmOperatorConfig slurmOperatorConfig;
     /**
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -328,8 +337,6 @@ public final class ClusterAddonsConfig {
     /**
      * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     public Optional<ClusterAddonsConfigPodSnapshotConfig> podSnapshotConfig() {
         return Optional.ofNullable(this.podSnapshotConfig);
@@ -360,6 +367,18 @@ public final class ClusterAddonsConfig {
      */
     public Optional<ClusterAddonsConfigSliceControllerConfig> sliceControllerConfig() {
         return Optional.ofNullable(this.sliceControllerConfig);
+    }
+    /**
+     * @return The status of the Slurm Operator addon,
+     * which creates slurm related CRDs and KCP pods to manage them.
+     * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+     * It can not be enabled for Autopilot clusters.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<ClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfig() {
+        return Optional.ofNullable(this.slurmOperatorConfig);
     }
     /**
      * @return .
@@ -398,6 +417,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
         private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private @Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig;
+        private @Nullable ClusterAddonsConfigSlurmOperatorConfig slurmOperatorConfig;
         private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
         public Builder() {}
         public Builder(ClusterAddonsConfig defaults) {
@@ -420,6 +440,7 @@ public final class ClusterAddonsConfig {
     	      this.podSnapshotConfig = defaults.podSnapshotConfig;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.sliceControllerConfig = defaults.sliceControllerConfig;
+    	      this.slurmOperatorConfig = defaults.slurmOperatorConfig;
     	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
 
@@ -535,6 +556,12 @@ public final class ClusterAddonsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder slurmOperatorConfig(@Nullable ClusterAddonsConfigSlurmOperatorConfig slurmOperatorConfig) {
+
+            this.slurmOperatorConfig = slurmOperatorConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder statefulHaConfig(@Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig) {
 
             this.statefulHaConfig = statefulHaConfig;
@@ -560,6 +587,7 @@ public final class ClusterAddonsConfig {
             _resultValue.podSnapshotConfig = podSnapshotConfig;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.sliceControllerConfig = sliceControllerConfig;
+            _resultValue.slurmOperatorConfig = slurmOperatorConfig;
             _resultValue.statefulHaConfig = statefulHaConfig;
             return _resultValue;
         }

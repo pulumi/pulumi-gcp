@@ -4,7 +4,6 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,7 +16,19 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
      * @return Required. The header field name
      * 
      */
-    private Integer port;
+    private @Nullable String name;
+    /**
+     * @return (Optional, Deprecated)
+     * Required. The header field name
+     * 
+     * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     * @deprecated
+     * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     */
+    @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
+    private @Nullable Integer port;
     /**
      * @return Optional. The header field value
      * 
@@ -29,8 +40,22 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
      * @return Required. The header field name
      * 
      */
-    public Integer port() {
-        return this.port;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return (Optional, Deprecated)
+     * Required. The header field name
+     * 
+     * &gt; **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     * @deprecated
+     * `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+     * 
+     */
+    @Deprecated /* `port` field is deprecated and will be removed in a future major release. It was never supported by the API. */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
     /**
      * @return Optional. The header field value
@@ -49,20 +74,26 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer port;
+        private @Nullable String name;
+        private @Nullable Integer port;
         private @Nullable String value;
         public Builder() {}
         public Builder(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
     	      this.port = defaults.port;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders", "port");
-            }
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
@@ -74,6 +105,7 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
         }
         public WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders build() {
             final var _resultValue = new WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders();
+            _resultValue.name = name;
             _resultValue.port = port;
             _resultValue.value = value;
             return _resultValue;

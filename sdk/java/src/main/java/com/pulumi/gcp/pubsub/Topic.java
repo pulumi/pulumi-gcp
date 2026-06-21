@@ -206,6 +206,8 @@ import javax.annotation.Nullable;
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
  *                 .schema("projects/my-project-name/schemas/example")
  *                 .encoding("JSON")
+ *                 .firstRevisionId(example.revisionId())
+ *                 .lastRevisionId(example.revisionId())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(example)

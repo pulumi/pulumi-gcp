@@ -24,11 +24,12 @@ class FrameworkDeploymentArgs:
                  cloud_control_metadatas: pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]],
                  framework: pulumi.Input['FrameworkDeploymentFrameworkArgs'],
                  framework_deployment_id: pulumi.Input[_builtins.str],
-                 location: pulumi.Input[_builtins.str],
-                 organization: pulumi.Input[_builtins.str],
                  target_resource_config: pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FrameworkDeployment resource.
 
@@ -40,8 +41,6 @@ class FrameworkDeploymentArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] framework_deployment_id: User provided identifier. It should be unique in scope of a parent.
                This is optional and if not provided, a random UUID will be generated.
-        :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'] target_resource_config: TargetResourceConfig contains either the name of the target_resource or
                contains the config to create a new target_resource.
                Structure is documented below.
@@ -52,17 +51,33 @@ class FrameworkDeploymentArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User provided description of the Framework deployment
+        :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         """
         pulumi.set(__self__, "cloud_control_metadatas", cloud_control_metadatas)
         pulumi.set(__self__, "framework", framework)
         pulumi.set(__self__, "framework_deployment_id", framework_deployment_id)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "organization", organization)
         pulumi.set(__self__, "target_resource_config", target_resource_config)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if organization is not None:
+            warnings.warn("""Use `parent` instead.""", DeprecationWarning)
+            pulumi.log.warn("""organization is deprecated: Use `parent` instead.""")
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
 
     @_builtins.property
     @pulumi.getter(name="cloudControlMetadatas")
@@ -104,30 +119,6 @@ class FrameworkDeploymentArgs:
     @framework_deployment_id.setter
     def framework_deployment_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "framework_deployment_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def organization(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        """
-        return pulumi.get(self, "organization")
-
-    @organization.setter
-    def organization(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResourceConfig")
@@ -172,6 +163,49 @@ class FrameworkDeploymentArgs:
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
 
 @pulumi.input_type
 class _FrameworkDeploymentState:
@@ -189,6 +223,7 @@ class _FrameworkDeploymentState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  target_resource_config: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigArgs']] = None,
                  target_resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -246,8 +281,15 @@ class _FrameworkDeploymentState:
                This is optional and if not provided, a random UUID will be generated.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. FrameworkDeployment name in the following format:
-               organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         :param pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'] target_resource_config: TargetResourceConfig contains either the name of the target_resource or
                contains the config to create a new target_resource.
                Structure is documented below.
@@ -279,7 +321,12 @@ class _FrameworkDeploymentState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization is not None:
+            warnings.warn("""Use `parent` instead.""", DeprecationWarning)
+            pulumi.log.warn("""organization is deprecated: Use `parent` instead.""")
+        if organization is not None:
             pulumi.set(__self__, "organization", organization)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if target_resource_config is not None:
             pulumi.set(__self__, "target_resource_config", target_resource_config)
         if target_resource_display_name is not None:
@@ -463,7 +510,7 @@ class _FrameworkDeploymentState:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. FrameworkDeployment name in the following format:
-        organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
         """
         return pulumi.get(self, "name")
 
@@ -473,15 +520,34 @@ class _FrameworkDeploymentState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
     def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
     def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResourceConfig")
@@ -535,6 +601,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                  framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
                  __props__=None):
         """
@@ -546,18 +613,509 @@ class FrameworkDeployment(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Cloudsecuritycompliance Framework Deployment Org Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    },
+                    {
+                        "name": "oneof-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "test-oneof",
+                                "parameter_value": {
+                                    "string_value": "test-value",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "bool-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "bool-oneof",
+                                "parameter_value": {
+                                    "bool_value": True,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "number-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "number-oneof",
+                                "parameter_value": {
+                                    "number_value": 123.45,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "string-list-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "string-list-oneof",
+                                "parameter_value": {
+                                    "string_list_value": {
+                                        "values": [
+                                            "value1",
+                                            "value2",
+                                        ],
+                                    },
+                                },
+                            },
+                        },
+                    },
+                ],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": "organizations/123456789",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "parameter_value": {
+                                "bool_value": True,
+                            },
+                        },
+                        {
+                            "name": "regions",
+                            "parameter_value": {
+                                "string_list_value": {
+                                    "values": [
+                                        "us-central1",
+                                        "us-west1",
+                                        "us-east1",
+                                    ],
+                                },
+                            },
+                        },
+                        {
+                            "name": "location",
+                            "parameter_value": {
+                                "string_value": "us-central1",
+                            },
+                        },
+                        {
+                            "name": "oneof-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "test-oneof",
+                                    "parameter_value": {
+                                        "string_value": "test-value",
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "bool-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "bool-oneof",
+                                    "parameter_value": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "number-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "number-oneof",
+                                    "parameter_value": {
+                                        "number_value": 123.45,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "string-list-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "string-list-oneof",
+                                    "parameter_value": {
+                                        "string_list_value": {
+                                            "values": [
+                                                "value1",
+                                                "value2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    ],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    },
+                    {
+                        "name": "oneof-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "test-oneof",
+                                "parameter_value": {
+                                    "string_value": "test-value",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "bool-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "bool-oneof",
+                                "parameter_value": {
+                                    "bool_value": True,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "number-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "number-oneof",
+                                "parameter_value": {
+                                    "number_value": 123.45,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "string-list-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "string-list-oneof",
+                                "parameter_value": {
+                                    "string_list_value": {
+                                        "values": [
+                                            "value1",
+                                            "value2",
+                                        ],
+                                    },
+                                },
+                            },
+                        },
+                    },
+                ],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": f"projects/{project.project_id}",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "parameter_value": {
+                                "bool_value": True,
+                            },
+                        },
+                        {
+                            "name": "regions",
+                            "parameter_value": {
+                                "string_list_value": {
+                                    "values": [
+                                        "us-central1",
+                                        "us-west1",
+                                        "us-east1",
+                                    ],
+                                },
+                            },
+                        },
+                        {
+                            "name": "location",
+                            "parameter_value": {
+                                "string_value": "us-central1",
+                            },
+                        },
+                        {
+                            "name": "oneof-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "test-oneof",
+                                    "parameter_value": {
+                                        "string_value": "test-value",
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "bool-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "bool-oneof",
+                                    "parameter_value": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "number-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "number-oneof",
+                                    "parameter_value": {
+                                        "number_value": 123.45,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "string-list-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "string-list-oneof",
+                                    "parameter_value": {
+                                        "string_list_value": {
+                                            "values": [
+                                                "value1",
+                                                "value2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    ],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="A Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "number_value": float(1),
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment with org parent targeting a project",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": f"projects/{project.project_id}",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        # App Hub Application resource to act as the target
+        application = gcp.apphub.Application("application",
+            location="us-central1",
+            application_id="example-app",
+            scope={
+                "type": "REGIONAL",
+            })
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="A Terraform description for the framework",
+            cloud_control_details=[{
+                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "number_value": float(1),
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment with project parent targeting an application",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": application.application_id.apply(lambda application_id: f"projects/{project.number}/locations/us-central1/applications/{application_id}"),
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            organization="123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "string_value": "us-central1",
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            organization="123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": "organizations/123456789",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "enabled",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+            }])
+        ```
+
         ## Import
 
         FrameworkDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-        * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+        * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
 
         When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-        $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+        $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
         ```
 
 
@@ -579,7 +1137,14 @@ class FrameworkDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] framework_deployment_id: User provided identifier. It should be unique in scope of a parent.
                This is optional and if not provided, a random UUID will be generated.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         :param pulumi.Input[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']] target_resource_config: TargetResourceConfig contains either the name of the target_resource or
                contains the config to create a new target_resource.
                Structure is documented below.
@@ -599,18 +1164,509 @@ class FrameworkDeployment(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Cloudsecuritycompliance Framework Deployment Org Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    },
+                    {
+                        "name": "oneof-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "test-oneof",
+                                "parameter_value": {
+                                    "string_value": "test-value",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "bool-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "bool-oneof",
+                                "parameter_value": {
+                                    "bool_value": True,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "number-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "number-oneof",
+                                "parameter_value": {
+                                    "number_value": 123.45,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "string-list-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "string-list-oneof",
+                                "parameter_value": {
+                                    "string_list_value": {
+                                        "values": [
+                                            "value1",
+                                            "value2",
+                                        ],
+                                    },
+                                },
+                            },
+                        },
+                    },
+                ],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": "organizations/123456789",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "parameter_value": {
+                                "bool_value": True,
+                            },
+                        },
+                        {
+                            "name": "regions",
+                            "parameter_value": {
+                                "string_list_value": {
+                                    "values": [
+                                        "us-central1",
+                                        "us-west1",
+                                        "us-east1",
+                                    ],
+                                },
+                            },
+                        },
+                        {
+                            "name": "location",
+                            "parameter_value": {
+                                "string_value": "us-central1",
+                            },
+                        },
+                        {
+                            "name": "oneof-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "test-oneof",
+                                    "parameter_value": {
+                                        "string_value": "test-value",
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "bool-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "bool-oneof",
+                                    "parameter_value": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "number-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "number-oneof",
+                                    "parameter_value": {
+                                        "number_value": 123.45,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "string-list-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "string-list-oneof",
+                                    "parameter_value": {
+                                        "string_list_value": {
+                                            "values": [
+                                                "value1",
+                                                "value2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    ],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    },
+                    {
+                        "name": "oneof-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "test-oneof",
+                                "parameter_value": {
+                                    "string_value": "test-value",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "bool-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "bool-oneof",
+                                "parameter_value": {
+                                    "bool_value": True,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "number-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "number-oneof",
+                                "parameter_value": {
+                                    "number_value": 123.45,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "name": "string-list-parameter",
+                        "parameter_value": {
+                            "oneof_value": {
+                                "name": "string-list-oneof",
+                                "parameter_value": {
+                                    "string_list_value": {
+                                        "values": [
+                                            "value1",
+                                            "value2",
+                                        ],
+                                    },
+                                },
+                            },
+                        },
+                    },
+                ],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": f"projects/{project.project_id}",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "parameter_value": {
+                                "bool_value": True,
+                            },
+                        },
+                        {
+                            "name": "regions",
+                            "parameter_value": {
+                                "string_list_value": {
+                                    "values": [
+                                        "us-central1",
+                                        "us-west1",
+                                        "us-east1",
+                                    ],
+                                },
+                            },
+                        },
+                        {
+                            "name": "location",
+                            "parameter_value": {
+                                "string_value": "us-central1",
+                            },
+                        },
+                        {
+                            "name": "oneof-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "test-oneof",
+                                    "parameter_value": {
+                                        "string_value": "test-value",
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "bool-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "bool-oneof",
+                                    "parameter_value": {
+                                        "bool_value": True,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "number-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "number-oneof",
+                                    "parameter_value": {
+                                        "number_value": 123.45,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "name": "string-list-parameter",
+                            "parameter_value": {
+                                "oneof_value": {
+                                    "name": "string-list-oneof",
+                                    "parameter_value": {
+                                        "string_list_value": {
+                                            "values": [
+                                                "value1",
+                                                "value2",
+                                            ],
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    ],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="A Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "number_value": float(1),
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent="organizations/123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment with org parent targeting a project",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": f"projects/{project.project_id}",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        # App Hub Application resource to act as the target
+        application = gcp.apphub.Application("application",
+            location="us-central1",
+            application_id="example-app",
+            scope={
+                "type": "REGIONAL",
+            })
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="A Terraform description for the framework",
+            cloud_control_details=[{
+                "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "number_value": float(1),
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment with project parent targeting an application",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": application.application_id.apply(lambda application_id: f"projects/{project.number}/locations/us-central1/applications/{application_id}"),
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            }])
+        ```
+        ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            organization="123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[{
+                "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                "major_revision_id": "2",
+                "parameters": [{
+                    "name": "location",
+                    "parameter_value": {
+                        "string_value": "us-central1",
+                    },
+                }],
+            }])
+        example_framework_deployment = gcp.cloudsecuritycompliance.FrameworkDeployment("example",
+            organization="123456789",
+            location="global",
+            framework_deployment_id="example-deployment",
+            description="A framework deployment for cloud security compliance",
+            framework={
+                "framework": example.name,
+                "major_revision_id": "1",
+            },
+            target_resource_config={
+                "existing_target_resource": "organizations/123456789",
+            },
+            cloud_control_metadatas=[{
+                "enforcement_mode": "DETECTIVE",
+                "cloud_control_details": {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "enabled",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+            }])
+        ```
+
         ## Import
 
         FrameworkDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-        * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+        * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
 
         When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-        $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+        $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
         ```
 
 
@@ -636,6 +1692,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                  framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -657,12 +1714,9 @@ class FrameworkDeployment(pulumi.CustomResource):
             if framework_deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'framework_deployment_id'")
             __props__.__dict__["framework_deployment_id"] = framework_deployment_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if organization is None and not opts.urn:
-                raise TypeError("Missing required property 'organization'")
             __props__.__dict__["organization"] = organization
+            __props__.__dict__["parent"] = parent
             if target_resource_config is None and not opts.urn:
                 raise TypeError("Missing required property 'target_resource_config'")
             __props__.__dict__["target_resource_config"] = target_resource_config
@@ -697,6 +1751,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
             target_resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'FrameworkDeployment':
@@ -758,8 +1813,15 @@ class FrameworkDeployment(pulumi.CustomResource):
                This is optional and if not provided, a random UUID will be generated.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. FrameworkDeployment name in the following format:
-               organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         :param pulumi.Input[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']] target_resource_config: TargetResourceConfig contains either the name of the target_resource or
                contains the config to create a new target_resource.
                Structure is documented below.
@@ -783,6 +1845,7 @@ class FrameworkDeployment(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["organization"] = organization
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["target_resource_config"] = target_resource_config
         __props__.__dict__["target_resource_display_name"] = target_resource_display_name
         __props__.__dict__["update_time"] = update_time
@@ -909,7 +1972,7 @@ class FrameworkDeployment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> pulumi.Output[_builtins.str]:
+    def location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
@@ -920,17 +1983,32 @@ class FrameworkDeployment(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier. FrameworkDeployment name in the following format:
-        organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+        {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
     def organization(self) -> pulumi.Output[_builtins.str]:
         """
+        (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
         """
         return pulumi.get(self, "organization")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="targetResourceConfig")

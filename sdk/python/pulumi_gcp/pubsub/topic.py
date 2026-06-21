@@ -661,6 +661,8 @@ class Topic(pulumi.CustomResource):
             schema_settings={
                 "schema": "projects/my-project-name/schemas/example",
                 "encoding": "JSON",
+                "first_revision_id": example.revision_id,
+                "last_revision_id": example.revision_id,
             },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
@@ -1024,6 +1026,8 @@ class Topic(pulumi.CustomResource):
             schema_settings={
                 "schema": "projects/my-project-name/schemas/example",
                 "encoding": "JSON",
+                "first_revision_id": example.revision_id,
+                "last_revision_id": example.revision_id,
             },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```

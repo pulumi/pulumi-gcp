@@ -464,6 +464,10 @@ import * as utilities from "../utilities";
  *                 httpGet: {
  *                     path: "/",
  *                     port: 8080,
+ *                     httpHeaders: [{
+ *                         name: "TEST-HEADER",
+ *                         value: "test-value",
+ *                     }],
  *                 },
  *             },
  *         }],

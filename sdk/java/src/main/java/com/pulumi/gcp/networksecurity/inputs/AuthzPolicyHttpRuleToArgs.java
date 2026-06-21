@@ -35,7 +35,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+     * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
     private @Nullable Output<List<AuthzPolicyHttpRuleToOperationArgs>> operations;
 
     /**
-     * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+     * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
      * Structure is documented below.
      * 
      */
@@ -111,7 +111,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
          * Structure is documented below.
          * 
          * @return builder
@@ -123,7 +123,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
          * Structure is documented below.
          * 
          * @return builder
@@ -134,7 +134,7 @@ public final class AuthzPolicyHttpRuleToArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+         * @param operations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
          * Structure is documented below.
          * 
          * @return builder

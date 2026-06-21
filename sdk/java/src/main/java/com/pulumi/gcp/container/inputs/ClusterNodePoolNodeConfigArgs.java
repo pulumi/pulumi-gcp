@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigHostMaintenanceP
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigNodeImageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSecondaryBootDiskArgs;
@@ -576,6 +577,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The node image configuration to use for this node pool. Structure is documented below.
+     * 
+     */
+    @Import(name="nodeImageConfigs")
+    private @Nullable Output<List<ClusterNodePoolNodeConfigNodeImageConfigArgs>> nodeImageConfigs;
+
+    /**
+     * @return The node image configuration to use for this node pool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterNodePoolNodeConfigNodeImageConfigArgs>>> nodeImageConfigs() {
+        return Optional.ofNullable(this.nodeImageConfigs);
+    }
+
+    /**
      * The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
      * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -887,6 +903,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.metadata = $.metadata;
         this.minCpuPlatform = $.minCpuPlatform;
         this.nodeGroup = $.nodeGroup;
+        this.nodeImageConfigs = $.nodeImageConfigs;
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
@@ -1661,6 +1678,37 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder nodeGroup(String nodeGroup) {
             return nodeGroup(Output.of(nodeGroup));
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(@Nullable Output<List<ClusterNodePoolNodeConfigNodeImageConfigArgs>> nodeImageConfigs) {
+            $.nodeImageConfigs = nodeImageConfigs;
+            return this;
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(List<ClusterNodePoolNodeConfigNodeImageConfigArgs> nodeImageConfigs) {
+            return nodeImageConfigs(Output.of(nodeImageConfigs));
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(ClusterNodePoolNodeConfigNodeImageConfigArgs... nodeImageConfigs) {
+            return nodeImageConfigs(List.of(nodeImageConfigs));
         }
 
         /**

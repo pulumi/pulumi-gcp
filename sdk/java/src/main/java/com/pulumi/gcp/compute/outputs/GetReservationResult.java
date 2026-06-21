@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetReservationDeleteAfterDuration;
+import com.pulumi.gcp.compute.outputs.GetReservationParam;
 import com.pulumi.gcp.compute.outputs.GetReservationReservationSharingPolicy;
 import com.pulumi.gcp.compute.outputs.GetReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.GetReservationShareSetting;
@@ -32,6 +33,7 @@ public final class GetReservationResult {
     private String kind;
     private List<String> linkedCommitments;
     private String name;
+    private List<GetReservationParam> params;
     private @Nullable String project;
     private Integer reservationBlockCount;
     private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
@@ -80,6 +82,9 @@ public final class GetReservationResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetReservationParam> params() {
+        return this.params;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -136,6 +141,7 @@ public final class GetReservationResult {
         private String kind;
         private List<String> linkedCommitments;
         private String name;
+        private List<GetReservationParam> params;
         private @Nullable String project;
         private Integer reservationBlockCount;
         private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
@@ -162,6 +168,7 @@ public final class GetReservationResult {
     	      this.kind = defaults.kind;
     	      this.linkedCommitments = defaults.linkedCommitments;
     	      this.name = defaults.name;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.reservationBlockCount = defaults.reservationBlockCount;
     	      this.reservationSharingPolicies = defaults.reservationSharingPolicies;
@@ -281,6 +288,17 @@ public final class GetReservationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetReservationParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetReservationParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -392,6 +410,7 @@ public final class GetReservationResult {
             _resultValue.kind = kind;
             _resultValue.linkedCommitments = linkedCommitments;
             _resultValue.name = name;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.reservationBlockCount = reservationBlockCount;
             _resultValue.reservationSharingPolicies = reservationSharingPolicies;

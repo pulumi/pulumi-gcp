@@ -60,12 +60,24 @@ namespace Pulumi.Gcp.Compute
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var scannerStaticIp = new Gcp.Compute.Address("scanner_static_ip", new()
     ///     {
     ///         Name = "scan-ignore-http-ip",
+    ///     });
+    /// 
+    ///     var wait15Seconds = new Time.Sleep("wait_15_seconds", new()
+    ///     {
+    ///         CreateDuration = "15s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             scannerStaticIp,
+    ///         },
     ///     });
     /// 
     ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
@@ -80,6 +92,12 @@ namespace Pulumi.Gcp.Compute
     ///             "COMPUTE",
     ///         },
     ///         IgnoreHttpStatusErrors = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait15Seconds,
+    ///         },
     ///     });
     /// 
     /// });

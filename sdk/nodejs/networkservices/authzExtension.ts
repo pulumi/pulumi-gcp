@@ -79,6 +79,9 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     service: "iap.googleapis.com",
  *     timeout: "0.1s",
+ *     metadata: {
+ *         iapPolicyVersion: "V1",
+ *     },
  * });
  * ```
  *

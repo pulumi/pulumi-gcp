@@ -152,6 +152,12 @@ namespace Pulumi.Gcp.PubSub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. The revision ID of the schema.
+        /// </summary>
+        [Output("revisionId")]
+        public Output<string> RevisionId { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the schema definition
         /// Default value is `TYPE_UNSPECIFIED`.
         /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -292,6 +298,12 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Output only. The revision ID of the schema.
+        /// </summary>
+        [Input("revisionId")]
+        public Input<string>? RevisionId { get; set; }
 
         /// <summary>
         /// The type of the schema definition

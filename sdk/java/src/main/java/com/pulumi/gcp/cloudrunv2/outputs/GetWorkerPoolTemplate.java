@@ -28,6 +28,16 @@ public final class GetWorkerPoolTemplate {
      */
     private Map<String,String> annotations;
     /**
+     * @return Arbitrary identifier for the API client.
+     * 
+     */
+    private String client;
+    /**
+     * @return Arbitrary version identifier for the API client.
+     * 
+     */
+    private String clientVersion;
+    /**
      * @return Holds the containers that define the unit of execution for this WorkerPool.
      * 
      */
@@ -101,6 +111,20 @@ public final class GetWorkerPoolTemplate {
      */
     public Map<String,String> annotations() {
         return this.annotations;
+    }
+    /**
+     * @return Arbitrary identifier for the API client.
+     * 
+     */
+    public String client() {
+        return this.client;
+    }
+    /**
+     * @return Arbitrary version identifier for the API client.
+     * 
+     */
+    public String clientVersion() {
+        return this.clientVersion;
     }
     /**
      * @return Holds the containers that define the unit of execution for this WorkerPool.
@@ -196,6 +220,8 @@ public final class GetWorkerPoolTemplate {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
+        private String client;
+        private String clientVersion;
         private List<GetWorkerPoolTemplateContainer> containers;
         private String encryptionKey;
         private String encryptionKeyRevocationAction;
@@ -211,6 +237,8 @@ public final class GetWorkerPoolTemplate {
         public Builder(GetWorkerPoolTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.client = defaults.client;
+    	      this.clientVersion = defaults.clientVersion;
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.encryptionKeyRevocationAction = defaults.encryptionKeyRevocationAction;
@@ -230,6 +258,22 @@ public final class GetWorkerPoolTemplate {
               throw new MissingRequiredPropertyException("GetWorkerPoolTemplate", "annotations");
             }
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder client(String client) {
+            if (client == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplate", "client");
+            }
+            this.client = client;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientVersion(String clientVersion) {
+            if (clientVersion == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplate", "clientVersion");
+            }
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
@@ -335,6 +379,8 @@ public final class GetWorkerPoolTemplate {
         public GetWorkerPoolTemplate build() {
             final var _resultValue = new GetWorkerPoolTemplate();
             _resultValue.annotations = annotations;
+            _resultValue.client = client;
+            _resultValue.clientVersion = clientVersion;
             _resultValue.containers = containers;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.encryptionKeyRevocationAction = encryptionKeyRevocationAction;

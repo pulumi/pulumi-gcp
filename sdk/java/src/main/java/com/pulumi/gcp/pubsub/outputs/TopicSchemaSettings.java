@@ -20,6 +20,16 @@ public final class TopicSchemaSettings {
      */
     private @Nullable String encoding;
     /**
+     * @return The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    private @Nullable String firstRevisionId;
+    /**
+     * @return The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    private @Nullable String lastRevisionId;
+    /**
      * @return The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
      * The value of this field will be _deleted-schema_
@@ -37,6 +47,20 @@ public final class TopicSchemaSettings {
      */
     public Optional<String> encoding() {
         return Optional.ofNullable(this.encoding);
+    }
+    /**
+     * @return The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    public Optional<String> firstRevisionId() {
+        return Optional.ofNullable(this.firstRevisionId);
+    }
+    /**
+     * @return The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    public Optional<String> lastRevisionId() {
+        return Optional.ofNullable(this.lastRevisionId);
     }
     /**
      * @return The name of the schema that messages published should be
@@ -59,11 +83,15 @@ public final class TopicSchemaSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String encoding;
+        private @Nullable String firstRevisionId;
+        private @Nullable String lastRevisionId;
         private String schema;
         public Builder() {}
         public Builder(TopicSchemaSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encoding = defaults.encoding;
+    	      this.firstRevisionId = defaults.firstRevisionId;
+    	      this.lastRevisionId = defaults.lastRevisionId;
     	      this.schema = defaults.schema;
         }
 
@@ -71,6 +99,18 @@ public final class TopicSchemaSettings {
         public Builder encoding(@Nullable String encoding) {
 
             this.encoding = encoding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstRevisionId(@Nullable String firstRevisionId) {
+
+            this.firstRevisionId = firstRevisionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastRevisionId(@Nullable String lastRevisionId) {
+
+            this.lastRevisionId = lastRevisionId;
             return this;
         }
         @CustomType.Setter
@@ -84,6 +124,8 @@ public final class TopicSchemaSettings {
         public TopicSchemaSettings build() {
             final var _resultValue = new TopicSchemaSettings();
             _resultValue.encoding = encoding;
+            _resultValue.firstRevisionId = firstRevisionId;
+            _resultValue.lastRevisionId = lastRevisionId;
             _resultValue.schema = schema;
             return _resultValue;
         }

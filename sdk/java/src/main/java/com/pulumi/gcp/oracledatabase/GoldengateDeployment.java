@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *                     .adminUsername("admin")
  *                     .adminPassword("123Abpassword!")
  *                     .deployment("deployment")
- *                     .oggVersion("oggoracle:21.18.0.0.0_250405.0903_12211")
+ *                     .oggVersion("oggoracle:23.26.2.0.0_260417.1915_14223")
  *                     .build())
  *                 .maintenanceWindow(GoldengateDeploymentPropertiesMaintenanceWindowArgs.builder()
  *                     .day("MONDAY")

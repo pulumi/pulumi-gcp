@@ -160,6 +160,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .service("iap.googleapis.com")
  *             .timeout("0.1s")
+ *             .metadata(Map.of("iapPolicyVersion", "V1"))
  *             .build());
  * 
  *     }

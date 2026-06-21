@@ -13,6 +13,7 @@ import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPostgresHomoge
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobReverseSshConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobVpcPeeringConnectivityArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -47,6 +48,23 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
     }
 
     /**
@@ -309,6 +327,21 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, will stop the pulumi up if there are validation warnings.
+     * 
+     */
+    @Import(name="stopOnWarnings")
+    private @Nullable Output<Boolean> stopOnWarnings;
+
+    /**
+     * @return If set to true, will stop the pulumi up if there are validation warnings.
+     * 
+     */
+    public Optional<Output<Boolean>> stopOnWarnings() {
+        return Optional.ofNullable(this.stopOnWarnings);
+    }
+
+    /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
      * 
@@ -346,6 +379,7 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
 
     private MigrationJobArgs(MigrationJobArgs $) {
         this.deletionPolicy = $.deletionPolicy;
+        this.desiredState = $.desiredState;
         this.destination = $.destination;
         this.displayName = $.displayName;
         this.dumpFlags = $.dumpFlags;
@@ -361,6 +395,7 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         this.reverseSshConnectivity = $.reverseSshConnectivity;
         this.source = $.source;
         this.staticIpConnectivity = $.staticIpConnectivity;
+        this.stopOnWarnings = $.stopOnWarnings;
         this.type = $.type;
         this.vpcPeeringConnectivity = $.vpcPeeringConnectivity;
     }
@@ -412,6 +447,29 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param desiredState The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+         * Possible values are: `NOT_STARTED`, `RUNNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+         * Possible values are: `NOT_STARTED`, `RUNNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**
@@ -761,6 +819,27 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder staticIpConnectivity(MigrationJobStaticIpConnectivityArgs staticIpConnectivity) {
             return staticIpConnectivity(Output.of(staticIpConnectivity));
+        }
+
+        /**
+         * @param stopOnWarnings If set to true, will stop the pulumi up if there are validation warnings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnWarnings(@Nullable Output<Boolean> stopOnWarnings) {
+            $.stopOnWarnings = stopOnWarnings;
+            return this;
+        }
+
+        /**
+         * @param stopOnWarnings If set to true, will stop the pulumi up if there are validation warnings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopOnWarnings(Boolean stopOnWarnings) {
+            return stopOnWarnings(Output.of(stopOnWarnings));
         }
 
         /**

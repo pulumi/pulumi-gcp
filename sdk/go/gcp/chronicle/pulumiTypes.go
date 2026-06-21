@@ -45838,6 +45838,1365 @@ func (o NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput) Index(i pul
 	}).(NativeDashboardFilterFilterOperatorAndFieldValueOutput)
 }
 
+type ParserChangelog struct {
+	// all the changelog of a parser.
+	// Structure is documented below.
+	Entries []ParserChangelogEntry `pulumi:"entries"`
+}
+
+// ParserChangelogInput is an input type that accepts ParserChangelogArgs and ParserChangelogOutput values.
+// You can construct a concrete instance of `ParserChangelogInput` via:
+//
+//	ParserChangelogArgs{...}
+type ParserChangelogInput interface {
+	pulumi.Input
+
+	ToParserChangelogOutput() ParserChangelogOutput
+	ToParserChangelogOutputWithContext(context.Context) ParserChangelogOutput
+}
+
+type ParserChangelogArgs struct {
+	// all the changelog of a parser.
+	// Structure is documented below.
+	Entries ParserChangelogEntryArrayInput `pulumi:"entries"`
+}
+
+func (ParserChangelogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserChangelog)(nil)).Elem()
+}
+
+func (i ParserChangelogArgs) ToParserChangelogOutput() ParserChangelogOutput {
+	return i.ToParserChangelogOutputWithContext(context.Background())
+}
+
+func (i ParserChangelogArgs) ToParserChangelogOutputWithContext(ctx context.Context) ParserChangelogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserChangelogOutput)
+}
+
+// ParserChangelogArrayInput is an input type that accepts ParserChangelogArray and ParserChangelogArrayOutput values.
+// You can construct a concrete instance of `ParserChangelogArrayInput` via:
+//
+//	ParserChangelogArray{ ParserChangelogArgs{...} }
+type ParserChangelogArrayInput interface {
+	pulumi.Input
+
+	ToParserChangelogArrayOutput() ParserChangelogArrayOutput
+	ToParserChangelogArrayOutputWithContext(context.Context) ParserChangelogArrayOutput
+}
+
+type ParserChangelogArray []ParserChangelogInput
+
+func (ParserChangelogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserChangelog)(nil)).Elem()
+}
+
+func (i ParserChangelogArray) ToParserChangelogArrayOutput() ParserChangelogArrayOutput {
+	return i.ToParserChangelogArrayOutputWithContext(context.Background())
+}
+
+func (i ParserChangelogArray) ToParserChangelogArrayOutputWithContext(ctx context.Context) ParserChangelogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserChangelogArrayOutput)
+}
+
+type ParserChangelogOutput struct{ *pulumi.OutputState }
+
+func (ParserChangelogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserChangelog)(nil)).Elem()
+}
+
+func (o ParserChangelogOutput) ToParserChangelogOutput() ParserChangelogOutput {
+	return o
+}
+
+func (o ParserChangelogOutput) ToParserChangelogOutputWithContext(ctx context.Context) ParserChangelogOutput {
+	return o
+}
+
+// all the changelog of a parser.
+// Structure is documented below.
+func (o ParserChangelogOutput) Entries() ParserChangelogEntryArrayOutput {
+	return o.ApplyT(func(v ParserChangelog) []ParserChangelogEntry { return v.Entries }).(ParserChangelogEntryArrayOutput)
+}
+
+type ParserChangelogArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserChangelogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserChangelog)(nil)).Elem()
+}
+
+func (o ParserChangelogArrayOutput) ToParserChangelogArrayOutput() ParserChangelogArrayOutput {
+	return o
+}
+
+func (o ParserChangelogArrayOutput) ToParserChangelogArrayOutputWithContext(ctx context.Context) ParserChangelogArrayOutput {
+	return o
+}
+
+func (o ParserChangelogArrayOutput) Index(i pulumi.IntInput) ParserChangelogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserChangelog {
+		return vs[0].([]ParserChangelog)[vs[1].(int)]
+	}).(ParserChangelogOutput)
+}
+
+type ParserChangelogEntry struct {
+	// (Output)
+	// The changelog message.
+	ChangeMessage *string `pulumi:"changeMessage"`
+	// (Output)
+	// Time at which changelog was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Flag whether the entry is added or deleted.
+	// This will be true in case of rollback and false in case of upgrade.
+	Deleted *bool `pulumi:"deleted"`
+	// (Output)
+	// The parser version for which the changelog is created.
+	ParserVersion *string `pulumi:"parserVersion"`
+}
+
+// ParserChangelogEntryInput is an input type that accepts ParserChangelogEntryArgs and ParserChangelogEntryOutput values.
+// You can construct a concrete instance of `ParserChangelogEntryInput` via:
+//
+//	ParserChangelogEntryArgs{...}
+type ParserChangelogEntryInput interface {
+	pulumi.Input
+
+	ToParserChangelogEntryOutput() ParserChangelogEntryOutput
+	ToParserChangelogEntryOutputWithContext(context.Context) ParserChangelogEntryOutput
+}
+
+type ParserChangelogEntryArgs struct {
+	// (Output)
+	// The changelog message.
+	ChangeMessage pulumi.StringPtrInput `pulumi:"changeMessage"`
+	// (Output)
+	// Time at which changelog was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Flag whether the entry is added or deleted.
+	// This will be true in case of rollback and false in case of upgrade.
+	Deleted pulumi.BoolPtrInput `pulumi:"deleted"`
+	// (Output)
+	// The parser version for which the changelog is created.
+	ParserVersion pulumi.StringPtrInput `pulumi:"parserVersion"`
+}
+
+func (ParserChangelogEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserChangelogEntry)(nil)).Elem()
+}
+
+func (i ParserChangelogEntryArgs) ToParserChangelogEntryOutput() ParserChangelogEntryOutput {
+	return i.ToParserChangelogEntryOutputWithContext(context.Background())
+}
+
+func (i ParserChangelogEntryArgs) ToParserChangelogEntryOutputWithContext(ctx context.Context) ParserChangelogEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserChangelogEntryOutput)
+}
+
+// ParserChangelogEntryArrayInput is an input type that accepts ParserChangelogEntryArray and ParserChangelogEntryArrayOutput values.
+// You can construct a concrete instance of `ParserChangelogEntryArrayInput` via:
+//
+//	ParserChangelogEntryArray{ ParserChangelogEntryArgs{...} }
+type ParserChangelogEntryArrayInput interface {
+	pulumi.Input
+
+	ToParserChangelogEntryArrayOutput() ParserChangelogEntryArrayOutput
+	ToParserChangelogEntryArrayOutputWithContext(context.Context) ParserChangelogEntryArrayOutput
+}
+
+type ParserChangelogEntryArray []ParserChangelogEntryInput
+
+func (ParserChangelogEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserChangelogEntry)(nil)).Elem()
+}
+
+func (i ParserChangelogEntryArray) ToParserChangelogEntryArrayOutput() ParserChangelogEntryArrayOutput {
+	return i.ToParserChangelogEntryArrayOutputWithContext(context.Background())
+}
+
+func (i ParserChangelogEntryArray) ToParserChangelogEntryArrayOutputWithContext(ctx context.Context) ParserChangelogEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserChangelogEntryArrayOutput)
+}
+
+type ParserChangelogEntryOutput struct{ *pulumi.OutputState }
+
+func (ParserChangelogEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserChangelogEntry)(nil)).Elem()
+}
+
+func (o ParserChangelogEntryOutput) ToParserChangelogEntryOutput() ParserChangelogEntryOutput {
+	return o
+}
+
+func (o ParserChangelogEntryOutput) ToParserChangelogEntryOutputWithContext(ctx context.Context) ParserChangelogEntryOutput {
+	return o
+}
+
+// (Output)
+// The changelog message.
+func (o ParserChangelogEntryOutput) ChangeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserChangelogEntry) *string { return v.ChangeMessage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time at which changelog was created.
+func (o ParserChangelogEntryOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserChangelogEntry) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Flag whether the entry is added or deleted.
+// This will be true in case of rollback and false in case of upgrade.
+func (o ParserChangelogEntryOutput) Deleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ParserChangelogEntry) *bool { return v.Deleted }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The parser version for which the changelog is created.
+func (o ParserChangelogEntryOutput) ParserVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserChangelogEntry) *string { return v.ParserVersion }).(pulumi.StringPtrOutput)
+}
+
+type ParserChangelogEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserChangelogEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserChangelogEntry)(nil)).Elem()
+}
+
+func (o ParserChangelogEntryArrayOutput) ToParserChangelogEntryArrayOutput() ParserChangelogEntryArrayOutput {
+	return o
+}
+
+func (o ParserChangelogEntryArrayOutput) ToParserChangelogEntryArrayOutputWithContext(ctx context.Context) ParserChangelogEntryArrayOutput {
+	return o
+}
+
+func (o ParserChangelogEntryArrayOutput) Index(i pulumi.IntInput) ParserChangelogEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserChangelogEntry {
+		return vs[0].([]ParserChangelogEntry)[vs[1].(int)]
+	}).(ParserChangelogEntryOutput)
+}
+
+type ParserCreator struct {
+	// (Output)
+	// The name of the author, who created this parser.
+	Author *string `pulumi:"author"`
+	// (Output)
+	// The customer who created it, This can represent the partner as well.
+	// In case of prebuilt parser this will be empty.
+	Customer *string `pulumi:"customer"`
+	// (Output)
+	// The source of the parser.
+	// Possible values:
+	// GOOGLE
+	// CUSTOM_GOOGLE_OVERRIDE
+	// PARTNER
+	// CUSTOMER
+	Source *string `pulumi:"source"`
+}
+
+// ParserCreatorInput is an input type that accepts ParserCreatorArgs and ParserCreatorOutput values.
+// You can construct a concrete instance of `ParserCreatorInput` via:
+//
+//	ParserCreatorArgs{...}
+type ParserCreatorInput interface {
+	pulumi.Input
+
+	ToParserCreatorOutput() ParserCreatorOutput
+	ToParserCreatorOutputWithContext(context.Context) ParserCreatorOutput
+}
+
+type ParserCreatorArgs struct {
+	// (Output)
+	// The name of the author, who created this parser.
+	Author pulumi.StringPtrInput `pulumi:"author"`
+	// (Output)
+	// The customer who created it, This can represent the partner as well.
+	// In case of prebuilt parser this will be empty.
+	Customer pulumi.StringPtrInput `pulumi:"customer"`
+	// (Output)
+	// The source of the parser.
+	// Possible values:
+	// GOOGLE
+	// CUSTOM_GOOGLE_OVERRIDE
+	// PARTNER
+	// CUSTOMER
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ParserCreatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserCreator)(nil)).Elem()
+}
+
+func (i ParserCreatorArgs) ToParserCreatorOutput() ParserCreatorOutput {
+	return i.ToParserCreatorOutputWithContext(context.Background())
+}
+
+func (i ParserCreatorArgs) ToParserCreatorOutputWithContext(ctx context.Context) ParserCreatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserCreatorOutput)
+}
+
+// ParserCreatorArrayInput is an input type that accepts ParserCreatorArray and ParserCreatorArrayOutput values.
+// You can construct a concrete instance of `ParserCreatorArrayInput` via:
+//
+//	ParserCreatorArray{ ParserCreatorArgs{...} }
+type ParserCreatorArrayInput interface {
+	pulumi.Input
+
+	ToParserCreatorArrayOutput() ParserCreatorArrayOutput
+	ToParserCreatorArrayOutputWithContext(context.Context) ParserCreatorArrayOutput
+}
+
+type ParserCreatorArray []ParserCreatorInput
+
+func (ParserCreatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserCreator)(nil)).Elem()
+}
+
+func (i ParserCreatorArray) ToParserCreatorArrayOutput() ParserCreatorArrayOutput {
+	return i.ToParserCreatorArrayOutputWithContext(context.Background())
+}
+
+func (i ParserCreatorArray) ToParserCreatorArrayOutputWithContext(ctx context.Context) ParserCreatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserCreatorArrayOutput)
+}
+
+type ParserCreatorOutput struct{ *pulumi.OutputState }
+
+func (ParserCreatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserCreator)(nil)).Elem()
+}
+
+func (o ParserCreatorOutput) ToParserCreatorOutput() ParserCreatorOutput {
+	return o
+}
+
+func (o ParserCreatorOutput) ToParserCreatorOutputWithContext(ctx context.Context) ParserCreatorOutput {
+	return o
+}
+
+// (Output)
+// The name of the author, who created this parser.
+func (o ParserCreatorOutput) Author() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserCreator) *string { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The customer who created it, This can represent the partner as well.
+// In case of prebuilt parser this will be empty.
+func (o ParserCreatorOutput) Customer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserCreator) *string { return v.Customer }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The source of the parser.
+// Possible values:
+// GOOGLE
+// CUSTOM_GOOGLE_OVERRIDE
+// PARTNER
+// CUSTOMER
+func (o ParserCreatorOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserCreator) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ParserCreatorArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserCreatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserCreator)(nil)).Elem()
+}
+
+func (o ParserCreatorArrayOutput) ToParserCreatorArrayOutput() ParserCreatorArrayOutput {
+	return o
+}
+
+func (o ParserCreatorArrayOutput) ToParserCreatorArrayOutputWithContext(ctx context.Context) ParserCreatorArrayOutput {
+	return o
+}
+
+func (o ParserCreatorArrayOutput) Index(i pulumi.IntInput) ParserCreatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserCreator {
+		return vs[0].([]ParserCreator)[vs[1].(int)]
+	}).(ParserCreatorOutput)
+}
+
+type ParserLowCode struct {
+	// A representation of a parser extension as a set of field extractors.
+	// Structure is documented below.
+	FieldExtractors *ParserLowCodeFieldExtractors `pulumi:"fieldExtractors"`
+	// The log used to create this low code parser in the UI.
+	Log *string `pulumi:"log"`
+}
+
+// ParserLowCodeInput is an input type that accepts ParserLowCodeArgs and ParserLowCodeOutput values.
+// You can construct a concrete instance of `ParserLowCodeInput` via:
+//
+//	ParserLowCodeArgs{...}
+type ParserLowCodeInput interface {
+	pulumi.Input
+
+	ToParserLowCodeOutput() ParserLowCodeOutput
+	ToParserLowCodeOutputWithContext(context.Context) ParserLowCodeOutput
+}
+
+type ParserLowCodeArgs struct {
+	// A representation of a parser extension as a set of field extractors.
+	// Structure is documented below.
+	FieldExtractors ParserLowCodeFieldExtractorsPtrInput `pulumi:"fieldExtractors"`
+	// The log used to create this low code parser in the UI.
+	Log pulumi.StringPtrInput `pulumi:"log"`
+}
+
+func (ParserLowCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCode)(nil)).Elem()
+}
+
+func (i ParserLowCodeArgs) ToParserLowCodeOutput() ParserLowCodeOutput {
+	return i.ToParserLowCodeOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeArgs) ToParserLowCodeOutputWithContext(ctx context.Context) ParserLowCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeOutput)
+}
+
+func (i ParserLowCodeArgs) ToParserLowCodePtrOutput() ParserLowCodePtrOutput {
+	return i.ToParserLowCodePtrOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeArgs) ToParserLowCodePtrOutputWithContext(ctx context.Context) ParserLowCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeOutput).ToParserLowCodePtrOutputWithContext(ctx)
+}
+
+// ParserLowCodePtrInput is an input type that accepts ParserLowCodeArgs, ParserLowCodePtr and ParserLowCodePtrOutput values.
+// You can construct a concrete instance of `ParserLowCodePtrInput` via:
+//
+//	        ParserLowCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserLowCodePtrInput interface {
+	pulumi.Input
+
+	ToParserLowCodePtrOutput() ParserLowCodePtrOutput
+	ToParserLowCodePtrOutputWithContext(context.Context) ParserLowCodePtrOutput
+}
+
+type parserLowCodePtrType ParserLowCodeArgs
+
+func ParserLowCodePtr(v *ParserLowCodeArgs) ParserLowCodePtrInput {
+	return (*parserLowCodePtrType)(v)
+}
+
+func (*parserLowCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCode)(nil)).Elem()
+}
+
+func (i *parserLowCodePtrType) ToParserLowCodePtrOutput() ParserLowCodePtrOutput {
+	return i.ToParserLowCodePtrOutputWithContext(context.Background())
+}
+
+func (i *parserLowCodePtrType) ToParserLowCodePtrOutputWithContext(ctx context.Context) ParserLowCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodePtrOutput)
+}
+
+type ParserLowCodeOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCode)(nil)).Elem()
+}
+
+func (o ParserLowCodeOutput) ToParserLowCodeOutput() ParserLowCodeOutput {
+	return o
+}
+
+func (o ParserLowCodeOutput) ToParserLowCodeOutputWithContext(ctx context.Context) ParserLowCodeOutput {
+	return o
+}
+
+func (o ParserLowCodeOutput) ToParserLowCodePtrOutput() ParserLowCodePtrOutput {
+	return o.ToParserLowCodePtrOutputWithContext(context.Background())
+}
+
+func (o ParserLowCodeOutput) ToParserLowCodePtrOutputWithContext(ctx context.Context) ParserLowCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserLowCode) *ParserLowCode {
+		return &v
+	}).(ParserLowCodePtrOutput)
+}
+
+// A representation of a parser extension as a set of field extractors.
+// Structure is documented below.
+func (o ParserLowCodeOutput) FieldExtractors() ParserLowCodeFieldExtractorsPtrOutput {
+	return o.ApplyT(func(v ParserLowCode) *ParserLowCodeFieldExtractors { return v.FieldExtractors }).(ParserLowCodeFieldExtractorsPtrOutput)
+}
+
+// The log used to create this low code parser in the UI.
+func (o ParserLowCodeOutput) Log() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCode) *string { return v.Log }).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodePtrOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCode)(nil)).Elem()
+}
+
+func (o ParserLowCodePtrOutput) ToParserLowCodePtrOutput() ParserLowCodePtrOutput {
+	return o
+}
+
+func (o ParserLowCodePtrOutput) ToParserLowCodePtrOutputWithContext(ctx context.Context) ParserLowCodePtrOutput {
+	return o
+}
+
+func (o ParserLowCodePtrOutput) Elem() ParserLowCodeOutput {
+	return o.ApplyT(func(v *ParserLowCode) ParserLowCode {
+		if v != nil {
+			return *v
+		}
+		var ret ParserLowCode
+		return ret
+	}).(ParserLowCodeOutput)
+}
+
+// A representation of a parser extension as a set of field extractors.
+// Structure is documented below.
+func (o ParserLowCodePtrOutput) FieldExtractors() ParserLowCodeFieldExtractorsPtrOutput {
+	return o.ApplyT(func(v *ParserLowCode) *ParserLowCodeFieldExtractors {
+		if v == nil {
+			return nil
+		}
+		return v.FieldExtractors
+	}).(ParserLowCodeFieldExtractorsPtrOutput)
+}
+
+// The log used to create this low code parser in the UI.
+func (o ParserLowCodePtrOutput) Log() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserLowCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Log
+	}).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodeFieldExtractors struct {
+	// Whether to append repeated fields or not.
+	// When false, repeated fields will be replaced.
+	AppendRepeatedFields *bool `pulumi:"appendRepeatedFields"`
+	// List of FieldExtractors.
+	// Structure is documented below.
+	Extractors []ParserLowCodeFieldExtractorsExtractor `pulumi:"extractors"`
+	// Possible values:
+	// JSON
+	// CSV
+	// XML
+	LogFormat *string `pulumi:"logFormat"`
+	// PreProcessConfig holds the GROK expression to extract the syslog header.
+	// Structure is documented below.
+	PreprocessConfig *ParserLowCodeFieldExtractorsPreprocessConfig `pulumi:"preprocessConfig"`
+	// (Output)
+	// CBN snippet generated from field extractors.
+	TransformedCbnSnippet *string `pulumi:"transformedCbnSnippet"`
+}
+
+// ParserLowCodeFieldExtractorsInput is an input type that accepts ParserLowCodeFieldExtractorsArgs and ParserLowCodeFieldExtractorsOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsInput` via:
+//
+//	ParserLowCodeFieldExtractorsArgs{...}
+type ParserLowCodeFieldExtractorsInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsOutput() ParserLowCodeFieldExtractorsOutput
+	ToParserLowCodeFieldExtractorsOutputWithContext(context.Context) ParserLowCodeFieldExtractorsOutput
+}
+
+type ParserLowCodeFieldExtractorsArgs struct {
+	// Whether to append repeated fields or not.
+	// When false, repeated fields will be replaced.
+	AppendRepeatedFields pulumi.BoolPtrInput `pulumi:"appendRepeatedFields"`
+	// List of FieldExtractors.
+	// Structure is documented below.
+	Extractors ParserLowCodeFieldExtractorsExtractorArrayInput `pulumi:"extractors"`
+	// Possible values:
+	// JSON
+	// CSV
+	// XML
+	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
+	// PreProcessConfig holds the GROK expression to extract the syslog header.
+	// Structure is documented below.
+	PreprocessConfig ParserLowCodeFieldExtractorsPreprocessConfigPtrInput `pulumi:"preprocessConfig"`
+	// (Output)
+	// CBN snippet generated from field extractors.
+	TransformedCbnSnippet pulumi.StringPtrInput `pulumi:"transformedCbnSnippet"`
+}
+
+func (ParserLowCodeFieldExtractorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractors)(nil)).Elem()
+}
+
+func (i ParserLowCodeFieldExtractorsArgs) ToParserLowCodeFieldExtractorsOutput() ParserLowCodeFieldExtractorsOutput {
+	return i.ToParserLowCodeFieldExtractorsOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsArgs) ToParserLowCodeFieldExtractorsOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsOutput)
+}
+
+func (i ParserLowCodeFieldExtractorsArgs) ToParserLowCodeFieldExtractorsPtrOutput() ParserLowCodeFieldExtractorsPtrOutput {
+	return i.ToParserLowCodeFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsArgs) ToParserLowCodeFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsOutput).ToParserLowCodeFieldExtractorsPtrOutputWithContext(ctx)
+}
+
+// ParserLowCodeFieldExtractorsPtrInput is an input type that accepts ParserLowCodeFieldExtractorsArgs, ParserLowCodeFieldExtractorsPtr and ParserLowCodeFieldExtractorsPtrOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsPtrInput` via:
+//
+//	        ParserLowCodeFieldExtractorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserLowCodeFieldExtractorsPtrInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsPtrOutput() ParserLowCodeFieldExtractorsPtrOutput
+	ToParserLowCodeFieldExtractorsPtrOutputWithContext(context.Context) ParserLowCodeFieldExtractorsPtrOutput
+}
+
+type parserLowCodeFieldExtractorsPtrType ParserLowCodeFieldExtractorsArgs
+
+func ParserLowCodeFieldExtractorsPtr(v *ParserLowCodeFieldExtractorsArgs) ParserLowCodeFieldExtractorsPtrInput {
+	return (*parserLowCodeFieldExtractorsPtrType)(v)
+}
+
+func (*parserLowCodeFieldExtractorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCodeFieldExtractors)(nil)).Elem()
+}
+
+func (i *parserLowCodeFieldExtractorsPtrType) ToParserLowCodeFieldExtractorsPtrOutput() ParserLowCodeFieldExtractorsPtrOutput {
+	return i.ToParserLowCodeFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (i *parserLowCodeFieldExtractorsPtrType) ToParserLowCodeFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractors)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsOutput) ToParserLowCodeFieldExtractorsOutput() ParserLowCodeFieldExtractorsOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsOutput) ToParserLowCodeFieldExtractorsOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsOutput) ToParserLowCodeFieldExtractorsPtrOutput() ParserLowCodeFieldExtractorsPtrOutput {
+	return o.ToParserLowCodeFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (o ParserLowCodeFieldExtractorsOutput) ToParserLowCodeFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserLowCodeFieldExtractors) *ParserLowCodeFieldExtractors {
+		return &v
+	}).(ParserLowCodeFieldExtractorsPtrOutput)
+}
+
+// Whether to append repeated fields or not.
+// When false, repeated fields will be replaced.
+func (o ParserLowCodeFieldExtractorsOutput) AppendRepeatedFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractors) *bool { return v.AppendRepeatedFields }).(pulumi.BoolPtrOutput)
+}
+
+// List of FieldExtractors.
+// Structure is documented below.
+func (o ParserLowCodeFieldExtractorsOutput) Extractors() ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractors) []ParserLowCodeFieldExtractorsExtractor { return v.Extractors }).(ParserLowCodeFieldExtractorsExtractorArrayOutput)
+}
+
+// Possible values:
+// JSON
+// CSV
+// XML
+func (o ParserLowCodeFieldExtractorsOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractors) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
+}
+
+// PreProcessConfig holds the GROK expression to extract the syslog header.
+// Structure is documented below.
+func (o ParserLowCodeFieldExtractorsOutput) PreprocessConfig() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractors) *ParserLowCodeFieldExtractorsPreprocessConfig {
+		return v.PreprocessConfig
+	}).(ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// (Output)
+// CBN snippet generated from field extractors.
+func (o ParserLowCodeFieldExtractorsOutput) TransformedCbnSnippet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractors) *string { return v.TransformedCbnSnippet }).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCodeFieldExtractors)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsPtrOutput) ToParserLowCodeFieldExtractorsPtrOutput() ParserLowCodeFieldExtractorsPtrOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPtrOutput) ToParserLowCodeFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPtrOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPtrOutput) Elem() ParserLowCodeFieldExtractorsOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) ParserLowCodeFieldExtractors {
+		if v != nil {
+			return *v
+		}
+		var ret ParserLowCodeFieldExtractors
+		return ret
+	}).(ParserLowCodeFieldExtractorsOutput)
+}
+
+// Whether to append repeated fields or not.
+// When false, repeated fields will be replaced.
+func (o ParserLowCodeFieldExtractorsPtrOutput) AppendRepeatedFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendRepeatedFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of FieldExtractors.
+// Structure is documented below.
+func (o ParserLowCodeFieldExtractorsPtrOutput) Extractors() ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) []ParserLowCodeFieldExtractorsExtractor {
+		if v == nil {
+			return nil
+		}
+		return v.Extractors
+	}).(ParserLowCodeFieldExtractorsExtractorArrayOutput)
+}
+
+// Possible values:
+// JSON
+// CSV
+// XML
+func (o ParserLowCodeFieldExtractorsPtrOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// PreProcessConfig holds the GROK expression to extract the syslog header.
+// Structure is documented below.
+func (o ParserLowCodeFieldExtractorsPtrOutput) PreprocessConfig() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) *ParserLowCodeFieldExtractorsPreprocessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PreprocessConfig
+	}).(ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// (Output)
+// CBN snippet generated from field extractors.
+func (o ParserLowCodeFieldExtractorsPtrOutput) TransformedCbnSnippet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransformedCbnSnippet
+	}).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsExtractor struct {
+	// Path in generated event which is to be populated. This is required if the
+	// FieldExtractor is used to specify the parser extension.
+	DestinationPath *string `pulumi:"destinationPath"`
+	// Field path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	// This is required if the FieldExtractor is used to specify the parser
+	// extension.
+	FieldPath *string `pulumi:"fieldPath"`
+	// Operator used for precondition.
+	// Possible values:
+	// EQUALS
+	// NOT_EQUALS
+	PreconditionOp *string `pulumi:"preconditionOp"`
+	// Precondition path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	PreconditionPath *string `pulumi:"preconditionPath"`
+	// Precondition value.
+	PreconditionValue *string `pulumi:"preconditionValue"`
+	// Value to be mapped to the destination path directly.
+	Value *string `pulumi:"value"`
+}
+
+// ParserLowCodeFieldExtractorsExtractorInput is an input type that accepts ParserLowCodeFieldExtractorsExtractorArgs and ParserLowCodeFieldExtractorsExtractorOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsExtractorInput` via:
+//
+//	ParserLowCodeFieldExtractorsExtractorArgs{...}
+type ParserLowCodeFieldExtractorsExtractorInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsExtractorOutput() ParserLowCodeFieldExtractorsExtractorOutput
+	ToParserLowCodeFieldExtractorsExtractorOutputWithContext(context.Context) ParserLowCodeFieldExtractorsExtractorOutput
+}
+
+type ParserLowCodeFieldExtractorsExtractorArgs struct {
+	// Path in generated event which is to be populated. This is required if the
+	// FieldExtractor is used to specify the parser extension.
+	DestinationPath pulumi.StringPtrInput `pulumi:"destinationPath"`
+	// Field path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	// This is required if the FieldExtractor is used to specify the parser
+	// extension.
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+	// Operator used for precondition.
+	// Possible values:
+	// EQUALS
+	// NOT_EQUALS
+	PreconditionOp pulumi.StringPtrInput `pulumi:"preconditionOp"`
+	// Precondition path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	PreconditionPath pulumi.StringPtrInput `pulumi:"preconditionPath"`
+	// Precondition value.
+	PreconditionValue pulumi.StringPtrInput `pulumi:"preconditionValue"`
+	// Value to be mapped to the destination path directly.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ParserLowCodeFieldExtractorsExtractorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (i ParserLowCodeFieldExtractorsExtractorArgs) ToParserLowCodeFieldExtractorsExtractorOutput() ParserLowCodeFieldExtractorsExtractorOutput {
+	return i.ToParserLowCodeFieldExtractorsExtractorOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsExtractorArgs) ToParserLowCodeFieldExtractorsExtractorOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsExtractorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsExtractorOutput)
+}
+
+// ParserLowCodeFieldExtractorsExtractorArrayInput is an input type that accepts ParserLowCodeFieldExtractorsExtractorArray and ParserLowCodeFieldExtractorsExtractorArrayOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsExtractorArrayInput` via:
+//
+//	ParserLowCodeFieldExtractorsExtractorArray{ ParserLowCodeFieldExtractorsExtractorArgs{...} }
+type ParserLowCodeFieldExtractorsExtractorArrayInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsExtractorArrayOutput() ParserLowCodeFieldExtractorsExtractorArrayOutput
+	ToParserLowCodeFieldExtractorsExtractorArrayOutputWithContext(context.Context) ParserLowCodeFieldExtractorsExtractorArrayOutput
+}
+
+type ParserLowCodeFieldExtractorsExtractorArray []ParserLowCodeFieldExtractorsExtractorInput
+
+func (ParserLowCodeFieldExtractorsExtractorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserLowCodeFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (i ParserLowCodeFieldExtractorsExtractorArray) ToParserLowCodeFieldExtractorsExtractorArrayOutput() ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return i.ToParserLowCodeFieldExtractorsExtractorArrayOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsExtractorArray) ToParserLowCodeFieldExtractorsExtractorArrayOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsExtractorArrayOutput)
+}
+
+type ParserLowCodeFieldExtractorsExtractorOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsExtractorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsExtractorOutput) ToParserLowCodeFieldExtractorsExtractorOutput() ParserLowCodeFieldExtractorsExtractorOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsExtractorOutput) ToParserLowCodeFieldExtractorsExtractorOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsExtractorOutput {
+	return o
+}
+
+// Path in generated event which is to be populated. This is required if the
+// FieldExtractor is used to specify the parser extension.
+func (o ParserLowCodeFieldExtractorsExtractorOutput) DestinationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.DestinationPath }).(pulumi.StringPtrOutput)
+}
+
+// Field path could be a json path, xml path or csv column name
+// depending on log format. It refers to a section or substring in raw log.
+// This is required if the FieldExtractor is used to specify the parser
+// extension.
+func (o ParserLowCodeFieldExtractorsExtractorOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+// Operator used for precondition.
+// Possible values:
+// EQUALS
+// NOT_EQUALS
+func (o ParserLowCodeFieldExtractorsExtractorOutput) PreconditionOp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.PreconditionOp }).(pulumi.StringPtrOutput)
+}
+
+// Precondition path could be a json path, xml path or csv column name
+// depending on log format. It refers to a section or substring in raw log.
+func (o ParserLowCodeFieldExtractorsExtractorOutput) PreconditionPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.PreconditionPath }).(pulumi.StringPtrOutput)
+}
+
+// Precondition value.
+func (o ParserLowCodeFieldExtractorsExtractorOutput) PreconditionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.PreconditionValue }).(pulumi.StringPtrOutput)
+}
+
+// Value to be mapped to the destination path directly.
+func (o ParserLowCodeFieldExtractorsExtractorOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsExtractor) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsExtractorArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsExtractorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserLowCodeFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsExtractorArrayOutput) ToParserLowCodeFieldExtractorsExtractorArrayOutput() ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsExtractorArrayOutput) ToParserLowCodeFieldExtractorsExtractorArrayOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsExtractorArrayOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsExtractorArrayOutput) Index(i pulumi.IntInput) ParserLowCodeFieldExtractorsExtractorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserLowCodeFieldExtractorsExtractor {
+		return vs[0].([]ParserLowCodeFieldExtractorsExtractor)[vs[1].(int)]
+	}).(ParserLowCodeFieldExtractorsExtractorOutput)
+}
+
+type ParserLowCodeFieldExtractorsPreprocessConfig struct {
+	// GROK Regex to extract the structured part of the log.
+	// syntax documentation:
+	// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+	GrokRegex *string `pulumi:"grokRegex"`
+	// Target field name for the structured part of the log.
+	// This should match a SEMANTIC identifier from the grok expression.
+	Target *string `pulumi:"target"`
+}
+
+// ParserLowCodeFieldExtractorsPreprocessConfigInput is an input type that accepts ParserLowCodeFieldExtractorsPreprocessConfigArgs and ParserLowCodeFieldExtractorsPreprocessConfigOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsPreprocessConfigInput` via:
+//
+//	ParserLowCodeFieldExtractorsPreprocessConfigArgs{...}
+type ParserLowCodeFieldExtractorsPreprocessConfigInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsPreprocessConfigOutput() ParserLowCodeFieldExtractorsPreprocessConfigOutput
+	ToParserLowCodeFieldExtractorsPreprocessConfigOutputWithContext(context.Context) ParserLowCodeFieldExtractorsPreprocessConfigOutput
+}
+
+type ParserLowCodeFieldExtractorsPreprocessConfigArgs struct {
+	// GROK Regex to extract the structured part of the log.
+	// syntax documentation:
+	// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+	GrokRegex pulumi.StringPtrInput `pulumi:"grokRegex"`
+	// Target field name for the structured part of the log.
+	// This should match a SEMANTIC identifier from the grok expression.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (ParserLowCodeFieldExtractorsPreprocessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (i ParserLowCodeFieldExtractorsPreprocessConfigArgs) ToParserLowCodeFieldExtractorsPreprocessConfigOutput() ParserLowCodeFieldExtractorsPreprocessConfigOutput {
+	return i.ToParserLowCodeFieldExtractorsPreprocessConfigOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsPreprocessConfigArgs) ToParserLowCodeFieldExtractorsPreprocessConfigOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsPreprocessConfigOutput)
+}
+
+func (i ParserLowCodeFieldExtractorsPreprocessConfigArgs) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutput() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return i.ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ParserLowCodeFieldExtractorsPreprocessConfigArgs) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsPreprocessConfigOutput).ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx)
+}
+
+// ParserLowCodeFieldExtractorsPreprocessConfigPtrInput is an input type that accepts ParserLowCodeFieldExtractorsPreprocessConfigArgs, ParserLowCodeFieldExtractorsPreprocessConfigPtr and ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput values.
+// You can construct a concrete instance of `ParserLowCodeFieldExtractorsPreprocessConfigPtrInput` via:
+//
+//	        ParserLowCodeFieldExtractorsPreprocessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserLowCodeFieldExtractorsPreprocessConfigPtrInput interface {
+	pulumi.Input
+
+	ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutput() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput
+	ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Context) ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput
+}
+
+type parserLowCodeFieldExtractorsPreprocessConfigPtrType ParserLowCodeFieldExtractorsPreprocessConfigArgs
+
+func ParserLowCodeFieldExtractorsPreprocessConfigPtr(v *ParserLowCodeFieldExtractorsPreprocessConfigArgs) ParserLowCodeFieldExtractorsPreprocessConfigPtrInput {
+	return (*parserLowCodeFieldExtractorsPreprocessConfigPtrType)(v)
+}
+
+func (*parserLowCodeFieldExtractorsPreprocessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCodeFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (i *parserLowCodeFieldExtractorsPreprocessConfigPtrType) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutput() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return i.ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *parserLowCodeFieldExtractorsPreprocessConfigPtrType) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsPreprocessConfigOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsPreprocessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserLowCodeFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) ToParserLowCodeFieldExtractorsPreprocessConfigOutput() ParserLowCodeFieldExtractorsPreprocessConfigOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) ToParserLowCodeFieldExtractorsPreprocessConfigOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutput() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserLowCodeFieldExtractorsPreprocessConfig) *ParserLowCodeFieldExtractorsPreprocessConfig {
+		return &v
+	}).(ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// GROK Regex to extract the structured part of the log.
+// syntax documentation:
+// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) GrokRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsPreprocessConfig) *string { return v.GrokRegex }).(pulumi.StringPtrOutput)
+}
+
+// Target field name for the structured part of the log.
+// This should match a SEMANTIC identifier from the grok expression.
+func (o ParserLowCodeFieldExtractorsPreprocessConfigOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserLowCodeFieldExtractorsPreprocessConfig) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserLowCodeFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutput() ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) ToParserLowCodeFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput {
+	return o
+}
+
+func (o ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) Elem() ParserLowCodeFieldExtractorsPreprocessConfigOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractorsPreprocessConfig) ParserLowCodeFieldExtractorsPreprocessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ParserLowCodeFieldExtractorsPreprocessConfig
+		return ret
+	}).(ParserLowCodeFieldExtractorsPreprocessConfigOutput)
+}
+
+// GROK Regex to extract the structured part of the log.
+// syntax documentation:
+// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+func (o ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) GrokRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractorsPreprocessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrokRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target field name for the structured part of the log.
+// This should match a SEMANTIC identifier from the grok expression.
+func (o ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserLowCodeFieldExtractorsPreprocessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ParserVersionInfo struct {
+	// Signifies if the parser is disabled for auto upgrade. If true, the parser
+	// will not be upgraded by the auto upgrade process.
+	AutoUpgradeDisabled bool `pulumi:"autoUpgradeDisabled"`
+	// (Output)
+	// The resource name of latest Parser for this logtype.
+	// Format:
+	// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+	LatestParser *string `pulumi:"latestParser"`
+	// (Output)
+	// The version for the latest available stable version of the parser.
+	LatestParserVersion *string `pulumi:"latestParserVersion"`
+	// (Output)
+	// Signifies if rollback is available for this parser version.
+	RollbackAvailable *bool `pulumi:"rollbackAvailable"`
+	// (Output)
+	// The version of the parser.
+	Version *string `pulumi:"version"`
+}
+
+// ParserVersionInfoInput is an input type that accepts ParserVersionInfoArgs and ParserVersionInfoOutput values.
+// You can construct a concrete instance of `ParserVersionInfoInput` via:
+//
+//	ParserVersionInfoArgs{...}
+type ParserVersionInfoInput interface {
+	pulumi.Input
+
+	ToParserVersionInfoOutput() ParserVersionInfoOutput
+	ToParserVersionInfoOutputWithContext(context.Context) ParserVersionInfoOutput
+}
+
+type ParserVersionInfoArgs struct {
+	// Signifies if the parser is disabled for auto upgrade. If true, the parser
+	// will not be upgraded by the auto upgrade process.
+	AutoUpgradeDisabled pulumi.BoolInput `pulumi:"autoUpgradeDisabled"`
+	// (Output)
+	// The resource name of latest Parser for this logtype.
+	// Format:
+	// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+	LatestParser pulumi.StringPtrInput `pulumi:"latestParser"`
+	// (Output)
+	// The version for the latest available stable version of the parser.
+	LatestParserVersion pulumi.StringPtrInput `pulumi:"latestParserVersion"`
+	// (Output)
+	// Signifies if rollback is available for this parser version.
+	RollbackAvailable pulumi.BoolPtrInput `pulumi:"rollbackAvailable"`
+	// (Output)
+	// The version of the parser.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ParserVersionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserVersionInfo)(nil)).Elem()
+}
+
+func (i ParserVersionInfoArgs) ToParserVersionInfoOutput() ParserVersionInfoOutput {
+	return i.ToParserVersionInfoOutputWithContext(context.Background())
+}
+
+func (i ParserVersionInfoArgs) ToParserVersionInfoOutputWithContext(ctx context.Context) ParserVersionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserVersionInfoOutput)
+}
+
+func (i ParserVersionInfoArgs) ToParserVersionInfoPtrOutput() ParserVersionInfoPtrOutput {
+	return i.ToParserVersionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ParserVersionInfoArgs) ToParserVersionInfoPtrOutputWithContext(ctx context.Context) ParserVersionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserVersionInfoOutput).ToParserVersionInfoPtrOutputWithContext(ctx)
+}
+
+// ParserVersionInfoPtrInput is an input type that accepts ParserVersionInfoArgs, ParserVersionInfoPtr and ParserVersionInfoPtrOutput values.
+// You can construct a concrete instance of `ParserVersionInfoPtrInput` via:
+//
+//	        ParserVersionInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserVersionInfoPtrInput interface {
+	pulumi.Input
+
+	ToParserVersionInfoPtrOutput() ParserVersionInfoPtrOutput
+	ToParserVersionInfoPtrOutputWithContext(context.Context) ParserVersionInfoPtrOutput
+}
+
+type parserVersionInfoPtrType ParserVersionInfoArgs
+
+func ParserVersionInfoPtr(v *ParserVersionInfoArgs) ParserVersionInfoPtrInput {
+	return (*parserVersionInfoPtrType)(v)
+}
+
+func (*parserVersionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserVersionInfo)(nil)).Elem()
+}
+
+func (i *parserVersionInfoPtrType) ToParserVersionInfoPtrOutput() ParserVersionInfoPtrOutput {
+	return i.ToParserVersionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *parserVersionInfoPtrType) ToParserVersionInfoPtrOutputWithContext(ctx context.Context) ParserVersionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserVersionInfoPtrOutput)
+}
+
+type ParserVersionInfoOutput struct{ *pulumi.OutputState }
+
+func (ParserVersionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserVersionInfo)(nil)).Elem()
+}
+
+func (o ParserVersionInfoOutput) ToParserVersionInfoOutput() ParserVersionInfoOutput {
+	return o
+}
+
+func (o ParserVersionInfoOutput) ToParserVersionInfoOutputWithContext(ctx context.Context) ParserVersionInfoOutput {
+	return o
+}
+
+func (o ParserVersionInfoOutput) ToParserVersionInfoPtrOutput() ParserVersionInfoPtrOutput {
+	return o.ToParserVersionInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ParserVersionInfoOutput) ToParserVersionInfoPtrOutputWithContext(ctx context.Context) ParserVersionInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserVersionInfo) *ParserVersionInfo {
+		return &v
+	}).(ParserVersionInfoPtrOutput)
+}
+
+// Signifies if the parser is disabled for auto upgrade. If true, the parser
+// will not be upgraded by the auto upgrade process.
+func (o ParserVersionInfoOutput) AutoUpgradeDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ParserVersionInfo) bool { return v.AutoUpgradeDisabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The resource name of latest Parser for this logtype.
+// Format:
+// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+func (o ParserVersionInfoOutput) LatestParser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserVersionInfo) *string { return v.LatestParser }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The version for the latest available stable version of the parser.
+func (o ParserVersionInfoOutput) LatestParserVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserVersionInfo) *string { return v.LatestParserVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Signifies if rollback is available for this parser version.
+func (o ParserVersionInfoOutput) RollbackAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ParserVersionInfo) *bool { return v.RollbackAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The version of the parser.
+func (o ParserVersionInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserVersionInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ParserVersionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserVersionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserVersionInfo)(nil)).Elem()
+}
+
+func (o ParserVersionInfoPtrOutput) ToParserVersionInfoPtrOutput() ParserVersionInfoPtrOutput {
+	return o
+}
+
+func (o ParserVersionInfoPtrOutput) ToParserVersionInfoPtrOutputWithContext(ctx context.Context) ParserVersionInfoPtrOutput {
+	return o
+}
+
+func (o ParserVersionInfoPtrOutput) Elem() ParserVersionInfoOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) ParserVersionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ParserVersionInfo
+		return ret
+	}).(ParserVersionInfoOutput)
+}
+
+// Signifies if the parser is disabled for auto upgrade. If true, the parser
+// will not be upgraded by the auto upgrade process.
+func (o ParserVersionInfoPtrOutput) AutoUpgradeDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoUpgradeDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The resource name of latest Parser for this logtype.
+// Format:
+// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+func (o ParserVersionInfoPtrOutput) LatestParser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestParser
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The version for the latest available stable version of the parser.
+func (o ParserVersionInfoPtrOutput) LatestParserVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestParserVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Signifies if rollback is available for this parser version.
+func (o ParserVersionInfoPtrOutput) RollbackAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RollbackAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The version of the parser.
+func (o ParserVersionInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserVersionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type ReferenceListEntry struct {
 	// Required. The value of the entry. Maximum length is 512 characters.
 	Value string `pulumi:"value"`
@@ -47936,6 +49295,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterArrayInput)(nil)).Elem(), NativeDashboardFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValueInput)(nil)).Elem(), NativeDashboardFilterFilterOperatorAndFieldValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValueArrayInput)(nil)).Elem(), NativeDashboardFilterFilterOperatorAndFieldValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserChangelogInput)(nil)).Elem(), ParserChangelogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserChangelogArrayInput)(nil)).Elem(), ParserChangelogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserChangelogEntryInput)(nil)).Elem(), ParserChangelogEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserChangelogEntryArrayInput)(nil)).Elem(), ParserChangelogEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserCreatorInput)(nil)).Elem(), ParserCreatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserCreatorArrayInput)(nil)).Elem(), ParserCreatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeInput)(nil)).Elem(), ParserLowCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodePtrInput)(nil)).Elem(), ParserLowCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsInput)(nil)).Elem(), ParserLowCodeFieldExtractorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsPtrInput)(nil)).Elem(), ParserLowCodeFieldExtractorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsExtractorInput)(nil)).Elem(), ParserLowCodeFieldExtractorsExtractorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsExtractorArrayInput)(nil)).Elem(), ParserLowCodeFieldExtractorsExtractorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsPreprocessConfigInput)(nil)).Elem(), ParserLowCodeFieldExtractorsPreprocessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsPreprocessConfigPtrInput)(nil)).Elem(), ParserLowCodeFieldExtractorsPreprocessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserVersionInfoInput)(nil)).Elem(), ParserVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserVersionInfoPtrInput)(nil)).Elem(), ParserVersionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryInput)(nil)).Elem(), ReferenceListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryArrayInput)(nil)).Elem(), ReferenceListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
@@ -48476,6 +49851,22 @@ func init() {
 	pulumi.RegisterOutputType(NativeDashboardFilterArrayOutput{})
 	pulumi.RegisterOutputType(NativeDashboardFilterFilterOperatorAndFieldValueOutput{})
 	pulumi.RegisterOutputType(NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput{})
+	pulumi.RegisterOutputType(ParserChangelogOutput{})
+	pulumi.RegisterOutputType(ParserChangelogArrayOutput{})
+	pulumi.RegisterOutputType(ParserChangelogEntryOutput{})
+	pulumi.RegisterOutputType(ParserChangelogEntryArrayOutput{})
+	pulumi.RegisterOutputType(ParserCreatorOutput{})
+	pulumi.RegisterOutputType(ParserCreatorArrayOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeOutput{})
+	pulumi.RegisterOutputType(ParserLowCodePtrOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsPtrOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsExtractorOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsExtractorArrayOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsPreprocessConfigOutput{})
+	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsPreprocessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ParserVersionInfoOutput{})
+	pulumi.RegisterOutputType(ParserVersionInfoPtrOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})

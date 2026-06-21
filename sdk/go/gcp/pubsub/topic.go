@@ -166,8 +166,10 @@ import (
 //			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 //				Name: pulumi.String("example-topic"),
 //				SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
-//					Schema:   pulumi.String("projects/my-project-name/schemas/example"),
-//					Encoding: pulumi.String("JSON"),
+//					Schema:          pulumi.String("projects/my-project-name/schemas/example"),
+//					Encoding:        pulumi.String("JSON"),
+//					FirstRevisionId: example.RevisionId,
+//					LastRevisionId:  example.RevisionId,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,

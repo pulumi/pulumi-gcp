@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.NetworkServices
     /// <summary>
     /// AgentGateway represents the agent gateway resource.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about AgentGateway, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+    /// * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
     /// 
     /// ## Example Usage
     /// 
@@ -31,6 +28,37 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var agentRegistry = new Gcp.Projects.Service("agent_registry", new()
+    ///     {
+    ///         ServiceName = "agentregistry.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "net-my-full-agent-gateway",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "subnet-my-full-agent-gateway",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
+    ///     {
+    ///         Name = "na-my-full-agent-gateway",
+    ///         Region = "us-central1",
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             defaultSubnetwork.SelfLink,
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.NetworkServices.AgentGateway("default", new()
     ///     {
     ///         Name = "my-full-agent-gateway",
@@ -57,8 +85,14 @@ namespace Pulumi.Gcp.NetworkServices
     ///         {
     ///             Egress = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigEgressArgs
     ///             {
-    ///                 NetworkAttachment = "projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment",
+    ///                 NetworkAttachment = defaultNetworkAttachment.Id,
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             agentRegistry,
     ///         },
     ///     });
     /// 
@@ -74,14 +108,16 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var agentRegistry = new Gcp.Projects.Service("agent_registry", new()
+    ///     {
+    ///         ServiceName = "agentregistry.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
     ///     var @default = new Gcp.NetworkServices.AgentGateway("default", new()
     ///     {
     ///         Name = "my-client-to-agent-gateway",
     ///         Location = "us-central1",
-    ///         Protocols = new[]
-    ///         {
-    ///             "MCP",
-    ///         },
     ///         GoogleManaged = new Gcp.NetworkServices.Inputs.AgentGatewayGoogleManagedArgs
     ///         {
     ///             GovernedAccessPath = "CLIENT_TO_AGENT",
@@ -89,6 +125,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Registries = new[]
     ///         {
     ///             "//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             agentRegistry,
     ///         },
     ///     });
     /// 
@@ -108,10 +150,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///     {
     ///         Name = "my-self-managed-agent-gateway",
     ///         Location = "us-central1",
-    ///         Protocols = new[]
-    ///         {
-    ///             "MCP",
-    ///         },
     ///         SelfManaged = new Gcp.NetworkServices.Inputs.AgentGatewaySelfManagedArgs
     ///         {
     ///             ResourceUri = "projects/my-project-name/locations/us-central1/gateways/my-gateway",
@@ -233,8 +271,11 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// List of protocols supported by an Agent Gateway.
         /// Each value may be one of: `MCP`.
+        /// 
+        /// &gt; **Warning:** `Protocols` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("protocols")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
@@ -385,13 +426,17 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("protocols", required: true)]
+        [Input("protocols")]
         private InputList<string>? _protocols;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// List of protocols supported by an Agent Gateway.
         /// Each value may be one of: `MCP`.
+        /// 
+        /// &gt; **Warning:** `Protocols` is deprecated and will be removed in a future major release.
         /// </summary>
+        [Obsolete(@"`Protocols` is deprecated and will be removed in a future major release.")]
         public InputList<string> Protocols
         {
             get => _protocols ?? (_protocols = new InputList<string>());
@@ -542,9 +587,13 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _protocols;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// List of protocols supported by an Agent Gateway.
         /// Each value may be one of: `MCP`.
+        /// 
+        /// &gt; **Warning:** `Protocols` is deprecated and will be removed in a future major release.
         /// </summary>
+        [Obsolete(@"`Protocols` is deprecated and will be removed in a future major release.")]
         public InputList<string> Protocols
         {
             get => _protocols ?? (_protocols = new InputList<string>());

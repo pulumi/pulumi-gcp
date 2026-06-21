@@ -3147,12 +3147,22 @@ class TopicSchemaSettingsArgsDict(TypedDict):
     Default value is `ENCODING_UNSPECIFIED`.
     Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
     """
+    first_revision_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+    """
+    last_revision_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+    """
 
 @pulumi.input_type
 class TopicSchemaSettingsArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 encoding: pulumi.Input[Optional[_builtins.str]] = None):
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_revision_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: The name of the schema that messages published should be
                validated against. Format is projects/{project}/schemas/{schema}.
@@ -3161,10 +3171,16 @@ class TopicSchemaSettingsArgs:
         :param pulumi.Input[_builtins.str] encoding: The encoding of messages validated against schema.
                Default value is `ENCODING_UNSPECIFIED`.
                Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
+        :param pulumi.Input[_builtins.str] first_revision_id: The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        :param pulumi.Input[_builtins.str] last_revision_id: The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         """
         pulumi.set(__self__, "schema", schema)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
+        if first_revision_id is not None:
+            pulumi.set(__self__, "first_revision_id", first_revision_id)
+        if last_revision_id is not None:
+            pulumi.set(__self__, "last_revision_id", last_revision_id)
 
     @_builtins.property
     @pulumi.getter
@@ -3194,5 +3210,29 @@ class TopicSchemaSettingsArgs:
     @encoding.setter
     def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firstRevisionId")
+    def first_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        """
+        return pulumi.get(self, "first_revision_id")
+
+    @first_revision_id.setter
+    def first_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "first_revision_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastRevisionId")
+    def last_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        """
+        return pulumi.get(self, "last_revision_id")
+
+    @last_revision_id.setter
+    def last_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "last_revision_id", value)
 
 

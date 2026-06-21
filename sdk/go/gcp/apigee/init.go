@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvironmentAddonsConfig{}
 	case "gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment":
 		r = &EnvironmentApiRevisionDeployment{}
+	case "gcp:apigee/environmentDebugmask:EnvironmentDebugmask":
+		r = &EnvironmentDebugmask{}
 	case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
 		r = &EnvironmentIamBinding{}
 	case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
@@ -209,6 +211,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/environmentApiRevisionDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/environmentDebugmask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

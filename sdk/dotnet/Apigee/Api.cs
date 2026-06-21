@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Apigee
         /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         /// </summary>
         [Output("detectMd5hash")]
-        public Output<string?> DetectMd5hash { get; private set; } = null!;
+        public Output<string> DetectMd5hash { get; private set; } = null!;
 
         /// <summary>
         /// The id of the most recently created revision for this API proxy.

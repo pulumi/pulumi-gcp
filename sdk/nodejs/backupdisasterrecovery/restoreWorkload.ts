@@ -266,7 +266,7 @@ export class RestoreWorkload extends pulumi.CustomResource {
      */
     declare public readonly computeInstanceRestoreProperties: pulumi.Output<outputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for GCE VM restoration.
+     * The destination environment for GCE VM restoration.
      * Structure is documented below.
      */
     declare public readonly computeInstanceTargetEnvironment: pulumi.Output<outputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment | undefined>;
@@ -294,7 +294,7 @@ export class RestoreWorkload extends pulumi.CustomResource {
      */
     declare public readonly diskRestoreProperties: pulumi.Output<outputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for zonal disk restoration.
+     * The destination environment for zonal disk restoration.
      * Structure is documented below.
      */
     declare public readonly diskTargetEnvironment: pulumi.Output<outputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment | undefined>;
@@ -312,7 +312,7 @@ export class RestoreWorkload extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Optional. The destination environment for regional disk restoration.
+     * The destination environment for regional disk restoration.
      * Structure is documented below.
      */
     declare public readonly regionDiskTargetEnvironment: pulumi.Output<outputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment | undefined>;
@@ -413,7 +413,7 @@ export interface RestoreWorkloadState {
      */
     computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for GCE VM restoration.
+     * The destination environment for GCE VM restoration.
      * Structure is documented below.
      */
     computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment | undefined>;
@@ -441,7 +441,7 @@ export interface RestoreWorkloadState {
      */
     diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for zonal disk restoration.
+     * The destination environment for zonal disk restoration.
      * Structure is documented below.
      */
     diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment | undefined>;
@@ -459,7 +459,7 @@ export interface RestoreWorkloadState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Optional. The destination environment for regional disk restoration.
+     * The destination environment for regional disk restoration.
      * Structure is documented below.
      */
     regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment | undefined>;
@@ -498,7 +498,7 @@ export interface RestoreWorkloadArgs {
      */
     computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for GCE VM restoration.
+     * The destination environment for GCE VM restoration.
      * Structure is documented below.
      */
     computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment | undefined>;
@@ -526,7 +526,7 @@ export interface RestoreWorkloadArgs {
      */
     diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties | undefined>;
     /**
-     * Optional. The destination environment for zonal disk restoration.
+     * The destination environment for zonal disk restoration.
      * Structure is documented below.
      */
     diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment | undefined>;
@@ -544,7 +544,7 @@ export interface RestoreWorkloadArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Optional. The destination environment for regional disk restoration.
+     * The destination environment for regional disk restoration.
      * Structure is documented below.
      */
     regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment | undefined>;

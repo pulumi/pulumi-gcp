@@ -12,6 +12,7 @@ import com.pulumi.gcp.networksecurity.AuthzPolicyArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyState;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyCustomProvider;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRule;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRule;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyTarget;
 import java.lang.String;
 import java.util.List;
@@ -97,7 +98,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ## Import
  * 
  * AuthzPolicy can be imported using any of these accepted formats:
@@ -296,6 +296,24 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkRules", refs={List.class,AuthzPolicyNetworkRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AuthzPolicyNetworkRule>> networkRules;
+
+    /**
+     * @return A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<AuthzPolicyNetworkRule>>> networkRules() {
+        return Codegen.optional(this.networkRules);
     }
     /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM

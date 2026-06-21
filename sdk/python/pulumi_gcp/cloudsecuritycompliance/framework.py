@@ -23,11 +23,12 @@ class FrameworkArgs:
     def __init__(__self__, *,
                  framework_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 organization: pulumi.Input[_builtins.str],
                  cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Framework resource.
 
@@ -35,7 +36,6 @@ class FrameworkArgs:
                This is not the full name of the framework.
                This is the last part of the full name of the framework.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
@@ -47,10 +47,17 @@ class FrameworkArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the framework. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: Display name of the framework. The maximum length is 200 characters.
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         """
         pulumi.set(__self__, "framework_id", framework_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "organization", organization)
         if cloud_control_details is not None:
             pulumi.set(__self__, "cloud_control_details", cloud_control_details)
         if deletion_policy is not None:
@@ -59,6 +66,13 @@ class FrameworkArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if organization is not None:
+            warnings.warn("""Use `parent` instead.""", DeprecationWarning)
+            pulumi.log.warn("""organization is deprecated: Use `parent` instead.""")
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
 
     @_builtins.property
     @pulumi.getter(name="frameworkId")
@@ -85,18 +99,6 @@ class FrameworkArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def organization(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        """
-        return pulumi.get(self, "organization")
-
-    @organization.setter
-    def organization(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudControlDetails")
@@ -153,6 +155,37 @@ class FrameworkArgs:
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
+
 
 @pulumi.input_type
 class _FrameworkState:
@@ -167,6 +200,7 @@ class _FrameworkState:
                  major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -193,8 +227,15 @@ class _FrameworkState:
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of the framework incremented in ascending order.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the framework.
                Format:
-               organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               {parent}/locations/{location}/frameworks/{framework_id}
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_cloud_providers: cloud providers supported
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_enforcement_modes: The supported enforcement modes of the framework.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_target_resource_types: target resource types supported by the Framework.
@@ -222,7 +263,12 @@ class _FrameworkState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization is not None:
+            warnings.warn("""Use `parent` instead.""", DeprecationWarning)
+            pulumi.log.warn("""organization is deprecated: Use `parent` instead.""")
+        if organization is not None:
             pulumi.set(__self__, "organization", organization)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if supported_cloud_providers is not None:
             pulumi.set(__self__, "supported_cloud_providers", supported_cloud_providers)
         if supported_enforcement_modes is not None:
@@ -343,7 +389,7 @@ class _FrameworkState:
         """
         Identifier. The name of the framework.
         Format:
-        organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+        {parent}/locations/{location}/frameworks/{framework_id}
         """
         return pulumi.get(self, "name")
 
@@ -353,15 +399,34 @@ class _FrameworkState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
     def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
     def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedCloudProviders")
@@ -428,6 +493,7 @@ class Framework(pulumi.CustomResource):
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Frameworks allow you to monitor and enforce compliance and security requirements. Manage compliance by assigning built-in or custom frameworks to resources.
@@ -438,14 +504,14 @@ class Framework(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Cloudsecuritycompliance Framework Basic
+        ### Cloudsecuritycompliance Framework Org Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         example = gcp.cloudsecuritycompliance.Framework("example",
-            organization="123456789",
+            parent="organizations/123456789",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
@@ -453,7 +519,7 @@ class Framework(pulumi.CustomResource):
             cloud_control_details=[
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
-                    "major_revision_id": "1",
+                    "major_revision_id": "2",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -478,7 +544,7 @@ class Framework(pulumi.CustomResource):
                 },
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
-                    "major_revision_id": "1",
+                    "major_revision_id": "3",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -488,7 +554,128 @@ class Framework(pulumi.CustomResource):
                 },
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            ])
+        ```
+        ### Cloudsecuritycompliance Framework Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-assess-resource-availability",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
                     "major_revision_id": "1",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_list_value": {
+                                "values": [
+                                    "us-central1",
+                                    "us-west1",
+                                ],
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+                    "major_revision_id": "3",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            ])
+        ```
+        ### Cloudsecuritycompliance Framework Org Basic Backward
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            organization="123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
+                    "major_revision_id": "1",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_list_value": {
+                                "values": [
+                                    "us-central1",
+                                    "us-west1",
+                                ],
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+                    "major_revision_id": "3",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -504,13 +691,13 @@ class Framework(pulumi.CustomResource):
         Framework can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
-        * `{{organization}}/{{location}}/{{framework_id}}`
+        * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
 
         When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
-        $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+        $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
         ```
 
 
@@ -531,7 +718,14 @@ class Framework(pulumi.CustomResource):
                This is not the full name of the framework.
                This is the last part of the full name of the framework.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         """
         ...
     @overload
@@ -548,14 +742,14 @@ class Framework(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Cloudsecuritycompliance Framework Basic
+        ### Cloudsecuritycompliance Framework Org Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         example = gcp.cloudsecuritycompliance.Framework("example",
-            organization="123456789",
+            parent="organizations/123456789",
             location="global",
             framework_id="example-framework",
             display_name="Terraform Framework Name",
@@ -563,7 +757,7 @@ class Framework(pulumi.CustomResource):
             cloud_control_details=[
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
-                    "major_revision_id": "1",
+                    "major_revision_id": "2",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -588,7 +782,7 @@ class Framework(pulumi.CustomResource):
                 },
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
-                    "major_revision_id": "1",
+                    "major_revision_id": "3",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -598,7 +792,128 @@ class Framework(pulumi.CustomResource):
                 },
                 {
                     "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            ])
+        ```
+        ### Cloudsecuritycompliance Framework Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            parent=f"projects/{project.number}",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-assess-resource-availability",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
                     "major_revision_id": "1",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_list_value": {
+                                "values": [
+                                    "us-central1",
+                                    "us-west1",
+                                ],
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+                    "major_revision_id": "3",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+                {
+                    "name": f"projects/{project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "number_value": float(1),
+                        },
+                    }],
+                },
+            ])
+        ```
+        ### Cloudsecuritycompliance Framework Org Basic Backward
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.cloudsecuritycompliance.Framework("example",
+            organization="123456789",
+            location="global",
+            framework_id="example-framework",
+            display_name="Terraform Framework Name",
+            description="An Terraform description for the framework",
+            cloud_control_details=[
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
+                    "major_revision_id": "2",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_value": "us-central1",
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
+                    "major_revision_id": "1",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "string_list_value": {
+                                "values": [
+                                    "us-central1",
+                                    "us-west1",
+                                ],
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+                    "major_revision_id": "3",
+                    "parameters": [{
+                        "name": "location",
+                        "parameter_value": {
+                            "bool_value": True,
+                        },
+                    }],
+                },
+                {
+                    "name": "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+                    "major_revision_id": "2",
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
@@ -614,13 +929,13 @@ class Framework(pulumi.CustomResource):
         Framework can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
-        * `{{organization}}/{{location}}/{{framework_id}}`
+        * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
 
         When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
-        $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+        $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
         ```
 
 
@@ -646,6 +961,7 @@ class Framework(pulumi.CustomResource):
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -665,9 +981,8 @@ class Framework(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if organization is None and not opts.urn:
-                raise TypeError("Missing required property 'organization'")
             __props__.__dict__["organization"] = organization
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["categories"] = None
             __props__.__dict__["major_revision_id"] = None
             __props__.__dict__["name"] = None
@@ -695,6 +1010,7 @@ class Framework(pulumi.CustomResource):
             major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
             supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -725,8 +1041,15 @@ class Framework(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of the framework incremented in ascending order.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the framework.
                Format:
-               organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
-        :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               {parent}/locations/{location}/frameworks/{framework_id}
+        :param pulumi.Input[_builtins.str] organization: (Optional, Deprecated)
+               Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+               
+               > **Warning:** Use `parent` instead.
+        :param pulumi.Input[_builtins.str] parent: The parent resource in which to create the resource.
+               Must be in one of the following formats:
+               * `projects/{{project}}`
+               * `organizations/{{organization}}`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_cloud_providers: cloud providers supported
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_enforcement_modes: The supported enforcement modes of the framework.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_target_resource_types: target resource types supported by the Framework.
@@ -749,6 +1072,7 @@ class Framework(pulumi.CustomResource):
         __props__.__dict__["major_revision_id"] = major_revision_id
         __props__.__dict__["name"] = name
         __props__.__dict__["organization"] = organization
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["supported_cloud_providers"] = supported_cloud_providers
         __props__.__dict__["supported_enforcement_modes"] = supported_enforcement_modes
         __props__.__dict__["supported_target_resource_types"] = supported_target_resource_types
@@ -834,17 +1158,32 @@ class Framework(pulumi.CustomResource):
         """
         Identifier. The name of the framework.
         Format:
-        organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+        {parent}/locations/{location}/frameworks/{framework_id}
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `parent` instead.""")
     def organization(self) -> pulumi.Output[_builtins.str]:
         """
+        (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+
+        > **Warning:** Use `parent` instead.
         """
         return pulumi.get(self, "organization")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[_builtins.str]:
+        """
+        The parent resource in which to create the resource.
+        Must be in one of the following formats:
+        * `projects/{{project}}`
+        * `organizations/{{organization}}`
+        """
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter(name="supportedCloudProviders")

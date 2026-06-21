@@ -35,8 +35,7 @@ public final class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArg
 
     /**
      * The name of the CloudControl in the format:
-     * “organizations/{organization}/locations/{location}/
-     * cloudControls/{cloud-control}”
+     * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
      * 
      */
     @Import(name="name", required=true)
@@ -44,8 +43,7 @@ public final class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArg
 
     /**
      * @return The name of the CloudControl in the format:
-     * “organizations/{organization}/locations/{location}/
-     * cloudControls/{cloud-control}”
+     * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
      * 
      */
     public Output<String> name() {
@@ -122,8 +120,7 @@ public final class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArg
 
         /**
          * @param name The name of the CloudControl in the format:
-         * “organizations/{organization}/locations/{location}/
-         * cloudControls/{cloud-control}”
+         * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
          * 
          * @return builder
          * 
@@ -135,8 +132,7 @@ public final class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArg
 
         /**
          * @param name The name of the CloudControl in the format:
-         * “organizations/{organization}/locations/{location}/
-         * cloudControls/{cloud-control}”
+         * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
          * 
          * @return builder
          * 

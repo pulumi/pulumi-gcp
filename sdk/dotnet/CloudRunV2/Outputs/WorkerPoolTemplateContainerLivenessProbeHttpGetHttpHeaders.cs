@@ -16,7 +16,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// <summary>
         /// Required. The header field name
         /// </summary>
-        public readonly int Port;
+        public readonly string? Name;
+        /// <summary>
+        /// (Optional, Deprecated)
+        /// Required. The header field name
+        /// 
+        /// &gt; **Warning:** `Port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+        /// </summary>
+        public readonly int? Port;
         /// <summary>
         /// Optional. The header field value
         /// </summary>
@@ -24,10 +31,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(
-            int port,
+            string? name,
+
+            int? port,
 
             string? value)
         {
+            Name = name;
             Port = port;
             Value = value;
         }
