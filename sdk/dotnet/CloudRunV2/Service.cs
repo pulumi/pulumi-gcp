@@ -444,7 +444,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]

@@ -326,7 +326,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<Outputs.RestoreWorkloadComputeInstanceRestoreProperties?> ComputeInstanceRestoreProperties { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The destination environment for GCE VM restoration.
+        /// The destination environment for GCE VM restoration.
         /// Structure is documented below.
         /// </summary>
         [Output("computeInstanceTargetEnvironment")]
@@ -364,7 +364,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<Outputs.RestoreWorkloadDiskRestoreProperties?> DiskRestoreProperties { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The destination environment for zonal disk restoration.
+        /// The destination environment for zonal disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Output("diskTargetEnvironment")]
@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The destination environment for regional disk restoration.
+        /// The destination environment for regional disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Output("regionDiskTargetEnvironment")]
@@ -479,7 +479,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<Inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs>? ComputeInstanceRestoreProperties { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for GCE VM restoration.
+        /// The destination environment for GCE VM restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("computeInstanceTargetEnvironment")]
@@ -517,7 +517,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<Inputs.RestoreWorkloadDiskRestorePropertiesArgs>? DiskRestoreProperties { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for zonal disk restoration.
+        /// The destination environment for zonal disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("diskTargetEnvironment")]
@@ -539,7 +539,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for regional disk restoration.
+        /// The destination environment for regional disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("regionDiskTargetEnvironment")]
@@ -587,7 +587,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<Inputs.RestoreWorkloadComputeInstanceRestorePropertiesGetArgs>? ComputeInstanceRestoreProperties { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for GCE VM restoration.
+        /// The destination environment for GCE VM restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("computeInstanceTargetEnvironment")]
@@ -625,7 +625,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<Inputs.RestoreWorkloadDiskRestorePropertiesGetArgs>? DiskRestoreProperties { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for zonal disk restoration.
+        /// The destination environment for zonal disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("diskTargetEnvironment")]
@@ -647,7 +647,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optional. The destination environment for regional disk restoration.
+        /// The destination environment for regional disk restoration.
         /// Structure is documented below.
         /// </summary>
         [Input("regionDiskTargetEnvironment")]

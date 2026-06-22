@@ -7586,6 +7586,14 @@ class WorkerPoolTemplateArgsDict(TypedDict):
     All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
+    client: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Arbitrary identifier for the API client.
+    """
+    client_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Arbitrary version identifier for the API client.
+    """
     containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgsDict']]]]]
     """
     Holds the containers that define the unit of execution for this WorkerPool.
@@ -7644,6 +7652,8 @@ class WorkerPoolTemplateArgsDict(TypedDict):
 class WorkerPoolTemplateArgs:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key_revocation_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -7660,6 +7670,8 @@ class WorkerPoolTemplateArgs:
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
+        :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]] containers: Holds the containers that define the unit of execution for this WorkerPool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -7683,6 +7695,10 @@ class WorkerPoolTemplateArgs:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if client_version is not None:
+            pulumi.set(__self__, "client_version", client_version)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
@@ -7720,6 +7736,30 @@ class WorkerPoolTemplateArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Arbitrary identifier for the API client.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Arbitrary version identifier for the API client.
+        """
+        return pulumi.get(self, "client_version")
+
+    @client_version.setter
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -8537,9 +8577,16 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs:
 
 
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict(TypedDict):
-    port: pulumi.Input[_builtins.int]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The header field name
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Optional, Deprecated)
+    Required. The header field name
+
+    > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
     """
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8549,26 +8596,53 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict(TypedDi
 @pulumi.input_type
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] port: Required. The header field name
+        :param pulumi.Input[_builtins.str] name: Required. The header field name
+        :param pulumi.Input[_builtins.int] port: (Optional, Deprecated)
+               Required. The header field name
+               
+               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param pulumi.Input[_builtins.str] value: Optional. The header field value
         """
-        pulumi.set(__self__, "port", port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            warnings.warn("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> pulumi.Input[_builtins.int]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Optional, Deprecated)
+        Required. The header field name
+
+        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[_builtins.int]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
@@ -8922,9 +8996,16 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetArgs:
 
 
 class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict(TypedDict):
-    port: pulumi.Input[_builtins.int]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The header field name
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Optional, Deprecated)
+    Required. The header field name
+
+    > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
     """
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8934,26 +9015,53 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict(TypedDic
 @pulumi.input_type
 class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] port: Required. The header field name
+        :param pulumi.Input[_builtins.str] name: Required. The header field name
+        :param pulumi.Input[_builtins.int] port: (Optional, Deprecated)
+               Required. The header field name
+               
+               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param pulumi.Input[_builtins.str] value: Optional. The header field value
         """
-        pulumi.set(__self__, "port", port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            warnings.warn("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> pulumi.Input[_builtins.int]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Optional, Deprecated)
+        Required. The header field name
+
+        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[_builtins.int]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property

@@ -677,6 +677,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        /// Possible values are: `NOT_STARTED`, `RUNNING`.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string> DesiredState { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         /// </summary>
         [Output("destination")]
@@ -822,6 +829,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<Outputs.MigrationJobStaticIpConnectivity?> StaticIpConnectivity { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, will stop the pulumi up if there are validation warnings.
+        /// </summary>
+        [Output("stopOnWarnings")]
+        public Output<bool?> StopOnWarnings { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the migration job.
         /// Possible values are: `ONE_TIME`, `CONTINUOUS`.
         /// </summary>
@@ -896,6 +909,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        /// Possible values are: `NOT_STARTED`, `RUNNING`.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -1011,6 +1031,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<Inputs.MigrationJobStaticIpConnectivityArgs>? StaticIpConnectivity { get; set; }
 
         /// <summary>
+        /// If set to true, will stop the pulumi up if there are validation warnings.
+        /// </summary>
+        [Input("stopOnWarnings")]
+        public Input<bool>? StopOnWarnings { get; set; }
+
+        /// <summary>
         /// The type of the migration job.
         /// Possible values are: `ONE_TIME`, `CONTINUOUS`.
         /// </summary>
@@ -1048,6 +1074,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+        /// Possible values are: `NOT_STARTED`, `RUNNING`.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -1225,6 +1258,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("staticIpConnectivity")]
         public Input<Inputs.MigrationJobStaticIpConnectivityGetArgs>? StaticIpConnectivity { get; set; }
+
+        /// <summary>
+        /// If set to true, will stop the pulumi up if there are validation warnings.
+        /// </summary>
+        [Input("stopOnWarnings")]
+        public Input<bool>? StopOnWarnings { get; set; }
 
         /// <summary>
         /// The type of the migration job.

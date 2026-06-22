@@ -115,6 +115,10 @@ import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetReservationArgs;
@@ -155,6 +159,10 @@ import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworksPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetZonesArgs;
@@ -215,6 +223,8 @@ import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
+import com.pulumi.gcp.compute.outputs.GetRegionTargetHttpProxyResult;
+import com.pulumi.gcp.compute.outputs.GetRegionTargetHttpsProxyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
 import com.pulumi.gcp.compute.outputs.GetReservationBlockResult;
 import com.pulumi.gcp.compute.outputs.GetReservationResult;
@@ -235,6 +245,8 @@ import com.pulumi.gcp.compute.outputs.GetStoragePoolTypesResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworksResult;
+import com.pulumi.gcp.compute.outputs.GetTargetHttpProxyResult;
+import com.pulumi.gcp.compute.outputs.GetTargetHttpsProxyResult;
 import com.pulumi.gcp.compute.outputs.GetVPNGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetZonesResult;
 import com.pulumi.gcp.compute.outputs.RouterStatusResult;
@@ -15251,6 +15263,436 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", TypeShape.of(GetRegionSslCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Compute Engine RegionTargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs args) {
+        return getRegionTargetHttpProxy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyPlain(GetRegionTargetHttpProxyPlainArgs args) {
+        return getRegionTargetHttpProxyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy", TypeShape.of(GetRegionTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy", TypeShape.of(GetRegionTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyPlain(GetRegionTargetHttpProxyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy", TypeShape.of(GetRegionTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs args) {
+        return getRegionTargetHttpsProxy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyPlain(GetRegionTargetHttpsProxyPlainArgs args) {
+        return getRegionTargetHttpsProxyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionTargetHttpsProxy:getRegionTargetHttpsProxy", TypeShape.of(GetRegionTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionTargetHttpsProxy:getRegionTargetHttpsProxy", TypeShape.of(GetRegionTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine RegionTargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyPlain(GetRegionTargetHttpsProxyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionTargetHttpsProxy:getRegionTargetHttpsProxy", TypeShape.of(GetRegionTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
      * 
@@ -20040,6 +20482,436 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSubnetworksResult> getSubnetworksPlain(GetSubnetworksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSubnetworks:getSubnetworks", TypeShape.of(GetSubnetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpProxyResult> getTargetHttpProxy(GetTargetHttpProxyArgs args) {
+        return getTargetHttpProxy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTargetHttpProxyResult> getTargetHttpProxyPlain(GetTargetHttpProxyPlainArgs args) {
+        return getTargetHttpProxyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpProxyResult> getTargetHttpProxy(GetTargetHttpProxyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getTargetHttpProxy:getTargetHttpProxy", TypeShape.of(GetTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpProxyResult> getTargetHttpProxy(GetTargetHttpProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getTargetHttpProxy:getTargetHttpProxy", TypeShape.of(GetTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTargetHttpProxyResult> getTargetHttpProxyPlain(GetTargetHttpProxyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getTargetHttpProxy:getTargetHttpProxy", TypeShape.of(GetTargetHttpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpsProxyResult> getTargetHttpsProxy(GetTargetHttpsProxyArgs args) {
+        return getTargetHttpsProxy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTargetHttpsProxyResult> getTargetHttpsProxyPlain(GetTargetHttpsProxyPlainArgs args) {
+        return getTargetHttpsProxyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpsProxyResult> getTargetHttpsProxy(GetTargetHttpsProxyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getTargetHttpsProxy:getTargetHttpsProxy", TypeShape.of(GetTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTargetHttpsProxyResult> getTargetHttpsProxy(GetTargetHttpsProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getTargetHttpsProxy:getTargetHttpsProxy", TypeShape.of(GetTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Compute Engine TargetHttpsProxy.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies) and
+     * the [API](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetTargetHttpsProxyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
+     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTargetHttpsProxyResult> getTargetHttpsProxyPlain(GetTargetHttpsProxyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getTargetHttpsProxy:getTargetHttpsProxy", TypeShape.of(GetTargetHttpsProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a VPN gateway within GCE from its name.

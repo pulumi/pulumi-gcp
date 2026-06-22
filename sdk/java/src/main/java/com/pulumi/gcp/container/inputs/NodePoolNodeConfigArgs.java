@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigHostMaintenancePolicyAr
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigNodeImageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSecondaryBootDiskArgs;
@@ -508,6 +509,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The node image configuration to use for this node pool.
+     * 
+     */
+    @Import(name="nodeImageConfigs")
+    private @Nullable Output<List<NodePoolNodeConfigNodeImageConfigArgs>> nodeImageConfigs;
+
+    /**
+     * @return The node image configuration to use for this node pool.
+     * 
+     */
+    public Optional<Output<List<NodePoolNodeConfigNodeImageConfigArgs>>> nodeImageConfigs() {
+        return Optional.ofNullable(this.nodeImageConfigs);
+    }
+
+    /**
      * The set of Google API scopes to be made available on all of the node VMs.
      * 
      */
@@ -781,6 +797,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.metadata = $.metadata;
         this.minCpuPlatform = $.minCpuPlatform;
         this.nodeGroup = $.nodeGroup;
+        this.nodeImageConfigs = $.nodeImageConfigs;
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
@@ -1486,6 +1503,37 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder nodeGroup(String nodeGroup) {
             return nodeGroup(Output.of(nodeGroup));
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(@Nullable Output<List<NodePoolNodeConfigNodeImageConfigArgs>> nodeImageConfigs) {
+            $.nodeImageConfigs = nodeImageConfigs;
+            return this;
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(List<NodePoolNodeConfigNodeImageConfigArgs> nodeImageConfigs) {
+            return nodeImageConfigs(Output.of(nodeImageConfigs));
+        }
+
+        /**
+         * @param nodeImageConfigs The node image configuration to use for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeImageConfigs(NodePoolNodeConfigNodeImageConfigArgs... nodeImageConfigs) {
+            return nodeImageConfigs(List.of(nodeImageConfigs));
         }
 
         /**

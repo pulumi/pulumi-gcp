@@ -84,7 +84,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// AuthzPolicy can be imported using any of these accepted formats:
@@ -184,6 +183,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkRules")]
+        public Output<ImmutableArray<Outputs.AuthzPolicyNetworkRule>> NetworkRules { get; private set; } = null!;
 
         /// <summary>
         /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
@@ -354,6 +361,20 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networkRules")]
+        private InputList<Inputs.AuthzPolicyNetworkRuleArgs>? _networkRules;
+
+        /// <summary>
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyNetworkRuleArgs> NetworkRules
+        {
+            get => _networkRules ?? (_networkRules = new InputList<Inputs.AuthzPolicyNetworkRuleArgs>());
+            set => _networkRules = value;
+        }
+
         /// <summary>
         /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
         /// authorization policies with Authz extensions will be allowed with ExtAuthz or ExtProc protocols. Extensions are
@@ -488,6 +509,20 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("networkRules")]
+        private InputList<Inputs.AuthzPolicyNetworkRuleGetArgs>? _networkRules;
+
+        /// <summary>
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyNetworkRuleGetArgs> NetworkRules
+        {
+            get => _networkRules ?? (_networkRules = new InputList<Inputs.AuthzPolicyNetworkRuleGetArgs>());
+            set => _networkRules = value;
+        }
 
         /// <summary>
         /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM

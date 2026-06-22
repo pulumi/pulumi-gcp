@@ -222,6 +222,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("nodeGroup")]
         public Input<string>? NodeGroup { get; set; }
 
+        [Input("nodeImageConfigs")]
+        private InputList<Inputs.NodePoolNodeConfigNodeImageConfigArgs>? _nodeImageConfigs;
+
+        /// <summary>
+        /// The node image configuration to use for this node pool.
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeConfigNodeImageConfigArgs> NodeImageConfigs
+        {
+            get => _nodeImageConfigs ?? (_nodeImageConfigs = new InputList<Inputs.NodePoolNodeConfigNodeImageConfigArgs>());
+            set => _nodeImageConfigs = value;
+        }
+
         [Input("oauthScopes")]
         private InputList<string>? _oauthScopes;
 

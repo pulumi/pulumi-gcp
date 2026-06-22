@@ -6512,6 +6512,8 @@ func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) Items() pu
 type RestoreWorkloadComputeInstanceTargetEnvironment struct {
 	// Required. Target project for the Compute Engine instance.
 	Project string `pulumi:"project"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount *bool `pulumi:"useProjectServiceAccount"`
 	// Required. The zone of the Compute Engine instance.
 	Zone string `pulumi:"zone"`
 }
@@ -6530,6 +6532,8 @@ type RestoreWorkloadComputeInstanceTargetEnvironmentInput interface {
 type RestoreWorkloadComputeInstanceTargetEnvironmentArgs struct {
 	// Required. Target project for the Compute Engine instance.
 	Project pulumi.StringInput `pulumi:"project"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount pulumi.BoolPtrInput `pulumi:"useProjectServiceAccount"`
 	// Required. The zone of the Compute Engine instance.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -6616,6 +6620,11 @@ func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) Project() pulumi.
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceTargetEnvironment) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceTargetEnvironment) *bool { return v.UseProjectServiceAccount }).(pulumi.BoolPtrOutput)
+}
+
 // Required. The zone of the Compute Engine instance.
 func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreWorkloadComputeInstanceTargetEnvironment) string { return v.Zone }).(pulumi.StringOutput)
@@ -6653,6 +6662,16 @@ func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) Project() pulu
 		}
 		return &v.Project
 	}).(pulumi.StringPtrOutput)
+}
+
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceTargetEnvironment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseProjectServiceAccount
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Required. The zone of the Compute Engine instance.
@@ -7644,6 +7663,8 @@ func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput) Index
 type RestoreWorkloadDiskTargetEnvironment struct {
 	// Required. Target project for the disk.
 	Project string `pulumi:"project"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount *bool `pulumi:"useProjectServiceAccount"`
 	// Required. Target zone for the disk.
 	Zone string `pulumi:"zone"`
 }
@@ -7662,6 +7683,8 @@ type RestoreWorkloadDiskTargetEnvironmentInput interface {
 type RestoreWorkloadDiskTargetEnvironmentArgs struct {
 	// Required. Target project for the disk.
 	Project pulumi.StringInput `pulumi:"project"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount pulumi.BoolPtrInput `pulumi:"useProjectServiceAccount"`
 	// Required. Target zone for the disk.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -7748,6 +7771,11 @@ func (o RestoreWorkloadDiskTargetEnvironmentOutput) Project() pulumi.StringOutpu
 	return o.ApplyT(func(v RestoreWorkloadDiskTargetEnvironment) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskTargetEnvironment) *bool { return v.UseProjectServiceAccount }).(pulumi.BoolPtrOutput)
+}
+
 // Required. Target zone for the disk.
 func (o RestoreWorkloadDiskTargetEnvironmentOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreWorkloadDiskTargetEnvironment) string { return v.Zone }).(pulumi.StringOutput)
@@ -7787,6 +7815,16 @@ func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) Project() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskTargetEnvironment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseProjectServiceAccount
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Required. Target zone for the disk.
 func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkloadDiskTargetEnvironment) *string {
@@ -7804,6 +7842,8 @@ type RestoreWorkloadRegionDiskTargetEnvironment struct {
 	Region string `pulumi:"region"`
 	// Required. Target URLs of the replica zones for the disk.
 	ReplicaZones []string `pulumi:"replicaZones"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount *bool `pulumi:"useProjectServiceAccount"`
 }
 
 // RestoreWorkloadRegionDiskTargetEnvironmentInput is an input type that accepts RestoreWorkloadRegionDiskTargetEnvironmentArgs and RestoreWorkloadRegionDiskTargetEnvironmentOutput values.
@@ -7824,6 +7864,8 @@ type RestoreWorkloadRegionDiskTargetEnvironmentArgs struct {
 	Region pulumi.StringInput `pulumi:"region"`
 	// Required. Target URLs of the replica zones for the disk.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
+	// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+	UseProjectServiceAccount pulumi.BoolPtrInput `pulumi:"useProjectServiceAccount"`
 }
 
 func (RestoreWorkloadRegionDiskTargetEnvironmentArgs) ElementType() reflect.Type {
@@ -7918,6 +7960,11 @@ func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ReplicaZones() pulumi.
 	return o.ApplyT(func(v RestoreWorkloadRegionDiskTargetEnvironment) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
 
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadRegionDiskTargetEnvironment) *bool { return v.UseProjectServiceAccount }).(pulumi.BoolPtrOutput)
+}
+
 type RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput struct{ *pulumi.OutputState }
 
 func (RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ElementType() reflect.Type {
@@ -7970,6 +8017,16 @@ func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ReplicaZones() pulu
 		}
 		return v.ReplicaZones
 	}).(pulumi.StringArrayOutput)
+}
+
+// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) UseProjectServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadRegionDiskTargetEnvironment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseProjectServiceAccount
+	}).(pulumi.BoolPtrOutput)
 }
 
 type RestoreWorkloadTargetResource struct {

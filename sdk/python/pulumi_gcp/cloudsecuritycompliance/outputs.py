@@ -2050,7 +2050,7 @@ class FrameworkCloudControlDetail(dict):
         """
         :param _builtins.str major_revision_id: Major revision of cloudcontrol
         :param _builtins.str name: The name of the CloudControl in the format:
-               “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+               "{parent}/locations/{location}/cloudControls/{cloud-control}"
         :param Sequence['FrameworkCloudControlDetailParameterArgs'] parameters: Parameters is a key-value pair that is required by the CloudControl. The
                specification of these parameters will be present in cloudcontrol.Eg: {
                "name": "location","value": "us-west-1"}.
@@ -2074,7 +2074,7 @@ class FrameworkCloudControlDetail(dict):
     def name(self) -> _builtins.str:
         """
         The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+        "{parent}/locations/{location}/cloudControls/{cloud-control}"
         """
         return pulumi.get(self, "name")
 
@@ -2424,7 +2424,7 @@ class FrameworkDeploymentCloudControlDeploymentReference(dict):
         """
         :param _builtins.str cloud_control_deployment: (Output)
                The name of the CloudControlDeployment. The format is:
-               organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+               {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
         """
         if cloud_control_deployment is not None:
             pulumi.set(__self__, "cloud_control_deployment", cloud_control_deployment)
@@ -2435,7 +2435,7 @@ class FrameworkDeploymentCloudControlDeploymentReference(dict):
         """
         (Output)
         The name of the CloudControlDeployment. The format is:
-        organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+        {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
         """
         return pulumi.get(self, "cloud_control_deployment")
 
@@ -2524,8 +2524,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails(dict):
         """
         :param _builtins.str major_revision_id: Major revision of cloudcontrol
         :param _builtins.str name: The name of the CloudControl in the format:
-               “organizations/{organization}/locations/{location}/
-               cloudControls/{cloud-control}”
+               "{parent}/locations/{location}/cloudControls/{cloud-control}"
         :param Sequence['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs'] parameters: Parameters is a key-value pair that is required by the CloudControl. The
                specification of these parameters will be present in cloudcontrol.Eg: {
                "name": "location","value": "us-west-1"}.
@@ -2549,8 +2548,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails(dict):
     def name(self) -> _builtins.str:
         """
         The name of the CloudControl in the format:
-        “organizations/{organization}/locations/{location}/
-        cloudControls/{cloud-control}”
+        "{parent}/locations/{location}/cloudControls/{cloud-control}"
         """
         return pulumi.get(self, "name")
 
@@ -2900,7 +2898,7 @@ class FrameworkDeploymentFramework(dict):
                  major_revision_id: _builtins.str):
         """
         :param _builtins.str framework: In the format:
-               organizations/{org}/locations/{location}/frameworks/{framework}
+               {parent}/locations/{location}/frameworks/{framework}
         :param _builtins.str major_revision_id: Major revision id of the framework.
         """
         pulumi.set(__self__, "framework", framework)
@@ -2911,7 +2909,7 @@ class FrameworkDeploymentFramework(dict):
     def framework(self) -> _builtins.str:
         """
         In the format:
-        organizations/{org}/locations/{location}/frameworks/{framework}
+        {parent}/locations/{location}/frameworks/{framework}
         """
         return pulumi.get(self, "framework")
 

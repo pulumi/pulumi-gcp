@@ -18,6 +18,7 @@ import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobPostgresHomog
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobReverseSshConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobStaticIpConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobVpcPeeringConnectivity;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -690,6 +691,22 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return this.deletionPolicy;
     }
     /**
+     * The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     * 
+     */
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
+    private Output<String> desiredState;
+
+    /**
+     * @return The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     * 
+     */
+    public Output<String> desiredState() {
+        return this.desiredState;
+    }
+    /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      * 
      */
@@ -1020,6 +1037,20 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<MigrationJobStaticIpConnectivity>> staticIpConnectivity() {
         return Codegen.optional(this.staticIpConnectivity);
+    }
+    /**
+     * If set to true, will stop the pulumi up if there are validation warnings.
+     * 
+     */
+    @Export(name="stopOnWarnings", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> stopOnWarnings;
+
+    /**
+     * @return If set to true, will stop the pulumi up if there are validation warnings.
+     * 
+     */
+    public Output<Optional<Boolean>> stopOnWarnings() {
+        return Codegen.optional(this.stopOnWarnings);
     }
     /**
      * The type of the migration job.

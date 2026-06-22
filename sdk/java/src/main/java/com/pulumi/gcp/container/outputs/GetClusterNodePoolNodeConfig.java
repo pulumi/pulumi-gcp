@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigHostMaintena
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigNodeImageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSecondaryBootDisk;
@@ -192,6 +193,11 @@ public final class GetClusterNodePoolNodeConfig {
      * 
      */
     private String nodeGroup;
+    /**
+     * @return The node image configuration to use for this node pool.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
     /**
      * @return The set of Google API scopes to be made available on all of the node VMs.
      * 
@@ -492,6 +498,13 @@ public final class GetClusterNodePoolNodeConfig {
         return this.nodeGroup;
     }
     /**
+     * @return The node image configuration to use for this node pool.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs() {
+        return this.nodeImageConfigs;
+    }
+    /**
      * @return The set of Google API scopes to be made available on all of the node VMs.
      * 
      */
@@ -644,6 +657,7 @@ public final class GetClusterNodePoolNodeConfig {
         private Map<String,String> metadata;
         private String minCpuPlatform;
         private String nodeGroup;
+        private List<GetClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
         private List<String> oauthScopes;
         private Boolean preemptible;
         private List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities;
@@ -694,6 +708,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.nodeGroup = defaults.nodeGroup;
+    	      this.nodeImageConfigs = defaults.nodeImageConfigs;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinities = defaults.reservationAffinities;
@@ -1006,6 +1021,17 @@ public final class GetClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeImageConfigs(List<GetClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs) {
+            if (nodeImageConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "nodeImageConfigs");
+            }
+            this.nodeImageConfigs = nodeImageConfigs;
+            return this;
+        }
+        public Builder nodeImageConfigs(GetClusterNodePoolNodeConfigNodeImageConfig... nodeImageConfigs) {
+            return nodeImageConfigs(List.of(nodeImageConfigs));
+        }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             if (oauthScopes == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "oauthScopes");
@@ -1199,6 +1225,7 @@ public final class GetClusterNodePoolNodeConfig {
             _resultValue.metadata = metadata;
             _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.nodeGroup = nodeGroup;
+            _resultValue.nodeImageConfigs = nodeImageConfigs;
             _resultValue.oauthScopes = oauthScopes;
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinities = reservationAffinities;

@@ -143,18 +143,32 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
-     */
-    @Import(name="organization", required=true)
-    private Output<String> organization;
-
-    /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
      * 
      */
-    public Output<String> organization() {
-        return this.organization;
+    @Deprecated /* Use `parent` instead. */
+    @Import(name="organization")
+    private @Nullable Output<String> organization;
+
+    /**
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
+     * 
+     */
+    @Deprecated /* Use `parent` instead. */
+    public Optional<Output<String>> organization() {
+        return Optional.ofNullable(this.organization);
     }
 
     /**
@@ -172,6 +186,27 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<CloudControlParameterSpecArgs>>> parameterSpecs() {
         return Optional.ofNullable(this.parameterSpecs);
+    }
+
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
     }
 
     /**
@@ -258,6 +293,7 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.organization = $.organization;
         this.parameterSpecs = $.parameterSpecs;
+        this.parent = $.parent;
         this.remediationSteps = $.remediationSteps;
         this.rules = $.rules;
         this.severity = $.severity;
@@ -458,22 +494,36 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organization Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param organization (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * 
+         * &gt; **Warning:** Use `parent` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `parent` instead.
+         * 
          */
-        public Builder organization(Output<String> organization) {
+        @Deprecated /* Use `parent` instead. */
+        public Builder organization(@Nullable Output<String> organization) {
             $.organization = organization;
             return this;
         }
 
         /**
-         * @param organization Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param organization (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * 
+         * &gt; **Warning:** Use `parent` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `parent` instead.
+         * 
          */
+        @Deprecated /* Use `parent` instead. */
         public Builder organization(String organization) {
             return organization(Output.of(organization));
         }
@@ -510,6 +560,33 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parameterSpecs(CloudControlParameterSpecArgs... parameterSpecs) {
             return parameterSpecs(List.of(parameterSpecs));
+        }
+
+        /**
+         * @param parent The parent resource in which to create the resource.
+         * Must be in one of the following formats:
+         * * `projects/{{project}}`
+         * * `organizations/{{organization}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The parent resource in which to create the resource.
+         * Must be in one of the following formats:
+         * * `projects/{{project}}`
+         * * `organizations/{{organization}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**
@@ -635,9 +712,6 @@ public final class CloudControlArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("CloudControlArgs", "location");
-            }
-            if ($.organization == null) {
-                throw new MissingRequiredPropertyException("CloudControlArgs", "organization");
             }
             return $;
         }

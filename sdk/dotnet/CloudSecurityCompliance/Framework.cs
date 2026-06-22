@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// 
     /// ## Example Usage
     /// 
-    /// ### Cloudsecuritycompliance Framework Basic
+    /// ### Cloudsecuritycompliance Framework Org Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// {
     ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
     ///     {
-    ///         Organization = "123456789",
+    ///         Parent = "organizations/123456789",
     ///         Location = "global",
     ///         FrameworkId = "example-framework",
     ///         DisplayName = "Terraform Framework Name",
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
     ///             {
     ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
-    ///                 MajorRevisionId = "1",
+    ///                 MajorRevisionId = "2",
     ///                 Parameters = new[]
     ///                 {
     ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
     ///             {
     ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
-    ///                 MajorRevisionId = "1",
+    ///                 MajorRevisionId = "3",
     ///                 Parameters = new[]
     ///                 {
     ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
@@ -95,7 +95,199 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
     ///             {
     ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             NumberValue = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Project Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "An Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-assess-resource-availability",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringValue = "us-central1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
     ///                 MajorRevisionId = "1",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs
+    ///                             {
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "us-central1",
+    ///                                     "us-west1",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+    ///                 MajorRevisionId = "3",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             BoolValue = true,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             NumberValue = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudsecuritycompliance Framework Org Basic Backward
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.CloudSecurityCompliance.Framework("example", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         FrameworkId = "example-framework",
+    ///         DisplayName = "Terraform Framework Name",
+    ///         Description = "An Terraform description for the framework",
+    ///         CloudControlDetails = new[]
+    ///         {
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability",
+    ///                 MajorRevisionId = "2",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringValue = "us-central1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table",
+    ///                 MajorRevisionId = "1",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             StringListValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs
+    ///                             {
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "us-central1",
+    ///                                     "us-west1",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql",
+    ///                 MajorRevisionId = "3",
+    ///                 Parameters = new[]
+    ///                 {
+    ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
+    ///                     {
+    ///                         Name = "location",
+    ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
+    ///                         {
+    ///                             BoolValue = true,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailArgs
+    ///             {
+    ///                 Name = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+    ///                 MajorRevisionId = "2",
     ///                 Parameters = new[]
     ///                 {
     ///                     new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterArgs
@@ -119,13 +311,13 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// Framework can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
-    /// * `{{organization}}/{{location}}/{{framework_id}}`
+    /// * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
     /// 
     /// When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
-    /// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+    /// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudsecuritycompliance/framework:Framework")]
@@ -191,16 +383,28 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// <summary>
         /// Identifier. The name of the framework.
         /// Format:
-        /// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+        /// {parent}/locations/{location}/frameworks/{framework_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// cloud providers supported
@@ -327,10 +531,22 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
-        [Input("organization", required: true)]
-        public Input<string> Organization { get; set; } = null!;
+        [Input("organization")]
+        public Input<string>? Organization { get; set; }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         public FrameworkArgs()
         {
@@ -412,16 +628,28 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// <summary>
         /// Identifier. The name of the framework.
         /// Format:
-        /// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+        /// {parent}/locations/{location}/frameworks/{framework_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// 
+        /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
+
+        /// <summary>
+        /// The parent resource in which to create the resource.
+        /// Must be in one of the following formats:
+        /// * `projects/{{project}}`
+        /// * `organizations/{{organization}}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         [Input("supportedCloudProviders")]
         private InputList<string>? _supportedCloudProviders;

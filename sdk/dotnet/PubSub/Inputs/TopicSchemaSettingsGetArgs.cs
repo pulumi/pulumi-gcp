@@ -21,6 +21,18 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
+        /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against LastRevision or any revision created before.
+        /// </summary>
+        [Input("firstRevisionId")]
+        public Input<string>? FirstRevisionId { get; set; }
+
+        /// <summary>
+        /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against FirstRevision or any revision created after.
+        /// </summary>
+        [Input("lastRevisionId")]
+        public Input<string>? LastRevisionId { get; set; }
+
+        /// <summary>
         /// The name of the schema that messages published should be
         /// validated against. Format is projects/{project}/schemas/{schema}.
         /// The value of this field will be _deleted-schema_

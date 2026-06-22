@@ -536,6 +536,7 @@ type ManagedFolderIamMember struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
@@ -605,6 +606,7 @@ type managedFolderIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
@@ -633,6 +635,7 @@ type ManagedFolderIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
@@ -663,6 +666,7 @@ type managedFolderIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 	Member string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
@@ -690,6 +694,7 @@ type ManagedFolderIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 	Member pulumi.StringInput
 	// The role that should be applied. Only one
 	// `storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
@@ -816,6 +821,7 @@ func (o ManagedFolderIamMemberOutput) ManagedFolder() pulumi.StringOutput {
 // * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 // * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 // * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
 func (o ManagedFolderIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedFolderIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }

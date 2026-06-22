@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigHostMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigNodeImageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSecondaryBootDisk;
@@ -193,6 +194,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable String nodeGroup;
+    /**
+     * @return The node image configuration to use for this node pool.
+     * 
+     */
+    private @Nullable List<NodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
     /**
      * @return The set of Google API scopes to be made available on all of the node VMs.
      * 
@@ -493,6 +499,13 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.nodeGroup);
     }
     /**
+     * @return The node image configuration to use for this node pool.
+     * 
+     */
+    public List<NodePoolNodeConfigNodeImageConfig> nodeImageConfigs() {
+        return this.nodeImageConfigs == null ? List.of() : this.nodeImageConfigs;
+    }
+    /**
      * @return The set of Google API scopes to be made available on all of the node VMs.
      * 
      */
@@ -645,6 +658,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Map<String,String> metadata;
         private @Nullable String minCpuPlatform;
         private @Nullable String nodeGroup;
+        private @Nullable List<NodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
         private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
@@ -695,6 +709,7 @@ public final class NodePoolNodeConfig {
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.nodeGroup = defaults.nodeGroup;
+    	      this.nodeImageConfigs = defaults.nodeImageConfigs;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
@@ -906,6 +921,15 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeImageConfigs(@Nullable List<NodePoolNodeConfigNodeImageConfig> nodeImageConfigs) {
+
+            this.nodeImageConfigs = nodeImageConfigs;
+            return this;
+        }
+        public Builder nodeImageConfigs(NodePoolNodeConfigNodeImageConfig... nodeImageConfigs) {
+            return nodeImageConfigs(List.of(nodeImageConfigs));
+        }
+        @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
 
             this.oauthScopes = oauthScopes;
@@ -1049,6 +1073,7 @@ public final class NodePoolNodeConfig {
             _resultValue.metadata = metadata;
             _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.nodeGroup = nodeGroup;
+            _resultValue.nodeImageConfigs = nodeImageConfigs;
             _resultValue.oauthScopes = oauthScopes;
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinity = reservationAffinity;

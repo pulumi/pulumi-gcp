@@ -55,6 +55,11 @@ export type NativeDashboard = import("./nativeDashboard").NativeDashboard;
 export const NativeDashboard: typeof import("./nativeDashboard").NativeDashboard = null as any;
 utilities.lazyLoad(exports, ["NativeDashboard"], () => require("./nativeDashboard"));
 
+export { ParserArgs, ParserState } from "./parser";
+export type Parser = import("./parser").Parser;
+export const Parser: typeof import("./parser").Parser = null as any;
+utilities.lazyLoad(exports, ["Parser"], () => require("./parser"));
+
 export { ReferenceListArgs, ReferenceListState } from "./referenceList";
 export type ReferenceList = import("./referenceList").ReferenceList;
 export const ReferenceList: typeof import("./referenceList").ReferenceList = null as any;
@@ -74,6 +79,11 @@ export { RuleDeploymentArgs, RuleDeploymentState } from "./ruleDeployment";
 export type RuleDeployment = import("./ruleDeployment").RuleDeployment;
 export const RuleDeployment: typeof import("./ruleDeployment").RuleDeployment = null as any;
 utilities.lazyLoad(exports, ["RuleDeployment"], () => require("./ruleDeployment"));
+
+export { SoarNetworkArgs, SoarNetworkState } from "./soarNetwork";
+export type SoarNetwork = import("./soarNetwork").SoarNetwork;
+export const SoarNetwork: typeof import("./soarNetwork").SoarNetwork = null as any;
+utilities.lazyLoad(exports, ["SoarNetwork"], () => require("./soarNetwork"));
 
 export { WatchlistArgs, WatchlistState } from "./watchlist";
 export type Watchlist = import("./watchlist").Watchlist;
@@ -105,6 +115,8 @@ const _module = {
                 return new FindingsRefinement(name, <any>undefined, { urn })
             case "gcp:chronicle/nativeDashboard:NativeDashboard":
                 return new NativeDashboard(name, <any>undefined, { urn })
+            case "gcp:chronicle/parser:Parser":
+                return new Parser(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
                 return new ReferenceList(name, <any>undefined, { urn })
             case "gcp:chronicle/retrohunt:Retrohunt":
@@ -113,6 +125,8 @@ const _module = {
                 return new Rule(name, <any>undefined, { urn })
             case "gcp:chronicle/ruleDeployment:RuleDeployment":
                 return new RuleDeployment(name, <any>undefined, { urn })
+            case "gcp:chronicle/soarNetwork:SoarNetwork":
+                return new SoarNetwork(name, <any>undefined, { urn })
             case "gcp:chronicle/watchlist:Watchlist":
                 return new Watchlist(name, <any>undefined, { urn })
             default:
@@ -130,8 +144,10 @@ pulumi.runtime.registerResourceModule("gcp", "chronicle/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinement", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/parser", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/ruleDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/soarNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/watchlist", _module)

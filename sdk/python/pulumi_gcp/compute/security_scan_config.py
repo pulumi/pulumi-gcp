@@ -550,13 +550,17 @@ class SecurityScanConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-ignore-http-ip")
+        wait15_seconds = time.Sleep("wait_15_seconds", create_duration="15s",
+        opts = pulumi.ResourceOptions(depends_on=[scanner_static_ip]))
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
             display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"],
-            ignore_http_status_errors=True)
+            ignore_http_status_errors=True,
+            opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
 
         ## Import
@@ -644,13 +648,17 @@ class SecurityScanConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-ignore-http-ip")
+        wait15_seconds = time.Sleep("wait_15_seconds", create_duration="15s",
+        opts = pulumi.ResourceOptions(depends_on=[scanner_static_ip]))
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
             display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"],
-            ignore_http_status_errors=True)
+            ignore_http_status_errors=True,
+            opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
 
         ## Import

@@ -13,7 +13,6 @@ import com.pulumi.gcp.apigee.inputs.ApiState;
 import com.pulumi.gcp.apigee.outputs.ApiMetaData;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -87,14 +86,14 @@ public class Api extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> detectMd5hash;
+    private Output<String> detectMd5hash;
 
     /**
      * @return (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
      * 
      */
-    public Output<Optional<String>> detectMd5hash() {
-        return Codegen.optional(this.detectMd5hash);
+    public Output<String> detectMd5hash() {
+        return this.detectMd5hash;
     }
     /**
      * The id of the most recently created revision for this API proxy.

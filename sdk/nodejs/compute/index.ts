@@ -420,6 +420,16 @@ export const getRegionSslCertificate: typeof import("./getRegionSslCertificate")
 export const getRegionSslCertificateOutput: typeof import("./getRegionSslCertificate").getRegionSslCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionSslCertificate","getRegionSslCertificateOutput"], () => require("./getRegionSslCertificate"));
 
+export { GetRegionTargetHttpProxyArgs, GetRegionTargetHttpProxyResult, GetRegionTargetHttpProxyOutputArgs } from "./getRegionTargetHttpProxy";
+export const getRegionTargetHttpProxy: typeof import("./getRegionTargetHttpProxy").getRegionTargetHttpProxy = null as any;
+export const getRegionTargetHttpProxyOutput: typeof import("./getRegionTargetHttpProxy").getRegionTargetHttpProxyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionTargetHttpProxy","getRegionTargetHttpProxyOutput"], () => require("./getRegionTargetHttpProxy"));
+
+export { GetRegionTargetHttpsProxyArgs, GetRegionTargetHttpsProxyResult, GetRegionTargetHttpsProxyOutputArgs } from "./getRegionTargetHttpsProxy";
+export const getRegionTargetHttpsProxy: typeof import("./getRegionTargetHttpsProxy").getRegionTargetHttpsProxy = null as any;
+export const getRegionTargetHttpsProxyOutput: typeof import("./getRegionTargetHttpsProxy").getRegionTargetHttpsProxyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionTargetHttpsProxy","getRegionTargetHttpsProxyOutput"], () => require("./getRegionTargetHttpsProxy"));
+
 export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
 export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
@@ -519,6 +529,16 @@ export { GetSubnetworksArgs, GetSubnetworksResult, GetSubnetworksOutputArgs } fr
 export const getSubnetworks: typeof import("./getSubnetworks").getSubnetworks = null as any;
 export const getSubnetworksOutput: typeof import("./getSubnetworks").getSubnetworksOutput = null as any;
 utilities.lazyLoad(exports, ["getSubnetworks","getSubnetworksOutput"], () => require("./getSubnetworks"));
+
+export { GetTargetHttpProxyArgs, GetTargetHttpProxyResult, GetTargetHttpProxyOutputArgs } from "./getTargetHttpProxy";
+export const getTargetHttpProxy: typeof import("./getTargetHttpProxy").getTargetHttpProxy = null as any;
+export const getTargetHttpProxyOutput: typeof import("./getTargetHttpProxy").getTargetHttpProxyOutput = null as any;
+utilities.lazyLoad(exports, ["getTargetHttpProxy","getTargetHttpProxyOutput"], () => require("./getTargetHttpProxy"));
+
+export { GetTargetHttpsProxyArgs, GetTargetHttpsProxyResult, GetTargetHttpsProxyOutputArgs } from "./getTargetHttpsProxy";
+export const getTargetHttpsProxy: typeof import("./getTargetHttpsProxy").getTargetHttpsProxy = null as any;
+export const getTargetHttpsProxyOutput: typeof import("./getTargetHttpsProxy").getTargetHttpsProxyOutput = null as any;
+utilities.lazyLoad(exports, ["getTargetHttpsProxy","getTargetHttpsProxyOutput"], () => require("./getTargetHttpsProxy"));
 
 export { GetVPNGatewayArgs, GetVPNGatewayResult, GetVPNGatewayOutputArgs } from "./getVPNGateway";
 export const getVPNGateway: typeof import("./getVPNGateway").getVPNGateway = null as any;

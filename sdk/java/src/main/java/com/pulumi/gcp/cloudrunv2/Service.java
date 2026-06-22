@@ -545,7 +545,6 @@ import javax.annotation.Nullable;
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .deletionProtection(false)
- *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")

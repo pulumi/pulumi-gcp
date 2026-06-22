@@ -97,6 +97,32 @@ __all__ = [
     'AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict',
     'AuthzPolicyHttpRuleToOperationPathArgs',
     'AuthzPolicyHttpRuleToOperationPathArgsDict',
+    'AuthzPolicyNetworkRuleArgs',
+    'AuthzPolicyNetworkRuleArgsDict',
+    'AuthzPolicyNetworkRuleFromArgs',
+    'AuthzPolicyNetworkRuleFromArgsDict',
+    'AuthzPolicyNetworkRuleFromNotSourceArgs',
+    'AuthzPolicyNetworkRuleFromNotSourceArgsDict',
+    'AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs',
+    'AuthzPolicyNetworkRuleFromNotSourceIpBlockArgsDict',
+    'AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs',
+    'AuthzPolicyNetworkRuleFromNotSourcePrincipalArgsDict',
+    'AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs',
+    'AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgsDict',
+    'AuthzPolicyNetworkRuleFromSourceArgs',
+    'AuthzPolicyNetworkRuleFromSourceArgsDict',
+    'AuthzPolicyNetworkRuleFromSourceIpBlockArgs',
+    'AuthzPolicyNetworkRuleFromSourceIpBlockArgsDict',
+    'AuthzPolicyNetworkRuleFromSourcePrincipalArgs',
+    'AuthzPolicyNetworkRuleFromSourcePrincipalArgsDict',
+    'AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs',
+    'AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgsDict',
+    'AuthzPolicyNetworkRuleToArgs',
+    'AuthzPolicyNetworkRuleToArgsDict',
+    'AuthzPolicyNetworkRuleToOperationArgs',
+    'AuthzPolicyNetworkRuleToOperationArgsDict',
+    'AuthzPolicyNetworkRuleToOperationSniArgs',
+    'AuthzPolicyNetworkRuleToOperationSniArgsDict',
     'AuthzPolicyTargetArgs',
     'AuthzPolicyTargetArgsDict',
     'ClientTlsPolicyClientCertificateArgs',
@@ -2241,7 +2267,7 @@ class AuthzPolicyHttpRuleToArgsDict(TypedDict):
     """
     operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]]
     """
-    Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+    Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
     Structure is documented below.
     """
 
@@ -2253,7 +2279,7 @@ class AuthzPolicyHttpRuleToArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]] not_operations: Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
                Structure is documented below.
         """
         if not_operations is not None:
@@ -2278,7 +2304,7 @@ class AuthzPolicyHttpRuleToArgs:
     @pulumi.getter
     def operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]:
         """
-        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
         Structure is documented below.
         """
         return pulumi.get(self, "operations")
@@ -3719,6 +3745,608 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
     @suffix.setter
     def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
+
+
+class AuthzPolicyNetworkRuleArgsDict(TypedDict):
+    from_: NotRequired[pulumi.Input[Optional['AuthzPolicyNetworkRuleFromArgsDict']]]
+    """
+    Describes properties of one or more sources of a request.
+    Structure is documented below.
+    """
+    to: NotRequired[pulumi.Input[Optional['AuthzPolicyNetworkRuleToArgsDict']]]
+    """
+    Describes properties of one or more targets of a request
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromArgs']] = None,
+                 to: pulumi.Input[Optional['AuthzPolicyNetworkRuleToArgs']] = None):
+        """
+        :param pulumi.Input['AuthzPolicyNetworkRuleFromArgs'] from_: Describes properties of one or more sources of a request.
+               Structure is documented below.
+        :param pulumi.Input['AuthzPolicyNetworkRuleToArgs'] to: Describes properties of one or more targets of a request
+               Structure is documented below.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input[Optional['AuthzPolicyNetworkRuleFromArgs']]:
+        """
+        Describes properties of one or more sources of a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromArgs']]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> pulumi.Input[Optional['AuthzPolicyNetworkRuleToArgs']]:
+        """
+        Describes properties of one or more targets of a request
+        Structure is documented below.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: pulumi.Input[Optional['AuthzPolicyNetworkRuleToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+class AuthzPolicyNetworkRuleFromArgsDict(TypedDict):
+    not_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceArgsDict']]]]]
+    """
+    Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+    Structure is documented below.
+    """
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceArgsDict']]]]]
+    """
+    Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromArgs:
+    def __init__(__self__, *,
+                 not_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceArgs']]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceArgs']]] not_sources: Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceArgs']]] sources: Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+               Structure is documented below.
+        """
+        if not_sources is not None:
+            pulumi.set(__self__, "not_sources", not_sources)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @_builtins.property
+    @pulumi.getter(name="notSources")
+    def not_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceArgs']]]]:
+        """
+        Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "not_sources")
+
+    @not_sources.setter
+    def not_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceArgs']]]]):
+        pulumi.set(self, "not_sources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceArgs']]]]:
+        """
+        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
+
+
+class AuthzPolicyNetworkRuleFromNotSourceArgsDict(TypedDict):
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceIpBlockArgsDict']]]]]
+    """
+    A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+    Structure is documented below.
+    """
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalArgsDict']]]]]
+    """
+    A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+    Limited to 5 principals.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromNotSourceArgs:
+    def __init__(__self__, *,
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs']]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs']]] principals: A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+               Limited to 5 principals.
+               Structure is documented below.
+        """
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs']]]]:
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @ip_blocks.setter
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs']]]]):
+        pulumi.set(self, "ip_blocks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs']]]]:
+        """
+        A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+        Limited to 5 principals.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs']]]]):
+        pulumi.set(self, "principals", value)
+
+
+class AuthzPolicyNetworkRuleFromNotSourceIpBlockArgsDict(TypedDict):
+    length: pulumi.Input[_builtins.int]
+    """
+    The length of the address range.
+    """
+    prefix: pulumi.Input[_builtins.str]
+    """
+    The address prefix.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs:
+    def __init__(__self__, *,
+                 length: pulumi.Input[_builtins.int],
+                 prefix: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] length: The length of the address range.
+        :param pulumi.Input[_builtins.str] prefix: The address prefix.
+        """
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the address range.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "length", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        The address prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+
+class AuthzPolicyNetworkRuleFromNotSourcePrincipalArgsDict(TypedDict):
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgsDict']]]
+    """
+    Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+    Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+    Structure is documented below.
+    """
+    principal_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+    Default value is `CLIENT_CERT_URI_SAN`.
+    Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs:
+    def __init__(__self__, *,
+                 principal: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs'] principal: Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+               Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] principal_selector: An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+               Default value is `CLIENT_CERT_URI_SAN`.
+               Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if principal_selector is not None:
+            pulumi.set(__self__, "principal_selector", principal_selector)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional['AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs']]:
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="principalSelector")
+    def principal_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        return pulumi.get(self, "principal_selector")
+
+    @principal_selector.setter
+    def principal_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "principal_selector", value)
+
+
+class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs:
+    def __init__(__self__, *,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] exact: The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exact", value)
+
+
+class AuthzPolicyNetworkRuleFromSourceArgsDict(TypedDict):
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceIpBlockArgsDict']]]]]
+    """
+    A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+    Structure is documented below.
+    """
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalArgsDict']]]]]
+    """
+    A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+    Limited to 5 principals.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromSourceArgs:
+    def __init__(__self__, *,
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceIpBlockArgs']]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalArgs']]] principals: A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+               Limited to 5 principals.
+               Structure is documented below.
+        """
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceIpBlockArgs']]]]:
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @ip_blocks.setter
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourceIpBlockArgs']]]]):
+        pulumi.set(self, "ip_blocks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalArgs']]]]:
+        """
+        A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+        Limited to 5 principals.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalArgs']]]]):
+        pulumi.set(self, "principals", value)
+
+
+class AuthzPolicyNetworkRuleFromSourceIpBlockArgsDict(TypedDict):
+    length: pulumi.Input[_builtins.int]
+    """
+    The length of the address range.
+    """
+    prefix: pulumi.Input[_builtins.str]
+    """
+    The address prefix.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromSourceIpBlockArgs:
+    def __init__(__self__, *,
+                 length: pulumi.Input[_builtins.int],
+                 prefix: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] length: The length of the address range.
+        :param pulumi.Input[_builtins.str] prefix: The address prefix.
+        """
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the address range.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "length", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        The address prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+
+class AuthzPolicyNetworkRuleFromSourcePrincipalArgsDict(TypedDict):
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgsDict']]]
+    """
+    Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+    Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+    Structure is documented below.
+    """
+    principal_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+    Default value is `CLIENT_CERT_URI_SAN`.
+    Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromSourcePrincipalArgs:
+    def __init__(__self__, *,
+                 principal: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs'] principal: Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+               Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] principal_selector: An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+               Default value is `CLIENT_CERT_URI_SAN`.
+               Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if principal_selector is not None:
+            pulumi.set(__self__, "principal_selector", principal_selector)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional['AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs']]:
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional['AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="principalSelector")
+    def principal_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        return pulumi.get(self, "principal_selector")
+
+    @principal_selector.setter
+    def principal_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "principal_selector", value)
+
+
+class AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The input string must match exactly the string specified here.
+    Examples:
+    * abc only matches the value abc.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs:
+    def __init__(__self__, *,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] exact: The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exact", value)
+
+
+class AuthzPolicyNetworkRuleToArgsDict(TypedDict):
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationArgsDict']]]]]
+    """
+    Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleToArgs:
+    def __init__(__self__, *,
+                 operations: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationArgs']]] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+               Structure is documented below.
+        """
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+
+    @_builtins.property
+    @pulumi.getter
+    def operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationArgs']]]]:
+        """
+        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+
+class AuthzPolicyNetworkRuleToOperationArgsDict(TypedDict):
+    snis: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationSniArgsDict']]]]]
+    """
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleToOperationArgs:
+    def __init__(__self__, *,
+                 snis: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationSniArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationSniArgs']]] snis: Structure is documented below.
+        """
+        if snis is not None:
+            pulumi.set(__self__, "snis", snis)
+
+    @_builtins.property
+    @pulumi.getter
+    def snis(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationSniArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "snis")
+
+    @snis.setter
+    def snis(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleToOperationSniArgs']]]]):
+        pulumi.set(self, "snis", value)
+
+
+class AuthzPolicyNetworkRuleToOperationSniArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Optional)
+    """
+
+@pulumi.input_type
+class AuthzPolicyNetworkRuleToOperationSniArgs:
+    def __init__(__self__, *,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] exact: (Optional)
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exact", value)
 
 
 class AuthzPolicyTargetArgsDict(TypedDict):

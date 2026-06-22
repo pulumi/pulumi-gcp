@@ -151,6 +151,8 @@ type Schema struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. The revision ID of the schema.
+	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -207,6 +209,8 @@ type schemaState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Output only. The revision ID of the schema.
+	RevisionId *string `pulumi:"revisionId"`
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -234,6 +238,8 @@ type SchemaState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Output only. The revision ID of the schema.
+	RevisionId pulumi.StringPtrInput
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -416,6 +422,11 @@ func (o SchemaOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o SchemaOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Output only. The revision ID of the schema.
+func (o SchemaOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
 }
 
 // The type of the schema definition

@@ -2969,15 +2969,36 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTags(dict):
 
 @pulumi.output_type
 class RestoreWorkloadComputeInstanceTargetEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useProjectServiceAccount":
+            suggest = "use_project_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestoreWorkloadComputeInstanceTargetEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestoreWorkloadComputeInstanceTargetEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestoreWorkloadComputeInstanceTargetEnvironment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project: _builtins.str,
-                 zone: _builtins.str):
+                 zone: _builtins.str,
+                 use_project_service_account: Optional[_builtins.bool] = None):
         """
         :param _builtins.str project: Required. Target project for the Compute Engine instance.
         :param _builtins.str zone: Required. The zone of the Compute Engine instance.
+        :param _builtins.bool use_project_service_account: If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
+        if use_project_service_account is not None:
+            pulumi.set(__self__, "use_project_service_account", use_project_service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -2994,6 +3015,14 @@ class RestoreWorkloadComputeInstanceTargetEnvironment(dict):
         Required. The zone of the Compute Engine instance.
         """
         return pulumi.get(self, "zone")
+
+    @_builtins.property
+    @pulumi.getter(name="useProjectServiceAccount")
+    def use_project_service_account(self) -> Optional[_builtins.bool]:
+        """
+        If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        """
+        return pulumi.get(self, "use_project_service_account")
 
 
 @pulumi.output_type
@@ -3412,15 +3441,36 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTag(dict):
 
 @pulumi.output_type
 class RestoreWorkloadDiskTargetEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useProjectServiceAccount":
+            suggest = "use_project_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestoreWorkloadDiskTargetEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestoreWorkloadDiskTargetEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestoreWorkloadDiskTargetEnvironment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project: _builtins.str,
-                 zone: _builtins.str):
+                 zone: _builtins.str,
+                 use_project_service_account: Optional[_builtins.bool] = None):
         """
         :param _builtins.str project: Required. Target project for the disk.
         :param _builtins.str zone: Required. Target zone for the disk.
+        :param _builtins.bool use_project_service_account: If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
+        if use_project_service_account is not None:
+            pulumi.set(__self__, "use_project_service_account", use_project_service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -3438,6 +3488,14 @@ class RestoreWorkloadDiskTargetEnvironment(dict):
         """
         return pulumi.get(self, "zone")
 
+    @_builtins.property
+    @pulumi.getter(name="useProjectServiceAccount")
+    def use_project_service_account(self) -> Optional[_builtins.bool]:
+        """
+        If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        """
+        return pulumi.get(self, "use_project_service_account")
+
 
 @pulumi.output_type
 class RestoreWorkloadRegionDiskTargetEnvironment(dict):
@@ -3446,6 +3504,8 @@ class RestoreWorkloadRegionDiskTargetEnvironment(dict):
         suggest = None
         if key == "replicaZones":
             suggest = "replica_zones"
+        elif key == "useProjectServiceAccount":
+            suggest = "use_project_service_account"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RestoreWorkloadRegionDiskTargetEnvironment. Access the value via the '{suggest}' property getter instead.")
@@ -3461,15 +3521,19 @@ class RestoreWorkloadRegionDiskTargetEnvironment(dict):
     def __init__(__self__, *,
                  project: _builtins.str,
                  region: _builtins.str,
-                 replica_zones: Sequence[_builtins.str]):
+                 replica_zones: Sequence[_builtins.str],
+                 use_project_service_account: Optional[_builtins.bool] = None):
         """
         :param _builtins.str project: Required. Target project for the disk.
         :param _builtins.str region: Required. Target region for the disk.
         :param Sequence[_builtins.str] replica_zones: Required. Target URLs of the replica zones for the disk.
+        :param _builtins.bool use_project_service_account: If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "replica_zones", replica_zones)
+        if use_project_service_account is not None:
+            pulumi.set(__self__, "use_project_service_account", use_project_service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -3494,6 +3558,14 @@ class RestoreWorkloadRegionDiskTargetEnvironment(dict):
         Required. Target URLs of the replica zones for the disk.
         """
         return pulumi.get(self, "replica_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="useProjectServiceAccount")
+    def use_project_service_account(self) -> Optional[_builtins.bool]:
+        """
+        If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        """
+        return pulumi.get(self, "use_project_service_account")
 
 
 @pulumi.output_type

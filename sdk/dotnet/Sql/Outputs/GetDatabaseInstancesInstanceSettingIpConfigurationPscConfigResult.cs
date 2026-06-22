@@ -26,9 +26,17 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> PscAutoConnections;
         /// <summary>
+        /// Whether PSC auto DNS is enabled for this instance.
+        /// </summary>
+        public readonly bool PscAutoDnsEnabled;
+        /// <summary>
         /// Whether PSC connectivity is enabled for this instance.
         /// </summary>
         public readonly bool PscEnabled;
+        /// <summary>
+        /// Whether PSC write endpoint DNS is enabled for this instance.
+        /// </summary>
+        public readonly bool PscWriteEndpointDnsEnabled;
 
         [OutputConstructor]
         private GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(
@@ -38,12 +46,18 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> pscAutoConnections,
 
-            bool pscEnabled)
+            bool pscAutoDnsEnabled,
+
+            bool pscEnabled,
+
+            bool pscWriteEndpointDnsEnabled)
         {
             AllowedConsumerProjects = allowedConsumerProjects;
             NetworkAttachmentUri = networkAttachmentUri;
             PscAutoConnections = pscAutoConnections;
+            PscAutoDnsEnabled = pscAutoDnsEnabled;
             PscEnabled = pscEnabled;
+            PscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
         }
     }
 }

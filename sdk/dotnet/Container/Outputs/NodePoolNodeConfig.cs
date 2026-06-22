@@ -138,6 +138,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? NodeGroup;
         /// <summary>
+        /// The node image configuration to use for this node pool.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NodePoolNodeConfigNodeImageConfig> NodeImageConfigs;
+        /// <summary>
         /// The set of Google API scopes to be made available on all of the node VMs.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
@@ -266,6 +270,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? nodeGroup,
 
+            ImmutableArray<Outputs.NodePoolNodeConfigNodeImageConfig> nodeImageConfigs,
+
             ImmutableArray<string> oauthScopes,
 
             bool? preemptible,
@@ -329,6 +335,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
             NodeGroup = nodeGroup;
+            NodeImageConfigs = nodeImageConfigs;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;

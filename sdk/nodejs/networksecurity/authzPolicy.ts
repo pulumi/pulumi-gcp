@@ -52,7 +52,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ## Import
  *
  * AuthzPolicy can be imported using any of these accepted formats:
@@ -159,6 +158,12 @@ export class AuthzPolicy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     */
+    declare public readonly networkRules: pulumi.Output<outputs.networksecurity.AuthzPolicyNetworkRule[] | undefined>;
+    /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
      * invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -211,6 +216,7 @@ export class AuthzPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
+            resourceInputs["networkRules"] = state?.networkRules;
             resourceInputs["policyProfile"] = state?.policyProfile;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
@@ -235,6 +241,7 @@ export class AuthzPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
+            resourceInputs["networkRules"] = args?.networkRules;
             resourceInputs["policyProfile"] = args?.policyProfile;
             resourceInputs["project"] = args?.project;
             resourceInputs["target"] = args?.target;
@@ -313,6 +320,12 @@ export interface AuthzPolicyState {
      * Identifier. Name of the AuthzPolicy resource.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     */
+    networkRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyNetworkRule>[] | undefined>;
     /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
@@ -399,6 +412,12 @@ export interface AuthzPolicyArgs {
      * Identifier. Name of the AuthzPolicy resource.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
+     */
+    networkRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyNetworkRule>[] | undefined>;
     /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are

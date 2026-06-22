@@ -469,6 +469,7 @@ namespace Pulumi.Gcp.Storage
         /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
         /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
@@ -558,6 +559,7 @@ namespace Pulumi.Gcp.Storage
         /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
         /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
@@ -615,6 +617,7 @@ namespace Pulumi.Gcp.Storage
         /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
         /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }

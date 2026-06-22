@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
     {
         /// <summary>
         /// In the format:
-        /// organizations/{org}/locations/{location}/frameworks/{framework}
+        /// {parent}/locations/{location}/frameworks/{framework}
         /// </summary>
         [Input("framework", required: true)]
         public Input<string> Framework { get; set; } = null!;

@@ -29,6 +29,7 @@ class ReservationArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['ReservationParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_sharing_policy: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']] = None,
                  share_settings: pulumi.Input[Optional['ReservationShareSettingsArgs']] = None,
@@ -59,6 +60,8 @@ class ReservationArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['ReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -83,6 +86,8 @@ class ReservationArgs:
             pulumi.set(__self__, "enable_emergent_maintenance", enable_emergent_maintenance)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_sharing_policy is not None:
@@ -205,6 +210,19 @@ class ReservationArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['ReservationParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['ReservationParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -271,6 +289,7 @@ class _ReservationState:
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['ReservationParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
                  reservation_sharing_policy: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']] = None,
@@ -311,6 +330,8 @@ class _ReservationState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['ReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
@@ -353,6 +374,8 @@ class _ReservationState:
             pulumi.set(__self__, "linked_commitments", linked_commitments)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_block_count is not None:
@@ -525,6 +548,19 @@ class _ReservationState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['ReservationParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['ReservationParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -676,6 +712,7 @@ class Reservation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
                  share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
@@ -880,6 +917,8 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -1095,6 +1134,7 @@ class Reservation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
                  share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
@@ -1116,6 +1156,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_emergent_maintenance"] = enable_emergent_maintenance
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_sharing_policy"] = reservation_sharing_policy
             __props__.__dict__["share_settings"] = share_settings
@@ -1157,6 +1198,7 @@ class Reservation(pulumi.CustomResource):
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
             reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
@@ -1201,6 +1243,8 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
@@ -1236,6 +1280,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["kind"] = kind
         __props__.__dict__["linked_commitments"] = linked_commitments
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation_block_count"] = reservation_block_count
         __props__.__dict__["reservation_sharing_policy"] = reservation_sharing_policy
@@ -1351,6 +1396,15 @@ class Reservation(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.ReservationParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

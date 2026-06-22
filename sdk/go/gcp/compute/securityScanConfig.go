@@ -77,6 +77,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -85,6 +86,14 @@ import (
 //			scannerStaticIp, err := compute.NewAddress(ctx, "scanner_static_ip", &compute.AddressArgs{
 //				Name: pulumi.String("scan-ignore-http-ip"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			wait15Seconds, err := time.NewSleep(ctx, "wait_15_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("15s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				scannerStaticIp,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -99,7 +108,9 @@ import (
 //					pulumi.String("COMPUTE"),
 //				},
 //				IgnoreHttpStatusErrors: pulumi.Bool(true),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait15Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}

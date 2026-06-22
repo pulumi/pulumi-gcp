@@ -4082,7 +4082,7 @@ type AuthzPolicyHttpRuleTo struct {
 	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
 	// Structure is documented below.
 	NotOperations []AuthzPolicyHttpRuleToNotOperation `pulumi:"notOperations"`
-	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	Operations []AuthzPolicyHttpRuleToOperation `pulumi:"operations"`
 }
@@ -4102,7 +4102,7 @@ type AuthzPolicyHttpRuleToArgs struct {
 	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
 	// Structure is documented below.
 	NotOperations AuthzPolicyHttpRuleToNotOperationArrayInput `pulumi:"notOperations"`
-	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	Operations AuthzPolicyHttpRuleToOperationArrayInput `pulumi:"operations"`
 }
@@ -4190,7 +4190,7 @@ func (o AuthzPolicyHttpRuleToOutput) NotOperations() AuthzPolicyHttpRuleToNotOpe
 	return o.ApplyT(func(v AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToNotOperation { return v.NotOperations }).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
 }
 
-// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToOutput) Operations() AuthzPolicyHttpRuleToOperationArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToOperation { return v.Operations }).(AuthzPolicyHttpRuleToOperationArrayOutput)
@@ -4231,7 +4231,7 @@ func (o AuthzPolicyHttpRuleToPtrOutput) NotOperations() AuthzPolicyHttpRuleToNot
 	}).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
 }
 
-// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToPtrOutput) Operations() AuthzPolicyHttpRuleToOperationArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToOperation {
@@ -6588,6 +6588,1595 @@ func (o AuthzPolicyHttpRuleToOperationPathArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToOperationPath {
 		return vs[0].([]AuthzPolicyHttpRuleToOperationPath)[vs[1].(int)]
 	}).(AuthzPolicyHttpRuleToOperationPathOutput)
+}
+
+type AuthzPolicyNetworkRule struct {
+	// Describes properties of one or more sources of a request.
+	// Structure is documented below.
+	From *AuthzPolicyNetworkRuleFrom `pulumi:"from"`
+	// Describes properties of one or more targets of a request
+	// Structure is documented below.
+	To *AuthzPolicyNetworkRuleTo `pulumi:"to"`
+}
+
+// AuthzPolicyNetworkRuleInput is an input type that accepts AuthzPolicyNetworkRuleArgs and AuthzPolicyNetworkRuleOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleInput` via:
+//
+//	AuthzPolicyNetworkRuleArgs{...}
+type AuthzPolicyNetworkRuleInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleOutput() AuthzPolicyNetworkRuleOutput
+	ToAuthzPolicyNetworkRuleOutputWithContext(context.Context) AuthzPolicyNetworkRuleOutput
+}
+
+type AuthzPolicyNetworkRuleArgs struct {
+	// Describes properties of one or more sources of a request.
+	// Structure is documented below.
+	From AuthzPolicyNetworkRuleFromPtrInput `pulumi:"from"`
+	// Describes properties of one or more targets of a request
+	// Structure is documented below.
+	To AuthzPolicyNetworkRuleToPtrInput `pulumi:"to"`
+}
+
+func (AuthzPolicyNetworkRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRule)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleArgs) ToAuthzPolicyNetworkRuleOutput() AuthzPolicyNetworkRuleOutput {
+	return i.ToAuthzPolicyNetworkRuleOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleArgs) ToAuthzPolicyNetworkRuleOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleOutput)
+}
+
+// AuthzPolicyNetworkRuleArrayInput is an input type that accepts AuthzPolicyNetworkRuleArray and AuthzPolicyNetworkRuleArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleArray{ AuthzPolicyNetworkRuleArgs{...} }
+type AuthzPolicyNetworkRuleArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleArrayOutput() AuthzPolicyNetworkRuleArrayOutput
+	ToAuthzPolicyNetworkRuleArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleArrayOutput
+}
+
+type AuthzPolicyNetworkRuleArray []AuthzPolicyNetworkRuleInput
+
+func (AuthzPolicyNetworkRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRule)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleArray) ToAuthzPolicyNetworkRuleArrayOutput() AuthzPolicyNetworkRuleArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleArray) ToAuthzPolicyNetworkRuleArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRule)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleOutput) ToAuthzPolicyNetworkRuleOutput() AuthzPolicyNetworkRuleOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleOutput) ToAuthzPolicyNetworkRuleOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleOutput {
+	return o
+}
+
+// Describes properties of one or more sources of a request.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleOutput) From() AuthzPolicyNetworkRuleFromPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRule) *AuthzPolicyNetworkRuleFrom { return v.From }).(AuthzPolicyNetworkRuleFromPtrOutput)
+}
+
+// Describes properties of one or more targets of a request
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleOutput) To() AuthzPolicyNetworkRuleToPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRule) *AuthzPolicyNetworkRuleTo { return v.To }).(AuthzPolicyNetworkRuleToPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRule)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleArrayOutput) ToAuthzPolicyNetworkRuleArrayOutput() AuthzPolicyNetworkRuleArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleArrayOutput) ToAuthzPolicyNetworkRuleArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRule {
+		return vs[0].([]AuthzPolicyNetworkRule)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleOutput)
+}
+
+type AuthzPolicyNetworkRuleFrom struct {
+	// Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+	// Structure is documented below.
+	NotSources []AuthzPolicyNetworkRuleFromNotSource `pulumi:"notSources"`
+	// Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+	// Structure is documented below.
+	Sources []AuthzPolicyNetworkRuleFromSource `pulumi:"sources"`
+}
+
+// AuthzPolicyNetworkRuleFromInput is an input type that accepts AuthzPolicyNetworkRuleFromArgs and AuthzPolicyNetworkRuleFromOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromInput` via:
+//
+//	AuthzPolicyNetworkRuleFromArgs{...}
+type AuthzPolicyNetworkRuleFromInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromOutput() AuthzPolicyNetworkRuleFromOutput
+	ToAuthzPolicyNetworkRuleFromOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromOutput
+}
+
+type AuthzPolicyNetworkRuleFromArgs struct {
+	// Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+	// Structure is documented below.
+	NotSources AuthzPolicyNetworkRuleFromNotSourceArrayInput `pulumi:"notSources"`
+	// Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+	// Structure is documented below.
+	Sources AuthzPolicyNetworkRuleFromSourceArrayInput `pulumi:"sources"`
+}
+
+func (AuthzPolicyNetworkRuleFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFrom)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromArgs) ToAuthzPolicyNetworkRuleFromOutput() AuthzPolicyNetworkRuleFromOutput {
+	return i.ToAuthzPolicyNetworkRuleFromOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromArgs) ToAuthzPolicyNetworkRuleFromOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromArgs) ToAuthzPolicyNetworkRuleFromPtrOutput() AuthzPolicyNetworkRuleFromPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromArgs) ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromOutput).ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromArgs, AuthzPolicyNetworkRuleFromPtr and AuthzPolicyNetworkRuleFromPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromPtrOutput() AuthzPolicyNetworkRuleFromPtrOutput
+	ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromPtrOutput
+}
+
+type authzPolicyNetworkRuleFromPtrType AuthzPolicyNetworkRuleFromArgs
+
+func AuthzPolicyNetworkRuleFromPtr(v *AuthzPolicyNetworkRuleFromArgs) AuthzPolicyNetworkRuleFromPtrInput {
+	return (*authzPolicyNetworkRuleFromPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFrom)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromPtrType) ToAuthzPolicyNetworkRuleFromPtrOutput() AuthzPolicyNetworkRuleFromPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromPtrType) ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFrom)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromOutput) ToAuthzPolicyNetworkRuleFromOutput() AuthzPolicyNetworkRuleFromOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromOutput) ToAuthzPolicyNetworkRuleFromOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromOutput) ToAuthzPolicyNetworkRuleFromPtrOutput() AuthzPolicyNetworkRuleFromPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromOutput) ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFrom) *AuthzPolicyNetworkRuleFrom {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromPtrOutput)
+}
+
+// Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromOutput) NotSources() AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFrom) []AuthzPolicyNetworkRuleFromNotSource { return v.NotSources }).(AuthzPolicyNetworkRuleFromNotSourceArrayOutput)
+}
+
+// Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromOutput) Sources() AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFrom) []AuthzPolicyNetworkRuleFromSource { return v.Sources }).(AuthzPolicyNetworkRuleFromSourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFrom)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromPtrOutput) ToAuthzPolicyNetworkRuleFromPtrOutput() AuthzPolicyNetworkRuleFromPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromPtrOutput) ToAuthzPolicyNetworkRuleFromPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromPtrOutput) Elem() AuthzPolicyNetworkRuleFromOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFrom) AuthzPolicyNetworkRuleFrom {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFrom
+		return ret
+	}).(AuthzPolicyNetworkRuleFromOutput)
+}
+
+// Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromPtrOutput) NotSources() AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFrom) []AuthzPolicyNetworkRuleFromNotSource {
+		if v == nil {
+			return nil
+		}
+		return v.NotSources
+	}).(AuthzPolicyNetworkRuleFromNotSourceArrayOutput)
+}
+
+// Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromPtrOutput) Sources() AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFrom) []AuthzPolicyNetworkRuleFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(AuthzPolicyNetworkRuleFromSourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSource struct {
+	// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+	// Structure is documented below.
+	IpBlocks []AuthzPolicyNetworkRuleFromNotSourceIpBlock `pulumi:"ipBlocks"`
+	// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+	// Limited to 5 principals.
+	// Structure is documented below.
+	Principals []AuthzPolicyNetworkRuleFromNotSourcePrincipal `pulumi:"principals"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceArgs and AuthzPolicyNetworkRuleFromNotSourceOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourceInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceOutput() AuthzPolicyNetworkRuleFromNotSourceOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceArgs struct {
+	// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+	// Structure is documented below.
+	IpBlocks AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayInput `pulumi:"ipBlocks"`
+	// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+	// Limited to 5 principals.
+	// Structure is documented below.
+	Principals AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput `pulumi:"principals"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceArgs) ToAuthzPolicyNetworkRuleFromNotSourceOutput() AuthzPolicyNetworkRuleFromNotSourceOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceArgs) ToAuthzPolicyNetworkRuleFromNotSourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceOutput)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceArray and AuthzPolicyNetworkRuleFromNotSourceArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceArray{ AuthzPolicyNetworkRuleFromNotSourceArgs{...} }
+type AuthzPolicyNetworkRuleFromNotSourceArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceArrayOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceArray []AuthzPolicyNetworkRuleFromNotSourceInput
+
+func (AuthzPolicyNetworkRuleFromNotSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceArray) ToAuthzPolicyNetworkRuleFromNotSourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceArray) ToAuthzPolicyNetworkRuleFromNotSourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceOutput) ToAuthzPolicyNetworkRuleFromNotSourceOutput() AuthzPolicyNetworkRuleFromNotSourceOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceOutput) ToAuthzPolicyNetworkRuleFromNotSourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceOutput {
+	return o
+}
+
+// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourceOutput) IpBlocks() AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSource) []AuthzPolicyNetworkRuleFromNotSourceIpBlock {
+		return v.IpBlocks
+	}).(AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput)
+}
+
+// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+// Limited to 5 principals.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourceOutput) Principals() AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSource) []AuthzPolicyNetworkRuleFromNotSourcePrincipal {
+		return v.Principals
+	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromNotSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromNotSource {
+		return vs[0].([]AuthzPolicyNetworkRuleFromNotSource)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromNotSourceOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceIpBlock struct {
+	// The length of the address range.
+	Length int `pulumi:"length"`
+	// The address prefix.
+	Prefix string `pulumi:"prefix"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceIpBlockInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs and AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceIpBlockInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs struct {
+	// The length of the address range.
+	Length pulumi.IntInput `pulumi:"length"`
+	// The address prefix.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceIpBlock)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceIpBlockArray and AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceIpBlockArray{ AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs{...} }
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockArray []AuthzPolicyNetworkRuleFromNotSourceIpBlockInput
+
+func (AuthzPolicyNetworkRuleFromNotSourceIpBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourceIpBlock)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceIpBlockArray) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceIpBlockArray) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceIpBlock)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput {
+	return o
+}
+
+// The length of the address range.
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceIpBlock) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// The address prefix.
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceIpBlock) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourceIpBlock)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromNotSourceIpBlock {
+		return vs[0].([]AuthzPolicyNetworkRuleFromNotSourceIpBlock)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipal struct {
+	// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+	// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+	// Structure is documented below.
+	Principal *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal `pulumi:"principal"`
+	// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+	// Default value is `CLIENT_CERT_URI_SAN`.
+	// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+	PrincipalSelector *string `pulumi:"principalSelector"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourcePrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs and AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourcePrincipalInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs struct {
+	// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+	// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+	// Structure is documented below.
+	Principal AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput `pulumi:"principal"`
+	// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+	// Default value is `CLIENT_CERT_URI_SAN`.
+	// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+	PrincipalSelector pulumi.StringPtrInput `pulumi:"principalSelector"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourcePrincipalArray and AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourcePrincipalArray{ AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs{...} }
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalArray []AuthzPolicyNetworkRuleFromNotSourcePrincipalInput
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourcePrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalArray) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalArray) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput {
+	return o
+}
+
+// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput) Principal() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourcePrincipal) *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
+		return v.Principal
+	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput)
+}
+
+// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+// Default value is `CLIENT_CERT_URI_SAN`.
+// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput) PrincipalSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourcePrincipal) *string { return v.PrincipalSelector }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourcePrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromNotSourcePrincipal {
+		return vs[0].([]AuthzPolicyNetworkRuleFromNotSourcePrincipal)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal struct {
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs and AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs struct {
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput).ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs, AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtr and AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput
+	ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput
+}
+
+type authzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrType AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs
+
+func AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtr(v *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput {
+	return (*authzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrType) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrType) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) Elem() AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal
+		return ret
+	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSource struct {
+	// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+	// Structure is documented below.
+	IpBlocks []AuthzPolicyNetworkRuleFromSourceIpBlock `pulumi:"ipBlocks"`
+	// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+	// Limited to 5 principals.
+	// Structure is documented below.
+	Principals []AuthzPolicyNetworkRuleFromSourcePrincipal `pulumi:"principals"`
+}
+
+// AuthzPolicyNetworkRuleFromSourceInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceArgs and AuthzPolicyNetworkRuleFromSourceOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceArgs{...}
+type AuthzPolicyNetworkRuleFromSourceInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceOutput() AuthzPolicyNetworkRuleFromSourceOutput
+	ToAuthzPolicyNetworkRuleFromSourceOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceArgs struct {
+	// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+	// Structure is documented below.
+	IpBlocks AuthzPolicyNetworkRuleFromSourceIpBlockArrayInput `pulumi:"ipBlocks"`
+	// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+	// Limited to 5 principals.
+	// Structure is documented below.
+	Principals AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput `pulumi:"principals"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceArgs) ToAuthzPolicyNetworkRuleFromSourceOutput() AuthzPolicyNetworkRuleFromSourceOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceArgs) ToAuthzPolicyNetworkRuleFromSourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceOutput)
+}
+
+// AuthzPolicyNetworkRuleFromSourceArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceArray and AuthzPolicyNetworkRuleFromSourceArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceArray{ AuthzPolicyNetworkRuleFromSourceArgs{...} }
+type AuthzPolicyNetworkRuleFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceArrayOutput() AuthzPolicyNetworkRuleFromSourceArrayOutput
+	ToAuthzPolicyNetworkRuleFromSourceArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceArray []AuthzPolicyNetworkRuleFromSourceInput
+
+func (AuthzPolicyNetworkRuleFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceArray) ToAuthzPolicyNetworkRuleFromSourceArrayOutput() AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceArray) ToAuthzPolicyNetworkRuleFromSourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceOutput) ToAuthzPolicyNetworkRuleFromSourceOutput() AuthzPolicyNetworkRuleFromSourceOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceOutput) ToAuthzPolicyNetworkRuleFromSourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceOutput {
+	return o
+}
+
+// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourceOutput) IpBlocks() AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSource) []AuthzPolicyNetworkRuleFromSourceIpBlock { return v.IpBlocks }).(AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput)
+}
+
+// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+// Limited to 5 principals.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourceOutput) Principals() AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSource) []AuthzPolicyNetworkRuleFromSourcePrincipal {
+		return v.Principals
+	}).(AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceArrayOutput) ToAuthzPolicyNetworkRuleFromSourceArrayOutput() AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceArrayOutput) ToAuthzPolicyNetworkRuleFromSourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromSource {
+		return vs[0].([]AuthzPolicyNetworkRuleFromSource)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromSourceOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceIpBlock struct {
+	// The length of the address range.
+	Length int `pulumi:"length"`
+	// The address prefix.
+	Prefix string `pulumi:"prefix"`
+}
+
+// AuthzPolicyNetworkRuleFromSourceIpBlockInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceIpBlockArgs and AuthzPolicyNetworkRuleFromSourceIpBlockOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceIpBlockInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceIpBlockArgs{...}
+type AuthzPolicyNetworkRuleFromSourceIpBlockInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceIpBlockOutput() AuthzPolicyNetworkRuleFromSourceIpBlockOutput
+	ToAuthzPolicyNetworkRuleFromSourceIpBlockOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceIpBlockArgs struct {
+	// The length of the address range.
+	Length pulumi.IntInput `pulumi:"length"`
+	// The address prefix.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourceIpBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceIpBlock)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceIpBlockArgs) ToAuthzPolicyNetworkRuleFromSourceIpBlockOutput() AuthzPolicyNetworkRuleFromSourceIpBlockOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceIpBlockOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceIpBlockArgs) ToAuthzPolicyNetworkRuleFromSourceIpBlockOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceIpBlockOutput)
+}
+
+// AuthzPolicyNetworkRuleFromSourceIpBlockArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceIpBlockArray and AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceIpBlockArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceIpBlockArray{ AuthzPolicyNetworkRuleFromSourceIpBlockArgs{...} }
+type AuthzPolicyNetworkRuleFromSourceIpBlockArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput
+	ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceIpBlockArray []AuthzPolicyNetworkRuleFromSourceIpBlockInput
+
+func (AuthzPolicyNetworkRuleFromSourceIpBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourceIpBlock)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceIpBlockArray) ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceIpBlockArray) ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceIpBlockOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceIpBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceIpBlock)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockOutput) ToAuthzPolicyNetworkRuleFromSourceIpBlockOutput() AuthzPolicyNetworkRuleFromSourceIpBlockOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockOutput) ToAuthzPolicyNetworkRuleFromSourceIpBlockOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockOutput {
+	return o
+}
+
+// The length of the address range.
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceIpBlock) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// The address prefix.
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceIpBlock) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourceIpBlock)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput) ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput() AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput) ToAuthzPolicyNetworkRuleFromSourceIpBlockArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromSourceIpBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromSourceIpBlock {
+		return vs[0].([]AuthzPolicyNetworkRuleFromSourceIpBlock)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromSourceIpBlockOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipal struct {
+	// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+	// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+	// Structure is documented below.
+	Principal *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal `pulumi:"principal"`
+	// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+	// Default value is `CLIENT_CERT_URI_SAN`.
+	// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+	PrincipalSelector *string `pulumi:"principalSelector"`
+}
+
+// AuthzPolicyNetworkRuleFromSourcePrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromSourcePrincipalArgs and AuthzPolicyNetworkRuleFromSourcePrincipalOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourcePrincipalInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourcePrincipalArgs{...}
+type AuthzPolicyNetworkRuleFromSourcePrincipalInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalOutput
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalArgs struct {
+	// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+	// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+	// Structure is documented below.
+	Principal AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput `pulumi:"principal"`
+	// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+	// Default value is `CLIENT_CERT_URI_SAN`.
+	// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+	PrincipalSelector pulumi.StringPtrInput `pulumi:"principalSelector"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourcePrincipalOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourcePrincipalOutput)
+}
+
+// AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromSourcePrincipalArray and AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourcePrincipalArray{ AuthzPolicyNetworkRuleFromSourcePrincipalArgs{...} }
+type AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalArray []AuthzPolicyNetworkRuleFromSourcePrincipalInput
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourcePrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalArray) ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalArray) ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalOutput {
+	return o
+}
+
+// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalOutput) Principal() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourcePrincipal) *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal {
+		return v.Principal
+	}).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput)
+}
+
+// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+// Default value is `CLIENT_CERT_URI_SAN`.
+// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalOutput) PrincipalSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourcePrincipal) *string { return v.PrincipalSelector }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourcePrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput() AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromSourcePrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromSourcePrincipal {
+		return vs[0].([]AuthzPolicyNetworkRuleFromSourcePrincipal)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromSourcePrincipalOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal struct {
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+}
+
+// AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs and AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{...}
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs struct {
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput).ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs, AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtr and AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput
+	ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput
+}
+
+type authzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrType AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs
+
+func AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtr(v *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput {
+	return (*authzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrType) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrType) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) ToAuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) Elem() AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal
+		return ret
+	}).(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleTo struct {
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+	// Structure is documented below.
+	Operations []AuthzPolicyNetworkRuleToOperation `pulumi:"operations"`
+}
+
+// AuthzPolicyNetworkRuleToInput is an input type that accepts AuthzPolicyNetworkRuleToArgs and AuthzPolicyNetworkRuleToOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToInput` via:
+//
+//	AuthzPolicyNetworkRuleToArgs{...}
+type AuthzPolicyNetworkRuleToInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToOutput() AuthzPolicyNetworkRuleToOutput
+	ToAuthzPolicyNetworkRuleToOutputWithContext(context.Context) AuthzPolicyNetworkRuleToOutput
+}
+
+type AuthzPolicyNetworkRuleToArgs struct {
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+	// Structure is documented below.
+	Operations AuthzPolicyNetworkRuleToOperationArrayInput `pulumi:"operations"`
+}
+
+func (AuthzPolicyNetworkRuleToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleTo)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToArgs) ToAuthzPolicyNetworkRuleToOutput() AuthzPolicyNetworkRuleToOutput {
+	return i.ToAuthzPolicyNetworkRuleToOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToArgs) ToAuthzPolicyNetworkRuleToOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOutput)
+}
+
+func (i AuthzPolicyNetworkRuleToArgs) ToAuthzPolicyNetworkRuleToPtrOutput() AuthzPolicyNetworkRuleToPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleToPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToArgs) ToAuthzPolicyNetworkRuleToPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOutput).ToAuthzPolicyNetworkRuleToPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleToPtrInput is an input type that accepts AuthzPolicyNetworkRuleToArgs, AuthzPolicyNetworkRuleToPtr and AuthzPolicyNetworkRuleToPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleToArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleToPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToPtrOutput() AuthzPolicyNetworkRuleToPtrOutput
+	ToAuthzPolicyNetworkRuleToPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleToPtrOutput
+}
+
+type authzPolicyNetworkRuleToPtrType AuthzPolicyNetworkRuleToArgs
+
+func AuthzPolicyNetworkRuleToPtr(v *AuthzPolicyNetworkRuleToArgs) AuthzPolicyNetworkRuleToPtrInput {
+	return (*authzPolicyNetworkRuleToPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleTo)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleToPtrType) ToAuthzPolicyNetworkRuleToPtrOutput() AuthzPolicyNetworkRuleToPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleToPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleToPtrType) ToAuthzPolicyNetworkRuleToPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleToOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleTo)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToOutput) ToAuthzPolicyNetworkRuleToOutput() AuthzPolicyNetworkRuleToOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOutput) ToAuthzPolicyNetworkRuleToOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOutput) ToAuthzPolicyNetworkRuleToPtrOutput() AuthzPolicyNetworkRuleToPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleToPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleToOutput) ToAuthzPolicyNetworkRuleToPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleTo) *AuthzPolicyNetworkRuleTo {
+		return &v
+	}).(AuthzPolicyNetworkRuleToPtrOutput)
+}
+
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleToOutput) Operations() AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToOperation { return v.Operations }).(AuthzPolicyNetworkRuleToOperationArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleTo)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToPtrOutput) ToAuthzPolicyNetworkRuleToPtrOutput() AuthzPolicyNetworkRuleToPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToPtrOutput) ToAuthzPolicyNetworkRuleToPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToPtrOutput) Elem() AuthzPolicyNetworkRuleToOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleTo) AuthzPolicyNetworkRuleTo {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleTo
+		return ret
+	}).(AuthzPolicyNetworkRuleToOutput)
+}
+
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleToPtrOutput) Operations() AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(AuthzPolicyNetworkRuleToOperationArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperation struct {
+	// Structure is documented below.
+	Snis []AuthzPolicyNetworkRuleToOperationSni `pulumi:"snis"`
+}
+
+// AuthzPolicyNetworkRuleToOperationInput is an input type that accepts AuthzPolicyNetworkRuleToOperationArgs and AuthzPolicyNetworkRuleToOperationOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToOperationInput` via:
+//
+//	AuthzPolicyNetworkRuleToOperationArgs{...}
+type AuthzPolicyNetworkRuleToOperationInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToOperationOutput() AuthzPolicyNetworkRuleToOperationOutput
+	ToAuthzPolicyNetworkRuleToOperationOutputWithContext(context.Context) AuthzPolicyNetworkRuleToOperationOutput
+}
+
+type AuthzPolicyNetworkRuleToOperationArgs struct {
+	// Structure is documented below.
+	Snis AuthzPolicyNetworkRuleToOperationSniArrayInput `pulumi:"snis"`
+}
+
+func (AuthzPolicyNetworkRuleToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToOperationArgs) ToAuthzPolicyNetworkRuleToOperationOutput() AuthzPolicyNetworkRuleToOperationOutput {
+	return i.ToAuthzPolicyNetworkRuleToOperationOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToOperationArgs) ToAuthzPolicyNetworkRuleToOperationOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOperationOutput)
+}
+
+// AuthzPolicyNetworkRuleToOperationArrayInput is an input type that accepts AuthzPolicyNetworkRuleToOperationArray and AuthzPolicyNetworkRuleToOperationArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToOperationArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleToOperationArray{ AuthzPolicyNetworkRuleToOperationArgs{...} }
+type AuthzPolicyNetworkRuleToOperationArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToOperationArrayOutput() AuthzPolicyNetworkRuleToOperationArrayOutput
+	ToAuthzPolicyNetworkRuleToOperationArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleToOperationArrayOutput
+}
+
+type AuthzPolicyNetworkRuleToOperationArray []AuthzPolicyNetworkRuleToOperationInput
+
+func (AuthzPolicyNetworkRuleToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToOperationArray) ToAuthzPolicyNetworkRuleToOperationArrayOutput() AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToOperationArray) ToAuthzPolicyNetworkRuleToOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOperationArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperationOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToOperationOutput) ToAuthzPolicyNetworkRuleToOperationOutput() AuthzPolicyNetworkRuleToOperationOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationOutput) ToAuthzPolicyNetworkRuleToOperationOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleToOperationOutput) Snis() AuthzPolicyNetworkRuleToOperationSniArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperation) []AuthzPolicyNetworkRuleToOperationSni { return v.Snis }).(AuthzPolicyNetworkRuleToOperationSniArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToOperationArrayOutput) ToAuthzPolicyNetworkRuleToOperationArrayOutput() AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationArrayOutput) ToAuthzPolicyNetworkRuleToOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleToOperation {
+		return vs[0].([]AuthzPolicyNetworkRuleToOperation)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleToOperationOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperationSni struct {
+	// (Optional)
+	Exact *string `pulumi:"exact"`
+}
+
+// AuthzPolicyNetworkRuleToOperationSniInput is an input type that accepts AuthzPolicyNetworkRuleToOperationSniArgs and AuthzPolicyNetworkRuleToOperationSniOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToOperationSniInput` via:
+//
+//	AuthzPolicyNetworkRuleToOperationSniArgs{...}
+type AuthzPolicyNetworkRuleToOperationSniInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToOperationSniOutput() AuthzPolicyNetworkRuleToOperationSniOutput
+	ToAuthzPolicyNetworkRuleToOperationSniOutputWithContext(context.Context) AuthzPolicyNetworkRuleToOperationSniOutput
+}
+
+type AuthzPolicyNetworkRuleToOperationSniArgs struct {
+	// (Optional)
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+}
+
+func (AuthzPolicyNetworkRuleToOperationSniArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationSni)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToOperationSniArgs) ToAuthzPolicyNetworkRuleToOperationSniOutput() AuthzPolicyNetworkRuleToOperationSniOutput {
+	return i.ToAuthzPolicyNetworkRuleToOperationSniOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToOperationSniArgs) ToAuthzPolicyNetworkRuleToOperationSniOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationSniOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOperationSniOutput)
+}
+
+// AuthzPolicyNetworkRuleToOperationSniArrayInput is an input type that accepts AuthzPolicyNetworkRuleToOperationSniArray and AuthzPolicyNetworkRuleToOperationSniArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToOperationSniArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleToOperationSniArray{ AuthzPolicyNetworkRuleToOperationSniArgs{...} }
+type AuthzPolicyNetworkRuleToOperationSniArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToOperationSniArrayOutput() AuthzPolicyNetworkRuleToOperationSniArrayOutput
+	ToAuthzPolicyNetworkRuleToOperationSniArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleToOperationSniArrayOutput
+}
+
+type AuthzPolicyNetworkRuleToOperationSniArray []AuthzPolicyNetworkRuleToOperationSniInput
+
+func (AuthzPolicyNetworkRuleToOperationSniArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToOperationSni)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToOperationSniArray) ToAuthzPolicyNetworkRuleToOperationSniArrayOutput() AuthzPolicyNetworkRuleToOperationSniArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleToOperationSniArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToOperationSniArray) ToAuthzPolicyNetworkRuleToOperationSniArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationSniArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToOperationSniArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperationSniOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToOperationSniOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationSni)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) ToAuthzPolicyNetworkRuleToOperationSniOutput() AuthzPolicyNetworkRuleToOperationSniOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) ToAuthzPolicyNetworkRuleToOperationSniOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationSniOutput {
+	return o
+}
+
+// (Optional)
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleToOperationSniArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToOperationSniArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToOperationSni)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToOperationSniArrayOutput) ToAuthzPolicyNetworkRuleToOperationSniArrayOutput() AuthzPolicyNetworkRuleToOperationSniArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationSniArrayOutput) ToAuthzPolicyNetworkRuleToOperationSniArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToOperationSniArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToOperationSniArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleToOperationSniOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleToOperationSni {
+		return vs[0].([]AuthzPolicyNetworkRuleToOperationSni)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleToOperationSniOutput)
 }
 
 type AuthzPolicyTarget struct {
@@ -12551,6 +14140,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpMethodParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationPathInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationPathArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleInput)(nil)).Elem(), AuthzPolicyNetworkRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceIpBlockInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceIpBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceIpBlockInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceIpBlockArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceIpBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToInput)(nil)).Elem(), AuthzPolicyNetworkRuleToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationSniInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationSniArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationSniArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationSniArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyTargetInput)(nil)).Elem(), AuthzPolicyTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyTargetPtrInput)(nil)).Elem(), AuthzPolicyTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyClientCertificateInput)(nil)).Elem(), ClientTlsPolicyClientCertificateArgs{})
@@ -12717,6 +14332,32 @@ func init() {
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationPathOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationPathArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceIpBlockOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceIpBlockArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceIpBlockOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceIpBlockArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationSniOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationSniArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyTargetOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyTargetPtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyClientCertificateOutput{})

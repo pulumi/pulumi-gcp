@@ -750,6 +750,12 @@ import (
 //								HttpGet: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{
 //									Path: pulumi.String("/"),
 //									Port: pulumi.Int(8080),
+//									HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{
+//										map[string]interface{}{
+//											"name":  "TEST-HEADER",
+//											"value": "test-value",
+//										},
+//									},
 //								},
 //							},
 //						},

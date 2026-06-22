@@ -195,6 +195,47 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Guardrail Llm Prompt Security Default Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForGuardrail = new gcp.ces.App("ces_app_for_guardrail", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesGuardrailLlmPromptSecurityDefaultSettings = new gcp.ces.Guardrail("ces_guardrail_llm_prompt_security_default_settings", {
+ *     guardrailId: "guardrail-id",
+ *     location: cesAppForGuardrail.location,
+ *     app: cesAppForGuardrail.appId,
+ *     displayName: "my-guardrail",
+ *     description: "Guardrail description",
+ *     action: {
+ *         generativeAnswer: {
+ *             prompt: "example_prompt",
+ *         },
+ *     },
+ *     enabled: true,
+ *     llmPromptSecurity: {
+ *         defaultSettings: {},
+ *     },
+ * });
+ * ```
  * ### Ces Guardrail Code Callback
  *
  * ```typescript

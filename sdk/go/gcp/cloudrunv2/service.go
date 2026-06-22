@@ -457,7 +457,6 @@ import (
 //				Name:               pulumi.String("cloudrun-service"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{

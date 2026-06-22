@@ -2511,9 +2511,30 @@ class TopicMessageTransformJavascriptUdf(dict):
 
 @pulumi.output_type
 class TopicSchemaSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "firstRevisionId":
+            suggest = "first_revision_id"
+        elif key == "lastRevisionId":
+            suggest = "last_revision_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TopicSchemaSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TopicSchemaSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TopicSchemaSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  schema: _builtins.str,
-                 encoding: Optional[_builtins.str] = None):
+                 encoding: Optional[_builtins.str] = None,
+                 first_revision_id: Optional[_builtins.str] = None,
+                 last_revision_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str schema: The name of the schema that messages published should be
                validated against. Format is projects/{project}/schemas/{schema}.
@@ -2522,10 +2543,16 @@ class TopicSchemaSettings(dict):
         :param _builtins.str encoding: The encoding of messages validated against schema.
                Default value is `ENCODING_UNSPECIFIED`.
                Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
+        :param _builtins.str first_revision_id: The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        :param _builtins.str last_revision_id: The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         """
         pulumi.set(__self__, "schema", schema)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
+        if first_revision_id is not None:
+            pulumi.set(__self__, "first_revision_id", first_revision_id)
+        if last_revision_id is not None:
+            pulumi.set(__self__, "last_revision_id", last_revision_id)
 
     @_builtins.property
     @pulumi.getter
@@ -2547,6 +2574,22 @@ class TopicSchemaSettings(dict):
         Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
         """
         return pulumi.get(self, "encoding")
+
+    @_builtins.property
+    @pulumi.getter(name="firstRevisionId")
+    def first_revision_id(self) -> Optional[_builtins.str]:
+        """
+        The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        """
+        return pulumi.get(self, "first_revision_id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastRevisionId")
+    def last_revision_id(self) -> Optional[_builtins.str]:
+        """
+        The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        """
+        return pulumi.get(self, "last_revision_id")
 
 
 @pulumi.output_type
@@ -4076,15 +4119,21 @@ class GetTopicMessageTransformJavascriptUdfResult(dict):
 class GetTopicSchemaSettingResult(dict):
     def __init__(__self__, *,
                  encoding: _builtins.str,
+                 first_revision_id: _builtins.str,
+                 last_revision_id: _builtins.str,
                  schema: _builtins.str):
         """
         :param _builtins.str encoding: The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
+        :param _builtins.str first_revision_id: The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        :param _builtins.str last_revision_id: The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         :param _builtins.str schema: The name of the schema that messages published should be
                validated against. Format is projects/{project}/schemas/{schema}.
                The value of this field will be _deleted-schema_
                if the schema has been deleted.
         """
         pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "first_revision_id", first_revision_id)
+        pulumi.set(__self__, "last_revision_id", last_revision_id)
         pulumi.set(__self__, "schema", schema)
 
     @_builtins.property
@@ -4094,6 +4143,22 @@ class GetTopicSchemaSettingResult(dict):
         The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
         """
         return pulumi.get(self, "encoding")
+
+    @_builtins.property
+    @pulumi.getter(name="firstRevisionId")
+    def first_revision_id(self) -> _builtins.str:
+        """
+        The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        """
+        return pulumi.get(self, "first_revision_id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastRevisionId")
+    def last_revision_id(self) -> _builtins.str:
+        """
+        The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        """
+        return pulumi.get(self, "last_revision_id")
 
     @_builtins.property
     @pulumi.getter

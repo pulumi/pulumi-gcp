@@ -29,10 +29,20 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
      */
     private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
     /**
+     * @return Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    private Boolean pscAutoDnsEnabled;
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
     private Boolean pscEnabled;
+    /**
+     * @return Whether PSC write endpoint DNS is enabled for this instance.
+     * 
+     */
+    private Boolean pscWriteEndpointDnsEnabled;
 
     private GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig() {}
     /**
@@ -57,11 +67,25 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
         return this.pscAutoConnections;
     }
     /**
+     * @return Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    public Boolean pscAutoDnsEnabled() {
+        return this.pscAutoDnsEnabled;
+    }
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
     public Boolean pscEnabled() {
         return this.pscEnabled;
+    }
+    /**
+     * @return Whether PSC write endpoint DNS is enabled for this instance.
+     * 
+     */
+    public Boolean pscWriteEndpointDnsEnabled() {
+        return this.pscWriteEndpointDnsEnabled;
     }
 
     public static Builder builder() {
@@ -76,14 +100,18 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
         private List<String> allowedConsumerProjects;
         private String networkAttachmentUri;
         private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
+        private Boolean pscAutoDnsEnabled;
         private Boolean pscEnabled;
+        private Boolean pscWriteEndpointDnsEnabled;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.networkAttachmentUri = defaults.networkAttachmentUri;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
+    	      this.pscAutoDnsEnabled = defaults.pscAutoDnsEnabled;
     	      this.pscEnabled = defaults.pscEnabled;
+    	      this.pscWriteEndpointDnsEnabled = defaults.pscWriteEndpointDnsEnabled;
         }
 
         @CustomType.Setter
@@ -117,6 +145,14 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
             return pscAutoConnections(List.of(pscAutoConnections));
         }
         @CustomType.Setter
+        public Builder pscAutoDnsEnabled(Boolean pscAutoDnsEnabled) {
+            if (pscAutoDnsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig", "pscAutoDnsEnabled");
+            }
+            this.pscAutoDnsEnabled = pscAutoDnsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pscEnabled(Boolean pscEnabled) {
             if (pscEnabled == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig", "pscEnabled");
@@ -124,12 +160,22 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
             this.pscEnabled = pscEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder pscWriteEndpointDnsEnabled(Boolean pscWriteEndpointDnsEnabled) {
+            if (pscWriteEndpointDnsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig", "pscWriteEndpointDnsEnabled");
+            }
+            this.pscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
+            return this;
+        }
         public GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig build() {
             final var _resultValue = new GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.networkAttachmentUri = networkAttachmentUri;
             _resultValue.pscAutoConnections = pscAutoConnections;
+            _resultValue.pscAutoDnsEnabled = pscAutoDnsEnabled;
             _resultValue.pscEnabled = pscEnabled;
+            _resultValue.pscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
             return _resultValue;
         }
     }

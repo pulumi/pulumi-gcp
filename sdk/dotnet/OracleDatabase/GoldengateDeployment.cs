@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 AdminUsername = "admin",
     ///                 AdminPassword = "123Abpassword!",
     ///                 Deployment = "deployment",
-    ///                 OggVersion = "oggoracle:21.18.0.0.0_250405.0903_12211",
+    ///                 OggVersion = "oggoracle:23.26.2.0.0_260417.1915_14223",
     ///             },
     ///             MaintenanceWindow = new Gcp.OracleDatabase.Inputs.GoldengateDeploymentPropertiesMaintenanceWindowArgs
     ///             {

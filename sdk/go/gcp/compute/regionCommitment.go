@@ -167,7 +167,7 @@ type RegionCommitment struct {
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringOutput `pulumi:"endTimestamp"`
 	// Specifies the already existing reservations to attach to the Commitment.
-	ExistingReservations pulumi.StringOutput `pulumi:"existingReservations"`
+	ExistingReservations pulumi.StringPtrOutput `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource RegionCommitmentLicenseResourcePtrOutput `pulumi:"licenseResource"`
@@ -598,8 +598,8 @@ func (o RegionCommitmentOutput) EndTimestamp() pulumi.StringOutput {
 }
 
 // Specifies the already existing reservations to attach to the Commitment.
-func (o RegionCommitmentOutput) ExistingReservations() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.ExistingReservations }).(pulumi.StringOutput)
+func (o RegionCommitmentOutput) ExistingReservations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringPtrOutput { return v.ExistingReservations }).(pulumi.StringPtrOutput)
 }
 
 // The license specification required as part of a license commitment.

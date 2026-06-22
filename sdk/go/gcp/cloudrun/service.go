@@ -185,16 +185,12 @@ import (
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 //				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.ServiceMetadataArgs{
-//					Annotations: pulumi.StringMap{
-//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-//					},
-//				},
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{
-//							"autoscaling.knative.dev/maxScale":  pulumi.String("1"),
-//							"run.googleapis.com/cpu-throttling": pulumi.String("false"),
+//							"autoscaling.knative.dev/maxScale":                 pulumi.String("1"),
+//							"run.googleapis.com/cpu-throttling":                pulumi.String("false"),
+//							"run.googleapis.com/gpu-zonal-redundancy-disabled": pulumi.String("true"),
 //						},
 //					},
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -410,11 +406,6 @@ import (
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 //				Name:     pulumi.String("cloudrun-srv-rp"),
 //				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.ServiceMetadataArgs{
-//					Annotations: pulumi.StringMap{
-//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-//					},
-//				},
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
 //						Containers: cloudrun.ServiceTemplateSpecContainerArray{

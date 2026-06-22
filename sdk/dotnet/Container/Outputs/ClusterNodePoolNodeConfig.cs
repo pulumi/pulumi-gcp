@@ -181,6 +181,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? NodeGroup;
         /// <summary>
+        /// The node image configuration to use for this node pool. Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigNodeImageConfig> NodeImageConfigs;
+        /// <summary>
         /// The set of Google API scopes to be made available
         /// on all of the node VMs under the "default" service account.
         /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `ServiceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -328,6 +332,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? nodeGroup,
 
+            ImmutableArray<Outputs.ClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs,
+
             ImmutableArray<string> oauthScopes,
 
             bool? preemptible,
@@ -391,6 +397,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
             NodeGroup = nodeGroup;
+            NodeImageConfigs = nodeImageConfigs;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;

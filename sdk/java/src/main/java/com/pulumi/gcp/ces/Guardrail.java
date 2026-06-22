@@ -334,6 +334,78 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Guardrail Llm Prompt Security Default Settings
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Guardrail;
+ * import com.pulumi.gcp.ces.GuardrailArgs;
+ * import com.pulumi.gcp.ces.inputs.GuardrailActionArgs;
+ * import com.pulumi.gcp.ces.inputs.GuardrailActionGenerativeAnswerArgs;
+ * import com.pulumi.gcp.ces.inputs.GuardrailLlmPromptSecurityArgs;
+ * import com.pulumi.gcp.ces.inputs.GuardrailLlmPromptSecurityDefaultSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForGuardrail = new App("cesAppForGuardrail", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesGuardrailLlmPromptSecurityDefaultSettings = new Guardrail("cesGuardrailLlmPromptSecurityDefaultSettings", GuardrailArgs.builder()
+ *             .guardrailId("guardrail-id")
+ *             .location(cesAppForGuardrail.location())
+ *             .app(cesAppForGuardrail.appId())
+ *             .displayName("my-guardrail")
+ *             .description("Guardrail description")
+ *             .action(GuardrailActionArgs.builder()
+ *                 .generativeAnswer(GuardrailActionGenerativeAnswerArgs.builder()
+ *                     .prompt("example_prompt")
+ *                     .build())
+ *                 .build())
+ *             .enabled(true)
+ *             .llmPromptSecurity(GuardrailLlmPromptSecurityArgs.builder()
+ *                 .defaultSettings(GuardrailLlmPromptSecurityDefaultSettingsArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Ces Guardrail Code Callback
  * 
  * <pre>

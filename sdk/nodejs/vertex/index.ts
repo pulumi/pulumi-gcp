@@ -205,6 +205,11 @@ export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
 utilities.lazyLoad(exports, ["AiTensorboard"], () => require("./aiTensorboard"));
 
+export { AiTensorboardExperimentArgs, AiTensorboardExperimentState } from "./aiTensorboardExperiment";
+export type AiTensorboardExperiment = import("./aiTensorboardExperiment").AiTensorboardExperiment;
+export const AiTensorboardExperiment: typeof import("./aiTensorboardExperiment").AiTensorboardExperiment = null as any;
+utilities.lazyLoad(exports, ["AiTensorboardExperiment"], () => require("./aiTensorboardExperiment"));
+
 export { GetAiEndpointIamPolicyArgs, GetAiEndpointIamPolicyResult, GetAiEndpointIamPolicyOutputArgs } from "./getAiEndpointIamPolicy";
 export const getAiEndpointIamPolicy: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicy = null as any;
 export const getAiEndpointIamPolicyOutput: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicyOutput = null as any;
@@ -335,6 +340,8 @@ const _module = {
                 return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
                 return new AiTensorboard(name, <any>undefined, { urn })
+            case "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment":
+                return new AiTensorboardExperiment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -380,3 +387,4 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)

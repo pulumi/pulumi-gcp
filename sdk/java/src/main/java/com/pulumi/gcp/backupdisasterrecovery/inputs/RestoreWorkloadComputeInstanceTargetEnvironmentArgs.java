@@ -6,8 +6,11 @@ package com.pulumi.gcp.backupdisasterrecovery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RestoreWorkloadComputeInstanceTargetEnvironmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,6 +33,21 @@ public final class RestoreWorkloadComputeInstanceTargetEnvironmentArgs extends c
     }
 
     /**
+     * If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    @Import(name="useProjectServiceAccount")
+    private @Nullable Output<Boolean> useProjectServiceAccount;
+
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> useProjectServiceAccount() {
+        return Optional.ofNullable(this.useProjectServiceAccount);
+    }
+
+    /**
      * Required. The zone of the Compute Engine instance.
      * 
      */
@@ -48,6 +66,7 @@ public final class RestoreWorkloadComputeInstanceTargetEnvironmentArgs extends c
 
     private RestoreWorkloadComputeInstanceTargetEnvironmentArgs(RestoreWorkloadComputeInstanceTargetEnvironmentArgs $) {
         this.project = $.project;
+        this.useProjectServiceAccount = $.useProjectServiceAccount;
         this.zone = $.zone;
     }
 
@@ -88,6 +107,27 @@ public final class RestoreWorkloadComputeInstanceTargetEnvironmentArgs extends c
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param useProjectServiceAccount If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useProjectServiceAccount(@Nullable Output<Boolean> useProjectServiceAccount) {
+            $.useProjectServiceAccount = useProjectServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param useProjectServiceAccount If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useProjectServiceAccount(Boolean useProjectServiceAccount) {
+            return useProjectServiceAccount(Output.of(useProjectServiceAccount));
         }
 
         /**

@@ -27,6 +27,16 @@ public final class WorkerPoolTemplate {
      */
     private @Nullable Map<String,String> annotations;
     /**
+     * @return Arbitrary identifier for the API client.
+     * 
+     */
+    private @Nullable String client;
+    /**
+     * @return Arbitrary version identifier for the API client.
+     * 
+     */
+    private @Nullable String clientVersion;
+    /**
      * @return Holds the containers that define the unit of execution for this WorkerPool.
      * Structure is documented below.
      * 
@@ -101,6 +111,20 @@ public final class WorkerPoolTemplate {
      */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
+    }
+    /**
+     * @return Arbitrary identifier for the API client.
+     * 
+     */
+    public Optional<String> client() {
+        return Optional.ofNullable(this.client);
+    }
+    /**
+     * @return Arbitrary version identifier for the API client.
+     * 
+     */
+    public Optional<String> clientVersion() {
+        return Optional.ofNullable(this.clientVersion);
     }
     /**
      * @return Holds the containers that define the unit of execution for this WorkerPool.
@@ -199,6 +223,8 @@ public final class WorkerPoolTemplate {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
+        private @Nullable String client;
+        private @Nullable String clientVersion;
         private @Nullable List<WorkerPoolTemplateContainer> containers;
         private @Nullable String encryptionKey;
         private @Nullable String encryptionKeyRevocationAction;
@@ -214,6 +240,8 @@ public final class WorkerPoolTemplate {
         public Builder(WorkerPoolTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.client = defaults.client;
+    	      this.clientVersion = defaults.clientVersion;
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.encryptionKeyRevocationAction = defaults.encryptionKeyRevocationAction;
@@ -231,6 +259,18 @@ public final class WorkerPoolTemplate {
         public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder client(@Nullable String client) {
+
+            this.client = client;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientVersion(@Nullable String clientVersion) {
+
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
@@ -308,6 +348,8 @@ public final class WorkerPoolTemplate {
         public WorkerPoolTemplate build() {
             final var _resultValue = new WorkerPoolTemplate();
             _resultValue.annotations = annotations;
+            _resultValue.client = client;
+            _resultValue.clientVersion = clientVersion;
             _resultValue.containers = containers;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.encryptionKeyRevocationAction = encryptionKeyRevocationAction;

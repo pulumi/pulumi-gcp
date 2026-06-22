@@ -73,7 +73,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
      */
-    declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
+    declare public readonly detectMd5hash: pulumi.Output<string>;
     /**
      * The id of the most recently created revision for this API proxy.
      */

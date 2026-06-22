@@ -286,7 +286,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-service",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",

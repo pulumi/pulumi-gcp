@@ -187,7 +187,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrun.Service;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
@@ -209,14 +208,12 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv")
  *             .location("us-central1")
- *             .metadata(ServiceMetadataArgs.builder()
- *                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
- *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .metadata(ServiceTemplateMetadataArgs.builder()
  *                     .annotations(Map.ofEntries(
  *                         Map.entry("autoscaling.knative.dev/maxScale", "1"),
- *                         Map.entry("run.googleapis.com/cpu-throttling", "false")
+ *                         Map.entry("run.googleapis.com/cpu-throttling", "false"),
+ *                         Map.entry("run.googleapis.com/gpu-zonal-redundancy-disabled", "true")
  *                     ))
  *                     .build())
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -443,7 +440,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrun.Service;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
@@ -466,9 +462,6 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-srv-rp")
  *             .location("us-central1")
- *             .metadata(ServiceMetadataArgs.builder()
- *                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
- *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()

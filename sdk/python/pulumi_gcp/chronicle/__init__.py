@@ -16,10 +16,12 @@ from .environment import *
 from .feed import *
 from .findings_refinement import *
 from .native_dashboard import *
+from .parser import *
 from .reference_list import *
 from .retrohunt import *
 from .rule import *
 from .rule_deployment import *
+from .soar_network import *
 from .watchlist import *
 from ._inputs import *
 from . import outputs

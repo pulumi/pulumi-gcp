@@ -161,7 +161,7 @@ export class RegionCommitment extends pulumi.CustomResource {
     /**
      * Specifies the already existing reservations to attach to the Commitment.
      */
-    declare public readonly existingReservations: pulumi.Output<string>;
+    declare public readonly existingReservations: pulumi.Output<string | undefined>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.

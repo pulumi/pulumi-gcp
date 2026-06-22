@@ -136,6 +136,9 @@ import (
 //				Location: pulumi.String("us-west1"),
 //				Service:  pulumi.String("iap.googleapis.com"),
 //				Timeout:  pulumi.String("0.1s"),
+//				Metadata: pulumi.StringMap{
+//					"iapPolicyVersion": pulumi.String("V1"),
+//				},
 //			})
 //			if err != nil {
 //				return err

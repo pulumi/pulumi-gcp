@@ -265,7 +265,7 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
 
     /**
      * Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      * 
      */
     @Import(name="name")
@@ -273,7 +273,7 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
 
     /**
      * @return Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      * 
      */
     public Optional<Output<String>> name() {
@@ -281,18 +281,53 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
+     * 
      */
+    @Deprecated /* Use `parent` instead. */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
      * 
      */
+    @Deprecated /* Use `parent` instead. */
     public Optional<Output<String>> organization() {
         return Optional.ofNullable(this.organization);
+    }
+
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
     }
 
     /**
@@ -360,6 +395,7 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
         this.location = $.location;
         this.name = $.name;
         this.organization = $.organization;
+        this.parent = $.parent;
         this.targetResourceConfig = $.targetResourceConfig;
         this.targetResourceDisplayName = $.targetResourceDisplayName;
         this.updateTime = $.updateTime;
@@ -732,7 +768,7 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
 
         /**
          * @param name Identifier. FrameworkDeployment name in the following format:
-         * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+         * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
          * 
          * @return builder
          * 
@@ -744,7 +780,7 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
 
         /**
          * @param name Identifier. FrameworkDeployment name in the following format:
-         * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+         * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
          * 
          * @return builder
          * 
@@ -754,24 +790,65 @@ public final class FrameworkDeploymentState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param organization Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param organization (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * 
+         * &gt; **Warning:** Use `parent` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `parent` instead.
+         * 
          */
+        @Deprecated /* Use `parent` instead. */
         public Builder organization(@Nullable Output<String> organization) {
             $.organization = organization;
             return this;
         }
 
         /**
-         * @param organization Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * @param organization (Optional, Deprecated)
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+         * 
+         * &gt; **Warning:** Use `parent` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `parent` instead.
+         * 
+         */
+        @Deprecated /* Use `parent` instead. */
+        public Builder organization(String organization) {
+            return organization(Output.of(organization));
+        }
+
+        /**
+         * @param parent The parent resource in which to create the resource.
+         * Must be in one of the following formats:
+         * * `projects/{{project}}`
+         * * `organizations/{{organization}}`
          * 
          * @return builder
          * 
          */
-        public Builder organization(String organization) {
-            return organization(Output.of(organization));
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The parent resource in which to create the resource.
+         * Must be in one of the following formats:
+         * * `projects/{{project}}`
+         * * `organizations/{{organization}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         /**

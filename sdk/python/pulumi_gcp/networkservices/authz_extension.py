@@ -784,7 +784,10 @@ class AuthzExtension(pulumi.CustomResource):
             name="my-authz-ext",
             location="us-west1",
             service="iap.googleapis.com",
-            timeout="0.1s")
+            timeout="0.1s",
+            metadata={
+                "iapPolicyVersion": "V1",
+            })
         ```
 
         ## Import
@@ -936,7 +939,10 @@ class AuthzExtension(pulumi.CustomResource):
             name="my-authz-ext",
             location="us-west1",
             service="iap.googleapis.com",
-            timeout="0.1s")
+            timeout="0.1s",
+            metadata={
+                "iapPolicyVersion": "V1",
+            })
         ```
 
         ## Import

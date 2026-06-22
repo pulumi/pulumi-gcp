@@ -86,7 +86,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. The destination environment for GCE VM restoration.
+     * The destination environment for GCE VM restoration.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<RestoreWorkloadComputeInstanceTargetEnvironmentArgs> computeInstanceTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for GCE VM restoration.
+     * @return The destination environment for GCE VM restoration.
      * Structure is documented below.
      * 
      */
@@ -177,7 +177,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. The destination environment for zonal disk restoration.
+     * The destination environment for zonal disk restoration.
      * Structure is documented below.
      * 
      */
@@ -185,7 +185,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<RestoreWorkloadDiskTargetEnvironmentArgs> diskTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for zonal disk restoration.
+     * @return The destination environment for zonal disk restoration.
      * Structure is documented below.
      * 
      */
@@ -238,7 +238,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. The destination environment for regional disk restoration.
+     * The destination environment for regional disk restoration.
      * Structure is documented below.
      * 
      */
@@ -246,7 +246,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<RestoreWorkloadRegionDiskTargetEnvironmentArgs> regionDiskTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for regional disk restoration.
+     * @return The destination environment for regional disk restoration.
      * Structure is documented below.
      * 
      */
@@ -415,7 +415,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param computeInstanceTargetEnvironment Optional. The destination environment for GCE VM restoration.
+         * @param computeInstanceTargetEnvironment The destination environment for GCE VM restoration.
          * Structure is documented below.
          * 
          * @return builder
@@ -427,7 +427,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param computeInstanceTargetEnvironment Optional. The destination environment for GCE VM restoration.
+         * @param computeInstanceTargetEnvironment The destination environment for GCE VM restoration.
          * Structure is documented below.
          * 
          * @return builder
@@ -536,7 +536,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskTargetEnvironment Optional. The destination environment for zonal disk restoration.
+         * @param diskTargetEnvironment The destination environment for zonal disk restoration.
          * Structure is documented below.
          * 
          * @return builder
@@ -548,7 +548,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskTargetEnvironment Optional. The destination environment for zonal disk restoration.
+         * @param diskTargetEnvironment The destination environment for zonal disk restoration.
          * Structure is documented below.
          * 
          * @return builder
@@ -615,7 +615,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionDiskTargetEnvironment Optional. The destination environment for regional disk restoration.
+         * @param regionDiskTargetEnvironment The destination environment for regional disk restoration.
          * Structure is documented below.
          * 
          * @return builder
@@ -627,7 +627,7 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionDiskTargetEnvironment Optional. The destination environment for regional disk restoration.
+         * @param regionDiskTargetEnvironment The destination environment for regional disk restoration.
          * Structure is documented below.
          * 
          * @return builder

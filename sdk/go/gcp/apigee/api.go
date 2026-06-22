@@ -46,7 +46,7 @@ type Api struct {
 	// ***
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
-	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
+	DetectMd5hash pulumi.StringOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
 	// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -305,8 +305,8 @@ func (o ApiOutput) DeletionPolicy() pulumi.StringOutput {
 }
 
 // (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
-func (o ApiOutput) DetectMd5hash() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
+func (o ApiOutput) DetectMd5hash() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.DetectMd5hash }).(pulumi.StringOutput)
 }
 
 // The id of the most recently created revision for this API proxy.

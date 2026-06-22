@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
 
         /// <summary>
         /// The name of the CloudControl in the format:
-        /// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+        /// "{parent}/locations/{location}/cloudControls/{cloud-control}"
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

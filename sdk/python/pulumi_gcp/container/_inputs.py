@@ -195,6 +195,8 @@ __all__ = [
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict',
     'ClusterAddonsConfigSliceControllerConfigArgs',
     'ClusterAddonsConfigSliceControllerConfigArgsDict',
+    'ClusterAddonsConfigSlurmOperatorConfigArgs',
+    'ClusterAddonsConfigSlurmOperatorConfigArgsDict',
     'ClusterAddonsConfigStatefulHaConfigArgs',
     'ClusterAddonsConfigStatefulHaConfigArgsDict',
     'ClusterAnonymousAuthenticationConfigArgs',
@@ -391,6 +393,8 @@ __all__ = [
     'ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict',
+    'ClusterNodeConfigNodeImageConfigArgs',
+    'ClusterNodeConfigNodeImageConfigArgsDict',
     'ClusterNodeConfigReservationAffinityArgs',
     'ClusterNodeConfigReservationAffinityArgsDict',
     'ClusterNodeConfigSandboxConfigArgs',
@@ -553,6 +557,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
+    'ClusterNodePoolNodeConfigNodeImageConfigArgs',
+    'ClusterNodePoolNodeConfigNodeImageConfigArgsDict',
     'ClusterNodePoolNodeConfigReservationAffinityArgs',
     'ClusterNodePoolNodeConfigReservationAffinityArgsDict',
     'ClusterNodePoolNodeConfigSandboxConfigArgs',
@@ -733,6 +739,8 @@ __all__ = [
     'NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
+    'NodePoolNodeConfigNodeImageConfigArgs',
+    'NodePoolNodeConfigNodeImageConfigArgsDict',
     'NodePoolNodeConfigReservationAffinityArgs',
     'NodePoolNodeConfigReservationAffinityArgsDict',
     'NodePoolNodeConfigSandboxConfigArgs',
@@ -4647,8 +4655,6 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     pod_snapshot_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgsDict']]]
     """
     The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-
-    This example `addons_config` disables two addons:
     """
     ray_operator_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgsDict']]]]]
     """
@@ -4670,6 +4676,15 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     . 
     The status of the slice controller addon.
     It is disabled by default. Set `enabled = true` to enable.
+    """
+    slurm_operator_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigSlurmOperatorConfigArgsDict']]]
+    """
+    The status of the Slurm Operator addon,
+    which creates slurm related CRDs and KCP pods to manage them.
+    Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+    It can not be enabled for Autopilot clusters.
+
+    This example `addons_config` disables two addons:
     """
     stateful_ha_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgsDict']]]
     """
@@ -4699,6 +4714,7 @@ class ClusterAddonsConfigArgs:
                  pod_snapshot_config: pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgs']] = None,
                  ray_operator_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]] = None,
                  slice_controller_config: pulumi.Input[Optional['ClusterAddonsConfigSliceControllerConfigArgs']] = None,
+                 slurm_operator_config: pulumi.Input[Optional['ClusterAddonsConfigSlurmOperatorConfigArgs']] = None,
                  stateful_ha_config: pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterAddonsConfigAgentSandboxConfigArgs'] agent_sandbox_config: Configuration for the Agent Sandbox addon. Structure is documented below:
@@ -4755,8 +4771,6 @@ class ClusterAddonsConfigArgs:
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         :param pulumi.Input['ClusterAddonsConfigPodSnapshotConfigArgs'] pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-               
-               This example `addons_config` disables two addons:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]] ray_operator_configs: . The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -4772,6 +4786,12 @@ class ClusterAddonsConfigArgs:
         :param pulumi.Input['ClusterAddonsConfigSliceControllerConfigArgs'] slice_controller_config: . 
                The status of the slice controller addon.
                It is disabled by default. Set `enabled = true` to enable.
+        :param pulumi.Input['ClusterAddonsConfigSlurmOperatorConfigArgs'] slurm_operator_config: The status of the Slurm Operator addon,
+               which creates slurm related CRDs and KCP pods to manage them.
+               Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+               It can not be enabled for Autopilot clusters.
+               
+               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4812,6 +4832,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if slice_controller_config is not None:
             pulumi.set(__self__, "slice_controller_config", slice_controller_config)
+        if slurm_operator_config is not None:
+            pulumi.set(__self__, "slurm_operator_config", slurm_operator_config)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
@@ -5038,8 +5060,6 @@ class ClusterAddonsConfigArgs:
     def pod_snapshot_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgs']]:
         """
         The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "pod_snapshot_config")
 
@@ -5083,6 +5103,23 @@ class ClusterAddonsConfigArgs:
     @slice_controller_config.setter
     def slice_controller_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigSliceControllerConfigArgs']]):
         pulumi.set(self, "slice_controller_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slurmOperatorConfig")
+    def slurm_operator_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigSlurmOperatorConfigArgs']]:
+        """
+        The status of the Slurm Operator addon,
+        which creates slurm related CRDs and KCP pods to manage them.
+        Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+        It can not be enabled for Autopilot clusters.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "slurm_operator_config")
+
+    @slurm_operator_config.setter
+    def slurm_operator_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigSlurmOperatorConfigArgs']]):
+        pulumi.set(self, "slurm_operator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulHaConfig")
@@ -5686,6 +5723,25 @@ class ClusterAddonsConfigSliceControllerConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class ClusterAddonsConfigSliceControllerConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class ClusterAddonsConfigSlurmOperatorConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+
+@pulumi.input_type
+class ClusterAddonsConfigSlurmOperatorConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool]):
         pulumi.set(__self__, "enabled", enabled)
@@ -9393,6 +9449,10 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
     """
+    node_image_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigNodeImageConfigArgsDict']]]]]
+    """
+    The node image configuration to use for this node pool. Structure is documented below.
+    """
     oauth_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of Google API scopes to be made available
@@ -9511,6 +9571,7 @@ class ClusterNodeConfigArgs:
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_image_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigNodeImageConfigArgs']]]] = None,
                  oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  reservation_affinity: pulumi.Input[Optional['ClusterNodeConfigReservationAffinityArgs']] = None,
@@ -9602,6 +9663,7 @@ class ClusterNodeConfigArgs:
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param pulumi.Input[_builtins.str] node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigNodeImageConfigArgs']]] node_image_configs: The node image configuration to use for this node pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -9700,6 +9762,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -10147,6 +10211,18 @@ class ClusterNodeConfigArgs:
     @node_group.setter
     def node_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigNodeImageConfigArgs']]]]:
+        """
+        The node image configuration to use for this node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_image_configs")
+
+    @node_image_configs.setter
+    def node_image_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigNodeImageConfigArgs']]]]):
+        pulumi.set(self, "node_image_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -13220,6 +13296,55 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfigArgs:
         pulumi.set(self, "local_ssd_count", value)
 
 
+class ClusterNodeConfigNodeImageConfigArgsDict(TypedDict):
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the image to use for this node.
+    """
+    image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The project containing the image to use for this node.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigNodeImageConfigArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_project: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
+        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+    @image_project.setter
+    def image_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image_project", value)
+
+
 class ClusterNodeConfigReservationAffinityArgsDict(TypedDict):
     consume_reservation_type: pulumi.Input[_builtins.str]
     """
@@ -15913,6 +16038,10 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
     """
+    node_image_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigNodeImageConfigArgsDict']]]]]
+    """
+    The node image configuration to use for this node pool. Structure is documented below.
+    """
     oauth_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of Google API scopes to be made available
@@ -16031,6 +16160,7 @@ class ClusterNodePoolNodeConfigArgs:
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_image_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigNodeImageConfigArgs']]]] = None,
                  oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  reservation_affinity: pulumi.Input[Optional['ClusterNodePoolNodeConfigReservationAffinityArgs']] = None,
@@ -16122,6 +16252,7 @@ class ClusterNodePoolNodeConfigArgs:
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param pulumi.Input[_builtins.str] node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigNodeImageConfigArgs']]] node_image_configs: The node image configuration to use for this node pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -16220,6 +16351,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -16667,6 +16800,18 @@ class ClusterNodePoolNodeConfigArgs:
     @node_group.setter
     def node_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigNodeImageConfigArgs']]]]:
+        """
+        The node image configuration to use for this node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_image_configs")
+
+    @node_image_configs.setter
+    def node_image_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigNodeImageConfigArgs']]]]):
+        pulumi.set(self, "node_image_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -19740,6 +19885,55 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
         pulumi.set(self, "local_ssd_count", value)
 
 
+class ClusterNodePoolNodeConfigNodeImageConfigArgsDict(TypedDict):
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the image to use for this node.
+    """
+    image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The project containing the image to use for this node.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigNodeImageConfigArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_project: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
+        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+    @image_project.setter
+    def image_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image_project", value)
+
+
 class ClusterNodePoolNodeConfigReservationAffinityArgsDict(TypedDict):
     consume_reservation_type: pulumi.Input[_builtins.str]
     """
@@ -22730,6 +22924,10 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
     """
+    node_image_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigNodeImageConfigArgsDict']]]]]
+    """
+    The node image configuration to use for this node pool.
+    """
     oauth_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of Google API scopes to be made available on all of the node VMs.
@@ -22829,6 +23027,7 @@ class NodePoolNodeConfigArgs:
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_image_configs: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigNodeImageConfigArgs']]]] = None,
                  oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  reservation_affinity: pulumi.Input[Optional['NodePoolNodeConfigReservationAffinityArgs']] = None,
@@ -22877,6 +23076,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param pulumi.Input[_builtins.str] min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
         :param pulumi.Input[_builtins.str] node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigNodeImageConfigArgs']]] node_image_configs: The node image configuration to use for this node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param pulumi.Input[_builtins.bool] preemptible: Whether the nodes are created as preemptible VM instances.
         :param pulumi.Input['NodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The reservation affinity configuration for the node pool.
@@ -22956,6 +23156,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if node_group is not None:
             pulumi.set(__self__, "node_group", node_group)
+        if node_image_configs is not None:
+            pulumi.set(__self__, "node_image_configs", node_image_configs)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -23360,6 +23562,18 @@ class NodePoolNodeConfigArgs:
     @node_group.setter
     def node_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeImageConfigs")
+    def node_image_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigNodeImageConfigArgs']]]]:
+        """
+        The node image configuration to use for this node pool.
+        """
+        return pulumi.get(self, "node_image_configs")
+
+    @node_image_configs.setter
+    def node_image_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigNodeImageConfigArgs']]]]):
+        pulumi.set(self, "node_image_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthScopes")
@@ -26286,6 +26500,55 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
     @local_ssd_count.setter
     def local_ssd_count(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "local_ssd_count", value)
+
+
+class NodePoolNodeConfigNodeImageConfigArgsDict(TypedDict):
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the image to use for this node.
+    """
+    image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The project containing the image to use for this node.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigNodeImageConfigArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_project: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
+        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_project is not None:
+            pulumi.set(__self__, "image_project", image_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the image to use for this node.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageProject")
+    def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The project containing the image to use for this node.
+        """
+        return pulumi.get(self, "image_project")
+
+    @image_project.setter
+    def image_project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image_project", value)
 
 
 class NodePoolNodeConfigReservationAffinityArgsDict(TypedDict):

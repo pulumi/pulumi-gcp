@@ -31,6 +31,8 @@ from .get_buckets import *
 from .get_control_folder_intelligence_config import *
 from .get_control_organization_intelligence_config import *
 from .get_control_project_intelligence_config import *
+from .get_control_project_intelligence_finding import *
+from .get_control_project_intelligence_findings import *
 from .get_insights_dataset_config import *
 from .get_managed_folder_iam_policy import *
 from .get_object_signed_url import *

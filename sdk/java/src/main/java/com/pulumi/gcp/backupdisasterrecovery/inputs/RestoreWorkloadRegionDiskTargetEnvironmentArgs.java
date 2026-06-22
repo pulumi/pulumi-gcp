@@ -6,9 +6,12 @@ package com.pulumi.gcp.backupdisasterrecovery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RestoreWorkloadRegionDiskTargetEnvironmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -60,12 +63,28 @@ public final class RestoreWorkloadRegionDiskTargetEnvironmentArgs extends com.pu
         return this.replicaZones;
     }
 
+    /**
+     * If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    @Import(name="useProjectServiceAccount")
+    private @Nullable Output<Boolean> useProjectServiceAccount;
+
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> useProjectServiceAccount() {
+        return Optional.ofNullable(this.useProjectServiceAccount);
+    }
+
     private RestoreWorkloadRegionDiskTargetEnvironmentArgs() {}
 
     private RestoreWorkloadRegionDiskTargetEnvironmentArgs(RestoreWorkloadRegionDiskTargetEnvironmentArgs $) {
         this.project = $.project;
         this.region = $.region;
         this.replicaZones = $.replicaZones;
+        this.useProjectServiceAccount = $.useProjectServiceAccount;
     }
 
     public static Builder builder() {
@@ -157,6 +176,27 @@ public final class RestoreWorkloadRegionDiskTargetEnvironmentArgs extends com.pu
          */
         public Builder replicaZones(String... replicaZones) {
             return replicaZones(List.of(replicaZones));
+        }
+
+        /**
+         * @param useProjectServiceAccount If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useProjectServiceAccount(@Nullable Output<Boolean> useProjectServiceAccount) {
+            $.useProjectServiceAccount = useProjectServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param useProjectServiceAccount If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useProjectServiceAccount(Boolean useProjectServiceAccount) {
+            return useProjectServiceAccount(Output.of(useProjectServiceAccount));
         }
 
         public RestoreWorkloadRegionDiskTargetEnvironmentArgs build() {

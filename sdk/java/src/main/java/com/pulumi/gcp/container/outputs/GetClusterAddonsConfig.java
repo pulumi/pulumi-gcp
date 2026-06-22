@@ -23,6 +23,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDr
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigSliceControllerConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigSlurmOperatorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
@@ -119,6 +120,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs;
+    /**
+     * @return The status of the Slurm Operator addon, which creates slurm related CRDs and KCP pods to manage them. Defaults to disabled for Standard clusters; set enabled = true to enable. It can not be enabled for Autopilot clusters.
+     * 
+     */
+    private List<GetClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfigs;
     /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
@@ -253,6 +259,13 @@ public final class GetClusterAddonsConfig {
         return this.sliceControllerConfigs;
     }
     /**
+     * @return The status of the Slurm Operator addon, which creates slurm related CRDs and KCP pods to manage them. Defaults to disabled for Standard clusters; set enabled = true to enable. It can not be enabled for Autopilot clusters.
+     * 
+     */
+    public List<GetClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfigs() {
+        return this.slurmOperatorConfigs;
+    }
+    /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -287,6 +300,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private List<GetClusterAddonsConfigSliceControllerConfig> sliceControllerConfigs;
+        private List<GetClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfigs;
         private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
@@ -309,6 +323,7 @@ public final class GetClusterAddonsConfig {
     	      this.podSnapshotConfigs = defaults.podSnapshotConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.sliceControllerConfigs = defaults.sliceControllerConfigs;
+    	      this.slurmOperatorConfigs = defaults.slurmOperatorConfigs;
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
 
@@ -511,6 +526,17 @@ public final class GetClusterAddonsConfig {
             return sliceControllerConfigs(List.of(sliceControllerConfigs));
         }
         @CustomType.Setter
+        public Builder slurmOperatorConfigs(List<GetClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfigs) {
+            if (slurmOperatorConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "slurmOperatorConfigs");
+            }
+            this.slurmOperatorConfigs = slurmOperatorConfigs;
+            return this;
+        }
+        public Builder slurmOperatorConfigs(GetClusterAddonsConfigSlurmOperatorConfig... slurmOperatorConfigs) {
+            return slurmOperatorConfigs(List.of(slurmOperatorConfigs));
+        }
+        @CustomType.Setter
         public Builder statefulHaConfigs(List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs) {
             if (statefulHaConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "statefulHaConfigs");
@@ -541,6 +567,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.podSnapshotConfigs = podSnapshotConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.sliceControllerConfigs = sliceControllerConfigs;
+            _resultValue.slurmOperatorConfigs = slurmOperatorConfigs;
             _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;
         }

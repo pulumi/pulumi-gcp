@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
             set => _replicaZones = value;
         }
 
+        /// <summary>
+        /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        /// </summary>
+        [Input("useProjectServiceAccount")]
+        public Input<bool>? UseProjectServiceAccount { get; set; }
+
         public RestoreWorkloadRegionDiskTargetEnvironmentArgs()
         {
         }

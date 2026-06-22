@@ -166,20 +166,34 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
      * 
-     */
-    @Import(name="protocols", required=true)
-    private Output<List<String>> protocols;
-
-    /**
-     * @return List of protocols supported by an Agent Gateway.
-     * Each value may be one of: `MCP`.
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `protocols` is deprecated and will be removed in a future major release.
      * 
      */
-    public Output<List<String>> protocols() {
-        return this.protocols;
+    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    @Import(name="protocols")
+    private @Nullable Output<List<String>> protocols;
+
+    /**
+     * @return (Optional, Deprecated)
+     * List of protocols supported by an Agent Gateway.
+     * Each value may be one of: `MCP`.
+     * 
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `protocols` is deprecated and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    public Optional<Output<List<String>>> protocols() {
+        return Optional.ofNullable(this.protocols);
     }
 
     /**
@@ -447,35 +461,56 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
-        public Builder protocols(Output<List<String>> protocols) {
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+        public Builder protocols(@Nullable Output<List<String>> protocols) {
             $.protocols = protocols;
             return this;
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
         public Builder protocols(List<String> protocols) {
             return protocols(Output.of(protocols));
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }
@@ -545,9 +580,6 @@ public final class AgentGatewayArgs extends com.pulumi.resources.ResourceArgs {
         public AgentGatewayArgs build() {
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("AgentGatewayArgs", "location");
-            }
-            if ($.protocols == null) {
-                throw new MissingRequiredPropertyException("AgentGatewayArgs", "protocols");
             }
             return $;
         }

@@ -27,6 +27,18 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Arbitrary identifier for the API client.
+        /// </summary>
+        [Input("client")]
+        public Input<string>? Client { get; set; }
+
+        /// <summary>
+        /// Arbitrary version identifier for the API client.
+        /// </summary>
+        [Input("clientVersion")]
+        public Input<string>? ClientVersion { get; set; }
+
         [Input("containers")]
         private InputList<Inputs.WorkerPoolTemplateContainerGetArgs>? _containers;
 

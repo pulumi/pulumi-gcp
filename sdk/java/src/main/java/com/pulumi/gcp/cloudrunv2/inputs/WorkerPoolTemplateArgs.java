@@ -44,6 +44,36 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Arbitrary identifier for the API client.
+     * 
+     */
+    @Import(name="client")
+    private @Nullable Output<String> client;
+
+    /**
+     * @return Arbitrary identifier for the API client.
+     * 
+     */
+    public Optional<Output<String>> client() {
+        return Optional.ofNullable(this.client);
+    }
+
+    /**
+     * Arbitrary version identifier for the API client.
+     * 
+     */
+    @Import(name="clientVersion")
+    private @Nullable Output<String> clientVersion;
+
+    /**
+     * @return Arbitrary version identifier for the API client.
+     * 
+     */
+    public Optional<Output<String>> clientVersion() {
+        return Optional.ofNullable(this.clientVersion);
+    }
+
+    /**
      * Holds the containers that define the unit of execution for this WorkerPool.
      * Structure is documented below.
      * 
@@ -230,6 +260,8 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
 
     private WorkerPoolTemplateArgs(WorkerPoolTemplateArgs $) {
         this.annotations = $.annotations;
+        this.client = $.client;
+        this.clientVersion = $.clientVersion;
         this.containers = $.containers;
         this.encryptionKey = $.encryptionKey;
         this.encryptionKeyRevocationAction = $.encryptionKeyRevocationAction;
@@ -286,6 +318,48 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param client Arbitrary identifier for the API client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(@Nullable Output<String> client) {
+            $.client = client;
+            return this;
+        }
+
+        /**
+         * @param client Arbitrary identifier for the API client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(String client) {
+            return client(Output.of(client));
+        }
+
+        /**
+         * @param clientVersion Arbitrary version identifier for the API client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientVersion(@Nullable Output<String> clientVersion) {
+            $.clientVersion = clientVersion;
+            return this;
+        }
+
+        /**
+         * @param clientVersion Arbitrary version identifier for the API client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientVersion(String clientVersion) {
+            return clientVersion(Output.of(clientVersion));
         }
 
         /**

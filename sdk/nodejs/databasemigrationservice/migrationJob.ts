@@ -485,6 +485,11 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
+     * The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     */
+    declare public readonly desiredState: pulumi.Output<string>;
+    /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
     declare public readonly destination: pulumi.Output<string>;
@@ -588,6 +593,10 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly staticIpConnectivity: pulumi.Output<outputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
     /**
+     * If set to true, will stop the pulumi up if there are validation warnings.
+     */
+    declare public readonly stopOnWarnings: pulumi.Output<boolean | undefined>;
+    /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
      */
@@ -613,6 +622,7 @@ export class MigrationJob extends pulumi.CustomResource {
             const state = argsOrState as MigrationJobState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["dumpFlags"] = state?.dumpFlags;
@@ -634,6 +644,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["source"] = state?.source;
             resourceInputs["state"] = state?.state;
             resourceInputs["staticIpConnectivity"] = state?.staticIpConnectivity;
+            resourceInputs["stopOnWarnings"] = state?.stopOnWarnings;
             resourceInputs["type"] = state?.type;
             resourceInputs["vpcPeeringConnectivity"] = state?.vpcPeeringConnectivity;
         } else {
@@ -651,6 +662,7 @@ export class MigrationJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["dumpFlags"] = args?.dumpFlags;
@@ -666,6 +678,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["reverseSshConnectivity"] = args?.reverseSshConnectivity;
             resourceInputs["source"] = args?.source;
             resourceInputs["staticIpConnectivity"] = args?.staticIpConnectivity;
+            resourceInputs["stopOnWarnings"] = args?.stopOnWarnings;
             resourceInputs["type"] = args?.type;
             resourceInputs["vpcPeeringConnectivity"] = args?.vpcPeeringConnectivity;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -700,6 +713,11 @@ export interface MigrationJobState {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     */
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
@@ -804,6 +822,10 @@ export interface MigrationJobState {
      */
     staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
     /**
+     * If set to true, will stop the pulumi up if there are validation warnings.
+     */
+    stopOnWarnings?: pulumi.Input<boolean | undefined>;
+    /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
      */
@@ -828,6 +850,11 @@ export interface MigrationJobArgs {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+     * Possible values are: `NOT_STARTED`, `RUNNING`.
+     */
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
@@ -905,6 +932,10 @@ export interface MigrationJobArgs {
      * Cloud SQL console or using Cloud SQL APIs.
      */
     staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
+    /**
+     * If set to true, will stop the pulumi up if there are validation warnings.
+     */
+    stopOnWarnings?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.

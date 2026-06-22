@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the already existing reservations to attach to the Commitment.
         /// </summary>
         [Output("existingReservations")]
-        public Output<string> ExistingReservations { get; private set; } = null!;
+        public Output<string?> ExistingReservations { get; private set; } = null!;
 
         /// <summary>
         /// The license specification required as part of a license commitment.

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
         public readonly string MajorRevisionId;
         /// <summary>
         /// The name of the CloudControl in the format:
-        /// “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+        /// "{parent}/locations/{location}/cloudControls/{cloud-control}"
         /// </summary>
         public readonly string Name;
         /// <summary>
