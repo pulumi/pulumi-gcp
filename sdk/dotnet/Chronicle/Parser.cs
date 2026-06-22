@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Output only. The server-generated ID of the parser.
         /// </summary>
         [Output("parser")]
-        public Output<string> Parser { get; private set; } = null!;
+        public Output<string> ParserId { get; private set; } = null!;
 
         /// <summary>
         /// Extension applied over the parser, if any.
@@ -531,7 +531,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Output only. The server-generated ID of the parser.
         /// </summary>
         [Input("parser")]
-        public Input<string>? Parser { get; set; }
+        public Input<string>? ParserId { get; set; }
 
         /// <summary>
         /// Extension applied over the parser, if any.
