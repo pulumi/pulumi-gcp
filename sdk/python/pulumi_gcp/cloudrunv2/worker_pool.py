@@ -1455,6 +1455,10 @@ class WorkerPool(pulumi.CustomResource):
                         "http_get": {
                             "path": "/",
                             "port": 8080,
+                            "http_headers": [{
+                                "name": "TEST-HEADER",
+                                "value": "test-value",
+                            }],
                         },
                     },
                 }],
@@ -1974,6 +1978,10 @@ class WorkerPool(pulumi.CustomResource):
                         "http_get": {
                             "path": "/",
                             "port": 8080,
+                            "http_headers": [{
+                                "name": "TEST-HEADER",
+                                "value": "test-value",
+                            }],
                         },
                     },
                 }],

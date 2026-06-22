@@ -2265,6 +2265,13 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"google_chronicle_parser": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"parser": {
+						CSharpName: "ParserId",
+					},
+				},
+			},
 			"google_chronicle_retrohunt": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"retrohunt": {

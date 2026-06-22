@@ -45,7 +45,7 @@ class RestoreWorkloadArgs:
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
         :param pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesArgs'] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
+        :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
                If false, only the restore record is removed from the state, leaving the resource active.
@@ -57,13 +57,13 @@ class RestoreWorkloadArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
+        :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
+        :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
@@ -174,7 +174,7 @@ class RestoreWorkloadArgs:
     @pulumi.getter(name="computeInstanceTargetEnvironment")
     def compute_instance_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for GCE VM restoration.
+        The destination environment for GCE VM restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "compute_instance_target_environment")
@@ -230,7 +230,7 @@ class RestoreWorkloadArgs:
     @pulumi.getter(name="diskTargetEnvironment")
     def disk_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadDiskTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for zonal disk restoration.
+        The destination environment for zonal disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_target_environment")
@@ -259,7 +259,7 @@ class RestoreWorkloadArgs:
     @pulumi.getter(name="regionDiskTargetEnvironment")
     def region_disk_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadRegionDiskTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for regional disk restoration.
+        The destination environment for regional disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "region_disk_target_environment")
@@ -309,7 +309,7 @@ class _RestoreWorkloadState:
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
         :param pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesArgs'] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
+        :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
@@ -322,14 +322,14 @@ class _RestoreWorkloadState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
+        :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
+        :param pulumi.Input['RestoreWorkloadRegionDiskTargetEnvironmentArgs'] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
@@ -424,7 +424,7 @@ class _RestoreWorkloadState:
     @pulumi.getter(name="computeInstanceTargetEnvironment")
     def compute_instance_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for GCE VM restoration.
+        The destination environment for GCE VM restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "compute_instance_target_environment")
@@ -492,7 +492,7 @@ class _RestoreWorkloadState:
     @pulumi.getter(name="diskTargetEnvironment")
     def disk_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadDiskTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for zonal disk restoration.
+        The destination environment for zonal disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_target_environment")
@@ -533,7 +533,7 @@ class _RestoreWorkloadState:
     @pulumi.getter(name="regionDiskTargetEnvironment")
     def region_disk_target_environment(self) -> pulumi.Input[Optional['RestoreWorkloadRegionDiskTargetEnvironmentArgs']]:
         """
-        Optional. The destination environment for regional disk restoration.
+        The destination environment for regional disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "region_disk_target_environment")
@@ -808,7 +808,7 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
@@ -821,14 +821,14 @@ class RestoreWorkload(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
@@ -1148,7 +1148,7 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
@@ -1161,14 +1161,14 @@ class RestoreWorkload(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: Optional. The destination environment for regional disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
@@ -1234,7 +1234,7 @@ class RestoreWorkload(pulumi.CustomResource):
     @pulumi.getter(name="computeInstanceTargetEnvironment")
     def compute_instance_target_environment(self) -> pulumi.Output[Optional['outputs.RestoreWorkloadComputeInstanceTargetEnvironment']]:
         """
-        Optional. The destination environment for GCE VM restoration.
+        The destination environment for GCE VM restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "compute_instance_target_environment")
@@ -1282,7 +1282,7 @@ class RestoreWorkload(pulumi.CustomResource):
     @pulumi.getter(name="diskTargetEnvironment")
     def disk_target_environment(self) -> pulumi.Output[Optional['outputs.RestoreWorkloadDiskTargetEnvironment']]:
         """
-        Optional. The destination environment for zonal disk restoration.
+        The destination environment for zonal disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_target_environment")
@@ -1311,7 +1311,7 @@ class RestoreWorkload(pulumi.CustomResource):
     @pulumi.getter(name="regionDiskTargetEnvironment")
     def region_disk_target_environment(self) -> pulumi.Output[Optional['outputs.RestoreWorkloadRegionDiskTargetEnvironment']]:
         """
-        Optional. The destination environment for regional disk restoration.
+        The destination environment for regional disk restoration.
         Structure is documented below.
         """
         return pulumi.get(self, "region_disk_target_environment")

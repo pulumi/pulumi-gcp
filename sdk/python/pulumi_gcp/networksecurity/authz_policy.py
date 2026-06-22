@@ -30,6 +30,7 @@ class AuthzPolicyArgs:
                  http_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -64,6 +65,9 @@ class AuthzPolicyArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
                authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
                invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -89,6 +93,8 @@ class AuthzPolicyArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_rules is not None:
+            pulumi.set(__self__, "network_rules", network_rules)
         if policy_profile is not None:
             pulumi.set(__self__, "policy_profile", policy_profile)
         if project is not None:
@@ -223,6 +229,20 @@ class AuthzPolicyArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkRules")
+    def network_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]]:
+        """
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_rules")
+
+    @network_rules.setter
+    def network_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]]):
+        pulumi.set(self, "network_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="policyProfile")
     def policy_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -267,6 +287,7 @@ class _AuthzPolicyState:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -304,6 +325,9 @@ class _AuthzPolicyState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
                authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
                invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -339,6 +363,8 @@ class _AuthzPolicyState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_rules is not None:
+            pulumi.set(__self__, "network_rules", network_rules)
         if policy_profile is not None:
             pulumi.set(__self__, "policy_profile", policy_profile)
         if project is not None:
@@ -490,6 +516,20 @@ class _AuthzPolicyState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkRules")
+    def network_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]]:
+        """
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_rules")
+
+    @network_rules.setter
+    def network_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyNetworkRuleArgs']]]]):
+        pulumi.set(self, "network_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="policyProfile")
     def policy_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -573,6 +613,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
@@ -622,7 +663,6 @@ class AuthzPolicy(pulumi.CustomResource):
                 },
             }])
         ```
-
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:
@@ -671,6 +711,9 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
                authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
                invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -734,7 +777,6 @@ class AuthzPolicy(pulumi.CustomResource):
                 },
             }])
         ```
-
         ## Import
 
         AuthzPolicy can be imported using any of these accepted formats:
@@ -777,6 +819,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
@@ -801,6 +844,7 @@ class AuthzPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_rules"] = network_rules
             __props__.__dict__["policy_profile"] = policy_profile
             __props__.__dict__["project"] = project
             if target is None and not opts.urn:
@@ -832,6 +876,7 @@ class AuthzPolicy(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
             policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -873,6 +918,9 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
                authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
                invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -902,6 +950,7 @@ class AuthzPolicy(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_rules"] = network_rules
         __props__.__dict__["policy_profile"] = policy_profile
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1007,6 +1056,16 @@ class AuthzPolicy(pulumi.CustomResource):
         Identifier. Name of the AuthzPolicy resource.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkRules")
+    def network_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AuthzPolicyNetworkRule']]]:
+        """
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_rules")
 
     @_builtins.property
     @pulumi.getter(name="policyProfile")

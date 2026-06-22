@@ -16,7 +16,7 @@ public final class FrameworkDeploymentFrameworkArgs extends com.pulumi.resources
 
     /**
      * In the format:
-     * organizations/{org}/locations/{location}/frameworks/{framework}
+     * {parent}/locations/{location}/frameworks/{framework}
      * 
      */
     @Import(name="framework", required=true)
@@ -24,7 +24,7 @@ public final class FrameworkDeploymentFrameworkArgs extends com.pulumi.resources
 
     /**
      * @return In the format:
-     * organizations/{org}/locations/{location}/frameworks/{framework}
+     * {parent}/locations/{location}/frameworks/{framework}
      * 
      */
     public Output<String> framework() {
@@ -73,7 +73,7 @@ public final class FrameworkDeploymentFrameworkArgs extends com.pulumi.resources
 
         /**
          * @param framework In the format:
-         * organizations/{org}/locations/{location}/frameworks/{framework}
+         * {parent}/locations/{location}/frameworks/{framework}
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class FrameworkDeploymentFrameworkArgs extends com.pulumi.resources
 
         /**
          * @param framework In the format:
-         * organizations/{org}/locations/{location}/frameworks/{framework}
+         * {parent}/locations/{location}/frameworks/{framework}
          * 
          * @return builder
          * 

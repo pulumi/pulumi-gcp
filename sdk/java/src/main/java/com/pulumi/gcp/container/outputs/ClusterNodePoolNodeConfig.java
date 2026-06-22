@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigHostMaintenance
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigNodeImageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSecondaryBootDisk;
@@ -227,6 +228,11 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable String nodeGroup;
+    /**
+     * @return The node image configuration to use for this node pool. Structure is documented below.
+     * 
+     */
+    private @Nullable List<ClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
     /**
      * @return The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
@@ -580,6 +586,13 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.nodeGroup);
     }
     /**
+     * @return The node image configuration to use for this node pool. Structure is documented below.
+     * 
+     */
+    public List<ClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs() {
+        return this.nodeImageConfigs == null ? List.of() : this.nodeImageConfigs;
+    }
+    /**
      * @return The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
      * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -751,6 +764,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable Map<String,String> metadata;
         private @Nullable String minCpuPlatform;
         private @Nullable String nodeGroup;
+        private @Nullable List<ClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs;
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
         private @Nullable ClusterNodePoolNodeConfigReservationAffinity reservationAffinity;
@@ -801,6 +815,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.nodeGroup = defaults.nodeGroup;
+    	      this.nodeImageConfigs = defaults.nodeImageConfigs;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
@@ -1012,6 +1027,15 @@ public final class ClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeImageConfigs(@Nullable List<ClusterNodePoolNodeConfigNodeImageConfig> nodeImageConfigs) {
+
+            this.nodeImageConfigs = nodeImageConfigs;
+            return this;
+        }
+        public Builder nodeImageConfigs(ClusterNodePoolNodeConfigNodeImageConfig... nodeImageConfigs) {
+            return nodeImageConfigs(List.of(nodeImageConfigs));
+        }
+        @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
 
             this.oauthScopes = oauthScopes;
@@ -1155,6 +1179,7 @@ public final class ClusterNodePoolNodeConfig {
             _resultValue.metadata = metadata;
             _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.nodeGroup = nodeGroup;
+            _resultValue.nodeImageConfigs = nodeImageConfigs;
             _resultValue.oauthScopes = oauthScopes;
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinity = reservationAffinity;

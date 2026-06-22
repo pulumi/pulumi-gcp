@@ -64,6 +64,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     }
 
     /**
+     * Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    @Import(name="pscAutoDnsEnabled")
+    private @Nullable Output<Boolean> pscAutoDnsEnabled;
+
+    /**
+     * @return Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    public Optional<Output<Boolean>> pscAutoDnsEnabled() {
+        return Optional.ofNullable(this.pscAutoDnsEnabled);
+    }
+
+    /**
      * Whether PSC connectivity is enabled for this instance.
      * 
      */
@@ -78,13 +93,30 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
         return Optional.ofNullable(this.pscEnabled);
     }
 
+    /**
+     * Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+     * 
+     */
+    @Import(name="pscWriteEndpointDnsEnabled")
+    private @Nullable Output<Boolean> pscWriteEndpointDnsEnabled;
+
+    /**
+     * @return Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+     * 
+     */
+    public Optional<Output<Boolean>> pscWriteEndpointDnsEnabled() {
+        return Optional.ofNullable(this.pscWriteEndpointDnsEnabled);
+    }
+
     private DatabaseInstanceSettingsIpConfigurationPscConfigArgs() {}
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigArgs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
         this.networkAttachmentUri = $.networkAttachmentUri;
         this.pscAutoConnections = $.pscAutoConnections;
+        this.pscAutoDnsEnabled = $.pscAutoDnsEnabled;
         this.pscEnabled = $.pscEnabled;
+        this.pscWriteEndpointDnsEnabled = $.pscWriteEndpointDnsEnabled;
     }
 
     public static Builder builder() {
@@ -189,6 +221,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
         }
 
         /**
+         * @param pscAutoDnsEnabled Whether PSC auto DNS is enabled for this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoDnsEnabled(@Nullable Output<Boolean> pscAutoDnsEnabled) {
+            $.pscAutoDnsEnabled = pscAutoDnsEnabled;
+            return this;
+        }
+
+        /**
+         * @param pscAutoDnsEnabled Whether PSC auto DNS is enabled for this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoDnsEnabled(Boolean pscAutoDnsEnabled) {
+            return pscAutoDnsEnabled(Output.of(pscAutoDnsEnabled));
+        }
+
+        /**
          * @param pscEnabled Whether PSC connectivity is enabled for this instance.
          * 
          * @return builder
@@ -207,6 +260,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
          */
         public Builder pscEnabled(Boolean pscEnabled) {
             return pscEnabled(Output.of(pscEnabled));
+        }
+
+        /**
+         * @param pscWriteEndpointDnsEnabled Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscWriteEndpointDnsEnabled(@Nullable Output<Boolean> pscWriteEndpointDnsEnabled) {
+            $.pscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
+            return this;
+        }
+
+        /**
+         * @param pscWriteEndpointDnsEnabled Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscWriteEndpointDnsEnabled(Boolean pscWriteEndpointDnsEnabled) {
+            return pscWriteEndpointDnsEnabled(Output.of(pscWriteEndpointDnsEnabled));
         }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigArgs build() {

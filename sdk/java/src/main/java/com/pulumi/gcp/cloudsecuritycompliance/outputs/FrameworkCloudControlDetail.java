@@ -20,7 +20,7 @@ public final class FrameworkCloudControlDetail {
     private String majorRevisionId;
     /**
      * @return The name of the CloudControl in the format:
-     * “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+     * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
      * 
      */
     private String name;
@@ -43,7 +43,7 @@ public final class FrameworkCloudControlDetail {
     }
     /**
      * @return The name of the CloudControl in the format:
-     * “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
+     * &#34;{parent}/locations/{location}/cloudControls/{cloud-control}&#34;
      * 
      */
     public String name() {

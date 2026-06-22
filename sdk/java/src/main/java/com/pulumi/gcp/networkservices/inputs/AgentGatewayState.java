@@ -234,18 +234,32 @@ public final class AgentGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
      * 
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `protocols` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return List of protocols supported by an Agent Gateway.
+     * @return (Optional, Deprecated)
+     * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
      * 
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `protocols` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
     public Optional<Output<List<String>>> protocols() {
         return Optional.ofNullable(this.protocols);
     }
@@ -656,35 +670,56 @@ public final class AgentGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
         public Builder protocols(@Nullable Output<List<String>> protocols) {
             $.protocols = protocols;
             return this;
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
         public Builder protocols(List<String> protocols) {
             return protocols(Output.of(protocols));
         }
 
         /**
-         * @param protocols List of protocols supported by an Agent Gateway.
+         * @param protocols (Optional, Deprecated)
+         * List of protocols supported by an Agent Gateway.
          * Each value may be one of: `MCP`.
+         * 
+         * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `protocols` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }

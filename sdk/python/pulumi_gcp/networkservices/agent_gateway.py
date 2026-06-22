@@ -22,7 +22,6 @@ __all__ = ['AgentGatewayArgs', 'AgentGateway']
 class AgentGatewayArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  google_managed: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']] = None,
@@ -30,14 +29,13 @@ class AgentGatewayArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_config: pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  self_managed: pulumi.Input[Optional['AgentGatewaySelfManagedArgs']] = None):
         """
         The set of arguments for constructing a AgentGateway resource.
 
         :param pulumi.Input[_builtins.str] location: The location of the agent gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
-               Each value may be one of: `MCP`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -57,6 +55,11 @@ class AgentGatewayArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: (Optional, Deprecated)
+               List of protocols supported by an Agent Gateway.
+               Each value may be one of: `MCP`.
+               
+               > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
@@ -65,7 +68,6 @@ class AgentGatewayArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "protocols", protocols)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -80,6 +82,11 @@ class AgentGatewayArgs:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protocols is not None:
+            warnings.warn("""`protocols` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: `protocols` is deprecated and will be removed in a future major release.""")
+        if protocols is not None:
+            pulumi.set(__self__, "protocols", protocols)
         if registries is not None:
             pulumi.set(__self__, "registries", registries)
         if self_managed is not None:
@@ -96,19 +103,6 @@ class AgentGatewayArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        List of protocols supported by an Agent Gateway.
-        Each value may be one of: `MCP`.
-        """
-        return pulumi.get(self, "protocols")
-
-    @protocols.setter
-    def protocols(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -208,6 +202,23 @@ class AgentGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`protocols` is deprecated and will be removed in a future major release.""")
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Optional, Deprecated)
+        List of protocols supported by an Agent Gateway.
+        Each value may be one of: `MCP`.
+
+        > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+        """
+        return pulumi.get(self, "protocols")
+
+    @protocols.setter
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "protocols", value)
+
+    @_builtins.property
+    @pulumi.getter
     def registries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
@@ -286,8 +297,11 @@ class _AgentGatewayState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: (Optional, Deprecated)
+               List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
+               
+               > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
@@ -322,6 +336,9 @@ class _AgentGatewayState:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protocols is not None:
+            warnings.warn("""`protocols` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: `protocols` is deprecated and will be removed in a future major release.""")
         if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if pulumi_labels is not None:
@@ -495,10 +512,14 @@ class _AgentGatewayState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`protocols` is deprecated and will be removed in a future major release.""")
     def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Deprecated)
         List of protocols supported by an Agent Gateway.
         Each value may be one of: `MCP`.
+
+        > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "protocols")
 
@@ -581,12 +602,9 @@ class AgentGateway(pulumi.CustomResource):
         """
         AgentGateway represents the agent gateway resource.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about AgentGateway, see:
 
-        * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+        * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
 
         ## Example Usage
 
@@ -596,6 +614,22 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_registry = gcp.projects.Service("agent_registry",
+            service="agentregistry.googleapis.com",
+            disable_on_destroy=False)
+        default_network = gcp.compute.Network("default",
+            name="net-my-full-agent-gateway",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnet-my-full-agent-gateway",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        default_network_attachment = gcp.compute.NetworkAttachment("default",
+            name="na-my-full-agent-gateway",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[default_subnetwork.self_link])
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
             location="us-central1",
@@ -611,9 +645,10 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             network_config={
                 "egress": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment",
+                    "network_attachment": default_network_attachment.id,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Client To Agent
 
@@ -621,14 +656,17 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_registry = gcp.projects.Service("agent_registry",
+            service="agentregistry.googleapis.com",
+            disable_on_destroy=False)
         default = gcp.networkservices.AgentGateway("default",
             name="my-client-to-agent-gateway",
             location="us-central1",
-            protocols=["MCP"],
             google_managed={
                 "governed_access_path": "CLIENT_TO_AGENT",
             },
-            registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"])
+            registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
+            opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Self Managed
 
@@ -639,7 +677,6 @@ class AgentGateway(pulumi.CustomResource):
         default = gcp.networkservices.AgentGateway("default",
             name="my-self-managed-agent-gateway",
             location="us-central1",
-            protocols=["MCP"],
             self_managed={
                 "resource_uri": "projects/my-project-name/locations/us-central1/gateways/my-gateway",
             },
@@ -685,8 +722,11 @@ class AgentGateway(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: (Optional, Deprecated)
+               List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
+               
+               > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
@@ -703,12 +743,9 @@ class AgentGateway(pulumi.CustomResource):
         """
         AgentGateway represents the agent gateway resource.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about AgentGateway, see:
 
-        * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+        * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
 
         ## Example Usage
 
@@ -718,6 +755,22 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_registry = gcp.projects.Service("agent_registry",
+            service="agentregistry.googleapis.com",
+            disable_on_destroy=False)
+        default_network = gcp.compute.Network("default",
+            name="net-my-full-agent-gateway",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnet-my-full-agent-gateway",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        default_network_attachment = gcp.compute.NetworkAttachment("default",
+            name="na-my-full-agent-gateway",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[default_subnetwork.self_link])
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
             location="us-central1",
@@ -733,9 +786,10 @@ class AgentGateway(pulumi.CustomResource):
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
             network_config={
                 "egress": {
-                    "network_attachment": "projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment",
+                    "network_attachment": default_network_attachment.id,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Client To Agent
 
@@ -743,14 +797,17 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_registry = gcp.projects.Service("agent_registry",
+            service="agentregistry.googleapis.com",
+            disable_on_destroy=False)
         default = gcp.networkservices.AgentGateway("default",
             name="my-client-to-agent-gateway",
             location="us-central1",
-            protocols=["MCP"],
             google_managed={
                 "governed_access_path": "CLIENT_TO_AGENT",
             },
-            registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"])
+            registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
+            opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Self Managed
 
@@ -761,7 +818,6 @@ class AgentGateway(pulumi.CustomResource):
         default = gcp.networkservices.AgentGateway("default",
             name="my-self-managed-agent-gateway",
             location="us-central1",
-            protocols=["MCP"],
             self_managed={
                 "resource_uri": "projects/my-project-name/locations/us-central1/gateways/my-gateway",
             },
@@ -830,8 +886,6 @@ class AgentGateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
-            if protocols is None and not opts.urn:
-                raise TypeError("Missing required property 'protocols'")
             __props__.__dict__["protocols"] = protocols
             __props__.__dict__["registries"] = registries
             __props__.__dict__["self_managed"] = self_managed
@@ -905,8 +959,11 @@ class AgentGateway(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols supported by an Agent Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: (Optional, Deprecated)
+               List of protocols supported by an Agent Gateway.
                Each value may be one of: `MCP`.
+               
+               > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
@@ -1054,10 +1111,14 @@ class AgentGateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    @_utilities.deprecated("""`protocols` is deprecated and will be removed in a future major release.""")
+    def protocols(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
+        (Optional, Deprecated)
         List of protocols supported by an Agent Gateway.
         Each value may be one of: `MCP`.
+
+        > **Warning:** `protocols` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "protocols")
 

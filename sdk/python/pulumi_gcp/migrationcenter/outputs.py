@@ -35,6 +35,7 @@ __all__ = [
     'AssetsExportJobSignedUriDestination',
     'DiscoveryClientError',
     'DiscoveryClientErrorDetail',
+    'ImportDataFileUploadFileInfo',
     'ImportJobExecutionReport',
     'ImportJobExecutionReportExecutionError',
     'ImportJobExecutionReportExecutionErrorFileValidation',
@@ -915,6 +916,74 @@ class DiscoveryClientError(dict):
 class DiscoveryClientErrorDetail(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class ImportDataFileUploadFileInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "signedUri":
+            suggest = "signed_uri"
+        elif key == "uriExpirationTime":
+            suggest = "uri_expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImportDataFileUploadFileInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImportDataFileUploadFileInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImportDataFileUploadFileInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 headers: Optional[Mapping[str, _builtins.str]] = None,
+                 signed_uri: Optional[_builtins.str] = None,
+                 uri_expiration_time: Optional[_builtins.str] = None):
+        """
+        :param Mapping[str, _builtins.str] headers: (Output)
+               The headers that were used to sign the URI.
+        :param _builtins.str signed_uri: (Output)
+               Upload URI for the file.
+        :param _builtins.str uri_expiration_time: (Output)
+               Expiration time of the upload URI.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if signed_uri is not None:
+            pulumi.set(__self__, "signed_uri", signed_uri)
+        if uri_expiration_time is not None:
+            pulumi.set(__self__, "uri_expiration_time", uri_expiration_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        The headers that were used to sign the URI.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="signedUri")
+    def signed_uri(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Upload URI for the file.
+        """
+        return pulumi.get(self, "signed_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="uriExpirationTime")
+    def uri_expiration_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Expiration time of the upload URI.
+        """
+        return pulumi.get(self, "uri_expiration_time")
 
 
 @pulumi.output_type

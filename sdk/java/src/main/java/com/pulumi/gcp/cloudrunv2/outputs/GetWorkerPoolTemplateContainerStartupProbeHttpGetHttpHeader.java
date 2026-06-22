@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
     /**
+     * @return The name of the Cloud Run v2 Worker Pool.
+     * 
+     */
+    private String name;
+    /**
      * @return Required. The header field name
      * 
      */
@@ -23,6 +28,13 @@ public final class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
     private String value;
 
     private GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader() {}
+    /**
+     * @return The name of the Cloud Run v2 Worker Pool.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
     /**
      * @return Required. The header field name
      * 
@@ -47,15 +59,25 @@ public final class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String name;
         private Integer port;
         private String value;
         public Builder() {}
         public Builder(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
     	      this.port = defaults.port;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader", "name");
+            }
+            this.name = name;
+            return this;
+        }
         @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
@@ -74,6 +96,7 @@ public final class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
         }
         public GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader build() {
             final var _resultValue = new GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader();
+            _resultValue.name = name;
             _resultValue.port = port;
             _resultValue.value = value;
             return _resultValue;

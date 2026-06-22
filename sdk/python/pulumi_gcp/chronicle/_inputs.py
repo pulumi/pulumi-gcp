@@ -531,6 +531,22 @@ __all__ = [
     'NativeDashboardFilterArgsDict',
     'NativeDashboardFilterFilterOperatorAndFieldValueArgs',
     'NativeDashboardFilterFilterOperatorAndFieldValueArgsDict',
+    'ParserChangelogArgs',
+    'ParserChangelogArgsDict',
+    'ParserChangelogEntryArgs',
+    'ParserChangelogEntryArgsDict',
+    'ParserCreatorArgs',
+    'ParserCreatorArgsDict',
+    'ParserLowCodeArgs',
+    'ParserLowCodeArgsDict',
+    'ParserLowCodeFieldExtractorsArgs',
+    'ParserLowCodeFieldExtractorsArgsDict',
+    'ParserLowCodeFieldExtractorsExtractorArgs',
+    'ParserLowCodeFieldExtractorsExtractorArgsDict',
+    'ParserLowCodeFieldExtractorsPreprocessConfigArgs',
+    'ParserLowCodeFieldExtractorsPreprocessConfigArgsDict',
+    'ParserVersionInfoArgs',
+    'ParserVersionInfoArgsDict',
     'ReferenceListEntryArgs',
     'ReferenceListEntryArgsDict',
     'ReferenceListScopeInfoArgs',
@@ -20349,6 +20365,760 @@ class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
     @filter_operator.setter
     def filter_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_operator", value)
+
+
+class ParserChangelogArgsDict(TypedDict):
+    entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ParserChangelogEntryArgsDict']]]]]
+    """
+    all the changelog of a parser.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ParserChangelogArgs:
+    def __init__(__self__, *,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['ParserChangelogEntryArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ParserChangelogEntryArgs']]] entries: all the changelog of a parser.
+               Structure is documented below.
+        """
+        if entries is not None:
+            pulumi.set(__self__, "entries", entries)
+
+    @_builtins.property
+    @pulumi.getter
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ParserChangelogEntryArgs']]]]:
+        """
+        all the changelog of a parser.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ParserChangelogEntryArgs']]]]):
+        pulumi.set(self, "entries", value)
+
+
+class ParserChangelogEntryArgsDict(TypedDict):
+    change_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The changelog message.
+    """
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Time at which changelog was created.
+    """
+    deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Flag whether the entry is added or deleted.
+    This will be true in case of rollback and false in case of upgrade.
+    """
+    parser_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The parser version for which the changelog is created.
+    """
+
+@pulumi.input_type
+class ParserChangelogEntryArgs:
+    def __init__(__self__, *,
+                 change_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parser_version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] change_message: (Output)
+               The changelog message.
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               Time at which changelog was created.
+        :param pulumi.Input[_builtins.bool] deleted: (Output)
+               Flag whether the entry is added or deleted.
+               This will be true in case of rollback and false in case of upgrade.
+        :param pulumi.Input[_builtins.str] parser_version: (Output)
+               The parser version for which the changelog is created.
+        """
+        if change_message is not None:
+            pulumi.set(__self__, "change_message", change_message)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if deleted is not None:
+            pulumi.set(__self__, "deleted", deleted)
+        if parser_version is not None:
+            pulumi.set(__self__, "parser_version", parser_version)
+
+    @_builtins.property
+    @pulumi.getter(name="changeMessage")
+    def change_message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The changelog message.
+        """
+        return pulumi.get(self, "change_message")
+
+    @change_message.setter
+    def change_message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "change_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Time at which changelog was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Flag whether the entry is added or deleted.
+        This will be true in case of rollback and false in case of upgrade.
+        """
+        return pulumi.get(self, "deleted")
+
+    @deleted.setter
+    def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deleted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parserVersion")
+    def parser_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The parser version for which the changelog is created.
+        """
+        return pulumi.get(self, "parser_version")
+
+    @parser_version.setter
+    def parser_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parser_version", value)
+
+
+class ParserCreatorArgsDict(TypedDict):
+    author: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the author, who created this parser.
+    """
+    customer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The customer who created it, This can represent the partner as well.
+    In case of prebuilt parser this will be empty.
+    """
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The source of the parser.
+    Possible values:
+    GOOGLE
+    CUSTOM_GOOGLE_OVERRIDE
+    PARTNER
+    CUSTOMER
+    """
+
+@pulumi.input_type
+class ParserCreatorArgs:
+    def __init__(__self__, *,
+                 author: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] author: (Output)
+               The name of the author, who created this parser.
+        :param pulumi.Input[_builtins.str] customer: (Output)
+               The customer who created it, This can represent the partner as well.
+               In case of prebuilt parser this will be empty.
+        :param pulumi.Input[_builtins.str] source: (Output)
+               The source of the parser.
+               Possible values:
+               GOOGLE
+               CUSTOM_GOOGLE_OVERRIDE
+               PARTNER
+               CUSTOMER
+        """
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if customer is not None:
+            pulumi.set(__self__, "customer", customer)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter
+    def author(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the author, who created this parser.
+        """
+        return pulumi.get(self, "author")
+
+    @author.setter
+    def author(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "author", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def customer(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The customer who created it, This can represent the partner as well.
+        In case of prebuilt parser this will be empty.
+        """
+        return pulumi.get(self, "customer")
+
+    @customer.setter
+    def customer(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "customer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The source of the parser.
+        Possible values:
+        GOOGLE
+        CUSTOM_GOOGLE_OVERRIDE
+        PARTNER
+        CUSTOMER
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source", value)
+
+
+class ParserLowCodeArgsDict(TypedDict):
+    field_extractors: NotRequired[pulumi.Input[Optional['ParserLowCodeFieldExtractorsArgsDict']]]
+    """
+    A representation of a parser extension as a set of field extractors.
+    Structure is documented below.
+    """
+    log: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The log used to create this low code parser in the UI.
+    """
+
+@pulumi.input_type
+class ParserLowCodeArgs:
+    def __init__(__self__, *,
+                 field_extractors: pulumi.Input[Optional['ParserLowCodeFieldExtractorsArgs']] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['ParserLowCodeFieldExtractorsArgs'] field_extractors: A representation of a parser extension as a set of field extractors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] log: The log used to create this low code parser in the UI.
+        """
+        if field_extractors is not None:
+            pulumi.set(__self__, "field_extractors", field_extractors)
+        if log is not None:
+            pulumi.set(__self__, "log", log)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldExtractors")
+    def field_extractors(self) -> pulumi.Input[Optional['ParserLowCodeFieldExtractorsArgs']]:
+        """
+        A representation of a parser extension as a set of field extractors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "field_extractors")
+
+    @field_extractors.setter
+    def field_extractors(self, value: pulumi.Input[Optional['ParserLowCodeFieldExtractorsArgs']]):
+        pulumi.set(self, "field_extractors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def log(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The log used to create this low code parser in the UI.
+        """
+        return pulumi.get(self, "log")
+
+    @log.setter
+    def log(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "log", value)
+
+
+class ParserLowCodeFieldExtractorsArgsDict(TypedDict):
+    append_repeated_fields: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to append repeated fields or not.
+    When false, repeated fields will be replaced.
+    """
+    extractors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ParserLowCodeFieldExtractorsExtractorArgsDict']]]]]
+    """
+    List of FieldExtractors.
+    Structure is documented below.
+    """
+    log_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Possible values:
+    JSON
+    CSV
+    XML
+    """
+    preprocess_config: NotRequired[pulumi.Input[Optional['ParserLowCodeFieldExtractorsPreprocessConfigArgsDict']]]
+    """
+    PreProcessConfig holds the GROK expression to extract the syslog header.
+    Structure is documented below.
+    """
+    transformed_cbn_snippet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    CBN snippet generated from field extractors.
+    """
+
+@pulumi.input_type
+class ParserLowCodeFieldExtractorsArgs:
+    def __init__(__self__, *,
+                 append_repeated_fields: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extractors: pulumi.Input[Optional[Sequence[pulumi.Input['ParserLowCodeFieldExtractorsExtractorArgs']]]] = None,
+                 log_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 preprocess_config: pulumi.Input[Optional['ParserLowCodeFieldExtractorsPreprocessConfigArgs']] = None,
+                 transformed_cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] append_repeated_fields: Whether to append repeated fields or not.
+               When false, repeated fields will be replaced.
+        :param pulumi.Input[Sequence[pulumi.Input['ParserLowCodeFieldExtractorsExtractorArgs']]] extractors: List of FieldExtractors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] log_format: Possible values:
+               JSON
+               CSV
+               XML
+        :param pulumi.Input['ParserLowCodeFieldExtractorsPreprocessConfigArgs'] preprocess_config: PreProcessConfig holds the GROK expression to extract the syslog header.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] transformed_cbn_snippet: (Output)
+               CBN snippet generated from field extractors.
+        """
+        if append_repeated_fields is not None:
+            pulumi.set(__self__, "append_repeated_fields", append_repeated_fields)
+        if extractors is not None:
+            pulumi.set(__self__, "extractors", extractors)
+        if log_format is not None:
+            pulumi.set(__self__, "log_format", log_format)
+        if preprocess_config is not None:
+            pulumi.set(__self__, "preprocess_config", preprocess_config)
+        if transformed_cbn_snippet is not None:
+            pulumi.set(__self__, "transformed_cbn_snippet", transformed_cbn_snippet)
+
+    @_builtins.property
+    @pulumi.getter(name="appendRepeatedFields")
+    def append_repeated_fields(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to append repeated fields or not.
+        When false, repeated fields will be replaced.
+        """
+        return pulumi.get(self, "append_repeated_fields")
+
+    @append_repeated_fields.setter
+    def append_repeated_fields(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "append_repeated_fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def extractors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ParserLowCodeFieldExtractorsExtractorArgs']]]]:
+        """
+        List of FieldExtractors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extractors")
+
+    @extractors.setter
+    def extractors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ParserLowCodeFieldExtractorsExtractorArgs']]]]):
+        pulumi.set(self, "extractors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Possible values:
+        JSON
+        CSV
+        XML
+        """
+        return pulumi.get(self, "log_format")
+
+    @log_format.setter
+    def log_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "log_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preprocessConfig")
+    def preprocess_config(self) -> pulumi.Input[Optional['ParserLowCodeFieldExtractorsPreprocessConfigArgs']]:
+        """
+        PreProcessConfig holds the GROK expression to extract the syslog header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preprocess_config")
+
+    @preprocess_config.setter
+    def preprocess_config(self, value: pulumi.Input[Optional['ParserLowCodeFieldExtractorsPreprocessConfigArgs']]):
+        pulumi.set(self, "preprocess_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transformedCbnSnippet")
+    def transformed_cbn_snippet(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        CBN snippet generated from field extractors.
+        """
+        return pulumi.get(self, "transformed_cbn_snippet")
+
+    @transformed_cbn_snippet.setter
+    def transformed_cbn_snippet(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "transformed_cbn_snippet", value)
+
+
+class ParserLowCodeFieldExtractorsExtractorArgsDict(TypedDict):
+    destination_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path in generated event which is to be populated. This is required if the
+    FieldExtractor is used to specify the parser extension.
+    """
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field path could be a json path, xml path or csv column name
+    depending on log format. It refers to a section or substring in raw log.
+    This is required if the FieldExtractor is used to specify the parser
+    extension.
+    """
+    precondition_op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Operator used for precondition.
+    Possible values:
+    EQUALS
+    NOT_EQUALS
+    """
+    precondition_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition path could be a json path, xml path or csv column name
+    depending on log format. It refers to a section or substring in raw log.
+    """
+    precondition_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition value.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Value to be mapped to the destination path directly.
+    """
+
+@pulumi.input_type
+class ParserLowCodeFieldExtractorsExtractorArgs:
+    def __init__(__self__, *,
+                 destination_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_op: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination_path: Path in generated event which is to be populated. This is required if the
+               FieldExtractor is used to specify the parser extension.
+        :param pulumi.Input[_builtins.str] field_path: Field path could be a json path, xml path or csv column name
+               depending on log format. It refers to a section or substring in raw log.
+               This is required if the FieldExtractor is used to specify the parser
+               extension.
+        :param pulumi.Input[_builtins.str] precondition_op: Operator used for precondition.
+               Possible values:
+               EQUALS
+               NOT_EQUALS
+        :param pulumi.Input[_builtins.str] precondition_path: Precondition path could be a json path, xml path or csv column name
+               depending on log format. It refers to a section or substring in raw log.
+        :param pulumi.Input[_builtins.str] precondition_value: Precondition value.
+        :param pulumi.Input[_builtins.str] value: Value to be mapped to the destination path directly.
+        """
+        if destination_path is not None:
+            pulumi.set(__self__, "destination_path", destination_path)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+        if precondition_op is not None:
+            pulumi.set(__self__, "precondition_op", precondition_op)
+        if precondition_path is not None:
+            pulumi.set(__self__, "precondition_path", precondition_path)
+        if precondition_value is not None:
+            pulumi.set(__self__, "precondition_value", precondition_value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationPath")
+    def destination_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path in generated event which is to be populated. This is required if the
+        FieldExtractor is used to specify the parser extension.
+        """
+        return pulumi.get(self, "destination_path")
+
+    @destination_path.setter
+    def destination_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field path could be a json path, xml path or csv column name
+        depending on log format. It refers to a section or substring in raw log.
+        This is required if the FieldExtractor is used to specify the parser
+        extension.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionOp")
+    def precondition_op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Operator used for precondition.
+        Possible values:
+        EQUALS
+        NOT_EQUALS
+        """
+        return pulumi.get(self, "precondition_op")
+
+    @precondition_op.setter
+    def precondition_op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_op", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionPath")
+    def precondition_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition path could be a json path, xml path or csv column name
+        depending on log format. It refers to a section or substring in raw log.
+        """
+        return pulumi.get(self, "precondition_path")
+
+    @precondition_path.setter
+    def precondition_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionValue")
+    def precondition_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition value.
+        """
+        return pulumi.get(self, "precondition_value")
+
+    @precondition_value.setter
+    def precondition_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Value to be mapped to the destination path directly.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class ParserLowCodeFieldExtractorsPreprocessConfigArgsDict(TypedDict):
+    grok_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    GROK Regex to extract the structured part of the log.
+    syntax documentation:
+    www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+    """
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Target field name for the structured part of the log.
+    This should match a SEMANTIC identifier from the grok expression.
+    """
+
+@pulumi.input_type
+class ParserLowCodeFieldExtractorsPreprocessConfigArgs:
+    def __init__(__self__, *,
+                 grok_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] grok_regex: GROK Regex to extract the structured part of the log.
+               syntax documentation:
+               www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+        :param pulumi.Input[_builtins.str] target: Target field name for the structured part of the log.
+               This should match a SEMANTIC identifier from the grok expression.
+        """
+        if grok_regex is not None:
+            pulumi.set(__self__, "grok_regex", grok_regex)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter(name="grokRegex")
+    def grok_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        GROK Regex to extract the structured part of the log.
+        syntax documentation:
+        www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+        """
+        return pulumi.get(self, "grok_regex")
+
+    @grok_regex.setter
+    def grok_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "grok_regex", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Target field name for the structured part of the log.
+        This should match a SEMANTIC identifier from the grok expression.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target", value)
+
+
+class ParserVersionInfoArgsDict(TypedDict):
+    auto_upgrade_disabled: pulumi.Input[_builtins.bool]
+    """
+    Signifies if the parser is disabled for auto upgrade. If true, the parser
+    will not be upgraded by the auto upgrade process.
+    """
+    latest_parser: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The resource name of latest Parser for this logtype.
+    Format:
+    projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+    """
+    latest_parser_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The version for the latest available stable version of the parser.
+    """
+    rollback_available: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Signifies if rollback is available for this parser version.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The version of the parser.
+    """
+
+@pulumi.input_type
+class ParserVersionInfoArgs:
+    def __init__(__self__, *,
+                 auto_upgrade_disabled: pulumi.Input[_builtins.bool],
+                 latest_parser: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_parser_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollback_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] auto_upgrade_disabled: Signifies if the parser is disabled for auto upgrade. If true, the parser
+               will not be upgraded by the auto upgrade process.
+        :param pulumi.Input[_builtins.str] latest_parser: (Output)
+               The resource name of latest Parser for this logtype.
+               Format:
+               projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+        :param pulumi.Input[_builtins.str] latest_parser_version: (Output)
+               The version for the latest available stable version of the parser.
+        :param pulumi.Input[_builtins.bool] rollback_available: (Output)
+               Signifies if rollback is available for this parser version.
+        :param pulumi.Input[_builtins.str] version: (Output)
+               The version of the parser.
+        """
+        pulumi.set(__self__, "auto_upgrade_disabled", auto_upgrade_disabled)
+        if latest_parser is not None:
+            pulumi.set(__self__, "latest_parser", latest_parser)
+        if latest_parser_version is not None:
+            pulumi.set(__self__, "latest_parser_version", latest_parser_version)
+        if rollback_available is not None:
+            pulumi.set(__self__, "rollback_available", rollback_available)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeDisabled")
+    def auto_upgrade_disabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Signifies if the parser is disabled for auto upgrade. If true, the parser
+        will not be upgraded by the auto upgrade process.
+        """
+        return pulumi.get(self, "auto_upgrade_disabled")
+
+    @auto_upgrade_disabled.setter
+    def auto_upgrade_disabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "auto_upgrade_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestParser")
+    def latest_parser(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The resource name of latest Parser for this logtype.
+        Format:
+        projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
+        """
+        return pulumi.get(self, "latest_parser")
+
+    @latest_parser.setter
+    def latest_parser(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_parser", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestParserVersion")
+    def latest_parser_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The version for the latest available stable version of the parser.
+        """
+        return pulumi.get(self, "latest_parser_version")
+
+    @latest_parser_version.setter
+    def latest_parser_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_parser_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rollbackAvailable")
+    def rollback_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Signifies if rollback is available for this parser version.
+        """
+        return pulumi.get(self, "rollback_available")
+
+    @rollback_available.setter
+    def rollback_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "rollback_available", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The version of the parser.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
 
 
 class ReferenceListEntryArgsDict(TypedDict):

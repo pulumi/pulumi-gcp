@@ -43,10 +43,22 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
+        /// Whether PSC auto DNS is enabled for this instance.
+        /// </summary>
+        [Input("pscAutoDnsEnabled")]
+        public Input<bool>? PscAutoDnsEnabled { get; set; }
+
+        /// <summary>
         /// Whether PSC connectivity is enabled for this instance.
         /// </summary>
         [Input("pscEnabled")]
         public Input<bool>? PscEnabled { get; set; }
+
+        /// <summary>
+        /// Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+        /// </summary>
+        [Input("pscWriteEndpointDnsEnabled")]
+        public Input<bool>? PscWriteEndpointDnsEnabled { get; set; }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigGetArgs()
         {

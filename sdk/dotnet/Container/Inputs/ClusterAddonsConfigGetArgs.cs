@@ -142,8 +142,6 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         [Input("podSnapshotConfig")]
         public Input<Inputs.ClusterAddonsConfigPodSnapshotConfigGetArgs>? PodSnapshotConfig { get; set; }
@@ -178,6 +176,17 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("sliceControllerConfig")]
         public Input<Inputs.ClusterAddonsConfigSliceControllerConfigGetArgs>? SliceControllerConfig { get; set; }
+
+        /// <summary>
+        /// The status of the Slurm Operator addon,
+        /// which creates slurm related CRDs and KCP pods to manage them.
+        /// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+        /// It can not be enabled for Autopilot clusters.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        [Input("slurmOperatorConfig")]
+        public Input<Inputs.ClusterAddonsConfigSlurmOperatorConfigGetArgs>? SlurmOperatorConfig { get; set; }
 
         /// <summary>
         /// .

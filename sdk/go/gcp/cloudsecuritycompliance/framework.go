@@ -20,7 +20,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Cloudsecuritycompliance Framework Basic
+// ### Cloudsecuritycompliance Framework Org Basic
 //
 // ```go
 // package main
@@ -35,15 +35,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
-//				Organization: pulumi.String("123456789"),
-//				Location:     pulumi.String("global"),
-//				FrameworkId:  pulumi.String("example-framework"),
-//				DisplayName:  pulumi.String("Terraform Framework Name"),
-//				Description:  pulumi.String("An Terraform description for the framework"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("An Terraform description for the framework"),
 //				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
 //					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
 //						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability"),
-//						MajorRevisionId: pulumi.String("1"),
+//						MajorRevisionId: pulumi.String("2"),
 //						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 //							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
 //								Name: pulumi.String("location"),
@@ -72,7 +72,7 @@ import (
 //					},
 //					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
 //						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql"),
-//						MajorRevisionId: pulumi.String("1"),
+//						MajorRevisionId: pulumi.String("3"),
 //						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 //							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
 //								Name: pulumi.String("location"),
@@ -84,7 +84,180 @@ import (
 //					},
 //					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
 //						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									NumberValue: pulumi.Float64(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Project Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Parent:      pulumi.Sprintf("projects/%v", project.Number),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("An Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-assess-resource-availability", project.Number),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringValue: pulumi.String("us-central1"),
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table", project.Number),
 //						MajorRevisionId: pulumi.String("1"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs{
+//										Values: pulumi.StringArray{
+//											pulumi.String("us-central1"),
+//											pulumi.String("us-west1"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql", project.Number),
+//						MajorRevisionId: pulumi.String("3"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									BoolValue: pulumi.Bool(true),
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.Number),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									NumberValue: pulumi.Float64(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Org Basic Backward
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Organization: pulumi.String("123456789"),
+//				Location:     pulumi.String("global"),
+//				FrameworkId:  pulumi.String("example-framework"),
+//				DisplayName:  pulumi.String("Terraform Framework Name"),
+//				Description:  pulumi.String("An Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability"),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringValue: pulumi.String("us-central1"),
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table"),
+//						MajorRevisionId: pulumi.String("1"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs{
+//										Values: pulumi.StringArray{
+//											pulumi.String("us-central1"),
+//											pulumi.String("us-west1"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql"),
+//						MajorRevisionId: pulumi.String("3"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									BoolValue: pulumi.Bool(true),
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"),
+//						MajorRevisionId: pulumi.String("2"),
 //						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
 //							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
 //								Name: pulumi.String("location"),
@@ -110,13 +283,13 @@ import (
 // Framework can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
-// * `{{organization}}/{{location}}/{{framework_id}}`
+// * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
 //
 // When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
-// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
 // ```
 type Framework struct {
 	pulumi.CustomResourceState
@@ -148,10 +321,20 @@ type Framework struct {
 	MajorRevisionId pulumi.StringOutput `pulumi:"majorRevisionId"`
 	// Identifier. The name of the framework.
 	// Format:
-	// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+	// {parent}/locations/{location}/frameworks/{framework_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringOutput `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// cloud providers supported
 	SupportedCloudProviders pulumi.StringArrayOutput `pulumi:"supportedCloudProviders"`
 	// The supported enforcement modes of the framework.
@@ -177,9 +360,6 @@ func NewFramework(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Organization == nil {
-		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Framework
@@ -231,10 +411,20 @@ type frameworkState struct {
 	MajorRevisionId *string `pulumi:"majorRevisionId"`
 	// Identifier. The name of the framework.
 	// Format:
-	// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+	// {parent}/locations/{location}/frameworks/{framework_id}
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization *string `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 	// cloud providers supported
 	SupportedCloudProviders []string `pulumi:"supportedCloudProviders"`
 	// The supported enforcement modes of the framework.
@@ -276,10 +466,20 @@ type FrameworkState struct {
 	MajorRevisionId pulumi.StringPtrInput
 	// Identifier. The name of the framework.
 	// Format:
-	// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+	// {parent}/locations/{location}/frameworks/{framework_id}
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringPtrInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 	// cloud providers supported
 	SupportedCloudProviders pulumi.StringArrayInput
 	// The supported enforcement modes of the framework.
@@ -319,8 +519,18 @@ type frameworkArgs struct {
 	FrameworkId string `pulumi:"frameworkId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization string `pulumi:"organization"`
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization *string `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a Framework resource.
@@ -346,8 +556,18 @@ type FrameworkArgs struct {
 	FrameworkId pulumi.StringInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization pulumi.StringInput
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization pulumi.StringPtrInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 }
 
 func (FrameworkArgs) ElementType() reflect.Type {
@@ -488,14 +708,27 @@ func (o FrameworkOutput) MajorRevisionId() pulumi.StringOutput {
 
 // Identifier. The name of the framework.
 // Format:
-// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+// {parent}/locations/{location}/frameworks/{framework_id}
 func (o FrameworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Framework) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+//
+// > **Warning:** Use `parent` instead.
+//
+// Deprecated: Use `parent` instead.
 func (o FrameworkOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Framework) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The parent resource in which to create the resource.
+// Must be in one of the following formats:
+// * `projects/{{project}}`
+// * `organizations/{{organization}}`
+func (o FrameworkOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Framework) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // cloud providers supported

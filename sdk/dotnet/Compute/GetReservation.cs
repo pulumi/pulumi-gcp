@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Kind;
         public readonly ImmutableArray<string> LinkedCommitments;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetReservationParamResult> Params;
         public readonly string? Project;
         public readonly int ReservationBlockCount;
         public readonly ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> ReservationSharingPolicies;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            ImmutableArray<Outputs.GetReservationParamResult> @params,
+
             string? project,
 
             int reservationBlockCount,
@@ -225,6 +228,7 @@ namespace Pulumi.Gcp.Compute
             Kind = kind;
             LinkedCommitments = linkedCommitments;
             Name = name;
+            Params = @params;
             Project = project;
             ReservationBlockCount = reservationBlockCount;
             ReservationSharingPolicies = reservationSharingPolicies;

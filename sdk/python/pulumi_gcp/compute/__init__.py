@@ -89,6 +89,8 @@ from .get_region_network_endpoint_group import *
 from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
 from .get_region_ssl_policy import *
+from .get_region_target_http_proxy import *
+from .get_region_target_https_proxy import *
 from .get_regions import *
 from .get_reservation import *
 from .get_reservation_block import *
@@ -109,6 +111,8 @@ from .get_storage_pool_types import *
 from .get_subnetwork import *
 from .get_subnetwork_iam_policy import *
 from .get_subnetworks import *
+from .get_target_http_proxy import *
+from .get_target_https_proxy import *
 from .get_vpn_gateway import *
 from .get_zones import *
 from .global_address import *

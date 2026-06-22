@@ -84,7 +84,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // AuthzPolicy can be imported using any of these accepted formats:
@@ -144,6 +143,10 @@ type AuthzPolicy struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
+	NetworkRules AuthzPolicyNetworkRuleArrayOutput `pulumi:"networkRules"`
 	// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
 	// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
 	// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -248,6 +251,10 @@ type authzPolicyState struct {
 	Location *string `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
 	Name *string `pulumi:"name"`
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
+	NetworkRules []AuthzPolicyNetworkRule `pulumi:"networkRules"`
 	// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
 	// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
 	// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -309,6 +316,10 @@ type AuthzPolicyState struct {
 	Location pulumi.StringPtrInput
 	// Identifier. Name of the AuthzPolicy resource.
 	Name pulumi.StringPtrInput
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
+	NetworkRules AuthzPolicyNetworkRuleArrayInput
 	// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
 	// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
 	// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -370,6 +381,10 @@ type authzPolicyArgs struct {
 	Location string `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
 	Name *string `pulumi:"name"`
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
+	NetworkRules []AuthzPolicyNetworkRule `pulumi:"networkRules"`
 	// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
 	// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
 	// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -423,6 +438,10 @@ type AuthzPolicyArgs struct {
 	Location pulumi.StringInput
 	// Identifier. Name of the AuthzPolicy resource.
 	Name pulumi.StringPtrInput
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
+	NetworkRules AuthzPolicyNetworkRuleArrayInput
 	// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
 	// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
 	// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -593,6 +612,13 @@ func (o AuthzPolicyOutput) Location() pulumi.StringOutput {
 // Identifier. Name of the AuthzPolicy resource.
 func (o AuthzPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+// Limited to 5 rules.
+// Structure is documented below.
+func (o AuthzPolicyOutput) NetworkRules() AuthzPolicyNetworkRuleArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicy) AuthzPolicyNetworkRuleArrayOutput { return v.NetworkRules }).(AuthzPolicyNetworkRuleArrayOutput)
 }
 
 // Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM

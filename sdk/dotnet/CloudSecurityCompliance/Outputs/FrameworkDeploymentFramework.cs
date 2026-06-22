@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
     {
         /// <summary>
         /// In the format:
-        /// organizations/{org}/locations/{location}/frameworks/{framework}
+        /// {parent}/locations/{location}/frameworks/{framework}
         /// </summary>
         public readonly string Framework;
         /// <summary>

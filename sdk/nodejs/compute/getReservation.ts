@@ -63,6 +63,7 @@ export interface GetReservationResult {
     readonly kind: string;
     readonly linkedCommitments: string[];
     readonly name: string;
+    readonly params: outputs.compute.GetReservationParam[];
     readonly project?: string;
     readonly reservationBlockCount: number;
     readonly reservationSharingPolicies: outputs.compute.GetReservationReservationSharingPolicy[];

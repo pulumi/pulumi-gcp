@@ -113,8 +113,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
         /// <summary>
         /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigPodSnapshotConfig? PodSnapshotConfig;
         /// <summary>
@@ -138,6 +136,15 @@ namespace Pulumi.Gcp.Container.Outputs
         /// It is disabled by default. Set `enabled = true` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigSliceControllerConfig? SliceControllerConfig;
+        /// <summary>
+        /// The status of the Slurm Operator addon,
+        /// which creates slurm related CRDs and KCP pods to manage them.
+        /// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+        /// It can not be enabled for Autopilot clusters.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigSlurmOperatorConfig? SlurmOperatorConfig;
         /// <summary>
         /// .
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -183,6 +190,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigSliceControllerConfig? sliceControllerConfig,
 
+            Outputs.ClusterAddonsConfigSlurmOperatorConfig? slurmOperatorConfig,
+
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
         {
             AgentSandboxConfig = agentSandboxConfig;
@@ -203,6 +212,7 @@ namespace Pulumi.Gcp.Container.Outputs
             PodSnapshotConfig = podSnapshotConfig;
             RayOperatorConfigs = rayOperatorConfigs;
             SliceControllerConfig = sliceControllerConfig;
+            SlurmOperatorConfig = slurmOperatorConfig;
             StatefulHaConfig = statefulHaConfig;
         }
     }

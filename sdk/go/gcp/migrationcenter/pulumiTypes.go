@@ -2318,6 +2318,130 @@ func (o DiscoveryClientErrorDetailArrayOutput) Index(i pulumi.IntInput) Discover
 	}).(DiscoveryClientErrorDetailOutput)
 }
 
+type ImportDataFileUploadFileInfo struct {
+	// (Output)
+	// The headers that were used to sign the URI.
+	Headers map[string]string `pulumi:"headers"`
+	// (Output)
+	// Upload URI for the file.
+	SignedUri *string `pulumi:"signedUri"`
+	// (Output)
+	// Expiration time of the upload URI.
+	UriExpirationTime *string `pulumi:"uriExpirationTime"`
+}
+
+// ImportDataFileUploadFileInfoInput is an input type that accepts ImportDataFileUploadFileInfoArgs and ImportDataFileUploadFileInfoOutput values.
+// You can construct a concrete instance of `ImportDataFileUploadFileInfoInput` via:
+//
+//	ImportDataFileUploadFileInfoArgs{...}
+type ImportDataFileUploadFileInfoInput interface {
+	pulumi.Input
+
+	ToImportDataFileUploadFileInfoOutput() ImportDataFileUploadFileInfoOutput
+	ToImportDataFileUploadFileInfoOutputWithContext(context.Context) ImportDataFileUploadFileInfoOutput
+}
+
+type ImportDataFileUploadFileInfoArgs struct {
+	// (Output)
+	// The headers that were used to sign the URI.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// (Output)
+	// Upload URI for the file.
+	SignedUri pulumi.StringPtrInput `pulumi:"signedUri"`
+	// (Output)
+	// Expiration time of the upload URI.
+	UriExpirationTime pulumi.StringPtrInput `pulumi:"uriExpirationTime"`
+}
+
+func (ImportDataFileUploadFileInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportDataFileUploadFileInfo)(nil)).Elem()
+}
+
+func (i ImportDataFileUploadFileInfoArgs) ToImportDataFileUploadFileInfoOutput() ImportDataFileUploadFileInfoOutput {
+	return i.ToImportDataFileUploadFileInfoOutputWithContext(context.Background())
+}
+
+func (i ImportDataFileUploadFileInfoArgs) ToImportDataFileUploadFileInfoOutputWithContext(ctx context.Context) ImportDataFileUploadFileInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportDataFileUploadFileInfoOutput)
+}
+
+// ImportDataFileUploadFileInfoArrayInput is an input type that accepts ImportDataFileUploadFileInfoArray and ImportDataFileUploadFileInfoArrayOutput values.
+// You can construct a concrete instance of `ImportDataFileUploadFileInfoArrayInput` via:
+//
+//	ImportDataFileUploadFileInfoArray{ ImportDataFileUploadFileInfoArgs{...} }
+type ImportDataFileUploadFileInfoArrayInput interface {
+	pulumi.Input
+
+	ToImportDataFileUploadFileInfoArrayOutput() ImportDataFileUploadFileInfoArrayOutput
+	ToImportDataFileUploadFileInfoArrayOutputWithContext(context.Context) ImportDataFileUploadFileInfoArrayOutput
+}
+
+type ImportDataFileUploadFileInfoArray []ImportDataFileUploadFileInfoInput
+
+func (ImportDataFileUploadFileInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportDataFileUploadFileInfo)(nil)).Elem()
+}
+
+func (i ImportDataFileUploadFileInfoArray) ToImportDataFileUploadFileInfoArrayOutput() ImportDataFileUploadFileInfoArrayOutput {
+	return i.ToImportDataFileUploadFileInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ImportDataFileUploadFileInfoArray) ToImportDataFileUploadFileInfoArrayOutputWithContext(ctx context.Context) ImportDataFileUploadFileInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportDataFileUploadFileInfoArrayOutput)
+}
+
+type ImportDataFileUploadFileInfoOutput struct{ *pulumi.OutputState }
+
+func (ImportDataFileUploadFileInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportDataFileUploadFileInfo)(nil)).Elem()
+}
+
+func (o ImportDataFileUploadFileInfoOutput) ToImportDataFileUploadFileInfoOutput() ImportDataFileUploadFileInfoOutput {
+	return o
+}
+
+func (o ImportDataFileUploadFileInfoOutput) ToImportDataFileUploadFileInfoOutputWithContext(ctx context.Context) ImportDataFileUploadFileInfoOutput {
+	return o
+}
+
+// (Output)
+// The headers that were used to sign the URI.
+func (o ImportDataFileUploadFileInfoOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ImportDataFileUploadFileInfo) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Upload URI for the file.
+func (o ImportDataFileUploadFileInfoOutput) SignedUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportDataFileUploadFileInfo) *string { return v.SignedUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Expiration time of the upload URI.
+func (o ImportDataFileUploadFileInfoOutput) UriExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportDataFileUploadFileInfo) *string { return v.UriExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+type ImportDataFileUploadFileInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ImportDataFileUploadFileInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImportDataFileUploadFileInfo)(nil)).Elem()
+}
+
+func (o ImportDataFileUploadFileInfoArrayOutput) ToImportDataFileUploadFileInfoArrayOutput() ImportDataFileUploadFileInfoArrayOutput {
+	return o
+}
+
+func (o ImportDataFileUploadFileInfoArrayOutput) ToImportDataFileUploadFileInfoArrayOutputWithContext(ctx context.Context) ImportDataFileUploadFileInfoArrayOutput {
+	return o
+}
+
+func (o ImportDataFileUploadFileInfoArrayOutput) Index(i pulumi.IntInput) ImportDataFileUploadFileInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImportDataFileUploadFileInfo {
+		return vs[0].([]ImportDataFileUploadFileInfo)[vs[1].(int)]
+	}).(ImportDataFileUploadFileInfoOutput)
+}
+
 type ImportJobExecutionReport struct {
 	// (Output)
 	// A resource that aggregates errors across import job files.
@@ -13576,6 +13700,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorArrayInput)(nil)).Elem(), DiscoveryClientErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailInput)(nil)).Elem(), DiscoveryClientErrorDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryClientErrorDetailArrayInput)(nil)).Elem(), DiscoveryClientErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportDataFileUploadFileInfoInput)(nil)).Elem(), ImportDataFileUploadFileInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportDataFileUploadFileInfoArrayInput)(nil)).Elem(), ImportDataFileUploadFileInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportInput)(nil)).Elem(), ImportJobExecutionReportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportArrayInput)(nil)).Elem(), ImportJobExecutionReportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobExecutionReportExecutionErrorInput)(nil)).Elem(), ImportJobExecutionReportExecutionErrorArgs{})
@@ -13778,6 +13904,8 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryClientErrorArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveryClientErrorDetailOutput{})
 	pulumi.RegisterOutputType(DiscoveryClientErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(ImportDataFileUploadFileInfoOutput{})
+	pulumi.RegisterOutputType(ImportDataFileUploadFileInfoArrayOutput{})
 	pulumi.RegisterOutputType(ImportJobExecutionReportOutput{})
 	pulumi.RegisterOutputType(ImportJobExecutionReportArrayOutput{})
 	pulumi.RegisterOutputType(ImportJobExecutionReportExecutionErrorOutput{})

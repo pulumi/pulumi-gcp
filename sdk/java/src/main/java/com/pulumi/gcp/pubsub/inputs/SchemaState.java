@@ -100,6 +100,21 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. The revision ID of the schema.
+     * 
+     */
+    @Import(name="revisionId")
+    private @Nullable Output<String> revisionId;
+
+    /**
+     * @return Output only. The revision ID of the schema.
+     * 
+     */
+    public Optional<Output<String>> revisionId() {
+        return Optional.ofNullable(this.revisionId);
+    }
+
+    /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -125,6 +140,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.name = $.name;
         this.project = $.project;
+        this.revisionId = $.revisionId;
         this.type = $.type;
     }
 
@@ -252,6 +268,27 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param revisionId Output only. The revision ID of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revisionId(@Nullable Output<String> revisionId) {
+            $.revisionId = revisionId;
+            return this;
+        }
+
+        /**
+         * @param revisionId Output only. The revision ID of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revisionId(String revisionId) {
+            return revisionId(Output.of(revisionId));
         }
 
         /**

@@ -20,7 +20,378 @@ import (
 //
 // ## Example Usage
 //
-// ### Cloudsecuritycompliance Cloudcontrol Basic
+// ### Cloudsecuritycompliance Cloudcontrol Org Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+//				Parent:         pulumi.String("organizations/123456789"),
+//				Location:       pulumi.String("global"),
+//				CloudControlId: pulumi.String("example-cloudcontrol"),
+//				DisplayName:    pulumi.String("TF test CloudControl Name"),
+//				Description:    pulumi.String("A test cloud control for security compliance"),
+//				Categories: pulumi.StringArray{
+//					pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+//				},
+//				Severity:         pulumi.String("HIGH"),
+//				FindingCategory:  pulumi.String("SECURITY_POLICY"),
+//				RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+//				SupportedCloudProviders: pulumi.StringArray{
+//					pulumi.String("GCP"),
+//				},
+//				Rules: cloudsecuritycompliance.CloudControlRuleArray{
+//					&cloudsecuritycompliance.CloudControlRuleArgs{
+//						Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+//						RuleActionTypes: pulumi.StringArray{
+//							pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+//						},
+//						CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+//							Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+//							ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("compute.googleapis.com/Instance"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("location"),
+//						DisplayName: pulumi.String("Resource Location"),
+//						Description: pulumi.String("The location where the resource should be deployed"),
+//						ValueType:   pulumi.String("STRING"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringValue: pulumi.String("us-central1"),
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							RegexpPattern: &cloudsecuritycompliance.CloudControlParameterSpecValidationRegexpPatternArgs{
+//								Pattern: pulumi.String("^[a-z]+-[a-z]+[0-9]$"),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("enable_secure_boot"),
+//						DisplayName: pulumi.String("Enable Secure Boot"),
+//						Description: pulumi.String("Whether to enable secure boot for instances"),
+//						ValueType:   pulumi.String("BOOLEAN"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							BoolValue: pulumi.Bool(true),
+//						},
+//						SubstitutionRules: cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArgs{
+//								AttributeSubstitutionRule: &cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs{
+//									Attribute: pulumi.String("rules[0].cel_expression.expression"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										BoolValue: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("max_instances"),
+//						DisplayName: pulumi.String("Maximum Instances"),
+//						Description: pulumi.String("Maximum number of instances allowed"),
+//						ValueType:   pulumi.String("NUMBER"),
+//						IsRequired:  pulumi.Bool(false),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							NumberValue: pulumi.Float64(10),
+//						},
+//						SubstitutionRules: cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArgs{
+//								PlaceholderSubstitutionRule: &cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs{
+//									Attribute: pulumi.String("rules[0].description"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							IntRange: &cloudsecuritycompliance.CloudControlParameterSpecValidationIntRangeArgs{
+//								Min: pulumi.String("1"),
+//								Max: pulumi.String("100"),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("allowed_regions"),
+//						DisplayName: pulumi.String("Allowed Regions"),
+//						Description: pulumi.String("List of regions where resources can be deployed"),
+//						ValueType:   pulumi.String("STRINGLIST"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueStringListValueArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("us-central1"),
+//									pulumi.String("us-east1"),
+//									pulumi.String("us-west1"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-central1"),
+//												pulumi.String("us-east1"),
+//											},
+//										},
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-west1"),
+//												pulumi.String("us-west2"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("environment_type"),
+//						DisplayName: pulumi.String("Environment Type"),
+//						Description: pulumi.String("The type of environment"),
+//						ValueType:   pulumi.String("STRING"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringValue: pulumi.String("production"),
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringValue: pulumi.String("production"),
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringValue: pulumi.String("staging"),
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										NumberValue: pulumi.Float64(1),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Cloudcontrol Project Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewCloudControl(ctx, "example", &cloudsecuritycompliance.CloudControlArgs{
+//				Parent:         pulumi.Sprintf("projects/%v", project.Number),
+//				Location:       pulumi.String("global"),
+//				CloudControlId: pulumi.String("example-cloudcontrol"),
+//				DisplayName:    pulumi.String("TF test CloudControl Name"),
+//				Description:    pulumi.String("A test cloud control for security compliance"),
+//				Categories: pulumi.StringArray{
+//					pulumi.String("CC_CATEGORY_INFRASTRUCTURE"),
+//				},
+//				Severity:         pulumi.String("HIGH"),
+//				FindingCategory:  pulumi.String("SECURITY_POLICY"),
+//				RemediationSteps: pulumi.String("Review and update the security configuration according to best practices."),
+//				SupportedCloudProviders: pulumi.StringArray{
+//					pulumi.String("GCP"),
+//				},
+//				Rules: cloudsecuritycompliance.CloudControlRuleArray{
+//					&cloudsecuritycompliance.CloudControlRuleArgs{
+//						Description: pulumi.String("Ensure compute instances have secure boot enabled"),
+//						RuleActionTypes: pulumi.StringArray{
+//							pulumi.String("RULE_ACTION_TYPE_DETECTIVE"),
+//						},
+//						CelExpression: &cloudsecuritycompliance.CloudControlRuleCelExpressionArgs{
+//							Expression: pulumi.String("resource.data.shieldedInstanceConfig.enableSecureBoot == true"),
+//							ResourceTypesValues: &cloudsecuritycompliance.CloudControlRuleCelExpressionResourceTypesValuesArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("compute.googleapis.com/Instance"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ParameterSpecs: cloudsecuritycompliance.CloudControlParameterSpecArray{
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("location"),
+//						DisplayName: pulumi.String("Resource Location"),
+//						Description: pulumi.String("The location where the resource should be deployed"),
+//						ValueType:   pulumi.String("STRING"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringValue: pulumi.String("us-central1"),
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							RegexpPattern: &cloudsecuritycompliance.CloudControlParameterSpecValidationRegexpPatternArgs{
+//								Pattern: pulumi.String("^[a-z]+-[a-z]+[0-9]$"),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("enable_secure_boot"),
+//						DisplayName: pulumi.String("Enable Secure Boot"),
+//						Description: pulumi.String("Whether to enable secure boot for instances"),
+//						ValueType:   pulumi.String("BOOLEAN"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							BoolValue: pulumi.Bool(true),
+//						},
+//						SubstitutionRules: cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArgs{
+//								AttributeSubstitutionRule: &cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs{
+//									Attribute: pulumi.String("rules[0].cel_expression.expression"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										BoolValue: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("max_instances"),
+//						DisplayName: pulumi.String("Maximum Instances"),
+//						Description: pulumi.String("Maximum number of instances allowed"),
+//						ValueType:   pulumi.String("NUMBER"),
+//						IsRequired:  pulumi.Bool(false),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							NumberValue: pulumi.Float64(10),
+//						},
+//						SubstitutionRules: cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArray{
+//							&cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRuleArgs{
+//								PlaceholderSubstitutionRule: &cloudsecuritycompliance.CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs{
+//									Attribute: pulumi.String("rules[0].description"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							IntRange: &cloudsecuritycompliance.CloudControlParameterSpecValidationIntRangeArgs{
+//								Min: pulumi.String("1"),
+//								Max: pulumi.String("100"),
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("allowed_regions"),
+//						DisplayName: pulumi.String("Allowed Regions"),
+//						Description: pulumi.String("List of regions where resources can be deployed"),
+//						ValueType:   pulumi.String("STRINGLIST"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueStringListValueArgs{
+//								Values: pulumi.StringArray{
+//									pulumi.String("us-central1"),
+//									pulumi.String("us-east1"),
+//									pulumi.String("us-west1"),
+//								},
+//							},
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-central1"),
+//												pulumi.String("us-east1"),
+//											},
+//										},
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringListValue: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-west1"),
+//												pulumi.String("us-west2"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&cloudsecuritycompliance.CloudControlParameterSpecArgs{
+//						Name:        pulumi.String("environment_type"),
+//						DisplayName: pulumi.String("Environment Type"),
+//						Description: pulumi.String("The type of environment"),
+//						ValueType:   pulumi.String("STRING"),
+//						IsRequired:  pulumi.Bool(true),
+//						DefaultValue: &cloudsecuritycompliance.CloudControlParameterSpecDefaultValueArgs{
+//							StringValue: pulumi.String("production"),
+//						},
+//						Validation: &cloudsecuritycompliance.CloudControlParameterSpecValidationArgs{
+//							AllowedValues: &cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesArgs{
+//								Values: cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArray{
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringValue: pulumi.String("production"),
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										StringValue: pulumi.String("staging"),
+//									},
+//									&cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueArgs{
+//										NumberValue: pulumi.Float64(1),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
 //
 // ```go
 // package main
@@ -209,13 +580,13 @@ import (
 // CloudControl can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
-// * `{{organization}}/{{location}}/{{cloud_control_id}}`
+// * `{{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
 //
 // When using the `pulumi import` command, CloudControl can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
-// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
+// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
 // ```
 type CloudControl struct {
 	pulumi.CustomResourceState
@@ -253,11 +624,21 @@ type CloudControl struct {
 	// Format:
 	// organizations/{organization}/locations/{location}/cloudControls/{cloud_control_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The parameter spec of the cloud control.
 	// Structure is documented below.
 	ParameterSpecs CloudControlParameterSpecArrayOutput `pulumi:"parameterSpecs"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The Frameworks that include this CloudControl
 	RelatedFrameworks pulumi.StringArrayOutput `pulumi:"relatedFrameworks"`
 	// The remediation steps for the findings generated by the cloud control. The
@@ -292,9 +673,6 @@ func NewCloudControl(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Organization == nil {
-		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudControl
@@ -352,11 +730,21 @@ type cloudControlState struct {
 	// Format:
 	// organizations/{organization}/locations/{location}/cloudControls/{cloud_control_id}
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization *string `pulumi:"organization"`
 	// The parameter spec of the cloud control.
 	// Structure is documented below.
 	ParameterSpecs []CloudControlParameterSpec `pulumi:"parameterSpecs"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 	// The Frameworks that include this CloudControl
 	RelatedFrameworks []string `pulumi:"relatedFrameworks"`
 	// The remediation steps for the findings generated by the cloud control. The
@@ -413,11 +801,21 @@ type CloudControlState struct {
 	// Format:
 	// organizations/{organization}/locations/{location}/cloudControls/{cloud_control_id}
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringPtrInput
 	// The parameter spec of the cloud control.
 	// Structure is documented below.
 	ParameterSpecs CloudControlParameterSpecArrayInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 	// The Frameworks that include this CloudControl
 	RelatedFrameworks pulumi.StringArrayInput
 	// The remediation steps for the findings generated by the cloud control. The
@@ -468,11 +866,21 @@ type cloudControlArgs struct {
 	FindingCategory *string `pulumi:"findingCategory"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
 	Location string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization string `pulumi:"organization"`
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization *string `pulumi:"organization"`
 	// The parameter spec of the cloud control.
 	// Structure is documented below.
 	ParameterSpecs []CloudControlParameterSpec `pulumi:"parameterSpecs"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 	// The remediation steps for the findings generated by the cloud control. The
 	// maximum length is 400 characters.
 	RemediationSteps *string `pulumi:"remediationSteps"`
@@ -514,11 +922,21 @@ type CloudControlArgs struct {
 	FindingCategory pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
 	Location pulumi.StringInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization pulumi.StringInput
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization pulumi.StringPtrInput
 	// The parameter spec of the cloud control.
 	// Structure is documented below.
 	ParameterSpecs CloudControlParameterSpecArrayInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 	// The remediation steps for the findings generated by the cloud control. The
 	// maximum length is 400 characters.
 	RemediationSteps pulumi.StringPtrInput
@@ -685,7 +1103,12 @@ func (o CloudControlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudControl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+//
+// > **Warning:** Use `parent` instead.
+//
+// Deprecated: Use `parent` instead.
 func (o CloudControlOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudControl) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }
@@ -694,6 +1117,14 @@ func (o CloudControlOutput) Organization() pulumi.StringOutput {
 // Structure is documented below.
 func (o CloudControlOutput) ParameterSpecs() CloudControlParameterSpecArrayOutput {
 	return o.ApplyT(func(v *CloudControl) CloudControlParameterSpecArrayOutput { return v.ParameterSpecs }).(CloudControlParameterSpecArrayOutput)
+}
+
+// The parent resource in which to create the resource.
+// Must be in one of the following formats:
+// * `projects/{{project}}`
+// * `organizations/{{organization}}`
+func (o CloudControlOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudControl) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // The Frameworks that include this CloudControl

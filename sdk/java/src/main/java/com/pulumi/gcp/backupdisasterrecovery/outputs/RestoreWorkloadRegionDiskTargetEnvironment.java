@@ -5,9 +5,12 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RestoreWorkloadRegionDiskTargetEnvironment {
@@ -26,6 +29,11 @@ public final class RestoreWorkloadRegionDiskTargetEnvironment {
      * 
      */
     private List<String> replicaZones;
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    private @Nullable Boolean useProjectServiceAccount;
 
     private RestoreWorkloadRegionDiskTargetEnvironment() {}
     /**
@@ -49,6 +57,13 @@ public final class RestoreWorkloadRegionDiskTargetEnvironment {
     public List<String> replicaZones() {
         return this.replicaZones;
     }
+    /**
+     * @return If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+     * 
+     */
+    public Optional<Boolean> useProjectServiceAccount() {
+        return Optional.ofNullable(this.useProjectServiceAccount);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +77,14 @@ public final class RestoreWorkloadRegionDiskTargetEnvironment {
         private String project;
         private String region;
         private List<String> replicaZones;
+        private @Nullable Boolean useProjectServiceAccount;
         public Builder() {}
         public Builder(RestoreWorkloadRegionDiskTargetEnvironment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.replicaZones = defaults.replicaZones;
+    	      this.useProjectServiceAccount = defaults.useProjectServiceAccount;
         }
 
         @CustomType.Setter
@@ -97,11 +114,18 @@ public final class RestoreWorkloadRegionDiskTargetEnvironment {
         public Builder replicaZones(String... replicaZones) {
             return replicaZones(List.of(replicaZones));
         }
+        @CustomType.Setter
+        public Builder useProjectServiceAccount(@Nullable Boolean useProjectServiceAccount) {
+
+            this.useProjectServiceAccount = useProjectServiceAccount;
+            return this;
+        }
         public RestoreWorkloadRegionDiskTargetEnvironment build() {
             final var _resultValue = new RestoreWorkloadRegionDiskTargetEnvironment();
             _resultValue.project = project;
             _resultValue.region = region;
             _resultValue.replicaZones = replicaZones;
+            _resultValue.useProjectServiceAccount = useProjectServiceAccount;
             return _resultValue;
         }
     }

@@ -29,6 +29,10 @@ import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArg
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
@@ -51,6 +55,8 @@ import com.pulumi.gcp.storage.outputs.GetBucketsResult;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingsResult;
 import com.pulumi.gcp.storage.outputs.GetInsightsDatasetConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
@@ -2429,6 +2435,491 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+     *             .project("my-project-id")
+     *             .findingId("cross_region_egress_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs args) {
+        return getControlProjectIntelligenceFinding(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+     *             .project("my-project-id")
+     *             .findingId("cross_region_egress_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFindingPlain(GetControlProjectIntelligenceFindingPlainArgs args) {
+        return getControlProjectIntelligenceFindingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+     *             .project("my-project-id")
+     *             .findingId("cross_region_egress_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding", TypeShape.of(GetControlProjectIntelligenceFindingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+     *             .project("my-project-id")
+     *             .findingId("cross_region_egress_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding", TypeShape.of(GetControlProjectIntelligenceFindingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+     *             .project("my-project-id")
+     *             .findingId("cross_region_egress_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFindingPlain(GetControlProjectIntelligenceFindingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding", TypeShape.of(GetControlProjectIntelligenceFindingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindings() {
+        return getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindingsPlain() {
+        return getControlProjectIntelligenceFindingsPlain(GetControlProjectIntelligenceFindingsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs args) {
+        return getControlProjectIntelligenceFindings(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindingsPlain(GetControlProjectIntelligenceFindingsPlainArgs args) {
+        return getControlProjectIntelligenceFindingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings", TypeShape.of(GetControlProjectIntelligenceFindingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings", TypeShape.of(GetControlProjectIntelligenceFindingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindingsPlain(GetControlProjectIntelligenceFindingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings", TypeShape.of(GetControlProjectIntelligenceFindingsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a Storage Insights Dataset Config resource.

@@ -5791,7 +5791,9 @@ class WorkerPoolTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "encryptionKey":
+        if key == "clientVersion":
+            suggest = "client_version"
+        elif key == "encryptionKey":
             suggest = "encryption_key"
         elif key == "encryptionKeyRevocationAction":
             suggest = "encryption_key_revocation_action"
@@ -5819,6 +5821,8 @@ class WorkerPoolTemplate(dict):
 
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 client: Optional[_builtins.str] = None,
+                 client_version: Optional[_builtins.str] = None,
                  containers: Optional[Sequence['outputs.WorkerPoolTemplateContainer']] = None,
                  encryption_key: Optional[_builtins.str] = None,
                  encryption_key_revocation_action: Optional[_builtins.str] = None,
@@ -5835,6 +5839,8 @@ class WorkerPoolTemplate(dict):
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param _builtins.str client: Arbitrary identifier for the API client.
+        :param _builtins.str client_version: Arbitrary version identifier for the API client.
         :param Sequence['WorkerPoolTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this WorkerPool.
                Structure is documented below.
         :param _builtins.str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -5858,6 +5864,10 @@ class WorkerPoolTemplate(dict):
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if client_version is not None:
+            pulumi.set(__self__, "client_version", client_version)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
@@ -5891,6 +5901,22 @@ class WorkerPoolTemplate(dict):
         This field follows Kubernetes annotations' namespacing, limits, and rules.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def client(self) -> Optional[_builtins.str]:
+        """
+        Arbitrary identifier for the API client.
+        """
+        return pulumi.get(self, "client")
+
+    @_builtins.property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> Optional[_builtins.str]:
+        """
+        Arbitrary version identifier for the API client.
+        """
+        return pulumi.get(self, "client_version")
 
     @_builtins.property
     @pulumi.getter
@@ -6512,21 +6538,41 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
 @pulumi.output_type
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(dict):
     def __init__(__self__, *,
-                 port: _builtins.int,
+                 name: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.int port: Required. The header field name
+        :param _builtins.str name: Required. The header field name
+        :param _builtins.int port: (Optional, Deprecated)
+               Required. The header field name
+               
+               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        pulumi.set(__self__, "port", port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> _builtins.int:
+    def name(self) -> Optional[_builtins.str]:
         """
         Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+    def port(self) -> Optional[_builtins.int]:
+        """
+        (Optional, Deprecated)
+        Required. The header field name
+
+        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         """
         return pulumi.get(self, "port")
 
@@ -6797,21 +6843,41 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
 @pulumi.output_type
 class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders(dict):
     def __init__(__self__, *,
-                 port: _builtins.int,
+                 name: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.int port: Required. The header field name
+        :param _builtins.str name: Required. The header field name
+        :param _builtins.int port: (Optional, Deprecated)
+               Required. The header field name
+               
+               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        pulumi.set(__self__, "port", port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> _builtins.int:
+    def name(self) -> Optional[_builtins.str]:
         """
         Required. The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
+    def port(self) -> Optional[_builtins.int]:
+        """
+        (Optional, Deprecated)
+        Required. The header field name
+
+        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         """
         return pulumi.get(self, "port")
 
@@ -11492,6 +11558,8 @@ class GetWorkerPoolScalingResult(dict):
 class GetWorkerPoolTemplateResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, _builtins.str],
+                 client: _builtins.str,
+                 client_version: _builtins.str,
                  containers: Sequence['outputs.GetWorkerPoolTemplateContainerResult'],
                  encryption_key: _builtins.str,
                  encryption_key_revocation_action: _builtins.str,
@@ -11510,6 +11578,8 @@ class GetWorkerPoolTemplateResult(dict):
                All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
                
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param _builtins.str client: Arbitrary identifier for the API client.
+        :param _builtins.str client_version: Arbitrary version identifier for the API client.
         :param Sequence['GetWorkerPoolTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this WorkerPool.
         :param _builtins.str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param _builtins.str encryption_key_revocation_action: The action to take if the encryption key is revoked. Possible values: ["PREVENT_NEW", "SHUTDOWN"]
@@ -11529,6 +11599,8 @@ class GetWorkerPoolTemplateResult(dict):
         :param Sequence['GetWorkerPoolTemplateVpcAccessArgs'] vpc_accesses: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "client", client)
+        pulumi.set(__self__, "client_version", client_version)
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "encryption_key_revocation_action", encryption_key_revocation_action)
@@ -11553,6 +11625,22 @@ class GetWorkerPoolTemplateResult(dict):
         This field follows Kubernetes annotations' namespacing, limits, and rules.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def client(self) -> _builtins.str:
+        """
+        Arbitrary identifier for the API client.
+        """
+        return pulumi.get(self, "client")
+
+    @_builtins.property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> _builtins.str:
+        """
+        Arbitrary version identifier for the API client.
+        """
+        return pulumi.get(self, "client_version")
 
     @_builtins.property
     @pulumi.getter
@@ -12020,14 +12108,25 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetResult(dict):
 @pulumi.output_type
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
+                 name: _builtins.str,
                  port: _builtins.int,
                  value: _builtins.str):
         """
+        :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
         :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Cloud Run v2 Worker Pool.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
@@ -12238,14 +12337,25 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetResult(dict):
 @pulumi.output_type
 class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
+                 name: _builtins.str,
                  port: _builtins.int,
                  value: _builtins.str):
         """
+        :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
         :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Cloud Run v2 Worker Pool.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter

@@ -72,6 +72,7 @@ type LookupReservationResult struct {
 	Kind                        string                                   `pulumi:"kind"`
 	LinkedCommitments           []string                                 `pulumi:"linkedCommitments"`
 	Name                        string                                   `pulumi:"name"`
+	Params                      []GetReservationParam                    `pulumi:"params"`
 	Project                     *string                                  `pulumi:"project"`
 	ReservationBlockCount       int                                      `pulumi:"reservationBlockCount"`
 	ReservationSharingPolicies  []GetReservationReservationSharingPolicy `pulumi:"reservationSharingPolicies"`
@@ -169,6 +170,10 @@ func (o LookupReservationResultOutput) LinkedCommitments() pulumi.StringArrayOut
 
 func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupReservationResultOutput) Params() GetReservationParamArrayOutput {
+	return o.ApplyT(func(v LookupReservationResult) []GetReservationParam { return v.Params }).(GetReservationParamArrayOutput)
 }
 
 func (o LookupReservationResultOutput) Project() pulumi.StringPtrOutput {

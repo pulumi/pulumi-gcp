@@ -25,6 +25,7 @@ from .env_references import *
 from .environment import *
 from .environment_addons_config import *
 from .environment_api_revision_deployment import *
+from .environment_debugmask import *
 from .environment_iam_binding import *
 from .environment_iam_member import *
 from .environment_iam_policy import *

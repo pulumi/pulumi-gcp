@@ -7298,6 +7298,10 @@ type TopicSchemaSettings struct {
 	// Default value is `ENCODING_UNSPECIFIED`.
 	// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 	Encoding *string `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+	FirstRevisionId *string `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+	LastRevisionId *string `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
 	// The value of this field will be _deleted-schema_
@@ -7321,6 +7325,10 @@ type TopicSchemaSettingsArgs struct {
 	// Default value is `ENCODING_UNSPECIFIED`.
 	// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+	FirstRevisionId pulumi.StringPtrInput `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+	LastRevisionId pulumi.StringPtrInput `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
 	// The value of this field will be _deleted-schema_
@@ -7412,6 +7420,16 @@ func (o TopicSchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TopicSchemaSettings) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+func (o TopicSchemaSettingsOutput) FirstRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSchemaSettings) *string { return v.FirstRevisionId }).(pulumi.StringPtrOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+func (o TopicSchemaSettingsOutput) LastRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSchemaSettings) *string { return v.LastRevisionId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the schema that messages published should be
 // validated against. Format is projects/{project}/schemas/{schema}.
 // The value of this field will be _deleted-schema_
@@ -7453,6 +7471,26 @@ func (o TopicSchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+func (o TopicSchemaSettingsPtrOutput) FirstRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstRevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+func (o TopicSchemaSettingsPtrOutput) LastRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRevisionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11404,6 +11442,10 @@ func (o GetTopicMessageTransformJavascriptUdfArrayOutput) Index(i pulumi.IntInpu
 type GetTopicSchemaSetting struct {
 	// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 	Encoding string `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+	FirstRevisionId string `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+	LastRevisionId string `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
 	// The value of this field will be _deleted-schema_
@@ -11425,6 +11467,10 @@ type GetTopicSchemaSettingInput interface {
 type GetTopicSchemaSettingArgs struct {
 	// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 	Encoding pulumi.StringInput `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+	FirstRevisionId pulumi.StringInput `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+	LastRevisionId pulumi.StringInput `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
 	// The value of this field will be _deleted-schema_
@@ -11486,6 +11532,16 @@ func (o GetTopicSchemaSettingOutput) ToGetTopicSchemaSettingOutputWithContext(ct
 // The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 func (o GetTopicSchemaSettingOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+func (o GetTopicSchemaSettingOutput) FirstRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.FirstRevisionId }).(pulumi.StringOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+func (o GetTopicSchemaSettingOutput) LastRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.LastRevisionId }).(pulumi.StringOutput)
 }
 
 // The name of the schema that messages published should be

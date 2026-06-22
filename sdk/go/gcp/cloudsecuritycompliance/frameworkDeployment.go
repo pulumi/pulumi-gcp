@@ -20,18 +20,662 @@ import (
 //
 // ## Example Usage
 //
+// ### Cloudsecuritycompliance Framework Deployment Org Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("An Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringValue: pulumi.String("us-central1"),
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("oneof-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("test-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											StringValue: pulumi.String("test-value"),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("bool-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("bool-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											BoolValue: pulumi.Bool(true),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("number-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("number-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											NumberValue: pulumi.Float64(123.45),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("string-list-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("string-list-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
+//												Values: pulumi.StringArray{
+//													pulumi.String("value1"),
+//													pulumi.String("value2"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFrameworkDeployment(ctx, "example", &cloudsecuritycompliance.FrameworkDeploymentArgs{
+//				Parent:                pulumi.String("organizations/123456789"),
+//				Location:              pulumi.String("global"),
+//				FrameworkDeploymentId: pulumi.String("example-deployment"),
+//				Description:           pulumi.String("A framework deployment for cloud security compliance"),
+//				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
+//					Framework:       example.Name,
+//					MajorRevisionId: pulumi.String("1"),
+//				},
+//				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
+//					ExistingTargetResource: pulumi.String("organizations/123456789"),
+//				},
+//				CloudControlMetadatas: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArray{
+//					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
+//						EnforcementMode: pulumi.String("DETECTIVE"),
+//						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
+//							Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
+//							MajorRevisionId: pulumi.String("2"),
+//							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("enabled"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										BoolValue: pulumi.Bool(true),
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("regions"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										StringListValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-central1"),
+//												pulumi.String("us-west1"),
+//												pulumi.String("us-east1"),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("location"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										StringValue: pulumi.String("us-central1"),
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("oneof-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("test-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												StringValue: pulumi.String("test-value"),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("bool-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("bool-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												BoolValue: pulumi.Bool(true),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("number-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("number-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												NumberValue: pulumi.Float64(123.45),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("string-list-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("string-list-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												StringListValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{
+//													Values: pulumi.StringArray{
+//														pulumi.String("value1"),
+//														pulumi.String("value2"),
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Deployment Project Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Parent:      pulumi.Sprintf("projects/%v", project.Number),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("An Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringValue: pulumi.String("us-central1"),
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("oneof-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("test-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											StringValue: pulumi.String("test-value"),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("bool-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("bool-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											BoolValue: pulumi.Bool(true),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("number-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("number-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											NumberValue: pulumi.Float64(123.45),
+//										},
+//									},
+//								},
+//							},
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("string-list-parameter"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									OneofValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{
+//										Name: pulumi.String("string-list-oneof"),
+//										ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{
+//											StringListValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{
+//												Values: pulumi.StringArray{
+//													pulumi.String("value1"),
+//													pulumi.String("value2"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFrameworkDeployment(ctx, "example", &cloudsecuritycompliance.FrameworkDeploymentArgs{
+//				Parent:                pulumi.Sprintf("projects/%v", project.Number),
+//				Location:              pulumi.String("global"),
+//				FrameworkDeploymentId: pulumi.String("example-deployment"),
+//				Description:           pulumi.String("A framework deployment for cloud security compliance"),
+//				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
+//					Framework:       example.Name,
+//					MajorRevisionId: pulumi.String("1"),
+//				},
+//				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
+//					ExistingTargetResource: pulumi.Sprintf("projects/%v", project.ProjectId),
+//				},
+//				CloudControlMetadatas: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArray{
+//					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
+//						EnforcementMode: pulumi.String("DETECTIVE"),
+//						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
+//							Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown", project.Number),
+//							MajorRevisionId: pulumi.String("2"),
+//							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("enabled"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										BoolValue: pulumi.Bool(true),
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("regions"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										StringListValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs{
+//											Values: pulumi.StringArray{
+//												pulumi.String("us-central1"),
+//												pulumi.String("us-west1"),
+//												pulumi.String("us-east1"),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("location"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										StringValue: pulumi.String("us-central1"),
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("oneof-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("test-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												StringValue: pulumi.String("test-value"),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("bool-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("bool-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												BoolValue: pulumi.Bool(true),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("number-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("number-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												NumberValue: pulumi.Float64(123.45),
+//											},
+//										},
+//									},
+//								},
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("string-list-parameter"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										OneofValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{
+//											Name: pulumi.String("string-list-oneof"),
+//											ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{
+//												StringListValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{
+//													Values: pulumi.StringArray{
+//														pulumi.String("value1"),
+//														pulumi.String("value2"),
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("A Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									NumberValue: pulumi.Float64(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFrameworkDeployment(ctx, "example", &cloudsecuritycompliance.FrameworkDeploymentArgs{
+//				Parent:                pulumi.String("organizations/123456789"),
+//				Location:              pulumi.String("global"),
+//				FrameworkDeploymentId: pulumi.String("example-deployment"),
+//				Description:           pulumi.String("A framework deployment with org parent targeting a project"),
+//				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
+//					Framework:       example.Name,
+//					MajorRevisionId: pulumi.String("1"),
+//				},
+//				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
+//					ExistingTargetResource: pulumi.Sprintf("projects/%v", project.ProjectId),
+//				},
+//				CloudControlMetadatas: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArray{
+//					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
+//						EnforcementMode: pulumi.String("DETECTIVE"),
+//						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
+//							Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"),
+//							MajorRevisionId: pulumi.String("2"),
+//							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("location"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										NumberValue: pulumi.Float64(1),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// App Hub Application resource to act as the target
+//			application, err := apphub.NewApplication(ctx, "application", &apphub.ApplicationArgs{
+//				Location:      pulumi.String("us-central1"),
+//				ApplicationId: pulumi.String("example-app"),
+//				Scope: &apphub.ApplicationScopeArgs{
+//					Type: pulumi.String("REGIONAL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Parent:      pulumi.Sprintf("projects/%v", project.Number),
+//				Location:    pulumi.String("global"),
+//				FrameworkId: pulumi.String("example-framework"),
+//				DisplayName: pulumi.String("Terraform Framework Name"),
+//				Description: pulumi.String("A Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.Number),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									NumberValue: pulumi.Float64(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFrameworkDeployment(ctx, "example", &cloudsecuritycompliance.FrameworkDeploymentArgs{
+//				Parent:                pulumi.Sprintf("projects/%v", project.Number),
+//				Location:              pulumi.String("global"),
+//				FrameworkDeploymentId: pulumi.String("example-deployment"),
+//				Description:           pulumi.String("A framework deployment with project parent targeting an application"),
+//				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
+//					Framework:       example.Name,
+//					MajorRevisionId: pulumi.String("1"),
+//				},
+//				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
+//					ExistingTargetResource: application.ApplicationId.ApplyT(func(applicationId string) (string, error) {
+//						return fmt.Sprintf("projects/%v/locations/us-central1/applications/%v", project.Number, applicationId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				CloudControlMetadatas: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArray{
+//					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
+//						EnforcementMode: pulumi.String("DETECTIVE"),
+//						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
+//							Name:            pulumi.Sprintf("projects/%v/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.Number),
+//							MajorRevisionId: pulumi.String("2"),
+//							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("location"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										NumberValue: pulumi.Float64(1),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudsecuritycompliance.NewFramework(ctx, "example", &cloudsecuritycompliance.FrameworkArgs{
+//				Organization: pulumi.String("123456789"),
+//				Location:     pulumi.String("global"),
+//				FrameworkId:  pulumi.String("example-framework"),
+//				DisplayName:  pulumi.String("Terraform Framework Name"),
+//				Description:  pulumi.String("An Terraform description for the framework"),
+//				CloudControlDetails: cloudsecuritycompliance.FrameworkCloudControlDetailArray{
+//					&cloudsecuritycompliance.FrameworkCloudControlDetailArgs{
+//						Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
+//						MajorRevisionId: pulumi.String("2"),
+//						Parameters: cloudsecuritycompliance.FrameworkCloudControlDetailParameterArray{
+//							&cloudsecuritycompliance.FrameworkCloudControlDetailParameterArgs{
+//								Name: pulumi.String("location"),
+//								ParameterValue: &cloudsecuritycompliance.FrameworkCloudControlDetailParameterParameterValueArgs{
+//									StringValue: pulumi.String("us-central1"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsecuritycompliance.NewFrameworkDeployment(ctx, "example", &cloudsecuritycompliance.FrameworkDeploymentArgs{
+//				Organization:          pulumi.String("123456789"),
+//				Location:              pulumi.String("global"),
+//				FrameworkDeploymentId: pulumi.String("example-deployment"),
+//				Description:           pulumi.String("A framework deployment for cloud security compliance"),
+//				Framework: &cloudsecuritycompliance.FrameworkDeploymentFrameworkArgs{
+//					Framework:       example.Name,
+//					MajorRevisionId: pulumi.String("1"),
+//				},
+//				TargetResourceConfig: &cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfigArgs{
+//					ExistingTargetResource: pulumi.String("organizations/123456789"),
+//				},
+//				CloudControlMetadatas: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArray{
+//					&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataArgs{
+//						EnforcementMode: pulumi.String("DETECTIVE"),
+//						CloudControlDetails: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs{
+//							Name:            pulumi.String("organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"),
+//							MajorRevisionId: pulumi.String("2"),
+//							Parameters: cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{
+//								&cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{
+//									Name: pulumi.String("enabled"),
+//									ParameterValue: &cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{
+//										BoolValue: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // FrameworkDeployment can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-// * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+// * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
 //
 // When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
 // ```
 type FrameworkDeployment struct {
 	pulumi.CustomResourceState
@@ -96,12 +740,22 @@ type FrameworkDeployment struct {
 	// This is optional and if not provided, a random UUID will be generated.
 	FrameworkDeploymentId pulumi.StringOutput `pulumi:"frameworkDeploymentId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location pulumi.StringOutput `pulumi:"location"`
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Identifier. FrameworkDeployment name in the following format:
-	// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+	// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringOutput `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// TargetResourceConfig contains either the name of the targetResource or
 	// contains the config to create a new target_resource.
 	// Structure is documented below.
@@ -127,12 +781,6 @@ func NewFrameworkDeployment(ctx *pulumi.Context,
 	}
 	if args.FrameworkDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'FrameworkDeploymentId'")
-	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Organization == nil {
-		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
 	if args.TargetResourceConfig == nil {
 		return nil, errors.New("invalid value for required argument 'TargetResourceConfig'")
@@ -222,10 +870,20 @@ type frameworkDeploymentState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Identifier. FrameworkDeployment name in the following format:
-	// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+	// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization *string `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 	// TargetResourceConfig contains either the name of the targetResource or
 	// contains the config to create a new target_resource.
 	// Structure is documented below.
@@ -299,10 +957,20 @@ type FrameworkDeploymentState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Identifier. FrameworkDeployment name in the following format:
-	// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+	// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
 	Organization pulumi.StringPtrInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 	// TargetResourceConfig contains either the name of the targetResource or
 	// contains the config to create a new target_resource.
 	// Structure is documented below.
@@ -339,9 +1007,19 @@ type frameworkDeploymentArgs struct {
 	// This is optional and if not provided, a random UUID will be generated.
 	FrameworkDeploymentId string `pulumi:"frameworkDeploymentId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization string `pulumi:"organization"`
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization *string `pulumi:"organization"`
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent *string `pulumi:"parent"`
 	// TargetResourceConfig contains either the name of the targetResource or
 	// contains the config to create a new target_resource.
 	// Structure is documented below.
@@ -371,9 +1049,19 @@ type FrameworkDeploymentArgs struct {
 	// This is optional and if not provided, a random UUID will be generated.
 	FrameworkDeploymentId pulumi.StringInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Organization pulumi.StringInput
+	//
+	// > **Warning:** Use `parent` instead.
+	//
+	// Deprecated: Use `parent` instead.
+	Organization pulumi.StringPtrInput
+	// The parent resource in which to create the resource.
+	// Must be in one of the following formats:
+	// * `projects/{{project}}`
+	// * `organizations/{{organization}}`
+	Parent pulumi.StringPtrInput
 	// TargetResourceConfig contains either the name of the targetResource or
 	// contains the config to create a new target_resource.
 	// Structure is documented below.
@@ -561,19 +1249,32 @@ func (o FrameworkDeploymentOutput) FrameworkDeploymentId() pulumi.StringOutput {
 }
 
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-func (o FrameworkDeploymentOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o FrameworkDeploymentOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Identifier. FrameworkDeployment name in the following format:
-// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
 func (o FrameworkDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+//
+// > **Warning:** Use `parent` instead.
+//
+// Deprecated: Use `parent` instead.
 func (o FrameworkDeploymentOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The parent resource in which to create the resource.
+// Must be in one of the following formats:
+// * `projects/{{project}}`
+// * `organizations/{{organization}}`
+func (o FrameworkDeploymentOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // TargetResourceConfig contains either the name of the targetResource or

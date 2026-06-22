@@ -424,7 +424,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.computeInstanceRestoreProperties);
     }
     /**
-     * Optional. The destination environment for GCE VM restoration.
+     * The destination environment for GCE VM restoration.
      * Structure is documented below.
      * 
      */
@@ -432,7 +432,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RestoreWorkloadComputeInstanceTargetEnvironment> computeInstanceTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for GCE VM restoration.
+     * @return The destination environment for GCE VM restoration.
      * Structure is documented below.
      * 
      */
@@ -510,7 +510,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskRestoreProperties);
     }
     /**
-     * Optional. The destination environment for zonal disk restoration.
+     * The destination environment for zonal disk restoration.
      * Structure is documented below.
      * 
      */
@@ -518,7 +518,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RestoreWorkloadDiskTargetEnvironment> diskTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for zonal disk restoration.
+     * @return The destination environment for zonal disk restoration.
      * Structure is documented below.
      * 
      */
@@ -564,7 +564,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Optional. The destination environment for regional disk restoration.
+     * The destination environment for regional disk restoration.
      * Structure is documented below.
      * 
      */
@@ -572,7 +572,7 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RestoreWorkloadRegionDiskTargetEnvironment> regionDiskTargetEnvironment;
 
     /**
-     * @return Optional. The destination environment for regional disk restoration.
+     * @return The destination environment for regional disk restoration.
      * Structure is documented below.
      * 
      */

@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        /// </summary>
+        [Input("useProjectServiceAccount")]
+        public Input<bool>? UseProjectServiceAccount { get; set; }
+
+        /// <summary>
         /// Required. Target zone for the disk.
         /// </summary>
         [Input("zone", required: true)]

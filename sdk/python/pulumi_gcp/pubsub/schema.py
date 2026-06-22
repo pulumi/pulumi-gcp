@@ -140,6 +140,7 @@ class _SchemaState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
@@ -160,6 +161,7 @@ class _SchemaState:
         :param pulumi.Input[_builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] revision_id: Output only. The revision ID of the schema.
         :param pulumi.Input[_builtins.str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
                Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -172,6 +174,8 @@ class _SchemaState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if revision_id is not None:
+            pulumi.set(__self__, "revision_id", revision_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -234,6 +238,18 @@ class _SchemaState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. The revision ID of the schema.
+        """
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -482,6 +498,7 @@ class Schema(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
+            __props__.__dict__["revision_id"] = None
         super(Schema, __self__).__init__(
             'gcp:pubsub/schema:Schema',
             resource_name,
@@ -496,6 +513,7 @@ class Schema(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
@@ -520,6 +538,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] revision_id: Output only. The revision ID of the schema.
         :param pulumi.Input[_builtins.str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
                Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -532,6 +551,7 @@ class Schema(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["revision_id"] = revision_id
         __props__.__dict__["type"] = type
         return Schema(resource_name, opts=opts, __props__=__props__)
 
@@ -578,6 +598,14 @@ class Schema(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Output only. The revision ID of the schema.
+        """
+        return pulumi.get(self, "revision_id")
 
     @_builtins.property
     @pulumi.getter

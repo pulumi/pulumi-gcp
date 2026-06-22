@@ -14,7 +14,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReference {
     /**
      * @return (Output)
      * The name of the CloudControlDeployment. The format is:
-     * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+     * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
      * 
      */
     private @Nullable String cloudControlDeployment;
@@ -23,7 +23,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReference {
     /**
      * @return (Output)
      * The name of the CloudControlDeployment. The format is:
-     * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+     * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
      * 
      */
     public Optional<String> cloudControlDeployment() {

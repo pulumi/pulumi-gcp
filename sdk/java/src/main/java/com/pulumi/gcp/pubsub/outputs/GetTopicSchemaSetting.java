@@ -16,6 +16,16 @@ public final class GetTopicSchemaSetting {
      */
     private String encoding;
     /**
+     * @return The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    private String firstRevisionId;
+    /**
+     * @return The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    private String lastRevisionId;
+    /**
      * @return The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
      * The value of this field will be _deleted-schema_
@@ -31,6 +41,20 @@ public final class GetTopicSchemaSetting {
      */
     public String encoding() {
         return this.encoding;
+    }
+    /**
+     * @return The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    public String firstRevisionId() {
+        return this.firstRevisionId;
+    }
+    /**
+     * @return The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    public String lastRevisionId() {
+        return this.lastRevisionId;
     }
     /**
      * @return The name of the schema that messages published should be
@@ -53,11 +77,15 @@ public final class GetTopicSchemaSetting {
     @CustomType.Builder
     public static final class Builder {
         private String encoding;
+        private String firstRevisionId;
+        private String lastRevisionId;
         private String schema;
         public Builder() {}
         public Builder(GetTopicSchemaSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encoding = defaults.encoding;
+    	      this.firstRevisionId = defaults.firstRevisionId;
+    	      this.lastRevisionId = defaults.lastRevisionId;
     	      this.schema = defaults.schema;
         }
 
@@ -67,6 +95,22 @@ public final class GetTopicSchemaSetting {
               throw new MissingRequiredPropertyException("GetTopicSchemaSetting", "encoding");
             }
             this.encoding = encoding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstRevisionId(String firstRevisionId) {
+            if (firstRevisionId == null) {
+              throw new MissingRequiredPropertyException("GetTopicSchemaSetting", "firstRevisionId");
+            }
+            this.firstRevisionId = firstRevisionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastRevisionId(String lastRevisionId) {
+            if (lastRevisionId == null) {
+              throw new MissingRequiredPropertyException("GetTopicSchemaSetting", "lastRevisionId");
+            }
+            this.lastRevisionId = lastRevisionId;
             return this;
         }
         @CustomType.Setter
@@ -80,6 +124,8 @@ public final class GetTopicSchemaSetting {
         public GetTopicSchemaSetting build() {
             final var _resultValue = new GetTopicSchemaSetting();
             _resultValue.encoding = encoding;
+            _resultValue.firstRevisionId = firstRevisionId;
+            _resultValue.lastRevisionId = lastRevisionId;
             _resultValue.schema = schema;
             return _resultValue;
         }

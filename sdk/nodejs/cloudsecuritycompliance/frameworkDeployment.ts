@@ -15,18 +15,520 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Cloudsecuritycompliance Framework Deployment Org Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "An Terraform description for the framework",
+ *     cloudControlDetails: [{
+ *         name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+ *         majorRevisionId: "2",
+ *         parameters: [
+ *             {
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringValue: "us-central1",
+ *                 },
+ *             },
+ *             {
+ *                 name: "oneof-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "test-oneof",
+ *                         parameterValue: {
+ *                             stringValue: "test-value",
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "bool-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "bool-oneof",
+ *                         parameterValue: {
+ *                             boolValue: true,
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "number-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "number-oneof",
+ *                         parameterValue: {
+ *                             numberValue: 123.45,
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "string-list-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "string-list-oneof",
+ *                         parameterValue: {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "value1",
+ *                                     "value2",
+ *                                 ],
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     frameworkDeploymentId: "example-deployment",
+ *     description: "A framework deployment for cloud security compliance",
+ *     framework: {
+ *         framework: example.name,
+ *         majorRevisionId: "1",
+ *     },
+ *     targetResourceConfig: {
+ *         existingTargetResource: "organizations/123456789",
+ *     },
+ *     cloudControlMetadatas: [{
+ *         enforcementMode: "DETECTIVE",
+ *         cloudControlDetails: {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+ *             majorRevisionId: "2",
+ *             parameters: [
+ *                 {
+ *                     name: "enabled",
+ *                     parameterValue: {
+ *                         boolValue: true,
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "regions",
+ *                     parameterValue: {
+ *                         stringListValue: {
+ *                             values: [
+ *                                 "us-central1",
+ *                                 "us-west1",
+ *                                 "us-east1",
+ *                             ],
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "location",
+ *                     parameterValue: {
+ *                         stringValue: "us-central1",
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "oneof-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "test-oneof",
+ *                             parameterValue: {
+ *                                 stringValue: "test-value",
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "bool-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "bool-oneof",
+ *                             parameterValue: {
+ *                                 boolValue: true,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "number-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "number-oneof",
+ *                             parameterValue: {
+ *                                 numberValue: 123.45,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "string-list-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "string-list-oneof",
+ *                             parameterValue: {
+ *                                 stringListValue: {
+ *                                     values: [
+ *                                         "value1",
+ *                                         "value2",
+ *                                     ],
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Deployment Project Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "An Terraform description for the framework",
+ *     cloudControlDetails: [{
+ *         name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
+ *         majorRevisionId: "2",
+ *         parameters: [
+ *             {
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     stringValue: "us-central1",
+ *                 },
+ *             },
+ *             {
+ *                 name: "oneof-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "test-oneof",
+ *                         parameterValue: {
+ *                             stringValue: "test-value",
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "bool-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "bool-oneof",
+ *                         parameterValue: {
+ *                             boolValue: true,
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "number-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "number-oneof",
+ *                         parameterValue: {
+ *                             numberValue: 123.45,
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 name: "string-list-parameter",
+ *                 parameterValue: {
+ *                     oneofValue: {
+ *                         name: "string-list-oneof",
+ *                         parameterValue: {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "value1",
+ *                                     "value2",
+ *                                 ],
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     frameworkDeploymentId: "example-deployment",
+ *     description: "A framework deployment for cloud security compliance",
+ *     framework: {
+ *         framework: example.name,
+ *         majorRevisionId: "1",
+ *     },
+ *     targetResourceConfig: {
+ *         existingTargetResource: project.then(project => `projects/${project.projectId}`),
+ *     },
+ *     cloudControlMetadatas: [{
+ *         enforcementMode: "DETECTIVE",
+ *         cloudControlDetails: {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown`),
+ *             majorRevisionId: "2",
+ *             parameters: [
+ *                 {
+ *                     name: "enabled",
+ *                     parameterValue: {
+ *                         boolValue: true,
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "regions",
+ *                     parameterValue: {
+ *                         stringListValue: {
+ *                             values: [
+ *                                 "us-central1",
+ *                                 "us-west1",
+ *                                 "us-east1",
+ *                             ],
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "location",
+ *                     parameterValue: {
+ *                         stringValue: "us-central1",
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "oneof-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "test-oneof",
+ *                             parameterValue: {
+ *                                 stringValue: "test-value",
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "bool-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "bool-oneof",
+ *                             parameterValue: {
+ *                                 boolValue: true,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "number-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "number-oneof",
+ *                             parameterValue: {
+ *                                 numberValue: 123.45,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     name: "string-list-parameter",
+ *                     parameterValue: {
+ *                         oneofValue: {
+ *                             name: "string-list-oneof",
+ *                             parameterValue: {
+ *                                 stringListValue: {
+ *                                     values: [
+ *                                         "value1",
+ *                                         "value2",
+ *                                     ],
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Deployment Org Project Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "A Terraform description for the framework",
+ *     cloudControlDetails: [{
+ *         name: "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+ *         majorRevisionId: "2",
+ *         parameters: [{
+ *             name: "location",
+ *             parameterValue: {
+ *                 numberValue: 1,
+ *             },
+ *         }],
+ *     }],
+ * });
+ * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     frameworkDeploymentId: "example-deployment",
+ *     description: "A framework deployment with org parent targeting a project",
+ *     framework: {
+ *         framework: example.name,
+ *         majorRevisionId: "1",
+ *     },
+ *     targetResourceConfig: {
+ *         existingTargetResource: project.then(project => `projects/${project.projectId}`),
+ *     },
+ *     cloudControlMetadatas: [{
+ *         enforcementMode: "DETECTIVE",
+ *         cloudControlDetails: {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets",
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     numberValue: 1,
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Deployment Project Application Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * // App Hub Application resource to act as the target
+ * const application = new gcp.apphub.Application("application", {
+ *     location: "us-central1",
+ *     applicationId: "example-app",
+ *     scope: {
+ *         type: "REGIONAL",
+ *     },
+ * });
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "A Terraform description for the framework",
+ *     cloudControlDetails: [{
+ *         name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets`),
+ *         majorRevisionId: "2",
+ *         parameters: [{
+ *             name: "location",
+ *             parameterValue: {
+ *                 numberValue: 1,
+ *             },
+ *         }],
+ *     }],
+ * });
+ * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     frameworkDeploymentId: "example-deployment",
+ *     description: "A framework deployment with project parent targeting an application",
+ *     framework: {
+ *         framework: example.name,
+ *         majorRevisionId: "1",
+ *     },
+ *     targetResourceConfig: {
+ *         existingTargetResource: pulumi.all([project, application.applicationId]).apply(([project, applicationId]) => `projects/${project.number}/locations/us-central1/applications/${applicationId}`),
+ *     },
+ *     cloudControlMetadatas: [{
+ *         enforcementMode: "DETECTIVE",
+ *         cloudControlDetails: {
+ *             name: project.then(project => `projects/${project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets`),
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "location",
+ *                 parameterValue: {
+ *                     numberValue: 1,
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Framework Deployment Org Basic Backward
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.cloudsecuritycompliance.Framework("example", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     frameworkId: "example-framework",
+ *     displayName: "Terraform Framework Name",
+ *     description: "An Terraform description for the framework",
+ *     cloudControlDetails: [{
+ *         name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+ *         majorRevisionId: "2",
+ *         parameters: [{
+ *             name: "location",
+ *             parameterValue: {
+ *                 stringValue: "us-central1",
+ *             },
+ *         }],
+ *     }],
+ * });
+ * const exampleFrameworkDeployment = new gcp.cloudsecuritycompliance.FrameworkDeployment("example", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     frameworkDeploymentId: "example-deployment",
+ *     description: "A framework deployment for cloud security compliance",
+ *     framework: {
+ *         framework: example.name,
+ *         majorRevisionId: "1",
+ *     },
+ *     targetResourceConfig: {
+ *         existingTargetResource: "organizations/123456789",
+ *     },
+ *     cloudControlMetadatas: [{
+ *         enforcementMode: "DETECTIVE",
+ *         cloudControlDetails: {
+ *             name: "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown",
+ *             majorRevisionId: "2",
+ *             parameters: [{
+ *                 name: "enabled",
+ *                 parameterValue: {
+ *                     boolValue: true,
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * FrameworkDeployment can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
- * * `{{organization}}/{{location}}/{{framework_deployment_id}}`
+ * * `{{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
  *
  * When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{parent}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
  * ```
  */
 export class FrameworkDeployment extends pulumi.CustomResource {
@@ -139,16 +641,28 @@ export class FrameworkDeployment extends pulumi.CustomResource {
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    declare public readonly location: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     declare public readonly organization: pulumi.Output<string>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * TargetResourceConfig contains either the name of the targetResource or
      * contains the config to create a new target_resource.
@@ -190,6 +704,7 @@ export class FrameworkDeployment extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["organization"] = state?.organization;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["targetResourceConfig"] = state?.targetResourceConfig;
             resourceInputs["targetResourceDisplayName"] = state?.targetResourceDisplayName;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -204,12 +719,6 @@ export class FrameworkDeployment extends pulumi.CustomResource {
             if (args?.frameworkDeploymentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frameworkDeploymentId'");
             }
-            if (args?.location === undefined && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
-            if (args?.organization === undefined && !opts.urn) {
-                throw new Error("Missing required property 'organization'");
-            }
             if (args?.targetResourceConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetResourceConfig'");
             }
@@ -220,6 +729,7 @@ export class FrameworkDeployment extends pulumi.CustomResource {
             resourceInputs["frameworkDeploymentId"] = args?.frameworkDeploymentId;
             resourceInputs["location"] = args?.location;
             resourceInputs["organization"] = args?.organization;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["targetResourceConfig"] = args?.targetResourceConfig;
             resourceInputs["cloudControlDeploymentReferences"] = undefined /*out*/;
             resourceInputs["computedTargetResource"] = undefined /*out*/;
@@ -324,13 +834,25 @@ export interface FrameworkDeploymentState {
     location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. FrameworkDeployment name in the following format:
-     * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+     * {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     organization?: pulumi.Input<string | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * TargetResourceConfig contains either the name of the targetResource or
      * contains the config to create a new target_resource.
@@ -384,11 +906,23 @@ export interface FrameworkDeploymentArgs {
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
-    organization: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * TargetResourceConfig contains either the name of the targetResource or
      * contains the config to create a new target_resource.

@@ -36,6 +36,36 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    @Import(name="firstRevisionId")
+    private @Nullable Output<String> firstRevisionId;
+
+    /**
+     * @return The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+     * 
+     */
+    public Optional<Output<String>> firstRevisionId() {
+        return Optional.ofNullable(this.firstRevisionId);
+    }
+
+    /**
+     * The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    @Import(name="lastRevisionId")
+    private @Nullable Output<String> lastRevisionId;
+
+    /**
+     * @return The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+     * 
+     */
+    public Optional<Output<String>> lastRevisionId() {
+        return Optional.ofNullable(this.lastRevisionId);
+    }
+
+    /**
      * The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
      * The value of this field will be _deleted-schema_
@@ -60,6 +90,8 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
 
     private TopicSchemaSettingsArgs(TopicSchemaSettingsArgs $) {
         this.encoding = $.encoding;
+        this.firstRevisionId = $.firstRevisionId;
+        this.lastRevisionId = $.lastRevisionId;
         this.schema = $.schema;
     }
 
@@ -104,6 +136,48 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder encoding(String encoding) {
             return encoding(Output.of(encoding));
+        }
+
+        /**
+         * @param firstRevisionId The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firstRevisionId(@Nullable Output<String> firstRevisionId) {
+            $.firstRevisionId = firstRevisionId;
+            return this;
+        }
+
+        /**
+         * @param firstRevisionId The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firstRevisionId(String firstRevisionId) {
+            return firstRevisionId(Output.of(firstRevisionId));
+        }
+
+        /**
+         * @param lastRevisionId The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastRevisionId(@Nullable Output<String> lastRevisionId) {
+            $.lastRevisionId = lastRevisionId;
+            return this;
+        }
+
+        /**
+         * @param lastRevisionId The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastRevisionId(String lastRevisionId) {
+            return lastRevisionId(Output.of(lastRevisionId));
         }
 
         /**

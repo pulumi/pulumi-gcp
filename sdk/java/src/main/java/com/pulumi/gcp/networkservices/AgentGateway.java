@@ -23,12 +23,9 @@ import javax.annotation.Nullable;
 /**
  * AgentGateway represents the agent gateway resource.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about AgentGateway, see:
  * 
- * * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+ * * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
  * 
  * ## Example Usage
  * 
@@ -41,11 +38,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
  * import com.pulumi.gcp.networkservices.AgentGateway;
  * import com.pulumi.gcp.networkservices.AgentGatewayArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayGoogleManagedArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigEgressArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -59,6 +65,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var agentRegistry = new Service("agentRegistry", ServiceArgs.builder()
+ *             .service("agentregistry.googleapis.com")
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("net-my-full-agent-gateway")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("subnet-my-full-agent-gateway")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
+ *             .name("na-my-full-agent-gateway")
+ *             .region("us-central1")
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .subnetworks(defaultSubnetwork.selfLink())
+ *             .build());
+ * 
  *         var default_ = new AgentGateway("default", AgentGatewayArgs.builder()
  *             .name("my-full-agent-gateway")
  *             .location("us-central1")
@@ -74,10 +104,12 @@ import javax.annotation.Nullable;
  *             .registries("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1")
  *             .networkConfig(AgentGatewayNetworkConfigArgs.builder()
  *                 .egress(AgentGatewayNetworkConfigEgressArgs.builder()
- *                     .networkAttachment("projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment")
+ *                     .networkAttachment(defaultNetworkAttachment.id())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(agentRegistry)
+ *                 .build());
  * 
  *     }
  * }
@@ -92,9 +124,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.networkservices.AgentGateway;
  * import com.pulumi.gcp.networkservices.AgentGatewayArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayGoogleManagedArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -108,15 +143,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var agentRegistry = new Service("agentRegistry", ServiceArgs.builder()
+ *             .service("agentregistry.googleapis.com")
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
  *         var default_ = new AgentGateway("default", AgentGatewayArgs.builder()
  *             .name("my-client-to-agent-gateway")
  *             .location("us-central1")
- *             .protocols("MCP")
  *             .googleManaged(AgentGatewayGoogleManagedArgs.builder()
  *                 .governedAccessPath("CLIENT_TO_AGENT")
  *                 .build())
  *             .registries("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(agentRegistry)
+ *                 .build());
  * 
  *     }
  * }
@@ -150,7 +191,6 @@ import javax.annotation.Nullable;
  *         var default_ = new AgentGateway("default", AgentGatewayArgs.builder()
  *             .name("my-self-managed-agent-gateway")
  *             .location("us-central1")
- *             .protocols("MCP")
  *             .selfManaged(AgentGatewaySelfManagedArgs.builder()
  *                 .resourceUri("projects/my-project-name/locations/us-central1/gateways/my-gateway")
  *                 .build())
@@ -382,20 +422,30 @@ public class AgentGateway extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
      * 
-     */
-    @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> protocols;
-
-    /**
-     * @return List of protocols supported by an Agent Gateway.
-     * Each value may be one of: `MCP`.
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `protocols` is deprecated and will be removed in a future major release.
      * 
      */
-    public Output<List<String>> protocols() {
-        return this.protocols;
+    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> protocols;
+
+    /**
+     * @return (Optional, Deprecated)
+     * List of protocols supported by an Agent Gateway.
+     * Each value may be one of: `MCP`.
+     * 
+     * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     * 
+     */
+    public Output<Optional<List<String>>> protocols() {
+        return Codegen.optional(this.protocols);
     }
     /**
      * The combination of labels configured directly on the resource

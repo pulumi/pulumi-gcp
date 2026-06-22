@@ -25,7 +25,182 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Cloudsecuritycompliance Framework Basic
+ * ### Cloudsecuritycompliance Framework Org Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("An Terraform description for the framework")
+ *             .cloudControlDetails(            
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability")
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringValue("us-central1")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table")
+ *                     .majorRevisionId("1")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringListValue(FrameworkCloudControlDetailParameterParameterValueStringListValueArgs.builder()
+ *                                 .values(                                
+ *                                     "us-central1",
+ *                                     "us-west1")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql")
+ *                     .majorRevisionId("3")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .boolValue(true)
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets")
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .numberValue(1.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Project Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.Framework;
+ * import com.pulumi.gcp.cloudsecuritycompliance.FrameworkArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueArgs;
+ * import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new Framework("example", FrameworkArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .location("global")
+ *             .frameworkId("example-framework")
+ *             .displayName("Terraform Framework Name")
+ *             .description("An Terraform description for the framework")
+ *             .cloudControlDetails(            
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-assess-resource-availability", project.number()))
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringValue("us-central1")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table", project.number()))
+ *                     .majorRevisionId("1")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .stringListValue(FrameworkCloudControlDetailParameterParameterValueStringListValueArgs.builder()
+ *                                 .values(                                
+ *                                     "us-central1",
+ *                                     "us-west1")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql", project.number()))
+ *                     .majorRevisionId("3")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .boolValue(true)
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FrameworkCloudControlDetailArgs.builder()
+ *                     .name(String.format("projects/%s/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets", project.number()))
+ *                     .majorRevisionId("2")
+ *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
+ *                         .name("location")
+ *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
+ *                             .numberValue(1.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudsecuritycompliance Framework Org Basic Backward
  * 
  * <pre>
  * {@code
@@ -62,7 +237,7 @@ import javax.annotation.Nullable;
  *             .cloudControlDetails(            
  *                 FrameworkCloudControlDetailArgs.builder()
  *                     .name("organizations/123456789/locations/global/cloudControls/builtin-assess-resource-availability")
- *                     .majorRevisionId("1")
+ *                     .majorRevisionId("2")
  *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
  *                         .name("location")
  *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
@@ -86,7 +261,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 FrameworkCloudControlDetailArgs.builder()
  *                     .name("organizations/123456789/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql")
- *                     .majorRevisionId("1")
+ *                     .majorRevisionId("3")
  *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
  *                         .name("location")
  *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
@@ -96,7 +271,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 FrameworkCloudControlDetailArgs.builder()
  *                     .name("organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets")
- *                     .majorRevisionId("1")
+ *                     .majorRevisionId("2")
  *                     .parameters(FrameworkCloudControlDetailParameterArgs.builder()
  *                         .name("location")
  *                         .parameterValue(FrameworkCloudControlDetailParameterParameterValueArgs.builder()
@@ -116,13 +291,13 @@ import javax.annotation.Nullable;
  * Framework can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}`
- * * `{{organization}}/{{location}}/{{framework_id}}`
+ * * `{{parent}}/locations/{{location}}/frameworks/{{framework_id}}`
  * 
  * When using the `pulumi import` command, Framework can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default organizations/{{organization}}/locations/{{location}}/frameworks/{{framework_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{parent}}/locations/{{location}}/frameworks/{{framework_id}}
  * ```
  * 
  */
@@ -261,7 +436,7 @@ public class Framework extends com.pulumi.resources.CustomResource {
     /**
      * Identifier. The name of the framework.
      * Format:
-     * organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+     * {parent}/locations/{location}/frameworks/{framework_id}
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -270,25 +445,55 @@ public class Framework extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifier. The name of the framework.
      * Format:
-     * organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
+     * {parent}/locations/{location}/frameworks/{framework_id}
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
+     * &gt; **Warning:** Use `parent` instead.
+     * 
+     * @deprecated
+     * Use `parent` instead.
+     * 
      */
+    @Deprecated /* Use `parent` instead. */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * @return (Optional, Deprecated)
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     * 
+     * &gt; **Warning:** Use `parent` instead.
      * 
      */
     public Output<String> organization() {
         return this.organization;
+    }
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    @Export(name="parent", refs={String.class}, tree="[0]")
+    private Output<String> parent;
+
+    /**
+     * @return The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     * 
+     */
+    public Output<String> parent() {
+        return this.parent;
     }
     /**
      * cloud providers supported

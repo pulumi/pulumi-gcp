@@ -18,7 +18,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReferenceArgs extend
     /**
      * (Output)
      * The name of the CloudControlDeployment. The format is:
-     * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+     * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
      * 
      */
     @Import(name="cloudControlDeployment")
@@ -27,7 +27,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReferenceArgs extend
     /**
      * @return (Output)
      * The name of the CloudControlDeployment. The format is:
-     * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+     * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
      * 
      */
     public Optional<Output<String>> cloudControlDeployment() {
@@ -61,7 +61,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReferenceArgs extend
         /**
          * @param cloudControlDeployment (Output)
          * The name of the CloudControlDeployment. The format is:
-         * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+         * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class FrameworkDeploymentCloudControlDeploymentReferenceArgs extend
         /**
          * @param cloudControlDeployment (Output)
          * The name of the CloudControlDeployment. The format is:
-         * organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+         * {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
          * 
          * @return builder
          * 

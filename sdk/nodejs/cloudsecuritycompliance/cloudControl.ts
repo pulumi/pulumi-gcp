@@ -15,7 +15,312 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Cloudsecuritycompliance Cloudcontrol Basic
+ * ### Cloudsecuritycompliance Cloudcontrol Org Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     cloudControlId: "example-cloudcontrol",
+ *     displayName: "TF test CloudControl Name",
+ *     description: "A test cloud control for security compliance",
+ *     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+ *     severity: "HIGH",
+ *     findingCategory: "SECURITY_POLICY",
+ *     remediationSteps: "Review and update the security configuration according to best practices.",
+ *     supportedCloudProviders: ["GCP"],
+ *     rules: [{
+ *         description: "Ensure compute instances have secure boot enabled",
+ *         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+ *         celExpression: {
+ *             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+ *             resourceTypesValues: {
+ *                 values: ["compute.googleapis.com/Instance"],
+ *             },
+ *         },
+ *     }],
+ *     parameterSpecs: [
+ *         {
+ *             name: "location",
+ *             displayName: "Resource Location",
+ *             description: "The location where the resource should be deployed",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringValue: "us-central1",
+ *             },
+ *             validation: {
+ *                 regexpPattern: {
+ *                     pattern: "^[a-z]+-[a-z]+[0-9]$",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "enable_secure_boot",
+ *             displayName: "Enable Secure Boot",
+ *             description: "Whether to enable secure boot for instances",
+ *             valueType: "BOOLEAN",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 boolValue: true,
+ *             },
+ *             substitutionRules: [{
+ *                 attributeSubstitutionRule: {
+ *                     attribute: "rules[0].cel_expression.expression",
+ *                 },
+ *             }],
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [{
+ *                         boolValue: true,
+ *                     }],
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "max_instances",
+ *             displayName: "Maximum Instances",
+ *             description: "Maximum number of instances allowed",
+ *             valueType: "NUMBER",
+ *             isRequired: false,
+ *             defaultValue: {
+ *                 numberValue: 10,
+ *             },
+ *             substitutionRules: [{
+ *                 placeholderSubstitutionRule: {
+ *                     attribute: "rules[0].description",
+ *                 },
+ *             }],
+ *             validation: {
+ *                 intRange: {
+ *                     min: "1",
+ *                     max: "100",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "allowed_regions",
+ *             displayName: "Allowed Regions",
+ *             description: "List of regions where resources can be deployed",
+ *             valueType: "STRINGLIST",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringListValue: {
+ *                     values: [
+ *                         "us-central1",
+ *                         "us-east1",
+ *                         "us-west1",
+ *                     ],
+ *                 },
+ *             },
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [
+ *                         {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "us-central1",
+ *                                     "us-east1",
+ *                                 ],
+ *                             },
+ *                         },
+ *                         {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "us-west1",
+ *                                     "us-west2",
+ *                                 ],
+ *                             },
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "environment_type",
+ *             displayName: "Environment Type",
+ *             description: "The type of environment",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringValue: "production",
+ *             },
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [
+ *                         {
+ *                             stringValue: "production",
+ *                         },
+ *                         {
+ *                             stringValue: "staging",
+ *                         },
+ *                         {
+ *                             numberValue: 1,
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Cloudcontrol Project Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.cloudsecuritycompliance.CloudControl("example", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     location: "global",
+ *     cloudControlId: "example-cloudcontrol",
+ *     displayName: "TF test CloudControl Name",
+ *     description: "A test cloud control for security compliance",
+ *     categories: ["CC_CATEGORY_INFRASTRUCTURE"],
+ *     severity: "HIGH",
+ *     findingCategory: "SECURITY_POLICY",
+ *     remediationSteps: "Review and update the security configuration according to best practices.",
+ *     supportedCloudProviders: ["GCP"],
+ *     rules: [{
+ *         description: "Ensure compute instances have secure boot enabled",
+ *         ruleActionTypes: ["RULE_ACTION_TYPE_DETECTIVE"],
+ *         celExpression: {
+ *             expression: "resource.data.shieldedInstanceConfig.enableSecureBoot == true",
+ *             resourceTypesValues: {
+ *                 values: ["compute.googleapis.com/Instance"],
+ *             },
+ *         },
+ *     }],
+ *     parameterSpecs: [
+ *         {
+ *             name: "location",
+ *             displayName: "Resource Location",
+ *             description: "The location where the resource should be deployed",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringValue: "us-central1",
+ *             },
+ *             validation: {
+ *                 regexpPattern: {
+ *                     pattern: "^[a-z]+-[a-z]+[0-9]$",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "enable_secure_boot",
+ *             displayName: "Enable Secure Boot",
+ *             description: "Whether to enable secure boot for instances",
+ *             valueType: "BOOLEAN",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 boolValue: true,
+ *             },
+ *             substitutionRules: [{
+ *                 attributeSubstitutionRule: {
+ *                     attribute: "rules[0].cel_expression.expression",
+ *                 },
+ *             }],
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [{
+ *                         boolValue: true,
+ *                     }],
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "max_instances",
+ *             displayName: "Maximum Instances",
+ *             description: "Maximum number of instances allowed",
+ *             valueType: "NUMBER",
+ *             isRequired: false,
+ *             defaultValue: {
+ *                 numberValue: 10,
+ *             },
+ *             substitutionRules: [{
+ *                 placeholderSubstitutionRule: {
+ *                     attribute: "rules[0].description",
+ *                 },
+ *             }],
+ *             validation: {
+ *                 intRange: {
+ *                     min: "1",
+ *                     max: "100",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "allowed_regions",
+ *             displayName: "Allowed Regions",
+ *             description: "List of regions where resources can be deployed",
+ *             valueType: "STRINGLIST",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringListValue: {
+ *                     values: [
+ *                         "us-central1",
+ *                         "us-east1",
+ *                         "us-west1",
+ *                     ],
+ *                 },
+ *             },
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [
+ *                         {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "us-central1",
+ *                                     "us-east1",
+ *                                 ],
+ *                             },
+ *                         },
+ *                         {
+ *                             stringListValue: {
+ *                                 values: [
+ *                                     "us-west1",
+ *                                     "us-west2",
+ *                                 ],
+ *                             },
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "environment_type",
+ *             displayName: "Environment Type",
+ *             description: "The type of environment",
+ *             valueType: "STRING",
+ *             isRequired: true,
+ *             defaultValue: {
+ *                 stringValue: "production",
+ *             },
+ *             validation: {
+ *                 allowedValues: {
+ *                     values: [
+ *                         {
+ *                             stringValue: "production",
+ *                         },
+ *                         {
+ *                             stringValue: "staging",
+ *                         },
+ *                         {
+ *                             numberValue: 1,
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -173,13 +478,13 @@ import * as utilities from "../utilities";
  * CloudControl can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
- * * `{{organization}}/{{location}}/{{cloud_control_id}}`
+ * * `{{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
  *
  * When using the `pulumi import` command, CloudControl can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
- * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
+ * $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{parent}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
  * ```
  */
 export class CloudControl extends pulumi.CustomResource {
@@ -264,7 +569,12 @@ export class CloudControl extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     declare public readonly organization: pulumi.Output<string>;
     /**
@@ -272,6 +582,13 @@ export class CloudControl extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly parameterSpecs: pulumi.Output<outputs.cloudsecuritycompliance.CloudControlParameterSpec[] | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The Frameworks that include this CloudControl
      */
@@ -332,6 +649,7 @@ export class CloudControl extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["organization"] = state?.organization;
             resourceInputs["parameterSpecs"] = state?.parameterSpecs;
+            resourceInputs["parent"] = state?.parent;
             resourceInputs["relatedFrameworks"] = state?.relatedFrameworks;
             resourceInputs["remediationSteps"] = state?.remediationSteps;
             resourceInputs["rules"] = state?.rules;
@@ -347,9 +665,6 @@ export class CloudControl extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if (args?.organization === undefined && !opts.urn) {
-                throw new Error("Missing required property 'organization'");
-            }
             resourceInputs["categories"] = args?.categories;
             resourceInputs["cloudControlId"] = args?.cloudControlId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -359,6 +674,7 @@ export class CloudControl extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["organization"] = args?.organization;
             resourceInputs["parameterSpecs"] = args?.parameterSpecs;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["remediationSteps"] = args?.remediationSteps;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["severity"] = args?.severity;
@@ -433,7 +749,12 @@ export interface CloudControlState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
     organization?: pulumi.Input<string | undefined>;
     /**
@@ -441,6 +762,13 @@ export interface CloudControlState {
      * Structure is documented below.
      */
     parameterSpecs?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpec>[] | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The Frameworks that include this CloudControl
      */
@@ -519,14 +847,26 @@ export interface CloudControlArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+     *
+     * > **Warning:** Use `parent` instead.
+     *
+     * @deprecated Use `parent` instead.
      */
-    organization: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The parameter spec of the cloud control.
      * Structure is documented below.
      */
     parameterSpecs?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpec>[] | undefined>;
+    /**
+     * The parent resource in which to create the resource.
+     * Must be in one of the following formats:
+     * * `projects/{{project}}`
+     * * `organizations/{{organization}}`
+     */
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The remediation steps for the findings generated by the cloud control. The
      * maximum length is 400 characters.

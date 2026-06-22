@@ -23,6 +23,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
+        /// Arbitrary identifier for the API client.
+        /// </summary>
+        public readonly string Client;
+        /// <summary>
+        /// Arbitrary version identifier for the API client.
+        /// </summary>
+        public readonly string ClientVersion;
+        /// <summary>
         /// Holds the containers that define the unit of execution for this WorkerPool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResult> Containers;
@@ -77,6 +85,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private GetWorkerPoolTemplateResult(
             ImmutableDictionary<string, string> annotations,
 
+            string client,
+
+            string clientVersion,
+
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResult> containers,
 
             string encryptionKey,
@@ -100,6 +112,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             ImmutableArray<Outputs.GetWorkerPoolTemplateVpcAccessResult> vpcAccesses)
         {
             Annotations = annotations;
+            Client = client;
+            ClientVersion = clientVersion;
             Containers = containers;
             EncryptionKey = encryptionKey;
             EncryptionKeyRevocationAction = encryptionKeyRevocationAction;

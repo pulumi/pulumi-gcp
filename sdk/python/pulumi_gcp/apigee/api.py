@@ -491,7 +491,7 @@ class Api(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def detect_md5hash(self) -> pulumi.Output[_builtins.str]:
         """
         (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         """

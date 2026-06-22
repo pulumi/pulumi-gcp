@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ReservationArgs;
 import com.pulumi.gcp.compute.inputs.ReservationState;
 import com.pulumi.gcp.compute.outputs.ReservationDeleteAfterDuration;
+import com.pulumi.gcp.compute.outputs.ReservationParams;
 import com.pulumi.gcp.compute.outputs.ReservationReservationSharingPolicy;
 import com.pulumi.gcp.compute.outputs.ReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.ReservationShareSettings;
@@ -495,6 +496,22 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={ReservationParams.class}, tree="[0]")
+    private Output</* @Nullable */ ReservationParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ReservationParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

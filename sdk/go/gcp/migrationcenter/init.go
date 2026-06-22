@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiscoveryClient{}
 	case "gcp:migrationcenter/group:Group":
 		r = &Group{}
+	case "gcp:migrationcenter/importDataFile:ImportDataFile":
+		r = &ImportDataFile{}
 	case "gcp:migrationcenter/importJob:ImportJob":
 		r = &ImportJob{}
 	case "gcp:migrationcenter/preferenceSet:PreferenceSet":
@@ -65,6 +67,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"migrationcenter/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/importDataFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -14,12 +14,9 @@ import (
 
 // AgentGateway represents the agent gateway resource.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about AgentGateway, see:
 //
-// * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+// * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
 //
 // ## Example Usage
 //
@@ -30,14 +27,50 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
+//			agentRegistry, err := projects.NewService(ctx, "agent_registry", &projects.ServiceArgs{
+//				Service:          pulumi.String("agentregistry.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("net-my-full-agent-gateway"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnet-my-full-agent-gateway"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
+//				Name:                 pulumi.String("na-my-full-agent-gateway"),
+//				Region:               pulumi.String("us-central1"),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				Subnetworks: pulumi.StringArray{
+//					defaultSubnetwork.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
 //				Name:        pulumi.String("my-full-agent-gateway"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A full configuration for Agent Gateway"),
@@ -56,10 +89,12 @@ import (
 //				},
 //				NetworkConfig: &networkservices.AgentGatewayNetworkConfigArgs{
 //					Egress: &networkservices.AgentGatewayNetworkConfigEgressArgs{
-//						NetworkAttachment: pulumi.String("projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment"),
+//						NetworkAttachment: defaultNetworkAttachment.ID(),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				agentRegistry,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -76,25 +111,32 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
+//			agentRegistry, err := projects.NewService(ctx, "agent_registry", &projects.ServiceArgs{
+//				Service:          pulumi.String("agentregistry.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
 //				Name:     pulumi.String("my-client-to-agent-gateway"),
 //				Location: pulumi.String("us-central1"),
-//				Protocols: pulumi.StringArray{
-//					pulumi.String("MCP"),
-//				},
 //				GoogleManaged: &networkservices.AgentGatewayGoogleManagedArgs{
 //					GovernedAccessPath: pulumi.String("CLIENT_TO_AGENT"),
 //				},
 //				Registries: pulumi.StringArray{
 //					pulumi.String("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				agentRegistry,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -120,9 +162,6 @@ import (
 //			_, err := networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
 //				Name:     pulumi.String("my-self-managed-agent-gateway"),
 //				Location: pulumi.String("us-central1"),
-//				Protocols: pulumi.StringArray{
-//					pulumi.String("MCP"),
-//				},
 //				SelfManaged: &networkservices.AgentGatewaySelfManagedArgs{
 //					ResourceUri: pulumi.String("projects/my-project-name/locations/us-central1/gateways/my-gateway"),
 //				},
@@ -197,8 +236,13 @@ type AgentGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Optional, Deprecated)
 	// List of protocols supported by an Agent Gateway.
 	// Each value may be one of: `MCP`.
+	//
+	// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -224,9 +268,6 @@ func NewAgentGateway(ctx *pulumi.Context,
 
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Protocols == nil {
-		return nil, errors.New("invalid value for required argument 'Protocols'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -296,8 +337,13 @@ type agentGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Deprecated)
 	// List of protocols supported by an Agent Gateway.
 	// Each value may be one of: `MCP`.
+	//
+	// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 	Protocols []string `pulumi:"protocols"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -355,8 +401,13 @@ type AgentGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// List of protocols supported by an Agent Gateway.
 	// Each value may be one of: `MCP`.
+	//
+	// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 	Protocols pulumi.StringArrayInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -406,8 +457,13 @@ type agentGatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Deprecated)
 	// List of protocols supported by an Agent Gateway.
 	// Each value may be one of: `MCP`.
+	//
+	// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 	Protocols []string `pulumi:"protocols"`
 	// A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
 	// Note: Currently limited to project-scoped registries Must be of format
@@ -449,8 +505,13 @@ type AgentGatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// List of protocols supported by an Agent Gateway.
 	// Each value may be one of: `MCP`.
+	//
+	// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 	Protocols pulumi.StringArrayInput
 	// A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
 	// Note: Currently limited to project-scoped registries Must be of format
@@ -625,8 +686,13 @@ func (o AgentGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // List of protocols supported by an Agent Gateway.
 // Each value may be one of: `MCP`.
+//
+// > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+//
+// Deprecated: `protocols` is deprecated and will be removed in a future major release.
 func (o AgentGatewayOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AgentGateway) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
 }

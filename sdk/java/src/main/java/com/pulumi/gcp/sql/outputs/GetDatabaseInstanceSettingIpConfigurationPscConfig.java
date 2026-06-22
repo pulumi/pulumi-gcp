@@ -29,10 +29,20 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
      */
     private List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
     /**
+     * @return Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    private Boolean pscAutoDnsEnabled;
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
     private Boolean pscEnabled;
+    /**
+     * @return Whether PSC write endpoint DNS is enabled for this instance.
+     * 
+     */
+    private Boolean pscWriteEndpointDnsEnabled;
 
     private GetDatabaseInstanceSettingIpConfigurationPscConfig() {}
     /**
@@ -57,11 +67,25 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
         return this.pscAutoConnections;
     }
     /**
+     * @return Whether PSC auto DNS is enabled for this instance.
+     * 
+     */
+    public Boolean pscAutoDnsEnabled() {
+        return this.pscAutoDnsEnabled;
+    }
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
     public Boolean pscEnabled() {
         return this.pscEnabled;
+    }
+    /**
+     * @return Whether PSC write endpoint DNS is enabled for this instance.
+     * 
+     */
+    public Boolean pscWriteEndpointDnsEnabled() {
+        return this.pscWriteEndpointDnsEnabled;
     }
 
     public static Builder builder() {
@@ -76,14 +100,18 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
         private List<String> allowedConsumerProjects;
         private String networkAttachmentUri;
         private List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
+        private Boolean pscAutoDnsEnabled;
         private Boolean pscEnabled;
+        private Boolean pscWriteEndpointDnsEnabled;
         public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfigurationPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.networkAttachmentUri = defaults.networkAttachmentUri;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
+    	      this.pscAutoDnsEnabled = defaults.pscAutoDnsEnabled;
     	      this.pscEnabled = defaults.pscEnabled;
+    	      this.pscWriteEndpointDnsEnabled = defaults.pscWriteEndpointDnsEnabled;
         }
 
         @CustomType.Setter
@@ -117,6 +145,14 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
             return pscAutoConnections(List.of(pscAutoConnections));
         }
         @CustomType.Setter
+        public Builder pscAutoDnsEnabled(Boolean pscAutoDnsEnabled) {
+            if (pscAutoDnsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscAutoDnsEnabled");
+            }
+            this.pscAutoDnsEnabled = pscAutoDnsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pscEnabled(Boolean pscEnabled) {
             if (pscEnabled == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscEnabled");
@@ -124,12 +160,22 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
             this.pscEnabled = pscEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder pscWriteEndpointDnsEnabled(Boolean pscWriteEndpointDnsEnabled) {
+            if (pscWriteEndpointDnsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscWriteEndpointDnsEnabled");
+            }
+            this.pscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
+            return this;
+        }
         public GetDatabaseInstanceSettingIpConfigurationPscConfig build() {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.networkAttachmentUri = networkAttachmentUri;
             _resultValue.pscAutoConnections = pscAutoConnections;
+            _resultValue.pscAutoDnsEnabled = pscAutoDnsEnabled;
             _resultValue.pscEnabled = pscEnabled;
+            _resultValue.pscWriteEndpointDnsEnabled = pscWriteEndpointDnsEnabled;
             return _resultValue;
         }
     }

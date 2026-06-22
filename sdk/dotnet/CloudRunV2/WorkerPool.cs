@@ -752,6 +752,14 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                         {
     ///                             Path = "/",
     ///                             Port = 8080,
+    ///                             HttpHeaders = new[]
+    ///                             {
+    ///                                 
+    ///                                 {
+    ///                                     { "name", "TEST-HEADER" },
+    ///                                     { "value", "test-value" },
+    ///                                 },
+    ///                             },
     ///                         },
     ///                     },
     ///                 },

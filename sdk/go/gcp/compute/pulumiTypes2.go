@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGroupManagerNamedPort struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The port number.
+	Port int `pulumi:"port"`
+}
+
+// GetInstanceGroupManagerNamedPortInput is an input type that accepts GetInstanceGroupManagerNamedPortArgs and GetInstanceGroupManagerNamedPortOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerNamedPortInput` via:
+//
+//	GetInstanceGroupManagerNamedPortArgs{...}
+type GetInstanceGroupManagerNamedPortInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerNamedPortOutput() GetInstanceGroupManagerNamedPortOutput
+	ToGetInstanceGroupManagerNamedPortOutputWithContext(context.Context) GetInstanceGroupManagerNamedPortOutput
+}
+
+type GetInstanceGroupManagerNamedPortArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port number.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetInstanceGroupManagerNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerNamedPortArgs) ToGetInstanceGroupManagerNamedPortOutput() GetInstanceGroupManagerNamedPortOutput {
+	return i.ToGetInstanceGroupManagerNamedPortOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerNamedPortArgs) ToGetInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupManagerNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerNamedPortOutput)
+}
+
+// GetInstanceGroupManagerNamedPortArrayInput is an input type that accepts GetInstanceGroupManagerNamedPortArray and GetInstanceGroupManagerNamedPortArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerNamedPortArrayInput` via:
+//
+//	GetInstanceGroupManagerNamedPortArray{ GetInstanceGroupManagerNamedPortArgs{...} }
+type GetInstanceGroupManagerNamedPortArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerNamedPortArrayOutput() GetInstanceGroupManagerNamedPortArrayOutput
+	ToGetInstanceGroupManagerNamedPortArrayOutputWithContext(context.Context) GetInstanceGroupManagerNamedPortArrayOutput
+}
+
+type GetInstanceGroupManagerNamedPortArray []GetInstanceGroupManagerNamedPortInput
+
+func (GetInstanceGroupManagerNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerNamedPortArray) ToGetInstanceGroupManagerNamedPortArrayOutput() GetInstanceGroupManagerNamedPortArrayOutput {
+	return i.ToGetInstanceGroupManagerNamedPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerNamedPortArray) ToGetInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerNamedPortArrayOutput)
+}
+
+type GetInstanceGroupManagerNamedPortOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerNamedPortOutput) ToGetInstanceGroupManagerNamedPortOutput() GetInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerNamedPortOutput) ToGetInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetInstanceGroupManagerNamedPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerNamedPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port number.
+func (o GetInstanceGroupManagerNamedPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerNamedPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupManagerNamedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerNamedPortArrayOutput) ToGetInstanceGroupManagerNamedPortArrayOutput() GetInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerNamedPortArrayOutput) ToGetInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerNamedPort {
+		return vs[0].([]GetInstanceGroupManagerNamedPort)[vs[1].(int)]
+	}).(GetInstanceGroupManagerNamedPortOutput)
+}
+
 type GetInstanceGroupManagerParam struct {
 	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
@@ -25551,6 +25657,109 @@ func (o GetReservationDeleteAfterDurationArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetReservationDeleteAfterDurationOutput)
 }
 
+type GetReservationParam struct {
+	// Resource manager tags to be bound to the reservation. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetReservationParamInput is an input type that accepts GetReservationParamArgs and GetReservationParamOutput values.
+// You can construct a concrete instance of `GetReservationParamInput` via:
+//
+//	GetReservationParamArgs{...}
+type GetReservationParamInput interface {
+	pulumi.Input
+
+	ToGetReservationParamOutput() GetReservationParamOutput
+	ToGetReservationParamOutputWithContext(context.Context) GetReservationParamOutput
+}
+
+type GetReservationParamArgs struct {
+	// Resource manager tags to be bound to the reservation. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetReservationParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationParam)(nil)).Elem()
+}
+
+func (i GetReservationParamArgs) ToGetReservationParamOutput() GetReservationParamOutput {
+	return i.ToGetReservationParamOutputWithContext(context.Background())
+}
+
+func (i GetReservationParamArgs) ToGetReservationParamOutputWithContext(ctx context.Context) GetReservationParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationParamOutput)
+}
+
+// GetReservationParamArrayInput is an input type that accepts GetReservationParamArray and GetReservationParamArrayOutput values.
+// You can construct a concrete instance of `GetReservationParamArrayInput` via:
+//
+//	GetReservationParamArray{ GetReservationParamArgs{...} }
+type GetReservationParamArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationParamArrayOutput() GetReservationParamArrayOutput
+	ToGetReservationParamArrayOutputWithContext(context.Context) GetReservationParamArrayOutput
+}
+
+type GetReservationParamArray []GetReservationParamInput
+
+func (GetReservationParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationParam)(nil)).Elem()
+}
+
+func (i GetReservationParamArray) ToGetReservationParamArrayOutput() GetReservationParamArrayOutput {
+	return i.ToGetReservationParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationParamArray) ToGetReservationParamArrayOutputWithContext(ctx context.Context) GetReservationParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationParamArrayOutput)
+}
+
+type GetReservationParamOutput struct{ *pulumi.OutputState }
+
+func (GetReservationParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationParam)(nil)).Elem()
+}
+
+func (o GetReservationParamOutput) ToGetReservationParamOutput() GetReservationParamOutput {
+	return o
+}
+
+func (o GetReservationParamOutput) ToGetReservationParamOutputWithContext(ctx context.Context) GetReservationParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the reservation. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetReservationParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetReservationParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetReservationParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationParam)(nil)).Elem()
+}
+
+func (o GetReservationParamArrayOutput) ToGetReservationParamArrayOutput() GetReservationParamArrayOutput {
+	return o
+}
+
+func (o GetReservationParamArrayOutput) ToGetReservationParamArrayOutputWithContext(ctx context.Context) GetReservationParamArrayOutput {
+	return o
+}
+
+func (o GetReservationParamArrayOutput) Index(i pulumi.IntInput) GetReservationParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationParam {
+		return vs[0].([]GetReservationParam)[vs[1].(int)]
+	}).(GetReservationParamOutput)
+}
+
 type GetReservationReservationSharingPolicy struct {
 	// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
 	ServiceShareType string `pulumi:"serviceShareType"`
@@ -38055,6 +38264,8 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamInput)(nil)).Elem(), GetInstanceGroupManagerParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetInstanceGroupManagerParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerResourcePolicyInput)(nil)).Elem(), GetInstanceGroupManagerResourcePolicyArgs{})
@@ -38439,6 +38650,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockReservationMaintenanceArrayInput)(nil)).Elem(), GetReservationBlockReservationMaintenanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationInput)(nil)).Elem(), GetReservationDeleteAfterDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationArrayInput)(nil)).Elem(), GetReservationDeleteAfterDurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationParamInput)(nil)).Elem(), GetReservationParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationParamArrayInput)(nil)).Elem(), GetReservationParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyInput)(nil)).Elem(), GetReservationReservationSharingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyArrayInput)(nil)).Elem(), GetReservationReservationSharingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusInput)(nil)).Elem(), GetReservationResourceStatusArgs{})
@@ -38629,6 +38842,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerParamOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerParamArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerResourcePolicyOutput{})
@@ -39013,6 +39228,8 @@ func init() {
 	pulumi.RegisterOutputType(GetReservationBlockReservationMaintenanceArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationOutput{})
 	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationParamOutput{})
+	pulumi.RegisterOutputType(GetReservationParamArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyOutput{})
 	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationResourceStatusOutput{})

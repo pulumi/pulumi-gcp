@@ -14225,6 +14225,10 @@ type WorkerPoolTemplate struct {
 	// All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Arbitrary identifier for the API client.
+	Client *string `pulumi:"client"`
+	// Arbitrary version identifier for the API client.
+	ClientVersion *string `pulumi:"clientVersion"`
 	// Holds the containers that define the unit of execution for this WorkerPool.
 	// Structure is documented below.
 	Containers []WorkerPoolTemplateContainer `pulumi:"containers"`
@@ -14275,6 +14279,10 @@ type WorkerPoolTemplateArgs struct {
 	// All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Arbitrary identifier for the API client.
+	Client pulumi.StringPtrInput `pulumi:"client"`
+	// Arbitrary version identifier for the API client.
+	ClientVersion pulumi.StringPtrInput `pulumi:"clientVersion"`
 	// Holds the containers that define the unit of execution for this WorkerPool.
 	// Structure is documented below.
 	Containers WorkerPoolTemplateContainerArrayInput `pulumi:"containers"`
@@ -14393,6 +14401,16 @@ func (o WorkerPoolTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkerPoolTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Arbitrary identifier for the API client.
+func (o WorkerPoolTemplateOutput) Client() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplate) *string { return v.Client }).(pulumi.StringPtrOutput)
+}
+
+// Arbitrary version identifier for the API client.
+func (o WorkerPoolTemplateOutput) ClientVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplate) *string { return v.ClientVersion }).(pulumi.StringPtrOutput)
+}
+
 // Holds the containers that define the unit of execution for this WorkerPool.
 // Structure is documented below.
 func (o WorkerPoolTemplateOutput) Containers() WorkerPoolTemplateContainerArrayOutput {
@@ -14492,6 +14510,26 @@ func (o WorkerPoolTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 		}
 		return v.Annotations
 	}).(pulumi.StringMapOutput)
+}
+
+// Arbitrary identifier for the API client.
+func (o WorkerPoolTemplatePtrOutput) Client() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Client
+	}).(pulumi.StringPtrOutput)
+}
+
+// Arbitrary version identifier for the API client.
+func (o WorkerPoolTemplatePtrOutput) ClientVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // Holds the containers that define the unit of execution for this WorkerPool.
@@ -15842,7 +15880,14 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.
 
 type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders struct {
 	// Required. The header field name
-	Port int `pulumi:"port"`
+	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
+	// Required. The header field name
+	//
+	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	//
+	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	Port *int `pulumi:"port"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
@@ -15860,7 +15905,14 @@ type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput interface {
 
 type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs struct {
 	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Optional, Deprecated)
+	// Required. The header field name
+	//
+	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	//
+	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -15943,8 +15995,18 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWork
 }
 
 // Required. The header field name
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) int { return v.Port }).(pulumi.IntOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Deprecated)
+// Required. The header field name
+//
+// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+//
+// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Optional. The header field value
@@ -15977,12 +16039,27 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Ele
 }
 
 // Required. The header field name
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Deprecated)
+// Required. The header field name
+//
+// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+//
+// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
 func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -16878,7 +16955,14 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.I
 
 type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders struct {
 	// Required. The header field name
-	Port int `pulumi:"port"`
+	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
+	// Required. The header field name
+	//
+	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	//
+	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	Port *int `pulumi:"port"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
@@ -16896,7 +16980,14 @@ type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput interface {
 
 type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs struct {
 	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Optional, Deprecated)
+	// Required. The header field name
+	//
+	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	//
+	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -16979,8 +17070,18 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorke
 }
 
 // Required. The header field name
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) int { return v.Port }).(pulumi.IntOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Deprecated)
+// Required. The header field name
+//
+// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+//
+// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Optional. The header field value
@@ -17013,12 +17114,27 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Elem
 }
 
 // Required. The header field name
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Deprecated)
+// Required. The header field name
+//
+// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+//
+// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
 func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -28735,6 +28851,10 @@ type GetWorkerPoolTemplate struct {
 	//
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Arbitrary identifier for the API client.
+	Client string `pulumi:"client"`
+	// Arbitrary version identifier for the API client.
+	ClientVersion string `pulumi:"clientVersion"`
 	// Holds the containers that define the unit of execution for this WorkerPool.
 	Containers []GetWorkerPoolTemplateContainer `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -28784,6 +28904,10 @@ type GetWorkerPoolTemplateArgs struct {
 	//
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Arbitrary identifier for the API client.
+	Client pulumi.StringInput `pulumi:"client"`
+	// Arbitrary version identifier for the API client.
+	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
 	// Holds the containers that define the unit of execution for this WorkerPool.
 	Containers GetWorkerPoolTemplateContainerArrayInput `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -28873,6 +28997,16 @@ func (o GetWorkerPoolTemplateOutput) ToGetWorkerPoolTemplateOutputWithContext(ct
 // This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GetWorkerPoolTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Arbitrary identifier for the API client.
+func (o GetWorkerPoolTemplateOutput) Client() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplate) string { return v.Client }).(pulumi.StringOutput)
+}
+
+// Arbitrary version identifier for the API client.
+func (o GetWorkerPoolTemplateOutput) ClientVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplate) string { return v.ClientVersion }).(pulumi.StringOutput)
 }
 
 // Holds the containers that define the unit of execution for this WorkerPool.
@@ -29852,6 +29986,8 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i p
 }
 
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name string `pulumi:"name"`
 	// Required. The header field name
 	Port int `pulumi:"port"`
 	// Optional. The header field value
@@ -29870,6 +30006,8 @@ type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface
 }
 
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Required. The header field name
 	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
@@ -29925,6 +30063,11 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGe
 
 func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+// The name of the Cloud Run v2 Worker Pool.
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Required. The header field name
@@ -30532,6 +30675,8 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pu
 }
 
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name string `pulumi:"name"`
 	// Required. The header field name
 	Port int `pulumi:"port"`
 	// Optional. The header field value
@@ -30550,6 +30695,8 @@ type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface 
 }
 
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Required. The header field name
 	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
@@ -30605,6 +30752,11 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGet
 
 func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+// The name of the Cloud Run v2 Worker Pool.
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Required. The header field name

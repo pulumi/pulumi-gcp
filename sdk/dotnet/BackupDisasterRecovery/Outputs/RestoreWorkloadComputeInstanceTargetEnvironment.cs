@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
+        /// </summary>
+        public readonly bool? UseProjectServiceAccount;
+        /// <summary>
         /// Required. The zone of the Compute Engine instance.
         /// </summary>
         public readonly string Zone;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         private RestoreWorkloadComputeInstanceTargetEnvironment(
             string project,
 
+            bool? useProjectServiceAccount,
+
             string zone)
         {
             Project = project;
+            UseProjectServiceAccount = useProjectServiceAccount;
             Zone = zone;
         }
     }

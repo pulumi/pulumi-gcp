@@ -15,8 +15,17 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// <summary>
         /// Required. The header field name
         /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Optional, Deprecated)
+        /// Required. The header field name
+        /// 
+        /// &gt; **Warning:** `Port` field is deprecated and will be removed in a future major release. It was never supported by the API.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// Optional. The header field value

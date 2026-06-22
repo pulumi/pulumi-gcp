@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class FrameworkDeploymentFramework {
     /**
      * @return In the format:
-     * organizations/{org}/locations/{location}/frameworks/{framework}
+     * {parent}/locations/{location}/frameworks/{framework}
      * 
      */
     private String framework;
@@ -25,7 +25,7 @@ public final class FrameworkDeploymentFramework {
     private FrameworkDeploymentFramework() {}
     /**
      * @return In the format:
-     * organizations/{org}/locations/{location}/frameworks/{framework}
+     * {parent}/locations/{location}/frameworks/{framework}
      * 
      */
     public String framework() {

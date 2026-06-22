@@ -86,6 +86,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigSliceControllerConfigResult> SliceControllerConfigs;
         /// <summary>
+        /// The status of the Slurm Operator addon, which creates slurm related CRDs and KCP pods to manage them. Defaults to disabled for Standard clusters; set enabled = true to enable. It can not be enabled for Autopilot clusters.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigSlurmOperatorConfigResult> SlurmOperatorConfigs;
+        /// <summary>
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> StatefulHaConfigs;
@@ -128,6 +132,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigSliceControllerConfigResult> sliceControllerConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigSlurmOperatorConfigResult> slurmOperatorConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> statefulHaConfigs)
         {
             AgentSandboxConfigs = agentSandboxConfigs;
@@ -148,6 +154,7 @@ namespace Pulumi.Gcp.Container.Outputs
             PodSnapshotConfigs = podSnapshotConfigs;
             RayOperatorConfigs = rayOperatorConfigs;
             SliceControllerConfigs = sliceControllerConfigs;
+            SlurmOperatorConfigs = slurmOperatorConfigs;
             StatefulHaConfigs = statefulHaConfigs;
         }
     }

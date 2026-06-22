@@ -38,13 +38,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
  * const scannerStaticIp = new gcp.compute.Address("scanner_static_ip", {name: "scan-ignore-http-ip"});
+ * const wait15Seconds = new time.Sleep("wait_15_seconds", {createDuration: "15s"}, {
+ *     dependsOn: [scannerStaticIp],
+ * });
  * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
  *     displayName: "terraform-scan-config",
  *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
  *     targetPlatforms: ["COMPUTE"],
  *     ignoreHttpStatusErrors: true,
+ * }, {
+ *     dependsOn: [wait15Seconds],
  * });
  * ```
  *

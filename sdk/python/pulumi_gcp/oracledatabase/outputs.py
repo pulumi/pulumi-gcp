@@ -155,6 +155,8 @@ __all__ = [
     'GetGoldengateConnectionTypesGoldengateConnectionTypeResult',
     'GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult',
     'GetGoldengateDeploymentTypesGoldengateDeploymentTypeResult',
+    'GetGoldengateDeploymentVersionsGoldengateDeploymentVersionResult',
+    'GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyResult',
 ]
 
 @pulumi.output_type
@@ -19988,5 +19990,118 @@ class GetGoldengateDeploymentTypesGoldengateDeploymentTypeResult(dict):
         The target technologies of the Goldengate Deployment Type resource.
         """
         return pulumi.get(self, "target_technologies")
+
+
+@pulumi.output_type
+class GetGoldengateDeploymentVersionsGoldengateDeploymentVersionResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 ocid: _builtins.str,
+                 properties: Sequence['outputs.GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyResult']):
+        """
+        :param _builtins.str name: The name of the Goldengate Deployment Version resource.
+        :param _builtins.str ocid: The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+        :param Sequence['GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyArgs'] properties: The properties of the Goldengate Deployment Version resource.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ocid", ocid)
+        pulumi.set(__self__, "properties", properties)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> _builtins.str:
+        """
+        The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Sequence['outputs.GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyResult']:
+        """
+        The properties of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GetGoldengateDeploymentVersionsGoldengateDeploymentVersionPropertyResult(dict):
+    def __init__(__self__, *,
+                 deployment_type: _builtins.str,
+                 ogg_version: _builtins.str,
+                 release_time: _builtins.str,
+                 release_type: _builtins.str,
+                 security_fix: _builtins.bool,
+                 support_end_time: _builtins.str):
+        """
+        :param _builtins.str deployment_type: The deployment type of the Goldengate Deployment Version resource.
+        :param _builtins.str ogg_version: The OGG version of the Goldengate Deployment Version resource.
+        :param _builtins.str release_time: The release time of the Goldengate Deployment Version resource.
+        :param _builtins.str release_type: The release type of the Goldengate Deployment Version resource.
+        :param _builtins.bool security_fix: Specifies whether this version has a security fix.
+        :param _builtins.str support_end_time: The support end time of the Goldengate Deployment Version resource.
+        """
+        pulumi.set(__self__, "deployment_type", deployment_type)
+        pulumi.set(__self__, "ogg_version", ogg_version)
+        pulumi.set(__self__, "release_time", release_time)
+        pulumi.set(__self__, "release_type", release_type)
+        pulumi.set(__self__, "security_fix", security_fix)
+        pulumi.set(__self__, "support_end_time", support_end_time)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> _builtins.str:
+        """
+        The deployment type of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="oggVersion")
+    def ogg_version(self) -> _builtins.str:
+        """
+        The OGG version of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "ogg_version")
+
+    @_builtins.property
+    @pulumi.getter(name="releaseTime")
+    def release_time(self) -> _builtins.str:
+        """
+        The release time of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "release_time")
+
+    @_builtins.property
+    @pulumi.getter(name="releaseType")
+    def release_type(self) -> _builtins.str:
+        """
+        The release type of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "release_type")
+
+    @_builtins.property
+    @pulumi.getter(name="securityFix")
+    def security_fix(self) -> _builtins.bool:
+        """
+        Specifies whether this version has a security fix.
+        """
+        return pulumi.get(self, "security_fix")
+
+    @_builtins.property
+    @pulumi.getter(name="supportEndTime")
+    def support_end_time(self) -> _builtins.str:
+        """
+        The support end time of the Goldengate Deployment Version resource.
+        """
+        return pulumi.get(self, "support_end_time")
 
 

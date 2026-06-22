@@ -9,12 +9,9 @@ import * as utilities from "../utilities";
 /**
  * AgentGateway represents the agent gateway resource.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about AgentGateway, see:
  *
- * * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1beta1/projects.locations.agentGateways)
+ * * [API documentation](https://cloud.google.com/network-services/docs/reference/network-services/rest/v1/projects.locations.agentGateways)
  *
  * ## Example Usage
  *
@@ -24,6 +21,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const agentRegistry = new gcp.projects.Service("agent_registry", {
+ *     service: "agentregistry.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "net-my-full-agent-gateway",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "subnet-my-full-agent-gateway",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
+ *     name: "na-my-full-agent-gateway",
+ *     region: "us-central1",
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     subnetworks: [defaultSubnetwork.selfLink],
+ * });
  * const _default = new gcp.networkservices.AgentGateway("default", {
  *     name: "my-full-agent-gateway",
  *     location: "us-central1",
@@ -39,9 +56,11 @@ import * as utilities from "../utilities";
  *     registries: ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
  *     networkConfig: {
  *         egress: {
- *             networkAttachment: "projects/my-project-name/regions/us-central1/networkAttachments/my-network-attachment",
+ *             networkAttachment: defaultNetworkAttachment.id,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [agentRegistry],
  * });
  * ```
  * ### Network Services Agent Gateway Client To Agent
@@ -50,14 +69,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const agentRegistry = new gcp.projects.Service("agent_registry", {
+ *     service: "agentregistry.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
  * const _default = new gcp.networkservices.AgentGateway("default", {
  *     name: "my-client-to-agent-gateway",
  *     location: "us-central1",
- *     protocols: ["MCP"],
  *     googleManaged: {
  *         governedAccessPath: "CLIENT_TO_AGENT",
  *     },
  *     registries: ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
+ * }, {
+ *     dependsOn: [agentRegistry],
  * });
  * ```
  * ### Network Services Agent Gateway Self Managed
@@ -69,7 +93,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkservices.AgentGateway("default", {
  *     name: "my-self-managed-agent-gateway",
  *     location: "us-central1",
- *     protocols: ["MCP"],
  *     selfManaged: {
  *         resourceUri: "projects/my-project-name/locations/us-central1/gateways/my-gateway",
  *     },
@@ -186,10 +209,15 @@ export class AgentGateway extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
+     *
+     * > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      */
-    declare public readonly protocols: pulumi.Output<string[]>;
+    declare public readonly protocols: pulumi.Output<string[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
@@ -246,9 +274,6 @@ export class AgentGateway extends pulumi.CustomResource {
             const args = argsOrState as AgentGatewayArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if (args?.protocols === undefined && !opts.urn) {
-                throw new Error("Missing required property 'protocols'");
             }
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
@@ -344,8 +369,13 @@ export interface AgentGatewayState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
+     *
+     * > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      */
     protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -420,10 +450,15 @@ export interface AgentGatewayArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
+     *
+     * > **Warning:** `protocols` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      */
-    protocols: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
      * Note: Currently limited to project-scoped registries Must be of format

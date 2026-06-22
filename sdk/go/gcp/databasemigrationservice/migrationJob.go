@@ -644,6 +644,9 @@ type MigrationJob struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+	// Possible values are: `NOT_STARTED`, `RUNNING`.
+	DesiredState pulumi.StringOutput `pulumi:"desiredState"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// The migration job display name.
@@ -705,6 +708,8 @@ type MigrationJob struct {
 	// You can retrieve the public IP of the Cloud SQL instance from the
 	// Cloud SQL console or using Cloud SQL APIs.
 	StaticIpConnectivity MigrationJobStaticIpConnectivityPtrOutput `pulumi:"staticIpConnectivity"`
+	// If set to true, will stop the pulumi up if there are validation warnings.
+	StopOnWarnings pulumi.BoolPtrOutput `pulumi:"stopOnWarnings"`
 	// The type of the migration job.
 	// Possible values are: `ONE_TIME`, `CONTINUOUS`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -769,6 +774,9 @@ type migrationJobState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+	// Possible values are: `NOT_STARTED`, `RUNNING`.
+	DesiredState *string `pulumi:"desiredState"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination *string `pulumi:"destination"`
 	// The migration job display name.
@@ -830,6 +838,8 @@ type migrationJobState struct {
 	// You can retrieve the public IP of the Cloud SQL instance from the
 	// Cloud SQL console or using Cloud SQL APIs.
 	StaticIpConnectivity *MigrationJobStaticIpConnectivity `pulumi:"staticIpConnectivity"`
+	// If set to true, will stop the pulumi up if there are validation warnings.
+	StopOnWarnings *bool `pulumi:"stopOnWarnings"`
 	// The type of the migration job.
 	// Possible values are: `ONE_TIME`, `CONTINUOUS`.
 	Type *string `pulumi:"type"`
@@ -848,6 +858,9 @@ type MigrationJobState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+	// Possible values are: `NOT_STARTED`, `RUNNING`.
+	DesiredState pulumi.StringPtrInput
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringPtrInput
 	// The migration job display name.
@@ -909,6 +922,8 @@ type MigrationJobState struct {
 	// You can retrieve the public IP of the Cloud SQL instance from the
 	// Cloud SQL console or using Cloud SQL APIs.
 	StaticIpConnectivity MigrationJobStaticIpConnectivityPtrInput
+	// If set to true, will stop the pulumi up if there are validation warnings.
+	StopOnWarnings pulumi.BoolPtrInput
 	// The type of the migration job.
 	// Possible values are: `ONE_TIME`, `CONTINUOUS`.
 	Type pulumi.StringPtrInput
@@ -929,6 +944,9 @@ type migrationJobArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+	// Possible values are: `NOT_STARTED`, `RUNNING`.
+	DesiredState *string `pulumi:"desiredState"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination string `pulumi:"destination"`
 	// The migration job display name.
@@ -976,6 +994,8 @@ type migrationJobArgs struct {
 	// You can retrieve the public IP of the Cloud SQL instance from the
 	// Cloud SQL console or using Cloud SQL APIs.
 	StaticIpConnectivity *MigrationJobStaticIpConnectivity `pulumi:"staticIpConnectivity"`
+	// If set to true, will stop the pulumi up if there are validation warnings.
+	StopOnWarnings *bool `pulumi:"stopOnWarnings"`
 	// The type of the migration job.
 	// Possible values are: `ONE_TIME`, `CONTINUOUS`.
 	Type string `pulumi:"type"`
@@ -993,6 +1013,9 @@ type MigrationJobArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+	// Possible values are: `NOT_STARTED`, `RUNNING`.
+	DesiredState pulumi.StringPtrInput
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringInput
 	// The migration job display name.
@@ -1040,6 +1063,8 @@ type MigrationJobArgs struct {
 	// You can retrieve the public IP of the Cloud SQL instance from the
 	// Cloud SQL console or using Cloud SQL APIs.
 	StaticIpConnectivity MigrationJobStaticIpConnectivityPtrInput
+	// If set to true, will stop the pulumi up if there are validation warnings.
+	StopOnWarnings pulumi.BoolPtrInput
 	// The type of the migration job.
 	// Possible values are: `ONE_TIME`, `CONTINUOUS`.
 	Type pulumi.StringInput
@@ -1148,6 +1173,12 @@ func (o MigrationJobOutput) CreateTime() pulumi.StringOutput {
 // When set to "DELETE", deleting the resource is allowed.
 func (o MigrationJobOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+// Possible values are: `NOT_STARTED`, `RUNNING`.
+func (o MigrationJobOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DesiredState }).(pulumi.StringOutput)
 }
 
 // The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -1275,6 +1306,11 @@ func (o MigrationJobOutput) State() pulumi.StringOutput {
 // Cloud SQL console or using Cloud SQL APIs.
 func (o MigrationJobOutput) StaticIpConnectivity() MigrationJobStaticIpConnectivityPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) MigrationJobStaticIpConnectivityPtrOutput { return v.StaticIpConnectivity }).(MigrationJobStaticIpConnectivityPtrOutput)
+}
+
+// If set to true, will stop the pulumi up if there are validation warnings.
+func (o MigrationJobOutput) StopOnWarnings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.BoolPtrOutput { return v.StopOnWarnings }).(pulumi.BoolPtrOutput)
 }
 
 // The type of the migration job.

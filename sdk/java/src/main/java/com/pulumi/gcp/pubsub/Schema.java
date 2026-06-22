@@ -231,6 +231,20 @@ public class Schema extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Output only. The revision ID of the schema.
+     * 
+     */
+    @Export(name="revisionId", refs={String.class}, tree="[0]")
+    private Output<String> revisionId;
+
+    /**
+     * @return Output only. The revision ID of the schema.
+     * 
+     */
+    public Output<String> revisionId() {
+        return this.revisionId;
+    }
+    /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.

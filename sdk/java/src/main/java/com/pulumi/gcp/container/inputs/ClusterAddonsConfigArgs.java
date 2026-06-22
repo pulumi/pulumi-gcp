@@ -23,6 +23,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriver
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigPodSnapshotConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigSliceControllerConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigSlurmOperatorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
 import java.util.List;
 import java.util.Objects;
@@ -338,16 +339,12 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     /**
      * The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     @Import(name="podSnapshotConfig")
     private @Nullable Output<ClusterAddonsConfigPodSnapshotConfigArgs> podSnapshotConfig;
 
     /**
      * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-     * 
-     * This example `addonsConfig` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigPodSnapshotConfigArgs>> podSnapshotConfig() {
@@ -411,6 +408,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The status of the Slurm Operator addon,
+     * which creates slurm related CRDs and KCP pods to manage them.
+     * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+     * It can not be enabled for Autopilot clusters.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    @Import(name="slurmOperatorConfig")
+    private @Nullable Output<ClusterAddonsConfigSlurmOperatorConfigArgs> slurmOperatorConfig;
+
+    /**
+     * @return The status of the Slurm Operator addon,
+     * which creates slurm related CRDs and KCP pods to manage them.
+     * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+     * It can not be enabled for Autopilot clusters.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigSlurmOperatorConfigArgs>> slurmOperatorConfig() {
+        return Optional.ofNullable(this.slurmOperatorConfig);
+    }
+
+    /**
      * .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -450,6 +472,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.podSnapshotConfig = $.podSnapshotConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
         this.sliceControllerConfig = $.sliceControllerConfig;
+        this.slurmOperatorConfig = $.slurmOperatorConfig;
         this.statefulHaConfig = $.statefulHaConfig;
     }
 
@@ -865,8 +888,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
          * 
-         * This example `addonsConfig` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -877,8 +898,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-         * 
-         * This example `addonsConfig` disables two addons:
          * 
          * @return builder
          * 
@@ -974,6 +993,37 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder sliceControllerConfig(ClusterAddonsConfigSliceControllerConfigArgs sliceControllerConfig) {
             return sliceControllerConfig(Output.of(sliceControllerConfig));
+        }
+
+        /**
+         * @param slurmOperatorConfig The status of the Slurm Operator addon,
+         * which creates slurm related CRDs and KCP pods to manage them.
+         * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+         * It can not be enabled for Autopilot clusters.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slurmOperatorConfig(@Nullable Output<ClusterAddonsConfigSlurmOperatorConfigArgs> slurmOperatorConfig) {
+            $.slurmOperatorConfig = slurmOperatorConfig;
+            return this;
+        }
+
+        /**
+         * @param slurmOperatorConfig The status of the Slurm Operator addon,
+         * which creates slurm related CRDs and KCP pods to manage them.
+         * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
+         * It can not be enabled for Autopilot clusters.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slurmOperatorConfig(ClusterAddonsConfigSlurmOperatorConfigArgs slurmOperatorConfig) {
+            return slurmOperatorConfig(Output.of(slurmOperatorConfig));
         }
 
         /**
