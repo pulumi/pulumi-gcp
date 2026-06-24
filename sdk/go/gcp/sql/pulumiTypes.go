@@ -1723,6 +1723,8 @@ type DatabaseInstanceSettings struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindow        *DatabaseInstanceSettingsMaintenanceWindow        `pulumi:"maintenanceWindow"`
 	PasswordValidationPolicy *DatabaseInstanceSettingsPasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfig *DatabaseInstanceSettingsPerformanceCaptureConfig `pulumi:"performanceCaptureConfig"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan *string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -1826,6 +1828,8 @@ type DatabaseInstanceSettingsArgs struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindow        DatabaseInstanceSettingsMaintenanceWindowPtrInput        `pulumi:"maintenanceWindow"`
 	PasswordValidationPolicy DatabaseInstanceSettingsPasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfig DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput `pulumi:"performanceCaptureConfig"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -2103,6 +2107,13 @@ func (o DatabaseInstanceSettingsOutput) PasswordValidationPolicy() DatabaseInsta
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsPasswordValidationPolicy {
 		return v.PasswordValidationPolicy
 	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
+}
+
+// Configuration of Performance Capture.
+func (o DatabaseInstanceSettingsOutput) PerformanceCaptureConfig() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsPerformanceCaptureConfig {
+		return v.PerformanceCaptureConfig
+	}).(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput)
 }
 
 // Pricing plan for this instance, can only be `PER_USE`.
@@ -2494,6 +2505,16 @@ func (o DatabaseInstanceSettingsPtrOutput) PasswordValidationPolicy() DatabaseIn
 	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
 }
 
+// Configuration of Performance Capture.
+func (o DatabaseInstanceSettingsPtrOutput) PerformanceCaptureConfig() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsPerformanceCaptureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceCaptureConfig
+	}).(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput)
+}
+
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
@@ -2577,9 +2598,16 @@ func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
 }
 
 type DatabaseInstanceSettingsActiveDirectoryConfig struct {
-	// The domain name for the active directory (e.g., mydomain.com).
-	// Can only be used with SQL Server.
+	// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+	AdminCredentialSecretName *string `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers []string `pulumi:"dnsServers"`
+	// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
 	Domain string `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+	Mode *string `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit *string `pulumi:"organizationalUnit"`
 }
 
 // DatabaseInstanceSettingsActiveDirectoryConfigInput is an input type that accepts DatabaseInstanceSettingsActiveDirectoryConfigArgs and DatabaseInstanceSettingsActiveDirectoryConfigOutput values.
@@ -2594,9 +2622,16 @@ type DatabaseInstanceSettingsActiveDirectoryConfigInput interface {
 }
 
 type DatabaseInstanceSettingsActiveDirectoryConfigArgs struct {
-	// The domain name for the active directory (e.g., mydomain.com).
-	// Can only be used with SQL Server.
+	// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+	AdminCredentialSecretName pulumi.StringPtrInput `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
 	Domain pulumi.StringInput `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
 }
 
 func (DatabaseInstanceSettingsActiveDirectoryConfigArgs) ElementType() reflect.Type {
@@ -2676,10 +2711,29 @@ func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceS
 	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
 }
 
-// The domain name for the active directory (e.g., mydomain.com).
-// Can only be used with SQL Server.
+// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) AdminCredentialSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) *string { return v.AdminCredentialSecretName }).(pulumi.StringPtrOutput)
+}
+
+// Domain controller IPv4 addresses used to bootstrap Active Directory.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
 func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2706,14 +2760,53 @@ func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Elem() DatabaseI
 	}).(DatabaseInstanceSettingsActiveDirectoryConfigOutput)
 }
 
-// The domain name for the active directory (e.g., mydomain.com).
-// Can only be used with SQL Server.
+// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) AdminCredentialSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminCredentialSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain controller IPv4 addresses used to bootstrap Active Directory.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
 func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationalUnit
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5598,6 +5691,8 @@ type DatabaseInstanceSettingsPasswordValidationPolicy struct {
 	// Prevents the use of the username in the password.
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
 	// Enables or disable the password validation policy.
+	//
+	// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
 	EnablePasswordPolicy bool `pulumi:"enablePasswordPolicy"`
 	// Specifies the minimum number of characters that the password must have.
 	MinLength *int `pulumi:"minLength"`
@@ -5624,6 +5719,8 @@ type DatabaseInstanceSettingsPasswordValidationPolicyArgs struct {
 	// Prevents the use of the username in the password.
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
 	// Enables or disable the password validation policy.
+	//
+	// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
 	EnablePasswordPolicy pulumi.BoolInput `pulumi:"enablePasswordPolicy"`
 	// Specifies the minimum number of characters that the password must have.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
@@ -5721,6 +5818,8 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) DisallowUsername
 }
 
 // Enables or disable the password validation policy.
+//
+// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
 func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) bool { return v.EnablePasswordPolicy }).(pulumi.BoolOutput)
 }
@@ -5785,6 +5884,8 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) DisallowUsern
 }
 
 // Enables or disable the password validation policy.
+//
+// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
 func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) EnablePasswordPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *bool {
 		if v == nil {
@@ -5821,6 +5922,238 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ReuseInterval
 			return nil
 		}
 		return v.ReuseInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsPerformanceCaptureConfig struct {
+	// Enable or disable the Performance Capture.
+	Enabled *bool `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold *int `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds *int `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold *int `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold *int `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold *int `pulumi:"transactionDurationThreshold"`
+}
+
+// DatabaseInstanceSettingsPerformanceCaptureConfigInput is an input type that accepts DatabaseInstanceSettingsPerformanceCaptureConfigArgs and DatabaseInstanceSettingsPerformanceCaptureConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsPerformanceCaptureConfigInput` via:
+//
+//	DatabaseInstanceSettingsPerformanceCaptureConfigArgs{...}
+type DatabaseInstanceSettingsPerformanceCaptureConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsPerformanceCaptureConfigOutput() DatabaseInstanceSettingsPerformanceCaptureConfigOutput
+	ToDatabaseInstanceSettingsPerformanceCaptureConfigOutputWithContext(context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigOutput
+}
+
+type DatabaseInstanceSettingsPerformanceCaptureConfigArgs struct {
+	// Enable or disable the Performance Capture.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold pulumi.IntPtrInput `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds pulumi.IntPtrInput `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold pulumi.IntPtrInput `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold pulumi.IntPtrInput `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold pulumi.IntPtrInput `pulumi:"transactionDurationThreshold"`
+}
+
+func (DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ToDatabaseInstanceSettingsPerformanceCaptureConfigOutput() DatabaseInstanceSettingsPerformanceCaptureConfigOutput {
+	return i.ToDatabaseInstanceSettingsPerformanceCaptureConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ToDatabaseInstanceSettingsPerformanceCaptureConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPerformanceCaptureConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPerformanceCaptureConfigOutput).ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput is an input type that accepts DatabaseInstanceSettingsPerformanceCaptureConfigArgs, DatabaseInstanceSettingsPerformanceCaptureConfigPtr and DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput` via:
+//
+//	        DatabaseInstanceSettingsPerformanceCaptureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput
+	ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput
+}
+
+type databaseInstanceSettingsPerformanceCaptureConfigPtrType DatabaseInstanceSettingsPerformanceCaptureConfigArgs
+
+func DatabaseInstanceSettingsPerformanceCaptureConfigPtr(v *DatabaseInstanceSettingsPerformanceCaptureConfigArgs) DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput {
+	return (*databaseInstanceSettingsPerformanceCaptureConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsPerformanceCaptureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsPerformanceCaptureConfigPtrType) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsPerformanceCaptureConfigPtrType) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsPerformanceCaptureConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigOutput() DatabaseInstanceSettingsPerformanceCaptureConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsPerformanceCaptureConfig) *DatabaseInstanceSettingsPerformanceCaptureConfig {
+		return &v
+	}).(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput)
+}
+
+// Enable or disable the Performance Capture.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The minimum number of consecutive readings above threshold that triggers instance state capture.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ProbeThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.ProbeThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The time interval in seconds between any two probes.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ProbingIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.ProbingIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of server threads running to trigger the capture on primary.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) RunningThreadsThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.RunningThreadsThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) SecondsBehindSourceThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.SecondsBehindSourceThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.TransactionDurationThreshold }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput() DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) ToDatabaseInstanceSettingsPerformanceCaptureConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) Elem() DatabaseInstanceSettingsPerformanceCaptureConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) DatabaseInstanceSettingsPerformanceCaptureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsPerformanceCaptureConfig
+		return ret
+	}).(DatabaseInstanceSettingsPerformanceCaptureConfigOutput)
+}
+
+// Enable or disable the Performance Capture.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum number of consecutive readings above threshold that triggers instance state capture.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) ProbeThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time interval in seconds between any two probes.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) ProbingIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbingIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of server threads running to trigger the capture on primary.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) RunningThreadsThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunningThreadsThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) SecondsBehindSourceThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SecondsBehindSourceThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionDurationThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionDurationThreshold
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -8043,6 +8376,8 @@ type GetDatabaseInstanceSetting struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindows         []GetDatabaseInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies []GetDatabaseInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfigs []GetDatabaseInstanceSettingPerformanceCaptureConfig `pulumi:"performanceCaptureConfigs"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -8135,6 +8470,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindows         GetDatabaseInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfigs GetDatabaseInstanceSettingPerformanceCaptureConfigArrayInput `pulumi:"performanceCaptureConfigs"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -8383,6 +8720,13 @@ func (o GetDatabaseInstanceSettingOutput) PasswordValidationPolicies() GetDataba
 	}).(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput)
 }
 
+// Configuration of Performance Capture.
+func (o GetDatabaseInstanceSettingOutput) PerformanceCaptureConfigs() GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingPerformanceCaptureConfig {
+		return v.PerformanceCaptureConfigs
+	}).(GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput)
+}
+
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
@@ -8447,8 +8791,16 @@ func (o GetDatabaseInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatab
 }
 
 type GetDatabaseInstanceSettingActiveDirectoryConfig struct {
+	// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+	AdminCredentialSecretName string `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers []string `pulumi:"dnsServers"`
 	// Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 	Domain string `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+	Mode string `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit string `pulumi:"organizationalUnit"`
 }
 
 // GetDatabaseInstanceSettingActiveDirectoryConfigInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArgs and GetDatabaseInstanceSettingActiveDirectoryConfigOutput values.
@@ -8463,8 +8815,16 @@ type GetDatabaseInstanceSettingActiveDirectoryConfigInput interface {
 }
 
 type GetDatabaseInstanceSettingActiveDirectoryConfigArgs struct {
+	// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+	AdminCredentialSecretName pulumi.StringInput `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 	Domain pulumi.StringInput `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
 }
 
 func (GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ElementType() reflect.Type {
@@ -8518,9 +8878,29 @@ func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInst
 	return o
 }
 
+// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) AdminCredentialSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) string { return v.AdminCredentialSecretName }).(pulumi.StringOutput)
+}
+
+// Domain controller IPv4 addresses used to bootstrap Active Directory.
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
 // Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) OrganizationalUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
@@ -10749,6 +11129,148 @@ func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) Index(i p
 	}).(GetDatabaseInstanceSettingPasswordValidationPolicyOutput)
 }
 
+type GetDatabaseInstanceSettingPerformanceCaptureConfig struct {
+	// Enable or disable the Performance Capture.
+	Enabled bool `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold int `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds int `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold int `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold int `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold int `pulumi:"transactionDurationThreshold"`
+}
+
+// GetDatabaseInstanceSettingPerformanceCaptureConfigInput is an input type that accepts GetDatabaseInstanceSettingPerformanceCaptureConfigArgs and GetDatabaseInstanceSettingPerformanceCaptureConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingPerformanceCaptureConfigInput` via:
+//
+//	GetDatabaseInstanceSettingPerformanceCaptureConfigArgs{...}
+type GetDatabaseInstanceSettingPerformanceCaptureConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigOutput
+	ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigOutput
+}
+
+type GetDatabaseInstanceSettingPerformanceCaptureConfigArgs struct {
+	// Enable or disable the Performance Capture.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold pulumi.IntInput `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds pulumi.IntInput `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold pulumi.IntInput `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold pulumi.IntInput `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold pulumi.IntInput `pulumi:"transactionDurationThreshold"`
+}
+
+func (GetDatabaseInstanceSettingPerformanceCaptureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingPerformanceCaptureConfigArgs) ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigOutput {
+	return i.ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingPerformanceCaptureConfigArgs) ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPerformanceCaptureConfigOutput)
+}
+
+// GetDatabaseInstanceSettingPerformanceCaptureConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingPerformanceCaptureConfigArray and GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingPerformanceCaptureConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingPerformanceCaptureConfigArray{ GetDatabaseInstanceSettingPerformanceCaptureConfigArgs{...} }
+type GetDatabaseInstanceSettingPerformanceCaptureConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput
+	ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingPerformanceCaptureConfigArray []GetDatabaseInstanceSettingPerformanceCaptureConfigInput
+
+func (GetDatabaseInstanceSettingPerformanceCaptureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingPerformanceCaptureConfigArray) ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingPerformanceCaptureConfigArray) ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingPerformanceCaptureConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ToGetDatabaseInstanceSettingPerformanceCaptureConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigOutput {
+	return o
+}
+
+// Enable or disable the Performance Capture.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The minimum number of consecutive readings above threshold that triggers instance state capture.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ProbeThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.ProbeThreshold }).(pulumi.IntOutput)
+}
+
+// The time interval in seconds between any two probes.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ProbingIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.ProbingIntervalSeconds }).(pulumi.IntOutput)
+}
+
+// The minimum number of server threads running to trigger the capture on primary.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) RunningThreadsThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.RunningThreadsThreshold }).(pulumi.IntOutput)
+}
+
+// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) SecondsBehindSourceThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.SecondsBehindSourceThreshold }).(pulumi.IntOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.TransactionDurationThreshold }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput) ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput) ToGetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingPerformanceCaptureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingPerformanceCaptureConfig {
+		return vs[0].([]GetDatabaseInstanceSettingPerformanceCaptureConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingPerformanceCaptureConfigOutput)
+}
+
 type GetDatabaseInstanceSettingReadPoolAutoScaleConfig struct {
 	// True if auto scale in is disabled.
 	DisableScaleIn bool `pulumi:"disableScaleIn"`
@@ -12671,6 +13193,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindows         []GetDatabaseInstancesInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies []GetDatabaseInstancesInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfigs []GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig `pulumi:"performanceCaptureConfigs"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -12763,6 +13287,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 	MaintenanceWindows         GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
+	// Configuration of Performance Capture.
+	PerformanceCaptureConfigs GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayInput `pulumi:"performanceCaptureConfigs"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
@@ -13015,6 +13541,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) PasswordValidationPolicies() 
 	}).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput)
 }
 
+// Configuration of Performance Capture.
+func (o GetDatabaseInstancesInstanceSettingOutput) PerformanceCaptureConfigs() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig {
+		return v.PerformanceCaptureConfigs
+	}).(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput)
+}
+
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstancesInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
@@ -13079,8 +13612,16 @@ func (o GetDatabaseInstancesInstanceSettingArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetDatabaseInstancesInstanceSettingActiveDirectoryConfig struct {
+	// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+	AdminCredentialSecretName string `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers []string `pulumi:"dnsServers"`
 	// Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 	Domain string `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+	Mode string `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit string `pulumi:"organizationalUnit"`
 }
 
 // GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs and GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput values.
@@ -13095,8 +13636,16 @@ type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput interface {
 }
 
 type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs struct {
+	// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+	AdminCredentialSecretName pulumi.StringInput `pulumi:"adminCredentialSecretName"`
+	// Domain controller IPv4 addresses used to bootstrap Active Directory.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 	Domain pulumi.StringInput `pulumi:"domain"`
+	// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
 }
 
 func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ElementType() reflect.Type {
@@ -13150,9 +13699,31 @@ func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToGetDat
 	return o
 }
 
+// The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) AdminCredentialSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) string {
+		return v.AdminCredentialSecretName
+	}).(pulumi.StringOutput)
+}
+
+// Domain controller IPv4 addresses used to bootstrap Active Directory.
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
 // Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
 func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) OrganizationalUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
@@ -15406,6 +15977,156 @@ func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) 
 	}).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput)
 }
 
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig struct {
+	// Enable or disable the Performance Capture.
+	Enabled bool `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold int `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds int `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold int `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold int `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold int `pulumi:"transactionDurationThreshold"`
+}
+
+// GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs and GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput
+	ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs struct {
+	// Enable or disable the Performance Capture.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The minimum number of consecutive readings above threshold that triggers instance state capture.
+	ProbeThreshold pulumi.IntInput `pulumi:"probeThreshold"`
+	// The time interval in seconds between any two probes.
+	ProbingIntervalSeconds pulumi.IntInput `pulumi:"probingIntervalSeconds"`
+	// The minimum number of server threads running to trigger the capture on primary.
+	RunningThreadsThreshold pulumi.IntInput `pulumi:"runningThreadsThreshold"`
+	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+	SecondsBehindSourceThreshold pulumi.IntInput `pulumi:"secondsBehindSourceThreshold"`
+	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+	TransactionDurationThreshold pulumi.IntInput `pulumi:"transactionDurationThreshold"`
+}
+
+func (GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray and GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray{ GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray []GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput
+
+func (GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput {
+	return o
+}
+
+// Enable or disable the Performance Capture.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The minimum number of consecutive readings above threshold that triggers instance state capture.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ProbeThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int { return v.ProbeThreshold }).(pulumi.IntOutput)
+}
+
+// The time interval in seconds between any two probes.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ProbingIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.ProbingIntervalSeconds
+	}).(pulumi.IntOutput)
+}
+
+// The minimum number of server threads running to trigger the capture on primary.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) RunningThreadsThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.RunningThreadsThreshold
+	}).(pulumi.IntOutput)
+}
+
+// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) SecondsBehindSourceThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.SecondsBehindSourceThreshold
+	}).(pulumi.IntOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before getting recorded.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.TransactionDurationThreshold
+	}).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput() GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput)
+}
+
 type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig struct {
 	// True if auto scale in is disabled.
 	DisableScaleIn bool `pulumi:"disableScaleIn"`
@@ -16163,6 +16884,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowPtrInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyPtrInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPerformanceCaptureConfigInput)(nil)).Elem(), DatabaseInstanceSettingsPerformanceCaptureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPerformanceCaptureConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsPerformanceCaptureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs{})
@@ -16233,6 +16956,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPerformanceCaptureConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingPerformanceCaptureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPerformanceCaptureConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingPerformanceCaptureConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{})
@@ -16297,6 +17022,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{})
@@ -16363,6 +17090,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsPerformanceCaptureConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput{})
@@ -16433,6 +17162,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPerformanceCaptureConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput{})
@@ -16497,6 +17228,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput{})

@@ -125,6 +125,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> biglakeCustomEndpoint() {
         return Codegen.optional(this.biglakeCustomEndpoint);
     }
+    @Export(name="biglakeHiveCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> biglakeHiveCustomEndpoint;
+
+    public Output<Optional<String>> biglakeHiveCustomEndpoint() {
+        return Codegen.optional(this.biglakeHiveCustomEndpoint);
+    }
     @Export(name="biglakeIcebergCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> biglakeIcebergCustomEndpoint;
 

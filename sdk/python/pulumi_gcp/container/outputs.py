@@ -213,6 +213,7 @@ __all__ = [
     'ClusterNodeConfigSoleTenantConfig',
     'ClusterNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodeConfigTaint',
+    'ClusterNodeConfigTaintConfig',
     'ClusterNodeConfigWindowsNodeConfig',
     'ClusterNodeConfigWorkloadMetadataConfig',
     'ClusterNodeCreationConfig',
@@ -295,6 +296,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigSoleTenantConfig',
     'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodePoolNodeConfigTaint',
+    'ClusterNodePoolNodeConfigTaintConfig',
     'ClusterNodePoolNodeConfigWindowsNodeConfig',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
     'ClusterNodePoolNodeDrainConfig',
@@ -386,6 +388,7 @@ __all__ = [
     'NodePoolNodeConfigSoleTenantConfig',
     'NodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'NodePoolNodeConfigTaint',
+    'NodePoolNodeConfigTaintConfig',
     'NodePoolNodeConfigWindowsNodeConfig',
     'NodePoolNodeConfigWorkloadMetadataConfig',
     'NodePoolNodeDrainConfig',
@@ -523,6 +526,7 @@ __all__ = [
     'GetClusterNodeConfigSoleTenantConfigResult',
     'GetClusterNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodeConfigTaintResult',
+    'GetClusterNodeConfigTaintConfigResult',
     'GetClusterNodeConfigWindowsNodeConfigResult',
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodeCreationConfigResult',
@@ -605,6 +609,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigSoleTenantConfigResult',
     'GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodePoolNodeConfigTaintResult',
+    'GetClusterNodePoolNodeConfigTaintConfigResult',
     'GetClusterNodePoolNodeConfigWindowsNodeConfigResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolNodeDrainConfigResult',
@@ -8042,6 +8047,8 @@ class ClusterNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "taintConfig":
+            suggest = "taint_config"
         elif key == "windowsNodeConfig":
             suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
@@ -8104,6 +8111,7 @@ class ClusterNodeConfig(dict):
                  spot: Optional[_builtins.bool] = None,
                  storage_pools: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
+                 taint_config: Optional['outputs.ClusterNodeConfigTaintConfig'] = None,
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
                  windows_node_config: Optional['outputs.ClusterNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodeConfigWorkloadMetadataConfig'] = None):
@@ -8208,6 +8216,7 @@ class ClusterNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
+        :param 'ClusterNodeConfigTaintConfigArgs' taint_config: Taint configuration for the node pool. Structure is documented below.
         :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of
                [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. This field will only report drift on taint keys that are
@@ -8309,6 +8318,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -8730,6 +8741,14 @@ class ClusterNodeConfig(dict):
         valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> Optional['outputs.ClusterNodeConfigTaintConfig']:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
 
     @_builtins.property
     @pulumi.getter
@@ -11588,6 +11607,49 @@ class ClusterNodeConfigTaint(dict):
 
 
 @pulumi.output_type
+class ClusterNodeConfigTaintConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "architectureTaintBehavior":
+            suggest = "architecture_taint_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigTaintConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigTaintConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigTaintConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architecture_taint_behavior: _builtins.str):
+        """
+        :param _builtins.str architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> _builtins.str:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+
+@pulumi.output_type
 class ClusterNodeConfigWindowsNodeConfig(dict):
     def __init__(__self__, *,
                  osversion: Optional[_builtins.str] = None):
@@ -11672,7 +11734,9 @@ class ClusterNodePool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "initialNodeCount":
+        if key == "ignoreNodeCountChanges":
+            suggest = "ignore_node_count_changes"
+        elif key == "initialNodeCount":
             suggest = "initial_node_count"
         elif key == "instanceGroupUrls":
             suggest = "instance_group_urls"
@@ -11712,6 +11776,7 @@ class ClusterNodePool(dict):
 
     def __init__(__self__, *,
                  autoscaling: Optional['outputs.ClusterNodePoolAutoscaling'] = None,
+                 ignore_node_count_changes: Optional[_builtins.bool] = None,
                  initial_node_count: Optional[_builtins.int] = None,
                  instance_group_urls: Optional[Sequence[_builtins.str]] = None,
                  managed_instance_group_urls: Optional[Sequence[_builtins.str]] = None,
@@ -11730,6 +11795,7 @@ class ClusterNodePool(dict):
                  version: Optional[_builtins.str] = None):
         """
         :param 'ClusterNodePoolAutoscalingArgs' autoscaling: Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param _builtins.bool ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param _builtins.int initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -11747,11 +11813,7 @@ class ClusterNodePool(dict):
         :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
         :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
-               Generally, this field should not be used at the same time as a
-               `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigArgs' node_config: The node configuration of the pool. Structure is documented below.
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         :param Sequence['ClusterNodePoolNodeDrainConfigArgs'] node_drain_configs: Node drain configuration for this NodePool.
         :param Sequence[_builtins.str] node_locations: The list of zones in which the cluster's nodes
@@ -11772,6 +11834,8 @@ class ClusterNodePool(dict):
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
@@ -11812,6 +11876,14 @@ class ClusterNodePool(dict):
         Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         """
         return pulumi.get(self, "autoscaling")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> Optional[_builtins.bool]:
+        """
+        Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -11890,11 +11962,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfig']:
         """
-        Parameters used in creating the default node pool.
-        Generally, this field should not be used at the same time as a
-        `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        The node configuration of the pool. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -13382,6 +13450,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "taintConfig":
+            suggest = "taint_config"
         elif key == "windowsNodeConfig":
             suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
@@ -13444,6 +13514,7 @@ class ClusterNodePoolNodeConfig(dict):
                  spot: Optional[_builtins.bool] = None,
                  storage_pools: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
+                 taint_config: Optional['outputs.ClusterNodePoolNodeConfigTaintConfig'] = None,
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
                  windows_node_config: Optional['outputs.ClusterNodePoolNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig'] = None):
@@ -13548,6 +13619,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
+        :param 'ClusterNodePoolNodeConfigTaintConfigArgs' taint_config: Taint configuration for the node pool. Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of
                [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. This field will only report drift on taint keys that are
@@ -13649,6 +13721,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -14070,6 +14144,14 @@ class ClusterNodePoolNodeConfig(dict):
         valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigTaintConfig']:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
 
     @_builtins.property
     @pulumi.getter
@@ -16928,6 +17010,49 @@ class ClusterNodePoolNodeConfigTaint(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigTaintConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "architectureTaintBehavior":
+            suggest = "architecture_taint_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigTaintConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigTaintConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigTaintConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architecture_taint_behavior: _builtins.str):
+        """
+        :param _builtins.str architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> _builtins.str:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigWindowsNodeConfig(dict):
     def __init__(__self__, *,
                  osversion: Optional[_builtins.str] = None):
@@ -19089,6 +19214,8 @@ class NodePoolNodeConfig(dict):
             suggest = "sole_tenant_config"
         elif key == "storagePools":
             suggest = "storage_pools"
+        elif key == "taintConfig":
+            suggest = "taint_config"
         elif key == "windowsNodeConfig":
             suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
@@ -19151,6 +19278,7 @@ class NodePoolNodeConfig(dict):
                  spot: Optional[_builtins.bool] = None,
                  storage_pools: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
+                 taint_config: Optional['outputs.NodePoolNodeConfigTaintConfig'] = None,
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
                  windows_node_config: Optional['outputs.NodePoolNodeConfigWindowsNodeConfig'] = None,
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
@@ -19200,6 +19328,7 @@ class NodePoolNodeConfig(dict):
         :param _builtins.bool spot: Whether the nodes are created as spot VM instances.
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes.
+        :param 'NodePoolNodeConfigTaintConfigArgs' taint_config: Taint configuration for the node pool. Structure is documented below.
         :param Sequence['NodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param 'NodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Parameters that can be configured on Windows nodes.
         :param 'NodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: The workload metadata configuration for this node.
@@ -19294,6 +19423,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -19660,6 +19791,14 @@ class NodePoolNodeConfig(dict):
         The list of instance tags applied to all nodes.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> Optional['outputs.NodePoolNodeConfigTaintConfig']:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
 
     @_builtins.property
     @pulumi.getter
@@ -22404,6 +22543,49 @@ class NodePoolNodeConfigTaint(dict):
         Value for taint.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigTaintConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "architectureTaintBehavior":
+            suggest = "architecture_taint_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigTaintConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigTaintConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigTaintConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architecture_taint_behavior: _builtins.str):
+        """
+        :param _builtins.str architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> _builtins.str:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
 
 
 @pulumi.output_type
@@ -25291,6 +25473,7 @@ class GetClusterNodeConfigResult(dict):
                  spot: _builtins.bool,
                  storage_pools: Sequence[_builtins.str],
                  tags: Sequence[_builtins.str],
+                 taint_configs: Sequence['outputs.GetClusterNodeConfigTaintConfigResult'],
                  taints: Sequence['outputs.GetClusterNodeConfigTaintResult'],
                  windows_node_configs: Sequence['outputs.GetClusterNodeConfigWindowsNodeConfigResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']):
@@ -25340,6 +25523,7 @@ class GetClusterNodeConfigResult(dict):
         :param _builtins.bool spot: Whether the nodes are created as spot VM instances.
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes.
+        :param Sequence['GetClusterNodeConfigTaintConfigArgs'] taint_configs: Taint configuration for this node.
         :param Sequence['GetClusterNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param Sequence['GetClusterNodeConfigWindowsNodeConfigArgs'] windows_node_configs: Parameters that can be configured on Windows nodes.
         :param Sequence['GetClusterNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_configs: The workload metadata configuration for this node.
@@ -25389,6 +25573,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "storage_pools", storage_pools)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "taint_configs", taint_configs)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "windows_node_configs", windows_node_configs)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
@@ -25752,6 +25937,14 @@ class GetClusterNodeConfigResult(dict):
         The list of instance tags applied to all nodes.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfigs")
+    def taint_configs(self) -> Sequence['outputs.GetClusterNodeConfigTaintConfigResult']:
+        """
+        Taint configuration for this node.
+        """
+        return pulumi.get(self, "taint_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -27647,6 +27840,24 @@ class GetClusterNodeConfigTaintResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodeConfigTaintConfigResult(dict):
+    def __init__(__self__, *,
+                 architecture_taint_behavior: _builtins.str):
+        """
+        :param _builtins.str architecture_taint_behavior: Architecture taint behavior. Controls, how we apply taints based on the node architecture.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> _builtins.str:
+        """
+        Architecture taint behavior. Controls, how we apply taints based on the node architecture.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+
+@pulumi.output_type
 class GetClusterNodeConfigWindowsNodeConfigResult(dict):
     def __init__(__self__, *,
                  osversion: _builtins.str):
@@ -27710,6 +27921,7 @@ class GetClusterNodeCreationConfigResult(dict):
 class GetClusterNodePoolResult(dict):
     def __init__(__self__, *,
                  autoscalings: Sequence['outputs.GetClusterNodePoolAutoscalingResult'],
+                 ignore_node_count_changes: _builtins.bool,
                  initial_node_count: _builtins.int,
                  instance_group_urls: Sequence[_builtins.str],
                  managed_instance_group_urls: Sequence[_builtins.str],
@@ -27728,6 +27940,7 @@ class GetClusterNodePoolResult(dict):
                  version: _builtins.str):
         """
         :param Sequence['GetClusterNodePoolAutoscalingArgs'] autoscalings: Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param _builtins.bool ignore_node_count_changes: When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managed_instance_group_urls in the state.
         :param _builtins.int initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
         :param Sequence[_builtins.str] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param Sequence[_builtins.str] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
@@ -27746,6 +27959,7 @@ class GetClusterNodePoolResult(dict):
         :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         pulumi.set(__self__, "autoscalings", autoscalings)
+        pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
@@ -27770,6 +27984,14 @@ class GetClusterNodePoolResult(dict):
         Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         """
         return pulumi.get(self, "autoscalings")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> _builtins.bool:
+        """
+        When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managed_instance_group_urls in the state.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -28835,6 +29057,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  spot: _builtins.bool,
                  storage_pools: Sequence[_builtins.str],
                  tags: Sequence[_builtins.str],
+                 taint_configs: Sequence['outputs.GetClusterNodePoolNodeConfigTaintConfigResult'],
                  taints: Sequence['outputs.GetClusterNodePoolNodeConfigTaintResult'],
                  windows_node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWindowsNodeConfigResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']):
@@ -28884,6 +29107,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param _builtins.bool spot: Whether the nodes are created as spot VM instances.
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes.
+        :param Sequence['GetClusterNodePoolNodeConfigTaintConfigArgs'] taint_configs: Taint configuration for this node.
         :param Sequence['GetClusterNodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param Sequence['GetClusterNodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_configs: Parameters that can be configured on Windows nodes.
         :param Sequence['GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_configs: The workload metadata configuration for this node.
@@ -28933,6 +29157,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "storage_pools", storage_pools)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "taint_configs", taint_configs)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "windows_node_configs", windows_node_configs)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
@@ -29296,6 +29521,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         The list of instance tags applied to all nodes.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfigs")
+    def taint_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigTaintConfigResult']:
+        """
+        Taint configuration for this node.
+        """
+        return pulumi.get(self, "taint_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -31188,6 +31421,24 @@ class GetClusterNodePoolNodeConfigTaintResult(dict):
         Value for taint.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigTaintConfigResult(dict):
+    def __init__(__self__, *,
+                 architecture_taint_behavior: _builtins.str):
+        """
+        :param _builtins.str architecture_taint_behavior: Architecture taint behavior. Controls, how we apply taints based on the node architecture.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> _builtins.str:
+        """
+        Architecture taint behavior. Controls, how we apply taints based on the node architecture.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
 
 
 @pulumi.output_type

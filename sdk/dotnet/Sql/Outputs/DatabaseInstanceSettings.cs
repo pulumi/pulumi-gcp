@@ -131,6 +131,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly Outputs.DatabaseInstanceSettingsMaintenanceWindow? MaintenanceWindow;
         public readonly Outputs.DatabaseInstanceSettingsPasswordValidationPolicy? PasswordValidationPolicy;
         /// <summary>
+        /// Configuration of Performance Capture.
+        /// </summary>
+        public readonly Outputs.DatabaseInstanceSettingsPerformanceCaptureConfig? PerformanceCaptureConfig;
+        /// <summary>
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>
         public readonly string? PricingPlan;
@@ -227,6 +231,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             Outputs.DatabaseInstanceSettingsPasswordValidationPolicy? passwordValidationPolicy,
 
+            Outputs.DatabaseInstanceSettingsPerformanceCaptureConfig? performanceCaptureConfig,
+
             string? pricingPlan,
 
             Outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig? readPoolAutoScaleConfig,
@@ -274,6 +280,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;
             PasswordValidationPolicy = passwordValidationPolicy;
+            PerformanceCaptureConfig = performanceCaptureConfig;
             PricingPlan = pricingPlan;
             ReadPoolAutoScaleConfig = readPoolAutoScaleConfig;
             RetainBackupsOnDelete = retainBackupsOnDelete;

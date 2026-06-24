@@ -135,6 +135,16 @@ export const getControlProjectIntelligenceFinding: typeof import("./getControlPr
 export const getControlProjectIntelligenceFindingOutput: typeof import("./getControlProjectIntelligenceFinding").getControlProjectIntelligenceFindingOutput = null as any;
 utilities.lazyLoad(exports, ["getControlProjectIntelligenceFinding","getControlProjectIntelligenceFindingOutput"], () => require("./getControlProjectIntelligenceFinding"));
 
+export { GetControlProjectIntelligenceFindingRevisionArgs, GetControlProjectIntelligenceFindingRevisionResult, GetControlProjectIntelligenceFindingRevisionOutputArgs } from "./getControlProjectIntelligenceFindingRevision";
+export const getControlProjectIntelligenceFindingRevision: typeof import("./getControlProjectIntelligenceFindingRevision").getControlProjectIntelligenceFindingRevision = null as any;
+export const getControlProjectIntelligenceFindingRevisionOutput: typeof import("./getControlProjectIntelligenceFindingRevision").getControlProjectIntelligenceFindingRevisionOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceFindingRevision","getControlProjectIntelligenceFindingRevisionOutput"], () => require("./getControlProjectIntelligenceFindingRevision"));
+
+export { GetControlProjectIntelligenceFindingRevisionsArgs, GetControlProjectIntelligenceFindingRevisionsResult, GetControlProjectIntelligenceFindingRevisionsOutputArgs } from "./getControlProjectIntelligenceFindingRevisions";
+export const getControlProjectIntelligenceFindingRevisions: typeof import("./getControlProjectIntelligenceFindingRevisions").getControlProjectIntelligenceFindingRevisions = null as any;
+export const getControlProjectIntelligenceFindingRevisionsOutput: typeof import("./getControlProjectIntelligenceFindingRevisions").getControlProjectIntelligenceFindingRevisionsOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceFindingRevisions","getControlProjectIntelligenceFindingRevisionsOutput"], () => require("./getControlProjectIntelligenceFindingRevisions"));
+
 export { GetControlProjectIntelligenceFindingsArgs, GetControlProjectIntelligenceFindingsResult, GetControlProjectIntelligenceFindingsOutputArgs } from "./getControlProjectIntelligenceFindings";
 export const getControlProjectIntelligenceFindings: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindings = null as any;
 export const getControlProjectIntelligenceFindingsOutput: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindingsOutput = null as any;

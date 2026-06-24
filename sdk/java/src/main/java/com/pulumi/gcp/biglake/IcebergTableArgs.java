@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.biglake.inputs.IcebergTablePartitionSpecArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+import com.pulumi.gcp.biglake.inputs.IcebergTableSortOrderArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -170,6 +171,23 @@ public final class IcebergTableArgs extends com.pulumi.resources.ResourceArgs {
         return this.schema;
     }
 
+    /**
+     * The sort order of the table.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sortOrder")
+    private @Nullable Output<IcebergTableSortOrderArgs> sortOrder;
+
+    /**
+     * @return The sort order of the table.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<IcebergTableSortOrderArgs>> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
+    }
+
     private IcebergTableArgs() {}
 
     private IcebergTableArgs(IcebergTableArgs $) {
@@ -182,6 +200,7 @@ public final class IcebergTableArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.properties = $.properties;
         this.schema = $.schema;
+        this.sortOrder = $.sortOrder;
     }
 
     public static Builder builder() {
@@ -405,6 +424,29 @@ public final class IcebergTableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schema(IcebergTableSchemaArgs schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param sortOrder The sort order of the table.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(@Nullable Output<IcebergTableSortOrderArgs> sortOrder) {
+            $.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * @param sortOrder The sort order of the table.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(IcebergTableSortOrderArgs sortOrder) {
+            return sortOrder(Output.of(sortOrder));
         }
 
         public IcebergTableArgs build() {

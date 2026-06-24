@@ -186,6 +186,51 @@ __all__ = [
     'GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketContributionTopPrefixResult',
     'GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketErrorResult',
     'GetControlProjectIntelligenceFindingObservationPeriodResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult',
+    'GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult',
     'GetControlProjectIntelligenceFindingStorageGrowthAboveTrendResult',
     'GetControlProjectIntelligenceFindingStorageGrowthAboveTrendTopBucketResult',
     'GetControlProjectIntelligenceFindingStorageGrowthAboveTrendTopBucketContributionResult',
@@ -1433,6 +1478,10 @@ class BucketLifecycleRuleCondition(dict):
             suggest = "send_days_since_noncurrent_time_if_zero"
         elif key == "sendNumNewerVersionsIfZero":
             suggest = "send_num_newer_versions_if_zero"
+        elif key == "sizeAboveBytes":
+            suggest = "size_above_bytes"
+        elif key == "sizeBelowBytes":
+            suggest = "size_below_bytes"
         elif key == "withState":
             suggest = "with_state"
 
@@ -1462,6 +1511,8 @@ class BucketLifecycleRuleCondition(dict):
                  send_days_since_custom_time_if_zero: Optional[_builtins.bool] = None,
                  send_days_since_noncurrent_time_if_zero: Optional[_builtins.bool] = None,
                  send_num_newer_versions_if_zero: Optional[_builtins.bool] = None,
+                 size_above_bytes: Optional[_builtins.int] = None,
+                 size_below_bytes: Optional[_builtins.int] = None,
                  with_state: Optional[_builtins.str] = None):
         """
         :param _builtins.int age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
@@ -1478,6 +1529,8 @@ class BucketLifecycleRuleCondition(dict):
         :param _builtins.bool send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         :param _builtins.bool send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
         :param _builtins.bool send_num_newer_versions_if_zero: While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        :param _builtins.int size_above_bytes: Objects having a size greater than this value in bytes will be matched.
+        :param _builtins.int size_below_bytes: Objects having a size smaller than this value in bytes will be matched.
         :param _builtins.str with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
         if age is not None:
@@ -1508,6 +1561,10 @@ class BucketLifecycleRuleCondition(dict):
             pulumi.set(__self__, "send_days_since_noncurrent_time_if_zero", send_days_since_noncurrent_time_if_zero)
         if send_num_newer_versions_if_zero is not None:
             pulumi.set(__self__, "send_num_newer_versions_if_zero", send_num_newer_versions_if_zero)
+        if size_above_bytes is not None:
+            pulumi.set(__self__, "size_above_bytes", size_above_bytes)
+        if size_below_bytes is not None:
+            pulumi.set(__self__, "size_below_bytes", size_below_bytes)
         if with_state is not None:
             pulumi.set(__self__, "with_state", with_state)
 
@@ -1622,6 +1679,22 @@ class BucketLifecycleRuleCondition(dict):
         While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
         """
         return pulumi.get(self, "send_num_newer_versions_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeAboveBytes")
+    def size_above_bytes(self) -> Optional[_builtins.int]:
+        """
+        Objects having a size greater than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_above_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeBelowBytes")
+    def size_below_bytes(self) -> Optional[_builtins.int]:
+        """
+        Objects having a size smaller than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_below_bytes")
 
     @_builtins.property
     @pulumi.getter(name="withState")
@@ -6486,6 +6559,8 @@ class GetBucketLifecycleRuleConditionResult(dict):
                  send_days_since_custom_time_if_zero: _builtins.bool,
                  send_days_since_noncurrent_time_if_zero: _builtins.bool,
                  send_num_newer_versions_if_zero: _builtins.bool,
+                 size_above_bytes: _builtins.int,
+                 size_below_bytes: _builtins.int,
                  with_state: _builtins.str):
         """
         :param _builtins.int age: Minimum age of an object in days to satisfy this condition.
@@ -6503,6 +6578,8 @@ class GetBucketLifecycleRuleConditionResult(dict):
         :param _builtins.bool send_days_since_custom_time_if_zero: While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
         :param _builtins.bool send_days_since_noncurrent_time_if_zero: While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
         :param _builtins.bool send_num_newer_versions_if_zero: While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+        :param _builtins.int size_above_bytes: Objects having a size greater than this value in bytes will be matched.
+        :param _builtins.int size_below_bytes: Objects having a size less than this value in bytes will be matched.
         :param _builtins.str with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
         """
         pulumi.set(__self__, "age", age)
@@ -6519,6 +6596,8 @@ class GetBucketLifecycleRuleConditionResult(dict):
         pulumi.set(__self__, "send_days_since_custom_time_if_zero", send_days_since_custom_time_if_zero)
         pulumi.set(__self__, "send_days_since_noncurrent_time_if_zero", send_days_since_noncurrent_time_if_zero)
         pulumi.set(__self__, "send_num_newer_versions_if_zero", send_num_newer_versions_if_zero)
+        pulumi.set(__self__, "size_above_bytes", size_above_bytes)
+        pulumi.set(__self__, "size_below_bytes", size_below_bytes)
         pulumi.set(__self__, "with_state", with_state)
 
     @_builtins.property
@@ -6633,6 +6712,22 @@ class GetBucketLifecycleRuleConditionResult(dict):
         While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
         """
         return pulumi.get(self, "send_num_newer_versions_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeAboveBytes")
+    def size_above_bytes(self) -> _builtins.int:
+        """
+        Objects having a size greater than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_above_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeBelowBytes")
+    def size_below_bytes(self) -> _builtins.int:
+        """
+        Objects having a size less than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_below_bytes")
 
     @_builtins.property
     @pulumi.getter(name="withState")
@@ -8277,6 +8372,2378 @@ class GetControlProjectIntelligenceFindingObservationPeriodResult(dict):
         The start time of the observation period.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotResult(dict):
+    def __init__(__self__, *,
+                 associated_resources: Sequence[_builtins.str],
+                 category: _builtins.str,
+                 coldline_and_archival_storage_operations_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult'],
+                 create_time: _builtins.str,
+                 cross_region_egress_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeResult'],
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 observation_periods: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodResult'],
+                 severity: _builtins.str,
+                 storage_growth_above_trends: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendResult'],
+                 target_resource: _builtins.str,
+                 throttled_requests_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeResult'],
+                 type: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param Sequence[_builtins.str] associated_resources: Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+        :param _builtins.str category: The category of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs'] coldline_and_archival_storage_operations_spikes: A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+        :param _builtins.str create_time: The time when the finding was created.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs'] cross_region_egress_spikes: A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+        :param _builtins.str description: A short description of the finding.
+        :param _builtins.str name: The resource name of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs'] observation_periods: The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+        :param _builtins.str severity: The severity of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs'] storage_growth_above_trends: A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+        :param _builtins.str target_resource: The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs'] throttled_requests_spikes: A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+        :param _builtins.str type: The type of this finding.
+        :param _builtins.str update_time: The time when the finding was last updated.
+        """
+        pulumi.set(__self__, "associated_resources", associated_resources)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "coldline_and_archival_storage_operations_spikes", coldline_and_archival_storage_operations_spikes)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_region_egress_spikes", cross_region_egress_spikes)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "observation_periods", observation_periods)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "storage_growth_above_trends", storage_growth_above_trends)
+        pulumi.set(__self__, "target_resource", target_resource)
+        pulumi.set(__self__, "throttled_requests_spikes", throttled_requests_spikes)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResources")
+    def associated_resources(self) -> Sequence[_builtins.str]:
+        """
+        Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+        """
+        return pulumi.get(self, "associated_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the finding.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="coldlineAndArchivalStorageOperationsSpikes")
+    def coldline_and_archival_storage_operations_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult']:
+        """
+        A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+        """
+        return pulumi.get(self, "coldline_and_archival_storage_operations_spikes")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the finding was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="crossRegionEgressSpikes")
+    def cross_region_egress_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeResult']:
+        """
+        A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+        """
+        return pulumi.get(self, "cross_region_egress_spikes")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A short description of the finding.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the finding.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="observationPeriods")
+    def observation_periods(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodResult']:
+        """
+        The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+        """
+        return pulumi.get(self, "observation_periods")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        The severity of the finding.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter(name="storageGrowthAboveTrends")
+    def storage_growth_above_trends(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendResult']:
+        """
+        A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+        """
+        return pulumi.get(self, "storage_growth_above_trends")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResource")
+    def target_resource(self) -> _builtins.str:
+        """
+        The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+        """
+        return pulumi.get(self, "target_resource")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequestsSpikes")
+    def throttled_requests_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeResult']:
+        """
+        A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+        """
+        return pulumi.get(self, "throttled_requests_spikes")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of this finding.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when the finding was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult'],
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketResult'],
+                 total_egress_bytes: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodResult(dict):
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: The end time of the observation period.
+        :param _builtins.str start_time: The start time of the observation period.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        The end time of the observation period.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        The start time of the observation period.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketResult'],
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketResult']):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 name: _builtins.str,
+                 snapshots: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotResult']):
+        """
+        :param _builtins.str create_time: The time when the finding was created.
+        :param _builtins.str name: The resource name of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs'] snapshots: The snapshot of the finding at revision creation time. Structure is documented below.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the finding was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the finding.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotResult']:
+        """
+        The snapshot of the finding at revision creation time. Structure is documented below.
+        """
+        return pulumi.get(self, "snapshots")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotResult(dict):
+    def __init__(__self__, *,
+                 associated_resources: Sequence[_builtins.str],
+                 category: _builtins.str,
+                 coldline_and_archival_storage_operations_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult'],
+                 create_time: _builtins.str,
+                 cross_region_egress_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeResult'],
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 observation_periods: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodResult'],
+                 severity: _builtins.str,
+                 storage_growth_above_trends: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendResult'],
+                 target_resource: _builtins.str,
+                 throttled_requests_spikes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeResult'],
+                 type: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param Sequence[_builtins.str] associated_resources: Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+        :param _builtins.str category: The category of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs'] coldline_and_archival_storage_operations_spikes: A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+        :param _builtins.str create_time: The time when the finding was created.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs'] cross_region_egress_spikes: A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+        :param _builtins.str description: A short description of the finding.
+        :param _builtins.str name: The resource name of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs'] observation_periods: The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+        :param _builtins.str severity: The severity of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs'] storage_growth_above_trends: A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+        :param _builtins.str target_resource: The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs'] throttled_requests_spikes: A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+        :param _builtins.str type: The type of this finding.
+        :param _builtins.str update_time: The time when the finding was last updated.
+        """
+        pulumi.set(__self__, "associated_resources", associated_resources)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "coldline_and_archival_storage_operations_spikes", coldline_and_archival_storage_operations_spikes)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_region_egress_spikes", cross_region_egress_spikes)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "observation_periods", observation_periods)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "storage_growth_above_trends", storage_growth_above_trends)
+        pulumi.set(__self__, "target_resource", target_resource)
+        pulumi.set(__self__, "throttled_requests_spikes", throttled_requests_spikes)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResources")
+    def associated_resources(self) -> Sequence[_builtins.str]:
+        """
+        Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+        """
+        return pulumi.get(self, "associated_resources")
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the finding.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="coldlineAndArchivalStorageOperationsSpikes")
+    def coldline_and_archival_storage_operations_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult']:
+        """
+        A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+        """
+        return pulumi.get(self, "coldline_and_archival_storage_operations_spikes")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the finding was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="crossRegionEgressSpikes")
+    def cross_region_egress_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeResult']:
+        """
+        A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+        """
+        return pulumi.get(self, "cross_region_egress_spikes")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A short description of the finding.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the finding.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="observationPeriods")
+    def observation_periods(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodResult']:
+        """
+        The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+        """
+        return pulumi.get(self, "observation_periods")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        The severity of the finding.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter(name="storageGrowthAboveTrends")
+    def storage_growth_above_trends(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendResult']:
+        """
+        A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+        """
+        return pulumi.get(self, "storage_growth_above_trends")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResource")
+    def target_resource(self) -> _builtins.str:
+        """
+        The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+        """
+        return pulumi.get(self, "target_resource")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequestsSpikes")
+    def throttled_requests_spikes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeResult']:
+        """
+        A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+        """
+        return pulumi.get(self, "throttled_requests_spikes")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of this finding.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when the finding was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult'],
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketResult'],
+                 total_egress_bytes: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodResult(dict):
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: The end time of the observation period.
+        :param _builtins.str start_time: The start time of the observation period.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        The end time of the observation period.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        The start time of the observation period.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketResult'],
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 top_buckets: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketResult']):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs'] top_buckets: The top buckets contributing to the spike. Structure is documented below.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "top_buckets", top_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="topBuckets")
+    def top_buckets(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketResult']:
+        """
+        The top buckets contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "top_buckets")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 contributions: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult'],
+                 errors: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult'],
+                 percentage_increase: _builtins.float,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str,
+                 total_storage_growth_bytes: _builtins.str):
+        """
+        :param _builtins.str bucket: The resource name of the bucket.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs'] contributions: The breakdown of prefixes contributing to the spike. Structure is documented below.
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs'] errors: Error details if the bucket details cannot be retrieved. Structure is documented below.
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        :param _builtins.str total_storage_growth_bytes: The total storage growth in bytes for this bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "contributions", contributions)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+        pulumi.set(__self__, "total_storage_growth_bytes", total_storage_growth_bytes)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The resource name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def contributions(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult']:
+        """
+        The breakdown of prefixes contributing to the spike. Structure is documented below.
+        """
+        return pulumi.get(self, "contributions")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult']:
+        """
+        Error details if the bucket details cannot be retrieved. Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageGrowthBytes")
+    def total_storage_growth_bytes(self) -> _builtins.str:
+        """
+        The total storage growth in bytes for this bucket.
+        """
+        return pulumi.get(self, "total_storage_growth_bytes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionResult(dict):
+    def __init__(__self__, *,
+                 top_prefixes: Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult']):
+        """
+        :param Sequence['GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs'] top_prefixes: A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        pulumi.set(__self__, "top_prefixes", top_prefixes)
+
+    @_builtins.property
+    @pulumi.getter(name="topPrefixes")
+    def top_prefixes(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult']:
+        """
+        A list of top prefixes contributing to the finding. Structure is documented below.
+        """
+        return pulumi.get(self, "top_prefixes")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixResult(dict):
+    def __init__(__self__, *,
+                 percentage_increase: _builtins.float,
+                 prefix: _builtins.str,
+                 throttled_requests: _builtins.str,
+                 total_egress_bytes: _builtins.str,
+                 total_operations_count: _builtins.str):
+        """
+        :param _builtins.float percentage_increase: The percentage increase for this prefix.
+        :param _builtins.str prefix: The prefix string.
+        :param _builtins.str throttled_requests: The number of throttled requests for this prefix.
+        :param _builtins.str total_egress_bytes: The total egress bytes for this prefix.
+        :param _builtins.str total_operations_count: The total operations count for this prefix.
+        """
+        pulumi.set(__self__, "percentage_increase", percentage_increase)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "throttled_requests", throttled_requests)
+        pulumi.set(__self__, "total_egress_bytes", total_egress_bytes)
+        pulumi.set(__self__, "total_operations_count", total_operations_count)
+
+    @_builtins.property
+    @pulumi.getter(name="percentageIncrease")
+    def percentage_increase(self) -> _builtins.float:
+        """
+        The percentage increase for this prefix.
+        """
+        return pulumi.get(self, "percentage_increase")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The prefix string.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="throttledRequests")
+    def throttled_requests(self) -> _builtins.str:
+        """
+        The number of throttled requests for this prefix.
+        """
+        return pulumi.get(self, "throttled_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEgressBytes")
+    def total_egress_bytes(self) -> _builtins.str:
+        """
+        The total egress bytes for this prefix.
+        """
+        return pulumi.get(self, "total_egress_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalOperationsCount")
+    def total_operations_count(self) -> _builtins.str:
+        """
+        The total operations count for this prefix.
+        """
+        return pulumi.get(self, "total_operations_count")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The error code.
+        :param _builtins.str message: The error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The error message.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

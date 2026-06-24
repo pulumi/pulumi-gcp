@@ -23,8 +23,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// IPv4 address of network endpoint. The IP address must belong
         /// to a VM in GCE (either the primary IP or as part of an aliased IP
         /// range).
+        /// **Note** `IpAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
         /// </summary>
-        public readonly string IpAddress;
+        public readonly string? IpAddress;
         /// <summary>
         /// Port number of network endpoint.
         /// **Note** `Port` is required unless the Network Endpoint Group is created
@@ -36,7 +37,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         private NetworkEndpointListNetworkEndpoint(
             string? instance,
 
-            string ipAddress,
+            string? ipAddress,
 
             int? port)
         {

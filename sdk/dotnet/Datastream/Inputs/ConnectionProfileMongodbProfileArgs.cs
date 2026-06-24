@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
     public sealed class ConnectionProfileMongodbProfileArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalOptions")]
+        private InputMap<string>? _additionalOptions;
+
+        /// <summary>
+        /// A map of additional options for the MongoDB connection.
+        /// Keys are case-sensitive and should match the official
+        /// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+        /// </summary>
+        public InputMap<string> AdditionalOptions
+        {
+            get => _additionalOptions ?? (_additionalOptions = new InputMap<string>());
+            set => _additionalOptions = value;
+        }
+
         [Input("hostAddresses", required: true)]
         private InputList<Inputs.ConnectionProfileMongodbProfileHostAddressArgs>? _hostAddresses;
 

@@ -99,10 +99,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiReasoningEngineIamMember{}
 	case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
 		r = &AiReasoningEngineIamPolicy{}
+	case "gcp:vertex/aiSchedule:AiSchedule":
+		r = &AiSchedule{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
 		r = &AiTensorboard{}
 	case "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment":
 		r = &AiTensorboardExperiment{}
+	case "gcp:vertex/aiTensorboardRun:AiTensorboardRun":
+		r = &AiTensorboardRun{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -313,12 +317,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiSchedule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiTensorboard",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiTensorboardExperiment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiTensorboardRun",
 		&module{version},
 	)
 }

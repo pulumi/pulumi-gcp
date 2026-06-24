@@ -18,6 +18,75 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
  *
+ * ## Example Usage
+ *
+ * ### Gke Hub Rollout Sequence Create
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rolloutSequence = new gcp.gkehub.RolloutSequence("rollout_sequence", {
+ *     rolloutSequenceId: "rs-basic",
+ *     displayName: "Basic Rollout Sequence",
+ *     ignoredClustersSelector: {
+ *         labelSelector: "resource.labels.ignored == 'true'",
+ *     },
+ *     stages: [{
+ *         fleetProjects: ["projects/my-project-name"],
+ *         soakDuration: "1h",
+ *     }],
+ *     autoUpgradeConfig: {
+ *         rolloutCreationScope: {
+ *             upgradeTypes: [
+ *                 "CONTROL_PLANE_MINOR",
+ *                 "CONTROL_PLANE_PATCH",
+ *                 "NODE_MINOR",
+ *                 "NODE_PATCH",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Gke Hub Rollout Sequence Update
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rolloutSequence = new gcp.gkehub.RolloutSequence("rollout_sequence", {
+ *     rolloutSequenceId: "rs-basic",
+ *     displayName: "Modified Rollout Sequence",
+ *     ignoredClustersSelector: {
+ *         labelSelector: "resource.labels.ignored == 'super_true'",
+ *     },
+ *     stages: [
+ *         {
+ *             fleetProjects: ["projects/my-project-name"],
+ *             clusterSelector: {
+ *                 labelSelector: "resource.labels.canary=='true'",
+ *             },
+ *             soakDuration: "2h",
+ *         },
+ *         {
+ *             fleetProjects: ["projects/my-project-name"],
+ *             soakDuration: "1d",
+ *         },
+ *     ],
+ *     autoUpgradeConfig: {
+ *         rolloutCreationScope: {
+ *             upgradeTypes: [
+ *                 "CONTROL_PLANE_PATCH",
+ *                 "NODE_PATCH",
+ *             ],
+ *         },
+ *     },
+ *     labels: {
+ *         some_key: "some_value",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * RolloutSequence can be imported using any of these accepted formats:

@@ -24,9 +24,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// IPv4 address of network endpoint. The IP address must belong
         /// to a VM in GCE (either the primary IP or as part of an aliased IP
         /// range).
+        /// **Note** `IpAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
         /// </summary>
-        [Input("ipAddress", required: true)]
-        public Input<string> IpAddress { get; set; } = null!;
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
 
         /// <summary>
         /// Port number of network endpoint.

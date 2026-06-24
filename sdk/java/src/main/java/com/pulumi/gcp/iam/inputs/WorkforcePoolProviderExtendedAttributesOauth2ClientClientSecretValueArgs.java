@@ -5,7 +5,6 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,17 +17,59 @@ public final class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecr
 
     /**
      * The plain text of the client secret value.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="plainText", required=true)
-    private Output<String> plainText;
+    @Import(name="plainText")
+    private @Nullable Output<String> plainText;
 
     /**
      * @return The plain text of the client secret value.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> plainText() {
-        return this.plainText;
+    public Optional<Output<String>> plainText() {
+        return Optional.ofNullable(this.plainText);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The plain text of the client secret value.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+     * 
+     */
+    @Import(name="plainTextWo")
+    private @Nullable Output<String> plainTextWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The plain text of the client secret value.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> plainTextWo() {
+        return Optional.ofNullable(this.plainTextWo);
+    }
+
+    /**
+     * Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="plainTextWoVersion")
+    private @Nullable Output<String> plainTextWoVersion;
+
+    /**
+     * @return Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> plainTextWoVersion() {
+        return Optional.ofNullable(this.plainTextWoVersion);
     }
 
     /**
@@ -52,6 +93,8 @@ public final class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecr
 
     private WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs(WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs $) {
         this.plainText = $.plainText;
+        this.plainTextWo = $.plainTextWo;
+        this.plainTextWoVersion = $.plainTextWoVersion;
         this.thumbprint = $.thumbprint;
     }
 
@@ -75,23 +118,77 @@ public final class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecr
 
         /**
          * @param plainText The plain text of the client secret value.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder plainText(Output<String> plainText) {
+        public Builder plainText(@Nullable Output<String> plainText) {
             $.plainText = plainText;
             return this;
         }
 
         /**
          * @param plainText The plain text of the client secret value.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
         public Builder plainText(String plainText) {
             return plainText(Output.of(plainText));
+        }
+
+        /**
+         * @param plainTextWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The plain text of the client secret value.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plainTextWo(@Nullable Output<String> plainTextWo) {
+            $.plainTextWo = plainTextWo;
+            return this;
+        }
+
+        /**
+         * @param plainTextWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The plain text of the client secret value.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plainTextWo(String plainTextWo) {
+            return plainTextWo(Output.of(plainTextWo));
+        }
+
+        /**
+         * @param plainTextWoVersion Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plainTextWoVersion(@Nullable Output<String> plainTextWoVersion) {
+            $.plainTextWoVersion = plainTextWoVersion;
+            return this;
+        }
+
+        /**
+         * @param plainTextWoVersion Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plainTextWoVersion(String plainTextWoVersion) {
+            return plainTextWoVersion(Output.of(plainTextWoVersion));
         }
 
         /**
@@ -118,9 +215,6 @@ public final class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecr
         }
 
         public WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs build() {
-            if ($.plainText == null) {
-                throw new MissingRequiredPropertyException("WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs", "plainText");
-            }
             return $;
         }
     }

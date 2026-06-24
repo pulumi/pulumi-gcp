@@ -1154,8 +1154,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "replica_set": "myReplicaSet",
                 "username": "mongoUser",
                 "password": "mongoPassword",
-                "database": "myDatabase",
-                "standard_connection_format": {}[0],
+                "standard_connection_format": {},
+                "additional_options": {
+                    "readPreference": "secondary",
+                    "readPreferenceTags": "nodeType:ANALYTICS",
+                },
             })
         ```
 
@@ -1613,8 +1616,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "replica_set": "myReplicaSet",
                 "username": "mongoUser",
                 "password": "mongoPassword",
-                "database": "myDatabase",
-                "standard_connection_format": {}[0],
+                "standard_connection_format": {},
+                "additional_options": {
+                    "readPreference": "secondary",
+                    "readPreferenceTags": "nodeType:ANALYTICS",
+                },
             })
         ```
 

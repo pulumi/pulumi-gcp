@@ -13,11 +13,40 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class DatabaseInstanceSettingsActiveDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The domain name for the active directory (e.g., mydomain.com).
-        /// Can only be used with SQL Server.
+        /// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+        /// </summary>
+        [Input("adminCredentialSecretName")]
+        public Input<string>? AdminCredentialSecretName { get; set; }
+
+        [Input("dnsServers")]
+        private InputList<string>? _dnsServers;
+
+        /// <summary>
+        /// Domain controller IPv4 addresses used to bootstrap Active Directory.
+        /// </summary>
+        public InputList<string> DnsServers
+        {
+            get => _dnsServers ?? (_dnsServers = new InputList<string>());
+            set => _dnsServers = value;
+        }
+
+        /// <summary>
+        /// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
+
+        /// <summary>
+        /// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+        /// </summary>
+        [Input("organizationalUnit")]
+        public Input<string>? OrganizationalUnit { get; set; }
 
         public DatabaseInstanceSettingsActiveDirectoryConfigArgs()
         {

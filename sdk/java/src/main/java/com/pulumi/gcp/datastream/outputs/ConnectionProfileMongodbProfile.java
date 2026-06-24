@@ -11,12 +11,20 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileMongodbProfileSslConfi
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileMongodbProfileStandardConnectionFormat;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionProfileMongodbProfile {
+    /**
+     * @return A map of additional options for the MongoDB connection.
+     * Keys are case-sensitive and should match the official
+     * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+     * 
+     */
+    private @Nullable Map<String,String> additionalOptions;
     /**
      * @return List of host addresses for a MongoDB cluster.
      * Structure is documented below.
@@ -67,6 +75,15 @@ public final class ConnectionProfileMongodbProfile {
     private String username;
 
     private ConnectionProfileMongodbProfile() {}
+    /**
+     * @return A map of additional options for the MongoDB connection.
+     * Keys are case-sensitive and should match the official
+     * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+     * 
+     */
+    public Map<String,String> additionalOptions() {
+        return this.additionalOptions == null ? Map.of() : this.additionalOptions;
+    }
     /**
      * @return List of host addresses for a MongoDB cluster.
      * Structure is documented below.
@@ -141,6 +158,7 @@ public final class ConnectionProfileMongodbProfile {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,String> additionalOptions;
         private List<ConnectionProfileMongodbProfileHostAddress> hostAddresses;
         private @Nullable String password;
         private @Nullable String replicaSet;
@@ -152,6 +170,7 @@ public final class ConnectionProfileMongodbProfile {
         public Builder() {}
         public Builder(ConnectionProfileMongodbProfile defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalOptions = defaults.additionalOptions;
     	      this.hostAddresses = defaults.hostAddresses;
     	      this.password = defaults.password;
     	      this.replicaSet = defaults.replicaSet;
@@ -162,6 +181,12 @@ public final class ConnectionProfileMongodbProfile {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder additionalOptions(@Nullable Map<String,String> additionalOptions) {
+
+            this.additionalOptions = additionalOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder hostAddresses(List<ConnectionProfileMongodbProfileHostAddress> hostAddresses) {
             if (hostAddresses == null) {
@@ -219,6 +244,7 @@ public final class ConnectionProfileMongodbProfile {
         }
         public ConnectionProfileMongodbProfile build() {
             final var _resultValue = new ConnectionProfileMongodbProfile();
+            _resultValue.additionalOptions = additionalOptions;
             _resultValue.hostAddresses = hostAddresses;
             _resultValue.password = password;
             _resultValue.replicaSet = replicaSet;

@@ -12,6 +12,7 @@ import com.pulumi.gcp.ces.inputs.ToolDataStoreToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolFileSearchToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolGoogleSearchToolArgs;
 import com.pulumi.gcp.ces.inputs.ToolPythonFunctionArgs;
+import com.pulumi.gcp.ces.inputs.ToolToolFakeConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolWidgetToolArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -235,6 +236,40 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     * 
+     */
+    @Import(name="timeout")
+    private @Nullable Output<String> timeout;
+
+    /**
+     * @return The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     * 
+     */
+    public Optional<Output<String>> timeout() {
+        return Optional.ofNullable(this.timeout);
+    }
+
+    /**
+     * Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolFakeConfig")
+    private @Nullable Output<ToolToolFakeConfigArgs> toolFakeConfig;
+
+    /**
+     * @return Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolToolFakeConfigArgs>> toolFakeConfig() {
+        return Optional.ofNullable(this.toolFakeConfig);
+    }
+
+    /**
      * The ID to use for the tool, which will become the final component of
      * the tool&#39;s resource name. If not provided, a unique ID will be
      * automatically assigned for the tool.
@@ -284,6 +319,8 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.project = $.project;
         this.pythonFunction = $.pythonFunction;
+        this.timeout = $.timeout;
+        this.toolFakeConfig = $.toolFakeConfig;
         this.toolId = $.toolId;
         this.widgetTool = $.widgetTool;
     }
@@ -581,6 +618,52 @@ public final class ToolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pythonFunction(ToolPythonFunctionArgs pythonFunction) {
             return pythonFunction(Output.of(pythonFunction));
+        }
+
+        /**
+         * @param timeout The timeout for the tool execution. If not set, the default timeout is 30
+         * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeout(@Nullable Output<String> timeout) {
+            $.timeout = timeout;
+            return this;
+        }
+
+        /**
+         * @param timeout The timeout for the tool execution. If not set, the default timeout is 30
+         * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeout(String timeout) {
+            return timeout(Output.of(timeout));
+        }
+
+        /**
+         * @param toolFakeConfig Configuration for tool behavior in fake mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolFakeConfig(@Nullable Output<ToolToolFakeConfigArgs> toolFakeConfig) {
+            $.toolFakeConfig = toolFakeConfig;
+            return this;
+        }
+
+        /**
+         * @param toolFakeConfig Configuration for tool behavior in fake mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolFakeConfig(ToolToolFakeConfigArgs toolFakeConfig) {
+            return toolFakeConfig(Output.of(toolFakeConfig));
         }
 
         /**

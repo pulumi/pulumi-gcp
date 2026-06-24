@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeDrainConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolPlacementPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,6 +39,21 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<ClusterNodePoolAutoscalingArgs>> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+
+    /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    @Import(name="ignoreNodeCountChanges")
+    private @Nullable Output<Boolean> ignoreNodeCountChanges;
+
+    /**
+     * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreNodeCountChanges() {
+        return Optional.ofNullable(this.ignoreNodeCountChanges);
     }
 
     /**
@@ -179,22 +195,14 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * The node configuration of the pool. Structure is documented below.
      * 
      */
     @Import(name="nodeConfig")
     private @Nullable Output<ClusterNodePoolNodeConfigArgs> nodeConfig;
 
     /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * @return The node configuration of the pool. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigArgs>> nodeConfig() {
@@ -330,6 +338,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
 
     private ClusterNodePoolArgs(ClusterNodePoolArgs $) {
         this.autoscaling = $.autoscaling;
+        this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
         this.initialNodeCount = $.initialNodeCount;
         this.instanceGroupUrls = $.instanceGroupUrls;
         this.managedInstanceGroupUrls = $.managedInstanceGroupUrls;
@@ -385,6 +394,27 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder autoscaling(ClusterNodePoolAutoscalingArgs autoscaling) {
             return autoscaling(Output.of(autoscaling));
+        }
+
+        /**
+         * @param ignoreNodeCountChanges Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreNodeCountChanges(@Nullable Output<Boolean> ignoreNodeCountChanges) {
+            $.ignoreNodeCountChanges = ignoreNodeCountChanges;
+            return this;
+        }
+
+        /**
+         * @param ignoreNodeCountChanges Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreNodeCountChanges(Boolean ignoreNodeCountChanges) {
+            return ignoreNodeCountChanges(Output.of(ignoreNodeCountChanges));
         }
 
         /**
@@ -594,11 +624,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * @param nodeConfig The node configuration of the pool. Structure is documented below.
          * 
          * @return builder
          * 
@@ -609,11 +635,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
+         * @param nodeConfig The node configuration of the pool. Structure is documented below.
          * 
          * @return builder
          * 

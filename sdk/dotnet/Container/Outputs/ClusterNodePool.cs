@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoscaling? Autoscaling;
         /// <summary>
+        /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        public readonly bool? IgnoreNodeCountChanges;
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
@@ -59,11 +63,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNetworkConfig? NetworkConfig;
         /// <summary>
-        /// Parameters used in creating the default node pool.
-        /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used.
-        /// Structure is documented below.
+        /// The node configuration of the pool. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfig? NodeConfig;
         /// <summary>
@@ -109,6 +109,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodePool(
             Outputs.ClusterNodePoolAutoscaling? autoscaling,
 
+            bool? ignoreNodeCountChanges,
+
             int? initialNodeCount,
 
             ImmutableArray<string> instanceGroupUrls,
@@ -142,6 +144,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string? version)
         {
             Autoscaling = autoscaling;
+            IgnoreNodeCountChanges = ignoreNodeCountChanges;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
             ManagedInstanceGroupUrls = managedInstanceGroupUrls;

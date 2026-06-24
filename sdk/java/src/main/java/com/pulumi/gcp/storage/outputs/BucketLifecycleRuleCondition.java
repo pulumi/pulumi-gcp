@@ -85,6 +85,16 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable Boolean sendNumNewerVersionsIfZero;
     /**
+     * @return Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    private @Nullable Integer sizeAboveBytes;
+    /**
+     * @return Objects having a size smaller than this value in bytes will be matched.
+     * 
+     */
+    private @Nullable Integer sizeBelowBytes;
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -190,6 +200,20 @@ public final class BucketLifecycleRuleCondition {
         return Optional.ofNullable(this.sendNumNewerVersionsIfZero);
     }
     /**
+     * @return Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    public Optional<Integer> sizeAboveBytes() {
+        return Optional.ofNullable(this.sizeAboveBytes);
+    }
+    /**
+     * @return Objects having a size smaller than this value in bytes will be matched.
+     * 
+     */
+    public Optional<Integer> sizeBelowBytes() {
+        return Optional.ofNullable(this.sizeBelowBytes);
+    }
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -220,6 +244,8 @@ public final class BucketLifecycleRuleCondition {
         private @Nullable Boolean sendDaysSinceCustomTimeIfZero;
         private @Nullable Boolean sendDaysSinceNoncurrentTimeIfZero;
         private @Nullable Boolean sendNumNewerVersionsIfZero;
+        private @Nullable Integer sizeAboveBytes;
+        private @Nullable Integer sizeBelowBytes;
         private @Nullable String withState;
         public Builder() {}
         public Builder(BucketLifecycleRuleCondition defaults) {
@@ -238,6 +264,8 @@ public final class BucketLifecycleRuleCondition {
     	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
     	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
     	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
+    	      this.sizeAboveBytes = defaults.sizeAboveBytes;
+    	      this.sizeBelowBytes = defaults.sizeBelowBytes;
     	      this.withState = defaults.withState;
         }
 
@@ -335,6 +363,18 @@ public final class BucketLifecycleRuleCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder sizeAboveBytes(@Nullable Integer sizeAboveBytes) {
+
+            this.sizeAboveBytes = sizeAboveBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sizeBelowBytes(@Nullable Integer sizeBelowBytes) {
+
+            this.sizeBelowBytes = sizeBelowBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder withState(@Nullable String withState) {
 
             this.withState = withState;
@@ -356,6 +396,8 @@ public final class BucketLifecycleRuleCondition {
             _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            _resultValue.sizeAboveBytes = sizeAboveBytes;
+            _resultValue.sizeBelowBytes = sizeBelowBytes;
             _resultValue.withState = withState;
             return _resultValue;
         }

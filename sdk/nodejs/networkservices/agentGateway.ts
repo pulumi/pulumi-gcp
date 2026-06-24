@@ -21,25 +21,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const project = gcp.organizations.getProject({});
  * const agentRegistry = new gcp.projects.Service("agent_registry", {
  *     service: "agentregistry.googleapis.com",
  *     disableOnDestroy: false,
  * });
  * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "net-my-full-agent-gateway",
+ *     name: "my-gateway-network",
  *     autoCreateSubnetworks: false,
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "subnet-my-full-agent-gateway",
+ *     name: "my-gateway-subnetwork",
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  *     ipCidrRange: "10.0.0.0/16",
  * });
  * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
- *     name: "na-my-full-agent-gateway",
+ *     name: "my-gateway-attachment",
  *     region: "us-central1",
- *     connectionPreference: "ACCEPT_AUTOMATIC",
- *     subnetworks: [defaultSubnetwork.selfLink],
+ *     connectionPreference: "ACCEPT_MANUAL",
+ *     subnetworks: [defaultSubnetwork.id],
+ * });
+ * const defaultManagedZone = new gcp.dns.ManagedZone("default", {
+ *     name: "my-gateway-zone",
+ *     dnsName: "example.com.",
+ *     description: "Private zone used by AgentGateway DNS peering",
+ *     visibility: "private",
+ *     privateVisibilityConfig: {
+ *         networks: [{
+ *             networkUrl: defaultNetwork.id,
+ *         }],
+ *     },
  * });
  * const _default = new gcp.networkservices.AgentGateway("default", {
  *     name: "my-full-agent-gateway",
@@ -57,6 +69,11 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         egress: {
  *             networkAttachment: defaultNetworkAttachment.id,
+ *         },
+ *         dnsPeeringConfig: {
+ *             domains: [defaultManagedZone.dnsName],
+ *             targetProject: project.then(project => project.projectId),
+ *             targetNetwork: defaultNetwork.id,
  *         },
  *     },
  * }, {

@@ -38,8 +38,13 @@ namespace Pulumi.Gcp.Apigee.Inputs
         }
 
         /// <summary>
-        /// (Output)
-        /// Consumer key.
+        /// Optionally specify a static consumer key for the developer app's credential.
+        /// If not set, the API auto-generates a key. The consumer key must be unique
+        /// across all developer apps in an organization. Changing this field forces the
+        /// resource to be recreated.
+        /// This is a write-only input used at create time: the provider creates the
+        /// credential with this key via the keys API and removes the auto-generated
+        /// one. The effective key is exposed in the `Credentials` output.
         /// </summary>
         [Input("consumerKey")]
         public Input<string>? ConsumerKey { get; set; }
@@ -48,8 +53,12 @@ namespace Pulumi.Gcp.Apigee.Inputs
         private Input<string>? _consumerSecret;
 
         /// <summary>
-        /// (Output)
-        /// Secret key.
+        /// Optionally specify a static consumer secret for the developer app's
+        /// credential. Required if `ConsumerKey` is specified. If not set, the API
+        /// auto-generates a secret. Changing this field forces the resource to be
+        /// recreated.
+        /// This is a write-only input used at create time; the effective secret is
+        /// exposed in the `Credentials` output.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? ConsumerSecret

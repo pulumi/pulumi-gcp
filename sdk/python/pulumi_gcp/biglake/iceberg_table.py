@@ -29,7 +29,8 @@ class IcebergTableArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  partition_spec: pulumi.Input[Optional['IcebergTablePartitionSpecArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 sort_order: pulumi.Input[Optional['IcebergTableSortOrderArgs']] = None):
         """
         The set of arguments for constructing a IcebergTable resource.
 
@@ -50,6 +51,8 @@ class IcebergTableArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
+        :param pulumi.Input['IcebergTableSortOrderArgs'] sort_order: The sort order of the table.
+               Structure is documented below.
         """
         pulumi.set(__self__, "catalog", catalog)
         pulumi.set(__self__, "namespace", namespace)
@@ -66,6 +69,8 @@ class IcebergTableArgs:
             pulumi.set(__self__, "project", project)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if sort_order is not None:
+            pulumi.set(__self__, "sort_order", sort_order)
 
     @_builtins.property
     @pulumi.getter
@@ -183,6 +188,19 @@ class IcebergTableArgs:
     def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> pulumi.Input[Optional['IcebergTableSortOrderArgs']]:
+        """
+        The sort order of the table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sort_order")
+
+    @sort_order.setter
+    def sort_order(self, value: pulumi.Input[Optional['IcebergTableSortOrderArgs']]):
+        pulumi.set(self, "sort_order", value)
+
 
 @pulumi.input_type
 class _IcebergTableState:
@@ -195,7 +213,8 @@ class _IcebergTableState:
                  partition_spec: pulumi.Input[Optional['IcebergTablePartitionSpecArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: pulumi.Input[Optional['IcebergTableSchemaArgs']] = None):
+                 schema: pulumi.Input[Optional['IcebergTableSchemaArgs']] = None,
+                 sort_order: pulumi.Input[Optional['IcebergTableSortOrderArgs']] = None):
         """
         Input properties used for looking up and filtering IcebergTable resources.
 
@@ -216,6 +235,8 @@ class _IcebergTableState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
         :param pulumi.Input['IcebergTableSchemaArgs'] schema: The schema of the table.
                Structure is documented below.
+        :param pulumi.Input['IcebergTableSortOrderArgs'] sort_order: The sort order of the table.
+               Structure is documented below.
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -235,6 +256,8 @@ class _IcebergTableState:
             pulumi.set(__self__, "properties", properties)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if sort_order is not None:
+            pulumi.set(__self__, "sort_order", sort_order)
 
     @_builtins.property
     @pulumi.getter
@@ -352,6 +375,19 @@ class _IcebergTableState:
     def schema(self, value: pulumi.Input[Optional['IcebergTableSchemaArgs']]):
         pulumi.set(self, "schema", value)
 
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> pulumi.Input[Optional['IcebergTableSortOrderArgs']]:
+        """
+        The sort order of the table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sort_order")
+
+    @sort_order.setter
+    def sort_order(self, value: pulumi.Input[Optional['IcebergTableSortOrderArgs']]):
+        pulumi.set(self, "sort_order", value)
+
 
 @pulumi.type_token("gcp:biglake/icebergTable:IcebergTable")
 class IcebergTable(pulumi.CustomResource):
@@ -368,6 +404,7 @@ class IcebergTable(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
+                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None,
                  __props__=None):
         """
         IcebergTables are the primary objects in an IcebergCatalog.
@@ -424,6 +461,45 @@ class IcebergTable(pulumi.CustomResource):
                     "name": "id_partition",
                     "source_id": 1,
                     "transform": "identity",
+                }],
+            })
+        ```
+        ### Biglake Iceberg Table Sort Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        catalog = gcp.biglake.IcebergCatalog("catalog",
+            name=bucket.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET")
+        namespace = gcp.biglake.IcebergNamespace("namespace",
+            catalog=catalog.name,
+            namespace_id="my_namespace")
+        my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
+            catalog=catalog.name,
+            namespace=namespace.namespace_id,
+            name="my_table",
+            schema={
+                "type": "struct",
+                "fields": [{
+                    "id": 1,
+                    "name": "id",
+                    "type": "long",
+                    "required": True,
+                }],
+            },
+            sort_order={
+                "fields": [{
+                    "source_id": 1,
+                    "transform": "identity",
+                    "direction": "asc",
+                    "null_order": "nulls-first",
                 }],
             })
         ```
@@ -498,6 +574,8 @@ class IcebergTable(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
         :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']] schema: The schema of the table.
                Structure is documented below.
+        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']] sort_order: The sort order of the table.
+               Structure is documented below.
         """
         ...
     @overload
@@ -560,6 +638,45 @@ class IcebergTable(pulumi.CustomResource):
                     "name": "id_partition",
                     "source_id": 1,
                     "transform": "identity",
+                }],
+            })
+        ```
+        ### Biglake Iceberg Table Sort Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        catalog = gcp.biglake.IcebergCatalog("catalog",
+            name=bucket.name,
+            catalog_type="CATALOG_TYPE_GCS_BUCKET")
+        namespace = gcp.biglake.IcebergNamespace("namespace",
+            catalog=catalog.name,
+            namespace_id="my_namespace")
+        my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
+            catalog=catalog.name,
+            namespace=namespace.namespace_id,
+            name="my_table",
+            schema={
+                "type": "struct",
+                "fields": [{
+                    "id": 1,
+                    "name": "id",
+                    "type": "long",
+                    "required": True,
+                }],
+            },
+            sort_order={
+                "fields": [{
+                    "source_id": 1,
+                    "transform": "identity",
+                    "direction": "asc",
+                    "null_order": "nulls-first",
                 }],
             })
         ```
@@ -639,6 +756,7 @@ class IcebergTable(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
+                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -663,6 +781,7 @@ class IcebergTable(pulumi.CustomResource):
             if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["sort_order"] = sort_order
         super(IcebergTable, __self__).__init__(
             'gcp:biglake/icebergTable:IcebergTable',
             resource_name,
@@ -681,7 +800,8 @@ class IcebergTable(pulumi.CustomResource):
             partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None) -> 'IcebergTable':
+            schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
+            sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None) -> 'IcebergTable':
         """
         Get an existing IcebergTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -706,6 +826,8 @@ class IcebergTable(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
         :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']] schema: The schema of the table.
                Structure is documented below.
+        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']] sort_order: The sort order of the table.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -720,6 +842,7 @@ class IcebergTable(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["properties"] = properties
         __props__.__dict__["schema"] = schema
+        __props__.__dict__["sort_order"] = sort_order
         return IcebergTable(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -801,4 +924,13 @@ class IcebergTable(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> pulumi.Output['outputs.IcebergTableSortOrder']:
+        """
+        The sort order of the table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sort_order")
 

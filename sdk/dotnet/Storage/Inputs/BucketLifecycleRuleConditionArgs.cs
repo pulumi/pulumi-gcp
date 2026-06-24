@@ -115,6 +115,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? SendNumNewerVersionsIfZero { get; set; }
 
         /// <summary>
+        /// Objects having a size greater than this value in bytes will be matched.
+        /// </summary>
+        [Input("sizeAboveBytes")]
+        public Input<int>? SizeAboveBytes { get; set; }
+
+        /// <summary>
+        /// Objects having a size smaller than this value in bytes will be matched.
+        /// </summary>
+        [Input("sizeBelowBytes")]
+        public Input<int>? SizeBelowBytes { get; set; }
+
+        /// <summary>
         /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         /// </summary>
         [Input("withState")]

@@ -6,23 +6,72 @@ package com.pulumi.gcp.sql.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
     /**
+     * @return The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+     * 
+     */
+    private String adminCredentialSecretName;
+    /**
+     * @return Domain controller IPv4 addresses used to bootstrap Active Directory.
+     * 
+     */
+    private List<String> dnsServers;
+    /**
      * @return Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
      * 
      */
     private String domain;
+    /**
+     * @return The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+     * 
+     */
+    private String mode;
+    /**
+     * @return The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+     * 
+     */
+    private String organizationalUnit;
 
     private GetDatabaseInstancesInstanceSettingActiveDirectoryConfig() {}
+    /**
+     * @return The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}).
+     * 
+     */
+    public String adminCredentialSecretName() {
+        return this.adminCredentialSecretName;
+    }
+    /**
+     * @return Domain controller IPv4 addresses used to bootstrap Active Directory.
+     * 
+     */
+    public List<String> dnsServers() {
+        return this.dnsServers;
+    }
     /**
      * @return Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
      * 
      */
     public String domain() {
         return this.domain;
+    }
+    /**
+     * @return The mode of the Active Directory configuration. Can be MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+     * 
+     */
+    public String mode() {
+        return this.mode;
+    }
+    /**
+     * @return The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+     * 
+     */
+    public String organizationalUnit() {
+        return this.organizationalUnit;
     }
 
     public static Builder builder() {
@@ -34,13 +83,40 @@ public final class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String adminCredentialSecretName;
+        private List<String> dnsServers;
         private String domain;
+        private String mode;
+        private String organizationalUnit;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingActiveDirectoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adminCredentialSecretName = defaults.adminCredentialSecretName;
+    	      this.dnsServers = defaults.dnsServers;
     	      this.domain = defaults.domain;
+    	      this.mode = defaults.mode;
+    	      this.organizationalUnit = defaults.organizationalUnit;
         }
 
+        @CustomType.Setter
+        public Builder adminCredentialSecretName(String adminCredentialSecretName) {
+            if (adminCredentialSecretName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingActiveDirectoryConfig", "adminCredentialSecretName");
+            }
+            this.adminCredentialSecretName = adminCredentialSecretName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsServers(List<String> dnsServers) {
+            if (dnsServers == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingActiveDirectoryConfig", "dnsServers");
+            }
+            this.dnsServers = dnsServers;
+            return this;
+        }
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
         @CustomType.Setter
         public Builder domain(String domain) {
             if (domain == null) {
@@ -49,9 +125,29 @@ public final class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingActiveDirectoryConfig", "mode");
+            }
+            this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder organizationalUnit(String organizationalUnit) {
+            if (organizationalUnit == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingActiveDirectoryConfig", "organizationalUnit");
+            }
+            this.organizationalUnit = organizationalUnit;
+            return this;
+        }
         public GetDatabaseInstancesInstanceSettingActiveDirectoryConfig build() {
             final var _resultValue = new GetDatabaseInstancesInstanceSettingActiveDirectoryConfig();
+            _resultValue.adminCredentialSecretName = adminCredentialSecretName;
+            _resultValue.dnsServers = dnsServers;
             _resultValue.domain = domain;
+            _resultValue.mode = mode;
+            _resultValue.organizationalUnit = organizationalUnit;
             return _resultValue;
         }
     }

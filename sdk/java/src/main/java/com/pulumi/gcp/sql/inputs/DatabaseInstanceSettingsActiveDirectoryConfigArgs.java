@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatabaseInstanceSettingsActiveDirectoryConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,26 +18,88 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfigArgs extends com
     public static final DatabaseInstanceSettingsActiveDirectoryConfigArgs Empty = new DatabaseInstanceSettingsActiveDirectoryConfigArgs();
 
     /**
-     * The domain name for the active directory (e.g., mydomain.com).
-     * Can only be used with SQL Server.
+     * The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+     * 
+     */
+    @Import(name="adminCredentialSecretName")
+    private @Nullable Output<String> adminCredentialSecretName;
+
+    /**
+     * @return The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+     * 
+     */
+    public Optional<Output<String>> adminCredentialSecretName() {
+        return Optional.ofNullable(this.adminCredentialSecretName);
+    }
+
+    /**
+     * Domain controller IPv4 addresses used to bootstrap Active Directory.
+     * 
+     */
+    @Import(name="dnsServers")
+    private @Nullable Output<List<String>> dnsServers;
+
+    /**
+     * @return Domain controller IPv4 addresses used to bootstrap Active Directory.
+     * 
+     */
+    public Optional<Output<List<String>>> dnsServers() {
+        return Optional.ofNullable(this.dnsServers);
+    }
+
+    /**
+     * The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return The domain name for the active directory (e.g., mydomain.com).
-     * Can only be used with SQL Server.
+     * @return The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
 
+    /**
+     * The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
+     * The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+     * 
+     */
+    @Import(name="organizationalUnit")
+    private @Nullable Output<String> organizationalUnit;
+
+    /**
+     * @return The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+     * 
+     */
+    public Optional<Output<String>> organizationalUnit() {
+        return Optional.ofNullable(this.organizationalUnit);
+    }
+
     private DatabaseInstanceSettingsActiveDirectoryConfigArgs() {}
 
     private DatabaseInstanceSettingsActiveDirectoryConfigArgs(DatabaseInstanceSettingsActiveDirectoryConfigArgs $) {
+        this.adminCredentialSecretName = $.adminCredentialSecretName;
+        this.dnsServers = $.dnsServers;
         this.domain = $.domain;
+        this.mode = $.mode;
+        this.organizationalUnit = $.organizationalUnit;
     }
 
     public static Builder builder() {
@@ -56,8 +121,59 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfigArgs extends com
         }
 
         /**
-         * @param domain The domain name for the active directory (e.g., mydomain.com).
-         * Can only be used with SQL Server.
+         * @param adminCredentialSecretName The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminCredentialSecretName(@Nullable Output<String> adminCredentialSecretName) {
+            $.adminCredentialSecretName = adminCredentialSecretName;
+            return this;
+        }
+
+        /**
+         * @param adminCredentialSecretName The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminCredentialSecretName(String adminCredentialSecretName) {
+            return adminCredentialSecretName(Output.of(adminCredentialSecretName));
+        }
+
+        /**
+         * @param dnsServers Domain controller IPv4 addresses used to bootstrap Active Directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsServers(@Nullable Output<List<String>> dnsServers) {
+            $.dnsServers = dnsServers;
+            return this;
+        }
+
+        /**
+         * @param dnsServers Domain controller IPv4 addresses used to bootstrap Active Directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsServers(List<String> dnsServers) {
+            return dnsServers(Output.of(dnsServers));
+        }
+
+        /**
+         * @param dnsServers Domain controller IPv4 addresses used to bootstrap Active Directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
+
+        /**
+         * @param domain The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
          * 
          * @return builder
          * 
@@ -68,14 +184,55 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfigArgs extends com
         }
 
         /**
-         * @param domain The domain name for the active directory (e.g., mydomain.com).
-         * Can only be used with SQL Server.
+         * @param domain The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
          * 
          * @return builder
          * 
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param mode The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
+        }
+
+        /**
+         * @param organizationalUnit The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationalUnit(@Nullable Output<String> organizationalUnit) {
+            $.organizationalUnit = organizationalUnit;
+            return this;
+        }
+
+        /**
+         * @param organizationalUnit The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationalUnit(String organizationalUnit) {
+            return organizationalUnit(Output.of(organizationalUnit));
         }
 
         public DatabaseInstanceSettingsActiveDirectoryConfigArgs build() {

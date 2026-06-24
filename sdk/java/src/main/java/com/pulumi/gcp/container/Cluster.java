@@ -529,6 +529,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.datapathProvider;
     }
     /**
+     * The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+     * 
+     */
+    @Export(name="dataplaneOptimizationMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataplaneOptimizationMode;
+
+    /**
+     * @return The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+     * 
+     */
+    public Output<Optional<String>> dataplaneOptimizationMode() {
+        return Codegen.optional(this.dataplaneOptimizationMode);
+    }
+    /**
      * The default maximum number of pods
      * per node in this cluster. This doesn&#39;t work on &#34;routes-based&#34; clusters, clusters
      * that don&#39;t have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -929,6 +943,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterIdentityServiceConfig> identityServiceConfig() {
         return this.identityServiceConfig;
+    }
+    /**
+     * Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    @Export(name="ignoreNodeCountChanges", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreNodeCountChanges;
+
+    /**
+     * @return Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreNodeCountChanges() {
+        return Codegen.optional(this.ignoreNodeCountChanges);
     }
     /**
      * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -1449,8 +1477,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.nodePoolDefaults;
     }
     /**
-     * List of node pools associated with this cluster.
-     * See gcp.container.NodePool for schema.
+     * List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
@@ -1461,8 +1488,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<List<ClusterNodePool>> nodePools;
 
     /**
-     * @return List of node pools associated with this cluster.
-     * See gcp.container.NodePool for schema.
+     * @return List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
@@ -1829,6 +1855,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> servicesIpv4Cidr() {
         return this.servicesIpv4Cidr;
+    }
+    /**
+     * Whether to skip refreshing the GKE cluster&#39;s inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster&#39;s `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+     * 
+     */
+    @Export(name="skipNodePoolRefresh", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipNodePoolRefresh;
+
+    /**
+     * @return Whether to skip refreshing the GKE cluster&#39;s inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster&#39;s `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+     * 
+     */
+    public Output<Optional<Boolean>> skipNodePoolRefresh() {
+        return Codegen.optional(this.skipNodePoolRefresh);
     }
     /**
      * The name or selfLink of the Google Compute Engine

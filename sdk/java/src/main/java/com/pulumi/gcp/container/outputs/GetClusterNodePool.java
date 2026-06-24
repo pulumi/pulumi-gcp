@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSetting;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,11 @@ public final class GetClusterNodePool {
      * 
      */
     private List<GetClusterNodePoolAutoscaling> autoscalings;
+    /**
+     * @return When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managedInstanceGroupUrls in the state.
+     * 
+     */
+    private Boolean ignoreNodeCountChanges;
     /**
      * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
      * 
@@ -113,6 +119,13 @@ public final class GetClusterNodePool {
      */
     public List<GetClusterNodePoolAutoscaling> autoscalings() {
         return this.autoscalings;
+    }
+    /**
+     * @return When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managedInstanceGroupUrls in the state.
+     * 
+     */
+    public Boolean ignoreNodeCountChanges() {
+        return this.ignoreNodeCountChanges;
     }
     /**
      * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
@@ -237,6 +250,7 @@ public final class GetClusterNodePool {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolAutoscaling> autoscalings;
+        private Boolean ignoreNodeCountChanges;
         private Integer initialNodeCount;
         private List<String> instanceGroupUrls;
         private List<String> managedInstanceGroupUrls;
@@ -257,6 +271,7 @@ public final class GetClusterNodePool {
         public Builder(GetClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalings = defaults.autoscalings;
+    	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.instanceGroupUrls = defaults.instanceGroupUrls;
     	      this.managedInstanceGroupUrls = defaults.managedInstanceGroupUrls;
@@ -285,6 +300,14 @@ public final class GetClusterNodePool {
         }
         public Builder autoscalings(GetClusterNodePoolAutoscaling... autoscalings) {
             return autoscalings(List.of(autoscalings));
+        }
+        @CustomType.Setter
+        public Builder ignoreNodeCountChanges(Boolean ignoreNodeCountChanges) {
+            if (ignoreNodeCountChanges == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "ignoreNodeCountChanges");
+            }
+            this.ignoreNodeCountChanges = ignoreNodeCountChanges;
+            return this;
         }
         @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
@@ -447,6 +470,7 @@ public final class GetClusterNodePool {
         public GetClusterNodePool build() {
             final var _resultValue = new GetClusterNodePool();
             _resultValue.autoscalings = autoscalings;
+            _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.instanceGroupUrls = instanceGroupUrls;
             _resultValue.managedInstanceGroupUrls = managedInstanceGroupUrls;

@@ -2266,6 +2266,67 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+        ### Region Backend Service Ha Policy Internal Lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="rbs-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="rbs-subnet",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default.id)
+        my_image = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="rbs-instance",
+            machine_type="e2-medium",
+            boot_disk={
+                "auto_delete": True,
+                "initialize_params": {
+                    "image": my_image.self_link,
+                },
+            })
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            name="rbs-neg",
+            network_endpoint_type="GCE_VM_IP_DEDICATED_BACKEND",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            zone="us-central1-a")
+        endpoint = gcp.compute.NetworkEndpointList("endpoint",
+            network_endpoint_group=neg.name,
+            network_endpoints=[{
+                "instance": endpoint_instance.name,
+            }])
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="INTERNAL",
+            network=default.id,
+            backends=[{
+                "group": neg.self_link,
+                "balancing_mode": "CONNECTION",
+            }],
+            ha_policy={
+                "fast_ip_move": "GARP_RA",
+                "leader": {
+                    "backend_group": neg.self_link,
+                    "network_endpoint": {
+                        "instance": endpoint_instance.name,
+                    },
+                },
+            },
+            connection_draining_timeout_sec=0)
+        ```
         ### Region Backend Service Tls Settings
 
         ```python
@@ -2940,6 +3001,67 @@ class RegionBackendService(pulumi.CustomResource):
             name="region-service",
             protocol="UDP",
             load_balancing_scheme="EXTERNAL",
+            network=default.id,
+            backends=[{
+                "group": neg.self_link,
+                "balancing_mode": "CONNECTION",
+            }],
+            ha_policy={
+                "fast_ip_move": "GARP_RA",
+                "leader": {
+                    "backend_group": neg.self_link,
+                    "network_endpoint": {
+                        "instance": endpoint_instance.name,
+                    },
+                },
+            },
+            connection_draining_timeout_sec=0)
+        ```
+        ### Region Backend Service Ha Policy Internal Lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="rbs-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="rbs-subnet",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default.id)
+        my_image = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="rbs-instance",
+            machine_type="e2-medium",
+            boot_disk={
+                "auto_delete": True,
+                "initialize_params": {
+                    "image": my_image.self_link,
+                },
+            })
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            name="rbs-neg",
+            network_endpoint_type="GCE_VM_IP_DEDICATED_BACKEND",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            zone="us-central1-a")
+        endpoint = gcp.compute.NetworkEndpointList("endpoint",
+            network_endpoint_group=neg.name,
+            network_endpoints=[{
+                "instance": endpoint_instance.name,
+            }])
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="INTERNAL",
             network=default.id,
             backends=[{
                 "group": neg.self_link,

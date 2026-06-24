@@ -50,6 +50,11 @@ export type FindingsRefinement = import("./findingsRefinement").FindingsRefineme
 export const FindingsRefinement: typeof import("./findingsRefinement").FindingsRefinement = null as any;
 utilities.lazyLoad(exports, ["FindingsRefinement"], () => require("./findingsRefinement"));
 
+export { FindingsRefinementDeploymentArgs, FindingsRefinementDeploymentState } from "./findingsRefinementDeployment";
+export type FindingsRefinementDeployment = import("./findingsRefinementDeployment").FindingsRefinementDeployment;
+export const FindingsRefinementDeployment: typeof import("./findingsRefinementDeployment").FindingsRefinementDeployment = null as any;
+utilities.lazyLoad(exports, ["FindingsRefinementDeployment"], () => require("./findingsRefinementDeployment"));
+
 export { NativeDashboardArgs, NativeDashboardState } from "./nativeDashboard";
 export type NativeDashboard = import("./nativeDashboard").NativeDashboard;
 export const NativeDashboard: typeof import("./nativeDashboard").NativeDashboard = null as any;
@@ -59,6 +64,11 @@ export { ParserArgs, ParserState } from "./parser";
 export type Parser = import("./parser").Parser;
 export const Parser: typeof import("./parser").Parser = null as any;
 utilities.lazyLoad(exports, ["Parser"], () => require("./parser"));
+
+export { ParserExtensionArgs, ParserExtensionState } from "./parserExtension";
+export type ParserExtension = import("./parserExtension").ParserExtension;
+export const ParserExtension: typeof import("./parserExtension").ParserExtension = null as any;
+utilities.lazyLoad(exports, ["ParserExtension"], () => require("./parserExtension"));
 
 export { ReferenceListArgs, ReferenceListState } from "./referenceList";
 export type ReferenceList = import("./referenceList").ReferenceList;
@@ -113,10 +123,14 @@ const _module = {
                 return new Feed(name, <any>undefined, { urn })
             case "gcp:chronicle/findingsRefinement:FindingsRefinement":
                 return new FindingsRefinement(name, <any>undefined, { urn })
+            case "gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment":
+                return new FindingsRefinementDeployment(name, <any>undefined, { urn })
             case "gcp:chronicle/nativeDashboard:NativeDashboard":
                 return new NativeDashboard(name, <any>undefined, { urn })
             case "gcp:chronicle/parser:Parser":
                 return new Parser(name, <any>undefined, { urn })
+            case "gcp:chronicle/parserExtension:ParserExtension":
+                return new ParserExtension(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
                 return new ReferenceList(name, <any>undefined, { urn })
             case "gcp:chronicle/retrohunt:Retrohunt":
@@ -143,8 +157,10 @@ pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinement", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinementDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/parser", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/parserExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)

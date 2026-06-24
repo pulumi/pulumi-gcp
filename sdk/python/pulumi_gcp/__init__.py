@@ -1452,6 +1452,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "biglake/hiveCatalog",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveCatalog:HiveCatalog": "HiveCatalog"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveCatalogIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveCatalogIamBinding:HiveCatalogIamBinding": "HiveCatalogIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveCatalogIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveCatalogIamMember:HiveCatalogIamMember": "HiveCatalogIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveCatalogIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy": "HiveCatalogIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "biglake/icebergCatalog",
   "fqn": "pulumi_gcp.biglake",
   "classes": {
@@ -2404,6 +2436,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/findingsRefinementDeployment",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment": "FindingsRefinementDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/nativeDashboard",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2416,6 +2456,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/parser:Parser": "Parser"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/parserExtension",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/parserExtension:ParserExtension": "ParserExtension"
   }
  },
  {
@@ -5336,6 +5384,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": "LakeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/metadataFeed",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/metadataFeed:MetadataFeed": "MetadataFeed"
   }
  },
  {
@@ -11540,6 +11596,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiSchedule",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiSchedule:AiSchedule": "AiSchedule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiTensorboard",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -11552,6 +11616,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment": "AiTensorboardExperiment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiTensorboardRun",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiTensorboardRun:AiTensorboardRun": "AiTensorboardRun"
   }
  },
  {

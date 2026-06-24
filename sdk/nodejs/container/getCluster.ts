@@ -91,6 +91,7 @@ export interface GetClusterResult {
     readonly costManagementConfigs: outputs.container.GetClusterCostManagementConfig[];
     readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
     readonly datapathProvider: string;
+    readonly dataplaneOptimizationMode: string;
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly deletionPolicy: string;
@@ -120,6 +121,7 @@ export interface GetClusterResult {
      */
     readonly id: string;
     readonly identityServiceConfigs: outputs.container.GetClusterIdentityServiceConfig[];
+    readonly ignoreNodeCountChanges: boolean;
     readonly inTransitEncryptionConfig: string;
     readonly initialNodeCount: number;
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
@@ -169,6 +171,7 @@ export interface GetClusterResult {
     readonly selfLink: string;
     readonly serviceExternalIpsConfigs: outputs.container.GetClusterServiceExternalIpsConfig[];
     readonly servicesIpv4Cidr: string;
+    readonly skipNodePoolRefresh: boolean;
     readonly subnetwork: string;
     readonly tpuConfigs: outputs.container.GetClusterTpuConfig[];
     readonly tpuIpv4CidrBlock: string;

@@ -46557,6 +46557,303 @@ func (o ToolSystemToolArrayOutput) Index(i pulumi.IntInput) ToolSystemToolOutput
 	}).(ToolSystemToolOutput)
 }
 
+type ToolToolFakeConfig struct {
+	// Code block which will be executed instead of a real tool call.
+	// Structure is documented below.
+	CodeBlock *ToolToolFakeConfigCodeBlock `pulumi:"codeBlock"`
+	// Whether the tool is using fake mode.
+	EnableFakeMode *bool `pulumi:"enableFakeMode"`
+}
+
+// ToolToolFakeConfigInput is an input type that accepts ToolToolFakeConfigArgs and ToolToolFakeConfigOutput values.
+// You can construct a concrete instance of `ToolToolFakeConfigInput` via:
+//
+//	ToolToolFakeConfigArgs{...}
+type ToolToolFakeConfigInput interface {
+	pulumi.Input
+
+	ToToolToolFakeConfigOutput() ToolToolFakeConfigOutput
+	ToToolToolFakeConfigOutputWithContext(context.Context) ToolToolFakeConfigOutput
+}
+
+type ToolToolFakeConfigArgs struct {
+	// Code block which will be executed instead of a real tool call.
+	// Structure is documented below.
+	CodeBlock ToolToolFakeConfigCodeBlockPtrInput `pulumi:"codeBlock"`
+	// Whether the tool is using fake mode.
+	EnableFakeMode pulumi.BoolPtrInput `pulumi:"enableFakeMode"`
+}
+
+func (ToolToolFakeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolToolFakeConfig)(nil)).Elem()
+}
+
+func (i ToolToolFakeConfigArgs) ToToolToolFakeConfigOutput() ToolToolFakeConfigOutput {
+	return i.ToToolToolFakeConfigOutputWithContext(context.Background())
+}
+
+func (i ToolToolFakeConfigArgs) ToToolToolFakeConfigOutputWithContext(ctx context.Context) ToolToolFakeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigOutput)
+}
+
+func (i ToolToolFakeConfigArgs) ToToolToolFakeConfigPtrOutput() ToolToolFakeConfigPtrOutput {
+	return i.ToToolToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolToolFakeConfigArgs) ToToolToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigOutput).ToToolToolFakeConfigPtrOutputWithContext(ctx)
+}
+
+// ToolToolFakeConfigPtrInput is an input type that accepts ToolToolFakeConfigArgs, ToolToolFakeConfigPtr and ToolToolFakeConfigPtrOutput values.
+// You can construct a concrete instance of `ToolToolFakeConfigPtrInput` via:
+//
+//	        ToolToolFakeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolToolFakeConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolToolFakeConfigPtrOutput() ToolToolFakeConfigPtrOutput
+	ToToolToolFakeConfigPtrOutputWithContext(context.Context) ToolToolFakeConfigPtrOutput
+}
+
+type toolToolFakeConfigPtrType ToolToolFakeConfigArgs
+
+func ToolToolFakeConfigPtr(v *ToolToolFakeConfigArgs) ToolToolFakeConfigPtrInput {
+	return (*toolToolFakeConfigPtrType)(v)
+}
+
+func (*toolToolFakeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolToolFakeConfig)(nil)).Elem()
+}
+
+func (i *toolToolFakeConfigPtrType) ToToolToolFakeConfigPtrOutput() ToolToolFakeConfigPtrOutput {
+	return i.ToToolToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolToolFakeConfigPtrType) ToToolToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigPtrOutput)
+}
+
+type ToolToolFakeConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolToolFakeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolToolFakeConfig)(nil)).Elem()
+}
+
+func (o ToolToolFakeConfigOutput) ToToolToolFakeConfigOutput() ToolToolFakeConfigOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigOutput) ToToolToolFakeConfigOutputWithContext(ctx context.Context) ToolToolFakeConfigOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigOutput) ToToolToolFakeConfigPtrOutput() ToolToolFakeConfigPtrOutput {
+	return o.ToToolToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolToolFakeConfigOutput) ToToolToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolToolFakeConfig) *ToolToolFakeConfig {
+		return &v
+	}).(ToolToolFakeConfigPtrOutput)
+}
+
+// Code block which will be executed instead of a real tool call.
+// Structure is documented below.
+func (o ToolToolFakeConfigOutput) CodeBlock() ToolToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyT(func(v ToolToolFakeConfig) *ToolToolFakeConfigCodeBlock { return v.CodeBlock }).(ToolToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Whether the tool is using fake mode.
+func (o ToolToolFakeConfigOutput) EnableFakeMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolToolFakeConfig) *bool { return v.EnableFakeMode }).(pulumi.BoolPtrOutput)
+}
+
+type ToolToolFakeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolToolFakeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolToolFakeConfig)(nil)).Elem()
+}
+
+func (o ToolToolFakeConfigPtrOutput) ToToolToolFakeConfigPtrOutput() ToolToolFakeConfigPtrOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigPtrOutput) ToToolToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigPtrOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigPtrOutput) Elem() ToolToolFakeConfigOutput {
+	return o.ApplyT(func(v *ToolToolFakeConfig) ToolToolFakeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolToolFakeConfig
+		return ret
+	}).(ToolToolFakeConfigOutput)
+}
+
+// Code block which will be executed instead of a real tool call.
+// Structure is documented below.
+func (o ToolToolFakeConfigPtrOutput) CodeBlock() ToolToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyT(func(v *ToolToolFakeConfig) *ToolToolFakeConfigCodeBlock {
+		if v == nil {
+			return nil
+		}
+		return v.CodeBlock
+	}).(ToolToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Whether the tool is using fake mode.
+func (o ToolToolFakeConfigPtrOutput) EnableFakeMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolToolFakeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFakeMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ToolToolFakeConfigCodeBlock struct {
+	// Python code which will be invoked in tool fake mode.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// ToolToolFakeConfigCodeBlockInput is an input type that accepts ToolToolFakeConfigCodeBlockArgs and ToolToolFakeConfigCodeBlockOutput values.
+// You can construct a concrete instance of `ToolToolFakeConfigCodeBlockInput` via:
+//
+//	ToolToolFakeConfigCodeBlockArgs{...}
+type ToolToolFakeConfigCodeBlockInput interface {
+	pulumi.Input
+
+	ToToolToolFakeConfigCodeBlockOutput() ToolToolFakeConfigCodeBlockOutput
+	ToToolToolFakeConfigCodeBlockOutputWithContext(context.Context) ToolToolFakeConfigCodeBlockOutput
+}
+
+type ToolToolFakeConfigCodeBlockArgs struct {
+	// Python code which will be invoked in tool fake mode.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (ToolToolFakeConfigCodeBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (i ToolToolFakeConfigCodeBlockArgs) ToToolToolFakeConfigCodeBlockOutput() ToolToolFakeConfigCodeBlockOutput {
+	return i.ToToolToolFakeConfigCodeBlockOutputWithContext(context.Background())
+}
+
+func (i ToolToolFakeConfigCodeBlockArgs) ToToolToolFakeConfigCodeBlockOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigCodeBlockOutput)
+}
+
+func (i ToolToolFakeConfigCodeBlockArgs) ToToolToolFakeConfigCodeBlockPtrOutput() ToolToolFakeConfigCodeBlockPtrOutput {
+	return i.ToToolToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (i ToolToolFakeConfigCodeBlockArgs) ToToolToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigCodeBlockOutput).ToToolToolFakeConfigCodeBlockPtrOutputWithContext(ctx)
+}
+
+// ToolToolFakeConfigCodeBlockPtrInput is an input type that accepts ToolToolFakeConfigCodeBlockArgs, ToolToolFakeConfigCodeBlockPtr and ToolToolFakeConfigCodeBlockPtrOutput values.
+// You can construct a concrete instance of `ToolToolFakeConfigCodeBlockPtrInput` via:
+//
+//	        ToolToolFakeConfigCodeBlockArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolToolFakeConfigCodeBlockPtrInput interface {
+	pulumi.Input
+
+	ToToolToolFakeConfigCodeBlockPtrOutput() ToolToolFakeConfigCodeBlockPtrOutput
+	ToToolToolFakeConfigCodeBlockPtrOutputWithContext(context.Context) ToolToolFakeConfigCodeBlockPtrOutput
+}
+
+type toolToolFakeConfigCodeBlockPtrType ToolToolFakeConfigCodeBlockArgs
+
+func ToolToolFakeConfigCodeBlockPtr(v *ToolToolFakeConfigCodeBlockArgs) ToolToolFakeConfigCodeBlockPtrInput {
+	return (*toolToolFakeConfigCodeBlockPtrType)(v)
+}
+
+func (*toolToolFakeConfigCodeBlockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (i *toolToolFakeConfigCodeBlockPtrType) ToToolToolFakeConfigCodeBlockPtrOutput() ToolToolFakeConfigCodeBlockPtrOutput {
+	return i.ToToolToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (i *toolToolFakeConfigCodeBlockPtrType) ToToolToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolToolFakeConfigCodeBlockPtrOutput)
+}
+
+type ToolToolFakeConfigCodeBlockOutput struct{ *pulumi.OutputState }
+
+func (ToolToolFakeConfigCodeBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (o ToolToolFakeConfigCodeBlockOutput) ToToolToolFakeConfigCodeBlockOutput() ToolToolFakeConfigCodeBlockOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigCodeBlockOutput) ToToolToolFakeConfigCodeBlockOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigCodeBlockOutput) ToToolToolFakeConfigCodeBlockPtrOutput() ToolToolFakeConfigCodeBlockPtrOutput {
+	return o.ToToolToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (o ToolToolFakeConfigCodeBlockOutput) ToToolToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolToolFakeConfigCodeBlock) *ToolToolFakeConfigCodeBlock {
+		return &v
+	}).(ToolToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Python code which will be invoked in tool fake mode.
+func (o ToolToolFakeConfigCodeBlockOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolToolFakeConfigCodeBlock) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type ToolToolFakeConfigCodeBlockPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolToolFakeConfigCodeBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (o ToolToolFakeConfigCodeBlockPtrOutput) ToToolToolFakeConfigCodeBlockPtrOutput() ToolToolFakeConfigCodeBlockPtrOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigCodeBlockPtrOutput) ToToolToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolToolFakeConfigCodeBlockPtrOutput {
+	return o
+}
+
+func (o ToolToolFakeConfigCodeBlockPtrOutput) Elem() ToolToolFakeConfigCodeBlockOutput {
+	return o.ApplyT(func(v *ToolToolFakeConfigCodeBlock) ToolToolFakeConfigCodeBlock {
+		if v != nil {
+			return *v
+		}
+		var ret ToolToolFakeConfigCodeBlock
+		return ret
+	}).(ToolToolFakeConfigCodeBlockOutput)
+}
+
+// Python code which will be invoked in tool fake mode.
+func (o ToolToolFakeConfigCodeBlockPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolToolFakeConfigCodeBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolWidgetTool struct {
 	// Optional. The mapping that defines how data from a source tool is mapped to the
 	// widget's input parameters.
@@ -51814,6 +52111,303 @@ func (o ToolsetOpenApiToolsetTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput
 	}).(ToolsetOpenApiToolsetTlsConfigCaCertOutput)
 }
 
+type ToolsetToolFakeConfig struct {
+	// Code block which will be executed instead of a real tool call.
+	// Structure is documented below.
+	CodeBlock *ToolsetToolFakeConfigCodeBlock `pulumi:"codeBlock"`
+	// Whether the tool is using fake mode.
+	EnableFakeMode *bool `pulumi:"enableFakeMode"`
+}
+
+// ToolsetToolFakeConfigInput is an input type that accepts ToolsetToolFakeConfigArgs and ToolsetToolFakeConfigOutput values.
+// You can construct a concrete instance of `ToolsetToolFakeConfigInput` via:
+//
+//	ToolsetToolFakeConfigArgs{...}
+type ToolsetToolFakeConfigInput interface {
+	pulumi.Input
+
+	ToToolsetToolFakeConfigOutput() ToolsetToolFakeConfigOutput
+	ToToolsetToolFakeConfigOutputWithContext(context.Context) ToolsetToolFakeConfigOutput
+}
+
+type ToolsetToolFakeConfigArgs struct {
+	// Code block which will be executed instead of a real tool call.
+	// Structure is documented below.
+	CodeBlock ToolsetToolFakeConfigCodeBlockPtrInput `pulumi:"codeBlock"`
+	// Whether the tool is using fake mode.
+	EnableFakeMode pulumi.BoolPtrInput `pulumi:"enableFakeMode"`
+}
+
+func (ToolsetToolFakeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetToolFakeConfig)(nil)).Elem()
+}
+
+func (i ToolsetToolFakeConfigArgs) ToToolsetToolFakeConfigOutput() ToolsetToolFakeConfigOutput {
+	return i.ToToolsetToolFakeConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetToolFakeConfigArgs) ToToolsetToolFakeConfigOutputWithContext(ctx context.Context) ToolsetToolFakeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigOutput)
+}
+
+func (i ToolsetToolFakeConfigArgs) ToToolsetToolFakeConfigPtrOutput() ToolsetToolFakeConfigPtrOutput {
+	return i.ToToolsetToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetToolFakeConfigArgs) ToToolsetToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigOutput).ToToolsetToolFakeConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetToolFakeConfigPtrInput is an input type that accepts ToolsetToolFakeConfigArgs, ToolsetToolFakeConfigPtr and ToolsetToolFakeConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetToolFakeConfigPtrInput` via:
+//
+//	        ToolsetToolFakeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetToolFakeConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetToolFakeConfigPtrOutput() ToolsetToolFakeConfigPtrOutput
+	ToToolsetToolFakeConfigPtrOutputWithContext(context.Context) ToolsetToolFakeConfigPtrOutput
+}
+
+type toolsetToolFakeConfigPtrType ToolsetToolFakeConfigArgs
+
+func ToolsetToolFakeConfigPtr(v *ToolsetToolFakeConfigArgs) ToolsetToolFakeConfigPtrInput {
+	return (*toolsetToolFakeConfigPtrType)(v)
+}
+
+func (*toolsetToolFakeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetToolFakeConfig)(nil)).Elem()
+}
+
+func (i *toolsetToolFakeConfigPtrType) ToToolsetToolFakeConfigPtrOutput() ToolsetToolFakeConfigPtrOutput {
+	return i.ToToolsetToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetToolFakeConfigPtrType) ToToolsetToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigPtrOutput)
+}
+
+type ToolsetToolFakeConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetToolFakeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetToolFakeConfig)(nil)).Elem()
+}
+
+func (o ToolsetToolFakeConfigOutput) ToToolsetToolFakeConfigOutput() ToolsetToolFakeConfigOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigOutput) ToToolsetToolFakeConfigOutputWithContext(ctx context.Context) ToolsetToolFakeConfigOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigOutput) ToToolsetToolFakeConfigPtrOutput() ToolsetToolFakeConfigPtrOutput {
+	return o.ToToolsetToolFakeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetToolFakeConfigOutput) ToToolsetToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetToolFakeConfig) *ToolsetToolFakeConfig {
+		return &v
+	}).(ToolsetToolFakeConfigPtrOutput)
+}
+
+// Code block which will be executed instead of a real tool call.
+// Structure is documented below.
+func (o ToolsetToolFakeConfigOutput) CodeBlock() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyT(func(v ToolsetToolFakeConfig) *ToolsetToolFakeConfigCodeBlock { return v.CodeBlock }).(ToolsetToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Whether the tool is using fake mode.
+func (o ToolsetToolFakeConfigOutput) EnableFakeMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolsetToolFakeConfig) *bool { return v.EnableFakeMode }).(pulumi.BoolPtrOutput)
+}
+
+type ToolsetToolFakeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetToolFakeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetToolFakeConfig)(nil)).Elem()
+}
+
+func (o ToolsetToolFakeConfigPtrOutput) ToToolsetToolFakeConfigPtrOutput() ToolsetToolFakeConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigPtrOutput) ToToolsetToolFakeConfigPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigPtrOutput) Elem() ToolsetToolFakeConfigOutput {
+	return o.ApplyT(func(v *ToolsetToolFakeConfig) ToolsetToolFakeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetToolFakeConfig
+		return ret
+	}).(ToolsetToolFakeConfigOutput)
+}
+
+// Code block which will be executed instead of a real tool call.
+// Structure is documented below.
+func (o ToolsetToolFakeConfigPtrOutput) CodeBlock() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyT(func(v *ToolsetToolFakeConfig) *ToolsetToolFakeConfigCodeBlock {
+		if v == nil {
+			return nil
+		}
+		return v.CodeBlock
+	}).(ToolsetToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Whether the tool is using fake mode.
+func (o ToolsetToolFakeConfigPtrOutput) EnableFakeMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolsetToolFakeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFakeMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ToolsetToolFakeConfigCodeBlock struct {
+	// Python code which will be invoked in tool fake mode.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// ToolsetToolFakeConfigCodeBlockInput is an input type that accepts ToolsetToolFakeConfigCodeBlockArgs and ToolsetToolFakeConfigCodeBlockOutput values.
+// You can construct a concrete instance of `ToolsetToolFakeConfigCodeBlockInput` via:
+//
+//	ToolsetToolFakeConfigCodeBlockArgs{...}
+type ToolsetToolFakeConfigCodeBlockInput interface {
+	pulumi.Input
+
+	ToToolsetToolFakeConfigCodeBlockOutput() ToolsetToolFakeConfigCodeBlockOutput
+	ToToolsetToolFakeConfigCodeBlockOutputWithContext(context.Context) ToolsetToolFakeConfigCodeBlockOutput
+}
+
+type ToolsetToolFakeConfigCodeBlockArgs struct {
+	// Python code which will be invoked in tool fake mode.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (ToolsetToolFakeConfigCodeBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (i ToolsetToolFakeConfigCodeBlockArgs) ToToolsetToolFakeConfigCodeBlockOutput() ToolsetToolFakeConfigCodeBlockOutput {
+	return i.ToToolsetToolFakeConfigCodeBlockOutputWithContext(context.Background())
+}
+
+func (i ToolsetToolFakeConfigCodeBlockArgs) ToToolsetToolFakeConfigCodeBlockOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigCodeBlockOutput)
+}
+
+func (i ToolsetToolFakeConfigCodeBlockArgs) ToToolsetToolFakeConfigCodeBlockPtrOutput() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return i.ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetToolFakeConfigCodeBlockArgs) ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigCodeBlockOutput).ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(ctx)
+}
+
+// ToolsetToolFakeConfigCodeBlockPtrInput is an input type that accepts ToolsetToolFakeConfigCodeBlockArgs, ToolsetToolFakeConfigCodeBlockPtr and ToolsetToolFakeConfigCodeBlockPtrOutput values.
+// You can construct a concrete instance of `ToolsetToolFakeConfigCodeBlockPtrInput` via:
+//
+//	        ToolsetToolFakeConfigCodeBlockArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetToolFakeConfigCodeBlockPtrInput interface {
+	pulumi.Input
+
+	ToToolsetToolFakeConfigCodeBlockPtrOutput() ToolsetToolFakeConfigCodeBlockPtrOutput
+	ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(context.Context) ToolsetToolFakeConfigCodeBlockPtrOutput
+}
+
+type toolsetToolFakeConfigCodeBlockPtrType ToolsetToolFakeConfigCodeBlockArgs
+
+func ToolsetToolFakeConfigCodeBlockPtr(v *ToolsetToolFakeConfigCodeBlockArgs) ToolsetToolFakeConfigCodeBlockPtrInput {
+	return (*toolsetToolFakeConfigCodeBlockPtrType)(v)
+}
+
+func (*toolsetToolFakeConfigCodeBlockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (i *toolsetToolFakeConfigCodeBlockPtrType) ToToolsetToolFakeConfigCodeBlockPtrOutput() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return i.ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetToolFakeConfigCodeBlockPtrType) ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetToolFakeConfigCodeBlockPtrOutput)
+}
+
+type ToolsetToolFakeConfigCodeBlockOutput struct{ *pulumi.OutputState }
+
+func (ToolsetToolFakeConfigCodeBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (o ToolsetToolFakeConfigCodeBlockOutput) ToToolsetToolFakeConfigCodeBlockOutput() ToolsetToolFakeConfigCodeBlockOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigCodeBlockOutput) ToToolsetToolFakeConfigCodeBlockOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigCodeBlockOutput) ToToolsetToolFakeConfigCodeBlockPtrOutput() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o.ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetToolFakeConfigCodeBlockOutput) ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetToolFakeConfigCodeBlock) *ToolsetToolFakeConfigCodeBlock {
+		return &v
+	}).(ToolsetToolFakeConfigCodeBlockPtrOutput)
+}
+
+// Python code which will be invoked in tool fake mode.
+func (o ToolsetToolFakeConfigCodeBlockOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetToolFakeConfigCodeBlock) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type ToolsetToolFakeConfigCodeBlockPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetToolFakeConfigCodeBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetToolFakeConfigCodeBlock)(nil)).Elem()
+}
+
+func (o ToolsetToolFakeConfigCodeBlockPtrOutput) ToToolsetToolFakeConfigCodeBlockPtrOutput() ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigCodeBlockPtrOutput) ToToolsetToolFakeConfigCodeBlockPtrOutputWithContext(ctx context.Context) ToolsetToolFakeConfigCodeBlockPtrOutput {
+	return o
+}
+
+func (o ToolsetToolFakeConfigCodeBlockPtrOutput) Elem() ToolsetToolFakeConfigCodeBlockOutput {
+	return o.ApplyT(func(v *ToolsetToolFakeConfigCodeBlock) ToolsetToolFakeConfigCodeBlock {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetToolFakeConfigCodeBlock
+		return ret
+	}).(ToolsetToolFakeConfigCodeBlockOutput)
+}
+
+// Python code which will be invoked in tool fake mode.
+func (o ToolsetToolFakeConfigCodeBlockPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetToolFakeConfigCodeBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterAgentCallbackInput)(nil)).Elem(), AgentAfterAgentCallbackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterAgentCallbackArrayInput)(nil)).Elem(), AgentAfterAgentCallbackArray{})
@@ -52372,6 +52966,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSupportedInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolInput)(nil)).Elem(), ToolSystemToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolArrayInput)(nil)).Elem(), ToolSystemToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolToolFakeConfigInput)(nil)).Elem(), ToolToolFakeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolToolFakeConfigPtrInput)(nil)).Elem(), ToolToolFakeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolToolFakeConfigCodeBlockInput)(nil)).Elem(), ToolToolFakeConfigCodeBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolToolFakeConfigCodeBlockPtrInput)(nil)).Elem(), ToolToolFakeConfigCodeBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolInput)(nil)).Elem(), ToolWidgetToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolPtrInput)(nil)).Elem(), ToolWidgetToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolDataMappingInput)(nil)).Elem(), ToolWidgetToolDataMappingArgs{})
@@ -52422,6 +53020,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigCaCertInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigCaCertArrayInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetToolFakeConfigInput)(nil)).Elem(), ToolsetToolFakeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetToolFakeConfigPtrInput)(nil)).Elem(), ToolsetToolFakeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetToolFakeConfigCodeBlockInput)(nil)).Elem(), ToolsetToolFakeConfigCodeBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetToolFakeConfigCodeBlockPtrInput)(nil)).Elem(), ToolsetToolFakeConfigCodeBlockArgs{})
 	pulumi.RegisterOutputType(AgentAfterAgentCallbackOutput{})
 	pulumi.RegisterOutputType(AgentAfterAgentCallbackArrayOutput{})
 	pulumi.RegisterOutputType(AgentAfterModelCallbackOutput{})
@@ -52979,6 +53581,10 @@ func init() {
 	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolToolFakeConfigOutput{})
+	pulumi.RegisterOutputType(ToolToolFakeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolToolFakeConfigCodeBlockOutput{})
+	pulumi.RegisterOutputType(ToolToolFakeConfigCodeBlockPtrOutput{})
 	pulumi.RegisterOutputType(ToolWidgetToolOutput{})
 	pulumi.RegisterOutputType(ToolWidgetToolPtrOutput{})
 	pulumi.RegisterOutputType(ToolWidgetToolDataMappingOutput{})
@@ -53029,4 +53635,8 @@ func init() {
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetTlsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetTlsConfigCaCertOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetTlsConfigCaCertArrayOutput{})
+	pulumi.RegisterOutputType(ToolsetToolFakeConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetToolFakeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetToolFakeConfigCodeBlockOutput{})
+	pulumi.RegisterOutputType(ToolsetToolFakeConfigCodeBlockPtrOutput{})
 }

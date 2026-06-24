@@ -256,6 +256,11 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.SnapshotParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -346,6 +351,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["licenses"] = state?.licenses;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["selfLink"] = state?.selfLink;
@@ -366,6 +372,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["guestFlush"] = args?.guestFlush;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["snapshotEncryptionKey"] = args?.snapshotEncryptionKey;
             resourceInputs["snapshotType"] = args?.snapshotType;
@@ -462,6 +469,11 @@ export interface SnapshotState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SnapshotParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -577,6 +589,11 @@ export interface SnapshotArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SnapshotParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

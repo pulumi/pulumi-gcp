@@ -27,6 +27,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaintConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -263,6 +264,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Taint configuration for this node.
+     * 
+     */
+    private List<GetClusterNodeConfigTaintConfig> taintConfigs;
     /**
      * @return List of Kubernetes taints to be applied to each node.
      * 
@@ -596,6 +602,13 @@ public final class GetClusterNodeConfig {
         return this.tags;
     }
     /**
+     * @return Taint configuration for this node.
+     * 
+     */
+    public List<GetClusterNodeConfigTaintConfig> taintConfigs() {
+        return this.taintConfigs;
+    }
+    /**
      * @return List of Kubernetes taints to be applied to each node.
      * 
      */
@@ -671,6 +684,7 @@ public final class GetClusterNodeConfig {
         private Boolean spot;
         private List<String> storagePools;
         private List<String> tags;
+        private List<GetClusterNodeConfigTaintConfig> taintConfigs;
         private List<GetClusterNodeConfigTaint> taints;
         private List<GetClusterNodeConfigWindowsNodeConfig> windowsNodeConfigs;
         private List<GetClusterNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
@@ -722,6 +736,7 @@ public final class GetClusterNodeConfig {
     	      this.spot = defaults.spot;
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
+    	      this.taintConfigs = defaults.taintConfigs;
     	      this.taints = defaults.taints;
     	      this.windowsNodeConfigs = defaults.windowsNodeConfigs;
     	      this.workloadMetadataConfigs = defaults.workloadMetadataConfigs;
@@ -1160,6 +1175,17 @@ public final class GetClusterNodeConfig {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder taintConfigs(List<GetClusterNodeConfigTaintConfig> taintConfigs) {
+            if (taintConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "taintConfigs");
+            }
+            this.taintConfigs = taintConfigs;
+            return this;
+        }
+        public Builder taintConfigs(GetClusterNodeConfigTaintConfig... taintConfigs) {
+            return taintConfigs(List.of(taintConfigs));
+        }
+        @CustomType.Setter
         public Builder taints(List<GetClusterNodeConfigTaint> taints) {
             if (taints == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "taints");
@@ -1239,6 +1265,7 @@ public final class GetClusterNodeConfig {
             _resultValue.spot = spot;
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
+            _resultValue.taintConfigs = taintConfigs;
             _resultValue.taints = taints;
             _resultValue.windowsNodeConfigs = windowsNodeConfigs;
             _resultValue.workloadMetadataConfigs = workloadMetadataConfigs;

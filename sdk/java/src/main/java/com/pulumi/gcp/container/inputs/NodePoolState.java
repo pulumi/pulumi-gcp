@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeDrainConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolPlacementPolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -88,6 +89,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    @Import(name="ignoreNodeCountChanges")
+    private @Nullable Output<Boolean> ignoreNodeCountChanges;
+
+    /**
+     * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreNodeCountChanges() {
+        return Optional.ofNullable(this.ignoreNodeCountChanges);
     }
 
     /**
@@ -260,16 +276,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      * 
      */
     @Import(name="nodeConfig")
     private @Nullable Output<NodePoolNodeConfigArgs> nodeConfig;
 
     /**
-     * @return Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * @return Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      * 
      */
     public Optional<Output<NodePoolNodeConfigArgs>> nodeConfig() {
@@ -443,6 +457,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.autoscaling = $.autoscaling;
         this.cluster = $.cluster;
         this.deletionPolicy = $.deletionPolicy;
+        this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
         this.initialNodeCount = $.initialNodeCount;
         this.instanceGroupUrls = $.instanceGroupUrls;
         this.location = $.location;
@@ -563,6 +578,27 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param ignoreNodeCountChanges Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreNodeCountChanges(@Nullable Output<Boolean> ignoreNodeCountChanges) {
+            $.ignoreNodeCountChanges = ignoreNodeCountChanges;
+            return this;
+        }
+
+        /**
+         * @param ignoreNodeCountChanges Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreNodeCountChanges(Boolean ignoreNodeCountChanges) {
+            return ignoreNodeCountChanges(Output.of(ignoreNodeCountChanges));
         }
 
         /**
@@ -809,8 +845,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the node pool. See
-         * gcp.container.Cluster for schema.
+         * @param nodeConfig Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
          * 
          * @return builder
          * 
@@ -821,8 +856,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeConfig Parameters used in creating the node pool. See
-         * gcp.container.Cluster for schema.
+         * @param nodeConfig Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
          * 
          * @return builder
          * 

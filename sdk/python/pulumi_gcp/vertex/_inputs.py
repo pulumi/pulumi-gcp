@@ -275,6 +275,46 @@ __all__ = [
     'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs',
+    'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgsDict',
+    'AiScheduleCreatePipelineJobRequestArgs',
+    'AiScheduleCreatePipelineJobRequestArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgsDict',
+    'AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs',
+    'AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgsDict',
+    'AiScheduleLastScheduledRunResponseArgs',
+    'AiScheduleLastScheduledRunResponseArgsDict',
     'AiTensorboardEncryptionSpecArgs',
     'AiTensorboardEncryptionSpecArgsDict',
 ]
@@ -10108,6 +10148,1914 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
     @version.setter
     def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestArgsDict(TypedDict):
+    notebook_execution_job: pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict']
+    """
+    NotebookExecutionJob represents an instance of a notebook execution.
+    Structure is documented below.
+    """
+    parent: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+    """
+    notebook_execution_job_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User specified ID for the NotebookExecutionJob.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestArgs:
+    def __init__(__self__, *,
+                 notebook_execution_job: pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs'],
+                 parent: pulumi.Input[_builtins.str],
+                 notebook_execution_job_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs'] notebook_execution_job: NotebookExecutionJob represents an instance of a notebook execution.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] parent: The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+        :param pulumi.Input[_builtins.str] notebook_execution_job_id: User specified ID for the NotebookExecutionJob.
+        """
+        pulumi.set(__self__, "notebook_execution_job", notebook_execution_job)
+        pulumi.set(__self__, "parent", parent)
+        if notebook_execution_job_id is not None:
+            pulumi.set(__self__, "notebook_execution_job_id", notebook_execution_job_id)
+
+    @_builtins.property
+    @pulumi.getter(name="notebookExecutionJob")
+    def notebook_execution_job(self) -> pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs']:
+        """
+        NotebookExecutionJob represents an instance of a notebook execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notebook_execution_job")
+
+    @notebook_execution_job.setter
+    def notebook_execution_job(self, value: pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs']):
+        pulumi.set(self, "notebook_execution_job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notebookExecutionJobId")
+    def notebook_execution_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User specified ID for the NotebookExecutionJob.
+        """
+        return pulumi.get(self, "notebook_execution_job_id")
+
+    @notebook_execution_job_id.setter
+    def notebook_execution_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "notebook_execution_job_id", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Timestamp when this NotebookExecutionJob was created.
+    """
+    custom_environment_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgsDict']]]
+    """
+    Compute configuration to use for an execution job.
+    Structure is documented below.
+    """
+    dataform_repository_source: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]]
+    """
+    The Dataform Repository containing the input notebook.
+    Structure is documented below.
+    """
+    direct_notebook_source: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgsDict']]]
+    """
+    The content of the input notebook in ipynb format.
+    Structure is documented below.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+    """
+    encryption_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgsDict']]]
+    """
+    Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+    Structure is documented below.
+    """
+    execution_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Max running time of the execution job in seconds (default 86400s / 24 hrs).
+    """
+    execution_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The user email to run the execution as. Only supported by Colab runtimes.
+    """
+    gcs_notebook_source: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]]
+    """
+    The Cloud Storage uri for the input notebook.
+    Structure is documented below.
+    """
+    gcs_output_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+    """
+    job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+    """
+    kernel_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+    """
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+    """
+    notebook_runtime_template_resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The NotebookRuntimeTemplate to source compute configuration from.
+    """
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The user-defined parameters to use during notebook execution.
+    """
+    schedule_resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+    """
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The service account to run the execution as.
+    """
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Timestamp when this NotebookExecutionJob was most recently updated.
+    """
+    workbench_runtime: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgsDict']]]
+    """
+    Configuration for a Workbench Instances-based environment.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
+    def __init__(__self__, *,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_environment_spec: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs']] = None,
+                 dataform_repository_source: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']] = None,
+                 direct_notebook_source: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs']] = None,
+                 execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_notebook_source: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']] = None,
+                 gcs_output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 kernel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_runtime_template_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 schedule_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 workbench_runtime: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               Timestamp when this NotebookExecutionJob was created.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs'] custom_environment_spec: Compute configuration to use for an execution job.
+               Structure is documented below.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
+               Structure is documented below.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs'] encryption_spec: Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] execution_timeout: Max running time of the execution job in seconds (default 86400s / 24 hrs).
+        :param pulumi.Input[_builtins.str] execution_user: The user email to run the execution as. Only supported by Colab runtimes.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs'] gcs_notebook_source: The Cloud Storage uri for the input notebook.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+        :param pulumi.Input[_builtins.str] job_state: (Output)
+               Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+        :param pulumi.Input[_builtins.str] kernel_name: The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        :param pulumi.Input[_builtins.str] name: (Output)
+               The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+        :param pulumi.Input[_builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The user-defined parameters to use during notebook execution.
+        :param pulumi.Input[_builtins.str] schedule_resource_name: (Output)
+               The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        :param pulumi.Input[_builtins.str] service_account: The service account to run the execution as.
+        :param pulumi.Input[_builtins.str] update_time: (Output)
+               Timestamp when this NotebookExecutionJob was most recently updated.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs'] workbench_runtime: Configuration for a Workbench Instances-based environment.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if custom_environment_spec is not None:
+            pulumi.set(__self__, "custom_environment_spec", custom_environment_spec)
+        if dataform_repository_source is not None:
+            pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
+        if direct_notebook_source is not None:
+            pulumi.set(__self__, "direct_notebook_source", direct_notebook_source)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
+        if execution_user is not None:
+            pulumi.set(__self__, "execution_user", execution_user)
+        if gcs_notebook_source is not None:
+            pulumi.set(__self__, "gcs_notebook_source", gcs_notebook_source)
+        if gcs_output_uri is not None:
+            pulumi.set(__self__, "gcs_output_uri", gcs_output_uri)
+        if job_state is not None:
+            pulumi.set(__self__, "job_state", job_state)
+        if kernel_name is not None:
+            pulumi.set(__self__, "kernel_name", kernel_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notebook_runtime_template_resource_name is not None:
+            pulumi.set(__self__, "notebook_runtime_template_resource_name", notebook_runtime_template_resource_name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if schedule_resource_name is not None:
+            pulumi.set(__self__, "schedule_resource_name", schedule_resource_name)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if workbench_runtime is not None:
+            pulumi.set(__self__, "workbench_runtime", workbench_runtime)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Timestamp when this NotebookExecutionJob was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customEnvironmentSpec")
+    def custom_environment_spec(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs']]:
+        """
+        Compute configuration to use for an execution job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_environment_spec")
+
+    @custom_environment_spec.setter
+    def custom_environment_spec(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs']]):
+        pulumi.set(self, "custom_environment_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataformRepositorySource")
+    def dataform_repository_source(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]:
+        """
+        The Dataform Repository containing the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataform_repository_source")
+
+    @dataform_repository_source.setter
+    def dataform_repository_source(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]):
+        pulumi.set(self, "dataform_repository_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directNotebookSource")
+    def direct_notebook_source(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs']]:
+        """
+        The content of the input notebook in ipynb format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "direct_notebook_source")
+
+    @direct_notebook_source.setter
+    def direct_notebook_source(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs']]):
+        pulumi.set(self, "direct_notebook_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs']]:
+        """
+        Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Max running time of the execution job in seconds (default 86400s / 24 hrs).
+        """
+        return pulumi.get(self, "execution_timeout")
+
+    @execution_timeout.setter
+    def execution_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "execution_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executionUser")
+    def execution_user(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The user email to run the execution as. Only supported by Colab runtimes.
+        """
+        return pulumi.get(self, "execution_user")
+
+    @execution_user.setter
+    def execution_user(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "execution_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsNotebookSource")
+    def gcs_notebook_source(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]:
+        """
+        The Cloud Storage uri for the input notebook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_notebook_source")
+
+    @gcs_notebook_source.setter
+    def gcs_notebook_source(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]):
+        pulumi.set(self, "gcs_notebook_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsOutputUri")
+    def gcs_output_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+        """
+        return pulumi.get(self, "gcs_output_uri")
+
+    @gcs_output_uri.setter
+    def gcs_output_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gcs_output_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobState")
+    def job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+        """
+        return pulumi.get(self, "job_state")
+
+    @job_state.setter
+    def job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "job_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kernelName")
+    def kernel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        """
+        return pulumi.get(self, "kernel_name")
+
+    @kernel_name.setter
+    def kernel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kernel_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notebookRuntimeTemplateResourceName")
+    def notebook_runtime_template_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The NotebookRuntimeTemplate to source compute configuration from.
+        """
+        return pulumi.get(self, "notebook_runtime_template_resource_name")
+
+    @notebook_runtime_template_resource_name.setter
+    def notebook_runtime_template_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "notebook_runtime_template_resource_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The user-defined parameters to use during notebook execution.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleResourceName")
+    def schedule_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        """
+        return pulumi.get(self, "schedule_resource_name")
+
+    @schedule_resource_name.setter
+    def schedule_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schedule_resource_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service account to run the execution as.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Timestamp when this NotebookExecutionJob was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workbenchRuntime")
+    def workbench_runtime(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs']]:
+        """
+        Configuration for a Workbench Instances-based environment.
+        """
+        return pulumi.get(self, "workbench_runtime")
+
+    @workbench_runtime.setter
+    def workbench_runtime(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs']]):
+        pulumi.set(self, "workbench_runtime", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgsDict(TypedDict):
+    machine_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgsDict']]]
+    """
+    Specification of a single machine.
+    Structure is documented below.
+    """
+    network_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgsDict']]]
+    """
+    Network spec.
+    Structure is documented below.
+    """
+    persistent_disk_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgsDict']]]
+    """
+    Represents the spec of persistent disk options.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs:
+    def __init__(__self__, *,
+                 machine_spec: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs']] = None,
+                 network_spec: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs']] = None,
+                 persistent_disk_spec: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs']] = None):
+        """
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs'] machine_spec: Specification of a single machine.
+               Structure is documented below.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs'] network_spec: Network spec.
+               Structure is documented below.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs'] persistent_disk_spec: Represents the spec of persistent disk options.
+               Structure is documented below.
+        """
+        if machine_spec is not None:
+            pulumi.set(__self__, "machine_spec", machine_spec)
+        if network_spec is not None:
+            pulumi.set(__self__, "network_spec", network_spec)
+        if persistent_disk_spec is not None:
+            pulumi.set(__self__, "persistent_disk_spec", persistent_disk_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs']]:
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @machine_spec.setter
+    def machine_spec(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs']]):
+        pulumi.set(self, "machine_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkSpec")
+    def network_spec(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs']]:
+        """
+        Network spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_spec")
+
+    @network_spec.setter
+    def network_spec(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs']]):
+        pulumi.set(self, "network_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentDiskSpec")
+    def persistent_disk_spec(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs']]:
+        """
+        Represents the spec of persistent disk options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistent_disk_spec")
+
+    @persistent_disk_spec.setter
+    def persistent_disk_spec(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs']]):
+        pulumi.set(self, "persistent_disk_spec", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+    """
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+    """
+    gpu_partition_size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
+    """
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+    """
+    reservation_affinity: NotRequired[pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgsDict']]]
+    """
+    A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+    Structure is documented below.
+    """
+    tpu_topology: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs:
+    def __init__(__self__, *,
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_partition_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs']] = None,
+                 tpu_topology: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+        :param pulumi.Input[_builtins.str] accelerator_type: Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+        :param pulumi.Input[_builtins.str] gpu_partition_size: The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
+        :param pulumi.Input[_builtins.str] machine_type: The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+        :param pulumi.Input['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs'] reservation_affinity: A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] tpu_topology: The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
+        """
+        return pulumi.get(self, "gpu_partition_size")
+
+    @gpu_partition_size.setter
+    def gpu_partition_size(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs']]:
+        """
+        A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: pulumi.Input[Optional['AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+        """
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tpu_topology", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgsDict(TypedDict):
+    reservation_affinity_type: pulumi.Input[_builtins.str]
+    """
+    Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+    """
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+    """
+    use_reservation_pool: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+    """
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs:
+    def __init__(__self__, *,
+                 reservation_affinity_type: pulumi.Input[_builtins.str],
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_reservation_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] reservation_affinity_type: Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+        :param pulumi.Input[_builtins.str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+        :param pulumi.Input[_builtins.bool] use_reservation_pool: When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+        """
+        pulumi.set(__self__, "reservation_affinity_type", reservation_affinity_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if use_reservation_pool is not None:
+            pulumi.set(__self__, "use_reservation_pool", use_reservation_pool)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinityType")
+    def reservation_affinity_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+        """
+        return pulumi.get(self, "reservation_affinity_type")
+
+    @reservation_affinity_type.setter
+    def reservation_affinity_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "reservation_affinity_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useReservationPool")
+    def use_reservation_pool(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+        """
+        return pulumi.get(self, "use_reservation_pool")
+
+    @use_reservation_pool.setter
+    def use_reservation_pool(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_reservation_pool", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgsDict(TypedDict):
+    enable_internet_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable public internet access. Default false.
+    """
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+    """
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs:
+    def __init__(__self__, *,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_internet_access: Whether to enable public internet access. Default false.
+        :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+        :param pulumi.Input[_builtins.str] subnetwork: The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+        """
+        if enable_internet_access is not None:
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="enableInternetAccess")
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable public internet access. Default false.
+        """
+        return pulumi.get(self, "enable_internet_access")
+
+    @enable_internet_access.setter
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_internet_access", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnetwork", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Size in GB of the disk (default is 100GB).
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] disk_size_gb: Size in GB of the disk (default is 100GB).
+        :param pulumi.Input[_builtins.str] disk_type: Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Size in GB of the disk (default is 100GB).
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict(TypedDict):
+    commit_sha: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The commit SHA to read repository with. If unset, the file will be read at HEAD.
+    """
+    dataform_repository_resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs:
+    def __init__(__self__, *,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataform_repository_resource_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        :param pulumi.Input[_builtins.str] dataform_repository_resource_name: The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+        """
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+        if dataform_repository_resource_name is not None:
+            pulumi.set(__self__, "dataform_repository_resource_name", dataform_repository_resource_name)
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The commit SHA to read repository with. If unset, the file will be read at HEAD.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commit_sha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataformRepositoryResourceName")
+    def dataform_repository_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+        """
+        return pulumi.get(self, "dataform_repository_resource_name")
+
+    @dataform_repository_resource_name.setter
+    def dataform_repository_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataform_repository_resource_name", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgsDict(TypedDict):
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The base64-encoded contents of the input notebook file.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] content: The base64-encoded contents of the input notebook file.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The base64-encoded contents of the input notebook file.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "content", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict(TypedDict):
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+    """
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+    """
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs:
+    def __init__(__self__, *,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        :param pulumi.Input[_builtins.str] uri: The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+        """
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "generation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs:
+    def __init__(__self__):
+        pass
+
+
+class AiScheduleCreatePipelineJobRequestArgsDict(TypedDict):
+    parent: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+    """
+    pipeline_job: pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobArgsDict']
+    """
+    An instance of a machine learning PipelineJob.
+    Structure is documented below.
+    """
+    pipeline_job_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[_builtins.str],
+                 pipeline_job: pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobArgs'],
+                 pipeline_job_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] parent: The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+        :param pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobArgs'] pipeline_job: An instance of a machine learning PipelineJob.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] pipeline_job_id: The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+        """
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "pipeline_job", pipeline_job)
+        if pipeline_job_id is not None:
+            pulumi.set(__self__, "pipeline_job_id", pipeline_job_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineJob")
+    def pipeline_job(self) -> pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobArgs']:
+        """
+        An instance of a machine learning PipelineJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pipeline_job")
+
+    @pipeline_job.setter
+    def pipeline_job(self, value: pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobArgs']):
+        pulumi.set(self, "pipeline_job", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineJobId")
+    def pipeline_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+        """
+        return pulumi.get(self, "pipeline_job_id")
+
+    @pipeline_job_id.setter
+    def pipeline_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pipeline_job_id", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Pipeline creation time.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+    """
+    encryption_spec: NotRequired[pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgsDict']]]
+    """
+    Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+    Structure is documented below.
+    """
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Pipeline end time.
+    """
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The resource name of the PipelineJob.
+    """
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+    """
+    pipeline_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+    """
+    preflight_validations: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to do component level validations before job creation.
+    """
+    psc_interface_config: NotRequired[pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgsDict']]]
+    """
+    Configuration for PSC-I.
+    Structure is documented below.
+    """
+    reserved_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+    """
+    runtime_config: NotRequired[pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgsDict']]]
+    """
+    The runtime config of a PipelineJob.
+    Structure is documented below.
+    """
+    schedule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+    """
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+    """
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Pipeline start time.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+    """
+    template_metadatas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgsDict']]]]]
+    """
+    (Output)
+    Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+    Structure is documented below.
+    """
+    template_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+    """
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Timestamp when this PipelineJob was most recently updated.
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobArgs:
+    def __init__(__self__, *,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs']] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 preflight_validations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 psc_interface_config: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs']] = None,
+                 reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 runtime_config: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs']] = None,
+                 schedule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs']]]] = None,
+                 template_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               Pipeline creation time.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs'] encryption_spec: Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] end_time: (Output)
+               Pipeline end time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+        :param pulumi.Input[_builtins.str] name: (Output)
+               The resource name of the PipelineJob.
+        :param pulumi.Input[_builtins.str] network: The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+        :param pulumi.Input[_builtins.str] pipeline_spec: A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+        :param pulumi.Input[_builtins.bool] preflight_validations: Whether to do component level validations before job creation.
+        :param pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs'] psc_interface_config: Configuration for PSC-I.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+        :param pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs'] runtime_config: The runtime config of a PipelineJob.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] schedule_name: (Output)
+               The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+        :param pulumi.Input[_builtins.str] service_account: The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+        :param pulumi.Input[_builtins.str] start_time: (Output)
+               Pipeline start time.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+        :param pulumi.Input[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs']]] template_metadatas: (Output)
+               Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] template_uri: A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+        :param pulumi.Input[_builtins.str] update_time: (Output)
+               Timestamp when this PipelineJob was most recently updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if pipeline_spec is not None:
+            pulumi.set(__self__, "pipeline_spec", pipeline_spec)
+        if preflight_validations is not None:
+            pulumi.set(__self__, "preflight_validations", preflight_validations)
+        if psc_interface_config is not None:
+            pulumi.set(__self__, "psc_interface_config", psc_interface_config)
+        if reserved_ip_ranges is not None:
+            pulumi.set(__self__, "reserved_ip_ranges", reserved_ip_ranges)
+        if runtime_config is not None:
+            pulumi.set(__self__, "runtime_config", runtime_config)
+        if schedule_name is not None:
+            pulumi.set(__self__, "schedule_name", schedule_name)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if template_metadatas is not None:
+            pulumi.set(__self__, "template_metadatas", template_metadatas)
+        if template_uri is not None:
+            pulumi.set(__self__, "template_uri", template_uri)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Pipeline creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs']]:
+        """
+        Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Pipeline end time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The resource name of the PipelineJob.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineSpec")
+    def pipeline_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+        """
+        return pulumi.get(self, "pipeline_spec")
+
+    @pipeline_spec.setter
+    def pipeline_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pipeline_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preflightValidations")
+    def preflight_validations(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to do component level validations before job creation.
+        """
+        return pulumi.get(self, "preflight_validations")
+
+    @preflight_validations.setter
+    def preflight_validations(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "preflight_validations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs']]:
+        """
+        Configuration for PSC-I.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @psc_interface_config.setter
+    def psc_interface_config(self, value: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs']]):
+        pulumi.set(self, "psc_interface_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservedIpRanges")
+    def reserved_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+        """
+        return pulumi.get(self, "reserved_ip_ranges")
+
+    @reserved_ip_ranges.setter
+    def reserved_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "reserved_ip_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeConfig")
+    def runtime_config(self) -> pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs']]:
+        """
+        The runtime config of a PipelineJob.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "runtime_config")
+
+    @runtime_config.setter
+    def runtime_config(self, value: pulumi.Input[Optional['AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs']]):
+        pulumi.set(self, "runtime_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleName")
+    def schedule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+        """
+        return pulumi.get(self, "schedule_name")
+
+    @schedule_name.setter
+    def schedule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schedule_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Pipeline start time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="templateMetadatas")
+    def template_metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs']]]]:
+        """
+        (Output)
+        Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "template_metadatas")
+
+    @template_metadatas.setter
+    def template_metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs']]]]):
+        pulumi.set(self, "template_metadatas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="templateUri")
+    def template_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+        """
+        return pulumi.get(self, "template_uri")
+
+    @template_uri.setter
+    def template_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "template_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Timestamp when this PipelineJob was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgsDict(TypedDict):
+    dns_peering_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgsDict']]]]]
+    """
+    DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+    Structure is documented below.
+    """
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs:
+    def __init__(__self__, *,
+                 dns_peering_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs']]]] = None,
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs']]] dns_peering_configs: DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] network_attachment: The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+        """
+        if dns_peering_configs is not None:
+            pulumi.set(__self__, "dns_peering_configs", dns_peering_configs)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfigs")
+    def dns_peering_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs']]]]:
+        """
+        DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_configs")
+
+    @dns_peering_configs.setter
+    def dns_peering_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs']]]]):
+        pulumi.set(self, "dns_peering_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network_attachment", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+    """
+    target_network: pulumi.Input[_builtins.str]
+    """
+    The VPC network name in the target_project where the DNS zone specified by 'domain' is visible.
+    """
+    target_project: pulumi.Input[_builtins.str]
+    """
+    The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 target_network: pulumi.Input[_builtins.str],
+                 target_project: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] domain: The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        :param pulumi.Input[_builtins.str] target_network: The VPC network name in the target_project where the DNS zone specified by 'domain' is visible.
+        :param pulumi.Input[_builtins.str] target_project: The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The VPC network name in the target_project where the DNS zone specified by 'domain' is visible.
+        """
+        return pulumi.get(self, "target_network")
+
+    @target_network.setter
+    def target_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_project", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgsDict(TypedDict):
+    gcs_output_directory: pulumi.Input[_builtins.str]
+    """
+    A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+    """
+    failure_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+    """
+    input_artifacts: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+    """
+    parameter_values: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+
+    <a name="nested_create_pipeline_job_request_pipeline_job_template_metadata"></a>The `template_metadata` block contains:
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs:
+    def __init__(__self__, *,
+                 gcs_output_directory: pulumi.Input[_builtins.str],
+                 failure_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_artifacts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parameter_values: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+        :param pulumi.Input[_builtins.str] failure_policy: Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+               
+               <a name="nested_create_pipeline_job_request_pipeline_job_template_metadata"></a>The `template_metadata` block contains:
+        """
+        pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
+        if failure_policy is not None:
+            pulumi.set(__self__, "failure_policy", failure_policy)
+        if input_artifacts is not None:
+            pulumi.set(__self__, "input_artifacts", input_artifacts)
+        if parameter_values is not None:
+            pulumi.set(__self__, "parameter_values", parameter_values)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsOutputDirectory")
+    def gcs_output_directory(self) -> pulumi.Input[_builtins.str]:
+        """
+        A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+        """
+        return pulumi.get(self, "gcs_output_directory")
+
+    @gcs_output_directory.setter
+    def gcs_output_directory(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "gcs_output_directory", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failurePolicy")
+    def failure_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+        """
+        return pulumi.get(self, "failure_policy")
+
+    @failure_policy.setter
+    def failure_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "failure_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputArtifacts")
+    def input_artifacts(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        """
+        return pulumi.get(self, "input_artifacts")
+
+    @input_artifacts.setter
+    def input_artifacts(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_artifacts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterValues")
+    def parameter_values(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+
+        <a name="nested_create_pipeline_job_request_pipeline_job_template_metadata"></a>The `template_metadata` block contains:
+        """
+        return pulumi.get(self, "parameter_values")
+
+    @parameter_values.setter
+    def parameter_values(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameter_values", value)
+
+
+class AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgsDict(TypedDict):
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+    """
+
+@pulumi.input_type
+class AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs:
+    def __init__(__self__, *,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] version: The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+        """
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class AiScheduleLastScheduledRunResponseArgsDict(TypedDict):
+    run_response: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The response of the scheduled run.
+    """
+    scheduled_run_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The scheduled run time based on the user-specified schedule.
+    """
+
+@pulumi.input_type
+class AiScheduleLastScheduledRunResponseArgs:
+    def __init__(__self__, *,
+                 run_response: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_run_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] run_response: (Output)
+               The response of the scheduled run.
+        :param pulumi.Input[_builtins.str] scheduled_run_time: (Output)
+               The scheduled run time based on the user-specified schedule.
+        """
+        if run_response is not None:
+            pulumi.set(__self__, "run_response", run_response)
+        if scheduled_run_time is not None:
+            pulumi.set(__self__, "scheduled_run_time", scheduled_run_time)
+
+    @_builtins.property
+    @pulumi.getter(name="runResponse")
+    def run_response(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The response of the scheduled run.
+        """
+        return pulumi.get(self, "run_response")
+
+    @run_response.setter
+    def run_response(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "run_response", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduledRunTime")
+    def scheduled_run_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The scheduled run time based on the user-specified schedule.
+        """
+        return pulumi.get(self, "scheduled_run_time")
+
+    @scheduled_run_time.setter
+    def scheduled_run_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scheduled_run_time", value)
 
 
 class AiTensorboardEncryptionSpecArgsDict(TypedDict):

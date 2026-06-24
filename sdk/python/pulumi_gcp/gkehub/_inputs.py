@@ -4980,7 +4980,8 @@ class RolloutSequenceStageArgsDict(TypedDict):
     """
     soak_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Soak time after upgrading all the clusters in the stage, specified in seconds.
+    Soak time after upgrading all the clusters in the stage.
+    Has to be specified in seconds, minutes, hours or days.
     """
 
 @pulumi.input_type
@@ -4995,7 +4996,8 @@ class RolloutSequenceStageArgs:
         :param pulumi.Input['RolloutSequenceStageClusterSelectorArgs'] cluster_selector: Filter to select a subset of clusters from the specified Fleet projects.
                If not specified, all clusters in the fleet projects are selected.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] soak_duration: Soak time after upgrading all the clusters in the stage, specified in seconds.
+        :param pulumi.Input[_builtins.str] soak_duration: Soak time after upgrading all the clusters in the stage.
+               Has to be specified in seconds, minutes, hours or days.
         """
         pulumi.set(__self__, "fleet_projects", fleet_projects)
         if cluster_selector is not None:
@@ -5034,7 +5036,8 @@ class RolloutSequenceStageArgs:
     @pulumi.getter(name="soakDuration")
     def soak_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Soak time after upgrading all the clusters in the stage, specified in seconds.
+        Soak time after upgrading all the clusters in the stage.
+        Has to be specified in seconds, minutes, hours or days.
         """
         return pulumi.get(self, "soak_duration")
 

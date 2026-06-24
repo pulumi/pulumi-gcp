@@ -573,6 +573,10 @@ __all__ = [
     'ToolRemoteAgentToolAgentCardSupportedInterfaceArgsDict',
     'ToolSystemToolArgs',
     'ToolSystemToolArgsDict',
+    'ToolToolFakeConfigArgs',
+    'ToolToolFakeConfigArgsDict',
+    'ToolToolFakeConfigCodeBlockArgs',
+    'ToolToolFakeConfigCodeBlockArgsDict',
     'ToolWidgetToolArgs',
     'ToolWidgetToolArgsDict',
     'ToolWidgetToolDataMappingArgs',
@@ -623,6 +627,10 @@ __all__ = [
     'ToolsetOpenApiToolsetTlsConfigArgsDict',
     'ToolsetOpenApiToolsetTlsConfigCaCertArgs',
     'ToolsetOpenApiToolsetTlsConfigCaCertArgsDict',
+    'ToolsetToolFakeConfigArgs',
+    'ToolsetToolFakeConfigArgsDict',
+    'ToolsetToolFakeConfigCodeBlockArgs',
+    'ToolsetToolFakeConfigCodeBlockArgsDict',
 ]
 
 class AgentAfterAgentCallbackArgsDict(TypedDict):
@@ -27858,6 +27866,86 @@ class ToolSystemToolArgs:
         pulumi.set(self, "name", value)
 
 
+class ToolToolFakeConfigArgsDict(TypedDict):
+    code_block: NotRequired[pulumi.Input[Optional['ToolToolFakeConfigCodeBlockArgsDict']]]
+    """
+    Code block which will be executed instead of a real tool call.
+    Structure is documented below.
+    """
+    enable_fake_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the tool is using fake mode.
+    """
+
+@pulumi.input_type
+class ToolToolFakeConfigArgs:
+    def __init__(__self__, *,
+                 code_block: pulumi.Input[Optional['ToolToolFakeConfigCodeBlockArgs']] = None,
+                 enable_fake_mode: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['ToolToolFakeConfigCodeBlockArgs'] code_block: Code block which will be executed instead of a real tool call.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enable_fake_mode: Whether the tool is using fake mode.
+        """
+        if code_block is not None:
+            pulumi.set(__self__, "code_block", code_block)
+        if enable_fake_mode is not None:
+            pulumi.set(__self__, "enable_fake_mode", enable_fake_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="codeBlock")
+    def code_block(self) -> pulumi.Input[Optional['ToolToolFakeConfigCodeBlockArgs']]:
+        """
+        Code block which will be executed instead of a real tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "code_block")
+
+    @code_block.setter
+    def code_block(self, value: pulumi.Input[Optional['ToolToolFakeConfigCodeBlockArgs']]):
+        pulumi.set(self, "code_block", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableFakeMode")
+    def enable_fake_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the tool is using fake mode.
+        """
+        return pulumi.get(self, "enable_fake_mode")
+
+    @enable_fake_mode.setter
+    def enable_fake_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_fake_mode", value)
+
+
+class ToolToolFakeConfigCodeBlockArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    Python code which will be invoked in tool fake mode.
+    """
+
+@pulumi.input_type
+class ToolToolFakeConfigCodeBlockArgs:
+    def __init__(__self__, *,
+                 python_code: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] python_code: Python code which will be invoked in tool fake mode.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        Python code which will be invoked in tool fake mode.
+        """
+        return pulumi.get(self, "python_code")
+
+    @python_code.setter
+    def python_code(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "python_code", value)
+
+
 class ToolWidgetToolArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
@@ -30357,5 +30445,85 @@ class ToolsetOpenApiToolsetTlsConfigCaCertArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+
+class ToolsetToolFakeConfigArgsDict(TypedDict):
+    code_block: NotRequired[pulumi.Input[Optional['ToolsetToolFakeConfigCodeBlockArgsDict']]]
+    """
+    Code block which will be executed instead of a real tool call.
+    Structure is documented below.
+    """
+    enable_fake_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the tool is using fake mode.
+    """
+
+@pulumi.input_type
+class ToolsetToolFakeConfigArgs:
+    def __init__(__self__, *,
+                 code_block: pulumi.Input[Optional['ToolsetToolFakeConfigCodeBlockArgs']] = None,
+                 enable_fake_mode: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['ToolsetToolFakeConfigCodeBlockArgs'] code_block: Code block which will be executed instead of a real tool call.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enable_fake_mode: Whether the tool is using fake mode.
+        """
+        if code_block is not None:
+            pulumi.set(__self__, "code_block", code_block)
+        if enable_fake_mode is not None:
+            pulumi.set(__self__, "enable_fake_mode", enable_fake_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="codeBlock")
+    def code_block(self) -> pulumi.Input[Optional['ToolsetToolFakeConfigCodeBlockArgs']]:
+        """
+        Code block which will be executed instead of a real tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "code_block")
+
+    @code_block.setter
+    def code_block(self, value: pulumi.Input[Optional['ToolsetToolFakeConfigCodeBlockArgs']]):
+        pulumi.set(self, "code_block", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableFakeMode")
+    def enable_fake_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the tool is using fake mode.
+        """
+        return pulumi.get(self, "enable_fake_mode")
+
+    @enable_fake_mode.setter
+    def enable_fake_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_fake_mode", value)
+
+
+class ToolsetToolFakeConfigCodeBlockArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    Python code which will be invoked in tool fake mode.
+    """
+
+@pulumi.input_type
+class ToolsetToolFakeConfigCodeBlockArgs:
+    def __init__(__self__, *,
+                 python_code: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] python_code: Python code which will be invoked in tool fake mode.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        Python code which will be invoked in tool fake mode.
+        """
+        return pulumi.get(self, "python_code")
+
+    @python_code.setter
+    def python_code(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "python_code", value)
 
 

@@ -169,6 +169,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Output("ignoreNodeCountChanges")]
+        public Output<bool?> IgnoreNodeCountChanges { get; private set; } = null!;
+
+        /// <summary>
         /// The initial number of nodes for the pool. In
         /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
         /// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -240,8 +246,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters used in creating the node pool. See
-        /// gcp.container.Cluster for schema.
+        /// Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.NodePoolNodeConfig> NodeConfig { get; private set; } = null!;
@@ -389,6 +394,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
+        /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Input("ignoreNodeCountChanges")]
+        public Input<bool>? IgnoreNodeCountChanges { get; set; }
+
+        /// <summary>
         /// The initial number of nodes for the pool. In
         /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
         /// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -448,8 +459,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// Parameters used in creating the node pool. See
-        /// gcp.container.Cluster for schema.
+        /// Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.NodePoolNodeConfigArgs>? NodeConfig { get; set; }
@@ -568,6 +578,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
+        /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Input("ignoreNodeCountChanges")]
+        public Input<bool>? IgnoreNodeCountChanges { get; set; }
+
+        /// <summary>
         /// The initial number of nodes for the pool. In
         /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
         /// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -651,8 +667,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// Parameters used in creating the node pool. See
-        /// gcp.container.Cluster for schema.
+        /// Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.NodePoolNodeConfigGetArgs>? NodeConfig { get; set; }

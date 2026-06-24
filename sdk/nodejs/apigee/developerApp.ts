@@ -208,6 +208,26 @@ export class DeveloperApp extends pulumi.CustomResource {
      */
     declare public readonly callbackUrl: pulumi.Output<string>;
     /**
+     * Optionally specify a static consumer key for the developer app's credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
+     */
+    declare public readonly consumerKey: pulumi.Output<string | undefined>;
+    /**
+     * Optionally specify a static consumer secret for the developer app's
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
+    declare public readonly consumerSecret: pulumi.Output<string | undefined>;
+    /**
      * Time at which the developer was created in milliseconds since epoch.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -284,6 +304,8 @@ export class DeveloperApp extends pulumi.CustomResource {
             resourceInputs["appId"] = state?.appId;
             resourceInputs["attributes"] = state?.attributes;
             resourceInputs["callbackUrl"] = state?.callbackUrl;
+            resourceInputs["consumerKey"] = state?.consumerKey;
+            resourceInputs["consumerSecret"] = state?.consumerSecret;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["credentials"] = state?.credentials;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -310,6 +332,8 @@ export class DeveloperApp extends pulumi.CustomResource {
             resourceInputs["appFamily"] = args?.appFamily;
             resourceInputs["attributes"] = args?.attributes;
             resourceInputs["callbackUrl"] = args?.callbackUrl;
+            resourceInputs["consumerKey"] = args?.consumerKey;
+            resourceInputs["consumerSecret"] = args?.consumerSecret ? pulumi.secret(args.consumerSecret) : undefined;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["developerEmail"] = args?.developerEmail;
             resourceInputs["keyExpiresIn"] = args?.keyExpiresIn;
@@ -324,6 +348,8 @@ export class DeveloperApp extends pulumi.CustomResource {
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["consumerSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DeveloperApp.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -355,6 +381,26 @@ export interface DeveloperAppState {
      * authorization codes back to developer apps.
      */
     callbackUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Optionally specify a static consumer key for the developer app's credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
+     */
+    consumerKey?: pulumi.Input<string | undefined>;
+    /**
+     * Optionally specify a static consumer secret for the developer app's
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Time at which the developer was created in milliseconds since epoch.
      */
@@ -437,6 +483,26 @@ export interface DeveloperAppArgs {
      * authorization codes back to developer apps.
      */
     callbackUrl: pulumi.Input<string>;
+    /**
+     * Optionally specify a static consumer key for the developer app's credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
+     */
+    consumerKey?: pulumi.Input<string | undefined>;
+    /**
+     * Optionally specify a static consumer secret for the developer app's
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     */
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

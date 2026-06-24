@@ -20,6 +20,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsMaintenanceWindowArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsPasswordValidationPolicyArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsPerformanceCaptureConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsSqlServerAuditConfigArgs;
 import java.lang.Boolean;
@@ -472,6 +473,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Configuration of Performance Capture.
+     * 
+     */
+    @Import(name="performanceCaptureConfig")
+    private @Nullable Output<DatabaseInstanceSettingsPerformanceCaptureConfigArgs> performanceCaptureConfig;
+
+    /**
+     * @return Configuration of Performance Capture.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceSettingsPerformanceCaptureConfigArgs>> performanceCaptureConfig() {
+        return Optional.ofNullable(this.performanceCaptureConfig);
+    }
+
+    /**
      * Pricing plan for this instance, can only be `PER_USE`.
      * 
      */
@@ -623,6 +639,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.locationPreference = $.locationPreference;
         this.maintenanceWindow = $.maintenanceWindow;
         this.passwordValidationPolicy = $.passwordValidationPolicy;
+        this.performanceCaptureConfig = $.performanceCaptureConfig;
         this.pricingPlan = $.pricingPlan;
         this.readPoolAutoScaleConfig = $.readPoolAutoScaleConfig;
         this.retainBackupsOnDelete = $.retainBackupsOnDelete;
@@ -1252,6 +1269,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder passwordValidationPolicy(DatabaseInstanceSettingsPasswordValidationPolicyArgs passwordValidationPolicy) {
             return passwordValidationPolicy(Output.of(passwordValidationPolicy));
+        }
+
+        /**
+         * @param performanceCaptureConfig Configuration of Performance Capture.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceCaptureConfig(@Nullable Output<DatabaseInstanceSettingsPerformanceCaptureConfigArgs> performanceCaptureConfig) {
+            $.performanceCaptureConfig = performanceCaptureConfig;
+            return this;
+        }
+
+        /**
+         * @param performanceCaptureConfig Configuration of Performance Capture.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceCaptureConfig(DatabaseInstanceSettingsPerformanceCaptureConfigArgs performanceCaptureConfig) {
+            return performanceCaptureConfig(Output.of(performanceCaptureConfig));
         }
 
         /**

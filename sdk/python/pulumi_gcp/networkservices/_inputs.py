@@ -21,6 +21,8 @@ __all__ = [
     'AgentGatewayGoogleManagedArgsDict',
     'AgentGatewayNetworkConfigArgs',
     'AgentGatewayNetworkConfigArgsDict',
+    'AgentGatewayNetworkConfigDnsPeeringConfigArgs',
+    'AgentGatewayNetworkConfigDnsPeeringConfigArgsDict',
     'AgentGatewayNetworkConfigEgressArgs',
     'AgentGatewayNetworkConfigEgressArgsDict',
     'AgentGatewaySelfManagedArgs',
@@ -347,17 +349,31 @@ class AgentGatewayNetworkConfigArgsDict(TypedDict):
     private VPCs network.
     Structure is documented below.
     """
+    dns_peering_config: NotRequired[pulumi.Input[Optional['AgentGatewayNetworkConfigDnsPeeringConfigArgsDict']]]
+    """
+    DNS peering configuration for the AgentGateway. When set, the
+    AgentGateway will resolve queries for the configured `domains` via
+    Cloud DNS in the specified `targetNetwork`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AgentGatewayNetworkConfigArgs:
     def __init__(__self__, *,
-                 egress: pulumi.Input['AgentGatewayNetworkConfigEgressArgs']):
+                 egress: pulumi.Input['AgentGatewayNetworkConfigEgressArgs'],
+                 dns_peering_config: pulumi.Input[Optional['AgentGatewayNetworkConfigDnsPeeringConfigArgs']] = None):
         """
         :param pulumi.Input['AgentGatewayNetworkConfigEgressArgs'] egress: Optional PSC-Interface network attachment for connectivity to your
                private VPCs network.
                Structure is documented below.
+        :param pulumi.Input['AgentGatewayNetworkConfigDnsPeeringConfigArgs'] dns_peering_config: DNS peering configuration for the AgentGateway. When set, the
+               AgentGateway will resolve queries for the configured `domains` via
+               Cloud DNS in the specified `targetNetwork`.
+               Structure is documented below.
         """
         pulumi.set(__self__, "egress", egress)
+        if dns_peering_config is not None:
+            pulumi.set(__self__, "dns_peering_config", dns_peering_config)
 
     @_builtins.property
     @pulumi.getter
@@ -372,6 +388,99 @@ class AgentGatewayNetworkConfigArgs:
     @egress.setter
     def egress(self, value: pulumi.Input['AgentGatewayNetworkConfigEgressArgs']):
         pulumi.set(self, "egress", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfig")
+    def dns_peering_config(self) -> pulumi.Input[Optional['AgentGatewayNetworkConfigDnsPeeringConfigArgs']]:
+        """
+        DNS peering configuration for the AgentGateway. When set, the
+        AgentGateway will resolve queries for the configured `domains` via
+        Cloud DNS in the specified `targetNetwork`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_config")
+
+    @dns_peering_config.setter
+    def dns_peering_config(self, value: pulumi.Input[Optional['AgentGatewayNetworkConfigDnsPeeringConfigArgs']]):
+        pulumi.set(self, "dns_peering_config", value)
+
+
+class AgentGatewayNetworkConfigDnsPeeringConfigArgsDict(TypedDict):
+    domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of domain names to peer for DNS resolution. Each entry
+    must be a fully qualified domain name ending with a dot
+    (for example, `example.com.`).
+    """
+    target_network: pulumi.Input[_builtins.str]
+    """
+    The URI of the target VPC network for DNS peering. Must be of the
+    form `projects/{project}/global/networks/{network}`.
+    """
+    target_project: pulumi.Input[_builtins.str]
+    """
+    The ID of the project that hosts the target VPC network for DNS
+    peering.
+    """
+
+@pulumi.input_type
+class AgentGatewayNetworkConfigDnsPeeringConfigArgs:
+    def __init__(__self__, *,
+                 domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 target_network: pulumi.Input[_builtins.str],
+                 target_project: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: The list of domain names to peer for DNS resolution. Each entry
+               must be a fully qualified domain name ending with a dot
+               (for example, `example.com.`).
+        :param pulumi.Input[_builtins.str] target_network: The URI of the target VPC network for DNS peering. Must be of the
+               form `projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[_builtins.str] target_project: The ID of the project that hosts the target VPC network for DNS
+               peering.
+        """
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of domain names to peer for DNS resolution. Each entry
+        must be a fully qualified domain name ending with a dot
+        (for example, `example.com.`).
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "domains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URI of the target VPC network for DNS peering. Must be of the
+        form `projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "target_network")
+
+    @target_network.setter
+    def target_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the project that hosts the target VPC network for DNS
+        peering.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_project", value)
 
 
 class AgentGatewayNetworkConfigEgressArgsDict(TypedDict):

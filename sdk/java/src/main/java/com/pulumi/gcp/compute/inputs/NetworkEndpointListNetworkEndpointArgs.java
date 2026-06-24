@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -40,19 +39,21 @@ public final class NetworkEndpointListNetworkEndpointArgs extends com.pulumi.res
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
+     * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
      * 
      */
-    @Import(name="ipAddress", required=true)
-    private Output<String> ipAddress;
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
 
     /**
      * @return IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
+     * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
      * 
      */
-    public Output<String> ipAddress() {
-        return this.ipAddress;
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
     }
 
     /**
@@ -129,11 +130,12 @@ public final class NetworkEndpointListNetworkEndpointArgs extends com.pulumi.res
          * @param ipAddress IPv4 address of network endpoint. The IP address must belong
          * to a VM in GCE (either the primary IP or as part of an aliased IP
          * range).
+         * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
          * 
          * @return builder
          * 
          */
-        public Builder ipAddress(Output<String> ipAddress) {
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
@@ -142,6 +144,7 @@ public final class NetworkEndpointListNetworkEndpointArgs extends com.pulumi.res
          * @param ipAddress IPv4 address of network endpoint. The IP address must belong
          * to a VM in GCE (either the primary IP or as part of an aliased IP
          * range).
+         * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
          * 
          * @return builder
          * 
@@ -176,9 +179,6 @@ public final class NetworkEndpointListNetworkEndpointArgs extends com.pulumi.res
         }
 
         public NetworkEndpointListNetworkEndpointArgs build() {
-            if ($.ipAddress == null) {
-                throw new MissingRequiredPropertyException("NetworkEndpointListNetworkEndpointArgs", "ipAddress");
-            }
             return $;
         }
     }

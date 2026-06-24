@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaintConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -264,6 +265,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigTaintConfig taintConfig;
     /**
      * @return List of Kubernetes taints to be applied to each node.
      * 
@@ -597,6 +603,13 @@ public final class NodePoolNodeConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    public Optional<NodePoolNodeConfigTaintConfig> taintConfig() {
+        return Optional.ofNullable(this.taintConfig);
+    }
+    /**
      * @return List of Kubernetes taints to be applied to each node.
      * 
      */
@@ -672,6 +685,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Boolean spot;
         private @Nullable List<String> storagePools;
         private @Nullable List<String> tags;
+        private @Nullable NodePoolNodeConfigTaintConfig taintConfig;
         private @Nullable List<NodePoolNodeConfigTaint> taints;
         private @Nullable NodePoolNodeConfigWindowsNodeConfig windowsNodeConfig;
         private @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
@@ -723,6 +737,7 @@ public final class NodePoolNodeConfig {
     	      this.spot = defaults.spot;
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
+    	      this.taintConfig = defaults.taintConfig;
     	      this.taints = defaults.taints;
     	      this.windowsNodeConfig = defaults.windowsNodeConfig;
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
@@ -1020,6 +1035,12 @@ public final class NodePoolNodeConfig {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder taintConfig(@Nullable NodePoolNodeConfigTaintConfig taintConfig) {
+
+            this.taintConfig = taintConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder taints(@Nullable List<NodePoolNodeConfigTaint> taints) {
 
             this.taints = taints;
@@ -1087,6 +1108,7 @@ public final class NodePoolNodeConfig {
             _resultValue.spot = spot;
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
+            _resultValue.taintConfig = taintConfig;
             _resultValue.taints = taints;
             _resultValue.windowsNodeConfig = windowsNodeConfig;
             _resultValue.workloadMetadataConfig = workloadMetadataConfig;

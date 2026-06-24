@@ -312,6 +312,8 @@ class ConnectionProfileMongodbProfile(dict):
         suggest = None
         if key == "hostAddresses":
             suggest = "host_addresses"
+        elif key == "additionalOptions":
+            suggest = "additional_options"
         elif key == "replicaSet":
             suggest = "replica_set"
         elif key == "secretManagerStoredPassword":
@@ -337,6 +339,7 @@ class ConnectionProfileMongodbProfile(dict):
     def __init__(__self__, *,
                  host_addresses: Sequence['outputs.ConnectionProfileMongodbProfileHostAddress'],
                  username: _builtins.str,
+                 additional_options: Optional[Mapping[str, _builtins.str]] = None,
                  password: Optional[_builtins.str] = None,
                  replica_set: Optional[_builtins.str] = None,
                  secret_manager_stored_password: Optional[_builtins.str] = None,
@@ -347,6 +350,9 @@ class ConnectionProfileMongodbProfile(dict):
         :param Sequence['ConnectionProfileMongodbProfileHostAddressArgs'] host_addresses: List of host addresses for a MongoDB cluster.
                Structure is documented below.
         :param _builtins.str username: Username for the MongoDB connection.
+        :param Mapping[str, _builtins.str] additional_options: A map of additional options for the MongoDB connection.
+               Keys are case-sensitive and should match the official
+               MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
         :param _builtins.str password: Password for the MongoDB connection. Mutually exclusive with
                secretManagerStoredPassword.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -363,6 +369,8 @@ class ConnectionProfileMongodbProfile(dict):
         """
         pulumi.set(__self__, "host_addresses", host_addresses)
         pulumi.set(__self__, "username", username)
+        if additional_options is not None:
+            pulumi.set(__self__, "additional_options", additional_options)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if replica_set is not None:
@@ -392,6 +400,16 @@ class ConnectionProfileMongodbProfile(dict):
         Username for the MongoDB connection.
         """
         return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="additionalOptions")
+    def additional_options(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A map of additional options for the MongoDB connection.
+        Keys are case-sensitive and should match the official
+        MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+        """
+        return pulumi.get(self, "additional_options")
 
     @_builtins.property
     @pulumi.getter

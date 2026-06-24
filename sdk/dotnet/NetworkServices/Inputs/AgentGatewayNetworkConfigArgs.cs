@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class AgentGatewayNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// DNS peering configuration for the AgentGateway. When set, the
+        /// AgentGateway will resolve queries for the configured `Domains` via
+        /// Cloud DNS in the specified `targetNetwork`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dnsPeeringConfig")]
+        public Input<Inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs>? DnsPeeringConfig { get; set; }
+
+        /// <summary>
         /// Optional PSC-Interface network attachment for connectivity to your
         /// private VPCs network.
         /// Structure is documented below.

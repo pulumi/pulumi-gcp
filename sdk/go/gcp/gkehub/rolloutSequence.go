@@ -23,6 +23,113 @@ import (
 // * How-to Guides
 //   - [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
 //
+// ## Example Usage
+//
+// ### Gke Hub Rollout Sequence Create
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//				RolloutSequenceId: pulumi.String("rs-basic"),
+//				DisplayName:       pulumi.String("Basic Rollout Sequence"),
+//				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
+//					LabelSelector: pulumi.String("resource.labels.ignored == 'true'"),
+//				},
+//				Stages: gkehub.RolloutSequenceStageArray{
+//					&gkehub.RolloutSequenceStageArgs{
+//						FleetProjects: pulumi.StringArray{
+//							pulumi.String("projects/my-project-name"),
+//						},
+//						SoakDuration: pulumi.String("1h"),
+//					},
+//				},
+//				AutoUpgradeConfig: &gkehub.RolloutSequenceAutoUpgradeConfigArgs{
+//					RolloutCreationScope: &gkehub.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{
+//						UpgradeTypes: pulumi.StringArray{
+//							pulumi.String("CONTROL_PLANE_MINOR"),
+//							pulumi.String("CONTROL_PLANE_PATCH"),
+//							pulumi.String("NODE_MINOR"),
+//							pulumi.String("NODE_PATCH"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gke Hub Rollout Sequence Update
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//				RolloutSequenceId: pulumi.String("rs-basic"),
+//				DisplayName:       pulumi.String("Modified Rollout Sequence"),
+//				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
+//					LabelSelector: pulumi.String("resource.labels.ignored == 'super_true'"),
+//				},
+//				Stages: gkehub.RolloutSequenceStageArray{
+//					&gkehub.RolloutSequenceStageArgs{
+//						FleetProjects: pulumi.StringArray{
+//							pulumi.String("projects/my-project-name"),
+//						},
+//						ClusterSelector: &gkehub.RolloutSequenceStageClusterSelectorArgs{
+//							LabelSelector: pulumi.String("resource.labels.canary=='true'"),
+//						},
+//						SoakDuration: pulumi.String("2h"),
+//					},
+//					&gkehub.RolloutSequenceStageArgs{
+//						FleetProjects: pulumi.StringArray{
+//							pulumi.String("projects/my-project-name"),
+//						},
+//						SoakDuration: pulumi.String("1d"),
+//					},
+//				},
+//				AutoUpgradeConfig: &gkehub.RolloutSequenceAutoUpgradeConfigArgs{
+//					RolloutCreationScope: &gkehub.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{
+//						UpgradeTypes: pulumi.StringArray{
+//							pulumi.String("CONTROL_PLANE_PATCH"),
+//							pulumi.String("NODE_PATCH"),
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"some_key": pulumi.String("some_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RolloutSequence can be imported using any of these accepted formats:

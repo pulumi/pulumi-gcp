@@ -27,6 +27,8 @@ class DeveloperAppArgs:
                  api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppAttributeArgs']]]] = None,
+                 consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -46,6 +48,20 @@ class DeveloperAppArgs:
         :param pulumi.Input[_builtins.str] app_family: Developer app family.
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] consumer_key: Optionally specify a static consumer key for the developer app's credential.
+               If not set, the API auto-generates a key. The consumer key must be unique
+               across all developer apps in an organization. Changing this field forces the
+               resource to be recreated.
+               This is a write-only input used at create time: the provider creates the
+               credential with this key via the keys API and removes the auto-generated
+               one. The effective key is exposed in the `credentials` output.
+        :param pulumi.Input[_builtins.str] consumer_secret: Optionally specify a static consumer secret for the developer app's
+               credential. Required if `consumer_key` is specified. If not set, the API
+               auto-generates a secret. Changing this field forces the resource to be
+               recreated.
+               This is a write-only input used at create time; the effective secret is
+               exposed in the `credentials` output.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -70,6 +86,10 @@ class DeveloperAppArgs:
             pulumi.set(__self__, "app_family", app_family)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if key_expires_in is not None:
@@ -159,6 +179,42 @@ class DeveloperAppArgs:
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer key for the developer app's credential.
+        If not set, the API auto-generates a key. The consumer key must be unique
+        across all developer apps in an organization. Changing this field forces the
+        resource to be recreated.
+        This is a write-only input used at create time: the provider creates the
+        credential with this key via the keys API and removes the auto-generated
+        one. The effective key is exposed in the `credentials` output.
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @consumer_key.setter
+    def consumer_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consumer_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer secret for the developer app's
+        credential. Required if `consumer_key` is specified. If not set, the API
+        auto-generates a secret. Changing this field forces the resource to be
+        recreated.
+        This is a write-only input used at create time; the effective secret is
+        exposed in the `credentials` output.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "consumer_secret")
+
+    @consumer_secret.setter
+    def consumer_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consumer_secret", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -236,6 +292,8 @@ class _DeveloperAppState:
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppAttributeArgs']]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -258,6 +316,20 @@ class _DeveloperAppState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
+        :param pulumi.Input[_builtins.str] consumer_key: Optionally specify a static consumer key for the developer app's credential.
+               If not set, the API auto-generates a key. The consumer key must be unique
+               across all developer apps in an organization. Changing this field forces the
+               resource to be recreated.
+               This is a write-only input used at create time: the provider creates the
+               credential with this key via the keys API and removes the auto-generated
+               one. The effective key is exposed in the `credentials` output.
+        :param pulumi.Input[_builtins.str] consumer_secret: Optionally specify a static consumer secret for the developer app's
+               credential. Required if `consumer_key` is specified. If not set, the API
+               auto-generates a secret. Changing this field forces the resource to be
+               recreated.
+               This is a write-only input used at create time; the effective secret is
+               exposed in the `credentials` output.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialArgs']]] credentials: Output only. Set of credentials for the developer app consisting of
                the consumer key/secret pairs associated with the API products.
@@ -294,6 +366,10 @@ class _DeveloperAppState:
             pulumi.set(__self__, "attributes", attributes)
         if callback_url is not None:
             pulumi.set(__self__, "callback_url", callback_url)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if credentials is not None:
@@ -379,6 +455,42 @@ class _DeveloperAppState:
     @callback_url.setter
     def callback_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer key for the developer app's credential.
+        If not set, the API auto-generates a key. The consumer key must be unique
+        across all developer apps in an organization. Changing this field forces the
+        resource to be recreated.
+        This is a write-only input used at create time: the provider creates the
+        credential with this key via the keys API and removes the auto-generated
+        one. The effective key is exposed in the `credentials` output.
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @consumer_key.setter
+    def consumer_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consumer_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer secret for the developer app's
+        credential. Required if `consumer_key` is specified. If not set, the API
+        auto-generates a secret. Changing this field forces the resource to be
+        recreated.
+        This is a write-only input used at create time; the effective secret is
+        exposed in the `credentials` output.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "consumer_secret")
+
+    @consumer_secret.setter
+    def consumer_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consumer_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -537,6 +649,8 @@ class DeveloperApp(pulumi.CustomResource):
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_email: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,6 +799,20 @@ class DeveloperApp(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
+        :param pulumi.Input[_builtins.str] consumer_key: Optionally specify a static consumer key for the developer app's credential.
+               If not set, the API auto-generates a key. The consumer key must be unique
+               across all developer apps in an organization. Changing this field forces the
+               resource to be recreated.
+               This is a write-only input used at create time: the provider creates the
+               credential with this key via the keys API and removes the auto-generated
+               one. The effective key is exposed in the `credentials` output.
+        :param pulumi.Input[_builtins.str] consumer_secret: Optionally specify a static consumer secret for the developer app's
+               credential. Required if `consumer_key` is specified. If not set, the API
+               auto-generates a secret. Changing this field forces the resource to be
+               recreated.
+               This is a write-only input used at create time; the effective secret is
+               exposed in the `credentials` output.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -862,6 +990,8 @@ class DeveloperApp(pulumi.CustomResource):
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_email: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
@@ -884,6 +1014,8 @@ class DeveloperApp(pulumi.CustomResource):
             if callback_url is None and not opts.urn:
                 raise TypeError("Missing required property 'callback_url'")
             __props__.__dict__["callback_url"] = callback_url
+            __props__.__dict__["consumer_key"] = consumer_key
+            __props__.__dict__["consumer_secret"] = None if consumer_secret is None else pulumi.Output.secret(consumer_secret)
             __props__.__dict__["deletion_policy"] = deletion_policy
             if developer_email is None and not opts.urn:
                 raise TypeError("Missing required property 'developer_email'")
@@ -900,6 +1032,8 @@ class DeveloperApp(pulumi.CustomResource):
             __props__.__dict__["credentials"] = None
             __props__.__dict__["developer_id"] = None
             __props__.__dict__["last_modified_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["consumerSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DeveloperApp, __self__).__init__(
             'gcp:apigee/developerApp:DeveloperApp',
             resource_name,
@@ -915,6 +1049,8 @@ class DeveloperApp(pulumi.CustomResource):
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
             callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -941,6 +1077,20 @@ class DeveloperApp(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
+        :param pulumi.Input[_builtins.str] consumer_key: Optionally specify a static consumer key for the developer app's credential.
+               If not set, the API auto-generates a key. The consumer key must be unique
+               across all developer apps in an organization. Changing this field forces the
+               resource to be recreated.
+               This is a write-only input used at create time: the provider creates the
+               credential with this key via the keys API and removes the auto-generated
+               one. The effective key is exposed in the `credentials` output.
+        :param pulumi.Input[_builtins.str] consumer_secret: Optionally specify a static consumer secret for the developer app's
+               credential. Required if `consumer_key` is specified. If not set, the API
+               auto-generates a secret. Changing this field forces the resource to be
+               recreated.
+               This is a write-only input used at create time; the effective secret is
+               exposed in the `credentials` output.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]] credentials: Output only. Set of credentials for the developer app consisting of
                the consumer key/secret pairs associated with the API products.
@@ -976,6 +1126,8 @@ class DeveloperApp(pulumi.CustomResource):
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["attributes"] = attributes
         __props__.__dict__["callback_url"] = callback_url
+        __props__.__dict__["consumer_key"] = consumer_key
+        __props__.__dict__["consumer_secret"] = consumer_secret
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["credentials"] = credentials
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1031,6 +1183,34 @@ class DeveloperApp(pulumi.CustomResource):
         authorization codes back to developer apps.
         """
         return pulumi.get(self, "callback_url")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer key for the developer app's credential.
+        If not set, the API auto-generates a key. The consumer key must be unique
+        across all developer apps in an organization. Changing this field forces the
+        resource to be recreated.
+        This is a write-only input used at create time: the provider creates the
+        credential with this key via the keys API and removes the auto-generated
+        one. The effective key is exposed in the `credentials` output.
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optionally specify a static consumer secret for the developer app's
+        credential. Required if `consumer_key` is specified. If not set, the API
+        auto-generates a secret. Changing this field forces the resource to be
+        recreated.
+        This is a write-only input used at create time; the effective secret is
+        exposed in the `credentials` output.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "consumer_secret")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")

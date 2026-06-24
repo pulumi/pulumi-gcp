@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     public sealed class AgentGatewayNetworkConfig
     {
         /// <summary>
+        /// DNS peering configuration for the AgentGateway. When set, the
+        /// AgentGateway will resolve queries for the configured `Domains` via
+        /// Cloud DNS in the specified `targetNetwork`.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AgentGatewayNetworkConfigDnsPeeringConfig? DnsPeeringConfig;
+        /// <summary>
         /// Optional PSC-Interface network attachment for connectivity to your
         /// private VPCs network.
         /// Structure is documented below.
@@ -21,8 +28,12 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly Outputs.AgentGatewayNetworkConfigEgress Egress;
 
         [OutputConstructor]
-        private AgentGatewayNetworkConfig(Outputs.AgentGatewayNetworkConfigEgress egress)
+        private AgentGatewayNetworkConfig(
+            Outputs.AgentGatewayNetworkConfigDnsPeeringConfig? dnsPeeringConfig,
+
+            Outputs.AgentGatewayNetworkConfigEgress egress)
         {
+            DnsPeeringConfig = dnsPeeringConfig;
             Egress = egress;
         }
     }

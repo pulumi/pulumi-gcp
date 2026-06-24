@@ -27,7 +27,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, deletion_policy=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, source_instant_snapshot=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, deletion_policy=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, params=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, source_instant_snapshot=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -70,6 +70,9 @@ class GetSnapshotResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -182,6 +185,11 @@ class GetSnapshotResult:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetSnapshotParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
 
@@ -261,6 +269,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             licenses=self.licenses,
             most_recent=self.most_recent,
             name=self.name,
+            params=self.params,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             self_link=self.self_link,
@@ -335,6 +344,7 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
         licenses=pulumi.get(__ret__, 'licenses'),
         most_recent=pulumi.get(__ret__, 'most_recent'),
         name=pulumi.get(__ret__, 'name'),
+        params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         self_link=pulumi.get(__ret__, 'self_link'),
@@ -406,6 +416,7 @@ def get_snapshot_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] 
         licenses=pulumi.get(__response__, 'licenses'),
         most_recent=pulumi.get(__response__, 'most_recent'),
         name=pulumi.get(__response__, 'name'),
+        params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         self_link=pulumi.get(__response__, 'self_link'),

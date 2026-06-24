@@ -69,6 +69,9 @@ namespace Pulumi.Gcp
         [Output("biglakeCustomEndpoint")]
         public Output<string?> BiglakeCustomEndpoint { get; private set; } = null!;
 
+        [Output("biglakeHiveCustomEndpoint")]
+        public Output<string?> BiglakeHiveCustomEndpoint { get; private set; } = null!;
+
         [Output("biglakeIcebergCustomEndpoint")]
         public Output<string?> BiglakeIcebergCustomEndpoint { get; private set; } = null!;
 
@@ -730,6 +733,9 @@ namespace Pulumi.Gcp
 
         [Input("biglakeCustomEndpoint")]
         public Input<string>? BiglakeCustomEndpoint { get; set; }
+
+        [Input("biglakeHiveCustomEndpoint")]
+        public Input<string>? BiglakeHiveCustomEndpoint { get; set; }
 
         [Input("biglakeIcebergCustomEndpoint")]
         public Input<string>? BiglakeIcebergCustomEndpoint { get; set; }

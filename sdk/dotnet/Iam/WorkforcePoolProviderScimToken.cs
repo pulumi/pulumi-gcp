@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// The token string provided to the IdP for authentication and will be set only during creation.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("securityToken")]
         public Output<string> SecurityToken { get; private set; } = null!;
@@ -212,6 +213,10 @@ namespace Pulumi.Gcp.Iam
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "securityToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -338,11 +343,22 @@ namespace Pulumi.Gcp.Iam
         [Input("scimTokenId")]
         public Input<string>? ScimTokenId { get; set; }
 
+        [Input("securityToken")]
+        private Input<string>? _securityToken;
+
         /// <summary>
         /// The token string provided to the IdP for authentication and will be set only during creation.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("securityToken")]
-        public Input<string>? SecurityToken { get; set; }
+        public Input<string>? SecurityToken
+        {
+            get => _securityToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _securityToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The current state of the scim token.

@@ -203,6 +203,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsPasswordValidationPolicyArgs>? PasswordValidationPolicy { get; set; }
 
         /// <summary>
+        /// Configuration of Performance Capture.
+        /// </summary>
+        [Input("performanceCaptureConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsPerformanceCaptureConfigArgs>? PerformanceCaptureConfig { get; set; }
+
+        /// <summary>
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>
         [Input("pricingPlan")]

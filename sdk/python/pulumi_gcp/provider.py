@@ -39,6 +39,7 @@ class ProviderArgs:
                  beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_hive_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -274,6 +275,8 @@ class ProviderArgs:
             pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
         if biglake_custom_endpoint is not None:
             pulumi.set(__self__, "biglake_custom_endpoint", biglake_custom_endpoint)
+        if biglake_hive_custom_endpoint is not None:
+            pulumi.set(__self__, "biglake_hive_custom_endpoint", biglake_hive_custom_endpoint)
         if biglake_iceberg_custom_endpoint is not None:
             pulumi.set(__self__, "biglake_iceberg_custom_endpoint", biglake_iceberg_custom_endpoint)
         if bigquery_analytics_hub_custom_endpoint is not None:
@@ -839,6 +842,15 @@ class ProviderArgs:
     @biglake_custom_endpoint.setter
     def biglake_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biglake_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="biglakeHiveCustomEndpoint")
+    def biglake_hive_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "biglake_hive_custom_endpoint")
+
+    @biglake_hive_custom_endpoint.setter
+    def biglake_hive_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "biglake_hive_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="biglakeIcebergCustomEndpoint")
@@ -2612,6 +2624,7 @@ class Provider(pulumi.ProviderResource):
                  beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_hive_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2864,6 +2877,7 @@ class Provider(pulumi.ProviderResource):
                  beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_hive_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3086,6 +3100,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
             __props__.__dict__["biglake_custom_endpoint"] = biglake_custom_endpoint
+            __props__.__dict__["biglake_hive_custom_endpoint"] = biglake_hive_custom_endpoint
             __props__.__dict__["biglake_iceberg_custom_endpoint"] = biglake_iceberg_custom_endpoint
             __props__.__dict__["bigquery_analytics_hub_custom_endpoint"] = bigquery_analytics_hub_custom_endpoint
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
@@ -3378,6 +3393,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="biglakeCustomEndpoint")
     def biglake_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "biglake_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="biglakeHiveCustomEndpoint")
+    def biglake_hive_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "biglake_hive_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="biglakeIcebergCustomEndpoint")

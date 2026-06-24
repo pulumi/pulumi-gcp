@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SnapshotParamsArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotSnapshotEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotSourceDiskEncryptionKeyArgs;
 import java.lang.Boolean;
@@ -230,6 +231,23 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<SnapshotParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SnapshotParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
     }
 
     /**
@@ -462,6 +480,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.licenses = $.licenses;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.selfLink = $.selfLink;
@@ -782,6 +801,29 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<SnapshotParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(SnapshotParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

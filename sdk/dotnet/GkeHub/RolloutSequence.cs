@@ -21,6 +21,115 @@ namespace Pulumi.Gcp.GkeHub
     /// * How-to Guides
     ///     * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ### Gke Hub Rollout Sequence Create
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rolloutSequence = new Gcp.GkeHub.RolloutSequence("rollout_sequence", new()
+    ///     {
+    ///         RolloutSequenceId = "rs-basic",
+    ///         DisplayName = "Basic Rollout Sequence",
+    ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
+    ///         {
+    ///             LabelSelector = "resource.labels.ignored == 'true'",
+    ///         },
+    ///         Stages = new[]
+    ///         {
+    ///             new Gcp.GkeHub.Inputs.RolloutSequenceStageArgs
+    ///             {
+    ///                 FleetProjects = new[]
+    ///                 {
+    ///                     "projects/my-project-name",
+    ///                 },
+    ///                 SoakDuration = "1h",
+    ///             },
+    ///         },
+    ///         AutoUpgradeConfig = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigArgs
+    ///         {
+    ///             RolloutCreationScope = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs
+    ///             {
+    ///                 UpgradeTypes = new[]
+    ///                 {
+    ///                     "CONTROL_PLANE_MINOR",
+    ///                     "CONTROL_PLANE_PATCH",
+    ///                     "NODE_MINOR",
+    ///                     "NODE_PATCH",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gke Hub Rollout Sequence Update
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rolloutSequence = new Gcp.GkeHub.RolloutSequence("rollout_sequence", new()
+    ///     {
+    ///         RolloutSequenceId = "rs-basic",
+    ///         DisplayName = "Modified Rollout Sequence",
+    ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
+    ///         {
+    ///             LabelSelector = "resource.labels.ignored == 'super_true'",
+    ///         },
+    ///         Stages = new[]
+    ///         {
+    ///             new Gcp.GkeHub.Inputs.RolloutSequenceStageArgs
+    ///             {
+    ///                 FleetProjects = new[]
+    ///                 {
+    ///                     "projects/my-project-name",
+    ///                 },
+    ///                 ClusterSelector = new Gcp.GkeHub.Inputs.RolloutSequenceStageClusterSelectorArgs
+    ///                 {
+    ///                     LabelSelector = "resource.labels.canary=='true'",
+    ///                 },
+    ///                 SoakDuration = "2h",
+    ///             },
+    ///             new Gcp.GkeHub.Inputs.RolloutSequenceStageArgs
+    ///             {
+    ///                 FleetProjects = new[]
+    ///                 {
+    ///                     "projects/my-project-name",
+    ///                 },
+    ///                 SoakDuration = "1d",
+    ///             },
+    ///         },
+    ///         AutoUpgradeConfig = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigArgs
+    ///         {
+    ///             RolloutCreationScope = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs
+    ///             {
+    ///                 UpgradeTypes = new[]
+    ///                 {
+    ///                     "CONTROL_PLANE_PATCH",
+    ///                     "NODE_PATCH",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "some_key", "some_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RolloutSequence can be imported using any of these accepted formats:

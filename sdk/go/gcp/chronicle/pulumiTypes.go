@@ -45098,6 +45098,246 @@ func (o FeedFailureDetailsPtrOutput) HttpErrorCode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type FindingsRefinementDeploymentDetectionExclusionApplication struct {
+	// The CuratedRuleSets this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+	CuratedRuleSets []string `pulumi:"curatedRuleSets"`
+	// The CuratedRules this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+	CuratedRules []string `pulumi:"curatedRules"`
+	// (Output)
+	// The deleted CuratedRuleSets this detection exclusion applies to.
+	// Indicates to the customer that the detection exclusion no longer applies
+	// to the rule sets, so the detection exclusion should be updated.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+	DeletedCuratedRuleSets []string `pulumi:"deletedCuratedRuleSets"`
+	// The Rules this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+	Rules []string `pulumi:"rules"`
+}
+
+// FindingsRefinementDeploymentDetectionExclusionApplicationInput is an input type that accepts FindingsRefinementDeploymentDetectionExclusionApplicationArgs and FindingsRefinementDeploymentDetectionExclusionApplicationOutput values.
+// You can construct a concrete instance of `FindingsRefinementDeploymentDetectionExclusionApplicationInput` via:
+//
+//	FindingsRefinementDeploymentDetectionExclusionApplicationArgs{...}
+type FindingsRefinementDeploymentDetectionExclusionApplicationInput interface {
+	pulumi.Input
+
+	ToFindingsRefinementDeploymentDetectionExclusionApplicationOutput() FindingsRefinementDeploymentDetectionExclusionApplicationOutput
+	ToFindingsRefinementDeploymentDetectionExclusionApplicationOutputWithContext(context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationOutput
+}
+
+type FindingsRefinementDeploymentDetectionExclusionApplicationArgs struct {
+	// The CuratedRuleSets this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+	CuratedRuleSets pulumi.StringArrayInput `pulumi:"curatedRuleSets"`
+	// The CuratedRules this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+	CuratedRules pulumi.StringArrayInput `pulumi:"curatedRules"`
+	// (Output)
+	// The deleted CuratedRuleSets this detection exclusion applies to.
+	// Indicates to the customer that the detection exclusion no longer applies
+	// to the rule sets, so the detection exclusion should be updated.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+	DeletedCuratedRuleSets pulumi.StringArrayInput `pulumi:"deletedCuratedRuleSets"`
+	// The Rules this detection exclusion applies to.
+	// Format:
+	// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+	Rules pulumi.StringArrayInput `pulumi:"rules"`
+}
+
+func (FindingsRefinementDeploymentDetectionExclusionApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FindingsRefinementDeploymentDetectionExclusionApplication)(nil)).Elem()
+}
+
+func (i FindingsRefinementDeploymentDetectionExclusionApplicationArgs) ToFindingsRefinementDeploymentDetectionExclusionApplicationOutput() FindingsRefinementDeploymentDetectionExclusionApplicationOutput {
+	return i.ToFindingsRefinementDeploymentDetectionExclusionApplicationOutputWithContext(context.Background())
+}
+
+func (i FindingsRefinementDeploymentDetectionExclusionApplicationArgs) ToFindingsRefinementDeploymentDetectionExclusionApplicationOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FindingsRefinementDeploymentDetectionExclusionApplicationOutput)
+}
+
+func (i FindingsRefinementDeploymentDetectionExclusionApplicationArgs) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput() FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return i.ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i FindingsRefinementDeploymentDetectionExclusionApplicationArgs) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FindingsRefinementDeploymentDetectionExclusionApplicationOutput).ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(ctx)
+}
+
+// FindingsRefinementDeploymentDetectionExclusionApplicationPtrInput is an input type that accepts FindingsRefinementDeploymentDetectionExclusionApplicationArgs, FindingsRefinementDeploymentDetectionExclusionApplicationPtr and FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput values.
+// You can construct a concrete instance of `FindingsRefinementDeploymentDetectionExclusionApplicationPtrInput` via:
+//
+//	        FindingsRefinementDeploymentDetectionExclusionApplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type FindingsRefinementDeploymentDetectionExclusionApplicationPtrInput interface {
+	pulumi.Input
+
+	ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput() FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput
+	ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput
+}
+
+type findingsRefinementDeploymentDetectionExclusionApplicationPtrType FindingsRefinementDeploymentDetectionExclusionApplicationArgs
+
+func FindingsRefinementDeploymentDetectionExclusionApplicationPtr(v *FindingsRefinementDeploymentDetectionExclusionApplicationArgs) FindingsRefinementDeploymentDetectionExclusionApplicationPtrInput {
+	return (*findingsRefinementDeploymentDetectionExclusionApplicationPtrType)(v)
+}
+
+func (*findingsRefinementDeploymentDetectionExclusionApplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FindingsRefinementDeploymentDetectionExclusionApplication)(nil)).Elem()
+}
+
+func (i *findingsRefinementDeploymentDetectionExclusionApplicationPtrType) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput() FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return i.ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *findingsRefinementDeploymentDetectionExclusionApplicationPtrType) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput)
+}
+
+type FindingsRefinementDeploymentDetectionExclusionApplicationOutput struct{ *pulumi.OutputState }
+
+func (FindingsRefinementDeploymentDetectionExclusionApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FindingsRefinementDeploymentDetectionExclusionApplication)(nil)).Elem()
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationOutput() FindingsRefinementDeploymentDetectionExclusionApplicationOutput {
+	return o
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationOutput {
+	return o
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput() FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return o.ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(context.Background())
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FindingsRefinementDeploymentDetectionExclusionApplication) *FindingsRefinementDeploymentDetectionExclusionApplication {
+		return &v
+	}).(FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput)
+}
+
+// The CuratedRuleSets this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) CuratedRuleSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FindingsRefinementDeploymentDetectionExclusionApplication) []string { return v.CuratedRuleSets }).(pulumi.StringArrayOutput)
+}
+
+// The CuratedRules this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) CuratedRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FindingsRefinementDeploymentDetectionExclusionApplication) []string { return v.CuratedRules }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The deleted CuratedRuleSets this detection exclusion applies to.
+// Indicates to the customer that the detection exclusion no longer applies
+// to the rule sets, so the detection exclusion should be updated.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) DeletedCuratedRuleSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FindingsRefinementDeploymentDetectionExclusionApplication) []string {
+		return v.DeletedCuratedRuleSets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Rules this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationOutput) Rules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FindingsRefinementDeploymentDetectionExclusionApplication) []string { return v.Rules }).(pulumi.StringArrayOutput)
+}
+
+type FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FindingsRefinementDeploymentDetectionExclusionApplication)(nil)).Elem()
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput() FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return o
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) ToFindingsRefinementDeploymentDetectionExclusionApplicationPtrOutputWithContext(ctx context.Context) FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput {
+	return o
+}
+
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) Elem() FindingsRefinementDeploymentDetectionExclusionApplicationOutput {
+	return o.ApplyT(func(v *FindingsRefinementDeploymentDetectionExclusionApplication) FindingsRefinementDeploymentDetectionExclusionApplication {
+		if v != nil {
+			return *v
+		}
+		var ret FindingsRefinementDeploymentDetectionExclusionApplication
+		return ret
+	}).(FindingsRefinementDeploymentDetectionExclusionApplicationOutput)
+}
+
+// The CuratedRuleSets this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) CuratedRuleSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FindingsRefinementDeploymentDetectionExclusionApplication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CuratedRuleSets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The CuratedRules this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) CuratedRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FindingsRefinementDeploymentDetectionExclusionApplication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CuratedRules
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The deleted CuratedRuleSets this detection exclusion applies to.
+// Indicates to the customer that the detection exclusion no longer applies
+// to the rule sets, so the detection exclusion should be updated.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) DeletedCuratedRuleSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FindingsRefinementDeploymentDetectionExclusionApplication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedCuratedRuleSets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Rules this detection exclusion applies to.
+// Format:
+// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+func (o FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput) Rules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FindingsRefinementDeploymentDetectionExclusionApplication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(pulumi.StringArrayOutput)
+}
+
 type FindingsRefinementOutcomeFilter struct {
 	// The operator to be applied to the outcome variable.
 	// Possible values:
@@ -46217,6 +46457,830 @@ func (o ParserCreatorArrayOutput) Index(i pulumi.IntInput) ParserCreatorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserCreator {
 		return vs[0].([]ParserCreator)[vs[1].(int)]
 	}).(ParserCreatorOutput)
+}
+
+type ParserExtensionDynamicParsing struct {
+	// List of fields to be parsed.
+	// Structure is documented below.
+	OptedFields []ParserExtensionDynamicParsingOptedField `pulumi:"optedFields"`
+}
+
+// ParserExtensionDynamicParsingInput is an input type that accepts ParserExtensionDynamicParsingArgs and ParserExtensionDynamicParsingOutput values.
+// You can construct a concrete instance of `ParserExtensionDynamicParsingInput` via:
+//
+//	ParserExtensionDynamicParsingArgs{...}
+type ParserExtensionDynamicParsingInput interface {
+	pulumi.Input
+
+	ToParserExtensionDynamicParsingOutput() ParserExtensionDynamicParsingOutput
+	ToParserExtensionDynamicParsingOutputWithContext(context.Context) ParserExtensionDynamicParsingOutput
+}
+
+type ParserExtensionDynamicParsingArgs struct {
+	// List of fields to be parsed.
+	// Structure is documented below.
+	OptedFields ParserExtensionDynamicParsingOptedFieldArrayInput `pulumi:"optedFields"`
+}
+
+func (ParserExtensionDynamicParsingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionDynamicParsing)(nil)).Elem()
+}
+
+func (i ParserExtensionDynamicParsingArgs) ToParserExtensionDynamicParsingOutput() ParserExtensionDynamicParsingOutput {
+	return i.ToParserExtensionDynamicParsingOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionDynamicParsingArgs) ToParserExtensionDynamicParsingOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionDynamicParsingOutput)
+}
+
+func (i ParserExtensionDynamicParsingArgs) ToParserExtensionDynamicParsingPtrOutput() ParserExtensionDynamicParsingPtrOutput {
+	return i.ToParserExtensionDynamicParsingPtrOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionDynamicParsingArgs) ToParserExtensionDynamicParsingPtrOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionDynamicParsingOutput).ToParserExtensionDynamicParsingPtrOutputWithContext(ctx)
+}
+
+// ParserExtensionDynamicParsingPtrInput is an input type that accepts ParserExtensionDynamicParsingArgs, ParserExtensionDynamicParsingPtr and ParserExtensionDynamicParsingPtrOutput values.
+// You can construct a concrete instance of `ParserExtensionDynamicParsingPtrInput` via:
+//
+//	        ParserExtensionDynamicParsingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserExtensionDynamicParsingPtrInput interface {
+	pulumi.Input
+
+	ToParserExtensionDynamicParsingPtrOutput() ParserExtensionDynamicParsingPtrOutput
+	ToParserExtensionDynamicParsingPtrOutputWithContext(context.Context) ParserExtensionDynamicParsingPtrOutput
+}
+
+type parserExtensionDynamicParsingPtrType ParserExtensionDynamicParsingArgs
+
+func ParserExtensionDynamicParsingPtr(v *ParserExtensionDynamicParsingArgs) ParserExtensionDynamicParsingPtrInput {
+	return (*parserExtensionDynamicParsingPtrType)(v)
+}
+
+func (*parserExtensionDynamicParsingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionDynamicParsing)(nil)).Elem()
+}
+
+func (i *parserExtensionDynamicParsingPtrType) ToParserExtensionDynamicParsingPtrOutput() ParserExtensionDynamicParsingPtrOutput {
+	return i.ToParserExtensionDynamicParsingPtrOutputWithContext(context.Background())
+}
+
+func (i *parserExtensionDynamicParsingPtrType) ToParserExtensionDynamicParsingPtrOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionDynamicParsingPtrOutput)
+}
+
+type ParserExtensionDynamicParsingOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionDynamicParsingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionDynamicParsing)(nil)).Elem()
+}
+
+func (o ParserExtensionDynamicParsingOutput) ToParserExtensionDynamicParsingOutput() ParserExtensionDynamicParsingOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingOutput) ToParserExtensionDynamicParsingOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingOutput) ToParserExtensionDynamicParsingPtrOutput() ParserExtensionDynamicParsingPtrOutput {
+	return o.ToParserExtensionDynamicParsingPtrOutputWithContext(context.Background())
+}
+
+func (o ParserExtensionDynamicParsingOutput) ToParserExtensionDynamicParsingPtrOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserExtensionDynamicParsing) *ParserExtensionDynamicParsing {
+		return &v
+	}).(ParserExtensionDynamicParsingPtrOutput)
+}
+
+// List of fields to be parsed.
+// Structure is documented below.
+func (o ParserExtensionDynamicParsingOutput) OptedFields() ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return o.ApplyT(func(v ParserExtensionDynamicParsing) []ParserExtensionDynamicParsingOptedField { return v.OptedFields }).(ParserExtensionDynamicParsingOptedFieldArrayOutput)
+}
+
+type ParserExtensionDynamicParsingPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionDynamicParsingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionDynamicParsing)(nil)).Elem()
+}
+
+func (o ParserExtensionDynamicParsingPtrOutput) ToParserExtensionDynamicParsingPtrOutput() ParserExtensionDynamicParsingPtrOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingPtrOutput) ToParserExtensionDynamicParsingPtrOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingPtrOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingPtrOutput) Elem() ParserExtensionDynamicParsingOutput {
+	return o.ApplyT(func(v *ParserExtensionDynamicParsing) ParserExtensionDynamicParsing {
+		if v != nil {
+			return *v
+		}
+		var ret ParserExtensionDynamicParsing
+		return ret
+	}).(ParserExtensionDynamicParsingOutput)
+}
+
+// List of fields to be parsed.
+// Structure is documented below.
+func (o ParserExtensionDynamicParsingPtrOutput) OptedFields() ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return o.ApplyT(func(v *ParserExtensionDynamicParsing) []ParserExtensionDynamicParsingOptedField {
+		if v == nil {
+			return nil
+		}
+		return v.OptedFields
+	}).(ParserExtensionDynamicParsingOptedFieldArrayOutput)
+}
+
+type ParserExtensionDynamicParsingOptedField struct {
+	// Path of the log field.
+	Path *string `pulumi:"path"`
+	// Sample value of the log field.
+	SampleValue *string `pulumi:"sampleValue"`
+}
+
+// ParserExtensionDynamicParsingOptedFieldInput is an input type that accepts ParserExtensionDynamicParsingOptedFieldArgs and ParserExtensionDynamicParsingOptedFieldOutput values.
+// You can construct a concrete instance of `ParserExtensionDynamicParsingOptedFieldInput` via:
+//
+//	ParserExtensionDynamicParsingOptedFieldArgs{...}
+type ParserExtensionDynamicParsingOptedFieldInput interface {
+	pulumi.Input
+
+	ToParserExtensionDynamicParsingOptedFieldOutput() ParserExtensionDynamicParsingOptedFieldOutput
+	ToParserExtensionDynamicParsingOptedFieldOutputWithContext(context.Context) ParserExtensionDynamicParsingOptedFieldOutput
+}
+
+type ParserExtensionDynamicParsingOptedFieldArgs struct {
+	// Path of the log field.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Sample value of the log field.
+	SampleValue pulumi.StringPtrInput `pulumi:"sampleValue"`
+}
+
+func (ParserExtensionDynamicParsingOptedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionDynamicParsingOptedField)(nil)).Elem()
+}
+
+func (i ParserExtensionDynamicParsingOptedFieldArgs) ToParserExtensionDynamicParsingOptedFieldOutput() ParserExtensionDynamicParsingOptedFieldOutput {
+	return i.ToParserExtensionDynamicParsingOptedFieldOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionDynamicParsingOptedFieldArgs) ToParserExtensionDynamicParsingOptedFieldOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOptedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionDynamicParsingOptedFieldOutput)
+}
+
+// ParserExtensionDynamicParsingOptedFieldArrayInput is an input type that accepts ParserExtensionDynamicParsingOptedFieldArray and ParserExtensionDynamicParsingOptedFieldArrayOutput values.
+// You can construct a concrete instance of `ParserExtensionDynamicParsingOptedFieldArrayInput` via:
+//
+//	ParserExtensionDynamicParsingOptedFieldArray{ ParserExtensionDynamicParsingOptedFieldArgs{...} }
+type ParserExtensionDynamicParsingOptedFieldArrayInput interface {
+	pulumi.Input
+
+	ToParserExtensionDynamicParsingOptedFieldArrayOutput() ParserExtensionDynamicParsingOptedFieldArrayOutput
+	ToParserExtensionDynamicParsingOptedFieldArrayOutputWithContext(context.Context) ParserExtensionDynamicParsingOptedFieldArrayOutput
+}
+
+type ParserExtensionDynamicParsingOptedFieldArray []ParserExtensionDynamicParsingOptedFieldInput
+
+func (ParserExtensionDynamicParsingOptedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserExtensionDynamicParsingOptedField)(nil)).Elem()
+}
+
+func (i ParserExtensionDynamicParsingOptedFieldArray) ToParserExtensionDynamicParsingOptedFieldArrayOutput() ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return i.ToParserExtensionDynamicParsingOptedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionDynamicParsingOptedFieldArray) ToParserExtensionDynamicParsingOptedFieldArrayOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionDynamicParsingOptedFieldArrayOutput)
+}
+
+type ParserExtensionDynamicParsingOptedFieldOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionDynamicParsingOptedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionDynamicParsingOptedField)(nil)).Elem()
+}
+
+func (o ParserExtensionDynamicParsingOptedFieldOutput) ToParserExtensionDynamicParsingOptedFieldOutput() ParserExtensionDynamicParsingOptedFieldOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingOptedFieldOutput) ToParserExtensionDynamicParsingOptedFieldOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOptedFieldOutput {
+	return o
+}
+
+// Path of the log field.
+func (o ParserExtensionDynamicParsingOptedFieldOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionDynamicParsingOptedField) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Sample value of the log field.
+func (o ParserExtensionDynamicParsingOptedFieldOutput) SampleValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionDynamicParsingOptedField) *string { return v.SampleValue }).(pulumi.StringPtrOutput)
+}
+
+type ParserExtensionDynamicParsingOptedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionDynamicParsingOptedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserExtensionDynamicParsingOptedField)(nil)).Elem()
+}
+
+func (o ParserExtensionDynamicParsingOptedFieldArrayOutput) ToParserExtensionDynamicParsingOptedFieldArrayOutput() ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingOptedFieldArrayOutput) ToParserExtensionDynamicParsingOptedFieldArrayOutputWithContext(ctx context.Context) ParserExtensionDynamicParsingOptedFieldArrayOutput {
+	return o
+}
+
+func (o ParserExtensionDynamicParsingOptedFieldArrayOutput) Index(i pulumi.IntInput) ParserExtensionDynamicParsingOptedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserExtensionDynamicParsingOptedField {
+		return vs[0].([]ParserExtensionDynamicParsingOptedField)[vs[1].(int)]
+	}).(ParserExtensionDynamicParsingOptedFieldOutput)
+}
+
+type ParserExtensionFieldExtractors struct {
+	// Whether to append repeated fields or not.
+	// When false, repeated fields will be replaced.
+	AppendRepeatedFields *bool `pulumi:"appendRepeatedFields"`
+	// List of FieldExtractors.
+	// Structure is documented below.
+	Extractors []ParserExtensionFieldExtractorsExtractor `pulumi:"extractors"`
+	// Possible values:
+	// JSON
+	// CSV
+	// XML
+	LogFormat *string `pulumi:"logFormat"`
+	// PreProcessConfig holds the GROK expression to extract the syslog header.
+	// Structure is documented below.
+	PreprocessConfig *ParserExtensionFieldExtractorsPreprocessConfig `pulumi:"preprocessConfig"`
+	// (Output)
+	// CBN snippet generated from field extractors.
+	TransformedCbnSnippet *string `pulumi:"transformedCbnSnippet"`
+}
+
+// ParserExtensionFieldExtractorsInput is an input type that accepts ParserExtensionFieldExtractorsArgs and ParserExtensionFieldExtractorsOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsInput` via:
+//
+//	ParserExtensionFieldExtractorsArgs{...}
+type ParserExtensionFieldExtractorsInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsOutput() ParserExtensionFieldExtractorsOutput
+	ToParserExtensionFieldExtractorsOutputWithContext(context.Context) ParserExtensionFieldExtractorsOutput
+}
+
+type ParserExtensionFieldExtractorsArgs struct {
+	// Whether to append repeated fields or not.
+	// When false, repeated fields will be replaced.
+	AppendRepeatedFields pulumi.BoolPtrInput `pulumi:"appendRepeatedFields"`
+	// List of FieldExtractors.
+	// Structure is documented below.
+	Extractors ParserExtensionFieldExtractorsExtractorArrayInput `pulumi:"extractors"`
+	// Possible values:
+	// JSON
+	// CSV
+	// XML
+	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
+	// PreProcessConfig holds the GROK expression to extract the syslog header.
+	// Structure is documented below.
+	PreprocessConfig ParserExtensionFieldExtractorsPreprocessConfigPtrInput `pulumi:"preprocessConfig"`
+	// (Output)
+	// CBN snippet generated from field extractors.
+	TransformedCbnSnippet pulumi.StringPtrInput `pulumi:"transformedCbnSnippet"`
+}
+
+func (ParserExtensionFieldExtractorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractors)(nil)).Elem()
+}
+
+func (i ParserExtensionFieldExtractorsArgs) ToParserExtensionFieldExtractorsOutput() ParserExtensionFieldExtractorsOutput {
+	return i.ToParserExtensionFieldExtractorsOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsArgs) ToParserExtensionFieldExtractorsOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsOutput)
+}
+
+func (i ParserExtensionFieldExtractorsArgs) ToParserExtensionFieldExtractorsPtrOutput() ParserExtensionFieldExtractorsPtrOutput {
+	return i.ToParserExtensionFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsArgs) ToParserExtensionFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsOutput).ToParserExtensionFieldExtractorsPtrOutputWithContext(ctx)
+}
+
+// ParserExtensionFieldExtractorsPtrInput is an input type that accepts ParserExtensionFieldExtractorsArgs, ParserExtensionFieldExtractorsPtr and ParserExtensionFieldExtractorsPtrOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsPtrInput` via:
+//
+//	        ParserExtensionFieldExtractorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserExtensionFieldExtractorsPtrInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsPtrOutput() ParserExtensionFieldExtractorsPtrOutput
+	ToParserExtensionFieldExtractorsPtrOutputWithContext(context.Context) ParserExtensionFieldExtractorsPtrOutput
+}
+
+type parserExtensionFieldExtractorsPtrType ParserExtensionFieldExtractorsArgs
+
+func ParserExtensionFieldExtractorsPtr(v *ParserExtensionFieldExtractorsArgs) ParserExtensionFieldExtractorsPtrInput {
+	return (*parserExtensionFieldExtractorsPtrType)(v)
+}
+
+func (*parserExtensionFieldExtractorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionFieldExtractors)(nil)).Elem()
+}
+
+func (i *parserExtensionFieldExtractorsPtrType) ToParserExtensionFieldExtractorsPtrOutput() ParserExtensionFieldExtractorsPtrOutput {
+	return i.ToParserExtensionFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (i *parserExtensionFieldExtractorsPtrType) ToParserExtensionFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractors)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsOutput) ToParserExtensionFieldExtractorsOutput() ParserExtensionFieldExtractorsOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsOutput) ToParserExtensionFieldExtractorsOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsOutput) ToParserExtensionFieldExtractorsPtrOutput() ParserExtensionFieldExtractorsPtrOutput {
+	return o.ToParserExtensionFieldExtractorsPtrOutputWithContext(context.Background())
+}
+
+func (o ParserExtensionFieldExtractorsOutput) ToParserExtensionFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserExtensionFieldExtractors) *ParserExtensionFieldExtractors {
+		return &v
+	}).(ParserExtensionFieldExtractorsPtrOutput)
+}
+
+// Whether to append repeated fields or not.
+// When false, repeated fields will be replaced.
+func (o ParserExtensionFieldExtractorsOutput) AppendRepeatedFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractors) *bool { return v.AppendRepeatedFields }).(pulumi.BoolPtrOutput)
+}
+
+// List of FieldExtractors.
+// Structure is documented below.
+func (o ParserExtensionFieldExtractorsOutput) Extractors() ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractors) []ParserExtensionFieldExtractorsExtractor { return v.Extractors }).(ParserExtensionFieldExtractorsExtractorArrayOutput)
+}
+
+// Possible values:
+// JSON
+// CSV
+// XML
+func (o ParserExtensionFieldExtractorsOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractors) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
+}
+
+// PreProcessConfig holds the GROK expression to extract the syslog header.
+// Structure is documented below.
+func (o ParserExtensionFieldExtractorsOutput) PreprocessConfig() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractors) *ParserExtensionFieldExtractorsPreprocessConfig {
+		return v.PreprocessConfig
+	}).(ParserExtensionFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// (Output)
+// CBN snippet generated from field extractors.
+func (o ParserExtensionFieldExtractorsOutput) TransformedCbnSnippet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractors) *string { return v.TransformedCbnSnippet }).(pulumi.StringPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionFieldExtractors)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsPtrOutput) ToParserExtensionFieldExtractorsPtrOutput() ParserExtensionFieldExtractorsPtrOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPtrOutput) ToParserExtensionFieldExtractorsPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPtrOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPtrOutput) Elem() ParserExtensionFieldExtractorsOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) ParserExtensionFieldExtractors {
+		if v != nil {
+			return *v
+		}
+		var ret ParserExtensionFieldExtractors
+		return ret
+	}).(ParserExtensionFieldExtractorsOutput)
+}
+
+// Whether to append repeated fields or not.
+// When false, repeated fields will be replaced.
+func (o ParserExtensionFieldExtractorsPtrOutput) AppendRepeatedFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendRepeatedFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of FieldExtractors.
+// Structure is documented below.
+func (o ParserExtensionFieldExtractorsPtrOutput) Extractors() ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) []ParserExtensionFieldExtractorsExtractor {
+		if v == nil {
+			return nil
+		}
+		return v.Extractors
+	}).(ParserExtensionFieldExtractorsExtractorArrayOutput)
+}
+
+// Possible values:
+// JSON
+// CSV
+// XML
+func (o ParserExtensionFieldExtractorsPtrOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// PreProcessConfig holds the GROK expression to extract the syslog header.
+// Structure is documented below.
+func (o ParserExtensionFieldExtractorsPtrOutput) PreprocessConfig() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) *ParserExtensionFieldExtractorsPreprocessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PreprocessConfig
+	}).(ParserExtensionFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// (Output)
+// CBN snippet generated from field extractors.
+func (o ParserExtensionFieldExtractorsPtrOutput) TransformedCbnSnippet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransformedCbnSnippet
+	}).(pulumi.StringPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsExtractor struct {
+	// Path in generated event which is to be populated. This is required if the
+	// FieldExtractor is used to specify the parser extension.
+	DestinationPath *string `pulumi:"destinationPath"`
+	// Field path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	// This is required if the FieldExtractor is used to specify the parser
+	// extension.
+	FieldPath *string `pulumi:"fieldPath"`
+	// Operator used for precondition.
+	// Possible values:
+	// EQUALS
+	// NOT_EQUALS
+	PreconditionOp *string `pulumi:"preconditionOp"`
+	// Precondition path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	PreconditionPath *string `pulumi:"preconditionPath"`
+	// Precondition value.
+	PreconditionValue *string `pulumi:"preconditionValue"`
+	// Value to be mapped to the destination path directly.
+	Value *string `pulumi:"value"`
+}
+
+// ParserExtensionFieldExtractorsExtractorInput is an input type that accepts ParserExtensionFieldExtractorsExtractorArgs and ParserExtensionFieldExtractorsExtractorOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsExtractorInput` via:
+//
+//	ParserExtensionFieldExtractorsExtractorArgs{...}
+type ParserExtensionFieldExtractorsExtractorInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsExtractorOutput() ParserExtensionFieldExtractorsExtractorOutput
+	ToParserExtensionFieldExtractorsExtractorOutputWithContext(context.Context) ParserExtensionFieldExtractorsExtractorOutput
+}
+
+type ParserExtensionFieldExtractorsExtractorArgs struct {
+	// Path in generated event which is to be populated. This is required if the
+	// FieldExtractor is used to specify the parser extension.
+	DestinationPath pulumi.StringPtrInput `pulumi:"destinationPath"`
+	// Field path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	// This is required if the FieldExtractor is used to specify the parser
+	// extension.
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+	// Operator used for precondition.
+	// Possible values:
+	// EQUALS
+	// NOT_EQUALS
+	PreconditionOp pulumi.StringPtrInput `pulumi:"preconditionOp"`
+	// Precondition path could be a json path, xml path or csv column name
+	// depending on log format. It refers to a section or substring in raw log.
+	PreconditionPath pulumi.StringPtrInput `pulumi:"preconditionPath"`
+	// Precondition value.
+	PreconditionValue pulumi.StringPtrInput `pulumi:"preconditionValue"`
+	// Value to be mapped to the destination path directly.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ParserExtensionFieldExtractorsExtractorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (i ParserExtensionFieldExtractorsExtractorArgs) ToParserExtensionFieldExtractorsExtractorOutput() ParserExtensionFieldExtractorsExtractorOutput {
+	return i.ToParserExtensionFieldExtractorsExtractorOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsExtractorArgs) ToParserExtensionFieldExtractorsExtractorOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsExtractorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsExtractorOutput)
+}
+
+// ParserExtensionFieldExtractorsExtractorArrayInput is an input type that accepts ParserExtensionFieldExtractorsExtractorArray and ParserExtensionFieldExtractorsExtractorArrayOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsExtractorArrayInput` via:
+//
+//	ParserExtensionFieldExtractorsExtractorArray{ ParserExtensionFieldExtractorsExtractorArgs{...} }
+type ParserExtensionFieldExtractorsExtractorArrayInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsExtractorArrayOutput() ParserExtensionFieldExtractorsExtractorArrayOutput
+	ToParserExtensionFieldExtractorsExtractorArrayOutputWithContext(context.Context) ParserExtensionFieldExtractorsExtractorArrayOutput
+}
+
+type ParserExtensionFieldExtractorsExtractorArray []ParserExtensionFieldExtractorsExtractorInput
+
+func (ParserExtensionFieldExtractorsExtractorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserExtensionFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (i ParserExtensionFieldExtractorsExtractorArray) ToParserExtensionFieldExtractorsExtractorArrayOutput() ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return i.ToParserExtensionFieldExtractorsExtractorArrayOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsExtractorArray) ToParserExtensionFieldExtractorsExtractorArrayOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsExtractorArrayOutput)
+}
+
+type ParserExtensionFieldExtractorsExtractorOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsExtractorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsExtractorOutput) ToParserExtensionFieldExtractorsExtractorOutput() ParserExtensionFieldExtractorsExtractorOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsExtractorOutput) ToParserExtensionFieldExtractorsExtractorOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsExtractorOutput {
+	return o
+}
+
+// Path in generated event which is to be populated. This is required if the
+// FieldExtractor is used to specify the parser extension.
+func (o ParserExtensionFieldExtractorsExtractorOutput) DestinationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.DestinationPath }).(pulumi.StringPtrOutput)
+}
+
+// Field path could be a json path, xml path or csv column name
+// depending on log format. It refers to a section or substring in raw log.
+// This is required if the FieldExtractor is used to specify the parser
+// extension.
+func (o ParserExtensionFieldExtractorsExtractorOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+// Operator used for precondition.
+// Possible values:
+// EQUALS
+// NOT_EQUALS
+func (o ParserExtensionFieldExtractorsExtractorOutput) PreconditionOp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.PreconditionOp }).(pulumi.StringPtrOutput)
+}
+
+// Precondition path could be a json path, xml path or csv column name
+// depending on log format. It refers to a section or substring in raw log.
+func (o ParserExtensionFieldExtractorsExtractorOutput) PreconditionPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.PreconditionPath }).(pulumi.StringPtrOutput)
+}
+
+// Precondition value.
+func (o ParserExtensionFieldExtractorsExtractorOutput) PreconditionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.PreconditionValue }).(pulumi.StringPtrOutput)
+}
+
+// Value to be mapped to the destination path directly.
+func (o ParserExtensionFieldExtractorsExtractorOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsExtractor) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsExtractorArrayOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsExtractorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParserExtensionFieldExtractorsExtractor)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsExtractorArrayOutput) ToParserExtensionFieldExtractorsExtractorArrayOutput() ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsExtractorArrayOutput) ToParserExtensionFieldExtractorsExtractorArrayOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsExtractorArrayOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsExtractorArrayOutput) Index(i pulumi.IntInput) ParserExtensionFieldExtractorsExtractorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParserExtensionFieldExtractorsExtractor {
+		return vs[0].([]ParserExtensionFieldExtractorsExtractor)[vs[1].(int)]
+	}).(ParserExtensionFieldExtractorsExtractorOutput)
+}
+
+type ParserExtensionFieldExtractorsPreprocessConfig struct {
+	// GROK Regex to extract the structured part of the log.
+	// syntax documentation:
+	// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+	GrokRegex *string `pulumi:"grokRegex"`
+	// Target field name for the structured part of the log.
+	// This should match a SEMANTIC identifier from the grok expression.
+	Target *string `pulumi:"target"`
+}
+
+// ParserExtensionFieldExtractorsPreprocessConfigInput is an input type that accepts ParserExtensionFieldExtractorsPreprocessConfigArgs and ParserExtensionFieldExtractorsPreprocessConfigOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsPreprocessConfigInput` via:
+//
+//	ParserExtensionFieldExtractorsPreprocessConfigArgs{...}
+type ParserExtensionFieldExtractorsPreprocessConfigInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsPreprocessConfigOutput() ParserExtensionFieldExtractorsPreprocessConfigOutput
+	ToParserExtensionFieldExtractorsPreprocessConfigOutputWithContext(context.Context) ParserExtensionFieldExtractorsPreprocessConfigOutput
+}
+
+type ParserExtensionFieldExtractorsPreprocessConfigArgs struct {
+	// GROK Regex to extract the structured part of the log.
+	// syntax documentation:
+	// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+	GrokRegex pulumi.StringPtrInput `pulumi:"grokRegex"`
+	// Target field name for the structured part of the log.
+	// This should match a SEMANTIC identifier from the grok expression.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (ParserExtensionFieldExtractorsPreprocessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (i ParserExtensionFieldExtractorsPreprocessConfigArgs) ToParserExtensionFieldExtractorsPreprocessConfigOutput() ParserExtensionFieldExtractorsPreprocessConfigOutput {
+	return i.ToParserExtensionFieldExtractorsPreprocessConfigOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsPreprocessConfigArgs) ToParserExtensionFieldExtractorsPreprocessConfigOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsPreprocessConfigOutput)
+}
+
+func (i ParserExtensionFieldExtractorsPreprocessConfigArgs) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutput() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return i.ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ParserExtensionFieldExtractorsPreprocessConfigArgs) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsPreprocessConfigOutput).ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx)
+}
+
+// ParserExtensionFieldExtractorsPreprocessConfigPtrInput is an input type that accepts ParserExtensionFieldExtractorsPreprocessConfigArgs, ParserExtensionFieldExtractorsPreprocessConfigPtr and ParserExtensionFieldExtractorsPreprocessConfigPtrOutput values.
+// You can construct a concrete instance of `ParserExtensionFieldExtractorsPreprocessConfigPtrInput` via:
+//
+//	        ParserExtensionFieldExtractorsPreprocessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParserExtensionFieldExtractorsPreprocessConfigPtrInput interface {
+	pulumi.Input
+
+	ToParserExtensionFieldExtractorsPreprocessConfigPtrOutput() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput
+	ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Context) ParserExtensionFieldExtractorsPreprocessConfigPtrOutput
+}
+
+type parserExtensionFieldExtractorsPreprocessConfigPtrType ParserExtensionFieldExtractorsPreprocessConfigArgs
+
+func ParserExtensionFieldExtractorsPreprocessConfigPtr(v *ParserExtensionFieldExtractorsPreprocessConfigArgs) ParserExtensionFieldExtractorsPreprocessConfigPtrInput {
+	return (*parserExtensionFieldExtractorsPreprocessConfigPtrType)(v)
+}
+
+func (*parserExtensionFieldExtractorsPreprocessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (i *parserExtensionFieldExtractorsPreprocessConfigPtrType) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutput() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return i.ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *parserExtensionFieldExtractorsPreprocessConfigPtrType) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParserExtensionFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsPreprocessConfigOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsPreprocessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserExtensionFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) ToParserExtensionFieldExtractorsPreprocessConfigOutput() ParserExtensionFieldExtractorsPreprocessConfigOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) ToParserExtensionFieldExtractorsPreprocessConfigOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutput() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserExtensionFieldExtractorsPreprocessConfig) *ParserExtensionFieldExtractorsPreprocessConfig {
+		return &v
+	}).(ParserExtensionFieldExtractorsPreprocessConfigPtrOutput)
+}
+
+// GROK Regex to extract the structured part of the log.
+// syntax documentation:
+// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) GrokRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsPreprocessConfig) *string { return v.GrokRegex }).(pulumi.StringPtrOutput)
+}
+
+// Target field name for the structured part of the log.
+// This should match a SEMANTIC identifier from the grok expression.
+func (o ParserExtensionFieldExtractorsPreprocessConfigOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParserExtensionFieldExtractorsPreprocessConfig) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type ParserExtensionFieldExtractorsPreprocessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserExtensionFieldExtractorsPreprocessConfig)(nil)).Elem()
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutput() ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) ToParserExtensionFieldExtractorsPreprocessConfigPtrOutputWithContext(ctx context.Context) ParserExtensionFieldExtractorsPreprocessConfigPtrOutput {
+	return o
+}
+
+func (o ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) Elem() ParserExtensionFieldExtractorsPreprocessConfigOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractorsPreprocessConfig) ParserExtensionFieldExtractorsPreprocessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ParserExtensionFieldExtractorsPreprocessConfig
+		return ret
+	}).(ParserExtensionFieldExtractorsPreprocessConfigOutput)
+}
+
+// GROK Regex to extract the structured part of the log.
+// syntax documentation:
+// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+func (o ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) GrokRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractorsPreprocessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrokRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target field name for the structured part of the log.
+// This should match a SEMANTIC identifier from the grok expression.
+func (o ParserExtensionFieldExtractorsPreprocessConfigPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserExtensionFieldExtractorsPreprocessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
 }
 
 type ParserLowCode struct {
@@ -49285,6 +50349,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsPtrInput)(nil)).Elem(), FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedFailureDetailsInput)(nil)).Elem(), FeedFailureDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedFailureDetailsPtrInput)(nil)).Elem(), FeedFailureDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementDeploymentDetectionExclusionApplicationInput)(nil)).Elem(), FindingsRefinementDeploymentDetectionExclusionApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementDeploymentDetectionExclusionApplicationPtrInput)(nil)).Elem(), FindingsRefinementDeploymentDetectionExclusionApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementOutcomeFilterInput)(nil)).Elem(), FindingsRefinementOutcomeFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementOutcomeFilterArrayInput)(nil)).Elem(), FindingsRefinementOutcomeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartInput)(nil)).Elem(), NativeDashboardChartArgs{})
@@ -49301,6 +50367,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserChangelogEntryArrayInput)(nil)).Elem(), ParserChangelogEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserCreatorInput)(nil)).Elem(), ParserCreatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserCreatorArrayInput)(nil)).Elem(), ParserCreatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionDynamicParsingInput)(nil)).Elem(), ParserExtensionDynamicParsingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionDynamicParsingPtrInput)(nil)).Elem(), ParserExtensionDynamicParsingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionDynamicParsingOptedFieldInput)(nil)).Elem(), ParserExtensionDynamicParsingOptedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionDynamicParsingOptedFieldArrayInput)(nil)).Elem(), ParserExtensionDynamicParsingOptedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsInput)(nil)).Elem(), ParserExtensionFieldExtractorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsPtrInput)(nil)).Elem(), ParserExtensionFieldExtractorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsExtractorInput)(nil)).Elem(), ParserExtensionFieldExtractorsExtractorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsExtractorArrayInput)(nil)).Elem(), ParserExtensionFieldExtractorsExtractorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsPreprocessConfigInput)(nil)).Elem(), ParserExtensionFieldExtractorsPreprocessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserExtensionFieldExtractorsPreprocessConfigPtrInput)(nil)).Elem(), ParserExtensionFieldExtractorsPreprocessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeInput)(nil)).Elem(), ParserLowCodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodePtrInput)(nil)).Elem(), ParserLowCodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserLowCodeFieldExtractorsInput)(nil)).Elem(), ParserLowCodeFieldExtractorsArgs{})
@@ -49841,6 +50917,8 @@ func init() {
 	pulumi.RegisterOutputType(FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(FeedFailureDetailsOutput{})
 	pulumi.RegisterOutputType(FeedFailureDetailsPtrOutput{})
+	pulumi.RegisterOutputType(FindingsRefinementDeploymentDetectionExclusionApplicationOutput{})
+	pulumi.RegisterOutputType(FindingsRefinementDeploymentDetectionExclusionApplicationPtrOutput{})
 	pulumi.RegisterOutputType(FindingsRefinementOutcomeFilterOutput{})
 	pulumi.RegisterOutputType(FindingsRefinementOutcomeFilterArrayOutput{})
 	pulumi.RegisterOutputType(NativeDashboardChartOutput{})
@@ -49857,6 +50935,16 @@ func init() {
 	pulumi.RegisterOutputType(ParserChangelogEntryArrayOutput{})
 	pulumi.RegisterOutputType(ParserCreatorOutput{})
 	pulumi.RegisterOutputType(ParserCreatorArrayOutput{})
+	pulumi.RegisterOutputType(ParserExtensionDynamicParsingOutput{})
+	pulumi.RegisterOutputType(ParserExtensionDynamicParsingPtrOutput{})
+	pulumi.RegisterOutputType(ParserExtensionDynamicParsingOptedFieldOutput{})
+	pulumi.RegisterOutputType(ParserExtensionDynamicParsingOptedFieldArrayOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsPtrOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsExtractorOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsExtractorArrayOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsPreprocessConfigOutput{})
+	pulumi.RegisterOutputType(ParserExtensionFieldExtractorsPreprocessConfigPtrOutput{})
 	pulumi.RegisterOutputType(ParserLowCodeOutput{})
 	pulumi.RegisterOutputType(ParserLowCodePtrOutput{})
 	pulumi.RegisterOutputType(ParserLowCodeFieldExtractorsOutput{})

@@ -279,6 +279,11 @@ func (o AgentGatewayGoogleManagedPtrOutput) GovernedAccessPath() pulumi.StringPt
 }
 
 type AgentGatewayNetworkConfig struct {
+	// DNS peering configuration for the AgentGateway. When set, the
+	// AgentGateway will resolve queries for the configured `domains` via
+	// Cloud DNS in the specified `targetNetwork`.
+	// Structure is documented below.
+	DnsPeeringConfig *AgentGatewayNetworkConfigDnsPeeringConfig `pulumi:"dnsPeeringConfig"`
 	// Optional PSC-Interface network attachment for connectivity to your
 	// private VPCs network.
 	// Structure is documented below.
@@ -297,6 +302,11 @@ type AgentGatewayNetworkConfigInput interface {
 }
 
 type AgentGatewayNetworkConfigArgs struct {
+	// DNS peering configuration for the AgentGateway. When set, the
+	// AgentGateway will resolve queries for the configured `domains` via
+	// Cloud DNS in the specified `targetNetwork`.
+	// Structure is documented below.
+	DnsPeeringConfig AgentGatewayNetworkConfigDnsPeeringConfigPtrInput `pulumi:"dnsPeeringConfig"`
 	// Optional PSC-Interface network attachment for connectivity to your
 	// private VPCs network.
 	// Structure is documented below.
@@ -380,6 +390,16 @@ func (o AgentGatewayNetworkConfigOutput) ToAgentGatewayNetworkConfigPtrOutputWit
 	}).(AgentGatewayNetworkConfigPtrOutput)
 }
 
+// DNS peering configuration for the AgentGateway. When set, the
+// AgentGateway will resolve queries for the configured `domains` via
+// Cloud DNS in the specified `targetNetwork`.
+// Structure is documented below.
+func (o AgentGatewayNetworkConfigOutput) DnsPeeringConfig() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfig) *AgentGatewayNetworkConfigDnsPeeringConfig {
+		return v.DnsPeeringConfig
+	}).(AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
 // Optional PSC-Interface network attachment for connectivity to your
 // private VPCs network.
 // Structure is documented below.
@@ -411,6 +431,19 @@ func (o AgentGatewayNetworkConfigPtrOutput) Elem() AgentGatewayNetworkConfigOutp
 	}).(AgentGatewayNetworkConfigOutput)
 }
 
+// DNS peering configuration for the AgentGateway. When set, the
+// AgentGateway will resolve queries for the configured `domains` via
+// Cloud DNS in the specified `targetNetwork`.
+// Structure is documented below.
+func (o AgentGatewayNetworkConfigPtrOutput) DnsPeeringConfig() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfig) *AgentGatewayNetworkConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfig
+	}).(AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
 // Optional PSC-Interface network attachment for connectivity to your
 // private VPCs network.
 // Structure is documented below.
@@ -421,6 +454,197 @@ func (o AgentGatewayNetworkConfigPtrOutput) Egress() AgentGatewayNetworkConfigEg
 		}
 		return &v.Egress
 	}).(AgentGatewayNetworkConfigEgressPtrOutput)
+}
+
+type AgentGatewayNetworkConfigDnsPeeringConfig struct {
+	// The list of domain names to peer for DNS resolution. Each entry
+	// must be a fully qualified domain name ending with a dot
+	// (for example, `example.com.`).
+	Domains []string `pulumi:"domains"`
+	// The URI of the target VPC network for DNS peering. Must be of the
+	// form `projects/{project}/global/networks/{network}`.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// The ID of the project that hosts the target VPC network for DNS
+	// peering.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AgentGatewayNetworkConfigDnsPeeringConfigInput is an input type that accepts AgentGatewayNetworkConfigDnsPeeringConfigArgs and AgentGatewayNetworkConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigDnsPeeringConfigInput` via:
+//
+//	AgentGatewayNetworkConfigDnsPeeringConfigArgs{...}
+type AgentGatewayNetworkConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigDnsPeeringConfigOutput() AgentGatewayNetworkConfigDnsPeeringConfigOutput
+	ToAgentGatewayNetworkConfigDnsPeeringConfigOutputWithContext(context.Context) AgentGatewayNetworkConfigDnsPeeringConfigOutput
+}
+
+type AgentGatewayNetworkConfigDnsPeeringConfigArgs struct {
+	// The list of domain names to peer for DNS resolution. Each entry
+	// must be a fully qualified domain name ending with a dot
+	// (for example, `example.com.`).
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The URI of the target VPC network for DNS peering. Must be of the
+	// form `projects/{project}/global/networks/{network}`.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// The ID of the project that hosts the target VPC network for DNS
+	// peering.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AgentGatewayNetworkConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AgentGatewayNetworkConfigDnsPeeringConfigArgs) ToAgentGatewayNetworkConfigDnsPeeringConfigOutput() AgentGatewayNetworkConfigDnsPeeringConfigOutput {
+	return i.ToAgentGatewayNetworkConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigDnsPeeringConfigArgs) ToAgentGatewayNetworkConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigDnsPeeringConfigOutput)
+}
+
+func (i AgentGatewayNetworkConfigDnsPeeringConfigArgs) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutput() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return i.ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentGatewayNetworkConfigDnsPeeringConfigArgs) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigDnsPeeringConfigOutput).ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx)
+}
+
+// AgentGatewayNetworkConfigDnsPeeringConfigPtrInput is an input type that accepts AgentGatewayNetworkConfigDnsPeeringConfigArgs, AgentGatewayNetworkConfigDnsPeeringConfigPtr and AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput values.
+// You can construct a concrete instance of `AgentGatewayNetworkConfigDnsPeeringConfigPtrInput` via:
+//
+//	        AgentGatewayNetworkConfigDnsPeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentGatewayNetworkConfigDnsPeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutput() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput
+	ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Context) AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput
+}
+
+type agentGatewayNetworkConfigDnsPeeringConfigPtrType AgentGatewayNetworkConfigDnsPeeringConfigArgs
+
+func AgentGatewayNetworkConfigDnsPeeringConfigPtr(v *AgentGatewayNetworkConfigDnsPeeringConfigArgs) AgentGatewayNetworkConfigDnsPeeringConfigPtrInput {
+	return (*agentGatewayNetworkConfigDnsPeeringConfigPtrType)(v)
+}
+
+func (*agentGatewayNetworkConfigDnsPeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i *agentGatewayNetworkConfigDnsPeeringConfigPtrType) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutput() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return i.ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentGatewayNetworkConfigDnsPeeringConfigPtrType) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+type AgentGatewayNetworkConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentGatewayNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigOutput() AgentGatewayNetworkConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutput() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentGatewayNetworkConfigDnsPeeringConfig) *AgentGatewayNetworkConfigDnsPeeringConfig {
+		return &v
+	}).(AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+// The list of domain names to peer for DNS resolution. Each entry
+// must be a fully qualified domain name ending with a dot
+// (for example, `example.com.`).
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfigDnsPeeringConfig) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the target VPC network for DNS peering. Must be of the
+// form `projects/{project}/global/networks/{network}`.
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfigDnsPeeringConfig) string { return v.TargetNetwork }).(pulumi.StringOutput)
+}
+
+// The ID of the project that hosts the target VPC network for DNS
+// peering.
+func (o AgentGatewayNetworkConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentGatewayNetworkConfigDnsPeeringConfig) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+type AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentGatewayNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutput() AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) ToAgentGatewayNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput {
+	return o
+}
+
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) Elem() AgentGatewayNetworkConfigDnsPeeringConfigOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigDnsPeeringConfig) AgentGatewayNetworkConfigDnsPeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentGatewayNetworkConfigDnsPeeringConfig
+		return ret
+	}).(AgentGatewayNetworkConfigDnsPeeringConfigOutput)
+}
+
+// The list of domain names to peer for DNS resolution. Each entry
+// must be a fully qualified domain name ending with a dot
+// (for example, `example.com.`).
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigDnsPeeringConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URI of the target VPC network for DNS peering. Must be of the
+// form `projects/{project}/global/networks/{network}`.
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) TargetNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigDnsPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project that hosts the target VPC network for DNS
+// peering.
+func (o AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGatewayNetworkConfigDnsPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetProject
+	}).(pulumi.StringPtrOutput)
 }
 
 type AgentGatewayNetworkConfigEgress struct {
@@ -16883,6 +17107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayGoogleManagedPtrInput)(nil)).Elem(), AgentGatewayGoogleManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigInput)(nil)).Elem(), AgentGatewayNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigDnsPeeringConfigInput)(nil)).Elem(), AgentGatewayNetworkConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigDnsPeeringConfigPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigDnsPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigEgressInput)(nil)).Elem(), AgentGatewayNetworkConfigEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayNetworkConfigEgressPtrInput)(nil)).Elem(), AgentGatewayNetworkConfigEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewaySelfManagedInput)(nil)).Elem(), AgentGatewaySelfManagedArgs{})
@@ -17092,6 +17318,8 @@ func init() {
 	pulumi.RegisterOutputType(AgentGatewayGoogleManagedPtrOutput{})
 	pulumi.RegisterOutputType(AgentGatewayNetworkConfigOutput{})
 	pulumi.RegisterOutputType(AgentGatewayNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AgentGatewayNetworkConfigDnsPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(AgentGatewayNetworkConfigEgressOutput{})
 	pulumi.RegisterOutputType(AgentGatewayNetworkConfigEgressPtrOutput{})
 	pulumi.RegisterOutputType(AgentGatewaySelfManagedOutput{})

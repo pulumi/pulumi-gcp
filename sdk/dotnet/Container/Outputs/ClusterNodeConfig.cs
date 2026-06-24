@@ -249,6 +249,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// Taint configuration for the node pool. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigTaintConfig? TaintConfig;
+        /// <summary>
         /// A list of
         /// [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
         /// to apply to nodes. This field will only report drift on taint keys that are
@@ -360,6 +364,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> tags,
 
+            Outputs.ClusterNodeConfigTaintConfig? taintConfig,
+
             ImmutableArray<Outputs.ClusterNodeConfigTaint> taints,
 
             Outputs.ClusterNodeConfigWindowsNodeConfig? windowsNodeConfig,
@@ -411,6 +417,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Spot = spot;
             StoragePools = storagePools;
             Tags = tags;
+            TaintConfig = taintConfig;
             Taints = taints;
             WindowsNodeConfig = windowsNodeConfig;
             WorkloadMetadataConfig = workloadMetadataConfig;

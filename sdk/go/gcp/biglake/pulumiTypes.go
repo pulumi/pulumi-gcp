@@ -177,6 +177,444 @@ func (o DatabaseHiveOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type HiveCatalogIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveCatalogIamBindingConditionInput is an input type that accepts HiveCatalogIamBindingConditionArgs and HiveCatalogIamBindingConditionOutput values.
+// You can construct a concrete instance of `HiveCatalogIamBindingConditionInput` via:
+//
+//	HiveCatalogIamBindingConditionArgs{...}
+type HiveCatalogIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToHiveCatalogIamBindingConditionOutput() HiveCatalogIamBindingConditionOutput
+	ToHiveCatalogIamBindingConditionOutputWithContext(context.Context) HiveCatalogIamBindingConditionOutput
+}
+
+type HiveCatalogIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveCatalogIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (i HiveCatalogIamBindingConditionArgs) ToHiveCatalogIamBindingConditionOutput() HiveCatalogIamBindingConditionOutput {
+	return i.ToHiveCatalogIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogIamBindingConditionArgs) ToHiveCatalogIamBindingConditionOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamBindingConditionOutput)
+}
+
+func (i HiveCatalogIamBindingConditionArgs) ToHiveCatalogIamBindingConditionPtrOutput() HiveCatalogIamBindingConditionPtrOutput {
+	return i.ToHiveCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogIamBindingConditionArgs) ToHiveCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamBindingConditionOutput).ToHiveCatalogIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// HiveCatalogIamBindingConditionPtrInput is an input type that accepts HiveCatalogIamBindingConditionArgs, HiveCatalogIamBindingConditionPtr and HiveCatalogIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `HiveCatalogIamBindingConditionPtrInput` via:
+//
+//	        HiveCatalogIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveCatalogIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveCatalogIamBindingConditionPtrOutput() HiveCatalogIamBindingConditionPtrOutput
+	ToHiveCatalogIamBindingConditionPtrOutputWithContext(context.Context) HiveCatalogIamBindingConditionPtrOutput
+}
+
+type hiveCatalogIamBindingConditionPtrType HiveCatalogIamBindingConditionArgs
+
+func HiveCatalogIamBindingConditionPtr(v *HiveCatalogIamBindingConditionArgs) HiveCatalogIamBindingConditionPtrInput {
+	return (*hiveCatalogIamBindingConditionPtrType)(v)
+}
+
+func (*hiveCatalogIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (i *hiveCatalogIamBindingConditionPtrType) ToHiveCatalogIamBindingConditionPtrOutput() HiveCatalogIamBindingConditionPtrOutput {
+	return i.ToHiveCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveCatalogIamBindingConditionPtrType) ToHiveCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamBindingConditionPtrOutput)
+}
+
+type HiveCatalogIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveCatalogIamBindingConditionOutput) ToHiveCatalogIamBindingConditionOutput() HiveCatalogIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveCatalogIamBindingConditionOutput) ToHiveCatalogIamBindingConditionOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveCatalogIamBindingConditionOutput) ToHiveCatalogIamBindingConditionPtrOutput() HiveCatalogIamBindingConditionPtrOutput {
+	return o.ToHiveCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveCatalogIamBindingConditionOutput) ToHiveCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveCatalogIamBindingCondition) *HiveCatalogIamBindingCondition {
+		return &v
+	}).(HiveCatalogIamBindingConditionPtrOutput)
+}
+
+func (o HiveCatalogIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveCatalogIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveCatalogIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveCatalogIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveCatalogIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveCatalogIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) ToHiveCatalogIamBindingConditionPtrOutput() HiveCatalogIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) ToHiveCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) Elem() HiveCatalogIamBindingConditionOutput {
+	return o.ApplyT(func(v *HiveCatalogIamBindingCondition) HiveCatalogIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveCatalogIamBindingCondition
+		return ret
+	}).(HiveCatalogIamBindingConditionOutput)
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveCatalogIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveCatalogIamMemberConditionInput is an input type that accepts HiveCatalogIamMemberConditionArgs and HiveCatalogIamMemberConditionOutput values.
+// You can construct a concrete instance of `HiveCatalogIamMemberConditionInput` via:
+//
+//	HiveCatalogIamMemberConditionArgs{...}
+type HiveCatalogIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToHiveCatalogIamMemberConditionOutput() HiveCatalogIamMemberConditionOutput
+	ToHiveCatalogIamMemberConditionOutputWithContext(context.Context) HiveCatalogIamMemberConditionOutput
+}
+
+type HiveCatalogIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveCatalogIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (i HiveCatalogIamMemberConditionArgs) ToHiveCatalogIamMemberConditionOutput() HiveCatalogIamMemberConditionOutput {
+	return i.ToHiveCatalogIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogIamMemberConditionArgs) ToHiveCatalogIamMemberConditionOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamMemberConditionOutput)
+}
+
+func (i HiveCatalogIamMemberConditionArgs) ToHiveCatalogIamMemberConditionPtrOutput() HiveCatalogIamMemberConditionPtrOutput {
+	return i.ToHiveCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogIamMemberConditionArgs) ToHiveCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamMemberConditionOutput).ToHiveCatalogIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// HiveCatalogIamMemberConditionPtrInput is an input type that accepts HiveCatalogIamMemberConditionArgs, HiveCatalogIamMemberConditionPtr and HiveCatalogIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `HiveCatalogIamMemberConditionPtrInput` via:
+//
+//	        HiveCatalogIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveCatalogIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveCatalogIamMemberConditionPtrOutput() HiveCatalogIamMemberConditionPtrOutput
+	ToHiveCatalogIamMemberConditionPtrOutputWithContext(context.Context) HiveCatalogIamMemberConditionPtrOutput
+}
+
+type hiveCatalogIamMemberConditionPtrType HiveCatalogIamMemberConditionArgs
+
+func HiveCatalogIamMemberConditionPtr(v *HiveCatalogIamMemberConditionArgs) HiveCatalogIamMemberConditionPtrInput {
+	return (*hiveCatalogIamMemberConditionPtrType)(v)
+}
+
+func (*hiveCatalogIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (i *hiveCatalogIamMemberConditionPtrType) ToHiveCatalogIamMemberConditionPtrOutput() HiveCatalogIamMemberConditionPtrOutput {
+	return i.ToHiveCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveCatalogIamMemberConditionPtrType) ToHiveCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogIamMemberConditionPtrOutput)
+}
+
+type HiveCatalogIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveCatalogIamMemberConditionOutput) ToHiveCatalogIamMemberConditionOutput() HiveCatalogIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveCatalogIamMemberConditionOutput) ToHiveCatalogIamMemberConditionOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveCatalogIamMemberConditionOutput) ToHiveCatalogIamMemberConditionPtrOutput() HiveCatalogIamMemberConditionPtrOutput {
+	return o.ToHiveCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveCatalogIamMemberConditionOutput) ToHiveCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveCatalogIamMemberCondition) *HiveCatalogIamMemberCondition {
+		return &v
+	}).(HiveCatalogIamMemberConditionPtrOutput)
+}
+
+func (o HiveCatalogIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveCatalogIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveCatalogIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveCatalogIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveCatalogIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveCatalogIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) ToHiveCatalogIamMemberConditionPtrOutput() HiveCatalogIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) ToHiveCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveCatalogIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) Elem() HiveCatalogIamMemberConditionOutput {
+	return o.ApplyT(func(v *HiveCatalogIamMemberCondition) HiveCatalogIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveCatalogIamMemberCondition
+		return ret
+	}).(HiveCatalogIamMemberConditionOutput)
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveCatalogIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveCatalogReplica struct {
+	// (Output)
+	// The region of the replica, e.g., `us-east1`.
+	Region *string `pulumi:"region"`
+	// (Output)
+	// If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+	State *string `pulumi:"state"`
+}
+
+// HiveCatalogReplicaInput is an input type that accepts HiveCatalogReplicaArgs and HiveCatalogReplicaOutput values.
+// You can construct a concrete instance of `HiveCatalogReplicaInput` via:
+//
+//	HiveCatalogReplicaArgs{...}
+type HiveCatalogReplicaInput interface {
+	pulumi.Input
+
+	ToHiveCatalogReplicaOutput() HiveCatalogReplicaOutput
+	ToHiveCatalogReplicaOutputWithContext(context.Context) HiveCatalogReplicaOutput
+}
+
+type HiveCatalogReplicaArgs struct {
+	// (Output)
+	// The region of the replica, e.g., `us-east1`.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// (Output)
+	// If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (HiveCatalogReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogReplica)(nil)).Elem()
+}
+
+func (i HiveCatalogReplicaArgs) ToHiveCatalogReplicaOutput() HiveCatalogReplicaOutput {
+	return i.ToHiveCatalogReplicaOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogReplicaArgs) ToHiveCatalogReplicaOutputWithContext(ctx context.Context) HiveCatalogReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogReplicaOutput)
+}
+
+// HiveCatalogReplicaArrayInput is an input type that accepts HiveCatalogReplicaArray and HiveCatalogReplicaArrayOutput values.
+// You can construct a concrete instance of `HiveCatalogReplicaArrayInput` via:
+//
+//	HiveCatalogReplicaArray{ HiveCatalogReplicaArgs{...} }
+type HiveCatalogReplicaArrayInput interface {
+	pulumi.Input
+
+	ToHiveCatalogReplicaArrayOutput() HiveCatalogReplicaArrayOutput
+	ToHiveCatalogReplicaArrayOutputWithContext(context.Context) HiveCatalogReplicaArrayOutput
+}
+
+type HiveCatalogReplicaArray []HiveCatalogReplicaInput
+
+func (HiveCatalogReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveCatalogReplica)(nil)).Elem()
+}
+
+func (i HiveCatalogReplicaArray) ToHiveCatalogReplicaArrayOutput() HiveCatalogReplicaArrayOutput {
+	return i.ToHiveCatalogReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i HiveCatalogReplicaArray) ToHiveCatalogReplicaArrayOutputWithContext(ctx context.Context) HiveCatalogReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogReplicaArrayOutput)
+}
+
+type HiveCatalogReplicaOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveCatalogReplica)(nil)).Elem()
+}
+
+func (o HiveCatalogReplicaOutput) ToHiveCatalogReplicaOutput() HiveCatalogReplicaOutput {
+	return o
+}
+
+func (o HiveCatalogReplicaOutput) ToHiveCatalogReplicaOutputWithContext(ctx context.Context) HiveCatalogReplicaOutput {
+	return o
+}
+
+// (Output)
+// The region of the replica, e.g., `us-east1`.
+func (o HiveCatalogReplicaOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveCatalogReplica) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+func (o HiveCatalogReplicaOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveCatalogReplica) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type HiveCatalogReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveCatalogReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveCatalogReplica)(nil)).Elem()
+}
+
+func (o HiveCatalogReplicaArrayOutput) ToHiveCatalogReplicaArrayOutput() HiveCatalogReplicaArrayOutput {
+	return o
+}
+
+func (o HiveCatalogReplicaArrayOutput) ToHiveCatalogReplicaArrayOutputWithContext(ctx context.Context) HiveCatalogReplicaArrayOutput {
+	return o
+}
+
+func (o HiveCatalogReplicaArrayOutput) Index(i pulumi.IntInput) HiveCatalogReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveCatalogReplica {
+		return vs[0].([]HiveCatalogReplica)[vs[1].(int)]
+	}).(HiveCatalogReplicaOutput)
+}
+
 type IcebergCatalogIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -613,6 +1051,151 @@ func (o IcebergCatalogReplicaArrayOutput) Index(i pulumi.IntInput) IcebergCatalo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergCatalogReplica {
 		return vs[0].([]IcebergCatalogReplica)[vs[1].(int)]
 	}).(IcebergCatalogReplicaOutput)
+}
+
+type IcebergCatalogRestrictedLocationsConfig struct {
+	// A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+	// permitted for use by resources within this catalog. Each entry can be
+	// either a GCS bucket or a path within it.
+	RestrictedLocations []string `pulumi:"restrictedLocations"`
+}
+
+// IcebergCatalogRestrictedLocationsConfigInput is an input type that accepts IcebergCatalogRestrictedLocationsConfigArgs and IcebergCatalogRestrictedLocationsConfigOutput values.
+// You can construct a concrete instance of `IcebergCatalogRestrictedLocationsConfigInput` via:
+//
+//	IcebergCatalogRestrictedLocationsConfigArgs{...}
+type IcebergCatalogRestrictedLocationsConfigInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogRestrictedLocationsConfigOutput() IcebergCatalogRestrictedLocationsConfigOutput
+	ToIcebergCatalogRestrictedLocationsConfigOutputWithContext(context.Context) IcebergCatalogRestrictedLocationsConfigOutput
+}
+
+type IcebergCatalogRestrictedLocationsConfigArgs struct {
+	// A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+	// permitted for use by resources within this catalog. Each entry can be
+	// either a GCS bucket or a path within it.
+	RestrictedLocations pulumi.StringArrayInput `pulumi:"restrictedLocations"`
+}
+
+func (IcebergCatalogRestrictedLocationsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogRestrictedLocationsConfig)(nil)).Elem()
+}
+
+func (i IcebergCatalogRestrictedLocationsConfigArgs) ToIcebergCatalogRestrictedLocationsConfigOutput() IcebergCatalogRestrictedLocationsConfigOutput {
+	return i.ToIcebergCatalogRestrictedLocationsConfigOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogRestrictedLocationsConfigArgs) ToIcebergCatalogRestrictedLocationsConfigOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogRestrictedLocationsConfigOutput)
+}
+
+func (i IcebergCatalogRestrictedLocationsConfigArgs) ToIcebergCatalogRestrictedLocationsConfigPtrOutput() IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return i.ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogRestrictedLocationsConfigArgs) ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogRestrictedLocationsConfigOutput).ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogRestrictedLocationsConfigPtrInput is an input type that accepts IcebergCatalogRestrictedLocationsConfigArgs, IcebergCatalogRestrictedLocationsConfigPtr and IcebergCatalogRestrictedLocationsConfigPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogRestrictedLocationsConfigPtrInput` via:
+//
+//	        IcebergCatalogRestrictedLocationsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogRestrictedLocationsConfigPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogRestrictedLocationsConfigPtrOutput() IcebergCatalogRestrictedLocationsConfigPtrOutput
+	ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(context.Context) IcebergCatalogRestrictedLocationsConfigPtrOutput
+}
+
+type icebergCatalogRestrictedLocationsConfigPtrType IcebergCatalogRestrictedLocationsConfigArgs
+
+func IcebergCatalogRestrictedLocationsConfigPtr(v *IcebergCatalogRestrictedLocationsConfigArgs) IcebergCatalogRestrictedLocationsConfigPtrInput {
+	return (*icebergCatalogRestrictedLocationsConfigPtrType)(v)
+}
+
+func (*icebergCatalogRestrictedLocationsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogRestrictedLocationsConfig)(nil)).Elem()
+}
+
+func (i *icebergCatalogRestrictedLocationsConfigPtrType) ToIcebergCatalogRestrictedLocationsConfigPtrOutput() IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return i.ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogRestrictedLocationsConfigPtrType) ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogRestrictedLocationsConfigPtrOutput)
+}
+
+type IcebergCatalogRestrictedLocationsConfigOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogRestrictedLocationsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogRestrictedLocationsConfig)(nil)).Elem()
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigOutput) ToIcebergCatalogRestrictedLocationsConfigOutput() IcebergCatalogRestrictedLocationsConfigOutput {
+	return o
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigOutput) ToIcebergCatalogRestrictedLocationsConfigOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigOutput {
+	return o
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigOutput) ToIcebergCatalogRestrictedLocationsConfigPtrOutput() IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return o.ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigOutput) ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogRestrictedLocationsConfig) *IcebergCatalogRestrictedLocationsConfig {
+		return &v
+	}).(IcebergCatalogRestrictedLocationsConfigPtrOutput)
+}
+
+// A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+// permitted for use by resources within this catalog. Each entry can be
+// either a GCS bucket or a path within it.
+func (o IcebergCatalogRestrictedLocationsConfigOutput) RestrictedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IcebergCatalogRestrictedLocationsConfig) []string { return v.RestrictedLocations }).(pulumi.StringArrayOutput)
+}
+
+type IcebergCatalogRestrictedLocationsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogRestrictedLocationsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogRestrictedLocationsConfig)(nil)).Elem()
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigPtrOutput) ToIcebergCatalogRestrictedLocationsConfigPtrOutput() IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigPtrOutput) ToIcebergCatalogRestrictedLocationsConfigPtrOutputWithContext(ctx context.Context) IcebergCatalogRestrictedLocationsConfigPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogRestrictedLocationsConfigPtrOutput) Elem() IcebergCatalogRestrictedLocationsConfigOutput {
+	return o.ApplyT(func(v *IcebergCatalogRestrictedLocationsConfig) IcebergCatalogRestrictedLocationsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogRestrictedLocationsConfig
+		return ret
+	}).(IcebergCatalogRestrictedLocationsConfigOutput)
+}
+
+// A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+// permitted for use by resources within this catalog. Each entry can be
+// either a GCS bucket or a path within it.
+func (o IcebergCatalogRestrictedLocationsConfigPtrOutput) RestrictedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IcebergCatalogRestrictedLocationsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedLocations
+	}).(pulumi.StringArrayOutput)
 }
 
 type IcebergNamespaceIamBindingCondition struct {
@@ -1433,7 +2016,7 @@ type IcebergTablePartitionSpecField struct {
 	FieldId *int `pulumi:"fieldId"`
 	// The name of the partition field.
 	Name string `pulumi:"name"`
-	// The source field ID for the partition field.
+	// The source field ID for the sort field.
 	SourceId int `pulumi:"sourceId"`
 	// The transform to apply to the source field.
 	Transform string `pulumi:"transform"`
@@ -1456,7 +2039,7 @@ type IcebergTablePartitionSpecFieldArgs struct {
 	FieldId pulumi.IntPtrInput `pulumi:"fieldId"`
 	// The name of the partition field.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The source field ID for the partition field.
+	// The source field ID for the sort field.
 	SourceId pulumi.IntInput `pulumi:"sourceId"`
 	// The transform to apply to the source field.
 	Transform pulumi.StringInput `pulumi:"transform"`
@@ -1524,7 +2107,7 @@ func (o IcebergTablePartitionSpecFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v IcebergTablePartitionSpecField) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The source field ID for the partition field.
+// The source field ID for the sort field.
 func (o IcebergTablePartitionSpecFieldOutput) SourceId() pulumi.IntOutput {
 	return o.ApplyT(func(v IcebergTablePartitionSpecField) int { return v.SourceId }).(pulumi.IntOutput)
 }
@@ -1883,6 +2466,290 @@ func (o IcebergTableSchemaFieldArrayOutput) Index(i pulumi.IntInput) IcebergTabl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergTableSchemaField {
 		return vs[0].([]IcebergTableSchemaField)[vs[1].(int)]
 	}).(IcebergTableSchemaFieldOutput)
+}
+
+type IcebergTableSortOrder struct {
+	// Structure is documented below.
+	Fields []IcebergTableSortOrderField `pulumi:"fields"`
+	// (Output)
+	// The unique identifier of the sort order.
+	OrderId *int `pulumi:"orderId"`
+}
+
+// IcebergTableSortOrderInput is an input type that accepts IcebergTableSortOrderArgs and IcebergTableSortOrderOutput values.
+// You can construct a concrete instance of `IcebergTableSortOrderInput` via:
+//
+//	IcebergTableSortOrderArgs{...}
+type IcebergTableSortOrderInput interface {
+	pulumi.Input
+
+	ToIcebergTableSortOrderOutput() IcebergTableSortOrderOutput
+	ToIcebergTableSortOrderOutputWithContext(context.Context) IcebergTableSortOrderOutput
+}
+
+type IcebergTableSortOrderArgs struct {
+	// Structure is documented below.
+	Fields IcebergTableSortOrderFieldArrayInput `pulumi:"fields"`
+	// (Output)
+	// The unique identifier of the sort order.
+	OrderId pulumi.IntPtrInput `pulumi:"orderId"`
+}
+
+func (IcebergTableSortOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSortOrder)(nil)).Elem()
+}
+
+func (i IcebergTableSortOrderArgs) ToIcebergTableSortOrderOutput() IcebergTableSortOrderOutput {
+	return i.ToIcebergTableSortOrderOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSortOrderArgs) ToIcebergTableSortOrderOutputWithContext(ctx context.Context) IcebergTableSortOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSortOrderOutput)
+}
+
+func (i IcebergTableSortOrderArgs) ToIcebergTableSortOrderPtrOutput() IcebergTableSortOrderPtrOutput {
+	return i.ToIcebergTableSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSortOrderArgs) ToIcebergTableSortOrderPtrOutputWithContext(ctx context.Context) IcebergTableSortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSortOrderOutput).ToIcebergTableSortOrderPtrOutputWithContext(ctx)
+}
+
+// IcebergTableSortOrderPtrInput is an input type that accepts IcebergTableSortOrderArgs, IcebergTableSortOrderPtr and IcebergTableSortOrderPtrOutput values.
+// You can construct a concrete instance of `IcebergTableSortOrderPtrInput` via:
+//
+//	        IcebergTableSortOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergTableSortOrderPtrInput interface {
+	pulumi.Input
+
+	ToIcebergTableSortOrderPtrOutput() IcebergTableSortOrderPtrOutput
+	ToIcebergTableSortOrderPtrOutputWithContext(context.Context) IcebergTableSortOrderPtrOutput
+}
+
+type icebergTableSortOrderPtrType IcebergTableSortOrderArgs
+
+func IcebergTableSortOrderPtr(v *IcebergTableSortOrderArgs) IcebergTableSortOrderPtrInput {
+	return (*icebergTableSortOrderPtrType)(v)
+}
+
+func (*icebergTableSortOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableSortOrder)(nil)).Elem()
+}
+
+func (i *icebergTableSortOrderPtrType) ToIcebergTableSortOrderPtrOutput() IcebergTableSortOrderPtrOutput {
+	return i.ToIcebergTableSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergTableSortOrderPtrType) ToIcebergTableSortOrderPtrOutputWithContext(ctx context.Context) IcebergTableSortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSortOrderPtrOutput)
+}
+
+type IcebergTableSortOrderOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSortOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSortOrder)(nil)).Elem()
+}
+
+func (o IcebergTableSortOrderOutput) ToIcebergTableSortOrderOutput() IcebergTableSortOrderOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderOutput) ToIcebergTableSortOrderOutputWithContext(ctx context.Context) IcebergTableSortOrderOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderOutput) ToIcebergTableSortOrderPtrOutput() IcebergTableSortOrderPtrOutput {
+	return o.ToIcebergTableSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergTableSortOrderOutput) ToIcebergTableSortOrderPtrOutputWithContext(ctx context.Context) IcebergTableSortOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergTableSortOrder) *IcebergTableSortOrder {
+		return &v
+	}).(IcebergTableSortOrderPtrOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTableSortOrderOutput) Fields() IcebergTableSortOrderFieldArrayOutput {
+	return o.ApplyT(func(v IcebergTableSortOrder) []IcebergTableSortOrderField { return v.Fields }).(IcebergTableSortOrderFieldArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the sort order.
+func (o IcebergTableSortOrderOutput) OrderId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IcebergTableSortOrder) *int { return v.OrderId }).(pulumi.IntPtrOutput)
+}
+
+type IcebergTableSortOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSortOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableSortOrder)(nil)).Elem()
+}
+
+func (o IcebergTableSortOrderPtrOutput) ToIcebergTableSortOrderPtrOutput() IcebergTableSortOrderPtrOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderPtrOutput) ToIcebergTableSortOrderPtrOutputWithContext(ctx context.Context) IcebergTableSortOrderPtrOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderPtrOutput) Elem() IcebergTableSortOrderOutput {
+	return o.ApplyT(func(v *IcebergTableSortOrder) IcebergTableSortOrder {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergTableSortOrder
+		return ret
+	}).(IcebergTableSortOrderOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTableSortOrderPtrOutput) Fields() IcebergTableSortOrderFieldArrayOutput {
+	return o.ApplyT(func(v *IcebergTableSortOrder) []IcebergTableSortOrderField {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(IcebergTableSortOrderFieldArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the sort order.
+func (o IcebergTableSortOrderPtrOutput) OrderId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IcebergTableSortOrder) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.IntPtrOutput)
+}
+
+type IcebergTableSortOrderField struct {
+	// The sort direction for the sort field. Possible values: "asc", "desc".
+	Direction string `pulumi:"direction"`
+	// The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+	NullOrder string `pulumi:"nullOrder"`
+	// The source field ID for the sort field.
+	SourceId int `pulumi:"sourceId"`
+	// The transform to apply to the source field.
+	Transform string `pulumi:"transform"`
+}
+
+// IcebergTableSortOrderFieldInput is an input type that accepts IcebergTableSortOrderFieldArgs and IcebergTableSortOrderFieldOutput values.
+// You can construct a concrete instance of `IcebergTableSortOrderFieldInput` via:
+//
+//	IcebergTableSortOrderFieldArgs{...}
+type IcebergTableSortOrderFieldInput interface {
+	pulumi.Input
+
+	ToIcebergTableSortOrderFieldOutput() IcebergTableSortOrderFieldOutput
+	ToIcebergTableSortOrderFieldOutputWithContext(context.Context) IcebergTableSortOrderFieldOutput
+}
+
+type IcebergTableSortOrderFieldArgs struct {
+	// The sort direction for the sort field. Possible values: "asc", "desc".
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+	NullOrder pulumi.StringInput `pulumi:"nullOrder"`
+	// The source field ID for the sort field.
+	SourceId pulumi.IntInput `pulumi:"sourceId"`
+	// The transform to apply to the source field.
+	Transform pulumi.StringInput `pulumi:"transform"`
+}
+
+func (IcebergTableSortOrderFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSortOrderField)(nil)).Elem()
+}
+
+func (i IcebergTableSortOrderFieldArgs) ToIcebergTableSortOrderFieldOutput() IcebergTableSortOrderFieldOutput {
+	return i.ToIcebergTableSortOrderFieldOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSortOrderFieldArgs) ToIcebergTableSortOrderFieldOutputWithContext(ctx context.Context) IcebergTableSortOrderFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSortOrderFieldOutput)
+}
+
+// IcebergTableSortOrderFieldArrayInput is an input type that accepts IcebergTableSortOrderFieldArray and IcebergTableSortOrderFieldArrayOutput values.
+// You can construct a concrete instance of `IcebergTableSortOrderFieldArrayInput` via:
+//
+//	IcebergTableSortOrderFieldArray{ IcebergTableSortOrderFieldArgs{...} }
+type IcebergTableSortOrderFieldArrayInput interface {
+	pulumi.Input
+
+	ToIcebergTableSortOrderFieldArrayOutput() IcebergTableSortOrderFieldArrayOutput
+	ToIcebergTableSortOrderFieldArrayOutputWithContext(context.Context) IcebergTableSortOrderFieldArrayOutput
+}
+
+type IcebergTableSortOrderFieldArray []IcebergTableSortOrderFieldInput
+
+func (IcebergTableSortOrderFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTableSortOrderField)(nil)).Elem()
+}
+
+func (i IcebergTableSortOrderFieldArray) ToIcebergTableSortOrderFieldArrayOutput() IcebergTableSortOrderFieldArrayOutput {
+	return i.ToIcebergTableSortOrderFieldArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSortOrderFieldArray) ToIcebergTableSortOrderFieldArrayOutputWithContext(ctx context.Context) IcebergTableSortOrderFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSortOrderFieldArrayOutput)
+}
+
+type IcebergTableSortOrderFieldOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSortOrderFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSortOrderField)(nil)).Elem()
+}
+
+func (o IcebergTableSortOrderFieldOutput) ToIcebergTableSortOrderFieldOutput() IcebergTableSortOrderFieldOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderFieldOutput) ToIcebergTableSortOrderFieldOutputWithContext(ctx context.Context) IcebergTableSortOrderFieldOutput {
+	return o
+}
+
+// The sort direction for the sort field. Possible values: "asc", "desc".
+func (o IcebergTableSortOrderFieldOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableSortOrderField) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+func (o IcebergTableSortOrderFieldOutput) NullOrder() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableSortOrderField) string { return v.NullOrder }).(pulumi.StringOutput)
+}
+
+// The source field ID for the sort field.
+func (o IcebergTableSortOrderFieldOutput) SourceId() pulumi.IntOutput {
+	return o.ApplyT(func(v IcebergTableSortOrderField) int { return v.SourceId }).(pulumi.IntOutput)
+}
+
+// The transform to apply to the source field.
+func (o IcebergTableSortOrderFieldOutput) Transform() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableSortOrderField) string { return v.Transform }).(pulumi.StringOutput)
+}
+
+type IcebergTableSortOrderFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSortOrderFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTableSortOrderField)(nil)).Elem()
+}
+
+func (o IcebergTableSortOrderFieldArrayOutput) ToIcebergTableSortOrderFieldArrayOutput() IcebergTableSortOrderFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderFieldArrayOutput) ToIcebergTableSortOrderFieldArrayOutputWithContext(ctx context.Context) IcebergTableSortOrderFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTableSortOrderFieldArrayOutput) Index(i pulumi.IntInput) IcebergTableSortOrderFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergTableSortOrderField {
+		return vs[0].([]IcebergTableSortOrderField)[vs[1].(int)]
+	}).(IcebergTableSortOrderFieldOutput)
 }
 
 type TableHiveOptions struct {
@@ -2250,12 +3117,20 @@ func (o TableHiveOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.String
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsPtrInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogIamBindingConditionInput)(nil)).Elem(), HiveCatalogIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogIamBindingConditionPtrInput)(nil)).Elem(), HiveCatalogIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogIamMemberConditionInput)(nil)).Elem(), HiveCatalogIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogIamMemberConditionPtrInput)(nil)).Elem(), HiveCatalogIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogReplicaInput)(nil)).Elem(), HiveCatalogReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogReplicaArrayInput)(nil)).Elem(), HiveCatalogReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionPtrInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionPtrInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogReplicaInput)(nil)).Elem(), IcebergCatalogReplicaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogReplicaArrayInput)(nil)).Elem(), IcebergCatalogReplicaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogRestrictedLocationsConfigInput)(nil)).Elem(), IcebergCatalogRestrictedLocationsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogRestrictedLocationsConfigPtrInput)(nil)).Elem(), IcebergCatalogRestrictedLocationsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamBindingConditionInput)(nil)).Elem(), IcebergNamespaceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamBindingConditionPtrInput)(nil)).Elem(), IcebergNamespaceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamMemberConditionInput)(nil)).Elem(), IcebergNamespaceIamMemberConditionArgs{})
@@ -2272,18 +3147,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaPtrInput)(nil)).Elem(), IcebergTableSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaFieldInput)(nil)).Elem(), IcebergTableSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaFieldArrayInput)(nil)).Elem(), IcebergTableSchemaFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSortOrderInput)(nil)).Elem(), IcebergTableSortOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSortOrderPtrInput)(nil)).Elem(), IcebergTableSortOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSortOrderFieldInput)(nil)).Elem(), IcebergTableSortOrderFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSortOrderFieldArrayInput)(nil)).Elem(), IcebergTableSortOrderFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsPtrInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorPtrInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsOutput{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsPtrOutput{})
+	pulumi.RegisterOutputType(HiveCatalogIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(HiveCatalogIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveCatalogIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(HiveCatalogIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveCatalogReplicaOutput{})
+	pulumi.RegisterOutputType(HiveCatalogReplicaArrayOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogReplicaOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogReplicaArrayOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogRestrictedLocationsConfigOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogRestrictedLocationsConfigPtrOutput{})
 	pulumi.RegisterOutputType(IcebergNamespaceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(IcebergNamespaceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergNamespaceIamMemberConditionOutput{})
@@ -2300,6 +3187,10 @@ func init() {
 	pulumi.RegisterOutputType(IcebergTableSchemaPtrOutput{})
 	pulumi.RegisterOutputType(IcebergTableSchemaFieldOutput{})
 	pulumi.RegisterOutputType(IcebergTableSchemaFieldArrayOutput{})
+	pulumi.RegisterOutputType(IcebergTableSortOrderOutput{})
+	pulumi.RegisterOutputType(IcebergTableSortOrderPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTableSortOrderFieldOutput{})
+	pulumi.RegisterOutputType(IcebergTableSortOrderFieldArrayOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorOutput{})

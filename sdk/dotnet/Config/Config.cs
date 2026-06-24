@@ -165,6 +165,13 @@ namespace Pulumi.Gcp
             set => _biglakeCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _biglakeHiveCustomEndpoint = new __Value<string?>(() => __config.Get("biglakeHiveCustomEndpoint"));
+        public static string? BiglakeHiveCustomEndpoint
+        {
+            get => _biglakeHiveCustomEndpoint.Get();
+            set => _biglakeHiveCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _biglakeIcebergCustomEndpoint = new __Value<string?>(() => __config.Get("biglakeIcebergCustomEndpoint"));
         public static string? BiglakeIcebergCustomEndpoint
         {

@@ -18,6 +18,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.NodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.NodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettings;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -237,6 +238,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.deletionPolicy;
     }
     /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    @Export(name="ignoreNodeCountChanges", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreNodeCountChanges;
+
+    /**
+     * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreNodeCountChanges() {
+        return Codegen.optional(this.ignoreNodeCountChanges);
+    }
+    /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -397,16 +412,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.networkConfig;
     }
     /**
-     * Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      * 
      */
     @Export(name="nodeConfig", refs={NodePoolNodeConfig.class}, tree="[0]")
     private Output<NodePoolNodeConfig> nodeConfig;
 
     /**
-     * @return Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * @return Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      * 
      */
     public Output<NodePoolNodeConfig> nodeConfig() {

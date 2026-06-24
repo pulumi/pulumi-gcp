@@ -11787,7 +11787,8 @@ type RolloutSequenceStage struct {
 	// List of Fleet projects to select the clusters from.
 	// Expected format: projects/{project}
 	FleetProjects []string `pulumi:"fleetProjects"`
-	// Soak time after upgrading all the clusters in the stage, specified in seconds.
+	// Soak time after upgrading all the clusters in the stage.
+	// Has to be specified in seconds, minutes, hours or days.
 	SoakDuration *string `pulumi:"soakDuration"`
 }
 
@@ -11810,7 +11811,8 @@ type RolloutSequenceStageArgs struct {
 	// List of Fleet projects to select the clusters from.
 	// Expected format: projects/{project}
 	FleetProjects pulumi.StringArrayInput `pulumi:"fleetProjects"`
-	// Soak time after upgrading all the clusters in the stage, specified in seconds.
+	// Soak time after upgrading all the clusters in the stage.
+	// Has to be specified in seconds, minutes, hours or days.
 	SoakDuration pulumi.StringPtrInput `pulumi:"soakDuration"`
 }
 
@@ -11878,7 +11880,8 @@ func (o RolloutSequenceStageOutput) FleetProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RolloutSequenceStage) []string { return v.FleetProjects }).(pulumi.StringArrayOutput)
 }
 
-// Soak time after upgrading all the clusters in the stage, specified in seconds.
+// Soak time after upgrading all the clusters in the stage.
+// Has to be specified in seconds, minutes, hours or days.
 func (o RolloutSequenceStageOutput) SoakDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSequenceStage) *string { return v.SoakDuration }).(pulumi.StringPtrOutput)
 }

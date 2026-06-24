@@ -250,6 +250,11 @@ export type LakeIamPolicy = import("./lakeIamPolicy").LakeIamPolicy;
 export const LakeIamPolicy: typeof import("./lakeIamPolicy").LakeIamPolicy = null as any;
 utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
 
+export { MetadataFeedArgs, MetadataFeedState } from "./metadataFeed";
+export type MetadataFeed = import("./metadataFeed").MetadataFeed;
+export const MetadataFeed: typeof import("./metadataFeed").MetadataFeed = null as any;
+utilities.lazyLoad(exports, ["MetadataFeed"], () => require("./metadataFeed"));
+
 export { TaskArgs, TaskState } from "./task";
 export type Task = import("./task").Task;
 export const Task: typeof import("./task").Task = null as any;
@@ -371,6 +376,8 @@ const _module = {
                 return new LakeIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
                 return new LakeIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/metadataFeed:MetadataFeed":
+                return new MetadataFeed(name, <any>undefined, { urn })
             case "gcp:dataplex/task:Task":
                 return new Task(name, <any>undefined, { urn })
             case "gcp:dataplex/taskIamBinding:TaskIamBinding":
@@ -430,6 +437,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/metadataFeed", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/task", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/taskIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/taskIamMember", _module)

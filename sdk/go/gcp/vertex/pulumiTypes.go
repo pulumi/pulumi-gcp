@@ -23097,6 +23097,4004 @@ func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) Version() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiScheduleCreateNotebookExecutionJobRequest struct {
+	// NotebookExecutionJob represents an instance of a notebook execution.
+	// Structure is documented below.
+	NotebookExecutionJob AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob `pulumi:"notebookExecutionJob"`
+	// User specified ID for the NotebookExecutionJob.
+	NotebookExecutionJobId *string `pulumi:"notebookExecutionJobId"`
+	// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+	Parent string `pulumi:"parent"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestArgs and AiScheduleCreateNotebookExecutionJobRequestOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestOutput() AiScheduleCreateNotebookExecutionJobRequestOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestArgs struct {
+	// NotebookExecutionJob represents an instance of a notebook execution.
+	// Structure is documented below.
+	NotebookExecutionJob AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput `pulumi:"notebookExecutionJob"`
+	// User specified ID for the NotebookExecutionJob.
+	NotebookExecutionJobId pulumi.StringPtrInput `pulumi:"notebookExecutionJobId"`
+	// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+	Parent pulumi.StringInput `pulumi:"parent"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestArgs) ToAiScheduleCreateNotebookExecutionJobRequestOutput() AiScheduleCreateNotebookExecutionJobRequestOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestArgs) ToAiScheduleCreateNotebookExecutionJobRequestOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestArgs) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutput() AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestArgs) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestOutput).ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestArgs, AiScheduleCreateNotebookExecutionJobRequestPtr and AiScheduleCreateNotebookExecutionJobRequestPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestPtrOutput() AiScheduleCreateNotebookExecutionJobRequestPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestPtrType AiScheduleCreateNotebookExecutionJobRequestArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestPtr(v *AiScheduleCreateNotebookExecutionJobRequestArgs) AiScheduleCreateNotebookExecutionJobRequestPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestPtrType) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutput() AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestPtrType) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) ToAiScheduleCreateNotebookExecutionJobRequestOutput() AiScheduleCreateNotebookExecutionJobRequestOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) ToAiScheduleCreateNotebookExecutionJobRequestOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutput() AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequest) *AiScheduleCreateNotebookExecutionJobRequest {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestPtrOutput)
+}
+
+// NotebookExecutionJob represents an instance of a notebook execution.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) NotebookExecutionJob() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequest) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		return v.NotebookExecutionJob
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+// User specified ID for the NotebookExecutionJob.
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) NotebookExecutionJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequest) *string { return v.NotebookExecutionJobId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+func (o AiScheduleCreateNotebookExecutionJobRequestOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequest) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequest)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutput() AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequest) AiScheduleCreateNotebookExecutionJobRequest {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequest
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestOutput)
+}
+
+// NotebookExecutionJob represents an instance of a notebook execution.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) NotebookExecutionJob() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequest) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		if v == nil {
+			return nil
+		}
+		return &v.NotebookExecutionJob
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+// User specified ID for the NotebookExecutionJob.
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) NotebookExecutionJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookExecutionJobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+func (o AiScheduleCreateNotebookExecutionJobRequestPtrOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Parent
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob struct {
+	// (Output)
+	// Timestamp when this NotebookExecutionJob was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Compute configuration to use for an execution job.
+	// Structure is documented below.
+	CustomEnvironmentSpec *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec `pulumi:"customEnvironmentSpec"`
+	// The Dataform Repository containing the input notebook.
+	// Structure is documented below.
+	DataformRepositorySource *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource `pulumi:"dataformRepositorySource"`
+	// The content of the input notebook in ipynb format.
+	// Structure is documented below.
+	DirectNotebookSource *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource `pulumi:"directNotebookSource"`
+	// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+	// Structure is documented below.
+	EncryptionSpec *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec `pulumi:"encryptionSpec"`
+	// Max running time of the execution job in seconds (default 86400s / 24 hrs).
+	ExecutionTimeout *string `pulumi:"executionTimeout"`
+	// The user email to run the execution as. Only supported by Colab runtimes.
+	ExecutionUser *string `pulumi:"executionUser"`
+	// The Cloud Storage uri for the input notebook.
+	// Structure is documented below.
+	GcsNotebookSource *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource `pulumi:"gcsNotebookSource"`
+	// The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+	GcsOutputUri *string `pulumi:"gcsOutputUri"`
+	// (Output)
+	// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+	JobState *string `pulumi:"jobState"`
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName *string `pulumi:"kernelName"`
+	// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+	Name *string `pulumi:"name"`
+	// The NotebookRuntimeTemplate to source compute configuration from.
+	NotebookRuntimeTemplateResourceName *string `pulumi:"notebookRuntimeTemplateResourceName"`
+	// The user-defined parameters to use during notebook execution.
+	Parameters map[string]string `pulumi:"parameters"`
+	// (Output)
+	// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+	ScheduleResourceName *string `pulumi:"scheduleResourceName"`
+	// The service account to run the execution as.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// (Output)
+	// Timestamp when this NotebookExecutionJob was most recently updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Configuration for a Workbench Instances-based environment.
+	WorkbenchRuntime *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime `pulumi:"workbenchRuntime"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs struct {
+	// (Output)
+	// Timestamp when this NotebookExecutionJob was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Compute configuration to use for an execution job.
+	// Structure is documented below.
+	CustomEnvironmentSpec AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput `pulumi:"customEnvironmentSpec"`
+	// The Dataform Repository containing the input notebook.
+	// Structure is documented below.
+	DataformRepositorySource AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput `pulumi:"dataformRepositorySource"`
+	// The content of the input notebook in ipynb format.
+	// Structure is documented below.
+	DirectNotebookSource AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput `pulumi:"directNotebookSource"`
+	// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+	// Structure is documented below.
+	EncryptionSpec AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput `pulumi:"encryptionSpec"`
+	// Max running time of the execution job in seconds (default 86400s / 24 hrs).
+	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
+	// The user email to run the execution as. Only supported by Colab runtimes.
+	ExecutionUser pulumi.StringPtrInput `pulumi:"executionUser"`
+	// The Cloud Storage uri for the input notebook.
+	// Structure is documented below.
+	GcsNotebookSource AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput `pulumi:"gcsNotebookSource"`
+	// The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+	GcsOutputUri pulumi.StringPtrInput `pulumi:"gcsOutputUri"`
+	// (Output)
+	// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+	JobState pulumi.StringPtrInput `pulumi:"jobState"`
+	// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+	KernelName pulumi.StringPtrInput `pulumi:"kernelName"`
+	// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The NotebookRuntimeTemplate to source compute configuration from.
+	NotebookRuntimeTemplateResourceName pulumi.StringPtrInput `pulumi:"notebookRuntimeTemplateResourceName"`
+	// The user-defined parameters to use during notebook execution.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// (Output)
+	// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+	ScheduleResourceName pulumi.StringPtrInput `pulumi:"scheduleResourceName"`
+	// The service account to run the execution as.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// (Output)
+	// Timestamp when this NotebookExecutionJob was most recently updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// Configuration for a Workbench Instances-based environment.
+	WorkbenchRuntime AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput `pulumi:"workbenchRuntime"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput)
+}
+
+// (Output)
+// Timestamp when this NotebookExecutionJob was created.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Compute configuration to use for an execution job.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) CustomEnvironmentSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+		return v.CustomEnvironmentSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput)
+}
+
+// The Dataform Repository containing the input notebook.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) DataformRepositorySource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		return v.DataformRepositorySource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// The content of the input notebook in ipynb format.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) DirectNotebookSource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
+		return v.DirectNotebookSource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput)
+}
+
+// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) EncryptionSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+		return v.EncryptionSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput)
+}
+
+// Max running time of the execution job in seconds (default 86400s / 24 hrs).
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.ExecutionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user email to run the execution as. Only supported by Colab runtimes.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ExecutionUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.ExecutionUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri for the input notebook.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) GcsNotebookSource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		return v.GcsNotebookSource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) GcsOutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.GcsOutputUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) JobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.JobState }).(pulumi.StringPtrOutput)
+}
+
+// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) KernelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.KernelName }).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The NotebookRuntimeTemplate to source compute configuration from.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) NotebookRuntimeTemplateResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.NotebookRuntimeTemplateResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user-defined parameters to use during notebook execution.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ScheduleResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.ScheduleResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to run the execution as.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this NotebookExecutionJob was most recently updated.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a Workbench Instances-based environment.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput) WorkbenchRuntime() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+		return v.WorkbenchRuntime
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput)
+}
+
+// (Output)
+// Timestamp when this NotebookExecutionJob was created.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compute configuration to use for an execution job.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) CustomEnvironmentSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+		if v == nil {
+			return nil
+		}
+		return v.CustomEnvironmentSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput)
+}
+
+// The Dataform Repository containing the input notebook.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) DataformRepositorySource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		if v == nil {
+			return nil
+		}
+		return v.DataformRepositorySource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// The content of the input notebook in ipynb format.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) DirectNotebookSource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
+		if v == nil {
+			return nil
+		}
+		return v.DirectNotebookSource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput)
+}
+
+// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) EncryptionSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput)
+}
+
+// Max running time of the execution job in seconds (default 86400s / 24 hrs).
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user email to run the execution as. Only supported by Colab runtimes.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ExecutionUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri for the input notebook.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) GcsNotebookSource() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		if v == nil {
+			return nil
+		}
+		return v.GcsNotebookSource
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) GcsOutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsOutputUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) JobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) KernelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KernelName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The NotebookRuntimeTemplate to source compute configuration from.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) NotebookRuntimeTemplateResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookRuntimeTemplateResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user-defined parameters to use during notebook execution.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ScheduleResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to run the execution as.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this NotebookExecutionJob was most recently updated.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a Workbench Instances-based environment.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput) WorkbenchRuntime() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+		if v == nil {
+			return nil
+		}
+		return v.WorkbenchRuntime
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec struct {
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec `pulumi:"machineSpec"`
+	// Network spec.
+	// Structure is documented below.
+	NetworkSpec *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec `pulumi:"networkSpec"`
+	// Represents the spec of persistent disk options.
+	// Structure is documented below.
+	PersistentDiskSpec *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec `pulumi:"persistentDiskSpec"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs struct {
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput `pulumi:"machineSpec"`
+	// Network spec.
+	// Structure is documented below.
+	NetworkSpec AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput `pulumi:"networkSpec"`
+	// Represents the spec of persistent disk options.
+	// Structure is documented below.
+	PersistentDiskSpec AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput `pulumi:"persistentDiskSpec"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) MachineSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+		return v.MachineSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// Network spec.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) NetworkSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+		return v.NetworkSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// Represents the spec of persistent disk options.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput) PersistentDiskSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+		return v.PersistentDiskSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) MachineSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+		if v == nil {
+			return nil
+		}
+		return v.MachineSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// Network spec.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) NetworkSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// Represents the spec of persistent disk options.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput) PersistentDiskSpec() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentDiskSpec
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec struct {
+	// The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+	MachineType *string `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+	// Structure is documented below.
+	ReservationAffinity *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity `pulumi:"reservationAffinity"`
+	// The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+	TpuTopology *string `pulumi:"tpuTopology"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs struct {
+	// The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+	// Structure is documented below.
+	ReservationAffinity AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		return v.GpuPartitionSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) ReservationAffinity() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+		return v.ReservationAffinity
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput)
+}
+
+// The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuPartitionSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+// Structure is documented below.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) ReservationAffinity() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity struct {
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+	ReservationAffinityType string `pulumi:"reservationAffinityType"`
+	// When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+	UseReservationPool *bool `pulumi:"useReservationPool"`
+	// Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+	Values []string `pulumi:"values"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs struct {
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+	ReservationAffinityType pulumi.StringInput `pulumi:"reservationAffinityType"`
+	// When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+	UseReservationPool pulumi.BoolPtrInput `pulumi:"useReservationPool"`
+	// Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) ReservationAffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) string {
+		return v.ReservationAffinityType
+	}).(pulumi.StringOutput)
+}
+
+// When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) UseReservationPool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *bool {
+		return v.UseReservationPool
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) ReservationAffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) UseReservationPool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseReservationPool
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec struct {
+	// Whether to enable public internet access. Default false.
+	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
+	// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+	Network *string `pulumi:"network"`
+	// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs struct {
+	// Whether to enable public internet access. Default false.
+	EnableInternetAccess pulumi.BoolPtrInput `pulumi:"enableInternetAccess"`
+	// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// Whether to enable public internet access. Default false.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) EnableInternetAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *bool {
+		return v.EnableInternetAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *string {
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *string {
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput)
+}
+
+// Whether to enable public internet access. Default false.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) EnableInternetAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInternetAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec struct {
+	// Size in GB of the disk (default is 100GB).
+	DiskSizeGb *string `pulumi:"diskSizeGb"`
+	// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+	DiskType *string `pulumi:"diskType"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs struct {
+	// Size in GB of the disk (default is 100GB).
+	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
+	// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+// Size in GB of the disk (default is 100GB).
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) *string {
+		return v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput)
+}
+
+// Size in GB of the disk (default is 100GB).
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha *string `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+	DataformRepositoryResourceName *string `pulumi:"dataformRepositoryResourceName"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs struct {
+	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
+	// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+	DataformRepositoryResourceName pulumi.StringPtrInput `pulumi:"dataformRepositoryResourceName"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput) DataformRepositoryResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		return v.DataformRepositoryResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput)
+}
+
+// The commit SHA to read repository with. If unset, the file will be read at HEAD.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput) DataformRepositoryResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataformRepositoryResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource struct {
+	// The base64-encoded contents of the input notebook file.
+	Content *string `pulumi:"content"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs struct {
+	// The base64-encoded contents of the input notebook file.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput)
+}
+
+// The base64-encoded contents of the input notebook file.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource) *string {
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput)
+}
+
+// The base64-encoded contents of the input notebook file.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec) string {
+		return v.KmsKeyName
+	}).(pulumi.StringOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	Generation *string `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+	Uri *string `pulumi:"uri"`
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs struct {
+	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput)
+}
+
+// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime struct {
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeInput` via:
+//
+//	AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs{...}
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs struct {
+}
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime)(nil)).Elem()
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput)
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput).ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput is an input type that accepts AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs, AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtr and AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput` via:
+//
+//	        AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput
+	ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput
+}
+
+type aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrType AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs
+
+func AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtr(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput {
+	return (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrType)(v)
+}
+
+func (*aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime)(nil)).Elem()
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return i.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrType) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o.ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime) *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+		return &v
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput)
+}
+
+type AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime)(nil)).Elem()
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput) ToAiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutputWithContext(ctx context.Context) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput {
+	return o
+}
+
+func (o AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput) Elem() AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput {
+	return o.ApplyT(func(v *AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime) AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime
+		return ret
+	}).(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput)
+}
+
+type AiScheduleCreatePipelineJobRequest struct {
+	// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+	Parent string `pulumi:"parent"`
+	// An instance of a machine learning PipelineJob.
+	// Structure is documented below.
+	PipelineJob AiScheduleCreatePipelineJobRequestPipelineJob `pulumi:"pipelineJob"`
+	// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+	PipelineJobId *string `pulumi:"pipelineJobId"`
+}
+
+// AiScheduleCreatePipelineJobRequestInput is an input type that accepts AiScheduleCreatePipelineJobRequestArgs and AiScheduleCreatePipelineJobRequestOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestArgs{...}
+type AiScheduleCreatePipelineJobRequestInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestOutput() AiScheduleCreatePipelineJobRequestOutput
+	ToAiScheduleCreatePipelineJobRequestOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestOutput
+}
+
+type AiScheduleCreatePipelineJobRequestArgs struct {
+	// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// An instance of a machine learning PipelineJob.
+	// Structure is documented below.
+	PipelineJob AiScheduleCreatePipelineJobRequestPipelineJobInput `pulumi:"pipelineJob"`
+	// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+	PipelineJobId pulumi.StringPtrInput `pulumi:"pipelineJobId"`
+}
+
+func (AiScheduleCreatePipelineJobRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequest)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestArgs) ToAiScheduleCreatePipelineJobRequestOutput() AiScheduleCreatePipelineJobRequestOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestArgs) ToAiScheduleCreatePipelineJobRequestOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestOutput)
+}
+
+func (i AiScheduleCreatePipelineJobRequestArgs) ToAiScheduleCreatePipelineJobRequestPtrOutput() AiScheduleCreatePipelineJobRequestPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestArgs) ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestOutput).ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreatePipelineJobRequestPtrInput is an input type that accepts AiScheduleCreatePipelineJobRequestArgs, AiScheduleCreatePipelineJobRequestPtr and AiScheduleCreatePipelineJobRequestPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPtrInput` via:
+//
+//	        AiScheduleCreatePipelineJobRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreatePipelineJobRequestPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPtrOutput() AiScheduleCreatePipelineJobRequestPtrOutput
+	ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPtrOutput
+}
+
+type aiScheduleCreatePipelineJobRequestPtrType AiScheduleCreatePipelineJobRequestArgs
+
+func AiScheduleCreatePipelineJobRequestPtr(v *AiScheduleCreatePipelineJobRequestArgs) AiScheduleCreatePipelineJobRequestPtrInput {
+	return (*aiScheduleCreatePipelineJobRequestPtrType)(v)
+}
+
+func (*aiScheduleCreatePipelineJobRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequest)(nil)).Elem()
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPtrType) ToAiScheduleCreatePipelineJobRequestPtrOutput() AiScheduleCreatePipelineJobRequestPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPtrType) ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequest)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestOutput) ToAiScheduleCreatePipelineJobRequestOutput() AiScheduleCreatePipelineJobRequestOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestOutput) ToAiScheduleCreatePipelineJobRequestOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestOutput) ToAiScheduleCreatePipelineJobRequestPtrOutput() AiScheduleCreatePipelineJobRequestPtrOutput {
+	return o.ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreatePipelineJobRequestOutput) ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreatePipelineJobRequest) *AiScheduleCreatePipelineJobRequest {
+		return &v
+	}).(AiScheduleCreatePipelineJobRequestPtrOutput)
+}
+
+// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+func (o AiScheduleCreatePipelineJobRequestOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequest) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// An instance of a machine learning PipelineJob.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestOutput) PipelineJob() AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequest) AiScheduleCreatePipelineJobRequestPipelineJob {
+		return v.PipelineJob
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobOutput)
+}
+
+// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+func (o AiScheduleCreatePipelineJobRequestOutput) PipelineJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequest) *string { return v.PipelineJobId }).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequest)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) ToAiScheduleCreatePipelineJobRequestPtrOutput() AiScheduleCreatePipelineJobRequestPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) ToAiScheduleCreatePipelineJobRequestPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) Elem() AiScheduleCreatePipelineJobRequestOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequest) AiScheduleCreatePipelineJobRequest {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreatePipelineJobRequest
+		return ret
+	}).(AiScheduleCreatePipelineJobRequestOutput)
+}
+
+// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Parent
+	}).(pulumi.StringPtrOutput)
+}
+
+// An instance of a machine learning PipelineJob.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) PipelineJob() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequest) *AiScheduleCreatePipelineJobRequestPipelineJob {
+		if v == nil {
+			return nil
+		}
+		return &v.PipelineJob
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput)
+}
+
+// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+func (o AiScheduleCreatePipelineJobRequestPtrOutput) PipelineJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineJobId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJob struct {
+	// (Output)
+	// Pipeline creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+	// Structure is documented below.
+	EncryptionSpec *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec `pulumi:"encryptionSpec"`
+	// (Output)
+	// Pipeline end time.
+	EndTime *string `pulumi:"endTime"`
+	// The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// The resource name of the PipelineJob.
+	Name *string `pulumi:"name"`
+	// The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+	Network *string `pulumi:"network"`
+	// A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+	PipelineSpec *string `pulumi:"pipelineSpec"`
+	// Whether to do component level validations before job creation.
+	PreflightValidations *bool `pulumi:"preflightValidations"`
+	// Configuration for PSC-I.
+	// Structure is documented below.
+	PscInterfaceConfig *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
+	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
+	// The runtime config of a PipelineJob.
+	// Structure is documented below.
+	RuntimeConfig *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig `pulumi:"runtimeConfig"`
+	// (Output)
+	// The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+	ScheduleName *string `pulumi:"scheduleName"`
+	// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// (Output)
+	// Pipeline start time.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+	State *string `pulumi:"state"`
+	// (Output)
+	// Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+	// Structure is documented below.
+	TemplateMetadatas []AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata `pulumi:"templateMetadatas"`
+	// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+	TemplateUri *string `pulumi:"templateUri"`
+	// (Output)
+	// Timestamp when this PipelineJob was most recently updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobArgs and AiScheduleCreatePipelineJobRequestPipelineJobOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobOutput() AiScheduleCreatePipelineJobRequestPipelineJobOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobArgs struct {
+	// (Output)
+	// Pipeline creation time.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+	// Structure is documented below.
+	EncryptionSpec AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput `pulumi:"encryptionSpec"`
+	// (Output)
+	// Pipeline end time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// The resource name of the PipelineJob.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+	PipelineSpec pulumi.StringPtrInput `pulumi:"pipelineSpec"`
+	// Whether to do component level validations before job creation.
+	PreflightValidations pulumi.BoolPtrInput `pulumi:"preflightValidations"`
+	// Configuration for PSC-I.
+	// Structure is documented below.
+	PscInterfaceConfig AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput `pulumi:"pscInterfaceConfig"`
+	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+	ReservedIpRanges pulumi.StringArrayInput `pulumi:"reservedIpRanges"`
+	// The runtime config of a PipelineJob.
+	// Structure is documented below.
+	RuntimeConfig AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput `pulumi:"runtimeConfig"`
+	// (Output)
+	// The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+	ScheduleName pulumi.StringPtrInput `pulumi:"scheduleName"`
+	// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// (Output)
+	// Pipeline start time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+	// Structure is documented below.
+	TemplateMetadatas AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayInput `pulumi:"templateMetadatas"`
+	// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+	TemplateUri pulumi.StringPtrInput `pulumi:"templateUri"`
+	// (Output)
+	// Timestamp when this PipelineJob was most recently updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJob)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobOutput() AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobOutput)
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobOutput).ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobPtrInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobArgs, AiScheduleCreatePipelineJobRequestPipelineJobPtr and AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobPtrInput` via:
+//
+//	        AiScheduleCreatePipelineJobRequestPipelineJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreatePipelineJobRequestPipelineJobPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput
+}
+
+type aiScheduleCreatePipelineJobRequestPipelineJobPtrType AiScheduleCreatePipelineJobRequestPipelineJobArgs
+
+func AiScheduleCreatePipelineJobRequestPipelineJobPtr(v *AiScheduleCreatePipelineJobRequestPipelineJobArgs) AiScheduleCreatePipelineJobRequestPipelineJobPtrInput {
+	return (*aiScheduleCreatePipelineJobRequestPipelineJobPtrType)(v)
+}
+
+func (*aiScheduleCreatePipelineJobRequestPipelineJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJob)(nil)).Elem()
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJob)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobOutput() AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return o.ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJob {
+		return &v
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput)
+}
+
+// (Output)
+// Pipeline creation time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) EncryptionSpec() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+		return v.EncryptionSpec
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput)
+}
+
+// (Output)
+// Pipeline end time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of the PipelineJob.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) PipelineSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.PipelineSpec }).(pulumi.StringPtrOutput)
+}
+
+// Whether to do component level validations before job creation.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) PreflightValidations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *bool { return v.PreflightValidations }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for PSC-I.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) PscInterfaceConfig() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+		return v.PscInterfaceConfig
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ReservedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) []string { return v.ReservedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// The runtime config of a PipelineJob.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) RuntimeConfig() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+		return v.RuntimeConfig
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput)
+}
+
+// (Output)
+// The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ScheduleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.ScheduleName }).(pulumi.StringPtrOutput)
+}
+
+// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Pipeline start time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) TemplateMetadatas() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) []AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
+		return v.TemplateMetadatas
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput)
+}
+
+// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) TemplateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.TemplateUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this PipelineJob was most recently updated.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJob) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJob)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) Elem() AiScheduleCreatePipelineJobRequestPipelineJobOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) AiScheduleCreatePipelineJobRequestPipelineJob {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreatePipelineJobRequestPipelineJob
+		return ret
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobOutput)
+}
+
+// (Output)
+// Pipeline creation time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) EncryptionSpec() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSpec
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput)
+}
+
+// (Output)
+// Pipeline end time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of the PipelineJob.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) PipelineSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to do component level validations before job creation.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) PreflightValidations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreflightValidations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for PSC-I.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) PscInterfaceConfig() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscInterfaceConfig
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ReservedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// The runtime config of a PipelineJob.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) RuntimeConfig() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeConfig
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput)
+}
+
+// (Output)
+// The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ScheduleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Pipeline start time.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) TemplateMetadatas() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) []AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateMetadatas
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput)
+}
+
+// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) TemplateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Timestamp when this PipelineJob was most recently updated.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs and AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput)
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput).ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs, AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtr and AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput` via:
+//
+//	        AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput
+}
+
+type aiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrType AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs
+
+func AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtr(v *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput {
+	return (*aiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrType)(v)
+}
+
+func (*aiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o.ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec) *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+		return &v
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput) Elem() AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec) AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec
+		return ret
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig struct {
+	// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs []AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs and AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs struct {
+	// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput)
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput).ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs, AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtr and AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput` via:
+//
+//	        AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput
+}
+
+type aiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrType AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs
+
+func AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtr(v *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput {
+	return (*aiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrType)(v)
+}
+
+func (*aiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+		return &v
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) DnsPeeringConfigs() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) []AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		return v.DnsPeeringConfigs
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) *string {
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) Elem() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig
+		return ret
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+// Structure is documented below.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) DnsPeeringConfigs() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) []AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfigs
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain string `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs and AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs struct {
+	// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray and AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray{ AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{...} }
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray []AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigInput
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+// The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig) string {
+		return v.Domain
+	}).(pulumi.StringOutput)
+}
+
+// The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig) string {
+		return v.TargetNetwork
+	}).(pulumi.StringOutput)
+}
+
+// The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig) string {
+		return v.TargetProject
+	}).(pulumi.StringOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput) Index(i pulumi.IntInput) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
+		return vs[0].([]AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig)[vs[1].(int)]
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig struct {
+	// Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+	FailurePolicy *string `pulumi:"failurePolicy"`
+	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+	GcsOutputDirectory string `pulumi:"gcsOutputDirectory"`
+	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+	InputArtifacts map[string]string `pulumi:"inputArtifacts"`
+	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+	//
+	// <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+	ParameterValues map[string]string `pulumi:"parameterValues"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs and AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs struct {
+	// Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+	FailurePolicy pulumi.StringPtrInput `pulumi:"failurePolicy"`
+	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+	GcsOutputDirectory pulumi.StringInput `pulumi:"gcsOutputDirectory"`
+	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+	InputArtifacts pulumi.StringMapInput `pulumi:"inputArtifacts"`
+	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+	//
+	// <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+	ParameterValues pulumi.StringMapInput `pulumi:"parameterValues"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput)
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput).ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs, AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtr and AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput` via:
+//
+//	        AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput
+}
+
+type aiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrType AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs
+
+func AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtr(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput {
+	return (*aiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrType)(v)
+}
+
+func (*aiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrType) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o.ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+		return &v
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput)
+}
+
+// Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) FailurePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) *string { return v.FailurePolicy }).(pulumi.StringPtrOutput)
+}
+
+// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) GcsOutputDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) string { return v.GcsOutputDirectory }).(pulumi.StringOutput)
+}
+
+// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) InputArtifacts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) map[string]string {
+		return v.InputArtifacts
+	}).(pulumi.StringMapOutput)
+}
+
+// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+//
+// <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput) ParameterValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) map[string]string {
+		return v.ParameterValues
+	}).(pulumi.StringMapOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) Elem() AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig
+		return ret
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput)
+}
+
+// Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) FailurePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailurePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) GcsOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsOutputDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) InputArtifacts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InputArtifacts
+	}).(pulumi.StringMapOutput)
+}
+
+// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+//
+// <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+func (o AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput) ParameterValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValues
+	}).(pulumi.StringMapOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata struct {
+	// The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+	Version *string `pulumi:"version"`
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs and AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs{...}
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs struct {
+	// The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput)
+}
+
+// AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayInput is an input type that accepts AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray and AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput values.
+// You can construct a concrete instance of `AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayInput` via:
+//
+//	AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray{ AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs{...} }
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayInput interface {
+	pulumi.Input
+
+	ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput
+	ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutputWithContext(context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray []AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataInput
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return i.ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput {
+	return o
+}
+
+// The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata)(nil)).Elem()
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput() AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput) ToAiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutputWithContext(ctx context.Context) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput {
+	return o
+}
+
+func (o AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput) Index(i pulumi.IntInput) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
+		return vs[0].([]AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata)[vs[1].(int)]
+	}).(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput)
+}
+
+type AiScheduleLastScheduledRunResponse struct {
+	// (Output)
+	// The response of the scheduled run.
+	RunResponse *string `pulumi:"runResponse"`
+	// (Output)
+	// The scheduled run time based on the user-specified schedule.
+	ScheduledRunTime *string `pulumi:"scheduledRunTime"`
+}
+
+// AiScheduleLastScheduledRunResponseInput is an input type that accepts AiScheduleLastScheduledRunResponseArgs and AiScheduleLastScheduledRunResponseOutput values.
+// You can construct a concrete instance of `AiScheduleLastScheduledRunResponseInput` via:
+//
+//	AiScheduleLastScheduledRunResponseArgs{...}
+type AiScheduleLastScheduledRunResponseInput interface {
+	pulumi.Input
+
+	ToAiScheduleLastScheduledRunResponseOutput() AiScheduleLastScheduledRunResponseOutput
+	ToAiScheduleLastScheduledRunResponseOutputWithContext(context.Context) AiScheduleLastScheduledRunResponseOutput
+}
+
+type AiScheduleLastScheduledRunResponseArgs struct {
+	// (Output)
+	// The response of the scheduled run.
+	RunResponse pulumi.StringPtrInput `pulumi:"runResponse"`
+	// (Output)
+	// The scheduled run time based on the user-specified schedule.
+	ScheduledRunTime pulumi.StringPtrInput `pulumi:"scheduledRunTime"`
+}
+
+func (AiScheduleLastScheduledRunResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleLastScheduledRunResponse)(nil)).Elem()
+}
+
+func (i AiScheduleLastScheduledRunResponseArgs) ToAiScheduleLastScheduledRunResponseOutput() AiScheduleLastScheduledRunResponseOutput {
+	return i.ToAiScheduleLastScheduledRunResponseOutputWithContext(context.Background())
+}
+
+func (i AiScheduleLastScheduledRunResponseArgs) ToAiScheduleLastScheduledRunResponseOutputWithContext(ctx context.Context) AiScheduleLastScheduledRunResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleLastScheduledRunResponseOutput)
+}
+
+// AiScheduleLastScheduledRunResponseArrayInput is an input type that accepts AiScheduleLastScheduledRunResponseArray and AiScheduleLastScheduledRunResponseArrayOutput values.
+// You can construct a concrete instance of `AiScheduleLastScheduledRunResponseArrayInput` via:
+//
+//	AiScheduleLastScheduledRunResponseArray{ AiScheduleLastScheduledRunResponseArgs{...} }
+type AiScheduleLastScheduledRunResponseArrayInput interface {
+	pulumi.Input
+
+	ToAiScheduleLastScheduledRunResponseArrayOutput() AiScheduleLastScheduledRunResponseArrayOutput
+	ToAiScheduleLastScheduledRunResponseArrayOutputWithContext(context.Context) AiScheduleLastScheduledRunResponseArrayOutput
+}
+
+type AiScheduleLastScheduledRunResponseArray []AiScheduleLastScheduledRunResponseInput
+
+func (AiScheduleLastScheduledRunResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleLastScheduledRunResponse)(nil)).Elem()
+}
+
+func (i AiScheduleLastScheduledRunResponseArray) ToAiScheduleLastScheduledRunResponseArrayOutput() AiScheduleLastScheduledRunResponseArrayOutput {
+	return i.ToAiScheduleLastScheduledRunResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AiScheduleLastScheduledRunResponseArray) ToAiScheduleLastScheduledRunResponseArrayOutputWithContext(ctx context.Context) AiScheduleLastScheduledRunResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiScheduleLastScheduledRunResponseArrayOutput)
+}
+
+type AiScheduleLastScheduledRunResponseOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleLastScheduledRunResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiScheduleLastScheduledRunResponse)(nil)).Elem()
+}
+
+func (o AiScheduleLastScheduledRunResponseOutput) ToAiScheduleLastScheduledRunResponseOutput() AiScheduleLastScheduledRunResponseOutput {
+	return o
+}
+
+func (o AiScheduleLastScheduledRunResponseOutput) ToAiScheduleLastScheduledRunResponseOutputWithContext(ctx context.Context) AiScheduleLastScheduledRunResponseOutput {
+	return o
+}
+
+// (Output)
+// The response of the scheduled run.
+func (o AiScheduleLastScheduledRunResponseOutput) RunResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleLastScheduledRunResponse) *string { return v.RunResponse }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The scheduled run time based on the user-specified schedule.
+func (o AiScheduleLastScheduledRunResponseOutput) ScheduledRunTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiScheduleLastScheduledRunResponse) *string { return v.ScheduledRunTime }).(pulumi.StringPtrOutput)
+}
+
+type AiScheduleLastScheduledRunResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AiScheduleLastScheduledRunResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiScheduleLastScheduledRunResponse)(nil)).Elem()
+}
+
+func (o AiScheduleLastScheduledRunResponseArrayOutput) ToAiScheduleLastScheduledRunResponseArrayOutput() AiScheduleLastScheduledRunResponseArrayOutput {
+	return o
+}
+
+func (o AiScheduleLastScheduledRunResponseArrayOutput) ToAiScheduleLastScheduledRunResponseArrayOutputWithContext(ctx context.Context) AiScheduleLastScheduledRunResponseArrayOutput {
+	return o
+}
+
+func (o AiScheduleLastScheduledRunResponseArrayOutput) Index(i pulumi.IntInput) AiScheduleLastScheduledRunResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiScheduleLastScheduledRunResponse {
+		return vs[0].([]AiScheduleLastScheduledRunResponse)[vs[1].(int)]
+	}).(AiScheduleLastScheduledRunResponseOutput)
+}
+
 type AiTensorboardEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -24434,6 +28432,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPtrInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPtrInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayInput)(nil)).Elem(), AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleLastScheduledRunResponseInput)(nil)).Elem(), AiScheduleLastScheduledRunResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleLastScheduledRunResponseArrayInput)(nil)).Elem(), AiScheduleLastScheduledRunResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
@@ -24711,6 +28749,46 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimePtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataOutput{})
+	pulumi.RegisterOutputType(AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArrayOutput{})
+	pulumi.RegisterOutputType(AiScheduleLastScheduledRunResponseOutput{})
+	pulumi.RegisterOutputType(AiScheduleLastScheduledRunResponseArrayOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})

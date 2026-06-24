@@ -850,6 +850,9 @@ type Toolset struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration for tools behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolsetToolFakeConfigPtrOutput `pulumi:"toolFakeConfig"`
 	// The ID to use for the toolset, which will become the final component of
 	// the toolset's resource name. If not provided, a unique ID will be
 	// automatically assigned for the toolset.
@@ -937,6 +940,9 @@ type toolsetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for tools behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig *ToolsetToolFakeConfig `pulumi:"toolFakeConfig"`
 	// The ID to use for the toolset, which will become the final component of
 	// the toolset's resource name. If not provided, a unique ID will be
 	// automatically assigned for the toolset.
@@ -986,6 +992,9 @@ type ToolsetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for tools behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolsetToolFakeConfigPtrInput
 	// The ID to use for the toolset, which will become the final component of
 	// the toolset's resource name. If not provided, a unique ID will be
 	// automatically assigned for the toolset.
@@ -1029,6 +1038,9 @@ type toolsetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for tools behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig *ToolsetToolFakeConfig `pulumi:"toolFakeConfig"`
 	// The ID to use for the toolset, which will become the final component of
 	// the toolset's resource name. If not provided, a unique ID will be
 	// automatically assigned for the toolset.
@@ -1067,6 +1079,9 @@ type ToolsetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for tools behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolsetToolFakeConfigPtrInput
 	// The ID to use for the toolset, which will become the final component of
 	// the toolset's resource name. If not provided, a unique ID will be
 	// automatically assigned for the toolset.
@@ -1234,6 +1249,12 @@ func (o ToolsetOutput) OpenApiToolset() ToolsetOpenApiToolsetPtrOutput {
 // If it is not provided, the provider project is used.
 func (o ToolsetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration for tools behavior in fake mode.
+// Structure is documented below.
+func (o ToolsetOutput) ToolFakeConfig() ToolsetToolFakeConfigPtrOutput {
+	return o.ApplyT(func(v *Toolset) ToolsetToolFakeConfigPtrOutput { return v.ToolFakeConfig }).(ToolsetToolFakeConfigPtrOutput)
 }
 
 // The ID to use for the toolset, which will become the final component of

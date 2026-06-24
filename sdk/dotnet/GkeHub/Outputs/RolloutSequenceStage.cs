@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FleetProjects;
         /// <summary>
-        /// Soak time after upgrading all the clusters in the stage, specified in seconds.
+        /// Soak time after upgrading all the clusters in the stage.
+        /// Has to be specified in seconds, minutes, hours or days.
         /// </summary>
         public readonly string? SoakDuration;
 

@@ -161,6 +161,14 @@ Object.defineProperty(exports, "biglakeCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const biglakeHiveCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "biglakeHiveCustomEndpoint", {
+    get() {
+        return __config.get("biglakeHiveCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const biglakeIcebergCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "biglakeIcebergCustomEndpoint", {
     get() {

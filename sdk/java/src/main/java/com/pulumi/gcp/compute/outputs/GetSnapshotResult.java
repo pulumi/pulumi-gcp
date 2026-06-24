@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetSnapshotParam;
 import com.pulumi.gcp.compute.outputs.GetSnapshotSnapshotEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetSnapshotSourceDiskEncryptionKey;
 import java.lang.Boolean;
@@ -36,6 +37,7 @@ public final class GetSnapshotResult {
     private List<String> licenses;
     private @Nullable Boolean mostRecent;
     private @Nullable String name;
+    private List<GetSnapshotParam> params;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private String selfLink;
@@ -95,6 +97,9 @@ public final class GetSnapshotResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    public List<GetSnapshotParam> params() {
+        return this.params;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -156,6 +161,7 @@ public final class GetSnapshotResult {
         private List<String> licenses;
         private @Nullable Boolean mostRecent;
         private @Nullable String name;
+        private List<GetSnapshotParam> params;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String selfLink;
@@ -185,6 +191,7 @@ public final class GetSnapshotResult {
     	      this.licenses = defaults.licenses;
     	      this.mostRecent = defaults.mostRecent;
     	      this.name = defaults.name;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
@@ -309,6 +316,17 @@ public final class GetSnapshotResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetSnapshotParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetSnapshotParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -427,6 +445,7 @@ public final class GetSnapshotResult {
             _resultValue.licenses = licenses;
             _resultValue.mostRecent = mostRecent;
             _resultValue.name = name;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.selfLink = selfLink;

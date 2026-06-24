@@ -97,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakeIamMember{}
 	case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
 		r = &LakeIamPolicy{}
+	case "gcp:dataplex/metadataFeed:MetadataFeed":
+		r = &MetadataFeed{}
 	case "gcp:dataplex/task:Task":
 		r = &Task{}
 	case "gcp:dataplex/taskIamBinding:TaskIamBinding":
@@ -314,6 +316,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataplex/lakeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/metadataFeed",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

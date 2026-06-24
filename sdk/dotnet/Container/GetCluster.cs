@@ -264,6 +264,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterCostManagementConfigResult> CostManagementConfigs;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
         public readonly string DatapathProvider;
+        public readonly string DataplaneOptimizationMode;
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly string DeletionPolicy;
@@ -293,6 +294,7 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> IdentityServiceConfigs;
+        public readonly bool IgnoreNodeCountChanges;
         public readonly string InTransitEncryptionConfig;
         public readonly int InitialNodeCount;
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> IpAllocationPolicies;
@@ -342,6 +344,7 @@ namespace Pulumi.Gcp.Container
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> ServiceExternalIpsConfigs;
         public readonly string ServicesIpv4Cidr;
+        public readonly bool SkipNodePoolRefresh;
         public readonly string Subnetwork;
         public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
         public readonly string TpuIpv4CidrBlock;
@@ -381,6 +384,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> databaseEncryptions,
 
             string datapathProvider,
+
+            string dataplaneOptimizationMode,
 
             int defaultMaxPodsPerNode,
 
@@ -433,6 +438,8 @@ namespace Pulumi.Gcp.Container
             string id,
 
             ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> identityServiceConfigs,
+
+            bool ignoreNodeCountChanges,
 
             string inTransitEncryptionConfig,
 
@@ -532,6 +539,8 @@ namespace Pulumi.Gcp.Container
 
             string servicesIpv4Cidr,
 
+            bool skipNodePoolRefresh,
+
             string subnetwork,
 
             ImmutableArray<Outputs.GetClusterTpuConfigResult> tpuConfigs,
@@ -561,6 +570,7 @@ namespace Pulumi.Gcp.Container
             CostManagementConfigs = costManagementConfigs;
             DatabaseEncryptions = databaseEncryptions;
             DatapathProvider = datapathProvider;
+            DataplaneOptimizationMode = dataplaneOptimizationMode;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
             DeletionPolicy = deletionPolicy;
@@ -587,6 +597,7 @@ namespace Pulumi.Gcp.Container
             GkeAutoUpgradeConfigs = gkeAutoUpgradeConfigs;
             Id = id;
             IdentityServiceConfigs = identityServiceConfigs;
+            IgnoreNodeCountChanges = ignoreNodeCountChanges;
             InTransitEncryptionConfig = inTransitEncryptionConfig;
             InitialNodeCount = initialNodeCount;
             IpAllocationPolicies = ipAllocationPolicies;
@@ -636,6 +647,7 @@ namespace Pulumi.Gcp.Container
             SelfLink = selfLink;
             ServiceExternalIpsConfigs = serviceExternalIpsConfigs;
             ServicesIpv4Cidr = servicesIpv4Cidr;
+            SkipNodePoolRefresh = skipNodePoolRefresh;
             Subnetwork = subnetwork;
             TpuConfigs = tpuConfigs;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;

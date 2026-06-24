@@ -68,6 +68,9 @@ func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 func GetBiglakeCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:biglakeCustomEndpoint")
 }
+func GetBiglakeHiveCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:biglakeHiveCustomEndpoint")
+}
 func GetBiglakeIcebergCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:biglakeIcebergCustomEndpoint")
 }

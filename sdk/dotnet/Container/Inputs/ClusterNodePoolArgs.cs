@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
+        /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Input("ignoreNodeCountChanges")]
+        public Input<bool>? IgnoreNodeCountChanges { get; set; }
+
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
@@ -88,11 +94,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// Parameters used in creating the default node pool.
-        /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used.
-        /// Structure is documented below.
+        /// The node configuration of the pool. Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigArgs>? NodeConfig { get; set; }

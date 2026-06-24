@@ -12,6 +12,7 @@ import com.pulumi.gcp.biglake.IcebergTableArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergTableState;
 import com.pulumi.gcp.biglake.outputs.IcebergTablePartitionSpec;
 import com.pulumi.gcp.biglake.outputs.IcebergTableSchema;
+import com.pulumi.gcp.biglake.outputs.IcebergTableSortOrder;
 import java.lang.String;
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -104,6 +105,84 @@ import javax.annotation.Nullable;
  *                     .name("id_partition")
  *                     .sourceId(1)
  *                     .transform("identity")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Biglake Iceberg Table Sort Order
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.gcp.biglake.IcebergNamespace;
+ * import com.pulumi.gcp.biglake.IcebergNamespaceArgs;
+ * import com.pulumi.gcp.biglake.IcebergTable;
+ * import com.pulumi.gcp.biglake.IcebergTableArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaFieldArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSortOrderArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSortOrderFieldArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("my-bucket")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var catalog = new IcebergCatalog("catalog", IcebergCatalogArgs.builder()
+ *             .name(bucket.name())
+ *             .catalogType("CATALOG_TYPE_GCS_BUCKET")
+ *             .build());
+ * 
+ *         var namespace = new IcebergNamespace("namespace", IcebergNamespaceArgs.builder()
+ *             .catalog(catalog.name())
+ *             .namespaceId("my_namespace")
+ *             .build());
+ * 
+ *         var myIcebergTable = new IcebergTable("myIcebergTable", IcebergTableArgs.builder()
+ *             .catalog(catalog.name())
+ *             .namespace(namespace.namespaceId())
+ *             .name("my_table")
+ *             .schema(IcebergTableSchemaArgs.builder()
+ *                 .type("struct")
+ *                 .fields(IcebergTableSchemaFieldArgs.builder()
+ *                     .id(1)
+ *                     .name("id")
+ *                     .type("long")
+ *                     .required(true)
+ *                     .build())
+ *                 .build())
+ *             .sortOrder(IcebergTableSortOrderArgs.builder()
+ *                 .fields(IcebergTableSortOrderFieldArgs.builder()
+ *                     .sourceId(1)
+ *                     .transform("identity")
+ *                     .direction("asc")
+ *                     .nullOrder("nulls-first")
  *                     .build())
  *                 .build())
  *             .build());
@@ -342,6 +421,22 @@ public class IcebergTable extends com.pulumi.resources.CustomResource {
      */
     public Output<IcebergTableSchema> schema() {
         return this.schema;
+    }
+    /**
+     * The sort order of the table.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sortOrder", refs={IcebergTableSortOrder.class}, tree="[0]")
+    private Output<IcebergTableSortOrder> sortOrder;
+
+    /**
+     * @return The sort order of the table.
+     * Structure is documented below.
+     * 
+     */
+    public Output<IcebergTableSortOrder> sortOrder() {
+        return this.sortOrder;
     }
 
     /**

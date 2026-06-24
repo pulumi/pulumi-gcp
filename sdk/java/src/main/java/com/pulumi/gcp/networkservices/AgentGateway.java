@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -46,11 +48,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.NetworkAttachment;
  * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.networkservices.AgentGateway;
  * import com.pulumi.gcp.networkservices.AgentGatewayArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayGoogleManagedArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigEgressArgs;
+ * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -65,28 +72,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
  *         var agentRegistry = new Service("agentRegistry", ServiceArgs.builder()
  *             .service("agentregistry.googleapis.com")
  *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .name("net-my-full-agent-gateway")
+ *             .name("my-gateway-network")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
- *             .name("subnet-my-full-agent-gateway")
+ *             .name("my-gateway-subnetwork")
  *             .region("us-central1")
  *             .network(defaultNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
  *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
- *             .name("na-my-full-agent-gateway")
+ *             .name("my-gateway-attachment")
  *             .region("us-central1")
- *             .connectionPreference("ACCEPT_AUTOMATIC")
- *             .subnetworks(defaultSubnetwork.selfLink())
+ *             .connectionPreference("ACCEPT_MANUAL")
+ *             .subnetworks(defaultSubnetwork.id())
+ *             .build());
+ * 
+ *         var defaultManagedZone = new ManagedZone("defaultManagedZone", ManagedZoneArgs.builder()
+ *             .name("my-gateway-zone")
+ *             .dnsName("example.com.")
+ *             .description("Private zone used by AgentGateway DNS peering")
+ *             .visibility("private")
+ *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
+ *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
+ *                     .networkUrl(defaultNetwork.id())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new AgentGateway("default", AgentGatewayArgs.builder()
@@ -105,6 +127,11 @@ import javax.annotation.Nullable;
  *             .networkConfig(AgentGatewayNetworkConfigArgs.builder()
  *                 .egress(AgentGatewayNetworkConfigEgressArgs.builder()
  *                     .networkAttachment(defaultNetworkAttachment.id())
+ *                     .build())
+ *                 .dnsPeeringConfig(AgentGatewayNetworkConfigDnsPeeringConfigArgs.builder()
+ *                     .domains(defaultManagedZone.dnsName())
+ *                     .targetProject(project.projectId())
+ *                     .targetNetwork(defaultNetwork.id())
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

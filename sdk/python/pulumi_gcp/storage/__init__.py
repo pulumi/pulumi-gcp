@@ -32,6 +32,8 @@ from .get_control_folder_intelligence_config import *
 from .get_control_organization_intelligence_config import *
 from .get_control_project_intelligence_config import *
 from .get_control_project_intelligence_finding import *
+from .get_control_project_intelligence_finding_revision import *
+from .get_control_project_intelligence_finding_revisions import *
 from .get_control_project_intelligence_findings import *
 from .get_insights_dataset_config import *
 from .get_managed_folder_iam_policy import *

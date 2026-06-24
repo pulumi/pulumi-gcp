@@ -761,6 +761,12 @@ type Tool struct {
 	// The system tool.
 	// Structure is documented below.
 	SystemTools ToolSystemToolArrayOutput `pulumi:"systemTools"`
+	// The timeout for the tool execution. If not set, the default timeout is 30
+	// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+	Timeout pulumi.StringPtrOutput `pulumi:"timeout"`
+	// Configuration for tool behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolToolFakeConfigPtrOutput `pulumi:"toolFakeConfig"`
 	// The ID to use for the tool, which will become the final component of
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
@@ -887,6 +893,12 @@ type toolState struct {
 	// The system tool.
 	// Structure is documented below.
 	SystemTools []ToolSystemTool `pulumi:"systemTools"`
+	// The timeout for the tool execution. If not set, the default timeout is 30
+	// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+	Timeout *string `pulumi:"timeout"`
+	// Configuration for tool behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig *ToolToolFakeConfig `pulumi:"toolFakeConfig"`
 	// The ID to use for the tool, which will become the final component of
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
@@ -975,6 +987,12 @@ type ToolState struct {
 	// The system tool.
 	// Structure is documented below.
 	SystemTools ToolSystemToolArrayInput
+	// The timeout for the tool execution. If not set, the default timeout is 30
+	// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+	Timeout pulumi.StringPtrInput
+	// Configuration for tool behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolToolFakeConfigPtrInput
 	// The ID to use for the tool, which will become the final component of
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
@@ -1036,6 +1054,12 @@ type toolArgs struct {
 	// A Python function tool.
 	// Structure is documented below.
 	PythonFunction *ToolPythonFunction `pulumi:"pythonFunction"`
+	// The timeout for the tool execution. If not set, the default timeout is 30
+	// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+	Timeout *string `pulumi:"timeout"`
+	// Configuration for tool behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig *ToolToolFakeConfig `pulumi:"toolFakeConfig"`
 	// The ID to use for the tool, which will become the final component of
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
@@ -1092,6 +1116,12 @@ type ToolArgs struct {
 	// A Python function tool.
 	// Structure is documented below.
 	PythonFunction ToolPythonFunctionPtrInput
+	// The timeout for the tool execution. If not set, the default timeout is 30
+	// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+	Timeout pulumi.StringPtrInput
+	// Configuration for tool behavior in fake mode.
+	// Structure is documented below.
+	ToolFakeConfig ToolToolFakeConfigPtrInput
 	// The ID to use for the tool, which will become the final component of
 	// the tool's resource name. If not provided, a unique ID will be
 	// automatically assigned for the tool.
@@ -1325,6 +1355,18 @@ func (o ToolOutput) RemoteAgentTools() ToolRemoteAgentToolArrayOutput {
 // Structure is documented below.
 func (o ToolOutput) SystemTools() ToolSystemToolArrayOutput {
 	return o.ApplyT(func(v *Tool) ToolSystemToolArrayOutput { return v.SystemTools }).(ToolSystemToolArrayOutput)
+}
+
+// The timeout for the tool execution. If not set, the default timeout is 30
+// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+func (o ToolOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tool) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for tool behavior in fake mode.
+// Structure is documented below.
+func (o ToolOutput) ToolFakeConfig() ToolToolFakeConfigPtrOutput {
+	return o.ApplyT(func(v *Tool) ToolToolFakeConfigPtrOutput { return v.ToolFakeConfig }).(ToolToolFakeConfigPtrOutput)
 }
 
 // The ID to use for the tool, which will become the final component of

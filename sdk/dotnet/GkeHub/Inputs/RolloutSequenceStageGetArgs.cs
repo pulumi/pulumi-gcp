@@ -34,7 +34,8 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         }
 
         /// <summary>
-        /// Soak time after upgrading all the clusters in the stage, specified in seconds.
+        /// Soak time after upgrading all the clusters in the stage.
+        /// Has to be specified in seconds, minutes, hours or days.
         /// </summary>
         [Input("soakDuration")]
         public Input<string>? SoakDuration { get; set; }

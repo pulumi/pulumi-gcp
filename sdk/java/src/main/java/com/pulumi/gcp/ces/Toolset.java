@@ -12,6 +12,7 @@ import com.pulumi.gcp.ces.ToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetState;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolset;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolset;
+import com.pulumi.gcp.ces.outputs.ToolsetToolFakeConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -1107,6 +1108,22 @@ public class Toolset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="toolFakeConfig", refs={ToolsetToolFakeConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ToolsetToolFakeConfig> toolFakeConfig;
+
+    /**
+     * @return Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolsetToolFakeConfig>> toolFakeConfig() {
+        return Codegen.optional(this.toolFakeConfig);
     }
     /**
      * The ID to use for the toolset, which will become the final component of

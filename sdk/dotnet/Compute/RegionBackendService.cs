@@ -737,6 +737,114 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Ha Policy Internal Lb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "rbs-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "rbs-subnet",
+    ///         IpCidrRange = "10.1.2.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-12",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "rbs-instance",
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             AutoDelete = true,
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Name = "rbs-neg",
+    ///         NetworkEndpointType = "GCE_VM_IP_DEDICATED_BACKEND",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var endpoint = new Gcp.Compute.NetworkEndpointList("endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         NetworkEndpoints = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
+    ///             {
+    ///                 Instance = endpoint_instance.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "region-service",
+    ///         Protocol = "UNSPECIFIED",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         Network = @default.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = neg.SelfLink,
+    ///                 BalancingMode = "CONNECTION",
+    ///             },
+    ///         },
+    ///         HaPolicy = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyArgs
+    ///         {
+    ///             FastIpMove = "GARP_RA",
+    ///             Leader = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderArgs
+    ///             {
+    ///                 BackendGroup = neg.SelfLink,
+    ///                 NetworkEndpoint = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs
+    ///                 {
+    ///                     Instance = endpoint_instance.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ConnectionDrainingTimeoutSec = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Backend Service Tls Settings
     /// 
     /// ```csharp

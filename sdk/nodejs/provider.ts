@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly beyondcorpCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly bigQueryCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly biglakeCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly biglakeHiveCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly biglakeIcebergCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly bigqueryAnalyticsHubCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly bigqueryConnectionCustomEndpoint: pulumi.Output<string | undefined>;
@@ -261,6 +262,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["beyondcorpCustomEndpoint"] = args?.beyondcorpCustomEndpoint;
             resourceInputs["bigQueryCustomEndpoint"] = args?.bigQueryCustomEndpoint;
             resourceInputs["biglakeCustomEndpoint"] = args?.biglakeCustomEndpoint;
+            resourceInputs["biglakeHiveCustomEndpoint"] = args?.biglakeHiveCustomEndpoint;
             resourceInputs["biglakeIcebergCustomEndpoint"] = args?.biglakeIcebergCustomEndpoint;
             resourceInputs["bigqueryAnalyticsHubCustomEndpoint"] = args?.bigqueryAnalyticsHubCustomEndpoint;
             resourceInputs["bigqueryConnectionCustomEndpoint"] = args?.bigqueryConnectionCustomEndpoint;
@@ -495,6 +497,7 @@ export interface ProviderArgs {
     beyondcorpCustomEndpoint?: pulumi.Input<string | undefined>;
     bigQueryCustomEndpoint?: pulumi.Input<string | undefined>;
     biglakeCustomEndpoint?: pulumi.Input<string | undefined>;
+    biglakeHiveCustomEndpoint?: pulumi.Input<string | undefined>;
     biglakeIcebergCustomEndpoint?: pulumi.Input<string | undefined>;
     bigqueryAnalyticsHubCustomEndpoint?: pulumi.Input<string | undefined>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string | undefined>;

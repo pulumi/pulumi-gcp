@@ -2158,6 +2158,10 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue(dict)
         suggest = None
         if key == "plainText":
             suggest = "plain_text"
+        elif key == "plainTextWo":
+            suggest = "plain_text_wo"
+        elif key == "plainTextWoVersion":
+            suggest = "plain_text_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue. Access the value via the '{suggest}' property getter instead.")
@@ -2171,24 +2175,61 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue(dict)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 plain_text: _builtins.str,
+                 plain_text: Optional[_builtins.str] = None,
+                 plain_text_wo: Optional[_builtins.str] = None,
+                 plain_text_wo_version: Optional[_builtins.str] = None,
                  thumbprint: Optional[_builtins.str] = None):
         """
         :param _builtins.str plain_text: The plain text of the client secret value.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str plain_text_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The plain text of the client secret value.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        :param _builtins.str plain_text_wo_version: Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str thumbprint: (Output)
                A thumbprint to represent the current client secret value.
         """
-        pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text is not None:
+            pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text_wo is not None:
+            pulumi.set(__self__, "plain_text_wo", plain_text_wo)
+        if plain_text_wo_version is not None:
+            pulumi.set(__self__, "plain_text_wo_version", plain_text_wo_version)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
 
     @_builtins.property
     @pulumi.getter(name="plainText")
-    def plain_text(self) -> _builtins.str:
+    def plain_text(self) -> Optional[_builtins.str]:
         """
         The plain text of the client secret value.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "plain_text")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWo")
+    def plain_text_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The plain text of the client secret value.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        """
+        return pulumi.get(self, "plain_text_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWoVersion")
+    def plain_text_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "plain_text_wo_version")
 
     @_builtins.property
     @pulumi.getter
@@ -2379,6 +2420,10 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue(dict):
         suggest = None
         if key == "plainText":
             suggest = "plain_text"
+        elif key == "plainTextWo":
+            suggest = "plain_text_wo"
+        elif key == "plainTextWoVersion":
+            suggest = "plain_text_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue. Access the value via the '{suggest}' property getter instead.")
@@ -2392,24 +2437,61 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 plain_text: _builtins.str,
+                 plain_text: Optional[_builtins.str] = None,
+                 plain_text_wo: Optional[_builtins.str] = None,
+                 plain_text_wo_version: Optional[_builtins.str] = None,
                  thumbprint: Optional[_builtins.str] = None):
         """
         :param _builtins.str plain_text: The plain text of the client secret value.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str plain_text_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The plain text of the client secret value.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        :param _builtins.str plain_text_wo_version: Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str thumbprint: (Output)
                A thumbprint to represent the current client secret value.
         """
-        pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text is not None:
+            pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text_wo is not None:
+            pulumi.set(__self__, "plain_text_wo", plain_text_wo)
+        if plain_text_wo_version is not None:
+            pulumi.set(__self__, "plain_text_wo_version", plain_text_wo_version)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
 
     @_builtins.property
     @pulumi.getter(name="plainText")
-    def plain_text(self) -> _builtins.str:
+    def plain_text(self) -> Optional[_builtins.str]:
         """
         The plain text of the client secret value.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "plain_text")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWo")
+    def plain_text_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The plain text of the client secret value.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        """
+        return pulumi.get(self, "plain_text_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWoVersion")
+    def plain_text_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "plain_text_wo_version")
 
     @_builtins.property
     @pulumi.getter
@@ -2723,6 +2805,10 @@ class WorkforcePoolProviderOidcClientSecretValue(dict):
         suggest = None
         if key == "plainText":
             suggest = "plain_text"
+        elif key == "plainTextWo":
+            suggest = "plain_text_wo"
+        elif key == "plainTextWoVersion":
+            suggest = "plain_text_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderOidcClientSecretValue. Access the value via the '{suggest}' property getter instead.")
@@ -2736,24 +2822,61 @@ class WorkforcePoolProviderOidcClientSecretValue(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 plain_text: _builtins.str,
+                 plain_text: Optional[_builtins.str] = None,
+                 plain_text_wo: Optional[_builtins.str] = None,
+                 plain_text_wo_version: Optional[_builtins.str] = None,
                  thumbprint: Optional[_builtins.str] = None):
         """
         :param _builtins.str plain_text: The plain text of the client secret value.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str plain_text_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The plain text of the client secret value.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        :param _builtins.str plain_text_wo_version: Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str thumbprint: (Output)
                A thumbprint to represent the current client secret value.
         """
-        pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text is not None:
+            pulumi.set(__self__, "plain_text", plain_text)
+        if plain_text_wo is not None:
+            pulumi.set(__self__, "plain_text_wo", plain_text_wo)
+        if plain_text_wo_version is not None:
+            pulumi.set(__self__, "plain_text_wo_version", plain_text_wo_version)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
 
     @_builtins.property
     @pulumi.getter(name="plainText")
-    def plain_text(self) -> _builtins.str:
+    def plain_text(self) -> Optional[_builtins.str]:
         """
         The plain text of the client secret value.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "plain_text")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWo")
+    def plain_text_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The plain text of the client secret value.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `plain_text` or `plain_text_wo` can only be set.
+        """
+        return pulumi.get(self, "plain_text_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="plainTextWoVersion")
+    def plain_text_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `plain_text_wo` write-only. Increment this value when an update to `plain_text_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "plain_text_wo_version")
 
     @_builtins.property
     @pulumi.getter

@@ -430,8 +430,11 @@ import * as utilities from "../utilities";
  *         replicaSet: "myReplicaSet",
  *         username: "mongoUser",
  *         password: "mongoPassword",
- *         database: "myDatabase",
- *         standardConnectionFormat: {}[0],
+ *         standardConnectionFormat: {},
+ *         additionalOptions: {
+ *             readPreference: "secondary",
+ *             readPreferenceTags: "nodeType:ANALYTICS",
+ *         },
  *     },
  * });
  * ```

@@ -134,6 +134,7 @@ public final class WorkforcePoolProviderScimTokenState extends com.pulumi.resour
 
     /**
      * The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="securityToken")
@@ -141,6 +142,7 @@ public final class WorkforcePoolProviderScimTokenState extends com.pulumi.resour
 
     /**
      * @return The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> securityToken() {
@@ -375,6 +377,7 @@ public final class WorkforcePoolProviderScimTokenState extends com.pulumi.resour
 
         /**
          * @param securityToken The token string provided to the IdP for authentication and will be set only during creation.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -386,6 +389,7 @@ public final class WorkforcePoolProviderScimTokenState extends com.pulumi.resour
 
         /**
          * @param securityToken The token string provided to the IdP for authentication and will be set only during creation.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

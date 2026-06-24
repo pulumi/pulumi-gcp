@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigSecondaryBootDisk;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaint;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaintConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigWindowsNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -310,6 +311,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigTaintConfig taintConfig;
     /**
      * @return A list of
      * [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -696,6 +702,13 @@ public final class ClusterNodeConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigTaintConfig> taintConfig() {
+        return Optional.ofNullable(this.taintConfig);
+    }
+    /**
      * @return A list of
      * [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
      * to apply to nodes. This field will only report drift on taint keys that are
@@ -778,6 +791,7 @@ public final class ClusterNodeConfig {
         private @Nullable Boolean spot;
         private @Nullable List<String> storagePools;
         private @Nullable List<String> tags;
+        private @Nullable ClusterNodeConfigTaintConfig taintConfig;
         private @Nullable List<ClusterNodeConfigTaint> taints;
         private @Nullable ClusterNodeConfigWindowsNodeConfig windowsNodeConfig;
         private @Nullable ClusterNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
@@ -829,6 +843,7 @@ public final class ClusterNodeConfig {
     	      this.spot = defaults.spot;
     	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
+    	      this.taintConfig = defaults.taintConfig;
     	      this.taints = defaults.taints;
     	      this.windowsNodeConfig = defaults.windowsNodeConfig;
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
@@ -1126,6 +1141,12 @@ public final class ClusterNodeConfig {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder taintConfig(@Nullable ClusterNodeConfigTaintConfig taintConfig) {
+
+            this.taintConfig = taintConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder taints(@Nullable List<ClusterNodeConfigTaint> taints) {
 
             this.taints = taints;
@@ -1193,6 +1214,7 @@ public final class ClusterNodeConfig {
             _resultValue.spot = spot;
             _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
+            _resultValue.taintConfig = taintConfig;
             _resultValue.taints = taints;
             _resultValue.windowsNodeConfig = windowsNodeConfig;
             _resultValue.workloadMetadataConfig = workloadMetadataConfig;

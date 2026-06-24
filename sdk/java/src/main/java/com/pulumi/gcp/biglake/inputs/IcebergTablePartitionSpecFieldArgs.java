@@ -50,14 +50,14 @@ public final class IcebergTablePartitionSpecFieldArgs extends com.pulumi.resourc
     }
 
     /**
-     * The source field ID for the partition field.
+     * The source field ID for the sort field.
      * 
      */
     @Import(name="sourceId", required=true)
     private Output<Integer> sourceId;
 
     /**
-     * @return The source field ID for the partition field.
+     * @return The source field ID for the sort field.
      * 
      */
     public Output<Integer> sourceId() {
@@ -151,7 +151,7 @@ public final class IcebergTablePartitionSpecFieldArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sourceId The source field ID for the partition field.
+         * @param sourceId The source field ID for the sort field.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class IcebergTablePartitionSpecFieldArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sourceId The source field ID for the partition field.
+         * @param sourceId The source field ID for the sort field.
          * 
          * @return builder
          * 

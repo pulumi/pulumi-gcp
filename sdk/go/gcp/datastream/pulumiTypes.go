@@ -509,6 +509,10 @@ func (o ConnectionProfileGcsProfilePtrOutput) RootPath() pulumi.StringPtrOutput 
 }
 
 type ConnectionProfileMongodbProfile struct {
+	// A map of additional options for the MongoDB connection.
+	// Keys are case-sensitive and should match the official
+	// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+	AdditionalOptions map[string]string `pulumi:"additionalOptions"`
 	// List of host addresses for a MongoDB cluster.
 	// Structure is documented below.
 	HostAddresses []ConnectionProfileMongodbProfileHostAddress `pulumi:"hostAddresses"`
@@ -547,6 +551,10 @@ type ConnectionProfileMongodbProfileInput interface {
 }
 
 type ConnectionProfileMongodbProfileArgs struct {
+	// A map of additional options for the MongoDB connection.
+	// Keys are case-sensitive and should match the official
+	// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+	AdditionalOptions pulumi.StringMapInput `pulumi:"additionalOptions"`
 	// List of host addresses for a MongoDB cluster.
 	// Structure is documented below.
 	HostAddresses ConnectionProfileMongodbProfileHostAddressArrayInput `pulumi:"hostAddresses"`
@@ -650,6 +658,13 @@ func (o ConnectionProfileMongodbProfileOutput) ToConnectionProfileMongodbProfile
 	}).(ConnectionProfileMongodbProfilePtrOutput)
 }
 
+// A map of additional options for the MongoDB connection.
+// Keys are case-sensitive and should match the official
+// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+func (o ConnectionProfileMongodbProfileOutput) AdditionalOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) map[string]string { return v.AdditionalOptions }).(pulumi.StringMapOutput)
+}
+
 // List of host addresses for a MongoDB cluster.
 // Structure is documented below.
 func (o ConnectionProfileMongodbProfileOutput) HostAddresses() ConnectionProfileMongodbProfileHostAddressArrayOutput {
@@ -726,6 +741,18 @@ func (o ConnectionProfileMongodbProfilePtrOutput) Elem() ConnectionProfileMongod
 		var ret ConnectionProfileMongodbProfile
 		return ret
 	}).(ConnectionProfileMongodbProfileOutput)
+}
+
+// A map of additional options for the MongoDB connection.
+// Keys are case-sensitive and should match the official
+// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+func (o ConnectionProfileMongodbProfilePtrOutput) AdditionalOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalOptions
+	}).(pulumi.StringMapOutput)
 }
 
 // List of host addresses for a MongoDB cluster.

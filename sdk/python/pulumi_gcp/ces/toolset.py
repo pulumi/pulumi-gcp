@@ -30,7 +30,8 @@ class ToolsetArgs:
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_toolset: pulumi.Input[Optional['ToolsetMcpToolsetArgs']] = None,
                  open_api_toolset: pulumi.Input[Optional['ToolsetOpenApiToolsetArgs']] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']] = None):
         """
         The set of arguments for constructing a Toolset resource.
 
@@ -58,6 +59,8 @@ class ToolsetArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ToolsetToolFakeConfigArgs'] tool_fake_config: Configuration for tools behavior in fake mode.
+               Structure is documented below.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "location", location)
@@ -76,6 +79,8 @@ class ToolsetArgs:
             pulumi.set(__self__, "open_api_toolset", open_api_toolset)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tool_fake_config is not None:
+            pulumi.set(__self__, "tool_fake_config", tool_fake_config)
 
     @_builtins.property
     @pulumi.getter
@@ -211,6 +216,19 @@ class ToolsetArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]:
+        """
+        Configuration for tools behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
+
+    @tool_fake_config.setter
+    def tool_fake_config(self, value: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]):
+        pulumi.set(self, "tool_fake_config", value)
+
 
 @pulumi.input_type
 class _ToolsetState:
@@ -227,6 +245,7 @@ class _ToolsetState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  open_api_toolset: pulumi.Input[Optional['ToolsetOpenApiToolsetArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -260,6 +279,8 @@ class _ToolsetState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ToolsetToolFakeConfigArgs'] tool_fake_config: Configuration for tools behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be
                automatically assigned for the toolset.
@@ -289,6 +310,8 @@ class _ToolsetState:
             pulumi.set(__self__, "open_api_toolset", open_api_toolset)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tool_fake_config is not None:
+            pulumi.set(__self__, "tool_fake_config", tool_fake_config)
         if toolset_id is not None:
             pulumi.set(__self__, "toolset_id", toolset_id)
         if update_time is not None:
@@ -455,6 +478,19 @@ class _ToolsetState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]:
+        """
+        Configuration for tools behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
+
+    @tool_fake_config.setter
+    def tool_fake_config(self, value: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]):
+        pulumi.set(self, "tool_fake_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="toolsetId")
     def toolset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -496,6 +532,7 @@ class Toolset(pulumi.CustomResource):
                  mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1066,6 +1103,8 @@ class Toolset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be
                automatically assigned for the toolset.
@@ -1645,6 +1684,7 @@ class Toolset(pulumi.CustomResource):
                  mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1668,6 +1708,7 @@ class Toolset(pulumi.CustomResource):
             __props__.__dict__["mcp_toolset"] = mcp_toolset
             __props__.__dict__["open_api_toolset"] = open_api_toolset
             __props__.__dict__["project"] = project
+            __props__.__dict__["tool_fake_config"] = tool_fake_config
             if toolset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'toolset_id'")
             __props__.__dict__["toolset_id"] = toolset_id
@@ -1697,6 +1738,7 @@ class Toolset(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
             toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Toolset':
         """
@@ -1734,6 +1776,8 @@ class Toolset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be
                automatically assigned for the toolset.
@@ -1755,6 +1799,7 @@ class Toolset(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["open_api_toolset"] = open_api_toolset
         __props__.__dict__["project"] = project
+        __props__.__dict__["tool_fake_config"] = tool_fake_config
         __props__.__dict__["toolset_id"] = toolset_id
         __props__.__dict__["update_time"] = update_time
         return Toolset(resource_name, opts=opts, __props__=__props__)
@@ -1870,6 +1915,15 @@ class Toolset(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Output[Optional['outputs.ToolsetToolFakeConfig']]:
+        """
+        Configuration for tools behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
 
     @_builtins.property
     @pulumi.getter(name="toolsetId")

@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class ConnectionProfileMongodbProfile
     {
         /// <summary>
+        /// A map of additional options for the MongoDB connection.
+        /// Keys are case-sensitive and should match the official
+        /// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? AdditionalOptions;
+        /// <summary>
         /// List of host addresses for a MongoDB cluster.
         /// Structure is documented below.
         /// </summary>
@@ -56,6 +62,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
         [OutputConstructor]
         private ConnectionProfileMongodbProfile(
+            ImmutableDictionary<string, string>? additionalOptions,
+
             ImmutableArray<Outputs.ConnectionProfileMongodbProfileHostAddress> hostAddresses,
 
             string? password,
@@ -72,6 +80,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             string username)
         {
+            AdditionalOptions = additionalOptions;
             HostAddresses = hostAddresses;
             Password = password;
             ReplicaSet = replicaSet;

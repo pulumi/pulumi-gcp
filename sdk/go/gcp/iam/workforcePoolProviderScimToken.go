@@ -147,6 +147,7 @@ type WorkforcePoolProviderScimToken struct {
 	// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
 	ScimTokenId pulumi.StringOutput `pulumi:"scimTokenId"`
 	// The token string provided to the IdP for authentication and will be set only during creation.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecurityToken pulumi.StringOutput `pulumi:"securityToken"`
 	// The current state of the scim token.
 	// * ACTIVE: The token is active and may be used to provision users and groups.
@@ -178,6 +179,10 @@ func NewWorkforcePoolProviderScimToken(ctx *pulumi.Context,
 	if args.WorkforcePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkforcePoolId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"securityToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkforcePoolProviderScimToken
 	err := ctx.RegisterResource("gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken", name, args, &resource, opts...)
@@ -222,6 +227,7 @@ type workforcePoolProviderScimTokenState struct {
 	// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
 	ScimTokenId *string `pulumi:"scimTokenId"`
 	// The token string provided to the IdP for authentication and will be set only during creation.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecurityToken *string `pulumi:"securityToken"`
 	// The current state of the scim token.
 	// * ACTIVE: The token is active and may be used to provision users and groups.
@@ -253,6 +259,7 @@ type WorkforcePoolProviderScimTokenState struct {
 	// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
 	ScimTokenId pulumi.StringPtrInput
 	// The token string provided to the IdP for authentication and will be set only during creation.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecurityToken pulumi.StringPtrInput
 	// The current state of the scim token.
 	// * ACTIVE: The token is active and may be used to provision users and groups.
@@ -440,6 +447,7 @@ func (o WorkforcePoolProviderScimTokenOutput) ScimTokenId() pulumi.StringOutput 
 }
 
 // The token string provided to the IdP for authentication and will be set only during creation.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderScimTokenOutput) SecurityToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimToken) pulumi.StringOutput { return v.SecurityToken }).(pulumi.StringOutput)
 }

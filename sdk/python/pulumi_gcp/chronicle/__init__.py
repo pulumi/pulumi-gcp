@@ -15,8 +15,10 @@ from .data_table_row import *
 from .environment import *
 from .feed import *
 from .findings_refinement import *
+from .findings_refinement_deployment import *
 from .native_dashboard import *
 from .parser import *
+from .parser_extension import *
 from .reference_list import *
 from .retrohunt import *
 from .rule import *

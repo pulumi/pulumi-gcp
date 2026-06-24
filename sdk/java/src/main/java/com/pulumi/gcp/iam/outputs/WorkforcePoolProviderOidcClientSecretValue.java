@@ -4,7 +4,6 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,9 +13,25 @@ import javax.annotation.Nullable;
 public final class WorkforcePoolProviderOidcClientSecretValue {
     /**
      * @return The plain text of the client secret value.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String plainText;
+    private @Nullable String plainText;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The plain text of the client secret value.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+     * 
+     */
+    private @Nullable String plainTextWo;
+    /**
+     * @return Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String plainTextWoVersion;
     /**
      * @return (Output)
      * A thumbprint to represent the current client secret value.
@@ -27,10 +42,30 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
     private WorkforcePoolProviderOidcClientSecretValue() {}
     /**
      * @return The plain text of the client secret value.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String plainText() {
-        return this.plainText;
+    public Optional<String> plainText() {
+        return Optional.ofNullable(this.plainText);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The plain text of the client secret value.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
+     * 
+     */
+    public Optional<String> plainTextWo() {
+        return Optional.ofNullable(this.plainTextWo);
+    }
+    /**
+     * @return Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> plainTextWoVersion() {
+        return Optional.ofNullable(this.plainTextWoVersion);
     }
     /**
      * @return (Output)
@@ -50,21 +85,35 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String plainText;
+        private @Nullable String plainText;
+        private @Nullable String plainTextWo;
+        private @Nullable String plainTextWoVersion;
         private @Nullable String thumbprint;
         public Builder() {}
         public Builder(WorkforcePoolProviderOidcClientSecretValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.plainText = defaults.plainText;
+    	      this.plainTextWo = defaults.plainTextWo;
+    	      this.plainTextWoVersion = defaults.plainTextWoVersion;
     	      this.thumbprint = defaults.thumbprint;
         }
 
         @CustomType.Setter
-        public Builder plainText(String plainText) {
-            if (plainText == null) {
-              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcClientSecretValue", "plainText");
-            }
+        public Builder plainText(@Nullable String plainText) {
+
             this.plainText = plainText;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder plainTextWo(@Nullable String plainTextWo) {
+
+            this.plainTextWo = plainTextWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder plainTextWoVersion(@Nullable String plainTextWoVersion) {
+
+            this.plainTextWoVersion = plainTextWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +125,8 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
         public WorkforcePoolProviderOidcClientSecretValue build() {
             final var _resultValue = new WorkforcePoolProviderOidcClientSecretValue();
             _resultValue.plainText = plainText;
+            _resultValue.plainTextWo = plainTextWo;
+            _resultValue.plainTextWoVersion = plainTextWoVersion;
             _resultValue.thumbprint = thumbprint;
             return _resultValue;
         }

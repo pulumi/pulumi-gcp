@@ -12,6 +12,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileSslConfig
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileStandardConnectionFormatArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,25 @@ import javax.annotation.Nullable;
 public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionProfileMongodbProfileArgs Empty = new ConnectionProfileMongodbProfileArgs();
+
+    /**
+     * A map of additional options for the MongoDB connection.
+     * Keys are case-sensitive and should match the official
+     * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+     * 
+     */
+    @Import(name="additionalOptions")
+    private @Nullable Output<Map<String,String>> additionalOptions;
+
+    /**
+     * @return A map of additional options for the MongoDB connection.
+     * Keys are case-sensitive and should match the official
+     * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+     * 
+     */
+    public Optional<Output<Map<String,String>>> additionalOptions() {
+        return Optional.ofNullable(this.additionalOptions);
+    }
 
     /**
      * List of host addresses for a MongoDB cluster.
@@ -160,6 +180,7 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
     private ConnectionProfileMongodbProfileArgs() {}
 
     private ConnectionProfileMongodbProfileArgs(ConnectionProfileMongodbProfileArgs $) {
+        this.additionalOptions = $.additionalOptions;
         this.hostAddresses = $.hostAddresses;
         this.password = $.password;
         this.replicaSet = $.replicaSet;
@@ -186,6 +207,31 @@ public final class ConnectionProfileMongodbProfileArgs extends com.pulumi.resour
 
         public Builder(ConnectionProfileMongodbProfileArgs defaults) {
             $ = new ConnectionProfileMongodbProfileArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalOptions A map of additional options for the MongoDB connection.
+         * Keys are case-sensitive and should match the official
+         * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalOptions(@Nullable Output<Map<String,String>> additionalOptions) {
+            $.additionalOptions = additionalOptions;
+            return this;
+        }
+
+        /**
+         * @param additionalOptions A map of additional options for the MongoDB connection.
+         * Keys are case-sensitive and should match the official
+         * MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalOptions(Map<String,String> additionalOptions) {
+            return additionalOptions(Output.of(additionalOptions));
         }
 
         /**

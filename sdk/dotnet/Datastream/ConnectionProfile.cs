@@ -614,8 +614,12 @@ namespace Pulumi.Gcp.Datastream
     ///             ReplicaSet = "myReplicaSet",
     ///             Username = "mongoUser",
     ///             Password = "mongoPassword",
-    ///             Database = "myDatabase",
-    ///             StandardConnectionFormat = null[0],
+    ///             StandardConnectionFormat = null,
+    ///             AdditionalOptions = 
+    ///             {
+    ///                 { "readPreference", "secondary" },
+    ///                 { "readPreferenceTags", "nodeType:ANALYTICS" },
+    ///             },
     ///         },
     ///     });
     /// 

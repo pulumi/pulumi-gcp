@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolUpgradeSettings;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -26,6 +27,11 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable ClusterNodePoolAutoscaling autoscaling;
+    /**
+     * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    private @Nullable Boolean ignoreNodeCountChanges;
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
@@ -76,11 +82,7 @@ public final class ClusterNodePool {
      */
     private @Nullable ClusterNodePoolNetworkConfig networkConfig;
     /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * @return The node configuration of the pool. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfig nodeConfig;
@@ -137,6 +139,13 @@ public final class ClusterNodePool {
      */
     public Optional<ClusterNodePoolAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+    /**
+     * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     * 
+     */
+    public Optional<Boolean> ignoreNodeCountChanges() {
+        return Optional.ofNullable(this.ignoreNodeCountChanges);
     }
     /**
      * @return The number of nodes to create in this
@@ -204,11 +213,7 @@ public final class ClusterNodePool {
         return Optional.ofNullable(this.networkConfig);
     }
     /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
+     * @return The node configuration of the pool. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfig> nodeConfig() {
@@ -284,6 +289,7 @@ public final class ClusterNodePool {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolAutoscaling autoscaling;
+        private @Nullable Boolean ignoreNodeCountChanges;
         private @Nullable Integer initialNodeCount;
         private @Nullable List<String> instanceGroupUrls;
         private @Nullable List<String> managedInstanceGroupUrls;
@@ -304,6 +310,7 @@ public final class ClusterNodePool {
         public Builder(ClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaling = defaults.autoscaling;
+    	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.instanceGroupUrls = defaults.instanceGroupUrls;
     	      this.managedInstanceGroupUrls = defaults.managedInstanceGroupUrls;
@@ -326,6 +333,12 @@ public final class ClusterNodePool {
         public Builder autoscaling(@Nullable ClusterNodePoolAutoscaling autoscaling) {
 
             this.autoscaling = autoscaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ignoreNodeCountChanges(@Nullable Boolean ignoreNodeCountChanges) {
+
+            this.ignoreNodeCountChanges = ignoreNodeCountChanges;
             return this;
         }
         @CustomType.Setter
@@ -439,6 +452,7 @@ public final class ClusterNodePool {
         public ClusterNodePool build() {
             final var _resultValue = new ClusterNodePool();
             _resultValue.autoscaling = autoscaling;
+            _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.instanceGroupUrls = instanceGroupUrls;
             _resultValue.managedInstanceGroupUrls = managedInstanceGroupUrls;
