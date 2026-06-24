@@ -97,6 +97,72 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// ### Biglake Iceberg Table Sort Order
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "my-bucket",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var catalog = new Gcp.BigLake.IcebergCatalog("catalog", new()
+    ///     {
+    ///         Name = bucket.Name,
+    ///         CatalogType = "CATALOG_TYPE_GCS_BUCKET",
+    ///     });
+    /// 
+    ///     var @namespace = new Gcp.BigLake.IcebergNamespace("namespace", new()
+    ///     {
+    ///         Catalog = catalog.Name,
+    ///         NamespaceId = "my_namespace",
+    ///     });
+    /// 
+    ///     var myIcebergTable = new Gcp.BigLake.IcebergTable("my_iceberg_table", new()
+    ///     {
+    ///         Catalog = catalog.Name,
+    ///         Namespace = @namespace.NamespaceId,
+    ///         Name = "my_table",
+    ///         Schema = new Gcp.BigLake.Inputs.IcebergTableSchemaArgs
+    ///         {
+    ///             Type = "struct",
+    ///             Fields = new[]
+    ///             {
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSchemaFieldArgs
+    ///                 {
+    ///                     Id = 1,
+    ///                     Name = "id",
+    ///                     Type = "long",
+    ///                     Required = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         SortOrder = new Gcp.BigLake.Inputs.IcebergTableSortOrderArgs
+    ///         {
+    ///             Fields = new[]
+    ///             {
+    ///                 new Gcp.BigLake.Inputs.IcebergTableSortOrderFieldArgs
+    ///                 {
+    ///                     SourceId = 1,
+    ///                     Transform = "identity",
+    ///                     Direction = "asc",
+    ///                     NullOrder = "nulls-first",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Biglake Iceberg Table Update
     /// 
     /// ```csharp
@@ -236,6 +302,13 @@ namespace Pulumi.Gcp.BigLake
         [Output("schema")]
         public Output<Outputs.IcebergTableSchema> Schema { get; private set; } = null!;
 
+        /// <summary>
+        /// The sort order of the table.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sortOrder")]
+        public Output<Outputs.IcebergTableSortOrder> SortOrder { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a IcebergTable resource with the given unique name, arguments, and options.
@@ -350,6 +423,13 @@ namespace Pulumi.Gcp.BigLake
         [Input("schema", required: true)]
         public Input<Inputs.IcebergTableSchemaArgs> Schema { get; set; } = null!;
 
+        /// <summary>
+        /// The sort order of the table.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<Inputs.IcebergTableSortOrderArgs>? SortOrder { get; set; }
+
         public IcebergTableArgs()
         {
         }
@@ -425,6 +505,13 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Input("schema")]
         public Input<Inputs.IcebergTableSchemaGetArgs>? Schema { get; set; }
+
+        /// <summary>
+        /// The sort order of the table.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<Inputs.IcebergTableSortOrderGetArgs>? SortOrder { get; set; }
 
         public IcebergTableState()
         {

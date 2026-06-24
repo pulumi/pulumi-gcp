@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.BigLake.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The source field ID for the partition field.
+        /// The source field ID for the sort field.
         /// </summary>
         public readonly int SourceId;
         /// <summary>

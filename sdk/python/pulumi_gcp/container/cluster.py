@@ -36,6 +36,7 @@ class ClusterArgs:
                  cost_management_config: pulumi.Input[Optional['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -59,6 +60,7 @@ class ClusterArgs:
                  gateway_api_config: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']] = None,
                  gke_auto_upgrade_config: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']] = None,
                  identity_service_config: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_allocation_policy: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']] = None,
@@ -102,6 +104,7 @@ class ClusterArgs:
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
                  service_external_ips_config: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']] = None,
+                 skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tpu_config: pulumi.Input[Optional['ClusterTpuConfigArgs']] = None,
                  user_managed_keys_config: pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']] = None,
@@ -149,6 +152,7 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
+        :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -196,6 +200,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -289,8 +294,7 @@ class ClusterArgs:
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
-               See container.NodePool for schema.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -345,6 +349,7 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
+        :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
@@ -387,6 +392,8 @@ class ClusterArgs:
             pulumi.set(__self__, "database_encryption", database_encryption)
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
+        if dataplane_optimization_mode is not None:
+            pulumi.set(__self__, "dataplane_optimization_mode", dataplane_optimization_mode)
         if default_max_pods_per_node is not None:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
@@ -436,6 +443,8 @@ class ClusterArgs:
             pulumi.set(__self__, "gke_auto_upgrade_config", gke_auto_upgrade_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if in_transit_encryption_config is not None:
             pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if initial_node_count is not None:
@@ -522,6 +531,8 @@ class ClusterArgs:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
         if service_external_ips_config is not None:
             pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
+        if skip_node_pool_refresh is not None:
+            pulumi.set(__self__, "skip_node_pool_refresh", skip_node_pool_refresh)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tpu_config is not None:
@@ -737,6 +748,18 @@ class ClusterArgs:
     @datapath_provider.setter
     def datapath_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datapath_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataplaneOptimizationMode")
+    def dataplane_optimization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        """
+        return pulumi.get(self, "dataplane_optimization_mode")
+
+    @dataplane_optimization_mode.setter
+    def dataplane_optimization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataplane_optimization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
@@ -1038,6 +1061,18 @@ class ClusterArgs:
     @identity_service_config.setter
     def identity_service_config(self, value: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
+
+    @ignore_node_count_changes.setter
+    def ignore_node_count_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_node_count_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
@@ -1411,8 +1446,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
-        List of node pools associated with this cluster.
-        See container.NodePool for schema.
+        List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         to say "these are the _only_ node pools associated with this cluster", use the
@@ -1662,6 +1696,18 @@ class ClusterArgs:
         pulumi.set(self, "service_external_ips_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipNodePoolRefresh")
+    def skip_node_pool_refresh(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
+        """
+        return pulumi.get(self, "skip_node_pool_refresh")
+
+    @skip_node_pool_refresh.setter
+    def skip_node_pool_refresh(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_node_pool_refresh", value)
+
+    @_builtins.property
     @pulumi.getter
     def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1757,6 +1803,7 @@ class _ClusterState:
                  cost_management_config: pulumi.Input[Optional['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1782,6 +1829,7 @@ class _ClusterState:
                  gateway_api_config: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']] = None,
                  gke_auto_upgrade_config: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']] = None,
                  identity_service_config: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_allocation_policy: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']] = None,
@@ -1831,6 +1879,7 @@ class _ClusterState:
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  service_external_ips_config: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']] = None,
                  services_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tpu_config: pulumi.Input[Optional['ClusterTpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1879,6 +1928,7 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
+        :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -1928,6 +1978,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -2025,8 +2076,7 @@ class _ClusterState:
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
-               See container.NodePool for schema.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -2087,6 +2137,7 @@ class _ClusterState:
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
                `/16` from the container CIDR.
+        :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
@@ -2132,6 +2183,8 @@ class _ClusterState:
             pulumi.set(__self__, "database_encryption", database_encryption)
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
+        if dataplane_optimization_mode is not None:
+            pulumi.set(__self__, "dataplane_optimization_mode", dataplane_optimization_mode)
         if default_max_pods_per_node is not None:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
@@ -2185,6 +2238,8 @@ class _ClusterState:
             pulumi.set(__self__, "gke_auto_upgrade_config", gke_auto_upgrade_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if in_transit_encryption_config is not None:
             pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if initial_node_count is not None:
@@ -2283,6 +2338,8 @@ class _ClusterState:
             pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         if services_ipv4_cidr is not None:
             pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
+        if skip_node_pool_refresh is not None:
+            pulumi.set(__self__, "skip_node_pool_refresh", skip_node_pool_refresh)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tpu_config is not None:
@@ -2500,6 +2557,18 @@ class _ClusterState:
     @datapath_provider.setter
     def datapath_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datapath_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataplaneOptimizationMode")
+    def dataplane_optimization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        """
+        return pulumi.get(self, "dataplane_optimization_mode")
+
+    @dataplane_optimization_mode.setter
+    def dataplane_optimization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dataplane_optimization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
@@ -2825,6 +2894,18 @@ class _ClusterState:
     @identity_service_config.setter
     def identity_service_config(self, value: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
+
+    @ignore_node_count_changes.setter
+    def ignore_node_count_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_node_count_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
@@ -3224,8 +3305,7 @@ class _ClusterState:
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
-        List of node pools associated with this cluster.
-        See container.NodePool for schema.
+        List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         to say "these are the _only_ node pools associated with this cluster", use the
@@ -3523,6 +3603,18 @@ class _ClusterState:
         pulumi.set(self, "services_ipv4_cidr", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipNodePoolRefresh")
+    def skip_node_pool_refresh(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
+        """
+        return pulumi.get(self, "skip_node_pool_refresh")
+
+    @skip_node_pool_refresh.setter
+    def skip_node_pool_refresh(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_node_pool_refresh", value)
+
+    @_builtins.property
     @pulumi.getter
     def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -3635,6 +3727,7 @@ class Cluster(pulumi.CustomResource):
                  cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
                  database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3658,6 +3751,7 @@ class Cluster(pulumi.CustomResource):
                  gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
                  identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
@@ -3701,6 +3795,7 @@ class Cluster(pulumi.CustomResource):
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
                  service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
                  user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
@@ -3864,6 +3959,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
+        :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -3911,6 +4007,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -4004,8 +4101,7 @@ class Cluster(pulumi.CustomResource):
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster.
-               See container.NodePool for schema.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -4060,6 +4156,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']] service_external_ips_config: Structure is documented below.
+        :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
@@ -4224,6 +4321,7 @@ class Cluster(pulumi.CustomResource):
                  cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
                  database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4247,6 +4345,7 @@ class Cluster(pulumi.CustomResource):
                  gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
                  identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
@@ -4290,6 +4389,7 @@ class Cluster(pulumi.CustomResource):
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
                  service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
                  user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
@@ -4320,6 +4420,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cost_management_config"] = cost_management_config
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["datapath_provider"] = datapath_provider
+            __props__.__dict__["dataplane_optimization_mode"] = dataplane_optimization_mode
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
             __props__.__dict__["default_snat_status"] = default_snat_status
             __props__.__dict__["deletion_policy"] = deletion_policy
@@ -4343,6 +4444,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["gateway_api_config"] = gateway_api_config
             __props__.__dict__["gke_auto_upgrade_config"] = gke_auto_upgrade_config
             __props__.__dict__["identity_service_config"] = identity_service_config
+            __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
             __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
@@ -4386,6 +4488,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["secret_sync_config"] = secret_sync_config
             __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["service_external_ips_config"] = service_external_ips_config
+            __props__.__dict__["skip_node_pool_refresh"] = skip_node_pool_refresh
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["user_managed_keys_config"] = user_managed_keys_config
@@ -4428,6 +4531,7 @@ class Cluster(pulumi.CustomResource):
             cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
             database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
             datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4453,6 +4557,7 @@ class Cluster(pulumi.CustomResource):
             gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
             gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
             identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+            ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
             in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
@@ -4502,6 +4607,7 @@ class Cluster(pulumi.CustomResource):
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
             services_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
             subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
             tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
             tpu_ipv4_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4554,6 +4660,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
+        :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -4603,6 +4710,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -4700,8 +4808,7 @@ class Cluster(pulumi.CustomResource):
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster.
-               See container.NodePool for schema.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -4762,6 +4869,7 @@ class Cluster(pulumi.CustomResource):
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
                `/16` from the container CIDR.
+        :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
@@ -4796,6 +4904,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cost_management_config"] = cost_management_config
         __props__.__dict__["database_encryption"] = database_encryption
         __props__.__dict__["datapath_provider"] = datapath_provider
+        __props__.__dict__["dataplane_optimization_mode"] = dataplane_optimization_mode
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__.__dict__["default_snat_status"] = default_snat_status
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -4821,6 +4930,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["gateway_api_config"] = gateway_api_config
         __props__.__dict__["gke_auto_upgrade_config"] = gke_auto_upgrade_config
         __props__.__dict__["identity_service_config"] = identity_service_config
+        __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
         __props__.__dict__["in_transit_encryption_config"] = in_transit_encryption_config
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
@@ -4870,6 +4980,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_external_ips_config"] = service_external_ips_config
         __props__.__dict__["services_ipv4_cidr"] = services_ipv4_cidr
+        __props__.__dict__["skip_node_pool_refresh"] = skip_node_pool_refresh
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["tpu_config"] = tpu_config
         __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
@@ -5021,6 +5132,14 @@ class Cluster(pulumi.CustomResource):
         The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="dataplaneOptimizationMode")
+    def dataplane_optimization_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        """
+        return pulumi.get(self, "dataplane_optimization_mode")
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
@@ -5246,6 +5365,14 @@ class Cluster(pulumi.CustomResource):
         . Structure is documented below.
         """
         return pulumi.get(self, "identity_service_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
@@ -5537,8 +5664,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Output[Sequence['outputs.ClusterNodePool']]:
         """
-        List of node pools associated with this cluster.
-        See container.NodePool for schema.
+        List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         to say "these are the _only_ node pools associated with this cluster", use the
@@ -5746,6 +5872,14 @@ class Cluster(pulumi.CustomResource):
         `/16` from the container CIDR.
         """
         return pulumi.get(self, "services_ipv4_cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="skipNodePoolRefresh")
+    def skip_node_pool_refresh(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
+        """
+        return pulumi.get(self, "skip_node_pool_refresh")
 
     @_builtins.property
     @pulumi.getter

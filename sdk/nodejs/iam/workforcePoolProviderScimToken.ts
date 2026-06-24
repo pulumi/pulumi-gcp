@@ -157,6 +157,7 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     declare public readonly scimTokenId: pulumi.Output<string>;
     /**
      * The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     declare public /*out*/ readonly securityToken: pulumi.Output<string>;
     /**
@@ -222,6 +223,8 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["securityToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkforcePoolProviderScimToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -266,6 +269,7 @@ export interface WorkforcePoolProviderScimTokenState {
     scimTokenId?: pulumi.Input<string | undefined>;
     /**
      * The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     securityToken?: pulumi.Input<string | undefined>;
     /**

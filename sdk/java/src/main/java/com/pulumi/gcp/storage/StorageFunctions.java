@@ -31,6 +31,10 @@ import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
@@ -56,6 +60,8 @@ import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingRevisionResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingRevisionsResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingsResult;
 import com.pulumi.gcp.storage.outputs.GetInsightsDatasetConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
@@ -2640,6 +2646,411 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFindingPlain(GetControlProjectIntelligenceFindingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding", TypeShape.of(GetControlProjectIntelligenceFindingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .revisionId("revision_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs args) {
+        return getControlProjectIntelligenceFindingRevision(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .revisionId("revision_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevisionPlain(GetControlProjectIntelligenceFindingRevisionPlainArgs args) {
+        return getControlProjectIntelligenceFindingRevisionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .revisionId("revision_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision", TypeShape.of(GetControlProjectIntelligenceFindingRevisionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .revisionId("revision_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision", TypeShape.of(GetControlProjectIntelligenceFindingRevisionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .revisionId("revision_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevisionPlain(GetControlProjectIntelligenceFindingRevisionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision", TypeShape.of(GetControlProjectIntelligenceFindingRevisionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs args) {
+        return getControlProjectIntelligenceFindingRevisions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisionsPlain(GetControlProjectIntelligenceFindingRevisionsPlainArgs args) {
+        return getControlProjectIntelligenceFindingRevisionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions", TypeShape.of(GetControlProjectIntelligenceFindingRevisionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions", TypeShape.of(GetControlProjectIntelligenceFindingRevisionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+     *             .findingId("coldline_archival_storage_operations_spike_insight_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisionsPlain(GetControlProjectIntelligenceFindingRevisionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions", TypeShape.of(GetControlProjectIntelligenceFindingRevisionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a list of Cloud Storage intelligence findings in a specified project and location.

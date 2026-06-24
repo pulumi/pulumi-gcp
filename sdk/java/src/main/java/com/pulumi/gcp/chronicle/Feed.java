@@ -21,12 +21,9 @@ import javax.annotation.Nullable;
 /**
  * The FeedsService is responsible for configuring and managing the ingestion of third-party security data and logs into Google Security Operations through various feed creation, updates, and lifecycle management, and schema validation.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about Feed, see:
  * 
- * * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.feeds)
+ * * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.feeds)
  * * How-to Guides
  *     * [Feed management overview](https://docs.cloud.google.com/chronicle/docs/administration/feed-management-overview)
  * 

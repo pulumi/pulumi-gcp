@@ -409,6 +409,8 @@ __all__ = [
     'ClusterNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'ClusterNodeConfigTaintArgs',
     'ClusterNodeConfigTaintArgsDict',
+    'ClusterNodeConfigTaintConfigArgs',
+    'ClusterNodeConfigTaintConfigArgsDict',
     'ClusterNodeConfigWindowsNodeConfigArgs',
     'ClusterNodeConfigWindowsNodeConfigArgsDict',
     'ClusterNodeConfigWorkloadMetadataConfigArgs',
@@ -573,6 +575,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'ClusterNodePoolNodeConfigTaintArgs',
     'ClusterNodePoolNodeConfigTaintArgsDict',
+    'ClusterNodePoolNodeConfigTaintConfigArgs',
+    'ClusterNodePoolNodeConfigTaintConfigArgsDict',
     'ClusterNodePoolNodeConfigWindowsNodeConfigArgs',
     'ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
@@ -755,6 +759,8 @@ __all__ = [
     'NodePoolNodeConfigSoleTenantConfigNodeAffinityArgsDict',
     'NodePoolNodeConfigTaintArgs',
     'NodePoolNodeConfigTaintArgsDict',
+    'NodePoolNodeConfigTaintConfigArgs',
+    'NodePoolNodeConfigTaintConfigArgsDict',
     'NodePoolNodeConfigWindowsNodeConfigArgs',
     'NodePoolNodeConfigWindowsNodeConfigArgsDict',
     'NodePoolNodeConfigWorkloadMetadataConfigArgs',
@@ -9517,6 +9523,10 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The list of instance tags applied to all nodes. Tags are used to identify
     valid sources or targets for network firewalls.
     """
+    taint_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigTaintConfigArgsDict']]]
+    """
+    Taint configuration for the node pool. Structure is documented below.
+    """
     taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigTaintArgsDict']]]]]
     """
     A list of
@@ -9585,6 +9595,7 @@ class ClusterNodeConfigArgs:
                  spot: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taint_config: pulumi.Input[Optional['ClusterNodeConfigTaintConfigArgs']] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
                  windows_node_config: pulumi.Input[Optional['ClusterNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: pulumi.Input[Optional['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -9689,6 +9700,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
+        :param pulumi.Input['ClusterNodeConfigTaintConfigArgs'] taint_config: Taint configuration for the node pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]] taints: A list of
                [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. This field will only report drift on taint keys that are
@@ -9790,6 +9802,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -10391,6 +10405,18 @@ class ClusterNodeConfigArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> pulumi.Input[Optional['ClusterNodeConfigTaintConfigArgs']]:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
+
+    @taint_config.setter
+    def taint_config(self, value: pulumi.Input[Optional['ClusterNodeConfigTaintConfigArgs']]):
+        pulumi.set(self, "taint_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -13791,6 +13817,46 @@ class ClusterNodeConfigTaintArgs:
         pulumi.set(self, "value", value)
 
 
+class ClusterNodeConfigTaintConfigArgsDict(TypedDict):
+    architecture_taint_behavior: pulumi.Input[_builtins.str]
+    """
+    The taint behavior to be applied to the nodes based on the architecture.
+    Accepted values are:
+    * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+    * `NONE`: Do not apply any taints based on architecture.
+    * `ARM`: Apply ARM taint to the nodes.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigTaintConfigArgs:
+    def __init__(__self__, *,
+                 architecture_taint_behavior: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> pulumi.Input[_builtins.str]:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+    @architecture_taint_behavior.setter
+    def architecture_taint_behavior(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "architecture_taint_behavior", value)
+
+
 class ClusterNodeConfigWindowsNodeConfigArgsDict(TypedDict):
     osversion: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -13893,6 +13959,10 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
     """
+    ignore_node_count_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+    """
     initial_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes to create in this
@@ -13936,11 +14006,7 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigArgsDict']]]
     """
-    Parameters used in creating the default node pool.
-    Generally, this field should not be used at the same time as a
-    `container.NodePool` or a `node_pool` block; this configuration
-    manages the default node pool, which isn't recommended to be used.
-    Structure is documented below.
+    The node configuration of the pool. Structure is documented below.
     """
     node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -13985,6 +14051,7 @@ class ClusterNodePoolArgsDict(TypedDict):
 class ClusterNodePoolArgs:
     def __init__(__self__, *,
                  autoscaling: pulumi.Input[Optional['ClusterNodePoolAutoscalingArgs']] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  managed_instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -14003,6 +14070,7 @@ class ClusterNodePoolArgs:
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ClusterNodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
                number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -14020,11 +14088,7 @@ class ClusterNodePoolArgs:
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
         :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
-               Generally, this field should not be used at the same time as a
-               `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: The node configuration of the pool. Structure is documented below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeDrainConfigArgs']]] node_drain_configs: Node drain configuration for this NodePool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
@@ -14045,6 +14109,8 @@ class ClusterNodePoolArgs:
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
@@ -14089,6 +14155,18 @@ class ClusterNodePoolArgs:
     @autoscaling.setter
     def autoscaling(self, value: pulumi.Input[Optional['ClusterNodePoolAutoscalingArgs']]):
         pulumi.set(self, "autoscaling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
+
+    @ignore_node_count_changes.setter
+    def ignore_node_count_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_node_count_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -14199,11 +14277,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Input[Optional['ClusterNodePoolNodeConfigArgs']]:
         """
-        Parameters used in creating the default node pool.
-        Generally, this field should not be used at the same time as a
-        `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        The node configuration of the pool. Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -16106,6 +16180,10 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The list of instance tags applied to all nodes. Tags are used to identify
     valid sources or targets for network firewalls.
     """
+    taint_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigTaintConfigArgsDict']]]
+    """
+    Taint configuration for the node pool. Structure is documented below.
+    """
     taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgsDict']]]]]
     """
     A list of
@@ -16174,6 +16252,7 @@ class ClusterNodePoolNodeConfigArgs:
                  spot: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taint_config: pulumi.Input[Optional['ClusterNodePoolNodeConfigTaintConfigArgs']] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
                  windows_node_config: pulumi.Input[Optional['ClusterNodePoolNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: pulumi.Input[Optional['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -16278,6 +16357,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
+        :param pulumi.Input['ClusterNodePoolNodeConfigTaintConfigArgs'] taint_config: Taint configuration for the node pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]] taints: A list of
                [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. This field will only report drift on taint keys that are
@@ -16379,6 +16459,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -16980,6 +17062,18 @@ class ClusterNodePoolNodeConfigArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> pulumi.Input[Optional['ClusterNodePoolNodeConfigTaintConfigArgs']]:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
+
+    @taint_config.setter
+    def taint_config(self, value: pulumi.Input[Optional['ClusterNodePoolNodeConfigTaintConfigArgs']]):
+        pulumi.set(self, "taint_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -20380,6 +20474,46 @@ class ClusterNodePoolNodeConfigTaintArgs:
         pulumi.set(self, "value", value)
 
 
+class ClusterNodePoolNodeConfigTaintConfigArgsDict(TypedDict):
+    architecture_taint_behavior: pulumi.Input[_builtins.str]
+    """
+    The taint behavior to be applied to the nodes based on the architecture.
+    Accepted values are:
+    * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+    * `NONE`: Do not apply any taints based on architecture.
+    * `ARM`: Apply ARM taint to the nodes.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigTaintConfigArgs:
+    def __init__(__self__, *,
+                 architecture_taint_behavior: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> pulumi.Input[_builtins.str]:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+    @architecture_taint_behavior.setter
+    def architecture_taint_behavior(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "architecture_taint_behavior", value)
+
+
 class ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict(TypedDict):
     osversion: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -22980,6 +23114,10 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The list of instance tags applied to all nodes.
     """
+    taint_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigTaintConfigArgsDict']]]
+    """
+    Taint configuration for the node pool. Structure is documented below.
+    """
     taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgsDict']]]]]
     """
     List of Kubernetes taints to be applied to each node.
@@ -23041,6 +23179,7 @@ class NodePoolNodeConfigArgs:
                  spot: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taint_config: pulumi.Input[Optional['NodePoolNodeConfigTaintConfigArgs']] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
                  windows_node_config: pulumi.Input[Optional['NodePoolNodeConfigWindowsNodeConfigArgs']] = None,
                  workload_metadata_config: pulumi.Input[Optional['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -23090,6 +23229,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[_builtins.bool] spot: Whether the nodes are created as spot VM instances.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to all nodes.
+        :param pulumi.Input['NodePoolNodeConfigTaintConfigArgs'] taint_config: Taint configuration for the node pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]] taints: List of Kubernetes taints to be applied to each node.
         :param pulumi.Input['NodePoolNodeConfigWindowsNodeConfigArgs'] windows_node_config: Parameters that can be configured on Windows nodes.
         :param pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: The workload metadata configuration for this node.
@@ -23184,6 +23324,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if taint_config is not None:
+            pulumi.set(__self__, "taint_config", taint_config)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if windows_node_config is not None:
@@ -23730,6 +23872,18 @@ class NodePoolNodeConfigArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taintConfig")
+    def taint_config(self) -> pulumi.Input[Optional['NodePoolNodeConfigTaintConfigArgs']]:
+        """
+        Taint configuration for the node pool. Structure is documented below.
+        """
+        return pulumi.get(self, "taint_config")
+
+    @taint_config.setter
+    def taint_config(self, value: pulumi.Input[Optional['NodePoolNodeConfigTaintConfigArgs']]):
+        pulumi.set(self, "taint_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -26965,6 +27119,46 @@ class NodePoolNodeConfigTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class NodePoolNodeConfigTaintConfigArgsDict(TypedDict):
+    architecture_taint_behavior: pulumi.Input[_builtins.str]
+    """
+    The taint behavior to be applied to the nodes based on the architecture.
+    Accepted values are:
+    * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+    * `NONE`: Do not apply any taints based on architecture.
+    * `ARM`: Apply ARM taint to the nodes.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigTaintConfigArgs:
+    def __init__(__self__, *,
+                 architecture_taint_behavior: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] architecture_taint_behavior: The taint behavior to be applied to the nodes based on the architecture.
+               Accepted values are:
+               * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+               * `NONE`: Do not apply any taints based on architecture.
+               * `ARM`: Apply ARM taint to the nodes.
+        """
+        pulumi.set(__self__, "architecture_taint_behavior", architecture_taint_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="architectureTaintBehavior")
+    def architecture_taint_behavior(self) -> pulumi.Input[_builtins.str]:
+        """
+        The taint behavior to be applied to the nodes based on the architecture.
+        Accepted values are:
+        * `ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED`: Default value. This should not be used.
+        * `NONE`: Do not apply any taints based on architecture.
+        * `ARM`: Apply ARM taint to the nodes.
+        """
+        return pulumi.get(self, "architecture_taint_behavior")
+
+    @architecture_taint_behavior.setter
+    def architecture_taint_behavior(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "architecture_taint_behavior", value)
 
 
 class NodePoolNodeConfigWindowsNodeConfigArgsDict(TypedDict):

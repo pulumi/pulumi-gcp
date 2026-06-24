@@ -200,6 +200,11 @@ export type AiReasoningEngineIamPolicy = import("./aiReasoningEngineIamPolicy").
 export const AiReasoningEngineIamPolicy: typeof import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AiReasoningEngineIamPolicy"], () => require("./aiReasoningEngineIamPolicy"));
 
+export { AiScheduleArgs, AiScheduleState } from "./aiSchedule";
+export type AiSchedule = import("./aiSchedule").AiSchedule;
+export const AiSchedule: typeof import("./aiSchedule").AiSchedule = null as any;
+utilities.lazyLoad(exports, ["AiSchedule"], () => require("./aiSchedule"));
+
 export { AiTensorboardArgs, AiTensorboardState } from "./aiTensorboard";
 export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
@@ -209,6 +214,11 @@ export { AiTensorboardExperimentArgs, AiTensorboardExperimentState } from "./aiT
 export type AiTensorboardExperiment = import("./aiTensorboardExperiment").AiTensorboardExperiment;
 export const AiTensorboardExperiment: typeof import("./aiTensorboardExperiment").AiTensorboardExperiment = null as any;
 utilities.lazyLoad(exports, ["AiTensorboardExperiment"], () => require("./aiTensorboardExperiment"));
+
+export { AiTensorboardRunArgs, AiTensorboardRunState } from "./aiTensorboardRun";
+export type AiTensorboardRun = import("./aiTensorboardRun").AiTensorboardRun;
+export const AiTensorboardRun: typeof import("./aiTensorboardRun").AiTensorboardRun = null as any;
+utilities.lazyLoad(exports, ["AiTensorboardRun"], () => require("./aiTensorboardRun"));
 
 export { GetAiEndpointIamPolicyArgs, GetAiEndpointIamPolicyResult, GetAiEndpointIamPolicyOutputArgs } from "./getAiEndpointIamPolicy";
 export const getAiEndpointIamPolicy: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicy = null as any;
@@ -338,10 +348,14 @@ const _module = {
                 return new AiReasoningEngineIamMember(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
                 return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
+            case "gcp:vertex/aiSchedule:AiSchedule":
+                return new AiSchedule(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
                 return new AiTensorboard(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment":
                 return new AiTensorboardExperiment(name, <any>undefined, { urn })
+            case "gcp:vertex/aiTensorboardRun:AiTensorboardRun":
+                return new AiTensorboardRun(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -386,5 +400,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiSchedule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardRun", _module)

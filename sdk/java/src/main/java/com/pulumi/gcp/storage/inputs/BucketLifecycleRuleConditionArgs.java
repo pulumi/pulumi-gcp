@@ -229,6 +229,36 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    @Import(name="sizeAboveBytes")
+    private @Nullable Output<Integer> sizeAboveBytes;
+
+    /**
+     * @return Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    public Optional<Output<Integer>> sizeAboveBytes() {
+        return Optional.ofNullable(this.sizeAboveBytes);
+    }
+
+    /**
+     * Objects having a size smaller than this value in bytes will be matched.
+     * 
+     */
+    @Import(name="sizeBelowBytes")
+    private @Nullable Output<Integer> sizeBelowBytes;
+
+    /**
+     * @return Objects having a size smaller than this value in bytes will be matched.
+     * 
+     */
+    public Optional<Output<Integer>> sizeBelowBytes() {
+        return Optional.ofNullable(this.sizeBelowBytes);
+    }
+
+    /**
      * Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
@@ -260,6 +290,8 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         this.sendDaysSinceCustomTimeIfZero = $.sendDaysSinceCustomTimeIfZero;
         this.sendDaysSinceNoncurrentTimeIfZero = $.sendDaysSinceNoncurrentTimeIfZero;
         this.sendNumNewerVersionsIfZero = $.sendNumNewerVersionsIfZero;
+        this.sizeAboveBytes = $.sizeAboveBytes;
+        this.sizeBelowBytes = $.sizeBelowBytes;
         this.withState = $.withState;
     }
 
@@ -603,6 +635,48 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
          */
         public Builder sendNumNewerVersionsIfZero(Boolean sendNumNewerVersionsIfZero) {
             return sendNumNewerVersionsIfZero(Output.of(sendNumNewerVersionsIfZero));
+        }
+
+        /**
+         * @param sizeAboveBytes Objects having a size greater than this value in bytes will be matched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeAboveBytes(@Nullable Output<Integer> sizeAboveBytes) {
+            $.sizeAboveBytes = sizeAboveBytes;
+            return this;
+        }
+
+        /**
+         * @param sizeAboveBytes Objects having a size greater than this value in bytes will be matched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeAboveBytes(Integer sizeAboveBytes) {
+            return sizeAboveBytes(Output.of(sizeAboveBytes));
+        }
+
+        /**
+         * @param sizeBelowBytes Objects having a size smaller than this value in bytes will be matched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeBelowBytes(@Nullable Output<Integer> sizeBelowBytes) {
+            $.sizeBelowBytes = sizeBelowBytes;
+            return this;
+        }
+
+        /**
+         * @param sizeBelowBytes Objects having a size smaller than this value in bytes will be matched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeBelowBytes(Integer sizeBelowBytes) {
+            return sizeBelowBytes(Output.of(sizeBelowBytes));
         }
 
         /**

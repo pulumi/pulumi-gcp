@@ -170,6 +170,8 @@ type NodePool struct {
 	//
 	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+	IgnoreNodeCountChanges pulumi.BoolPtrOutput `pulumi:"ignoreNodeCountChanges"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -205,8 +207,7 @@ type NodePool struct {
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
 	// documented below
 	NetworkConfig NodePoolNetworkConfigOutput `pulumi:"networkConfig"`
-	// Parameters used in creating the node pool. See
-	// container.Cluster for schema.
+	// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 	NodeConfig NodePoolNodeConfigOutput `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -293,6 +294,8 @@ type nodePoolState struct {
 	//
 	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -328,8 +331,7 @@ type nodePoolState struct {
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
 	// documented below
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the node pool. See
-	// container.Cluster for schema.
+	// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -384,6 +386,8 @@ type NodePoolState struct {
 	//
 	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringPtrInput
+	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+	IgnoreNodeCountChanges pulumi.BoolPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -419,8 +423,7 @@ type NodePoolState struct {
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
 	// documented below
 	NetworkConfig NodePoolNetworkConfigPtrInput
-	// Parameters used in creating the node pool. See
-	// container.Cluster for schema.
+	// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -479,6 +482,8 @@ type nodePoolArgs struct {
 	//
 	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -510,8 +515,7 @@ type nodePoolArgs struct {
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
 	// documented below
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the node pool. See
-	// container.Cluster for schema.
+	// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -566,6 +570,8 @@ type NodePoolArgs struct {
 	//
 	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringPtrInput
+	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+	IgnoreNodeCountChanges pulumi.BoolPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -597,8 +603,7 @@ type NodePoolArgs struct {
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
 	// documented below
 	NetworkConfig NodePoolNetworkConfigPtrInput
-	// Parameters used in creating the node pool. See
-	// container.Cluster for schema.
+	// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -747,6 +752,11 @@ func (o NodePoolOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
+// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+func (o NodePoolOutput) IgnoreNodeCountChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.IgnoreNodeCountChanges }).(pulumi.BoolPtrOutput)
+}
+
 // The initial number of nodes for the pool. In
 // regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 // this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -809,8 +819,7 @@ func (o NodePoolOutput) NetworkConfig() NodePoolNetworkConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolNetworkConfigOutput { return v.NetworkConfig }).(NodePoolNetworkConfigOutput)
 }
 
-// Parameters used in creating the node pool. See
-// container.Cluster for schema.
+// Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
 func (o NodePoolOutput) NodeConfig() NodePoolNodeConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolNodeConfigOutput { return v.NodeConfig }).(NodePoolNodeConfigOutput)
 }

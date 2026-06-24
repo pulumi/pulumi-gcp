@@ -27,6 +27,8 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     /**
      * @return Enables or disable the password validation policy.
      * 
+     * The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
+     * 
      */
     private Boolean enablePasswordPolicy;
     /**
@@ -62,6 +64,8 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     }
     /**
      * @return Enables or disable the password validation policy.
+     * 
+     * The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
      * 
      */
     public Boolean enablePasswordPolicy() {

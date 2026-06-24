@@ -83,6 +83,7 @@ public final class GetClusterResult {
     private List<GetClusterCostManagementConfig> costManagementConfigs;
     private List<GetClusterDatabaseEncryption> databaseEncryptions;
     private String datapathProvider;
+    private String dataplaneOptimizationMode;
     private Integer defaultMaxPodsPerNode;
     private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
     private String deletionPolicy;
@@ -113,6 +114,7 @@ public final class GetClusterResult {
      */
     private String id;
     private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+    private Boolean ignoreNodeCountChanges;
     private String inTransitEncryptionConfig;
     private Integer initialNodeCount;
     private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
@@ -162,6 +164,7 @@ public final class GetClusterResult {
     private String selfLink;
     private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
     private String servicesIpv4Cidr;
+    private Boolean skipNodePoolRefresh;
     private String subnetwork;
     private List<GetClusterTpuConfig> tpuConfigs;
     private String tpuIpv4CidrBlock;
@@ -215,6 +218,9 @@ public final class GetClusterResult {
     }
     public String datapathProvider() {
         return this.datapathProvider;
+    }
+    public String dataplaneOptimizationMode() {
+        return this.dataplaneOptimizationMode;
     }
     public Integer defaultMaxPodsPerNode() {
         return this.defaultMaxPodsPerNode;
@@ -297,6 +303,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterIdentityServiceConfig> identityServiceConfigs() {
         return this.identityServiceConfigs;
+    }
+    public Boolean ignoreNodeCountChanges() {
+        return this.ignoreNodeCountChanges;
     }
     public String inTransitEncryptionConfig() {
         return this.inTransitEncryptionConfig;
@@ -445,6 +454,9 @@ public final class GetClusterResult {
     public String servicesIpv4Cidr() {
         return this.servicesIpv4Cidr;
     }
+    public Boolean skipNodePoolRefresh() {
+        return this.skipNodePoolRefresh;
+    }
     public String subnetwork() {
         return this.subnetwork;
     }
@@ -491,6 +503,7 @@ public final class GetClusterResult {
         private List<GetClusterCostManagementConfig> costManagementConfigs;
         private List<GetClusterDatabaseEncryption> databaseEncryptions;
         private String datapathProvider;
+        private String dataplaneOptimizationMode;
         private Integer defaultMaxPodsPerNode;
         private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
         private String deletionPolicy;
@@ -517,6 +530,7 @@ public final class GetClusterResult {
         private List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+        private Boolean ignoreNodeCountChanges;
         private String inTransitEncryptionConfig;
         private Integer initialNodeCount;
         private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
@@ -566,6 +580,7 @@ public final class GetClusterResult {
         private String selfLink;
         private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
         private String servicesIpv4Cidr;
+        private Boolean skipNodePoolRefresh;
         private String subnetwork;
         private List<GetClusterTpuConfig> tpuConfigs;
         private String tpuIpv4CidrBlock;
@@ -591,6 +606,7 @@ public final class GetClusterResult {
     	      this.costManagementConfigs = defaults.costManagementConfigs;
     	      this.databaseEncryptions = defaults.databaseEncryptions;
     	      this.datapathProvider = defaults.datapathProvider;
+    	      this.dataplaneOptimizationMode = defaults.dataplaneOptimizationMode;
     	      this.defaultMaxPodsPerNode = defaults.defaultMaxPodsPerNode;
     	      this.defaultSnatStatuses = defaults.defaultSnatStatuses;
     	      this.deletionPolicy = defaults.deletionPolicy;
@@ -617,6 +633,7 @@ public final class GetClusterResult {
     	      this.gkeAutoUpgradeConfigs = defaults.gkeAutoUpgradeConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
+    	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.inTransitEncryptionConfig = defaults.inTransitEncryptionConfig;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.ipAllocationPolicies = defaults.ipAllocationPolicies;
@@ -666,6 +683,7 @@ public final class GetClusterResult {
     	      this.selfLink = defaults.selfLink;
     	      this.serviceExternalIpsConfigs = defaults.serviceExternalIpsConfigs;
     	      this.servicesIpv4Cidr = defaults.servicesIpv4Cidr;
+    	      this.skipNodePoolRefresh = defaults.skipNodePoolRefresh;
     	      this.subnetwork = defaults.subnetwork;
     	      this.tpuConfigs = defaults.tpuConfigs;
     	      this.tpuIpv4CidrBlock = defaults.tpuIpv4CidrBlock;
@@ -829,6 +847,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "datapathProvider");
             }
             this.datapathProvider = datapathProvider;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataplaneOptimizationMode(String dataplaneOptimizationMode) {
+            if (dataplaneOptimizationMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "dataplaneOptimizationMode");
+            }
+            this.dataplaneOptimizationMode = dataplaneOptimizationMode;
             return this;
         }
         @CustomType.Setter
@@ -1062,6 +1088,14 @@ public final class GetClusterResult {
         }
         public Builder identityServiceConfigs(GetClusterIdentityServiceConfig... identityServiceConfigs) {
             return identityServiceConfigs(List.of(identityServiceConfigs));
+        }
+        @CustomType.Setter
+        public Builder ignoreNodeCountChanges(Boolean ignoreNodeCountChanges) {
+            if (ignoreNodeCountChanges == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "ignoreNodeCountChanges");
+            }
+            this.ignoreNodeCountChanges = ignoreNodeCountChanges;
+            return this;
         }
         @CustomType.Setter
         public Builder inTransitEncryptionConfig(String inTransitEncryptionConfig) {
@@ -1539,6 +1573,14 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipNodePoolRefresh(Boolean skipNodePoolRefresh) {
+            if (skipNodePoolRefresh == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "skipNodePoolRefresh");
+            }
+            this.skipNodePoolRefresh = skipNodePoolRefresh;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             if (subnetwork == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "subnetwork");
@@ -1626,6 +1668,7 @@ public final class GetClusterResult {
             _resultValue.costManagementConfigs = costManagementConfigs;
             _resultValue.databaseEncryptions = databaseEncryptions;
             _resultValue.datapathProvider = datapathProvider;
+            _resultValue.dataplaneOptimizationMode = dataplaneOptimizationMode;
             _resultValue.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
             _resultValue.defaultSnatStatuses = defaultSnatStatuses;
             _resultValue.deletionPolicy = deletionPolicy;
@@ -1652,6 +1695,7 @@ public final class GetClusterResult {
             _resultValue.gkeAutoUpgradeConfigs = gkeAutoUpgradeConfigs;
             _resultValue.id = id;
             _resultValue.identityServiceConfigs = identityServiceConfigs;
+            _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.inTransitEncryptionConfig = inTransitEncryptionConfig;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.ipAllocationPolicies = ipAllocationPolicies;
@@ -1701,6 +1745,7 @@ public final class GetClusterResult {
             _resultValue.selfLink = selfLink;
             _resultValue.serviceExternalIpsConfigs = serviceExternalIpsConfigs;
             _resultValue.servicesIpv4Cidr = servicesIpv4Cidr;
+            _resultValue.skipNodePoolRefresh = skipNodePoolRefresh;
             _resultValue.subnetwork = subnetwork;
             _resultValue.tpuConfigs = tpuConfigs;
             _resultValue.tpuIpv4CidrBlock = tpuIpv4CidrBlock;

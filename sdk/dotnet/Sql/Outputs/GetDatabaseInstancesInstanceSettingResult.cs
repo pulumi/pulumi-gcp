@@ -123,6 +123,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult> PasswordValidationPolicies;
         /// <summary>
+        /// Configuration of Performance Capture.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult> PerformanceCaptureConfigs;
+        /// <summary>
         /// Pricing plan for this instance, can only be PER_USE.
         /// </summary>
         public readonly string PricingPlan;
@@ -216,6 +220,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult> passwordValidationPolicies,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult> performanceCaptureConfigs,
+
             string pricingPlan,
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigResult> readPoolAutoScaleConfigs,
@@ -263,6 +269,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreferences = locationPreferences;
             MaintenanceWindows = maintenanceWindows;
             PasswordValidationPolicies = passwordValidationPolicies;
+            PerformanceCaptureConfigs = performanceCaptureConfigs;
             PricingPlan = pricingPlan;
             ReadPoolAutoScaleConfigs = readPoolAutoScaleConfigs;
             RetainBackupsOnDelete = retainBackupsOnDelete;

@@ -403,6 +403,12 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Taint configuration for the node pool. Structure is documented below.
+        /// </summary>
+        [Input("taintConfig")]
+        public Input<Inputs.ClusterNodePoolNodeConfigTaintConfigGetArgs>? TaintConfig { get; set; }
+
         [Input("taints")]
         private InputList<Inputs.ClusterNodePoolNodeConfigTaintGetArgs>? _taints;
 

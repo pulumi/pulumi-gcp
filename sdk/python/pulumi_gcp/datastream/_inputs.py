@@ -493,6 +493,12 @@ class ConnectionProfileMongodbProfileArgsDict(TypedDict):
     """
     Username for the MongoDB connection.
     """
+    additional_options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    A map of additional options for the MongoDB connection.
+    Keys are case-sensitive and should match the official
+    MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+    """
     password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the MongoDB connection. Mutually exclusive with
@@ -530,6 +536,7 @@ class ConnectionProfileMongodbProfileArgs:
     def __init__(__self__, *,
                  host_addresses: pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgs']]],
                  username: pulumi.Input[_builtins.str],
+                 additional_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_set: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,6 +547,9 @@ class ConnectionProfileMongodbProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgs']]] host_addresses: List of host addresses for a MongoDB cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] username: Username for the MongoDB connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] additional_options: A map of additional options for the MongoDB connection.
+               Keys are case-sensitive and should match the official
+               MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
         :param pulumi.Input[_builtins.str] password: Password for the MongoDB connection. Mutually exclusive with
                secretManagerStoredPassword.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -556,6 +566,8 @@ class ConnectionProfileMongodbProfileArgs:
         """
         pulumi.set(__self__, "host_addresses", host_addresses)
         pulumi.set(__self__, "username", username)
+        if additional_options is not None:
+            pulumi.set(__self__, "additional_options", additional_options)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if replica_set is not None:
@@ -593,6 +605,20 @@ class ConnectionProfileMongodbProfileArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalOptions")
+    def additional_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of additional options for the MongoDB connection.
+        Keys are case-sensitive and should match the official
+        MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+        """
+        return pulumi.get(self, "additional_options")
+
+    @additional_options.setter
+    def additional_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_options", value)
 
     @_builtins.property
     @pulumi.getter

@@ -28,7 +28,9 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,6 +38,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			agentRegistry, err := projects.NewService(ctx, "agent_registry", &projects.ServiceArgs{
 //				Service:          pulumi.String("agentregistry.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
@@ -44,14 +50,14 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("net-my-full-agent-gateway"),
+//				Name:                  pulumi.String("my-gateway-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("subnet-my-full-agent-gateway"),
+//				Name:        pulumi.String("my-gateway-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
@@ -60,11 +66,27 @@ import (
 //				return err
 //			}
 //			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
-//				Name:                 pulumi.String("na-my-full-agent-gateway"),
+//				Name:                 pulumi.String("my-gateway-attachment"),
 //				Region:               pulumi.String("us-central1"),
-//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 //				Subnetworks: pulumi.StringArray{
-//					defaultSubnetwork.SelfLink,
+//					defaultSubnetwork.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedZone, err := dns.NewManagedZone(ctx, "default", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("my-gateway-zone"),
+//				DnsName:     pulumi.String("example.com."),
+//				Description: pulumi.String("Private zone used by AgentGateway DNS peering"),
+//				Visibility:  pulumi.String("private"),
+//				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
+//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
+//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
+//							NetworkUrl: defaultNetwork.ID(),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -90,6 +112,13 @@ import (
 //				NetworkConfig: &networkservices.AgentGatewayNetworkConfigArgs{
 //					Egress: &networkservices.AgentGatewayNetworkConfigEgressArgs{
 //						NetworkAttachment: defaultNetworkAttachment.ID(),
+//					},
+//					DnsPeeringConfig: &networkservices.AgentGatewayNetworkConfigDnsPeeringConfigArgs{
+//						Domains: pulumi.StringArray{
+//							defaultManagedZone.DnsName,
+//						},
+//						TargetProject: pulumi.String(project.ProjectId),
+//						TargetNetwork: defaultNetwork.ID(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

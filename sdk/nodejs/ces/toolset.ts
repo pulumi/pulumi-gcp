@@ -663,6 +663,11 @@ export class Toolset extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     */
+    declare public readonly toolFakeConfig: pulumi.Output<outputs.ces.ToolsetToolFakeConfig | undefined>;
+    /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset's resource name. If not provided, a unique ID will be
      * automatically assigned for the toolset.
@@ -698,6 +703,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["openApiToolset"] = state?.openApiToolset;
             resourceInputs["project"] = state?.project;
+            resourceInputs["toolFakeConfig"] = state?.toolFakeConfig;
             resourceInputs["toolsetId"] = state?.toolsetId;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -720,6 +726,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["mcpToolset"] = args?.mcpToolset;
             resourceInputs["openApiToolset"] = args?.openApiToolset;
             resourceInputs["project"] = args?.project;
+            resourceInputs["toolFakeConfig"] = args?.toolFakeConfig;
             resourceInputs["toolsetId"] = args?.toolsetId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -800,6 +807,11 @@ export interface ToolsetState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     */
+    toolFakeConfig?: pulumi.Input<inputs.ces.ToolsetToolFakeConfig | undefined>;
+    /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset's resource name. If not provided, a unique ID will be
      * automatically assigned for the toolset.
@@ -863,6 +875,11 @@ export interface ToolsetArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     */
+    toolFakeConfig?: pulumi.Input<inputs.ces.ToolsetToolFakeConfig | undefined>;
     /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset's resource name. If not provided, a unique ID will be

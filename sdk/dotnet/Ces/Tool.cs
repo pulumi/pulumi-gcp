@@ -765,6 +765,20 @@ namespace Pulumi.Gcp.Ces
         public Output<ImmutableArray<Outputs.ToolSystemTool>> SystemTools { get; private set; } = null!;
 
         /// <summary>
+        /// The timeout for the tool execution. If not set, the default timeout is 30
+        /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        /// </summary>
+        [Output("timeout")]
+        public Output<string?> Timeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for tool behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("toolFakeConfig")]
+        public Output<Outputs.ToolToolFakeConfig?> ToolFakeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID to use for the tool, which will become the final component of
         /// the tool's resource name. If not provided, a unique ID will be
         /// automatically assigned for the tool.
@@ -919,6 +933,20 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("pythonFunction")]
         public Input<Inputs.ToolPythonFunctionArgs>? PythonFunction { get; set; }
+
+        /// <summary>
+        /// The timeout for the tool execution. If not set, the default timeout is 30
+        /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        /// </summary>
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
+
+        /// <summary>
+        /// Configuration for tool behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolFakeConfig")]
+        public Input<Inputs.ToolToolFakeConfigArgs>? ToolFakeConfig { get; set; }
 
         /// <summary>
         /// The ID to use for the tool, which will become the final component of
@@ -1132,6 +1160,20 @@ namespace Pulumi.Gcp.Ces
             get => _systemTools ?? (_systemTools = new InputList<Inputs.ToolSystemToolGetArgs>());
             set => _systemTools = value;
         }
+
+        /// <summary>
+        /// The timeout for the tool execution. If not set, the default timeout is 30
+        /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        /// </summary>
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
+
+        /// <summary>
+        /// Configuration for tool behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolFakeConfig")]
+        public Input<Inputs.ToolToolFakeConfigGetArgs>? ToolFakeConfig { get; set; }
 
         /// <summary>
         /// The ID to use for the tool, which will become the final component of

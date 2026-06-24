@@ -105,6 +105,67 @@ import (
 //	}
 //
 // ```
+// ### Biglake Iceberg Catalog Biglake
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultBucket, err := storage.NewBucket(ctx, "default_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_iceberg_catalog-default"),
+//				Location:                 pulumi.String("us-central1"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			restrictedBucket, err := storage.NewBucket(ctx, "restricted_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_iceberg_catalog-restricted"),
+//				Location:                 pulumi.String("us-central1"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = biglake.NewIcebergCatalog(ctx, "my_iceberg_catalog", &biglake.IcebergCatalogArgs{
+//				Name:           pulumi.String("my_iceberg_catalog"),
+//				CatalogType:    pulumi.String("CATALOG_TYPE_BIGLAKE"),
+//				CredentialMode: pulumi.String("CREDENTIAL_MODE_VENDED_CREDENTIALS"),
+//				DefaultLocation: defaultBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				RestrictedLocationsConfig: &biglake.IcebergCatalogRestrictedLocationsConfigArgs{
+//					RestrictedLocations: pulumi.StringArray{
+//						defaultBucket.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("gs://%v", name), nil
+//						}).(pulumi.StringOutput),
+//						restrictedBucket.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("gs://%v", name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -126,15 +187,17 @@ type IcebergCatalog struct {
 
 	// Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
 	BiglakeServiceAccount pulumi.StringOutput `pulumi:"biglakeServiceAccount"`
-	// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+	// The catalog type of the IcebergCatalog.
+	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 	CatalogType pulumi.StringOutput `pulumi:"catalogType"`
 	// Output only. The creation time of the IcebergCatalog.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode pulumi.StringOutput `pulumi:"credentialMode"`
-	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+	// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 	DefaultLocation pulumi.StringOutput `pulumi:"defaultLocation"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -158,6 +221,10 @@ type IcebergCatalog struct {
 	// Output only. The replicas for the catalog metadata.
 	// Structure is documented below.
 	Replicas IcebergCatalogReplicaArrayOutput `pulumi:"replicas"`
+	// Configuration for the additional GCS locations that are permitted for use
+	// by resources within this catalog.
+	// Structure is documented below.
+	RestrictedLocationsConfig IcebergCatalogRestrictedLocationsConfigOutput `pulumi:"restrictedLocationsConfig"`
 	// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
 	StorageRegions pulumi.StringArrayOutput `pulumi:"storageRegions"`
 	// Output only. The last modification time of the IcebergCatalog.
@@ -199,15 +266,17 @@ func GetIcebergCatalog(ctx *pulumi.Context,
 type icebergCatalogState struct {
 	// Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
 	BiglakeServiceAccount *string `pulumi:"biglakeServiceAccount"`
-	// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+	// The catalog type of the IcebergCatalog.
+	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 	CatalogType *string `pulumi:"catalogType"`
 	// Output only. The creation time of the IcebergCatalog.
 	CreateTime *string `pulumi:"createTime"`
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode *string `pulumi:"credentialMode"`
-	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+	// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 	DefaultLocation *string `pulumi:"defaultLocation"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -231,6 +300,10 @@ type icebergCatalogState struct {
 	// Output only. The replicas for the catalog metadata.
 	// Structure is documented below.
 	Replicas []IcebergCatalogReplica `pulumi:"replicas"`
+	// Configuration for the additional GCS locations that are permitted for use
+	// by resources within this catalog.
+	// Structure is documented below.
+	RestrictedLocationsConfig *IcebergCatalogRestrictedLocationsConfig `pulumi:"restrictedLocationsConfig"`
 	// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
 	StorageRegions []string `pulumi:"storageRegions"`
 	// Output only. The last modification time of the IcebergCatalog.
@@ -240,15 +313,17 @@ type icebergCatalogState struct {
 type IcebergCatalogState struct {
 	// Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
 	BiglakeServiceAccount pulumi.StringPtrInput
-	// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+	// The catalog type of the IcebergCatalog.
+	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 	CatalogType pulumi.StringPtrInput
 	// Output only. The creation time of the IcebergCatalog.
 	CreateTime pulumi.StringPtrInput
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode pulumi.StringPtrInput
-	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+	// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 	DefaultLocation pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -272,6 +347,10 @@ type IcebergCatalogState struct {
 	// Output only. The replicas for the catalog metadata.
 	// Structure is documented below.
 	Replicas IcebergCatalogReplicaArrayInput
+	// Configuration for the additional GCS locations that are permitted for use
+	// by resources within this catalog.
+	// Structure is documented below.
+	RestrictedLocationsConfig IcebergCatalogRestrictedLocationsConfigPtrInput
 	// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
 	StorageRegions pulumi.StringArrayInput
 	// Output only. The last modification time of the IcebergCatalog.
@@ -283,12 +362,16 @@ func (IcebergCatalogState) ElementType() reflect.Type {
 }
 
 type icebergCatalogArgs struct {
-	// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+	// The catalog type of the IcebergCatalog.
+	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 	CatalogType string `pulumi:"catalogType"`
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode *string `pulumi:"credentialMode"`
+	// The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+	// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
+	DefaultLocation *string `pulumi:"defaultLocation"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -308,16 +391,24 @@ type icebergCatalogArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for the additional GCS locations that are permitted for use
+	// by resources within this catalog.
+	// Structure is documented below.
+	RestrictedLocationsConfig *IcebergCatalogRestrictedLocationsConfig `pulumi:"restrictedLocationsConfig"`
 }
 
 // The set of arguments for constructing a IcebergCatalog resource.
 type IcebergCatalogArgs struct {
-	// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+	// The catalog type of the IcebergCatalog.
+	// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 	CatalogType pulumi.StringInput
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode pulumi.StringPtrInput
+	// The default storage location for the catalog, e.g., `gs://my-bucket`.
+	// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+	// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
+	DefaultLocation pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -337,6 +428,10 @@ type IcebergCatalogArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for the additional GCS locations that are permitted for use
+	// by resources within this catalog.
+	// Structure is documented below.
+	RestrictedLocationsConfig IcebergCatalogRestrictedLocationsConfigPtrInput
 }
 
 func (IcebergCatalogArgs) ElementType() reflect.Type {
@@ -431,8 +526,8 @@ func (o IcebergCatalogOutput) BiglakeServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.BiglakeServiceAccount }).(pulumi.StringOutput)
 }
 
-// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+// The catalog type of the IcebergCatalog.
+// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
 func (o IcebergCatalogOutput) CatalogType() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.CatalogType }).(pulumi.StringOutput)
 }
@@ -448,7 +543,9 @@ func (o IcebergCatalogOutput) CredentialMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.CredentialMode }).(pulumi.StringOutput)
 }
 
-// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+// The default storage location for the catalog, e.g., `gs://my-bucket`.
+// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 func (o IcebergCatalogOutput) DefaultLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.DefaultLocation }).(pulumi.StringOutput)
 }
@@ -488,6 +585,15 @@ func (o IcebergCatalogOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o IcebergCatalogOutput) Replicas() IcebergCatalogReplicaArrayOutput {
 	return o.ApplyT(func(v *IcebergCatalog) IcebergCatalogReplicaArrayOutput { return v.Replicas }).(IcebergCatalogReplicaArrayOutput)
+}
+
+// Configuration for the additional GCS locations that are permitted for use
+// by resources within this catalog.
+// Structure is documented below.
+func (o IcebergCatalogOutput) RestrictedLocationsConfig() IcebergCatalogRestrictedLocationsConfigOutput {
+	return o.ApplyT(func(v *IcebergCatalog) IcebergCatalogRestrictedLocationsConfigOutput {
+		return v.RestrictedLocationsConfig
+	}).(IcebergCatalogRestrictedLocationsConfigOutput)
 }
 
 // Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.

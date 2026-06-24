@@ -5359,7 +5359,17 @@ func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretPtrOutput
 
 type WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue struct {
 	// The plain text of the client secret value.
-	PlainText string `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText *string `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo *string `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion *string `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint *string `pulumi:"thumbprint"`
@@ -5378,7 +5388,17 @@ type WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueInput i
 
 type WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs struct {
 	// The plain text of the client secret value.
-	PlainText pulumi.StringInput `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText pulumi.StringPtrInput `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo pulumi.StringPtrInput `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion pulumi.StringPtrInput `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
@@ -5462,10 +5482,30 @@ func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueOutp
 }
 
 // The plain text of the client secret value.
-func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueOutput) PlainText() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) string {
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueOutput) PlainText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
 		return v.PlainText
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
+		return v.PlainTextWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
+		return v.PlainTextWoVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -5501,12 +5541,38 @@ func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValuePtrO
 }
 
 // The plain text of the client secret value.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PlainText
+		return v.PlainText
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValuePtrOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValuePtrOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6108,7 +6174,17 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretPtrOutput) V
 
 type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue struct {
 	// The plain text of the client secret value.
-	PlainText string `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText *string `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo *string `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion *string `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint *string `pulumi:"thumbprint"`
@@ -6127,7 +6203,17 @@ type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueInput inte
 
 type WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs struct {
 	// The plain text of the client secret value.
-	PlainText pulumi.StringInput `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText pulumi.StringPtrInput `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo pulumi.StringPtrInput `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion pulumi.StringPtrInput `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
@@ -6211,8 +6297,28 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput)
 }
 
 // The plain text of the client secret value.
-func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) PlainText() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) string { return v.PlainText }).(pulumi.StringOutput)
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) PlainText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string { return v.PlainText }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		return v.PlainTextWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		return v.PlainTextWoVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -6246,12 +6352,38 @@ func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutp
 }
 
 // The plain text of the client secret value.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PlainText
+		return v.PlainText
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValuePtrOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7062,7 +7194,17 @@ func (o WorkforcePoolProviderOidcClientSecretPtrOutput) Value() WorkforcePoolPro
 
 type WorkforcePoolProviderOidcClientSecretValue struct {
 	// The plain text of the client secret value.
-	PlainText string `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText *string `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo *string `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion *string `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint *string `pulumi:"thumbprint"`
@@ -7081,7 +7223,17 @@ type WorkforcePoolProviderOidcClientSecretValueInput interface {
 
 type WorkforcePoolProviderOidcClientSecretValueArgs struct {
 	// The plain text of the client secret value.
-	PlainText pulumi.StringInput `pulumi:"plainText"`
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText pulumi.StringPtrInput `pulumi:"plainText"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The plain text of the client secret value.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+	PlainTextWo pulumi.StringPtrInput `pulumi:"plainTextWo"`
+	// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PlainTextWoVersion pulumi.StringPtrInput `pulumi:"plainTextWoVersion"`
 	// (Output)
 	// A thumbprint to represent the current client secret value.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
@@ -7165,8 +7317,24 @@ func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProvide
 }
 
 // The plain text of the client secret value.
-func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainText() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) string { return v.PlainText }).(pulumi.StringOutput)
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) *string { return v.PlainText }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) *string { return v.PlainTextWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) *string { return v.PlainTextWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -7200,12 +7368,38 @@ func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Elem() WorkforcePoo
 }
 
 // The plain text of the client secret value.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PlainText
+		return v.PlainText
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The plain text of the client secret value.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `plainText` or `plainTextWo` can only be set.
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) PlainTextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) PlainTextWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlainTextWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 

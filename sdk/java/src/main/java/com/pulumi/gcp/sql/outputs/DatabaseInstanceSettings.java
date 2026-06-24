@@ -19,6 +19,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsLocationPreference;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsMaintenanceWindow;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsPasswordValidationPolicy;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsPerformanceCaptureConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsSqlServerAuditConfig;
 import java.lang.Boolean;
@@ -172,6 +173,11 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
     private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
+    /**
+     * @return Configuration of Performance Capture.
+     * 
+     */
+    private @Nullable DatabaseInstanceSettingsPerformanceCaptureConfig performanceCaptureConfig;
     /**
      * @return Pricing plan for this instance, can only be `PER_USE`.
      * 
@@ -416,6 +422,13 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.passwordValidationPolicy);
     }
     /**
+     * @return Configuration of Performance Capture.
+     * 
+     */
+    public Optional<DatabaseInstanceSettingsPerformanceCaptureConfig> performanceCaptureConfig() {
+        return Optional.ofNullable(this.performanceCaptureConfig);
+    }
+    /**
      * @return Pricing plan for this instance, can only be `PER_USE`.
      * 
      */
@@ -511,6 +524,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
         private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
         private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
+        private @Nullable DatabaseInstanceSettingsPerformanceCaptureConfig performanceCaptureConfig;
         private @Nullable String pricingPlan;
         private @Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig;
         private @Nullable Boolean retainBackupsOnDelete;
@@ -553,6 +567,7 @@ public final class DatabaseInstanceSettings {
     	      this.locationPreference = defaults.locationPreference;
     	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.passwordValidationPolicy = defaults.passwordValidationPolicy;
+    	      this.performanceCaptureConfig = defaults.performanceCaptureConfig;
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.readPoolAutoScaleConfig = defaults.readPoolAutoScaleConfig;
     	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
@@ -756,6 +771,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder performanceCaptureConfig(@Nullable DatabaseInstanceSettingsPerformanceCaptureConfig performanceCaptureConfig) {
+
+            this.performanceCaptureConfig = performanceCaptureConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pricingPlan(@Nullable String pricingPlan) {
 
             this.pricingPlan = pricingPlan;
@@ -838,6 +859,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.locationPreference = locationPreference;
             _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.passwordValidationPolicy = passwordValidationPolicy;
+            _resultValue.performanceCaptureConfig = performanceCaptureConfig;
             _resultValue.pricingPlan = pricingPlan;
             _resultValue.readPoolAutoScaleConfig = readPoolAutoScaleConfig;
             _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;

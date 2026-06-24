@@ -51,16 +51,26 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Output)
-     * Consumer key.
+     * Optionally specify a static consumer key for the developer app&#39;s credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
      * 
      */
     @Import(name="consumerKey")
     private @Nullable Output<String> consumerKey;
 
     /**
-     * @return (Output)
-     * Consumer key.
+     * @return Optionally specify a static consumer key for the developer app&#39;s credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
      * 
      */
     public Optional<Output<String>> consumerKey() {
@@ -68,8 +78,12 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Output)
-     * Secret key.
+     * Optionally specify a static consumer secret for the developer app&#39;s
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -77,8 +91,12 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> consumerSecret;
 
     /**
-     * @return (Output)
-     * Secret key.
+     * @return Optionally specify a static consumer secret for the developer app&#39;s
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -251,8 +269,13 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param consumerKey (Output)
-         * Consumer key.
+         * @param consumerKey Optionally specify a static consumer key for the developer app&#39;s credential.
+         * If not set, the API auto-generates a key. The consumer key must be unique
+         * across all developer apps in an organization. Changing this field forces the
+         * resource to be recreated.
+         * This is a write-only input used at create time: the provider creates the
+         * credential with this key via the keys API and removes the auto-generated
+         * one. The effective key is exposed in the `credentials` output.
          * 
          * @return builder
          * 
@@ -263,8 +286,13 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param consumerKey (Output)
-         * Consumer key.
+         * @param consumerKey Optionally specify a static consumer key for the developer app&#39;s credential.
+         * If not set, the API auto-generates a key. The consumer key must be unique
+         * across all developer apps in an organization. Changing this field forces the
+         * resource to be recreated.
+         * This is a write-only input used at create time: the provider creates the
+         * credential with this key via the keys API and removes the auto-generated
+         * one. The effective key is exposed in the `credentials` output.
          * 
          * @return builder
          * 
@@ -274,8 +302,12 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param consumerSecret (Output)
-         * Secret key.
+         * @param consumerSecret Optionally specify a static consumer secret for the developer app&#39;s
+         * credential. Required if `consumerKey` is specified. If not set, the API
+         * auto-generates a secret. Changing this field forces the resource to be
+         * recreated.
+         * This is a write-only input used at create time; the effective secret is
+         * exposed in the `credentials` output.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -287,8 +319,12 @@ public final class DeveloperAppCredentialArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param consumerSecret (Output)
-         * Secret key.
+         * @param consumerSecret Optionally specify a static consumer secret for the developer app&#39;s
+         * credential. Required if `consumerKey` is specified. If not set, the API
+         * auto-generates a secret. Changing this field forces the resource to be
+         * recreated.
+         * This is a write-only input used at create time; the effective secret is
+         * exposed in the `credentials` output.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder

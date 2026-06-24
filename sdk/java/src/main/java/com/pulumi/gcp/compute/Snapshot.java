@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.SnapshotArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotState;
+import com.pulumi.gcp.compute.outputs.SnapshotParams;
 import com.pulumi.gcp.compute.outputs.SnapshotSnapshotEncryptionKey;
 import com.pulumi.gcp.compute.outputs.SnapshotSourceDiskEncryptionKey;
 import java.lang.Boolean;
@@ -483,6 +484,22 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={SnapshotParams.class}, tree="[0]")
+    private Output</* @Nullable */ SnapshotParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SnapshotParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

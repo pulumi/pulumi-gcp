@@ -104,6 +104,78 @@ import (
 //	}
 //
 // ```
+// ### Biglake Iceberg Table Sort Order
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my-bucket"),
+//				Location:                 pulumi.String("us-central1"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			catalog, err := biglake.NewIcebergCatalog(ctx, "catalog", &biglake.IcebergCatalogArgs{
+//				Name:        bucket.Name,
+//				CatalogType: pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			namespace, err := biglake.NewIcebergNamespace(ctx, "namespace", &biglake.IcebergNamespaceArgs{
+//				Catalog:     catalog.Name,
+//				NamespaceId: pulumi.String("my_namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = biglake.NewIcebergTable(ctx, "my_iceberg_table", &biglake.IcebergTableArgs{
+//				Catalog:   catalog.Name,
+//				Namespace: namespace.NamespaceId,
+//				Name:      pulumi.String("my_table"),
+//				Schema: &biglake.IcebergTableSchemaArgs{
+//					Type: pulumi.String("struct"),
+//					Fields: biglake.IcebergTableSchemaFieldArray{
+//						&biglake.IcebergTableSchemaFieldArgs{
+//							Id:       pulumi.Int(1),
+//							Name:     pulumi.String("id"),
+//							Type:     pulumi.String("long"),
+//							Required: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				SortOrder: &biglake.IcebergTableSortOrderArgs{
+//					Fields: biglake.IcebergTableSortOrderFieldArray{
+//						&biglake.IcebergTableSortOrderFieldArgs{
+//							SourceId:  pulumi.Int(1),
+//							Transform: pulumi.String("identity"),
+//							Direction: pulumi.String("asc"),
+//							NullOrder: pulumi.String("nulls-first"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Biglake Iceberg Table Update
 //
 // ```go
@@ -214,6 +286,9 @@ type IcebergTable struct {
 	// The schema of the table.
 	// Structure is documented below.
 	Schema IcebergTableSchemaOutput `pulumi:"schema"`
+	// The sort order of the table.
+	// Structure is documented below.
+	SortOrder IcebergTableSortOrderOutput `pulumi:"sortOrder"`
 }
 
 // NewIcebergTable registers a new resource with the given unique name, arguments, and options.
@@ -281,6 +356,9 @@ type icebergTableState struct {
 	// The schema of the table.
 	// Structure is documented below.
 	Schema *IcebergTableSchema `pulumi:"schema"`
+	// The sort order of the table.
+	// Structure is documented below.
+	SortOrder *IcebergTableSortOrder `pulumi:"sortOrder"`
 }
 
 type IcebergTableState struct {
@@ -310,6 +388,9 @@ type IcebergTableState struct {
 	// The schema of the table.
 	// Structure is documented below.
 	Schema IcebergTableSchemaPtrInput
+	// The sort order of the table.
+	// Structure is documented below.
+	SortOrder IcebergTableSortOrderPtrInput
 }
 
 func (IcebergTableState) ElementType() reflect.Type {
@@ -343,6 +424,9 @@ type icebergTableArgs struct {
 	// The schema of the table.
 	// Structure is documented below.
 	Schema IcebergTableSchema `pulumi:"schema"`
+	// The sort order of the table.
+	// Structure is documented below.
+	SortOrder *IcebergTableSortOrder `pulumi:"sortOrder"`
 }
 
 // The set of arguments for constructing a IcebergTable resource.
@@ -373,6 +457,9 @@ type IcebergTableArgs struct {
 	// The schema of the table.
 	// Structure is documented below.
 	Schema IcebergTableSchemaInput
+	// The sort order of the table.
+	// Structure is documented below.
+	SortOrder IcebergTableSortOrderPtrInput
 }
 
 func (IcebergTableArgs) ElementType() reflect.Type {
@@ -513,6 +600,12 @@ func (o IcebergTableOutput) Properties() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o IcebergTableOutput) Schema() IcebergTableSchemaOutput {
 	return o.ApplyT(func(v *IcebergTable) IcebergTableSchemaOutput { return v.Schema }).(IcebergTableSchemaOutput)
+}
+
+// The sort order of the table.
+// Structure is documented below.
+func (o IcebergTableOutput) SortOrder() IcebergTableSortOrderOutput {
+	return o.ApplyT(func(v *IcebergTable) IcebergTableSortOrderOutput { return v.SortOrder }).(IcebergTableSortOrderOutput)
 }
 
 type IcebergTableArrayOutput struct{ *pulumi.OutputState }

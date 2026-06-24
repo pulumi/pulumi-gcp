@@ -64,6 +64,49 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Biglake Iceberg Table Sort Order
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my-bucket",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const catalog = new gcp.biglake.IcebergCatalog("catalog", {
+ *     name: bucket.name,
+ *     catalogType: "CATALOG_TYPE_GCS_BUCKET",
+ * });
+ * const namespace = new gcp.biglake.IcebergNamespace("namespace", {
+ *     catalog: catalog.name,
+ *     namespaceId: "my_namespace",
+ * });
+ * const myIcebergTable = new gcp.biglake.IcebergTable("my_iceberg_table", {
+ *     catalog: catalog.name,
+ *     namespace: namespace.namespaceId,
+ *     name: "my_table",
+ *     schema: {
+ *         type: "struct",
+ *         fields: [{
+ *             id: 1,
+ *             name: "id",
+ *             type: "long",
+ *             required: true,
+ *         }],
+ *     },
+ *     sortOrder: {
+ *         fields: [{
+ *             sourceId: 1,
+ *             transform: "identity",
+ *             direction: "asc",
+ *             nullOrder: "nulls-first",
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Biglake Iceberg Table Update
  *
  * ```typescript
@@ -191,6 +234,11 @@ export class IcebergTable extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly schema: pulumi.Output<outputs.biglake.IcebergTableSchema>;
+    /**
+     * The sort order of the table.
+     * Structure is documented below.
+     */
+    declare public readonly sortOrder: pulumi.Output<outputs.biglake.IcebergTableSortOrder>;
 
     /**
      * Create a IcebergTable resource with the given unique name, arguments, and options.
@@ -214,6 +262,7 @@ export class IcebergTable extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["schema"] = state?.schema;
+            resourceInputs["sortOrder"] = state?.sortOrder;
         } else {
             const args = argsOrState as IcebergTableArgs | undefined;
             if (args?.catalog === undefined && !opts.urn) {
@@ -234,6 +283,7 @@ export class IcebergTable extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["schema"] = args?.schema;
+            resourceInputs["sortOrder"] = args?.sortOrder;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IcebergTable.__pulumiType, name, resourceInputs, opts);
@@ -288,6 +338,11 @@ export interface IcebergTableState {
      * Structure is documented below.
      */
     schema?: pulumi.Input<inputs.biglake.IcebergTableSchema | undefined>;
+    /**
+     * The sort order of the table.
+     * Structure is documented below.
+     */
+    sortOrder?: pulumi.Input<inputs.biglake.IcebergTableSortOrder | undefined>;
 }
 
 /**
@@ -338,4 +393,9 @@ export interface IcebergTableArgs {
      * Structure is documented below.
      */
     schema: pulumi.Input<inputs.biglake.IcebergTableSchema>;
+    /**
+     * The sort order of the table.
+     * Structure is documented below.
+     */
+    sortOrder?: pulumi.Input<inputs.biglake.IcebergTableSortOrder | undefined>;
 }

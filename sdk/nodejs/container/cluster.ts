@@ -240,6 +240,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly datapathProvider: pulumi.Output<string>;
     /**
+     * The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+     */
+    declare public readonly dataplaneOptimizationMode: pulumi.Output<string | undefined>;
+    /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
      * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -365,6 +369,10 @@ export class Cluster extends pulumi.CustomResource {
      * . Structure is documented below.
      */
     declare public readonly identityServiceConfig: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
+    /**
+     * Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    declare public readonly ignoreNodeCountChanges: pulumi.Output<boolean | undefined>;
     /**
      * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
      */
@@ -544,8 +552,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly nodePoolDefaults: pulumi.Output<outputs.container.ClusterNodePoolDefaults>;
     /**
-     * List of node pools associated with this cluster.
-     * See gcp.container.NodePool for schema.
+     * List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
@@ -670,6 +677,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly servicesIpv4Cidr: pulumi.Output<string>;
     /**
+     * Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+     */
+    declare public readonly skipNodePoolRefresh: pulumi.Output<boolean | undefined>;
+    /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster's instances are launched.
      */
@@ -733,6 +744,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["costManagementConfig"] = state?.costManagementConfig;
             resourceInputs["databaseEncryption"] = state?.databaseEncryption;
             resourceInputs["datapathProvider"] = state?.datapathProvider;
+            resourceInputs["dataplaneOptimizationMode"] = state?.dataplaneOptimizationMode;
             resourceInputs["defaultMaxPodsPerNode"] = state?.defaultMaxPodsPerNode;
             resourceInputs["defaultSnatStatus"] = state?.defaultSnatStatus;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -758,6 +770,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["gatewayApiConfig"] = state?.gatewayApiConfig;
             resourceInputs["gkeAutoUpgradeConfig"] = state?.gkeAutoUpgradeConfig;
             resourceInputs["identityServiceConfig"] = state?.identityServiceConfig;
+            resourceInputs["ignoreNodeCountChanges"] = state?.ignoreNodeCountChanges;
             resourceInputs["inTransitEncryptionConfig"] = state?.inTransitEncryptionConfig;
             resourceInputs["initialNodeCount"] = state?.initialNodeCount;
             resourceInputs["ipAllocationPolicy"] = state?.ipAllocationPolicy;
@@ -807,6 +820,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["serviceExternalIpsConfig"] = state?.serviceExternalIpsConfig;
             resourceInputs["servicesIpv4Cidr"] = state?.servicesIpv4Cidr;
+            resourceInputs["skipNodePoolRefresh"] = state?.skipNodePoolRefresh;
             resourceInputs["subnetwork"] = state?.subnetwork;
             resourceInputs["tpuConfig"] = state?.tpuConfig;
             resourceInputs["tpuIpv4CidrBlock"] = state?.tpuIpv4CidrBlock;
@@ -831,6 +845,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["costManagementConfig"] = args?.costManagementConfig;
             resourceInputs["databaseEncryption"] = args?.databaseEncryption;
             resourceInputs["datapathProvider"] = args?.datapathProvider;
+            resourceInputs["dataplaneOptimizationMode"] = args?.dataplaneOptimizationMode;
             resourceInputs["defaultMaxPodsPerNode"] = args?.defaultMaxPodsPerNode;
             resourceInputs["defaultSnatStatus"] = args?.defaultSnatStatus;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -854,6 +869,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["gatewayApiConfig"] = args?.gatewayApiConfig;
             resourceInputs["gkeAutoUpgradeConfig"] = args?.gkeAutoUpgradeConfig;
             resourceInputs["identityServiceConfig"] = args?.identityServiceConfig;
+            resourceInputs["ignoreNodeCountChanges"] = args?.ignoreNodeCountChanges;
             resourceInputs["inTransitEncryptionConfig"] = args?.inTransitEncryptionConfig;
             resourceInputs["initialNodeCount"] = args?.initialNodeCount;
             resourceInputs["ipAllocationPolicy"] = args?.ipAllocationPolicy;
@@ -897,6 +913,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secretSyncConfig"] = args?.secretSyncConfig;
             resourceInputs["securityPostureConfig"] = args?.securityPostureConfig;
             resourceInputs["serviceExternalIpsConfig"] = args?.serviceExternalIpsConfig;
+            resourceInputs["skipNodePoolRefresh"] = args?.skipNodePoolRefresh;
             resourceInputs["subnetwork"] = args?.subnetwork;
             resourceInputs["tpuConfig"] = args?.tpuConfig;
             resourceInputs["userManagedKeysConfig"] = args?.userManagedKeysConfig;
@@ -1007,6 +1024,10 @@ export interface ClusterState {
      * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      */
     datapathProvider?: pulumi.Input<string | undefined>;
+    /**
+     * The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+     */
+    dataplaneOptimizationMode?: pulumi.Input<string | undefined>;
     /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -1133,6 +1154,10 @@ export interface ClusterState {
      * . Structure is documented below.
      */
     identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig | undefined>;
+    /**
+     * Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    ignoreNodeCountChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
      */
@@ -1312,8 +1337,7 @@ export interface ClusterState {
      */
     nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults | undefined>;
     /**
-     * List of node pools associated with this cluster.
-     * See gcp.container.NodePool for schema.
+     * List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
@@ -1437,6 +1461,10 @@ export interface ClusterState {
      * `/16` from the container CIDR.
      */
     servicesIpv4Cidr?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+     */
+    skipNodePoolRefresh?: pulumi.Input<boolean | undefined>;
     /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster's instances are launched.
@@ -1562,6 +1590,10 @@ export interface ClusterArgs {
      */
     datapathProvider?: pulumi.Input<string | undefined>;
     /**
+     * The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+     */
+    dataplaneOptimizationMode?: pulumi.Input<string | undefined>;
+    /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
      * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -1679,6 +1711,10 @@ export interface ClusterArgs {
      * . Structure is documented below.
      */
     identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig | undefined>;
+    /**
+     * Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    ignoreNodeCountChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
      */
@@ -1848,8 +1884,7 @@ export interface ClusterArgs {
      */
     nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults | undefined>;
     /**
-     * List of node pools associated with this cluster.
-     * See gcp.container.NodePool for schema.
+     * List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
@@ -1957,6 +1992,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     serviceExternalIpsConfig?: pulumi.Input<inputs.container.ClusterServiceExternalIpsConfig | undefined>;
+    /**
+     * Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
+     */
+    skipNodePoolRefresh?: pulumi.Input<boolean | undefined>;
     /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster's instances are launched.

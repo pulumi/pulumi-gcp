@@ -172,6 +172,7 @@ class _WorkforcePoolProviderScimTokenState:
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID of the SCIM Tenant.
         :param pulumi.Input[_builtins.str] scim_token_id: The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
         :param pulumi.Input[_builtins.str] security_token: The token string provided to the IdP for authentication and will be set only during creation.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] state: The current state of the scim token.
                * ACTIVE: The token is active and may be used to provision users and groups.
                * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
@@ -293,6 +294,7 @@ class _WorkforcePoolProviderScimTokenState:
     def security_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token string provided to the IdP for authentication and will be set only during creation.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "security_token")
 
@@ -585,6 +587,8 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["security_token"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["securityToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WorkforcePoolProviderScimToken, __self__).__init__(
             'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
             resource_name,
@@ -626,6 +630,7 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID of the SCIM Tenant.
         :param pulumi.Input[_builtins.str] scim_token_id: The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
         :param pulumi.Input[_builtins.str] security_token: The token string provided to the IdP for authentication and will be set only during creation.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] state: The current state of the scim token.
                * ACTIVE: The token is active and may be used to provision users and groups.
                * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
@@ -714,6 +719,7 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
     def security_token(self) -> pulumi.Output[_builtins.str]:
         """
         The token string provided to the IdP for authentication and will be set only during creation.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "security_token")
 

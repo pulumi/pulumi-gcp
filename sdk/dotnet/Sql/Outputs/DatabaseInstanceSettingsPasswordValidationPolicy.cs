@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly bool? DisallowUsernameSubstring;
         /// <summary>
         /// Enables or disable the password validation policy.
+        /// 
+        /// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
         /// </summary>
         public readonly bool EnablePasswordPolicy;
         /// <summary>

@@ -13,6 +13,103 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair struct {
+	// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+	AllowChangingZone string `pulumi:"allowChangingZone"`
+}
+
+// GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput is an input type that accepts GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs and GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput` via:
+//
+//	GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{...}
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs struct {
+	// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+	AllowChangingZone pulumi.StringInput `pulumi:"allowChangingZone"`
+}
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return i.ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput)
+}
+
+// GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput is an input type that accepts GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray and GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput` via:
+//
+//	GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray{ GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{...} }
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray []GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return i.ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput)
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return o
+}
+
+// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) AllowChangingZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair) string { return v.AllowChangingZone }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
+		return vs[0].([]GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair)[vs[1].(int)]
+	}).(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput)
+}
+
 type GetInstanceGroupManagerNamedPort struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
@@ -37052,6 +37149,109 @@ func (o GetServiceAttachmentTunnelingConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetServiceAttachmentTunnelingConfigOutput)
 }
 
+type GetSnapshotParam struct {
+	// Resource manager tags to be bound to the snapshot. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetSnapshotParamInput is an input type that accepts GetSnapshotParamArgs and GetSnapshotParamOutput values.
+// You can construct a concrete instance of `GetSnapshotParamInput` via:
+//
+//	GetSnapshotParamArgs{...}
+type GetSnapshotParamInput interface {
+	pulumi.Input
+
+	ToGetSnapshotParamOutput() GetSnapshotParamOutput
+	ToGetSnapshotParamOutputWithContext(context.Context) GetSnapshotParamOutput
+}
+
+type GetSnapshotParamArgs struct {
+	// Resource manager tags to be bound to the snapshot. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetSnapshotParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotParam)(nil)).Elem()
+}
+
+func (i GetSnapshotParamArgs) ToGetSnapshotParamOutput() GetSnapshotParamOutput {
+	return i.ToGetSnapshotParamOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotParamArgs) ToGetSnapshotParamOutputWithContext(ctx context.Context) GetSnapshotParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotParamOutput)
+}
+
+// GetSnapshotParamArrayInput is an input type that accepts GetSnapshotParamArray and GetSnapshotParamArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotParamArrayInput` via:
+//
+//	GetSnapshotParamArray{ GetSnapshotParamArgs{...} }
+type GetSnapshotParamArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotParamArrayOutput() GetSnapshotParamArrayOutput
+	ToGetSnapshotParamArrayOutputWithContext(context.Context) GetSnapshotParamArrayOutput
+}
+
+type GetSnapshotParamArray []GetSnapshotParamInput
+
+func (GetSnapshotParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotParam)(nil)).Elem()
+}
+
+func (i GetSnapshotParamArray) ToGetSnapshotParamArrayOutput() GetSnapshotParamArrayOutput {
+	return i.ToGetSnapshotParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotParamArray) ToGetSnapshotParamArrayOutputWithContext(ctx context.Context) GetSnapshotParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotParamArrayOutput)
+}
+
+type GetSnapshotParamOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotParam)(nil)).Elem()
+}
+
+func (o GetSnapshotParamOutput) ToGetSnapshotParamOutput() GetSnapshotParamOutput {
+	return o
+}
+
+func (o GetSnapshotParamOutput) ToGetSnapshotParamOutputWithContext(ctx context.Context) GetSnapshotParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the snapshot. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetSnapshotParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSnapshotParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetSnapshotParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotParam)(nil)).Elem()
+}
+
+func (o GetSnapshotParamArrayOutput) ToGetSnapshotParamArrayOutput() GetSnapshotParamArrayOutput {
+	return o
+}
+
+func (o GetSnapshotParamArrayOutput) ToGetSnapshotParamArrayOutputWithContext(ctx context.Context) GetSnapshotParamArrayOutput {
+	return o
+}
+
+func (o GetSnapshotParamArrayOutput) Index(i pulumi.IntInput) GetSnapshotParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotParam {
+		return vs[0].([]GetSnapshotParam)[vs[1].(int)]
+	}).(GetSnapshotParamOutput)
+}
+
 type GetSnapshotSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
@@ -38264,6 +38464,8 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamInput)(nil)).Elem(), GetInstanceGroupManagerParamArgs{})
@@ -38826,6 +39028,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentIdArrayInput)(nil)).Elem(), GetServiceAttachmentPscServiceAttachmentIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigArrayInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotParamInput)(nil)).Elem(), GetSnapshotParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotParamArrayInput)(nil)).Elem(), GetSnapshotParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
@@ -38842,6 +39046,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerParamOutput{})
@@ -39404,6 +39610,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceAttachmentPscServiceAttachmentIdArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotParamOutput{})
+	pulumi.RegisterOutputType(GetSnapshotParamArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})

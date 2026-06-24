@@ -630,6 +630,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileHostAddressArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileStandardConnectionFormatArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -655,9 +656,12 @@ import javax.annotation.Nullable;
  *                 .replicaSet("myReplicaSet")
  *                 .username("mongoUser")
  *                 .password("mongoPassword")
- *                 .database("myDatabase")
- *                 .standardConnectionFormat(com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
- *                     .build()[0])
+ *                 .standardConnectionFormat(ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
+ *                     .build())
+ *                 .additionalOptions(Map.ofEntries(
+ *                     Map.entry("readPreference", "secondary"),
+ *                     Map.entry("readPreferenceTags", "nodeType:ANALYTICS")
+ *                 ))
  *                 .build())
  *             .build());
  * 

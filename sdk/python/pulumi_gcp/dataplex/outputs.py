@@ -98,6 +98,8 @@ __all__ = [
     'LakeIamMemberCondition',
     'LakeMetastore',
     'LakeMetastoreStatus',
+    'MetadataFeedFilters',
+    'MetadataFeedScope',
     'TaskExecutionSpec',
     'TaskExecutionStatus',
     'TaskExecutionStatusLatestJob',
@@ -4125,6 +4127,136 @@ class LakeMetastoreStatus(dict):
         Output only. The time when the lake was last updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class MetadataFeedFilters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aspectTypes":
+            suggest = "aspect_types"
+        elif key == "changeTypes":
+            suggest = "change_types"
+        elif key == "entryTypes":
+            suggest = "entry_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataFeedFilters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataFeedFilters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataFeedFilters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aspect_types: Optional[Sequence[_builtins.str]] = None,
+                 change_types: Optional[Sequence[_builtins.str]] = None,
+                 entry_types: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] aspect_types: The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+        :param Sequence[_builtins.str] change_types: The type of change that you want to listen to. If not specified, all changes are published.
+        :param Sequence[_builtins.str] entry_types: The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+        """
+        if aspect_types is not None:
+            pulumi.set(__self__, "aspect_types", aspect_types)
+        if change_types is not None:
+            pulumi.set(__self__, "change_types", change_types)
+        if entry_types is not None:
+            pulumi.set(__self__, "entry_types", entry_types)
+
+    @_builtins.property
+    @pulumi.getter(name="aspectTypes")
+    def aspect_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+        """
+        return pulumi.get(self, "aspect_types")
+
+    @_builtins.property
+    @pulumi.getter(name="changeTypes")
+    def change_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The type of change that you want to listen to. If not specified, all changes are published.
+        """
+        return pulumi.get(self, "change_types")
+
+    @_builtins.property
+    @pulumi.getter(name="entryTypes")
+    def entry_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+        """
+        return pulumi.get(self, "entry_types")
+
+
+@pulumi.output_type
+class MetadataFeedScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryGroups":
+            suggest = "entry_groups"
+        elif key == "organizationLevel":
+            suggest = "organization_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataFeedScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataFeedScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataFeedScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_groups: Optional[Sequence[_builtins.str]] = None,
+                 organization_level: Optional[_builtins.bool] = None,
+                 projects: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] entry_groups: The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+        :param _builtins.bool organization_level: Whether the metadata feed is at the organization-level.
+               If true, all changes happened to the entries in the same organization as the feed are published.
+               If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+        :param Sequence[_builtins.str] projects: The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+        """
+        if entry_groups is not None:
+            pulumi.set(__self__, "entry_groups", entry_groups)
+        if organization_level is not None:
+            pulumi.set(__self__, "organization_level", organization_level)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+
+    @_builtins.property
+    @pulumi.getter(name="entryGroups")
+    def entry_groups(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+        """
+        return pulumi.get(self, "entry_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationLevel")
+    def organization_level(self) -> Optional[_builtins.bool]:
+        """
+        Whether the metadata feed is at the organization-level.
+        If true, all changes happened to the entries in the same organization as the feed are published.
+        If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+        """
+        return pulumi.get(self, "organization_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def projects(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+        """
+        return pulumi.get(self, "projects")
 
 
 @pulumi.output_type

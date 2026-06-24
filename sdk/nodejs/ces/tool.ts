@@ -564,6 +564,16 @@ export class Tool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly systemTools: pulumi.Output<outputs.ces.ToolSystemTool[]>;
     /**
+     * The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     */
+    declare public readonly timeout: pulumi.Output<string | undefined>;
+    /**
+     * Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     */
+    declare public readonly toolFakeConfig: pulumi.Output<outputs.ces.ToolToolFakeConfig | undefined>;
+    /**
      * The ID to use for the tool, which will become the final component of
      * the tool's resource name. If not provided, a unique ID will be
      * automatically assigned for the tool.
@@ -613,6 +623,8 @@ export class Tool extends pulumi.CustomResource {
             resourceInputs["pythonFunction"] = state?.pythonFunction;
             resourceInputs["remoteAgentTools"] = state?.remoteAgentTools;
             resourceInputs["systemTools"] = state?.systemTools;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["toolFakeConfig"] = state?.toolFakeConfig;
             resourceInputs["toolId"] = state?.toolId;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["widgetTool"] = state?.widgetTool;
@@ -638,6 +650,8 @@ export class Tool extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["pythonFunction"] = args?.pythonFunction;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["toolFakeConfig"] = args?.toolFakeConfig;
             resourceInputs["toolId"] = args?.toolId;
             resourceInputs["widgetTool"] = args?.widgetTool;
             resourceInputs["connectorTools"] = undefined /*out*/;
@@ -780,6 +794,16 @@ export interface ToolState {
      */
     systemTools?: pulumi.Input<pulumi.Input<inputs.ces.ToolSystemTool>[] | undefined>;
     /**
+     * The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     */
+    timeout?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     */
+    toolFakeConfig?: pulumi.Input<inputs.ces.ToolToolFakeConfig | undefined>;
+    /**
      * The ID to use for the tool, which will become the final component of
      * the tool's resource name. If not provided, a unique ID will be
      * automatically assigned for the tool.
@@ -867,6 +891,16 @@ export interface ToolArgs {
      * Structure is documented below.
      */
     pythonFunction?: pulumi.Input<inputs.ces.ToolPythonFunction | undefined>;
+    /**
+     * The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     */
+    timeout?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     */
+    toolFakeConfig?: pulumi.Input<inputs.ces.ToolToolFakeConfig | undefined>;
     /**
      * The ID to use for the tool, which will become the final component of
      * the tool's resource name. If not provided, a unique ID will be

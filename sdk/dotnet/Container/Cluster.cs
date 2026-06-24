@@ -287,6 +287,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> DatapathProvider { get; private set; } = null!;
 
         /// <summary>
+        /// The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        /// </summary>
+        [Output("dataplaneOptimizationMode")]
+        public Output<string?> DataplaneOptimizationMode { get; private set; } = null!;
+
+        /// <summary>
         /// The default maximum number of pods
         /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
         /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -459,6 +465,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("identityServiceConfig")]
         public Output<Outputs.ClusterIdentityServiceConfig> IdentityServiceConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Output("ignoreNodeCountChanges")]
+        public Output<bool?> IgnoreNodeCountChanges { get; private set; } = null!;
 
         /// <summary>
         /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -693,8 +705,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterNodePoolDefaults> NodePoolDefaults { get; private set; } = null!;
 
         /// <summary>
-        /// List of node pools associated with this cluster.
-        /// See gcp.container.NodePool for schema.
+        /// List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         /// to say "these are the _only_ node pools associated with this cluster", use the
@@ -861,6 +872,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("servicesIpv4Cidr")]
         public Output<string> ServicesIpv4Cidr { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `True` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `NodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `True` if you define inline `NodePool` blocks in your configuration; doing so will result in a validation error during plan.
+        /// </summary>
+        [Output("skipNodePoolRefresh")]
+        public Output<bool?> SkipNodePoolRefresh { get; private set; } = null!;
 
         /// <summary>
         /// The name or SelfLink of the Google Compute Engine
@@ -1082,6 +1099,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? DatapathProvider { get; set; }
 
         /// <summary>
+        /// The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        /// </summary>
+        [Input("dataplaneOptimizationMode")]
+        public Input<string>? DataplaneOptimizationMode { get; set; }
+
+        /// <summary>
         /// The default maximum number of pods
         /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
         /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -1242,6 +1265,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("identityServiceConfig")]
         public Input<Inputs.ClusterIdentityServiceConfigArgs>? IdentityServiceConfig { get; set; }
+
+        /// <summary>
+        /// Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Input("ignoreNodeCountChanges")]
+        public Input<bool>? IgnoreNodeCountChanges { get; set; }
 
         /// <summary>
         /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -1471,8 +1500,7 @@ namespace Pulumi.Gcp.Container
         private InputList<Inputs.ClusterNodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// List of node pools associated with this cluster.
-        /// See gcp.container.NodePool for schema.
+        /// List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         /// to say "these are the _only_ node pools associated with this cluster", use the
@@ -1624,6 +1652,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("serviceExternalIpsConfig")]
         public Input<Inputs.ClusterServiceExternalIpsConfigArgs>? ServiceExternalIpsConfig { get; set; }
+
+        /// <summary>
+        /// Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `True` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `NodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `True` if you define inline `NodePool` blocks in your configuration; doing so will result in a validation error during plan.
+        /// </summary>
+        [Input("skipNodePoolRefresh")]
+        public Input<bool>? SkipNodePoolRefresh { get; set; }
 
         /// <summary>
         /// The name or SelfLink of the Google Compute Engine
@@ -1792,6 +1826,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("datapathProvider")]
         public Input<string>? DatapathProvider { get; set; }
+
+        /// <summary>
+        /// The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
+        /// </summary>
+        [Input("dataplaneOptimizationMode")]
+        public Input<string>? DataplaneOptimizationMode { get; set; }
 
         /// <summary>
         /// The default maximum number of pods
@@ -1976,6 +2016,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("identityServiceConfig")]
         public Input<Inputs.ClusterIdentityServiceConfigGetArgs>? IdentityServiceConfig { get; set; }
+
+        /// <summary>
+        /// Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        /// </summary>
+        [Input("ignoreNodeCountChanges")]
+        public Input<bool>? IgnoreNodeCountChanges { get; set; }
 
         /// <summary>
         /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
@@ -2219,8 +2265,7 @@ namespace Pulumi.Gcp.Container
         private InputList<Inputs.ClusterNodePoolGetArgs>? _nodePools;
 
         /// <summary>
-        /// List of node pools associated with this cluster.
-        /// See gcp.container.NodePool for schema.
+        /// List of node pools associated with this cluster. Structure is documented below. See gcp.container.NodePool for exact schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
         /// to say "these are the _only_ node pools associated with this cluster", use the
@@ -2406,6 +2451,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("servicesIpv4Cidr")]
         public Input<string>? ServicesIpv4Cidr { get; set; }
+
+        /// <summary>
+        /// Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `True` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `NodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `True` if you define inline `NodePool` blocks in your configuration; doing so will result in a validation error during plan.
+        /// </summary>
+        [Input("skipNodePoolRefresh")]
+        public Input<bool>? SkipNodePoolRefresh { get; set; }
 
         /// <summary>
         /// The name or SelfLink of the Google Compute Engine

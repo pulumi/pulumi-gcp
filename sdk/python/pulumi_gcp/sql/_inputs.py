@@ -71,6 +71,8 @@ __all__ = [
     'DatabaseInstanceSettingsMaintenanceWindowArgsDict',
     'DatabaseInstanceSettingsPasswordValidationPolicyArgs',
     'DatabaseInstanceSettingsPasswordValidationPolicyArgsDict',
+    'DatabaseInstanceSettingsPerformanceCaptureConfigArgs',
+    'DatabaseInstanceSettingsPerformanceCaptureConfigArgsDict',
     'DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs',
     'DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict',
     'DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs',
@@ -1193,6 +1195,10 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
     """
     password_validation_policy: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgsDict']]]
+    performance_capture_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsPerformanceCaptureConfigArgsDict']]]
+    """
+    Configuration of Performance Capture.
+    """
     pricing_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pricing plan for this instance, can only be `PER_USE`.
@@ -1255,6 +1261,7 @@ class DatabaseInstanceSettingsArgs:
                  location_preference: pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
                  maintenance_window: pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
                  password_validation_policy: pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
+                 performance_capture_config: pulumi.Input[Optional['DatabaseInstanceSettingsPerformanceCaptureConfigArgs']] = None,
                  pricing_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  read_pool_auto_scale_config: pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']] = None,
                  retain_backups_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1306,6 +1313,7 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs'] final_backup_config: Config used to determine the final backup settings for the instance
         :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
         :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        :param pulumi.Input['DatabaseInstanceSettingsPerformanceCaptureConfigArgs'] performance_capture_config: Configuration of Performance Capture.
         :param pulumi.Input[_builtins.str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs'] read_pool_auto_scale_config: Configuration of Read Pool Auto Scale.
         :param pulumi.Input[_builtins.bool] retain_backups_on_delete: When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
@@ -1377,6 +1385,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if password_validation_policy is not None:
             pulumi.set(__self__, "password_validation_policy", password_validation_policy)
+        if performance_capture_config is not None:
+            pulumi.set(__self__, "performance_capture_config", performance_capture_config)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if read_pool_auto_scale_config is not None:
@@ -1772,6 +1782,18 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "password_validation_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="performanceCaptureConfig")
+    def performance_capture_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsPerformanceCaptureConfigArgs']]:
+        """
+        Configuration of Performance Capture.
+        """
+        return pulumi.get(self, "performance_capture_config")
+
+    @performance_capture_config.setter
+    def performance_capture_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsPerformanceCaptureConfigArgs']]):
+        pulumi.set(self, "performance_capture_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1857,32 +1879,109 @@ class DatabaseInstanceSettingsArgs:
 class DatabaseInstanceSettingsActiveDirectoryConfigArgsDict(TypedDict):
     domain: pulumi.Input[_builtins.str]
     """
-    The domain name for the active directory (e.g., mydomain.com).
-    Can only be used with SQL Server.
+    The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
+    """
+    admin_credential_secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+    """
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Domain controller IPv4 addresses used to bootstrap Active Directory.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+    """
+    organizational_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
     """
 
 @pulumi.input_type
 class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
     def __init__(__self__, *,
-                 domain: pulumi.Input[_builtins.str]):
+                 domain: pulumi.Input[_builtins.str],
+                 admin_credential_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] domain: The domain name for the active directory (e.g., mydomain.com).
-               Can only be used with SQL Server.
+        :param pulumi.Input[_builtins.str] domain: The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
+        :param pulumi.Input[_builtins.str] admin_credential_secret_name: The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Domain controller IPv4 addresses used to bootstrap Active Directory.
+        :param pulumi.Input[_builtins.str] mode: The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+        :param pulumi.Input[_builtins.str] organizational_unit: The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
         """
         pulumi.set(__self__, "domain", domain)
+        if admin_credential_secret_name is not None:
+            pulumi.set(__self__, "admin_credential_secret_name", admin_credential_secret_name)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if organizational_unit is not None:
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
 
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain name for the active directory (e.g., mydomain.com).
-        Can only be used with SQL Server.
+        The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
     def domain(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="adminCredentialSecretName")
+    def admin_credential_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+        """
+        return pulumi.get(self, "admin_credential_secret_name")
+
+    @admin_credential_secret_name.setter
+    def admin_credential_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "admin_credential_secret_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Domain controller IPv4 addresses used to bootstrap Active Directory.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationalUnit")
+    def organizational_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+        """
+        return pulumi.get(self, "organizational_unit")
+
+    @organizational_unit.setter
+    def organizational_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organizational_unit", value)
 
 
 class DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict(TypedDict):
@@ -3307,6 +3406,8 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgsDict(TypedDict):
     enable_password_policy: pulumi.Input[_builtins.bool]
     """
     Enables or disable the password validation policy.
+
+    The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
     """
     complexity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3340,6 +3441,8 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
                  reuse_interval: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_password_policy: Enables or disable the password validation policy.
+               
+               The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
         :param pulumi.Input[_builtins.str] complexity: Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
         :param pulumi.Input[_builtins.bool] disallow_username_substring: Prevents the use of the username in the password.
         :param pulumi.Input[_builtins.int] min_length: Specifies the minimum number of characters that the password must have.
@@ -3363,6 +3466,8 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
     def enable_password_policy(self) -> pulumi.Input[_builtins.bool]:
         """
         Enables or disable the password validation policy.
+
+        The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
         """
         return pulumi.get(self, "enable_password_policy")
 
@@ -3429,6 +3534,135 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
     @reuse_interval.setter
     def reuse_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reuse_interval", value)
+
+
+class DatabaseInstanceSettingsPerformanceCaptureConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable or disable the Performance Capture.
+    """
+    probe_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of consecutive readings above threshold that triggers instance state capture.
+    """
+    probing_interval_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The time interval in seconds between any two probes.
+    """
+    running_threads_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of server threads running to trigger the capture on primary.
+    """
+    seconds_behind_source_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+    """
+    transaction_duration_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of time in seconds that a transaction needs to have been open before getting recorded.
+    """
+
+@pulumi.input_type
+class DatabaseInstanceSettingsPerformanceCaptureConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 probe_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 probing_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 running_threads_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds_behind_source_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 transaction_duration_threshold: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the Performance Capture.
+        :param pulumi.Input[_builtins.int] probe_threshold: The minimum number of consecutive readings above threshold that triggers instance state capture.
+        :param pulumi.Input[_builtins.int] probing_interval_seconds: The time interval in seconds between any two probes.
+        :param pulumi.Input[_builtins.int] running_threads_threshold: The minimum number of server threads running to trigger the capture on primary.
+        :param pulumi.Input[_builtins.int] seconds_behind_source_threshold: The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+        :param pulumi.Input[_builtins.int] transaction_duration_threshold: The amount of time in seconds that a transaction needs to have been open before getting recorded.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if probe_threshold is not None:
+            pulumi.set(__self__, "probe_threshold", probe_threshold)
+        if probing_interval_seconds is not None:
+            pulumi.set(__self__, "probing_interval_seconds", probing_interval_seconds)
+        if running_threads_threshold is not None:
+            pulumi.set(__self__, "running_threads_threshold", running_threads_threshold)
+        if seconds_behind_source_threshold is not None:
+            pulumi.set(__self__, "seconds_behind_source_threshold", seconds_behind_source_threshold)
+        if transaction_duration_threshold is not None:
+            pulumi.set(__self__, "transaction_duration_threshold", transaction_duration_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable or disable the Performance Capture.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="probeThreshold")
+    def probe_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of consecutive readings above threshold that triggers instance state capture.
+        """
+        return pulumi.get(self, "probe_threshold")
+
+    @probe_threshold.setter
+    def probe_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "probe_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="probingIntervalSeconds")
+    def probing_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The time interval in seconds between any two probes.
+        """
+        return pulumi.get(self, "probing_interval_seconds")
+
+    @probing_interval_seconds.setter
+    def probing_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "probing_interval_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runningThreadsThreshold")
+    def running_threads_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of server threads running to trigger the capture on primary.
+        """
+        return pulumi.get(self, "running_threads_threshold")
+
+    @running_threads_threshold.setter
+    def running_threads_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "running_threads_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondsBehindSourceThreshold")
+    def seconds_behind_source_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+        """
+        return pulumi.get(self, "seconds_behind_source_threshold")
+
+    @seconds_behind_source_threshold.setter
+    def seconds_behind_source_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "seconds_behind_source_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transactionDurationThreshold")
+    def transaction_duration_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of time in seconds that a transaction needs to have been open before getting recorded.
+        """
+        return pulumi.get(self, "transaction_duration_threshold")
+
+    @transaction_duration_threshold.setter
+    def transaction_duration_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "transaction_duration_threshold", value)
 
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict(TypedDict):

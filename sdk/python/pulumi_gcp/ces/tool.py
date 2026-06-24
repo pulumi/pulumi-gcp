@@ -33,6 +33,8 @@ class ToolArgs:
                  google_search_tool: pulumi.Input[Optional['ToolGoogleSearchToolArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  python_function: pulumi.Input[Optional['ToolPythonFunctionArgs']] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional['ToolToolFakeConfigArgs']] = None,
                  widget_tool: pulumi.Input[Optional['ToolWidgetToolArgs']] = None):
         """
         The set of arguments for constructing a Tool resource.
@@ -74,6 +76,10 @@ class ToolArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ToolPythonFunctionArgs'] python_function: A Python function tool.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
+               seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        :param pulumi.Input['ToolToolFakeConfigArgs'] tool_fake_config: Configuration for tool behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input['ToolWidgetToolArgs'] widget_tool: Represents a widget tool that the agent can invoke.
                Structure is documented below.
         """
@@ -98,6 +104,10 @@ class ToolArgs:
             pulumi.set(__self__, "project", project)
         if python_function is not None:
             pulumi.set(__self__, "python_function", python_function)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if tool_fake_config is not None:
+            pulumi.set(__self__, "tool_fake_config", tool_fake_config)
         if widget_tool is not None:
             pulumi.set(__self__, "widget_tool", widget_tool)
 
@@ -271,6 +281,32 @@ class ToolArgs:
         pulumi.set(self, "python_function", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The timeout for the tool execution. If not set, the default timeout is 30
+        seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Input[Optional['ToolToolFakeConfigArgs']]:
+        """
+        Configuration for tool behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
+
+    @tool_fake_config.setter
+    def tool_fake_config(self, value: pulumi.Input[Optional['ToolToolFakeConfigArgs']]):
+        pulumi.set(self, "tool_fake_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="widgetTool")
     def widget_tool(self) -> pulumi.Input[Optional['ToolWidgetToolArgs']]:
         """
@@ -308,6 +344,8 @@ class _ToolState:
                  python_function: pulumi.Input[Optional['ToolPythonFunctionArgs']] = None,
                  remote_agent_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolArgs']]]] = None,
                  system_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ToolSystemToolArgs']]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional['ToolToolFakeConfigArgs']] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  widget_tool: pulumi.Input[Optional['ToolWidgetToolArgs']] = None):
@@ -369,6 +407,10 @@ class _ToolState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ToolSystemToolArgs']]] system_tools: The system tool.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
+               seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        :param pulumi.Input['ToolToolFakeConfigArgs'] tool_fake_config: Configuration for tool behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
                the tool's resource name. If not provided, a unique ID will be
                automatically assigned for the tool.
@@ -418,6 +460,10 @@ class _ToolState:
             pulumi.set(__self__, "remote_agent_tools", remote_agent_tools)
         if system_tools is not None:
             pulumi.set(__self__, "system_tools", system_tools)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if tool_fake_config is not None:
+            pulumi.set(__self__, "tool_fake_config", tool_fake_config)
         if tool_id is not None:
             pulumi.set(__self__, "tool_id", tool_id)
         if update_time is not None:
@@ -712,6 +758,32 @@ class _ToolState:
         pulumi.set(self, "system_tools", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The timeout for the tool execution. If not set, the default timeout is 30
+        seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Input[Optional['ToolToolFakeConfigArgs']]:
+        """
+        Configuration for tool behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
+
+    @tool_fake_config.setter
+    def tool_fake_config(self, value: pulumi.Input[Optional['ToolToolFakeConfigArgs']]):
+        pulumi.set(self, "tool_fake_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="toolId")
     def tool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -768,6 +840,8 @@ class Tool(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None,
                  __props__=None):
@@ -1208,6 +1282,10 @@ class Tool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']] python_function: A Python function tool.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
+               seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']] tool_fake_config: Configuration for tool behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
                the tool's resource name. If not provided, a unique ID will be
@@ -1649,6 +1727,8 @@ class Tool(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None,
                  __props__=None):
@@ -1675,6 +1755,8 @@ class Tool(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["python_function"] = python_function
+            __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["tool_fake_config"] = tool_fake_config
             if tool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tool_id'")
             __props__.__dict__["tool_id"] = tool_id
@@ -1721,6 +1803,8 @@ class Tool(pulumi.CustomResource):
             python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
             remote_agent_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict']]]]] = None,
             system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
             tool_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None) -> 'Tool':
@@ -1786,6 +1870,10 @@ class Tool(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]] system_tools: The system tool.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
+               seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']] tool_fake_config: Configuration for tool behavior in fake mode.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
                the tool's resource name. If not provided, a unique ID will be
                automatically assigned for the tool.
@@ -1818,6 +1906,8 @@ class Tool(pulumi.CustomResource):
         __props__.__dict__["python_function"] = python_function
         __props__.__dict__["remote_agent_tools"] = remote_agent_tools
         __props__.__dict__["system_tools"] = system_tools
+        __props__.__dict__["timeout"] = timeout
+        __props__.__dict__["tool_fake_config"] = tool_fake_config
         __props__.__dict__["tool_id"] = tool_id
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["widget_tool"] = widget_tool
@@ -2024,6 +2114,24 @@ class Tool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "system_tools")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The timeout for the tool execution. If not set, the default timeout is 30
+        seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="toolFakeConfig")
+    def tool_fake_config(self) -> pulumi.Output[Optional['outputs.ToolToolFakeConfig']]:
+        """
+        Configuration for tool behavior in fake mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_fake_config")
 
     @_builtins.property
     @pulumi.getter(name="toolId")

@@ -3620,6 +3620,10 @@ type BucketLifecycleRuleCondition struct {
 	SendDaysSinceNoncurrentTimeIfZero *bool `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
 	// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
 	SendNumNewerVersionsIfZero *bool `pulumi:"sendNumNewerVersionsIfZero"`
+	// Objects having a size greater than this value in bytes will be matched.
+	SizeAboveBytes *int `pulumi:"sizeAboveBytes"`
+	// Objects having a size smaller than this value in bytes will be matched.
+	SizeBelowBytes *int `pulumi:"sizeBelowBytes"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 	WithState *string `pulumi:"withState"`
 }
@@ -3664,6 +3668,10 @@ type BucketLifecycleRuleConditionArgs struct {
 	SendDaysSinceNoncurrentTimeIfZero pulumi.BoolPtrInput `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
 	// While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
 	SendNumNewerVersionsIfZero pulumi.BoolPtrInput `pulumi:"sendNumNewerVersionsIfZero"`
+	// Objects having a size greater than this value in bytes will be matched.
+	SizeAboveBytes pulumi.IntPtrInput `pulumi:"sizeAboveBytes"`
+	// Objects having a size smaller than this value in bytes will be matched.
+	SizeBelowBytes pulumi.IntPtrInput `pulumi:"sizeBelowBytes"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 	WithState pulumi.StringPtrInput `pulumi:"withState"`
 }
@@ -3762,6 +3770,16 @@ func (o BucketLifecycleRuleConditionOutput) SendDaysSinceNoncurrentTimeIfZero() 
 // While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
 func (o BucketLifecycleRuleConditionOutput) SendNumNewerVersionsIfZero() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.SendNumNewerVersionsIfZero }).(pulumi.BoolPtrOutput)
+}
+
+// Objects having a size greater than this value in bytes will be matched.
+func (o BucketLifecycleRuleConditionOutput) SizeAboveBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.SizeAboveBytes }).(pulumi.IntPtrOutput)
+}
+
+// Objects having a size smaller than this value in bytes will be matched.
+func (o BucketLifecycleRuleConditionOutput) SizeBelowBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.SizeBelowBytes }).(pulumi.IntPtrOutput)
 }
 
 // Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -18949,6 +18967,10 @@ type GetBucketLifecycleRuleCondition struct {
 	SendDaysSinceNoncurrentTimeIfZero bool `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
 	// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
 	SendNumNewerVersionsIfZero bool `pulumi:"sendNumNewerVersionsIfZero"`
+	// Objects having a size greater than this value in bytes will be matched.
+	SizeAboveBytes int `pulumi:"sizeAboveBytes"`
+	// Objects having a size less than this value in bytes will be matched.
+	SizeBelowBytes int `pulumi:"sizeBelowBytes"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
 	WithState string `pulumi:"withState"`
 }
@@ -18994,6 +19016,10 @@ type GetBucketLifecycleRuleConditionArgs struct {
 	SendDaysSinceNoncurrentTimeIfZero pulumi.BoolInput `pulumi:"sendDaysSinceNoncurrentTimeIfZero"`
 	// While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
 	SendNumNewerVersionsIfZero pulumi.BoolInput `pulumi:"sendNumNewerVersionsIfZero"`
+	// Objects having a size greater than this value in bytes will be matched.
+	SizeAboveBytes pulumi.IntInput `pulumi:"sizeAboveBytes"`
+	// Objects having a size less than this value in bytes will be matched.
+	SizeBelowBytes pulumi.IntInput `pulumi:"sizeBelowBytes"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
 	WithState pulumi.StringInput `pulumi:"withState"`
 }
@@ -19119,6 +19145,16 @@ func (o GetBucketLifecycleRuleConditionOutput) SendDaysSinceNoncurrentTimeIfZero
 // While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
 func (o GetBucketLifecycleRuleConditionOutput) SendNumNewerVersionsIfZero() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.SendNumNewerVersionsIfZero }).(pulumi.BoolOutput)
+}
+
+// Objects having a size greater than this value in bytes will be matched.
+func (o GetBucketLifecycleRuleConditionOutput) SizeAboveBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.SizeAboveBytes }).(pulumi.IntOutput)
+}
+
+// Objects having a size less than this value in bytes will be matched.
+func (o GetBucketLifecycleRuleConditionOutput) SizeBelowBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.SizeBelowBytes }).(pulumi.IntOutput)
 }
 
 // Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
@@ -24563,6 +24599,5983 @@ func (o GetControlProjectIntelligenceFindingObservationPeriodArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingObservationPeriod {
 		return vs[0].([]GetControlProjectIntelligenceFindingObservationPeriod)[vs[1].(int)]
 	}).(GetControlProjectIntelligenceFindingObservationPeriodOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshot struct {
+	// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+	AssociatedResources []string `pulumi:"associatedResources"`
+	// The category of the finding.
+	Category string `pulumi:"category"`
+	// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+	ColdlineAndArchivalStorageOperationsSpikes []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike `pulumi:"coldlineAndArchivalStorageOperationsSpikes"`
+	// The time when the finding was created.
+	CreateTime string `pulumi:"createTime"`
+	// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+	CrossRegionEgressSpikes []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike `pulumi:"crossRegionEgressSpikes"`
+	// A short description of the finding.
+	Description string `pulumi:"description"`
+	// The resource name of the finding.
+	Name string `pulumi:"name"`
+	// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+	ObservationPeriods []GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod `pulumi:"observationPeriods"`
+	// The severity of the finding.
+	Severity string `pulumi:"severity"`
+	// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+	StorageGrowthAboveTrends []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend `pulumi:"storageGrowthAboveTrends"`
+	// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+	TargetResource string `pulumi:"targetResource"`
+	// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+	ThrottledRequestsSpikes []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike `pulumi:"throttledRequestsSpikes"`
+	// The type of this finding.
+	Type string `pulumi:"type"`
+	// The time when the finding was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotArgs and GetControlProjectIntelligenceFindingRevisionSnapshotOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionSnapshotOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotArgs struct {
+	// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+	AssociatedResources pulumi.StringArrayInput `pulumi:"associatedResources"`
+	// The category of the finding.
+	Category pulumi.StringInput `pulumi:"category"`
+	// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+	ColdlineAndArchivalStorageOperationsSpikes GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput `pulumi:"coldlineAndArchivalStorageOperationsSpikes"`
+	// The time when the finding was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+	CrossRegionEgressSpikes GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayInput `pulumi:"crossRegionEgressSpikes"`
+	// A short description of the finding.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The resource name of the finding.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+	ObservationPeriods GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayInput `pulumi:"observationPeriods"`
+	// The severity of the finding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+	StorageGrowthAboveTrends GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayInput `pulumi:"storageGrowthAboveTrends"`
+	// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+	TargetResource pulumi.StringInput `pulumi:"targetResource"`
+	// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+	ThrottledRequestsSpikes GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayInput `pulumi:"throttledRequestsSpikes"`
+	// The type of this finding.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time when the finding was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshot)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionSnapshotOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotArray and GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotArray{ GetControlProjectIntelligenceFindingRevisionSnapshotArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotArray []GetControlProjectIntelligenceFindingRevisionSnapshotInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshot)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshot)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionSnapshotOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotOutput {
+	return o
+}
+
+// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) AssociatedResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []string { return v.AssociatedResources }).(pulumi.StringArrayOutput)
+}
+
+// The category of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ColdlineAndArchivalStorageOperationsSpikes() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike {
+		return v.ColdlineAndArchivalStorageOperationsSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput)
+}
+
+// The time when the finding was created.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) CrossRegionEgressSpikes() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike {
+		return v.CrossRegionEgressSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput)
+}
+
+// A short description of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource name of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ObservationPeriods() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod {
+		return v.ObservationPeriods
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput)
+}
+
+// The severity of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) StorageGrowthAboveTrends() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend {
+		return v.StorageGrowthAboveTrends
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput)
+}
+
+// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) TargetResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.TargetResource }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) ThrottledRequestsSpikes() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike {
+		return v.ThrottledRequestsSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput)
+}
+
+// The type of this finding.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the finding was last updated.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshot) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshot)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshot {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshot)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket `pulumi:"topBuckets"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray{ GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket `pulumi:"topBuckets"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray{ GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike) []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod struct {
+	// The end time of the observation period.
+	EndTime string `pulumi:"endTime"`
+	// The start time of the observation period.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs and GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs struct {
+	// The end time of the observation period.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The start time of the observation period.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray and GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray{ GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray []GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput {
+	return o
+}
+
+// The end time of the observation period.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the observation period.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod) string {
+		return v.StartTime
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriod)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket `pulumi:"topBuckets"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray{ GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend) []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrend)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray{ GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket `pulumi:"topBuckets"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray{ GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike) []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevision struct {
+	// The time when the finding was created.
+	CreateTime string `pulumi:"createTime"`
+	// The resource name of the finding.
+	Name string `pulumi:"name"`
+	// The snapshot of the finding at revision creation time. Structure is documented below.
+	Snapshots []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot `pulumi:"snapshots"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionArgs and GetControlProjectIntelligenceFindingRevisionsRevisionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionArgs struct {
+	// The time when the finding was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The resource name of the finding.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The snapshot of the finding at revision creation time. Structure is documented below.
+	Snapshots GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayInput `pulumi:"snapshots"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevision)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionArray and GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionArray{ GetControlProjectIntelligenceFindingRevisionsRevisionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionArray []GetControlProjectIntelligenceFindingRevisionsRevisionInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevision)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevision)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionOutput {
+	return o
+}
+
+// The time when the finding was created.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevision) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevision) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The snapshot of the finding at revision creation time. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionOutput) Snapshots() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevision) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot {
+		return v.Snapshots
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevision)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevision {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevision)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot struct {
+	// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+	AssociatedResources []string `pulumi:"associatedResources"`
+	// The category of the finding.
+	Category string `pulumi:"category"`
+	// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+	ColdlineAndArchivalStorageOperationsSpikes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike `pulumi:"coldlineAndArchivalStorageOperationsSpikes"`
+	// The time when the finding was created.
+	CreateTime string `pulumi:"createTime"`
+	// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+	CrossRegionEgressSpikes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike `pulumi:"crossRegionEgressSpikes"`
+	// A short description of the finding.
+	Description string `pulumi:"description"`
+	// The resource name of the finding.
+	Name string `pulumi:"name"`
+	// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+	ObservationPeriods []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod `pulumi:"observationPeriods"`
+	// The severity of the finding.
+	Severity string `pulumi:"severity"`
+	// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+	StorageGrowthAboveTrends []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend `pulumi:"storageGrowthAboveTrends"`
+	// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+	TargetResource string `pulumi:"targetResource"`
+	// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+	ThrottledRequestsSpikes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike `pulumi:"throttledRequestsSpikes"`
+	// The type of this finding.
+	Type string `pulumi:"type"`
+	// The time when the finding was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs struct {
+	// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+	AssociatedResources pulumi.StringArrayInput `pulumi:"associatedResources"`
+	// The category of the finding.
+	Category pulumi.StringInput `pulumi:"category"`
+	// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+	ColdlineAndArchivalStorageOperationsSpikes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput `pulumi:"coldlineAndArchivalStorageOperationsSpikes"`
+	// The time when the finding was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+	CrossRegionEgressSpikes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayInput `pulumi:"crossRegionEgressSpikes"`
+	// A short description of the finding.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The resource name of the finding.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+	ObservationPeriods GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayInput `pulumi:"observationPeriods"`
+	// The severity of the finding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+	StorageGrowthAboveTrends GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayInput `pulumi:"storageGrowthAboveTrends"`
+	// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+	TargetResource pulumi.StringInput `pulumi:"targetResource"`
+	// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+	ThrottledRequestsSpikes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayInput `pulumi:"throttledRequestsSpikes"`
+	// The type of this finding.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time when the finding was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput {
+	return o
+}
+
+// Google Cloud resource names that are relevant to the IntelligenceFinding. This list also includes the targetResource.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) AssociatedResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []string {
+		return v.AssociatedResources
+	}).(pulumi.StringArrayOutput)
+}
+
+// The category of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in Class A or Class B operations on Coldline or Archive Cloud Storage objects. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ColdlineAndArchivalStorageOperationsSpikes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike {
+		return v.ColdlineAndArchivalStorageOperationsSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput)
+}
+
+// The time when the finding was created.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in cross-region egress from Cloud Storage. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) CrossRegionEgressSpikes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike {
+		return v.CrossRegionEgressSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput)
+}
+
+// A short description of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource name of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time interval from which the underlying data generated this IntelligenceFinding was observed. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ObservationPeriods() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod {
+		return v.ObservationPeriods
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput)
+}
+
+// The severity of the finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in storage growth (bytes or object count) that is outside the normal historical trend. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) StorageGrowthAboveTrends() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend {
+		return v.StorageGrowthAboveTrends
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput)
+}
+
+// The fully qualified resource name of the resource that this IntelligenceFinding applies to.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) TargetResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.TargetResource }).(pulumi.StringOutput)
+}
+
+// A finding about a spike in throttled requests (429 errors) within a project. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) ThrottledRequestsSpikes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike {
+		return v.ThrottledRequestsSpikes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput)
+}
+
+// The type of this finding.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the finding was last updated.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshot)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket `pulumi:"topBuckets"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket `pulumi:"topBuckets"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod struct {
+	// The end time of the observation period.
+	EndTime string `pulumi:"endTime"`
+	// The start time of the observation period.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs struct {
+	// The end time of the observation period.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The start time of the observation period.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput {
+	return o
+}
+
+// The end time of the observation period.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod) string {
+		return v.EndTime
+	}).(pulumi.StringOutput)
+}
+
+// The start time of the observation period.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod) string {
+		return v.StartTime
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriod)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket `pulumi:"topBuckets"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput `pulumi:"topBuckets"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrend)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket `pulumi:"topBuckets"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The top buckets contributing to the spike. Structure is documented below.
+	TopBuckets GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput `pulumi:"topBuckets"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The top buckets contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput) TopBuckets() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket {
+		return v.TopBuckets
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpike)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket struct {
+	// The resource name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes string `pulumi:"totalStorageGrowthBytes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs struct {
+	// The resource name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The breakdown of prefixes contributing to the spike. Structure is documented below.
+	Contributions GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput `pulumi:"contributions"`
+	// Error details if the bucket details cannot be retrieved. Structure is documented below.
+	Errors GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput `pulumi:"errors"`
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+	// The total storage growth in bytes for this bucket.
+	TotalStorageGrowthBytes pulumi.StringInput `pulumi:"totalStorageGrowthBytes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return o
+}
+
+// The resource name of the bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The breakdown of prefixes contributing to the spike. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Contributions() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution {
+		return v.Contributions
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput)
+}
+
+// Error details if the bucket details cannot be retrieved. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) Errors() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError {
+		return v.Errors
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput)
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+// The total storage growth in bytes for this bucket.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput) TotalStorageGrowthBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket) string {
+		return v.TotalStorageGrowthBytes
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucket)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix `pulumi:"topPrefixes"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs struct {
+	// A list of top prefixes contributing to the finding. Structure is documented below.
+	TopPrefixes GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput `pulumi:"topPrefixes"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return o
+}
+
+// A list of top prefixes contributing to the finding. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput) TopPrefixes() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution) []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix {
+		return v.TopPrefixes
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease float64 `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix string `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests string `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes string `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount string `pulumi:"totalOperationsCount"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs struct {
+	// The percentage increase for this prefix.
+	PercentageIncrease pulumi.Float64Input `pulumi:"percentageIncrease"`
+	// The prefix string.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// The number of throttled requests for this prefix.
+	ThrottledRequests pulumi.StringInput `pulumi:"throttledRequests"`
+	// The total egress bytes for this prefix.
+	TotalEgressBytes pulumi.StringInput `pulumi:"totalEgressBytes"`
+	// The total operations count for this prefix.
+	TotalOperationsCount pulumi.StringInput `pulumi:"totalOperationsCount"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return o
+}
+
+// The percentage increase for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) PercentageIncrease() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) float64 {
+		return v.PercentageIncrease
+	}).(pulumi.Float64Output)
+}
+
+// The prefix string.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.Prefix
+	}).(pulumi.StringOutput)
+}
+
+// The number of throttled requests for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) ThrottledRequests() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.ThrottledRequests
+	}).(pulumi.StringOutput)
+}
+
+// The total egress bytes for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) TotalEgressBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalEgressBytes
+	}).(pulumi.StringOutput)
+}
+
+// The total operations count for this prefix.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput) TotalOperationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix) string {
+		return v.TotalOperationsCount
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefix)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError struct {
+	// The error code.
+	Code int `pulumi:"code"`
+	// The error message.
+	Message string `pulumi:"message"`
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{...}
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs struct {
+	// The error code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput)
+}
+
+// GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput is an input type that accepts GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray and GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray{ GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{...} }
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput
+	ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray []GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return o
+}
+
+// The error code.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError) int {
+		return v.Code
+	}).(pulumi.IntOutput)
+}
+
+// The error message.
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput() GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) ToGetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError {
+		return vs[0].([]GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput)
 }
 
 type GetControlProjectIntelligenceFindingStorageGrowthAboveTrend struct {
@@ -30154,6 +36167,96 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingObservationPeriodInput)(nil)).Elem(), GetControlProjectIntelligenceFindingObservationPeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingObservationPeriodArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingObservationPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingStorageGrowthAboveTrendInput)(nil)).Elem(), GetControlProjectIntelligenceFindingStorageGrowthAboveTrendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingStorageGrowthAboveTrendArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingStorageGrowthAboveTrendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingStorageGrowthAboveTrendTopBucketInput)(nil)).Elem(), GetControlProjectIntelligenceFindingStorageGrowthAboveTrendTopBucketArgs{})
@@ -30576,6 +36679,96 @@ func init() {
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingObservationPeriodOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingObservationPeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotObservationPeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotCrossRegionEgressSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotObservationPeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotStorageGrowthAboveTrendTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingStorageGrowthAboveTrendOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingStorageGrowthAboveTrendArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingStorageGrowthAboveTrendTopBucketOutput{})

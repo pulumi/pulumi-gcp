@@ -35,6 +35,7 @@ type Provider struct {
 	BeyondcorpCustomEndpoint               pulumi.StringPtrOutput `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"bigQueryCustomEndpoint"`
 	BiglakeCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"biglakeCustomEndpoint"`
+	BiglakeHiveCustomEndpoint              pulumi.StringPtrOutput `pulumi:"biglakeHiveCustomEndpoint"`
 	BiglakeIcebergCustomEndpoint           pulumi.StringPtrOutput `pulumi:"biglakeIcebergCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint     pulumi.StringPtrOutput `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint       pulumi.StringPtrOutput `pulumi:"bigqueryConnectionCustomEndpoint"`
@@ -281,6 +282,7 @@ type providerArgs struct {
 	BeyondcorpCustomEndpoint               *string                      `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 *string                      `pulumi:"bigQueryCustomEndpoint"`
 	BiglakeCustomEndpoint                  *string                      `pulumi:"biglakeCustomEndpoint"`
+	BiglakeHiveCustomEndpoint              *string                      `pulumi:"biglakeHiveCustomEndpoint"`
 	BiglakeIcebergCustomEndpoint           *string                      `pulumi:"biglakeIcebergCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint     *string                      `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint       *string                      `pulumi:"bigqueryConnectionCustomEndpoint"`
@@ -498,6 +500,7 @@ type ProviderArgs struct {
 	BeyondcorpCustomEndpoint               pulumi.StringPtrInput
 	BigQueryCustomEndpoint                 pulumi.StringPtrInput
 	BiglakeCustomEndpoint                  pulumi.StringPtrInput
+	BiglakeHiveCustomEndpoint              pulumi.StringPtrInput
 	BiglakeIcebergCustomEndpoint           pulumi.StringPtrInput
 	BigqueryAnalyticsHubCustomEndpoint     pulumi.StringPtrInput
 	BigqueryConnectionCustomEndpoint       pulumi.StringPtrInput
@@ -820,6 +823,10 @@ func (o ProviderOutput) BigQueryCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) BiglakeCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BiglakeCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BiglakeHiveCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BiglakeHiveCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) BiglakeIcebergCustomEndpoint() pulumi.StringPtrOutput {

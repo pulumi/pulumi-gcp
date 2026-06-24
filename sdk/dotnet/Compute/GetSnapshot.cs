@@ -218,6 +218,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<string> Licenses;
         public readonly bool? MostRecent;
         public readonly string? Name;
+        public readonly ImmutableArray<Outputs.GetSnapshotParamResult> Params;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
@@ -261,6 +262,8 @@ namespace Pulumi.Gcp.Compute
 
             string? name,
 
+            ImmutableArray<Outputs.GetSnapshotParamResult> @params,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -299,6 +302,7 @@ namespace Pulumi.Gcp.Compute
             Licenses = licenses;
             MostRecent = mostRecent;
             Name = name;
+            Params = @params;
             Project = project;
             PulumiLabels = pulumiLabels;
             SelfLink = selfLink;

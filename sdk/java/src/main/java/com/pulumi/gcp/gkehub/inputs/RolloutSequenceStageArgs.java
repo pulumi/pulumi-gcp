@@ -55,14 +55,16 @@ public final class RolloutSequenceStageArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Soak time after upgrading all the clusters in the stage, specified in seconds.
+     * Soak time after upgrading all the clusters in the stage.
+     * Has to be specified in seconds, minutes, hours or days.
      * 
      */
     @Import(name="soakDuration")
     private @Nullable Output<String> soakDuration;
 
     /**
-     * @return Soak time after upgrading all the clusters in the stage, specified in seconds.
+     * @return Soak time after upgrading all the clusters in the stage.
+     * Has to be specified in seconds, minutes, hours or days.
      * 
      */
     public Optional<Output<String>> soakDuration() {
@@ -155,7 +157,8 @@ public final class RolloutSequenceStageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param soakDuration Soak time after upgrading all the clusters in the stage, specified in seconds.
+         * @param soakDuration Soak time after upgrading all the clusters in the stage.
+         * Has to be specified in seconds, minutes, hours or days.
          * 
          * @return builder
          * 
@@ -166,7 +169,8 @@ public final class RolloutSequenceStageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param soakDuration Soak time after upgrading all the clusters in the stage, specified in seconds.
+         * @param soakDuration Soak time after upgrading all the clusters in the stage.
+         * Has to be specified in seconds, minutes, hours or days.
          * 
          * @return builder
          * 

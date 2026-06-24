@@ -6,13 +6,37 @@ package com.pulumi.gcp.networkservices.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs;
 import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigEgressArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AgentGatewayNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AgentGatewayNetworkConfigArgs Empty = new AgentGatewayNetworkConfigArgs();
+
+    /**
+     * DNS peering configuration for the AgentGateway. When set, the
+     * AgentGateway will resolve queries for the configured `domains` via
+     * Cloud DNS in the specified `targetNetwork`.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dnsPeeringConfig")
+    private @Nullable Output<AgentGatewayNetworkConfigDnsPeeringConfigArgs> dnsPeeringConfig;
+
+    /**
+     * @return DNS peering configuration for the AgentGateway. When set, the
+     * AgentGateway will resolve queries for the configured `domains` via
+     * Cloud DNS in the specified `targetNetwork`.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AgentGatewayNetworkConfigDnsPeeringConfigArgs>> dnsPeeringConfig() {
+        return Optional.ofNullable(this.dnsPeeringConfig);
+    }
 
     /**
      * Optional PSC-Interface network attachment for connectivity to your
@@ -36,6 +60,7 @@ public final class AgentGatewayNetworkConfigArgs extends com.pulumi.resources.Re
     private AgentGatewayNetworkConfigArgs() {}
 
     private AgentGatewayNetworkConfigArgs(AgentGatewayNetworkConfigArgs $) {
+        this.dnsPeeringConfig = $.dnsPeeringConfig;
         this.egress = $.egress;
     }
 
@@ -55,6 +80,33 @@ public final class AgentGatewayNetworkConfigArgs extends com.pulumi.resources.Re
 
         public Builder(AgentGatewayNetworkConfigArgs defaults) {
             $ = new AgentGatewayNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dnsPeeringConfig DNS peering configuration for the AgentGateway. When set, the
+         * AgentGateway will resolve queries for the configured `domains` via
+         * Cloud DNS in the specified `targetNetwork`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPeeringConfig(@Nullable Output<AgentGatewayNetworkConfigDnsPeeringConfigArgs> dnsPeeringConfig) {
+            $.dnsPeeringConfig = dnsPeeringConfig;
+            return this;
+        }
+
+        /**
+         * @param dnsPeeringConfig DNS peering configuration for the AgentGateway. When set, the
+         * AgentGateway will resolve queries for the configured `domains` via
+         * Cloud DNS in the specified `targetNetwork`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPeeringConfig(AgentGatewayNetworkConfigDnsPeeringConfigArgs dnsPeeringConfig) {
+            return dnsPeeringConfig(Output.of(dnsPeeringConfig));
         }
 
         /**

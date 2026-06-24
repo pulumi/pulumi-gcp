@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_creation_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, autopilot_cluster_policy_configs=None, autopilot_privileged_admissions=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, dataplane_optimization_mode=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_policy=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, ignore_node_count_changes=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, managed_machine_learning_diagnostics_configs=None, managed_opentelemetry_configs=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_creation_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, rbac_binding_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, secret_sync_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, skip_node_pool_refresh=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -73,6 +73,9 @@ class GetClusterResult:
         if datapath_provider and not isinstance(datapath_provider, str):
             raise TypeError("Expected argument 'datapath_provider' to be a str")
         pulumi.set(__self__, "datapath_provider", datapath_provider)
+        if dataplane_optimization_mode and not isinstance(dataplane_optimization_mode, str):
+            raise TypeError("Expected argument 'dataplane_optimization_mode' to be a str")
+        pulumi.set(__self__, "dataplane_optimization_mode", dataplane_optimization_mode)
         if default_max_pods_per_node and not isinstance(default_max_pods_per_node, int):
             raise TypeError("Expected argument 'default_max_pods_per_node' to be a int")
         pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
@@ -151,6 +154,9 @@ class GetClusterResult:
         if identity_service_configs and not isinstance(identity_service_configs, list):
             raise TypeError("Expected argument 'identity_service_configs' to be a list")
         pulumi.set(__self__, "identity_service_configs", identity_service_configs)
+        if ignore_node_count_changes and not isinstance(ignore_node_count_changes, bool):
+            raise TypeError("Expected argument 'ignore_node_count_changes' to be a bool")
+        pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if in_transit_encryption_config and not isinstance(in_transit_encryption_config, str):
             raise TypeError("Expected argument 'in_transit_encryption_config' to be a str")
         pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
@@ -298,6 +304,9 @@ class GetClusterResult:
         if services_ipv4_cidr and not isinstance(services_ipv4_cidr, str):
             raise TypeError("Expected argument 'services_ipv4_cidr' to be a str")
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
+        if skip_node_pool_refresh and not isinstance(skip_node_pool_refresh, bool):
+            raise TypeError("Expected argument 'skip_node_pool_refresh' to be a bool")
+        pulumi.set(__self__, "skip_node_pool_refresh", skip_node_pool_refresh)
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -394,6 +403,11 @@ class GetClusterResult:
     @pulumi.getter(name="datapathProvider")
     def datapath_provider(self) -> _builtins.str:
         return pulumi.get(self, "datapath_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="dataplaneOptimizationMode")
+    def dataplane_optimization_mode(self) -> _builtins.str:
+        return pulumi.get(self, "dataplane_optimization_mode")
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
@@ -527,6 +541,11 @@ class GetClusterResult:
     @pulumi.getter(name="identityServiceConfigs")
     def identity_service_configs(self) -> Sequence['outputs.GetClusterIdentityServiceConfigResult']:
         return pulumi.get(self, "identity_service_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> _builtins.bool:
+        return pulumi.get(self, "ignore_node_count_changes")
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
@@ -774,6 +793,11 @@ class GetClusterResult:
         return pulumi.get(self, "services_ipv4_cidr")
 
     @_builtins.property
+    @pulumi.getter(name="skipNodePoolRefresh")
+    def skip_node_pool_refresh(self) -> _builtins.bool:
+        return pulumi.get(self, "skip_node_pool_refresh")
+
+    @_builtins.property
     @pulumi.getter
     def subnetwork(self) -> _builtins.str:
         return pulumi.get(self, "subnetwork")
@@ -830,6 +854,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             cost_management_configs=self.cost_management_configs,
             database_encryptions=self.database_encryptions,
             datapath_provider=self.datapath_provider,
+            dataplane_optimization_mode=self.dataplane_optimization_mode,
             default_max_pods_per_node=self.default_max_pods_per_node,
             default_snat_statuses=self.default_snat_statuses,
             deletion_policy=self.deletion_policy,
@@ -856,6 +881,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             gke_auto_upgrade_configs=self.gke_auto_upgrade_configs,
             id=self.id,
             identity_service_configs=self.identity_service_configs,
+            ignore_node_count_changes=self.ignore_node_count_changes,
             in_transit_encryption_config=self.in_transit_encryption_config,
             initial_node_count=self.initial_node_count,
             ip_allocation_policies=self.ip_allocation_policies,
@@ -905,6 +931,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             self_link=self.self_link,
             service_external_ips_configs=self.service_external_ips_configs,
             services_ipv4_cidr=self.services_ipv4_cidr,
+            skip_node_pool_refresh=self.skip_node_pool_refresh,
             subnetwork=self.subnetwork,
             tpu_configs=self.tpu_configs,
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
@@ -981,6 +1008,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
         cost_management_configs=pulumi.get(__ret__, 'cost_management_configs'),
         database_encryptions=pulumi.get(__ret__, 'database_encryptions'),
         datapath_provider=pulumi.get(__ret__, 'datapath_provider'),
+        dataplane_optimization_mode=pulumi.get(__ret__, 'dataplane_optimization_mode'),
         default_max_pods_per_node=pulumi.get(__ret__, 'default_max_pods_per_node'),
         default_snat_statuses=pulumi.get(__ret__, 'default_snat_statuses'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
@@ -1007,6 +1035,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
         gke_auto_upgrade_configs=pulumi.get(__ret__, 'gke_auto_upgrade_configs'),
         id=pulumi.get(__ret__, 'id'),
         identity_service_configs=pulumi.get(__ret__, 'identity_service_configs'),
+        ignore_node_count_changes=pulumi.get(__ret__, 'ignore_node_count_changes'),
         in_transit_encryption_config=pulumi.get(__ret__, 'in_transit_encryption_config'),
         initial_node_count=pulumi.get(__ret__, 'initial_node_count'),
         ip_allocation_policies=pulumi.get(__ret__, 'ip_allocation_policies'),
@@ -1056,6 +1085,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         service_external_ips_configs=pulumi.get(__ret__, 'service_external_ips_configs'),
         services_ipv4_cidr=pulumi.get(__ret__, 'services_ipv4_cidr'),
+        skip_node_pool_refresh=pulumi.get(__ret__, 'skip_node_pool_refresh'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         tpu_configs=pulumi.get(__ret__, 'tpu_configs'),
         tpu_ipv4_cidr_block=pulumi.get(__ret__, 'tpu_ipv4_cidr_block'),
@@ -1129,6 +1159,7 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         cost_management_configs=pulumi.get(__response__, 'cost_management_configs'),
         database_encryptions=pulumi.get(__response__, 'database_encryptions'),
         datapath_provider=pulumi.get(__response__, 'datapath_provider'),
+        dataplane_optimization_mode=pulumi.get(__response__, 'dataplane_optimization_mode'),
         default_max_pods_per_node=pulumi.get(__response__, 'default_max_pods_per_node'),
         default_snat_statuses=pulumi.get(__response__, 'default_snat_statuses'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
@@ -1155,6 +1186,7 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         gke_auto_upgrade_configs=pulumi.get(__response__, 'gke_auto_upgrade_configs'),
         id=pulumi.get(__response__, 'id'),
         identity_service_configs=pulumi.get(__response__, 'identity_service_configs'),
+        ignore_node_count_changes=pulumi.get(__response__, 'ignore_node_count_changes'),
         in_transit_encryption_config=pulumi.get(__response__, 'in_transit_encryption_config'),
         initial_node_count=pulumi.get(__response__, 'initial_node_count'),
         ip_allocation_policies=pulumi.get(__response__, 'ip_allocation_policies'),
@@ -1204,6 +1236,7 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         self_link=pulumi.get(__response__, 'self_link'),
         service_external_ips_configs=pulumi.get(__response__, 'service_external_ips_configs'),
         services_ipv4_cidr=pulumi.get(__response__, 'services_ipv4_cidr'),
+        skip_node_pool_refresh=pulumi.get(__response__, 'skip_node_pool_refresh'),
         subnetwork=pulumi.get(__response__, 'subnetwork'),
         tpu_configs=pulumi.get(__response__, 'tpu_configs'),
         tpu_ipv4_cidr_block=pulumi.get(__response__, 'tpu_ipv4_cidr_block'),

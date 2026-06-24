@@ -21,6 +21,7 @@ import com.pulumi.gcp.ces.outputs.ToolOpenApiTool;
 import com.pulumi.gcp.ces.outputs.ToolPythonFunction;
 import com.pulumi.gcp.ces.outputs.ToolRemoteAgentTool;
 import com.pulumi.gcp.ces.outputs.ToolSystemTool;
+import com.pulumi.gcp.ces.outputs.ToolToolFakeConfig;
 import com.pulumi.gcp.ces.outputs.ToolWidgetTool;
 import java.lang.String;
 import java.util.List;
@@ -1041,6 +1042,38 @@ public class Tool extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ToolSystemTool>> systemTools() {
         return this.systemTools;
+    }
+    /**
+     * The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     * 
+     */
+    @Export(name="timeout", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> timeout;
+
+    /**
+     * @return The timeout for the tool execution. If not set, the default timeout is 30
+     * seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
+     * 
+     */
+    public Output<Optional<String>> timeout() {
+        return Codegen.optional(this.timeout);
+    }
+    /**
+     * Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="toolFakeConfig", refs={ToolToolFakeConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ToolToolFakeConfig> toolFakeConfig;
+
+    /**
+     * @return Configuration for tool behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolToolFakeConfig>> toolFakeConfig() {
+        return Codegen.optional(this.toolFakeConfig);
     }
     /**
      * The ID to use for the tool, which will become the final component of

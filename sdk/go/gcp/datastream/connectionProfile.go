@@ -585,8 +585,11 @@ import (
 //					ReplicaSet:               pulumi.String("myReplicaSet"),
 //					Username:                 pulumi.String("mongoUser"),
 //					Password:                 pulumi.String("mongoPassword"),
-//					Database:                 "myDatabase",
-//					StandardConnectionFormat: map[string]interface{}{}[0],
+//					StandardConnectionFormat: &datastream.ConnectionProfileMongodbProfileStandardConnectionFormatArgs{},
+//					AdditionalOptions: pulumi.StringMap{
+//						"readPreference":     pulumi.String("secondary"),
+//						"readPreferenceTags": pulumi.String("nodeType:ANALYTICS"),
+//					},
 //				},
 //			})
 //			if err != nil {

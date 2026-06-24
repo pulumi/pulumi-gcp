@@ -996,6 +996,125 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Backend Service Ha Policy Internal Lb
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointList;
+ * import com.pulumi.gcp.compute.NetworkEndpointListArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("rbs-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("rbs-subnet")
+ *             .ipCidrRange("10.1.2.0/24")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-12")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var endpoint_instance = new Instance("endpoint-instance", InstanceArgs.builder()
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name("rbs-instance")
+ *             .machineType("e2-medium")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .autoDelete(true)
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(myImage.selfLink())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
+ *             .name("rbs-neg")
+ *             .networkEndpointType("GCE_VM_IP_DEDICATED_BACKEND")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var endpoint = new NetworkEndpointList("endpoint", NetworkEndpointListArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .networkEndpoints(NetworkEndpointListNetworkEndpointArgs.builder()
+ *                 .instance(endpoint_instance.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("region-service")
+ *             .protocol("UNSPECIFIED")
+ *             .loadBalancingScheme("INTERNAL")
+ *             .network(default_.id())
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(neg.selfLink())
+ *                 .balancingMode("CONNECTION")
+ *                 .build())
+ *             .haPolicy(RegionBackendServiceHaPolicyArgs.builder()
+ *                 .fastIpMove("GARP_RA")
+ *                 .leader(RegionBackendServiceHaPolicyLeaderArgs.builder()
+ *                     .backendGroup(neg.selfLink())
+ *                     .networkEndpoint(RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs.builder()
+ *                         .instance(endpoint_instance.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .connectionDrainingTimeoutSec(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Region Backend Service Tls Settings
  * 
  * <pre>

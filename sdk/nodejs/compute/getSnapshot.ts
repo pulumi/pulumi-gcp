@@ -90,6 +90,7 @@ export interface GetSnapshotResult {
     readonly licenses: string[];
     readonly mostRecent?: boolean;
     readonly name?: string;
+    readonly params: outputs.compute.GetSnapshotParam[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly selfLink: string;

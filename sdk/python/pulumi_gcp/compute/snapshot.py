@@ -27,6 +27,7 @@ class SnapshotArgs:
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['SnapshotParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_encryption_key: pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']] = None,
                  snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -63,6 +64,8 @@ class SnapshotArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['SnapshotParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
@@ -99,6 +102,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if snapshot_encryption_key is not None:
@@ -206,6 +211,19 @@ class SnapshotArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['SnapshotParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['SnapshotParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
@@ -333,6 +351,7 @@ class _SnapshotState:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['SnapshotParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
@@ -382,6 +401,8 @@ class _SnapshotState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['SnapshotParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -435,6 +456,8 @@ class _SnapshotState:
             pulumi.set(__self__, "licenses", licenses)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -617,6 +640,19 @@ class _SnapshotState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['SnapshotParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['SnapshotParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -790,6 +826,7 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
                  snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,6 +1001,8 @@ class Snapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
@@ -1153,6 +1192,7 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
                  snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1176,6 +1216,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
             __props__.__dict__["snapshot_type"] = snapshot_type
@@ -1216,6 +1257,7 @@ class Snapshot(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1269,6 +1311,8 @@ class Snapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1315,6 +1359,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["licenses"] = licenses
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
@@ -1439,6 +1484,15 @@ class Snapshot(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.SnapshotParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

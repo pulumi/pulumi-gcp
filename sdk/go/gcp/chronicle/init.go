@@ -39,10 +39,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Feed{}
 	case "gcp:chronicle/findingsRefinement:FindingsRefinement":
 		r = &FindingsRefinement{}
+	case "gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment":
+		r = &FindingsRefinementDeployment{}
 	case "gcp:chronicle/nativeDashboard:NativeDashboard":
 		r = &NativeDashboard{}
 	case "gcp:chronicle/parser:Parser":
 		r = &Parser{}
+	case "gcp:chronicle/parserExtension:ParserExtension":
+		r = &ParserExtension{}
 	case "gcp:chronicle/referenceList:ReferenceList":
 		r = &ReferenceList{}
 	case "gcp:chronicle/retrohunt:Retrohunt":
@@ -115,12 +119,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"chronicle/findingsRefinementDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"chronicle/nativeDashboard",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/parser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/parserExtension",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

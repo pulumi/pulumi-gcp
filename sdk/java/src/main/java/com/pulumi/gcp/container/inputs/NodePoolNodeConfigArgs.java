@@ -27,6 +27,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSecondaryBootDiskArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWindowsNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
@@ -719,6 +720,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    @Import(name="taintConfig")
+    private @Nullable Output<NodePoolNodeConfigTaintConfigArgs> taintConfig;
+
+    /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigTaintConfigArgs>> taintConfig() {
+        return Optional.ofNullable(this.taintConfig);
+    }
+
+    /**
      * List of Kubernetes taints to be applied to each node.
      * 
      */
@@ -811,6 +827,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.spot = $.spot;
         this.storagePools = $.storagePools;
         this.tags = $.tags;
+        this.taintConfig = $.taintConfig;
         this.taints = $.taints;
         this.windowsNodeConfig = $.windowsNodeConfig;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
@@ -1847,6 +1864,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param taintConfig Taint configuration for the node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taintConfig(@Nullable Output<NodePoolNodeConfigTaintConfigArgs> taintConfig) {
+            $.taintConfig = taintConfig;
+            return this;
+        }
+
+        /**
+         * @param taintConfig Taint configuration for the node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taintConfig(NodePoolNodeConfigTaintConfigArgs taintConfig) {
+            return taintConfig(Output.of(taintConfig));
         }
 
         /**

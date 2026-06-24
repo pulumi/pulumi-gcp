@@ -500,6 +500,75 @@ import * as utilities from "../utilities";
  *     connectionDrainingTimeoutSec: 0,
  * });
  * ```
+ * ### Region Backend Service Ha Policy Internal Lb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "rbs-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "rbs-subnet",
+ *     ipCidrRange: "10.1.2.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-12",
+ *     project: "debian-cloud",
+ * });
+ * const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "rbs-instance",
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         autoDelete: true,
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ * });
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     name: "rbs-neg",
+ *     networkEndpointType: "GCE_VM_IP_DEDICATED_BACKEND",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     zone: "us-central1-a",
+ * });
+ * const endpoint = new gcp.compute.NetworkEndpointList("endpoint", {
+ *     networkEndpointGroup: neg.name,
+ *     networkEndpoints: [{
+ *         instance: endpoint_instance.name,
+ *     }],
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     protocol: "UNSPECIFIED",
+ *     loadBalancingScheme: "INTERNAL",
+ *     network: _default.id,
+ *     backends: [{
+ *         group: neg.selfLink,
+ *         balancingMode: "CONNECTION",
+ *     }],
+ *     haPolicy: {
+ *         fastIpMove: "GARP_RA",
+ *         leader: {
+ *             backendGroup: neg.selfLink,
+ *             networkEndpoint: {
+ *                 instance: endpoint_instance.name,
+ *             },
+ *         },
+ *     },
+ *     connectionDrainingTimeoutSec: 0,
+ * });
+ * ```
  * ### Region Backend Service Tls Settings
  *
  * ```typescript

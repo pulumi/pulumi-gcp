@@ -295,6 +295,8 @@ __all__ = [
     'ToolRemoteAgentToolAgentCardSkill',
     'ToolRemoteAgentToolAgentCardSupportedInterface',
     'ToolSystemTool',
+    'ToolToolFakeConfig',
+    'ToolToolFakeConfigCodeBlock',
     'ToolWidgetTool',
     'ToolWidgetToolDataMapping',
     'ToolWidgetToolDataMappingPythonFunction',
@@ -320,6 +322,8 @@ __all__ = [
     'ToolsetOpenApiToolsetServiceDirectoryConfig',
     'ToolsetOpenApiToolsetTlsConfig',
     'ToolsetOpenApiToolsetTlsConfigCaCert',
+    'ToolsetToolFakeConfig',
+    'ToolsetToolFakeConfigCodeBlock',
 ]
 
 @pulumi.output_type
@@ -21818,6 +21822,93 @@ class ToolSystemTool(dict):
 
 
 @pulumi.output_type
+class ToolToolFakeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "codeBlock":
+            suggest = "code_block"
+        elif key == "enableFakeMode":
+            suggest = "enable_fake_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolToolFakeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolToolFakeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolToolFakeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code_block: Optional['outputs.ToolToolFakeConfigCodeBlock'] = None,
+                 enable_fake_mode: Optional[_builtins.bool] = None):
+        """
+        :param 'ToolToolFakeConfigCodeBlockArgs' code_block: Code block which will be executed instead of a real tool call.
+               Structure is documented below.
+        :param _builtins.bool enable_fake_mode: Whether the tool is using fake mode.
+        """
+        if code_block is not None:
+            pulumi.set(__self__, "code_block", code_block)
+        if enable_fake_mode is not None:
+            pulumi.set(__self__, "enable_fake_mode", enable_fake_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="codeBlock")
+    def code_block(self) -> Optional['outputs.ToolToolFakeConfigCodeBlock']:
+        """
+        Code block which will be executed instead of a real tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "code_block")
+
+    @_builtins.property
+    @pulumi.getter(name="enableFakeMode")
+    def enable_fake_mode(self) -> Optional[_builtins.bool]:
+        """
+        Whether the tool is using fake mode.
+        """
+        return pulumi.get(self, "enable_fake_mode")
+
+
+@pulumi.output_type
+class ToolToolFakeConfigCodeBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolToolFakeConfigCodeBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolToolFakeConfigCodeBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolToolFakeConfigCodeBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str):
+        """
+        :param _builtins.str python_code: Python code which will be invoked in tool fake mode.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        Python code which will be invoked in tool fake mode.
+        """
+        return pulumi.get(self, "python_code")
+
+
+@pulumi.output_type
 class ToolWidgetTool(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23777,5 +23868,92 @@ class ToolsetOpenApiToolsetTlsConfigCaCert(dict):
         can be used to disambiguate the custom CA certificates.
         """
         return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class ToolsetToolFakeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "codeBlock":
+            suggest = "code_block"
+        elif key == "enableFakeMode":
+            suggest = "enable_fake_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetToolFakeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetToolFakeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetToolFakeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code_block: Optional['outputs.ToolsetToolFakeConfigCodeBlock'] = None,
+                 enable_fake_mode: Optional[_builtins.bool] = None):
+        """
+        :param 'ToolsetToolFakeConfigCodeBlockArgs' code_block: Code block which will be executed instead of a real tool call.
+               Structure is documented below.
+        :param _builtins.bool enable_fake_mode: Whether the tool is using fake mode.
+        """
+        if code_block is not None:
+            pulumi.set(__self__, "code_block", code_block)
+        if enable_fake_mode is not None:
+            pulumi.set(__self__, "enable_fake_mode", enable_fake_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="codeBlock")
+    def code_block(self) -> Optional['outputs.ToolsetToolFakeConfigCodeBlock']:
+        """
+        Code block which will be executed instead of a real tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "code_block")
+
+    @_builtins.property
+    @pulumi.getter(name="enableFakeMode")
+    def enable_fake_mode(self) -> Optional[_builtins.bool]:
+        """
+        Whether the tool is using fake mode.
+        """
+        return pulumi.get(self, "enable_fake_mode")
+
+
+@pulumi.output_type
+class ToolsetToolFakeConfigCodeBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetToolFakeConfigCodeBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetToolFakeConfigCodeBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetToolFakeConfigCodeBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str):
+        """
+        :param _builtins.str python_code: Python code which will be invoked in tool fake mode.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        Python code which will be invoked in tool fake mode.
+        """
+        return pulumi.get(self, "python_code")
 
 

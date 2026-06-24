@@ -91,6 +91,50 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// ### Biglake Iceberg Catalog Biglake
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultBucket = new Gcp.Storage.Bucket("default_bucket", new()
+    ///     {
+    ///         Name = "my_iceberg_catalog-default",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var restrictedBucket = new Gcp.Storage.Bucket("restricted_bucket", new()
+    ///     {
+    ///         Name = "my_iceberg_catalog-restricted",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var myIcebergCatalog = new Gcp.BigLake.IcebergCatalog("my_iceberg_catalog", new()
+    ///     {
+    ///         Name = "my_iceberg_catalog",
+    ///         CatalogType = "CATALOG_TYPE_BIGLAKE",
+    ///         CredentialMode = "CREDENTIAL_MODE_VENDED_CREDENTIALS",
+    ///         DefaultLocation = defaultBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         RestrictedLocationsConfig = new Gcp.BigLake.Inputs.IcebergCatalogRestrictedLocationsConfigArgs
+    ///         {
+    ///             RestrictedLocations = new[]
+    ///             {
+    ///                 defaultBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///                 restrictedBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -118,8 +162,8 @@ namespace Pulumi.Gcp.BigLake
         public Output<string> BiglakeServiceAccount { get; private set; } = null!;
 
         /// <summary>
-        /// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        /// The catalog type of the IcebergCatalog.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         /// </summary>
         [Output("catalogType")]
         public Output<string> CatalogType { get; private set; } = null!;
@@ -138,7 +182,9 @@ namespace Pulumi.Gcp.BigLake
         public Output<string> CredentialMode { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        /// The default storage location for the catalog, e.g., `gs://my-bucket`.
+        /// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        /// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         /// </summary>
         [Output("defaultLocation")]
         public Output<string> DefaultLocation { get; private set; } = null!;
@@ -184,6 +230,14 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Output("replicas")]
         public Output<ImmutableArray<Outputs.IcebergCatalogReplica>> Replicas { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for the additional GCS locations that are permitted for use
+        /// by resources within this catalog.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restrictedLocationsConfig")]
+        public Output<Outputs.IcebergCatalogRestrictedLocationsConfig> RestrictedLocationsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `Nam4` or `Us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
@@ -244,8 +298,8 @@ namespace Pulumi.Gcp.BigLake
     public sealed class IcebergCatalogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        /// The catalog type of the IcebergCatalog.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         /// </summary>
         [Input("catalogType", required: true)]
         public Input<string> CatalogType { get; set; } = null!;
@@ -256,6 +310,14 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Input("credentialMode")]
         public Input<string>? CredentialMode { get; set; }
+
+        /// <summary>
+        /// The default storage location for the catalog, e.g., `gs://my-bucket`.
+        /// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        /// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
+        /// </summary>
+        [Input("defaultLocation")]
+        public Input<string>? DefaultLocation { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -292,6 +354,14 @@ namespace Pulumi.Gcp.BigLake
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Configuration for the additional GCS locations that are permitted for use
+        /// by resources within this catalog.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restrictedLocationsConfig")]
+        public Input<Inputs.IcebergCatalogRestrictedLocationsConfigArgs>? RestrictedLocationsConfig { get; set; }
+
         public IcebergCatalogArgs()
         {
         }
@@ -307,8 +377,8 @@ namespace Pulumi.Gcp.BigLake
         public Input<string>? BiglakeServiceAccount { get; set; }
 
         /// <summary>
-        /// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        /// The catalog type of the IcebergCatalog.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         /// </summary>
         [Input("catalogType")]
         public Input<string>? CatalogType { get; set; }
@@ -327,7 +397,9 @@ namespace Pulumi.Gcp.BigLake
         public Input<string>? CredentialMode { get; set; }
 
         /// <summary>
-        /// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        /// The default storage location for the catalog, e.g., `gs://my-bucket`.
+        /// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        /// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         /// </summary>
         [Input("defaultLocation")]
         public Input<string>? DefaultLocation { get; set; }
@@ -379,6 +451,14 @@ namespace Pulumi.Gcp.BigLake
             get => _replicas ?? (_replicas = new InputList<Inputs.IcebergCatalogReplicaGetArgs>());
             set => _replicas = value;
         }
+
+        /// <summary>
+        /// Configuration for the additional GCS locations that are permitted for use
+        /// by resources within this catalog.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restrictedLocationsConfig")]
+        public Input<Inputs.IcebergCatalogRestrictedLocationsConfigGetArgs>? RestrictedLocationsConfig { get; set; }
 
         [Input("storageRegions")]
         private InputList<string>? _storageRegions;

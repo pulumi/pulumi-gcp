@@ -275,6 +275,30 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> CallbackUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Optionally specify a static consumer key for the developer app's credential.
+        /// If not set, the API auto-generates a key. The consumer key must be unique
+        /// across all developer apps in an organization. Changing this field forces the
+        /// resource to be recreated.
+        /// This is a write-only input used at create time: the provider creates the
+        /// credential with this key via the keys API and removes the auto-generated
+        /// one. The effective key is exposed in the `Credentials` output.
+        /// </summary>
+        [Output("consumerKey")]
+        public Output<string?> ConsumerKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Optionally specify a static consumer secret for the developer app's
+        /// credential. Required if `ConsumerKey` is specified. If not set, the API
+        /// auto-generates a secret. Changing this field forces the resource to be
+        /// recreated.
+        /// This is a write-only input used at create time; the effective secret is
+        /// exposed in the `Credentials` output.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        [Output("consumerSecret")]
+        public Output<string?> ConsumerSecret { get; private set; } = null!;
+
+        /// <summary>
         /// Time at which the developer was created in milliseconds since epoch.
         /// </summary>
         [Output("createdAt")]
@@ -377,6 +401,10 @@ namespace Pulumi.Gcp.Apigee
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "consumerSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -437,6 +465,40 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("callbackUrl", required: true)]
         public Input<string> CallbackUrl { get; set; } = null!;
+
+        /// <summary>
+        /// Optionally specify a static consumer key for the developer app's credential.
+        /// If not set, the API auto-generates a key. The consumer key must be unique
+        /// across all developer apps in an organization. Changing this field forces the
+        /// resource to be recreated.
+        /// This is a write-only input used at create time: the provider creates the
+        /// credential with this key via the keys API and removes the auto-generated
+        /// one. The effective key is exposed in the `Credentials` output.
+        /// </summary>
+        [Input("consumerKey")]
+        public Input<string>? ConsumerKey { get; set; }
+
+        [Input("consumerSecret")]
+        private Input<string>? _consumerSecret;
+
+        /// <summary>
+        /// Optionally specify a static consumer secret for the developer app's
+        /// credential. Required if `ConsumerKey` is specified. If not set, the API
+        /// auto-generates a secret. Changing this field forces the resource to be
+        /// recreated.
+        /// This is a write-only input used at create time; the effective secret is
+        /// exposed in the `Credentials` output.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? ConsumerSecret
+        {
+            get => _consumerSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _consumerSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -550,6 +612,40 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("callbackUrl")]
         public Input<string>? CallbackUrl { get; set; }
+
+        /// <summary>
+        /// Optionally specify a static consumer key for the developer app's credential.
+        /// If not set, the API auto-generates a key. The consumer key must be unique
+        /// across all developer apps in an organization. Changing this field forces the
+        /// resource to be recreated.
+        /// This is a write-only input used at create time: the provider creates the
+        /// credential with this key via the keys API and removes the auto-generated
+        /// one. The effective key is exposed in the `Credentials` output.
+        /// </summary>
+        [Input("consumerKey")]
+        public Input<string>? ConsumerKey { get; set; }
+
+        [Input("consumerSecret")]
+        private Input<string>? _consumerSecret;
+
+        /// <summary>
+        /// Optionally specify a static consumer secret for the developer app's
+        /// credential. Required if `ConsumerKey` is specified. If not set, the API
+        /// auto-generates a secret. Changing this field forces the resource to be
+        /// recreated.
+        /// This is a write-only input used at create time; the effective secret is
+        /// exposed in the `Credentials` output.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? ConsumerSecret
+        {
+            get => _consumerSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _consumerSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Time at which the developer was created in milliseconds since epoch.

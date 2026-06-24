@@ -144,6 +144,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    declare public readonly ignoreNodeCountChanges: pulumi.Output<boolean | undefined>;
+    /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -197,8 +201,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly networkConfig: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
     /**
-     * Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      */
     declare public readonly nodeConfig: pulumi.Output<outputs.container.NodePoolNodeConfig>;
     /**
@@ -268,6 +271,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["autoscaling"] = state?.autoscaling;
             resourceInputs["cluster"] = state?.cluster;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["ignoreNodeCountChanges"] = state?.ignoreNodeCountChanges;
             resourceInputs["initialNodeCount"] = state?.initialNodeCount;
             resourceInputs["instanceGroupUrls"] = state?.instanceGroupUrls;
             resourceInputs["location"] = state?.location;
@@ -295,6 +299,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["autoscaling"] = args?.autoscaling;
             resourceInputs["cluster"] = args?.cluster;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["ignoreNodeCountChanges"] = args?.ignoreNodeCountChanges;
             resourceInputs["initialNodeCount"] = args?.initialNodeCount;
             resourceInputs["location"] = args?.location;
             resourceInputs["management"] = args?.management;
@@ -346,6 +351,10 @@ export interface NodePoolState {
      * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    ignoreNodeCountChanges?: pulumi.Input<boolean | undefined>;
     /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -400,8 +409,7 @@ export interface NodePoolState {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig | undefined>;
     /**
-     * Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig | undefined>;
     /**
@@ -483,6 +491,10 @@ export interface NodePoolArgs {
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
+     * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+     */
+    ignoreNodeCountChanges?: pulumi.Input<boolean | undefined>;
+    /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -528,8 +540,7 @@ export interface NodePoolArgs {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig | undefined>;
     /**
-     * Parameters used in creating the node pool. See
-     * gcp.container.Cluster for schema.
+     * Parameters used in creating the node pool. Structure is documented below. See gcp.container.Cluster for exact schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig | undefined>;
     /**

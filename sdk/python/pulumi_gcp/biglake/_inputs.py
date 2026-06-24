@@ -17,12 +17,20 @@ from .. import _utilities
 __all__ = [
     'DatabaseHiveOptionsArgs',
     'DatabaseHiveOptionsArgsDict',
+    'HiveCatalogIamBindingConditionArgs',
+    'HiveCatalogIamBindingConditionArgsDict',
+    'HiveCatalogIamMemberConditionArgs',
+    'HiveCatalogIamMemberConditionArgsDict',
+    'HiveCatalogReplicaArgs',
+    'HiveCatalogReplicaArgsDict',
     'IcebergCatalogIamBindingConditionArgs',
     'IcebergCatalogIamBindingConditionArgsDict',
     'IcebergCatalogIamMemberConditionArgs',
     'IcebergCatalogIamMemberConditionArgsDict',
     'IcebergCatalogReplicaArgs',
     'IcebergCatalogReplicaArgsDict',
+    'IcebergCatalogRestrictedLocationsConfigArgs',
+    'IcebergCatalogRestrictedLocationsConfigArgsDict',
     'IcebergNamespaceIamBindingConditionArgs',
     'IcebergNamespaceIamBindingConditionArgsDict',
     'IcebergNamespaceIamMemberConditionArgs',
@@ -39,6 +47,10 @@ __all__ = [
     'IcebergTableSchemaArgsDict',
     'IcebergTableSchemaFieldArgs',
     'IcebergTableSchemaFieldArgsDict',
+    'IcebergTableSortOrderArgs',
+    'IcebergTableSortOrderArgsDict',
+    'IcebergTableSortOrderFieldArgs',
+    'IcebergTableSortOrderFieldArgsDict',
     'TableHiveOptionsArgs',
     'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
@@ -98,6 +110,149 @@ class DatabaseHiveOptionsArgs:
     @parameters.setter
     def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+class HiveCatalogIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class HiveCatalogIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class HiveCatalogIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class HiveCatalogIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class HiveCatalogReplicaArgsDict(TypedDict):
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The region of the replica, e.g., `us-east1`.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+    """
+
+@pulumi.input_type
+class HiveCatalogReplicaArgs:
+    def __init__(__self__, *,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: (Output)
+               The region of the replica, e.g., `us-east1`.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The region of the replica, e.g., `us-east1`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        If the catalog is replicated to multiple regions, this enum describes the current state of the replica. STATE_UNSPECIFIED - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all databases are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class IcebergCatalogIamBindingConditionArgsDict(TypedDict):
@@ -241,6 +396,41 @@ class IcebergCatalogReplicaArgs:
     @state.setter
     def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+
+class IcebergCatalogRestrictedLocationsConfigArgsDict(TypedDict):
+    restricted_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+    permitted for use by resources within this catalog. Each entry can be
+    either a GCS bucket or a path within it.
+    """
+
+@pulumi.input_type
+class IcebergCatalogRestrictedLocationsConfigArgs:
+    def __init__(__self__, *,
+                 restricted_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_locations: A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+               permitted for use by resources within this catalog. Each entry can be
+               either a GCS bucket or a path within it.
+        """
+        if restricted_locations is not None:
+            pulumi.set(__self__, "restricted_locations", restricted_locations)
+
+    @_builtins.property
+    @pulumi.getter(name="restrictedLocations")
+    def restricted_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of GCS locations (e.g., `gs://my-other-bucket/...`) that are
+        permitted for use by resources within this catalog. Each entry can be
+        either a GCS bucket or a path within it.
+        """
+        return pulumi.get(self, "restricted_locations")
+
+    @restricted_locations.setter
+    def restricted_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "restricted_locations", value)
 
 
 class IcebergNamespaceIamBindingConditionArgsDict(TypedDict):
@@ -477,7 +667,7 @@ class IcebergTablePartitionSpecFieldArgsDict(TypedDict):
     """
     source_id: pulumi.Input[_builtins.int]
     """
-    The source field ID for the partition field.
+    The source field ID for the sort field.
     """
     transform: pulumi.Input[_builtins.str]
     """
@@ -498,7 +688,7 @@ class IcebergTablePartitionSpecFieldArgs:
                  field_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the partition field.
-        :param pulumi.Input[_builtins.int] source_id: The source field ID for the partition field.
+        :param pulumi.Input[_builtins.int] source_id: The source field ID for the sort field.
         :param pulumi.Input[_builtins.str] transform: The transform to apply to the source field.
         :param pulumi.Input[_builtins.int] field_id: (Output)
                The unique identifier of the partition field.
@@ -525,7 +715,7 @@ class IcebergTablePartitionSpecFieldArgs:
     @pulumi.getter(name="sourceId")
     def source_id(self) -> pulumi.Input[_builtins.int]:
         """
-        The source field ID for the partition field.
+        The source field ID for the sort field.
         """
         return pulumi.get(self, "source_id")
 
@@ -753,6 +943,142 @@ class IcebergTableSchemaFieldArgs:
     @doc.setter
     def doc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "doc", value)
+
+
+class IcebergTableSortOrderArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input['IcebergTableSortOrderFieldArgsDict']]]
+    """
+    Structure is documented below.
+    """
+    order_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The unique identifier of the sort order.
+    """
+
+@pulumi.input_type
+class IcebergTableSortOrderArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input['IcebergTableSortOrderFieldArgs']]],
+                 order_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IcebergTableSortOrderFieldArgs']]] fields: Structure is documented below.
+        :param pulumi.Input[_builtins.int] order_id: (Output)
+               The unique identifier of the sort order.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IcebergTableSortOrderFieldArgs']]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['IcebergTableSortOrderFieldArgs']]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The unique identifier of the sort order.
+        """
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "order_id", value)
+
+
+class IcebergTableSortOrderFieldArgsDict(TypedDict):
+    direction: pulumi.Input[_builtins.str]
+    """
+    The sort direction for the sort field. Possible values: "asc", "desc".
+    """
+    null_order: pulumi.Input[_builtins.str]
+    """
+    The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+    """
+    source_id: pulumi.Input[_builtins.int]
+    """
+    The source field ID for the sort field.
+    """
+    transform: pulumi.Input[_builtins.str]
+    """
+    The transform to apply to the source field.
+    """
+
+@pulumi.input_type
+class IcebergTableSortOrderFieldArgs:
+    def __init__(__self__, *,
+                 direction: pulumi.Input[_builtins.str],
+                 null_order: pulumi.Input[_builtins.str],
+                 source_id: pulumi.Input[_builtins.int],
+                 transform: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] direction: The sort direction for the sort field. Possible values: "asc", "desc".
+        :param pulumi.Input[_builtins.str] null_order: The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+        :param pulumi.Input[_builtins.int] source_id: The source field ID for the sort field.
+        :param pulumi.Input[_builtins.str] transform: The transform to apply to the source field.
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "null_order", null_order)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "transform", transform)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sort direction for the sort field. Possible values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nullOrder")
+    def null_order(self) -> pulumi.Input[_builtins.str]:
+        """
+        The null ordering for the sort field. Possible values: "nulls-first", "nulls-last".
+        """
+        return pulumi.get(self, "null_order")
+
+    @null_order.setter
+    def null_order(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "null_order", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The source field ID for the sort field.
+        """
+        return pulumi.get(self, "source_id")
+
+    @source_id.setter
+    def source_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "source_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def transform(self) -> pulumi.Input[_builtins.str]:
+        """
+        The transform to apply to the source field.
+        """
+        return pulumi.get(self, "transform")
+
+    @transform.setter
+    def transform(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "transform", value)
 
 
 class TableHiveOptionsArgsDict(TypedDict):

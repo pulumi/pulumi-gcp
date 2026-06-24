@@ -253,6 +253,22 @@ type DeveloperApp struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl pulumi.StringOutput `pulumi:"callbackUrl"`
+	// Optionally specify a static consumer key for the developer app's credential.
+	// If not set, the API auto-generates a key. The consumer key must be unique
+	// across all developer apps in an organization. Changing this field forces the
+	// resource to be recreated.
+	// This is a write-only input used at create time: the provider creates the
+	// credential with this key via the keys API and removes the auto-generated
+	// one. The effective key is exposed in the `credentials` output.
+	ConsumerKey pulumi.StringPtrOutput `pulumi:"consumerKey"`
+	// Optionally specify a static consumer secret for the developer app's
+	// credential. Required if `consumerKey` is specified. If not set, the API
+	// auto-generates a secret. Changing this field forces the resource to be
+	// recreated.
+	// This is a write-only input used at create time; the effective secret is
+	// exposed in the `credentials` output.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret pulumi.StringPtrOutput `pulumi:"consumerSecret"`
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Output only. Set of credentials for the developer app consisting of
@@ -307,6 +323,13 @@ func NewDeveloperApp(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	if args.ConsumerSecret != nil {
+		args.ConsumerSecret = pulumi.ToSecret(args.ConsumerSecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"consumerSecret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DeveloperApp
 	err := ctx.RegisterResource("gcp:apigee/developerApp:DeveloperApp", name, args, &resource, opts...)
@@ -343,6 +366,22 @@ type developerAppState struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl *string `pulumi:"callbackUrl"`
+	// Optionally specify a static consumer key for the developer app's credential.
+	// If not set, the API auto-generates a key. The consumer key must be unique
+	// across all developer apps in an organization. Changing this field forces the
+	// resource to be recreated.
+	// This is a write-only input used at create time: the provider creates the
+	// credential with this key via the keys API and removes the auto-generated
+	// one. The effective key is exposed in the `credentials` output.
+	ConsumerKey *string `pulumi:"consumerKey"`
+	// Optionally specify a static consumer secret for the developer app's
+	// credential. Required if `consumerKey` is specified. If not set, the API
+	// auto-generates a secret. Changing this field forces the resource to be
+	// recreated.
+	// This is a write-only input used at create time; the effective secret is
+	// exposed in the `credentials` output.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret *string `pulumi:"consumerSecret"`
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Output only. Set of credentials for the developer app consisting of
@@ -395,6 +434,22 @@ type DeveloperAppState struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl pulumi.StringPtrInput
+	// Optionally specify a static consumer key for the developer app's credential.
+	// If not set, the API auto-generates a key. The consumer key must be unique
+	// across all developer apps in an organization. Changing this field forces the
+	// resource to be recreated.
+	// This is a write-only input used at create time: the provider creates the
+	// credential with this key via the keys API and removes the auto-generated
+	// one. The effective key is exposed in the `credentials` output.
+	ConsumerKey pulumi.StringPtrInput
+	// Optionally specify a static consumer secret for the developer app's
+	// credential. Required if `consumerKey` is specified. If not set, the API
+	// auto-generates a secret. Changing this field forces the resource to be
+	// recreated.
+	// This is a write-only input used at create time; the effective secret is
+	// exposed in the `credentials` output.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret pulumi.StringPtrInput
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
 	// Output only. Set of credentials for the developer app consisting of
@@ -448,6 +503,22 @@ type developerAppArgs struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl string `pulumi:"callbackUrl"`
+	// Optionally specify a static consumer key for the developer app's credential.
+	// If not set, the API auto-generates a key. The consumer key must be unique
+	// across all developer apps in an organization. Changing this field forces the
+	// resource to be recreated.
+	// This is a write-only input used at create time: the provider creates the
+	// credential with this key via the keys API and removes the auto-generated
+	// one. The effective key is exposed in the `credentials` output.
+	ConsumerKey *string `pulumi:"consumerKey"`
+	// Optionally specify a static consumer secret for the developer app's
+	// credential. Required if `consumerKey` is specified. If not set, the API
+	// auto-generates a secret. Changing this field forces the resource to be
+	// recreated.
+	// This is a write-only input used at create time; the effective secret is
+	// exposed in the `credentials` output.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret *string `pulumi:"consumerSecret"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -488,6 +559,22 @@ type DeveloperAppArgs struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl pulumi.StringInput
+	// Optionally specify a static consumer key for the developer app's credential.
+	// If not set, the API auto-generates a key. The consumer key must be unique
+	// across all developer apps in an organization. Changing this field forces the
+	// resource to be recreated.
+	// This is a write-only input used at create time: the provider creates the
+	// credential with this key via the keys API and removes the auto-generated
+	// one. The effective key is exposed in the `credentials` output.
+	ConsumerKey pulumi.StringPtrInput
+	// Optionally specify a static consumer secret for the developer app's
+	// credential. Required if `consumerKey` is specified. If not set, the API
+	// auto-generates a secret. Changing this field forces the resource to be
+	// recreated.
+	// This is a write-only input used at create time; the effective secret is
+	// exposed in the `credentials` output.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -629,6 +716,28 @@ func (o DeveloperAppOutput) Attributes() DeveloperAppAttributeArrayOutput {
 // authorization codes back to developer apps.
 func (o DeveloperAppOutput) CallbackUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeveloperApp) pulumi.StringOutput { return v.CallbackUrl }).(pulumi.StringOutput)
+}
+
+// Optionally specify a static consumer key for the developer app's credential.
+// If not set, the API auto-generates a key. The consumer key must be unique
+// across all developer apps in an organization. Changing this field forces the
+// resource to be recreated.
+// This is a write-only input used at create time: the provider creates the
+// credential with this key via the keys API and removes the auto-generated
+// one. The effective key is exposed in the `credentials` output.
+func (o DeveloperAppOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeveloperApp) pulumi.StringPtrOutput { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+}
+
+// Optionally specify a static consumer secret for the developer app's
+// credential. Required if `consumerKey` is specified. If not set, the API
+// auto-generates a secret. Changing this field forces the resource to be
+// recreated.
+// This is a write-only input used at create time; the effective secret is
+// exposed in the `credentials` output.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeveloperAppOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeveloperApp) pulumi.StringPtrOutput { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
 }
 
 // Time at which the developer was created in milliseconds since epoch.

@@ -27,6 +27,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSecondaryBootDis
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigTaintArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigTaintConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigWindowsNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
@@ -811,6 +812,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    @Import(name="taintConfig")
+    private @Nullable Output<ClusterNodePoolNodeConfigTaintConfigArgs> taintConfig;
+
+    /**
+     * @return Taint configuration for the node pool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigTaintConfigArgs>> taintConfig() {
+        return Optional.ofNullable(this.taintConfig);
+    }
+
+    /**
      * A list of
      * [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
      * to apply to nodes. This field will only report drift on taint keys that are
@@ -917,6 +933,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.spot = $.spot;
         this.storagePools = $.storagePools;
         this.tags = $.tags;
+        this.taintConfig = $.taintConfig;
         this.taints = $.taints;
         this.windowsNodeConfig = $.windowsNodeConfig;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
@@ -2051,6 +2068,27 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param taintConfig Taint configuration for the node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taintConfig(@Nullable Output<ClusterNodePoolNodeConfigTaintConfigArgs> taintConfig) {
+            $.taintConfig = taintConfig;
+            return this;
+        }
+
+        /**
+         * @param taintConfig Taint configuration for the node pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taintConfig(ClusterNodePoolNodeConfigTaintConfigArgs taintConfig) {
+            return taintConfig(Output.of(taintConfig));
         }
 
         /**

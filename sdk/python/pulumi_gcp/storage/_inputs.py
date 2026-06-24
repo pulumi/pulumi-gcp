@@ -1620,6 +1620,14 @@ class BucketLifecycleRuleConditionArgsDict(TypedDict):
     """
     While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
     """
+    size_above_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Objects having a size greater than this value in bytes will be matched.
+    """
+    size_below_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Objects having a size smaller than this value in bytes will be matched.
+    """
     with_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -1642,6 +1650,8 @@ class BucketLifecycleRuleConditionArgs:
                  send_days_since_custom_time_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  send_days_since_noncurrent_time_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  send_num_newer_versions_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size_above_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 size_below_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  with_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
@@ -1658,6 +1668,8 @@ class BucketLifecycleRuleConditionArgs:
         :param pulumi.Input[_builtins.bool] send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         :param pulumi.Input[_builtins.bool] send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
         :param pulumi.Input[_builtins.bool] send_num_newer_versions_if_zero: While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        :param pulumi.Input[_builtins.int] size_above_bytes: Objects having a size greater than this value in bytes will be matched.
+        :param pulumi.Input[_builtins.int] size_below_bytes: Objects having a size smaller than this value in bytes will be matched.
         :param pulumi.Input[_builtins.str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
         if age is not None:
@@ -1688,6 +1700,10 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "send_days_since_noncurrent_time_if_zero", send_days_since_noncurrent_time_if_zero)
         if send_num_newer_versions_if_zero is not None:
             pulumi.set(__self__, "send_num_newer_versions_if_zero", send_num_newer_versions_if_zero)
+        if size_above_bytes is not None:
+            pulumi.set(__self__, "size_above_bytes", size_above_bytes)
+        if size_below_bytes is not None:
+            pulumi.set(__self__, "size_below_bytes", size_below_bytes)
         if with_state is not None:
             pulumi.set(__self__, "with_state", with_state)
 
@@ -1858,6 +1874,30 @@ class BucketLifecycleRuleConditionArgs:
     @send_num_newer_versions_if_zero.setter
     def send_num_newer_versions_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_num_newer_versions_if_zero", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeAboveBytes")
+    def size_above_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Objects having a size greater than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_above_bytes")
+
+    @size_above_bytes.setter
+    def size_above_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "size_above_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeBelowBytes")
+    def size_below_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Objects having a size smaller than this value in bytes will be matched.
+        """
+        return pulumi.get(self, "size_below_bytes")
+
+    @size_below_bytes.setter
+    def size_below_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "size_below_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="withState")

@@ -28,7 +28,8 @@ public final class RolloutSequenceStage {
      */
     private List<String> fleetProjects;
     /**
-     * @return Soak time after upgrading all the clusters in the stage, specified in seconds.
+     * @return Soak time after upgrading all the clusters in the stage.
+     * Has to be specified in seconds, minutes, hours or days.
      * 
      */
     private @Nullable String soakDuration;
@@ -52,7 +53,8 @@ public final class RolloutSequenceStage {
         return this.fleetProjects;
     }
     /**
-     * @return Soak time after upgrading all the clusters in the stage, specified in seconds.
+     * @return Soak time after upgrading all the clusters in the stage.
+     * Has to be specified in seconds, minutes, hours or days.
      * 
      */
     public Optional<String> soakDuration() {

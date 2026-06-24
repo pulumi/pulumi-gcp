@@ -521,6 +521,8 @@ __all__ = [
     'FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict',
     'FeedFailureDetailsArgs',
     'FeedFailureDetailsArgsDict',
+    'FindingsRefinementDeploymentDetectionExclusionApplicationArgs',
+    'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict',
     'FindingsRefinementOutcomeFilterArgs',
     'FindingsRefinementOutcomeFilterArgsDict',
     'NativeDashboardChartArgs',
@@ -537,6 +539,16 @@ __all__ = [
     'ParserChangelogEntryArgsDict',
     'ParserCreatorArgs',
     'ParserCreatorArgsDict',
+    'ParserExtensionDynamicParsingArgs',
+    'ParserExtensionDynamicParsingArgsDict',
+    'ParserExtensionDynamicParsingOptedFieldArgs',
+    'ParserExtensionDynamicParsingOptedFieldArgsDict',
+    'ParserExtensionFieldExtractorsArgs',
+    'ParserExtensionFieldExtractorsArgsDict',
+    'ParserExtensionFieldExtractorsExtractorArgs',
+    'ParserExtensionFieldExtractorsExtractorArgsDict',
+    'ParserExtensionFieldExtractorsPreprocessConfigArgs',
+    'ParserExtensionFieldExtractorsPreprocessConfigArgsDict',
     'ParserLowCodeArgs',
     'ParserLowCodeArgsDict',
     'ParserLowCodeFieldExtractorsArgs',
@@ -19868,6 +19880,128 @@ class FeedFailureDetailsArgs:
         pulumi.set(self, "http_error_code", value)
 
 
+class FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict(TypedDict):
+    curated_rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The CuratedRuleSets this detection exclusion applies to.
+    Format:
+    projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+    """
+    curated_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The CuratedRules this detection exclusion applies to.
+    Format:
+    projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+    """
+    deleted_curated_rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The deleted CuratedRuleSets this detection exclusion applies to.
+    Indicates to the customer that the detection exclusion no longer applies
+    to the rule sets, so the detection exclusion should be updated.
+    Format:
+    projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+    """
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The Rules this detection exclusion applies to.
+    Format:
+    projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+    """
+
+@pulumi.input_type
+class FindingsRefinementDeploymentDetectionExclusionApplicationArgs:
+    def __init__(__self__, *,
+                 curated_rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 curated_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deleted_curated_rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] curated_rule_sets: The CuratedRuleSets this detection exclusion applies to.
+               Format:
+               projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] curated_rules: The CuratedRules this detection exclusion applies to.
+               Format:
+               projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_curated_rule_sets: (Output)
+               The deleted CuratedRuleSets this detection exclusion applies to.
+               Indicates to the customer that the detection exclusion no longer applies
+               to the rule sets, so the detection exclusion should be updated.
+               Format:
+               projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rules: The Rules this detection exclusion applies to.
+               Format:
+               projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+        """
+        if curated_rule_sets is not None:
+            pulumi.set(__self__, "curated_rule_sets", curated_rule_sets)
+        if curated_rules is not None:
+            pulumi.set(__self__, "curated_rules", curated_rules)
+        if deleted_curated_rule_sets is not None:
+            pulumi.set(__self__, "deleted_curated_rule_sets", deleted_curated_rule_sets)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="curatedRuleSets")
+    def curated_rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The CuratedRuleSets this detection exclusion applies to.
+        Format:
+        projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+        """
+        return pulumi.get(self, "curated_rule_sets")
+
+    @curated_rule_sets.setter
+    def curated_rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "curated_rule_sets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="curatedRules")
+    def curated_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The CuratedRules this detection exclusion applies to.
+        Format:
+        projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
+        """
+        return pulumi.get(self, "curated_rules")
+
+    @curated_rules.setter
+    def curated_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "curated_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedCuratedRuleSets")
+    def deleted_curated_rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The deleted CuratedRuleSets this detection exclusion applies to.
+        Indicates to the customer that the detection exclusion no longer applies
+        to the rule sets, so the detection exclusion should be updated.
+        Format:
+        projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
+        """
+        return pulumi.get(self, "deleted_curated_rule_sets")
+
+    @deleted_curated_rule_sets.setter
+    def deleted_curated_rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deleted_curated_rule_sets", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Rules this detection exclusion applies to.
+        Format:
+        projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rules", value)
+
+
 class FindingsRefinementOutcomeFilterArgsDict(TypedDict):
     outcome_filter_operator: pulumi.Input[_builtins.str]
     """
@@ -20597,6 +20731,428 @@ class ParserCreatorArgs:
     @source.setter
     def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
+
+
+class ParserExtensionDynamicParsingArgsDict(TypedDict):
+    opted_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionDynamicParsingOptedFieldArgsDict']]]]]
+    """
+    List of fields to be parsed.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ParserExtensionDynamicParsingArgs:
+    def __init__(__self__, *,
+                 opted_fields: pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionDynamicParsingOptedFieldArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ParserExtensionDynamicParsingOptedFieldArgs']]] opted_fields: List of fields to be parsed.
+               Structure is documented below.
+        """
+        if opted_fields is not None:
+            pulumi.set(__self__, "opted_fields", opted_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="optedFields")
+    def opted_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionDynamicParsingOptedFieldArgs']]]]:
+        """
+        List of fields to be parsed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "opted_fields")
+
+    @opted_fields.setter
+    def opted_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionDynamicParsingOptedFieldArgs']]]]):
+        pulumi.set(self, "opted_fields", value)
+
+
+class ParserExtensionDynamicParsingOptedFieldArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path of the log field.
+    """
+    sample_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sample value of the log field.
+    """
+
+@pulumi.input_type
+class ParserExtensionDynamicParsingOptedFieldArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] path: Path of the log field.
+        :param pulumi.Input[_builtins.str] sample_value: Sample value of the log field.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if sample_value is not None:
+            pulumi.set(__self__, "sample_value", sample_value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path of the log field.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleValue")
+    def sample_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sample value of the log field.
+        """
+        return pulumi.get(self, "sample_value")
+
+    @sample_value.setter
+    def sample_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sample_value", value)
+
+
+class ParserExtensionFieldExtractorsArgsDict(TypedDict):
+    append_repeated_fields: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to append repeated fields or not.
+    When false, repeated fields will be replaced.
+    """
+    extractors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionFieldExtractorsExtractorArgsDict']]]]]
+    """
+    List of FieldExtractors.
+    Structure is documented below.
+    """
+    log_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Possible values:
+    JSON
+    CSV
+    XML
+    """
+    preprocess_config: NotRequired[pulumi.Input[Optional['ParserExtensionFieldExtractorsPreprocessConfigArgsDict']]]
+    """
+    PreProcessConfig holds the GROK expression to extract the syslog header.
+    Structure is documented below.
+    """
+    transformed_cbn_snippet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    CBN snippet generated from field extractors.
+    """
+
+@pulumi.input_type
+class ParserExtensionFieldExtractorsArgs:
+    def __init__(__self__, *,
+                 append_repeated_fields: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extractors: pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionFieldExtractorsExtractorArgs']]]] = None,
+                 log_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 preprocess_config: pulumi.Input[Optional['ParserExtensionFieldExtractorsPreprocessConfigArgs']] = None,
+                 transformed_cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] append_repeated_fields: Whether to append repeated fields or not.
+               When false, repeated fields will be replaced.
+        :param pulumi.Input[Sequence[pulumi.Input['ParserExtensionFieldExtractorsExtractorArgs']]] extractors: List of FieldExtractors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] log_format: Possible values:
+               JSON
+               CSV
+               XML
+        :param pulumi.Input['ParserExtensionFieldExtractorsPreprocessConfigArgs'] preprocess_config: PreProcessConfig holds the GROK expression to extract the syslog header.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] transformed_cbn_snippet: (Output)
+               CBN snippet generated from field extractors.
+        """
+        if append_repeated_fields is not None:
+            pulumi.set(__self__, "append_repeated_fields", append_repeated_fields)
+        if extractors is not None:
+            pulumi.set(__self__, "extractors", extractors)
+        if log_format is not None:
+            pulumi.set(__self__, "log_format", log_format)
+        if preprocess_config is not None:
+            pulumi.set(__self__, "preprocess_config", preprocess_config)
+        if transformed_cbn_snippet is not None:
+            pulumi.set(__self__, "transformed_cbn_snippet", transformed_cbn_snippet)
+
+    @_builtins.property
+    @pulumi.getter(name="appendRepeatedFields")
+    def append_repeated_fields(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to append repeated fields or not.
+        When false, repeated fields will be replaced.
+        """
+        return pulumi.get(self, "append_repeated_fields")
+
+    @append_repeated_fields.setter
+    def append_repeated_fields(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "append_repeated_fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def extractors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionFieldExtractorsExtractorArgs']]]]:
+        """
+        List of FieldExtractors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extractors")
+
+    @extractors.setter
+    def extractors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ParserExtensionFieldExtractorsExtractorArgs']]]]):
+        pulumi.set(self, "extractors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Possible values:
+        JSON
+        CSV
+        XML
+        """
+        return pulumi.get(self, "log_format")
+
+    @log_format.setter
+    def log_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "log_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preprocessConfig")
+    def preprocess_config(self) -> pulumi.Input[Optional['ParserExtensionFieldExtractorsPreprocessConfigArgs']]:
+        """
+        PreProcessConfig holds the GROK expression to extract the syslog header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preprocess_config")
+
+    @preprocess_config.setter
+    def preprocess_config(self, value: pulumi.Input[Optional['ParserExtensionFieldExtractorsPreprocessConfigArgs']]):
+        pulumi.set(self, "preprocess_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transformedCbnSnippet")
+    def transformed_cbn_snippet(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        CBN snippet generated from field extractors.
+        """
+        return pulumi.get(self, "transformed_cbn_snippet")
+
+    @transformed_cbn_snippet.setter
+    def transformed_cbn_snippet(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "transformed_cbn_snippet", value)
+
+
+class ParserExtensionFieldExtractorsExtractorArgsDict(TypedDict):
+    destination_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path in generated event which is to be populated. This is required if the
+    FieldExtractor is used to specify the parser extension.
+    """
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field path could be a json path, xml path or csv column name
+    depending on log format. It refers to a section or substring in raw log.
+    This is required if the FieldExtractor is used to specify the parser
+    extension.
+    """
+    precondition_op: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Operator used for precondition.
+    Possible values:
+    EQUALS
+    NOT_EQUALS
+    """
+    precondition_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition path could be a json path, xml path or csv column name
+    depending on log format. It refers to a section or substring in raw log.
+    """
+    precondition_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition value.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Value to be mapped to the destination path directly.
+    """
+
+@pulumi.input_type
+class ParserExtensionFieldExtractorsExtractorArgs:
+    def __init__(__self__, *,
+                 destination_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_op: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 precondition_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination_path: Path in generated event which is to be populated. This is required if the
+               FieldExtractor is used to specify the parser extension.
+        :param pulumi.Input[_builtins.str] field_path: Field path could be a json path, xml path or csv column name
+               depending on log format. It refers to a section or substring in raw log.
+               This is required if the FieldExtractor is used to specify the parser
+               extension.
+        :param pulumi.Input[_builtins.str] precondition_op: Operator used for precondition.
+               Possible values:
+               EQUALS
+               NOT_EQUALS
+        :param pulumi.Input[_builtins.str] precondition_path: Precondition path could be a json path, xml path or csv column name
+               depending on log format. It refers to a section or substring in raw log.
+        :param pulumi.Input[_builtins.str] precondition_value: Precondition value.
+        :param pulumi.Input[_builtins.str] value: Value to be mapped to the destination path directly.
+        """
+        if destination_path is not None:
+            pulumi.set(__self__, "destination_path", destination_path)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+        if precondition_op is not None:
+            pulumi.set(__self__, "precondition_op", precondition_op)
+        if precondition_path is not None:
+            pulumi.set(__self__, "precondition_path", precondition_path)
+        if precondition_value is not None:
+            pulumi.set(__self__, "precondition_value", precondition_value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationPath")
+    def destination_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path in generated event which is to be populated. This is required if the
+        FieldExtractor is used to specify the parser extension.
+        """
+        return pulumi.get(self, "destination_path")
+
+    @destination_path.setter
+    def destination_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field path could be a json path, xml path or csv column name
+        depending on log format. It refers to a section or substring in raw log.
+        This is required if the FieldExtractor is used to specify the parser
+        extension.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionOp")
+    def precondition_op(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Operator used for precondition.
+        Possible values:
+        EQUALS
+        NOT_EQUALS
+        """
+        return pulumi.get(self, "precondition_op")
+
+    @precondition_op.setter
+    def precondition_op(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_op", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionPath")
+    def precondition_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition path could be a json path, xml path or csv column name
+        depending on log format. It refers to a section or substring in raw log.
+        """
+        return pulumi.get(self, "precondition_path")
+
+    @precondition_path.setter
+    def precondition_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconditionValue")
+    def precondition_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition value.
+        """
+        return pulumi.get(self, "precondition_value")
+
+    @precondition_value.setter
+    def precondition_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "precondition_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Value to be mapped to the destination path directly.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class ParserExtensionFieldExtractorsPreprocessConfigArgsDict(TypedDict):
+    grok_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    GROK Regex to extract the structured part of the log.
+    syntax documentation:
+    www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+    """
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Target field name for the structured part of the log.
+    This should match a SEMANTIC identifier from the grok expression.
+    """
+
+@pulumi.input_type
+class ParserExtensionFieldExtractorsPreprocessConfigArgs:
+    def __init__(__self__, *,
+                 grok_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] grok_regex: GROK Regex to extract the structured part of the log.
+               syntax documentation:
+               www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+        :param pulumi.Input[_builtins.str] target: Target field name for the structured part of the log.
+               This should match a SEMANTIC identifier from the grok expression.
+        """
+        if grok_regex is not None:
+            pulumi.set(__self__, "grok_regex", grok_regex)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter(name="grokRegex")
+    def grok_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        GROK Regex to extract the structured part of the log.
+        syntax documentation:
+        www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+        """
+        return pulumi.get(self, "grok_regex")
+
+    @grok_regex.setter
+    def grok_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "grok_regex", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Target field name for the structured part of the log.
+        This should match a SEMANTIC identifier from the grok expression.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target", value)
 
 
 class ParserLowCodeArgsDict(TypedDict):

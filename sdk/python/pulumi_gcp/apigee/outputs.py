@@ -1375,10 +1375,19 @@ class DeveloperAppCredential(dict):
         :param Sequence['DeveloperAppCredentialApiProductArgs'] api_products: List of API products associated with the developer app.
         :param Sequence['DeveloperAppCredentialAttributeArgs'] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
-        :param _builtins.str consumer_key: (Output)
-               Consumer key.
-        :param _builtins.str consumer_secret: (Output)
-               Secret key.
+        :param _builtins.str consumer_key: Optionally specify a static consumer key for the developer app's credential.
+               If not set, the API auto-generates a key. The consumer key must be unique
+               across all developer apps in an organization. Changing this field forces the
+               resource to be recreated.
+               This is a write-only input used at create time: the provider creates the
+               credential with this key via the keys API and removes the auto-generated
+               one. The effective key is exposed in the `credentials` output.
+        :param _builtins.str consumer_secret: Optionally specify a static consumer secret for the developer app's
+               credential. Required if `consumer_key` is specified. If not set, the API
+               auto-generates a secret. Changing this field forces the resource to be
+               recreated.
+               This is a write-only input used at create time; the effective secret is
+               exposed in the `credentials` output.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.str expires_at: (Output)
                Time the credential will expire in milliseconds since epoch.
@@ -1427,8 +1436,13 @@ class DeveloperAppCredential(dict):
     @pulumi.getter(name="consumerKey")
     def consumer_key(self) -> Optional[_builtins.str]:
         """
-        (Output)
-        Consumer key.
+        Optionally specify a static consumer key for the developer app's credential.
+        If not set, the API auto-generates a key. The consumer key must be unique
+        across all developer apps in an organization. Changing this field forces the
+        resource to be recreated.
+        This is a write-only input used at create time: the provider creates the
+        credential with this key via the keys API and removes the auto-generated
+        one. The effective key is exposed in the `credentials` output.
         """
         return pulumi.get(self, "consumer_key")
 
@@ -1436,8 +1450,12 @@ class DeveloperAppCredential(dict):
     @pulumi.getter(name="consumerSecret")
     def consumer_secret(self) -> Optional[_builtins.str]:
         """
-        (Output)
-        Secret key.
+        Optionally specify a static consumer secret for the developer app's
+        credential. Required if `consumer_key` is specified. If not set, the API
+        auto-generates a secret. Changing this field forces the resource to be
+        recreated.
+        This is a write-only input used at create time; the effective secret is
+        exposed in the `credentials` output.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "consumer_secret")

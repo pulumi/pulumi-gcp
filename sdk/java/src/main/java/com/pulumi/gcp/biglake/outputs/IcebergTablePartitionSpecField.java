@@ -25,7 +25,7 @@ public final class IcebergTablePartitionSpecField {
      */
     private String name;
     /**
-     * @return The source field ID for the partition field.
+     * @return The source field ID for the sort field.
      * 
      */
     private Integer sourceId;
@@ -52,7 +52,7 @@ public final class IcebergTablePartitionSpecField {
         return this.name;
     }
     /**
-     * @return The source field ID for the partition field.
+     * @return The source field ID for the sort field.
      * 
      */
     public Integer sourceId() {

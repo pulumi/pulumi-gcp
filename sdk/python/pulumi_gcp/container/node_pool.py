@@ -24,6 +24,7 @@ class NodePoolArgs:
                  cluster: pulumi.Input[_builtins.str],
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional['NodePoolManagementArgs']] = None,
@@ -56,6 +57,7 @@ class NodePoolArgs:
                When set to "DELETE", deleting the resource is allowed.
                
                <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -80,8 +82,7 @@ class NodePoolArgs:
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
-               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
@@ -113,6 +114,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if location is not None:
@@ -191,6 +194,18 @@ class NodePoolArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
+
+    @ignore_node_count_changes.setter
+    def ignore_node_count_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_node_count_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -297,8 +312,7 @@ class NodePoolArgs:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Input[Optional['NodePoolNodeConfigArgs']]:
         """
-        Parameters used in creating the node pool. See
-        container.Cluster for schema.
+        Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         """
         return pulumi.get(self, "node_config")
 
@@ -426,6 +440,7 @@ class _NodePoolState:
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -461,6 +476,7 @@ class _NodePoolState:
                When set to "DELETE", deleting the resource is allowed.
                
                <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -487,8 +503,7 @@ class _NodePoolState:
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
-               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
@@ -521,6 +536,8 @@ class _NodePoolState:
             pulumi.set(__self__, "cluster", cluster)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if ignore_node_count_changes is not None:
+            pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
@@ -605,6 +622,18 @@ class _NodePoolState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
+
+    @ignore_node_count_changes.setter
+    def ignore_node_count_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_node_count_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -735,8 +764,7 @@ class _NodePoolState:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Input[Optional['NodePoolNodeConfigArgs']]:
         """
-        Parameters used in creating the node pool. See
-        container.Cluster for schema.
+        Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         """
         return pulumi.get(self, "node_config")
 
@@ -876,6 +904,7 @@ class NodePool(pulumi.CustomResource):
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
@@ -990,6 +1019,7 @@ class NodePool(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
                
                <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -1014,8 +1044,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. See
-               container.Cluster for schema.
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
@@ -1148,6 +1177,7 @@ class NodePool(pulumi.CustomResource):
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
@@ -1178,6 +1208,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location"] = location
             __props__.__dict__["management"] = management
@@ -1210,6 +1241,7 @@ class NodePool(pulumi.CustomResource):
             autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1249,6 +1281,7 @@ class NodePool(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
                
                <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -1275,8 +1308,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. See
-               container.Cluster for schema.
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
@@ -1310,6 +1342,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["autoscaling"] = autoscaling
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["instance_group_urls"] = instance_group_urls
         __props__.__dict__["location"] = location
@@ -1364,6 +1397,14 @@ class NodePool(pulumi.CustomResource):
         <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNodeCountChanges")
+    def ignore_node_count_changes(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
+        """
+        return pulumi.get(self, "ignore_node_count_changes")
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -1458,8 +1499,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodePoolNodeConfig']:
         """
-        Parameters used in creating the node pool. See
-        container.Cluster for schema.
+        Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         """
         return pulumi.get(self, "node_config")
 

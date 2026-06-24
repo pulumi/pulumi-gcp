@@ -100,6 +100,60 @@ public final class DeveloperAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optionally specify a static consumer key for the developer app&#39;s credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
+     * 
+     */
+    @Import(name="consumerKey")
+    private @Nullable Output<String> consumerKey;
+
+    /**
+     * @return Optionally specify a static consumer key for the developer app&#39;s credential.
+     * If not set, the API auto-generates a key. The consumer key must be unique
+     * across all developer apps in an organization. Changing this field forces the
+     * resource to be recreated.
+     * This is a write-only input used at create time: the provider creates the
+     * credential with this key via the keys API and removes the auto-generated
+     * one. The effective key is exposed in the `credentials` output.
+     * 
+     */
+    public Optional<Output<String>> consumerKey() {
+        return Optional.ofNullable(this.consumerKey);
+    }
+
+    /**
+     * Optionally specify a static consumer secret for the developer app&#39;s
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    @Import(name="consumerSecret")
+    private @Nullable Output<String> consumerSecret;
+
+    /**
+     * @return Optionally specify a static consumer secret for the developer app&#39;s
+     * credential. Required if `consumerKey` is specified. If not set, the API
+     * auto-generates a secret. Changing this field forces the resource to be
+     * recreated.
+     * This is a write-only input used at create time; the effective secret is
+     * exposed in the `credentials` output.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<Output<String>> consumerSecret() {
+        return Optional.ofNullable(this.consumerSecret);
+    }
+
+    /**
      * Time at which the developer was created in milliseconds since epoch.
      * 
      */
@@ -300,6 +354,8 @@ public final class DeveloperAppState extends com.pulumi.resources.ResourceArgs {
         this.appId = $.appId;
         this.attributes = $.attributes;
         this.callbackUrl = $.callbackUrl;
+        this.consumerKey = $.consumerKey;
+        this.consumerSecret = $.consumerSecret;
         this.createdAt = $.createdAt;
         this.credentials = $.credentials;
         this.deletionPolicy = $.deletionPolicy;
@@ -461,6 +517,72 @@ public final class DeveloperAppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder callbackUrl(String callbackUrl) {
             return callbackUrl(Output.of(callbackUrl));
+        }
+
+        /**
+         * @param consumerKey Optionally specify a static consumer key for the developer app&#39;s credential.
+         * If not set, the API auto-generates a key. The consumer key must be unique
+         * across all developer apps in an organization. Changing this field forces the
+         * resource to be recreated.
+         * This is a write-only input used at create time: the provider creates the
+         * credential with this key via the keys API and removes the auto-generated
+         * one. The effective key is exposed in the `credentials` output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerKey(@Nullable Output<String> consumerKey) {
+            $.consumerKey = consumerKey;
+            return this;
+        }
+
+        /**
+         * @param consumerKey Optionally specify a static consumer key for the developer app&#39;s credential.
+         * If not set, the API auto-generates a key. The consumer key must be unique
+         * across all developer apps in an organization. Changing this field forces the
+         * resource to be recreated.
+         * This is a write-only input used at create time: the provider creates the
+         * credential with this key via the keys API and removes the auto-generated
+         * one. The effective key is exposed in the `credentials` output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerKey(String consumerKey) {
+            return consumerKey(Output.of(consumerKey));
+        }
+
+        /**
+         * @param consumerSecret Optionally specify a static consumer secret for the developer app&#39;s
+         * credential. Required if `consumerKey` is specified. If not set, the API
+         * auto-generates a secret. Changing this field forces the resource to be
+         * recreated.
+         * This is a write-only input used at create time; the effective secret is
+         * exposed in the `credentials` output.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerSecret(@Nullable Output<String> consumerSecret) {
+            $.consumerSecret = consumerSecret;
+            return this;
+        }
+
+        /**
+         * @param consumerSecret Optionally specify a static consumer secret for the developer app&#39;s
+         * credential. Required if `consumerKey` is specified. If not set, the API
+         * auto-generates a secret. Changing this field forces the resource to be
+         * recreated.
+         * This is a write-only input used at create time; the effective secret is
+         * exposed in the `credentials` output.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerSecret(String consumerSecret) {
+            return consumerSecret(Output.of(consumerSecret));
         }
 
         /**

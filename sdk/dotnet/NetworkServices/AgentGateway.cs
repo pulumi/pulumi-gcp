@@ -28,6 +28,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
     ///     var agentRegistry = new Gcp.Projects.Service("agent_registry", new()
     ///     {
     ///         ServiceName = "agentregistry.googleapis.com",
@@ -36,13 +38,13 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "net-my-full-agent-gateway",
+    ///         Name = "my-gateway-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
-    ///         Name = "subnet-my-full-agent-gateway",
+    ///         Name = "my-gateway-subnetwork",
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Id,
     ///         IpCidrRange = "10.0.0.0/16",
@@ -50,12 +52,30 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
     ///     {
-    ///         Name = "na-my-full-agent-gateway",
+    ///         Name = "my-gateway-attachment",
     ///         Region = "us-central1",
-    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         ConnectionPreference = "ACCEPT_MANUAL",
     ///         Subnetworks = new[]
     ///         {
-    ///             defaultSubnetwork.SelfLink,
+    ///             defaultSubnetwork.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultManagedZone = new Gcp.Dns.ManagedZone("default", new()
+    ///     {
+    ///         Name = "my-gateway-zone",
+    ///         DnsName = "example.com.",
+    ///         Description = "Private zone used by AgentGateway DNS peering",
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = defaultNetwork.Id,
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -86,6 +106,15 @@ namespace Pulumi.Gcp.NetworkServices
     ///             Egress = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigEgressArgs
     ///             {
     ///                 NetworkAttachment = defaultNetworkAttachment.Id,
+    ///             },
+    ///             DnsPeeringConfig = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs
+    ///             {
+    ///                 Domains = new[]
+    ///                 {
+    ///                     defaultManagedZone.DnsName,
+    ///                 },
+    ///                 TargetProject = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///                 TargetNetwork = defaultNetwork.Id,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

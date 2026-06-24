@@ -85,6 +85,16 @@ public final class GetBucketLifecycleRuleCondition {
      */
     private Boolean sendNumNewerVersionsIfZero;
     /**
+     * @return Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    private Integer sizeAboveBytes;
+    /**
+     * @return Objects having a size less than this value in bytes will be matched.
+     * 
+     */
+    private Integer sizeBelowBytes;
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
      * 
      */
@@ -191,6 +201,20 @@ public final class GetBucketLifecycleRuleCondition {
         return this.sendNumNewerVersionsIfZero;
     }
     /**
+     * @return Objects having a size greater than this value in bytes will be matched.
+     * 
+     */
+    public Integer sizeAboveBytes() {
+        return this.sizeAboveBytes;
+    }
+    /**
+     * @return Objects having a size less than this value in bytes will be matched.
+     * 
+     */
+    public Integer sizeBelowBytes() {
+        return this.sizeBelowBytes;
+    }
+    /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
      * 
      */
@@ -221,6 +245,8 @@ public final class GetBucketLifecycleRuleCondition {
         private Boolean sendDaysSinceCustomTimeIfZero;
         private Boolean sendDaysSinceNoncurrentTimeIfZero;
         private Boolean sendNumNewerVersionsIfZero;
+        private Integer sizeAboveBytes;
+        private Integer sizeBelowBytes;
         private String withState;
         public Builder() {}
         public Builder(GetBucketLifecycleRuleCondition defaults) {
@@ -239,6 +265,8 @@ public final class GetBucketLifecycleRuleCondition {
     	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
     	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
     	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
+    	      this.sizeAboveBytes = defaults.sizeAboveBytes;
+    	      this.sizeBelowBytes = defaults.sizeBelowBytes;
     	      this.withState = defaults.withState;
         }
 
@@ -364,6 +392,22 @@ public final class GetBucketLifecycleRuleCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder sizeAboveBytes(Integer sizeAboveBytes) {
+            if (sizeAboveBytes == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sizeAboveBytes");
+            }
+            this.sizeAboveBytes = sizeAboveBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sizeBelowBytes(Integer sizeBelowBytes) {
+            if (sizeBelowBytes == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sizeBelowBytes");
+            }
+            this.sizeBelowBytes = sizeBelowBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder withState(String withState) {
             if (withState == null) {
               throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "withState");
@@ -387,6 +431,8 @@ public final class GetBucketLifecycleRuleCondition {
             _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            _resultValue.sizeAboveBytes = sizeAboveBytes;
+            _resultValue.sizeBelowBytes = sizeBelowBytes;
             _resultValue.withState = withState;
             return _resultValue;
         }

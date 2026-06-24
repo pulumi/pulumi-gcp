@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoscalingResult> Autoscalings;
         /// <summary>
+        /// When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing ManagedInstanceGroupUrls in the state.
+        /// </summary>
+        public readonly bool IgnoreNodeCountChanges;
+        /// <summary>
         /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
         /// </summary>
         public readonly int InitialNodeCount;
@@ -86,6 +90,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodePoolResult(
             ImmutableArray<Outputs.GetClusterNodePoolAutoscalingResult> autoscalings,
 
+            bool ignoreNodeCountChanges,
+
             int initialNodeCount,
 
             ImmutableArray<string> instanceGroupUrls,
@@ -119,6 +125,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string version)
         {
             Autoscalings = autoscalings;
+            IgnoreNodeCountChanges = ignoreNodeCountChanges;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
             ManagedInstanceGroupUrls = managedInstanceGroupUrls;

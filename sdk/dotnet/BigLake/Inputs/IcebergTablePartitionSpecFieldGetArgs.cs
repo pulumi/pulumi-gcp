@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.BigLake.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The source field ID for the partition field.
+        /// The source field ID for the sort field.
         /// </summary>
         [Input("sourceId", required: true)]
         public Input<int> SourceId { get; set; } = null!;

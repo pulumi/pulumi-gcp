@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
+import com.pulumi.gcp.ces.inputs.ToolsetToolFakeConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -230,6 +231,23 @@ public final class ToolsetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolFakeConfig")
+    private @Nullable Output<ToolsetToolFakeConfigArgs> toolFakeConfig;
+
+    /**
+     * @return Configuration for tools behavior in fake mode.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolsetToolFakeConfigArgs>> toolFakeConfig() {
+        return Optional.ofNullable(this.toolFakeConfig);
+    }
+
+    /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset&#39;s resource name. If not provided, a unique ID will be
      * automatically assigned for the toolset.
@@ -278,6 +296,7 @@ public final class ToolsetState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.openApiToolset = $.openApiToolset;
         this.project = $.project;
+        this.toolFakeConfig = $.toolFakeConfig;
         this.toolsetId = $.toolsetId;
         this.updateTime = $.updateTime;
     }
@@ -582,6 +601,29 @@ public final class ToolsetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param toolFakeConfig Configuration for tools behavior in fake mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolFakeConfig(@Nullable Output<ToolsetToolFakeConfigArgs> toolFakeConfig) {
+            $.toolFakeConfig = toolFakeConfig;
+            return this;
+        }
+
+        /**
+         * @param toolFakeConfig Configuration for tools behavior in fake mode.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolFakeConfig(ToolsetToolFakeConfigArgs toolFakeConfig) {
+            return toolFakeConfig(Output.of(toolFakeConfig));
         }
 
         /**

@@ -62,6 +62,37 @@ import * as utilities from "../utilities";
  *     dependsOn: [bucketForMyIcebergCatalog],
  * });
  * ```
+ * ### Biglake Iceberg Catalog Biglake
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBucket = new gcp.storage.Bucket("default_bucket", {
+ *     name: "my_iceberg_catalog-default",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const restrictedBucket = new gcp.storage.Bucket("restricted_bucket", {
+ *     name: "my_iceberg_catalog-restricted",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
+ *     name: "my_iceberg_catalog",
+ *     catalogType: "CATALOG_TYPE_BIGLAKE",
+ *     credentialMode: "CREDENTIAL_MODE_VENDED_CREDENTIALS",
+ *     defaultLocation: pulumi.interpolate`gs://${defaultBucket.name}`,
+ *     restrictedLocationsConfig: {
+ *         restrictedLocations: [
+ *             pulumi.interpolate`gs://${defaultBucket.name}`,
+ *             pulumi.interpolate`gs://${restrictedBucket.name}`,
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -112,8 +143,8 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly biglakeServiceAccount: pulumi.Output<string>;
     /**
-     * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      */
     declare public readonly catalogType: pulumi.Output<string>;
     /**
@@ -126,9 +157,11 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public readonly credentialMode: pulumi.Output<string>;
     /**
-     * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      */
-    declare public /*out*/ readonly defaultLocation: pulumi.Output<string>;
+    declare public readonly defaultLocation: pulumi.Output<string>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -162,6 +195,12 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly replicas: pulumi.Output<outputs.biglake.IcebergCatalogReplica[]>;
     /**
+     * Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     */
+    declare public readonly restrictedLocationsConfig: pulumi.Output<outputs.biglake.IcebergCatalogRestrictedLocationsConfig>;
+    /**
      * Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
      */
     declare public /*out*/ readonly storageRegions: pulumi.Output<string[]>;
@@ -193,6 +232,7 @@ export class IcebergCatalog extends pulumi.CustomResource {
             resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
             resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["restrictedLocationsConfig"] = state?.restrictedLocationsConfig;
             resourceInputs["storageRegions"] = state?.storageRegions;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -202,13 +242,14 @@ export class IcebergCatalog extends pulumi.CustomResource {
             }
             resourceInputs["catalogType"] = args?.catalogType;
             resourceInputs["credentialMode"] = args?.credentialMode;
+            resourceInputs["defaultLocation"] = args?.defaultLocation;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryLocation"] = args?.primaryLocation;
             resourceInputs["project"] = args?.project;
+            resourceInputs["restrictedLocationsConfig"] = args?.restrictedLocationsConfig;
             resourceInputs["biglakeServiceAccount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["defaultLocation"] = undefined /*out*/;
             resourceInputs["replicas"] = undefined /*out*/;
             resourceInputs["storageRegions"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -227,8 +268,8 @@ export interface IcebergCatalogState {
      */
     biglakeServiceAccount?: pulumi.Input<string | undefined>;
     /**
-     * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      */
     catalogType?: pulumi.Input<string | undefined>;
     /**
@@ -241,7 +282,9 @@ export interface IcebergCatalogState {
      */
     credentialMode?: pulumi.Input<string | undefined>;
     /**
-     * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      */
     defaultLocation?: pulumi.Input<string | undefined>;
     /**
@@ -277,6 +320,12 @@ export interface IcebergCatalogState {
      */
     replicas?: pulumi.Input<pulumi.Input<inputs.biglake.IcebergCatalogReplica>[] | undefined>;
     /**
+     * Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     */
+    restrictedLocationsConfig?: pulumi.Input<inputs.biglake.IcebergCatalogRestrictedLocationsConfig | undefined>;
+    /**
      * Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
      */
     storageRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -291,8 +340,8 @@ export interface IcebergCatalogState {
  */
 export interface IcebergCatalogArgs {
     /**
-     * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      */
     catalogType: pulumi.Input<string>;
     /**
@@ -300,6 +349,12 @@ export interface IcebergCatalogArgs {
      * Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
      */
     credentialMode?: pulumi.Input<string | undefined>;
+    /**
+     * The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
+     */
+    defaultLocation?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -327,4 +382,10 @@ export interface IcebergCatalogArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     */
+    restrictedLocationsConfig?: pulumi.Input<inputs.biglake.IcebergCatalogRestrictedLocationsConfig | undefined>;
 }

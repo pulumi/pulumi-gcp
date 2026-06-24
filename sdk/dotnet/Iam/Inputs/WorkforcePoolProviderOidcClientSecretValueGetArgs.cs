@@ -12,11 +12,12 @@ namespace Pulumi.Gcp.Iam.Inputs
 
     public sealed class WorkforcePoolProviderOidcClientSecretValueGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("plainText", required: true)]
+        [Input("plainText")]
         private Input<string>? _plainText;
 
         /// <summary>
         /// The plain text of the client secret value.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? PlainText
         {
@@ -27,6 +28,33 @@ namespace Pulumi.Gcp.Iam.Inputs
                 _plainText = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("plainTextWo")]
+        private Input<string>? _plainTextWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The plain text of the client secret value.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PlainText` or `PlainTextWo` can only be set.
+        /// </summary>
+        public Input<string>? PlainTextWo
+        {
+            get => _plainTextWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plainTextWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PlainTextWo` write-only. Increment this value when an update to `PlainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("plainTextWoVersion")]
+        public Input<string>? PlainTextWoVersion { get; set; }
 
         /// <summary>
         /// (Output)

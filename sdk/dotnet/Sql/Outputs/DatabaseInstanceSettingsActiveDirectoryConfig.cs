@@ -14,15 +14,43 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsActiveDirectoryConfig
     {
         /// <summary>
-        /// The domain name for the active directory (e.g., mydomain.com).
-        /// Can only be used with SQL Server.
+        /// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
+        /// </summary>
+        public readonly string? AdminCredentialSecretName;
+        /// <summary>
+        /// Domain controller IPv4 addresses used to bootstrap Active Directory.
+        /// </summary>
+        public readonly ImmutableArray<string> DnsServers;
+        /// <summary>
+        /// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
         /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
+        /// </summary>
+        public readonly string? Mode;
+        /// <summary>
+        /// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
+        /// </summary>
+        public readonly string? OrganizationalUnit;
 
         [OutputConstructor]
-        private DatabaseInstanceSettingsActiveDirectoryConfig(string domain)
+        private DatabaseInstanceSettingsActiveDirectoryConfig(
+            string? adminCredentialSecretName,
+
+            ImmutableArray<string> dnsServers,
+
+            string domain,
+
+            string? mode,
+
+            string? organizationalUnit)
         {
+            AdminCredentialSecretName = adminCredentialSecretName;
+            DnsServers = dnsServers;
             Domain = domain;
+            Mode = mode;
+            OrganizationalUnit = organizationalUnit;
         }
     }
 }

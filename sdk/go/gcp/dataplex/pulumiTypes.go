@@ -12571,6 +12571,364 @@ func (o LakeMetastoreStatusArrayOutput) Index(i pulumi.IntInput) LakeMetastoreSt
 	}).(LakeMetastoreStatusOutput)
 }
 
+type MetadataFeedFilters struct {
+	// The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+	AspectTypes []string `pulumi:"aspectTypes"`
+	// The type of change that you want to listen to. If not specified, all changes are published.
+	ChangeTypes []string `pulumi:"changeTypes"`
+	// The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+	EntryTypes []string `pulumi:"entryTypes"`
+}
+
+// MetadataFeedFiltersInput is an input type that accepts MetadataFeedFiltersArgs and MetadataFeedFiltersOutput values.
+// You can construct a concrete instance of `MetadataFeedFiltersInput` via:
+//
+//	MetadataFeedFiltersArgs{...}
+type MetadataFeedFiltersInput interface {
+	pulumi.Input
+
+	ToMetadataFeedFiltersOutput() MetadataFeedFiltersOutput
+	ToMetadataFeedFiltersOutputWithContext(context.Context) MetadataFeedFiltersOutput
+}
+
+type MetadataFeedFiltersArgs struct {
+	// The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+	AspectTypes pulumi.StringArrayInput `pulumi:"aspectTypes"`
+	// The type of change that you want to listen to. If not specified, all changes are published.
+	ChangeTypes pulumi.StringArrayInput `pulumi:"changeTypes"`
+	// The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+	EntryTypes pulumi.StringArrayInput `pulumi:"entryTypes"`
+}
+
+func (MetadataFeedFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataFeedFilters)(nil)).Elem()
+}
+
+func (i MetadataFeedFiltersArgs) ToMetadataFeedFiltersOutput() MetadataFeedFiltersOutput {
+	return i.ToMetadataFeedFiltersOutputWithContext(context.Background())
+}
+
+func (i MetadataFeedFiltersArgs) ToMetadataFeedFiltersOutputWithContext(ctx context.Context) MetadataFeedFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedFiltersOutput)
+}
+
+func (i MetadataFeedFiltersArgs) ToMetadataFeedFiltersPtrOutput() MetadataFeedFiltersPtrOutput {
+	return i.ToMetadataFeedFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i MetadataFeedFiltersArgs) ToMetadataFeedFiltersPtrOutputWithContext(ctx context.Context) MetadataFeedFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedFiltersOutput).ToMetadataFeedFiltersPtrOutputWithContext(ctx)
+}
+
+// MetadataFeedFiltersPtrInput is an input type that accepts MetadataFeedFiltersArgs, MetadataFeedFiltersPtr and MetadataFeedFiltersPtrOutput values.
+// You can construct a concrete instance of `MetadataFeedFiltersPtrInput` via:
+//
+//	        MetadataFeedFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetadataFeedFiltersPtrInput interface {
+	pulumi.Input
+
+	ToMetadataFeedFiltersPtrOutput() MetadataFeedFiltersPtrOutput
+	ToMetadataFeedFiltersPtrOutputWithContext(context.Context) MetadataFeedFiltersPtrOutput
+}
+
+type metadataFeedFiltersPtrType MetadataFeedFiltersArgs
+
+func MetadataFeedFiltersPtr(v *MetadataFeedFiltersArgs) MetadataFeedFiltersPtrInput {
+	return (*metadataFeedFiltersPtrType)(v)
+}
+
+func (*metadataFeedFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataFeedFilters)(nil)).Elem()
+}
+
+func (i *metadataFeedFiltersPtrType) ToMetadataFeedFiltersPtrOutput() MetadataFeedFiltersPtrOutput {
+	return i.ToMetadataFeedFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *metadataFeedFiltersPtrType) ToMetadataFeedFiltersPtrOutputWithContext(ctx context.Context) MetadataFeedFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedFiltersPtrOutput)
+}
+
+type MetadataFeedFiltersOutput struct{ *pulumi.OutputState }
+
+func (MetadataFeedFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataFeedFilters)(nil)).Elem()
+}
+
+func (o MetadataFeedFiltersOutput) ToMetadataFeedFiltersOutput() MetadataFeedFiltersOutput {
+	return o
+}
+
+func (o MetadataFeedFiltersOutput) ToMetadataFeedFiltersOutputWithContext(ctx context.Context) MetadataFeedFiltersOutput {
+	return o
+}
+
+func (o MetadataFeedFiltersOutput) ToMetadataFeedFiltersPtrOutput() MetadataFeedFiltersPtrOutput {
+	return o.ToMetadataFeedFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataFeedFiltersOutput) ToMetadataFeedFiltersPtrOutputWithContext(ctx context.Context) MetadataFeedFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataFeedFilters) *MetadataFeedFilters {
+		return &v
+	}).(MetadataFeedFiltersPtrOutput)
+}
+
+// The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+func (o MetadataFeedFiltersOutput) AspectTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetadataFeedFilters) []string { return v.AspectTypes }).(pulumi.StringArrayOutput)
+}
+
+// The type of change that you want to listen to. If not specified, all changes are published.
+func (o MetadataFeedFiltersOutput) ChangeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetadataFeedFilters) []string { return v.ChangeTypes }).(pulumi.StringArrayOutput)
+}
+
+// The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+func (o MetadataFeedFiltersOutput) EntryTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetadataFeedFilters) []string { return v.EntryTypes }).(pulumi.StringArrayOutput)
+}
+
+type MetadataFeedFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataFeedFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataFeedFilters)(nil)).Elem()
+}
+
+func (o MetadataFeedFiltersPtrOutput) ToMetadataFeedFiltersPtrOutput() MetadataFeedFiltersPtrOutput {
+	return o
+}
+
+func (o MetadataFeedFiltersPtrOutput) ToMetadataFeedFiltersPtrOutputWithContext(ctx context.Context) MetadataFeedFiltersPtrOutput {
+	return o
+}
+
+func (o MetadataFeedFiltersPtrOutput) Elem() MetadataFeedFiltersOutput {
+	return o.ApplyT(func(v *MetadataFeedFilters) MetadataFeedFilters {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataFeedFilters
+		return ret
+	}).(MetadataFeedFiltersOutput)
+}
+
+// The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+func (o MetadataFeedFiltersPtrOutput) AspectTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetadataFeedFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AspectTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of change that you want to listen to. If not specified, all changes are published.
+func (o MetadataFeedFiltersPtrOutput) ChangeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetadataFeedFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ChangeTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published.
+func (o MetadataFeedFiltersPtrOutput) EntryTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetadataFeedFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type MetadataFeedScope struct {
+	// The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+	EntryGroups []string `pulumi:"entryGroups"`
+	// Whether the metadata feed is at the organization-level.
+	// If true, all changes happened to the entries in the same organization as the feed are published.
+	// If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+	OrganizationLevel *bool `pulumi:"organizationLevel"`
+	// The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+	Projects []string `pulumi:"projects"`
+}
+
+// MetadataFeedScopeInput is an input type that accepts MetadataFeedScopeArgs and MetadataFeedScopeOutput values.
+// You can construct a concrete instance of `MetadataFeedScopeInput` via:
+//
+//	MetadataFeedScopeArgs{...}
+type MetadataFeedScopeInput interface {
+	pulumi.Input
+
+	ToMetadataFeedScopeOutput() MetadataFeedScopeOutput
+	ToMetadataFeedScopeOutputWithContext(context.Context) MetadataFeedScopeOutput
+}
+
+type MetadataFeedScopeArgs struct {
+	// The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+	EntryGroups pulumi.StringArrayInput `pulumi:"entryGroups"`
+	// Whether the metadata feed is at the organization-level.
+	// If true, all changes happened to the entries in the same organization as the feed are published.
+	// If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+	OrganizationLevel pulumi.BoolPtrInput `pulumi:"organizationLevel"`
+	// The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+}
+
+func (MetadataFeedScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataFeedScope)(nil)).Elem()
+}
+
+func (i MetadataFeedScopeArgs) ToMetadataFeedScopeOutput() MetadataFeedScopeOutput {
+	return i.ToMetadataFeedScopeOutputWithContext(context.Background())
+}
+
+func (i MetadataFeedScopeArgs) ToMetadataFeedScopeOutputWithContext(ctx context.Context) MetadataFeedScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedScopeOutput)
+}
+
+func (i MetadataFeedScopeArgs) ToMetadataFeedScopePtrOutput() MetadataFeedScopePtrOutput {
+	return i.ToMetadataFeedScopePtrOutputWithContext(context.Background())
+}
+
+func (i MetadataFeedScopeArgs) ToMetadataFeedScopePtrOutputWithContext(ctx context.Context) MetadataFeedScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedScopeOutput).ToMetadataFeedScopePtrOutputWithContext(ctx)
+}
+
+// MetadataFeedScopePtrInput is an input type that accepts MetadataFeedScopeArgs, MetadataFeedScopePtr and MetadataFeedScopePtrOutput values.
+// You can construct a concrete instance of `MetadataFeedScopePtrInput` via:
+//
+//	        MetadataFeedScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetadataFeedScopePtrInput interface {
+	pulumi.Input
+
+	ToMetadataFeedScopePtrOutput() MetadataFeedScopePtrOutput
+	ToMetadataFeedScopePtrOutputWithContext(context.Context) MetadataFeedScopePtrOutput
+}
+
+type metadataFeedScopePtrType MetadataFeedScopeArgs
+
+func MetadataFeedScopePtr(v *MetadataFeedScopeArgs) MetadataFeedScopePtrInput {
+	return (*metadataFeedScopePtrType)(v)
+}
+
+func (*metadataFeedScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataFeedScope)(nil)).Elem()
+}
+
+func (i *metadataFeedScopePtrType) ToMetadataFeedScopePtrOutput() MetadataFeedScopePtrOutput {
+	return i.ToMetadataFeedScopePtrOutputWithContext(context.Background())
+}
+
+func (i *metadataFeedScopePtrType) ToMetadataFeedScopePtrOutputWithContext(ctx context.Context) MetadataFeedScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataFeedScopePtrOutput)
+}
+
+type MetadataFeedScopeOutput struct{ *pulumi.OutputState }
+
+func (MetadataFeedScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataFeedScope)(nil)).Elem()
+}
+
+func (o MetadataFeedScopeOutput) ToMetadataFeedScopeOutput() MetadataFeedScopeOutput {
+	return o
+}
+
+func (o MetadataFeedScopeOutput) ToMetadataFeedScopeOutputWithContext(ctx context.Context) MetadataFeedScopeOutput {
+	return o
+}
+
+func (o MetadataFeedScopeOutput) ToMetadataFeedScopePtrOutput() MetadataFeedScopePtrOutput {
+	return o.ToMetadataFeedScopePtrOutputWithContext(context.Background())
+}
+
+func (o MetadataFeedScopeOutput) ToMetadataFeedScopePtrOutputWithContext(ctx context.Context) MetadataFeedScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataFeedScope) *MetadataFeedScope {
+		return &v
+	}).(MetadataFeedScopePtrOutput)
+}
+
+// The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+func (o MetadataFeedScopeOutput) EntryGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetadataFeedScope) []string { return v.EntryGroups }).(pulumi.StringArrayOutput)
+}
+
+// Whether the metadata feed is at the organization-level.
+// If true, all changes happened to the entries in the same organization as the feed are published.
+// If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+func (o MetadataFeedScopeOutput) OrganizationLevel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetadataFeedScope) *bool { return v.OrganizationLevel }).(pulumi.BoolPtrOutput)
+}
+
+// The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+func (o MetadataFeedScopeOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetadataFeedScope) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+type MetadataFeedScopePtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataFeedScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataFeedScope)(nil)).Elem()
+}
+
+func (o MetadataFeedScopePtrOutput) ToMetadataFeedScopePtrOutput() MetadataFeedScopePtrOutput {
+	return o
+}
+
+func (o MetadataFeedScopePtrOutput) ToMetadataFeedScopePtrOutputWithContext(ctx context.Context) MetadataFeedScopePtrOutput {
+	return o
+}
+
+func (o MetadataFeedScopePtrOutput) Elem() MetadataFeedScopeOutput {
+	return o.ApplyT(func(v *MetadataFeedScope) MetadataFeedScope {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataFeedScope
+		return ret
+	}).(MetadataFeedScopeOutput)
+}
+
+// The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+func (o MetadataFeedScopePtrOutput) EntryGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetadataFeedScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the metadata feed is at the organization-level.
+// If true, all changes happened to the entries in the same organization as the feed are published.
+// If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
+func (o MetadataFeedScopePtrOutput) OrganizationLevel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetadataFeedScope) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationLevel
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
+func (o MetadataFeedScopePtrOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetadataFeedScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(pulumi.StringArrayOutput)
+}
+
 type TaskExecutionSpec struct {
 	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args map[string]string `pulumi:"args"`
@@ -18049,6 +18407,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastorePtrInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusInput)(nil)).Elem(), LakeMetastoreStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusArrayInput)(nil)).Elem(), LakeMetastoreStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFeedFiltersInput)(nil)).Elem(), MetadataFeedFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFeedFiltersPtrInput)(nil)).Elem(), MetadataFeedFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFeedScopeInput)(nil)).Elem(), MetadataFeedScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFeedScopePtrInput)(nil)).Elem(), MetadataFeedScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionSpecInput)(nil)).Elem(), TaskExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionSpecPtrInput)(nil)).Elem(), TaskExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionStatusInput)(nil)).Elem(), TaskExecutionStatusArgs{})
@@ -18276,6 +18638,10 @@ func init() {
 	pulumi.RegisterOutputType(LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusArrayOutput{})
+	pulumi.RegisterOutputType(MetadataFeedFiltersOutput{})
+	pulumi.RegisterOutputType(MetadataFeedFiltersPtrOutput{})
+	pulumi.RegisterOutputType(MetadataFeedScopeOutput{})
+	pulumi.RegisterOutputType(MetadataFeedScopePtrOutput{})
 	pulumi.RegisterOutputType(TaskExecutionSpecOutput{})
 	pulumi.RegisterOutputType(TaskExecutionSpecPtrOutput{})
 	pulumi.RegisterOutputType(TaskExecutionStatusOutput{})

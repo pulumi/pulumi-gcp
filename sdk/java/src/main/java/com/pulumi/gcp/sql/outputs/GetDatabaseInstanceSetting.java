@@ -19,6 +19,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingLocationPreference;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingMaintenanceWindow;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingPasswordValidationPolicy;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingPerformanceCaptureConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingReadPoolAutoScaleConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingSqlServerAuditConfig;
 import java.lang.Boolean;
@@ -162,6 +163,11 @@ public final class GetDatabaseInstanceSetting {
      */
     private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
     private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
+    /**
+     * @return Configuration of Performance Capture.
+     * 
+     */
+    private List<GetDatabaseInstanceSettingPerformanceCaptureConfig> performanceCaptureConfigs;
     /**
      * @return Pricing plan for this instance, can only be PER_USE.
      * 
@@ -395,6 +401,13 @@ public final class GetDatabaseInstanceSetting {
         return this.passwordValidationPolicies;
     }
     /**
+     * @return Configuration of Performance Capture.
+     * 
+     */
+    public List<GetDatabaseInstanceSettingPerformanceCaptureConfig> performanceCaptureConfigs() {
+        return this.performanceCaptureConfigs;
+    }
+    /**
      * @return Pricing plan for this instance, can only be PER_USE.
      * 
      */
@@ -487,6 +500,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
         private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
         private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
+        private List<GetDatabaseInstanceSettingPerformanceCaptureConfig> performanceCaptureConfigs;
         private String pricingPlan;
         private List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig> readPoolAutoScaleConfigs;
         private Boolean retainBackupsOnDelete;
@@ -529,6 +543,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.locationPreferences = defaults.locationPreferences;
     	      this.maintenanceWindows = defaults.maintenanceWindows;
     	      this.passwordValidationPolicies = defaults.passwordValidationPolicies;
+    	      this.performanceCaptureConfigs = defaults.performanceCaptureConfigs;
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.readPoolAutoScaleConfigs = defaults.readPoolAutoScaleConfigs;
     	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
@@ -830,6 +845,17 @@ public final class GetDatabaseInstanceSetting {
             return passwordValidationPolicies(List.of(passwordValidationPolicies));
         }
         @CustomType.Setter
+        public Builder performanceCaptureConfigs(List<GetDatabaseInstanceSettingPerformanceCaptureConfig> performanceCaptureConfigs) {
+            if (performanceCaptureConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "performanceCaptureConfigs");
+            }
+            this.performanceCaptureConfigs = performanceCaptureConfigs;
+            return this;
+        }
+        public Builder performanceCaptureConfigs(GetDatabaseInstanceSettingPerformanceCaptureConfig... performanceCaptureConfigs) {
+            return performanceCaptureConfigs(List.of(performanceCaptureConfigs));
+        }
+        @CustomType.Setter
         public Builder pricingPlan(String pricingPlan) {
             if (pricingPlan == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "pricingPlan");
@@ -932,6 +958,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.locationPreferences = locationPreferences;
             _resultValue.maintenanceWindows = maintenanceWindows;
             _resultValue.passwordValidationPolicies = passwordValidationPolicies;
+            _resultValue.performanceCaptureConfigs = performanceCaptureConfigs;
             _resultValue.pricingPlan = pricingPlan;
             _resultValue.readPoolAutoScaleConfigs = readPoolAutoScaleConfigs;
             _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;

@@ -614,22 +614,33 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
         agent_registry = gcp.projects.Service("agent_registry",
             service="agentregistry.googleapis.com",
             disable_on_destroy=False)
         default_network = gcp.compute.Network("default",
-            name="net-my-full-agent-gateway",
+            name="my-gateway-network",
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
-            name="subnet-my-full-agent-gateway",
+            name="my-gateway-subnetwork",
             region="us-central1",
             network=default_network.id,
             ip_cidr_range="10.0.0.0/16")
         default_network_attachment = gcp.compute.NetworkAttachment("default",
-            name="na-my-full-agent-gateway",
+            name="my-gateway-attachment",
             region="us-central1",
-            connection_preference="ACCEPT_AUTOMATIC",
-            subnetworks=[default_subnetwork.self_link])
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[default_subnetwork.id])
+        default_managed_zone = gcp.dns.ManagedZone("default",
+            name="my-gateway-zone",
+            dns_name="example.com.",
+            description="Private zone used by AgentGateway DNS peering",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": default_network.id,
+                }],
+            })
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
             location="us-central1",
@@ -646,6 +657,11 @@ class AgentGateway(pulumi.CustomResource):
             network_config={
                 "egress": {
                     "network_attachment": default_network_attachment.id,
+                },
+                "dns_peering_config": {
+                    "domains": [default_managed_zone.dns_name],
+                    "target_project": project.project_id,
+                    "target_network": default_network.id,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
@@ -755,22 +771,33 @@ class AgentGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
         agent_registry = gcp.projects.Service("agent_registry",
             service="agentregistry.googleapis.com",
             disable_on_destroy=False)
         default_network = gcp.compute.Network("default",
-            name="net-my-full-agent-gateway",
+            name="my-gateway-network",
             auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("default",
-            name="subnet-my-full-agent-gateway",
+            name="my-gateway-subnetwork",
             region="us-central1",
             network=default_network.id,
             ip_cidr_range="10.0.0.0/16")
         default_network_attachment = gcp.compute.NetworkAttachment("default",
-            name="na-my-full-agent-gateway",
+            name="my-gateway-attachment",
             region="us-central1",
-            connection_preference="ACCEPT_AUTOMATIC",
-            subnetworks=[default_subnetwork.self_link])
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[default_subnetwork.id])
+        default_managed_zone = gcp.dns.ManagedZone("default",
+            name="my-gateway-zone",
+            dns_name="example.com.",
+            description="Private zone used by AgentGateway DNS peering",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": default_network.id,
+                }],
+            })
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
             location="us-central1",
@@ -787,6 +814,11 @@ class AgentGateway(pulumi.CustomResource):
             network_config={
                 "egress": {
                     "network_attachment": default_network_attachment.id,
+                },
+                "dns_peering_config": {
+                    "domains": [default_managed_zone.dns_name],
+                    "target_project": project.project_id,
+                    "target_network": default_network.id,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))

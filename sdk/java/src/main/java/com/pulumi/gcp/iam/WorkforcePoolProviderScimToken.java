@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkforcePoolProviderScimTokenArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderScimTokenState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -250,6 +251,7 @@ public class WorkforcePoolProviderScimToken extends com.pulumi.resources.CustomR
     }
     /**
      * The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="securityToken", refs={String.class}, tree="[0]")
@@ -257,6 +259,7 @@ public class WorkforcePoolProviderScimToken extends com.pulumi.resources.CustomR
 
     /**
      * @return The token string provided to the IdP for authentication and will be set only during creation.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<String> securityToken() {
@@ -334,6 +337,9 @@ public class WorkforcePoolProviderScimToken extends com.pulumi.resources.CustomR
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "securityToken"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

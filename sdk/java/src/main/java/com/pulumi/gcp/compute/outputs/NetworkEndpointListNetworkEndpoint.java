@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -24,9 +23,10 @@ public final class NetworkEndpointListNetworkEndpoint {
      * @return IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
+     * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
      * 
      */
-    private String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return Port number of network endpoint.
      * **Note** `port` is required unless the Network Endpoint Group is created
@@ -49,10 +49,11 @@ public final class NetworkEndpointListNetworkEndpoint {
      * @return IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
+     * **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
      * 
      */
-    public String ipAddress() {
-        return this.ipAddress;
+    public Optional<String> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
     }
     /**
      * @return Port number of network endpoint.
@@ -74,7 +75,7 @@ public final class NetworkEndpointListNetworkEndpoint {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String instance;
-        private String ipAddress;
+        private @Nullable String ipAddress;
         private @Nullable Integer port;
         public Builder() {}
         public Builder(NetworkEndpointListNetworkEndpoint defaults) {
@@ -91,10 +92,8 @@ public final class NetworkEndpointListNetworkEndpoint {
             return this;
         }
         @CustomType.Setter
-        public Builder ipAddress(String ipAddress) {
-            if (ipAddress == null) {
-              throw new MissingRequiredPropertyException("NetworkEndpointListNetworkEndpoint", "ipAddress");
-            }
+        public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }

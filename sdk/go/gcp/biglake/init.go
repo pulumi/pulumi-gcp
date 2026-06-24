@@ -25,6 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Catalog{}
 	case "gcp:biglake/database:Database":
 		r = &Database{}
+	case "gcp:biglake/hiveCatalog:HiveCatalog":
+		r = &HiveCatalog{}
+	case "gcp:biglake/hiveCatalogIamBinding:HiveCatalogIamBinding":
+		r = &HiveCatalogIamBinding{}
+	case "gcp:biglake/hiveCatalogIamMember:HiveCatalogIamMember":
+		r = &HiveCatalogIamMember{}
+	case "gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy":
+		r = &HiveCatalogIamPolicy{}
 	case "gcp:biglake/icebergCatalog:IcebergCatalog":
 		r = &IcebergCatalog{}
 	case "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding":
@@ -72,6 +80,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"biglake/database",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveCatalogIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveCatalogIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveCatalogIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -840,6 +840,116 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service Ha Policy Internal Lb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("rbs-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("rbs-subnet"),
+//				IpCidrRange: pulumi.String("10.1.2.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-12"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			endpoint_instance, err := compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+//						},
+//						Subnetwork: defaultSubnetwork.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("rbs-instance"),
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					AutoDelete: pulumi.Bool(true),
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+//				Name:                pulumi.String("rbs-neg"),
+//				NetworkEndpointType: pulumi.String("GCE_VM_IP_DEDICATED_BACKEND"),
+//				Network:             _default.ID(),
+//				Subnetwork:          defaultSubnetwork.ID(),
+//				Zone:                pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEndpointList(ctx, "endpoint", &compute.NetworkEndpointListArgs{
+//				NetworkEndpointGroup: neg.Name,
+//				NetworkEndpoints: compute.NetworkEndpointListNetworkEndpointArray{
+//					&compute.NetworkEndpointListNetworkEndpointArgs{
+//						Instance: endpoint_instance.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("region-service"),
+//				Protocol:            pulumi.String("UNSPECIFIED"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				Network:             _default.ID(),
+//				Backends: compute.RegionBackendServiceBackendArray{
+//					&compute.RegionBackendServiceBackendArgs{
+//						Group:         neg.SelfLink,
+//						BalancingMode: pulumi.String("CONNECTION"),
+//					},
+//				},
+//				HaPolicy: &compute.RegionBackendServiceHaPolicyArgs{
+//					FastIpMove: pulumi.String("GARP_RA"),
+//					Leader: &compute.RegionBackendServiceHaPolicyLeaderArgs{
+//						BackendGroup: neg.SelfLink,
+//						NetworkEndpoint: &compute.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs{
+//							Instance: endpoint_instance.Name,
+//						},
+//					},
+//				},
+//				ConnectionDrainingTimeoutSec: pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Backend Service Tls Settings
 //
 // ```go

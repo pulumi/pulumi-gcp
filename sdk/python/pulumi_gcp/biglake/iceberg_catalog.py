@@ -23,17 +23,22 @@ class IcebergCatalogArgs:
     def __init__(__self__, *,
                  catalog_type: pulumi.Input[_builtins.str],
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restricted_locations_config: pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']] = None):
         """
         The set of arguments for constructing a IcebergCatalog resource.
 
-        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
+               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
+        :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
+               Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+               Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -49,10 +54,15 @@ class IcebergCatalogArgs:
                catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['IcebergCatalogRestrictedLocationsConfigArgs'] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+               by resources within this catalog.
+               Structure is documented below.
         """
         pulumi.set(__self__, "catalog_type", catalog_type)
         if credential_mode is not None:
             pulumi.set(__self__, "credential_mode", credential_mode)
+        if default_location is not None:
+            pulumi.set(__self__, "default_location", default_location)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
@@ -61,13 +71,15 @@ class IcebergCatalogArgs:
             pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if restricted_locations_config is not None:
+            pulumi.set(__self__, "restricted_locations_config", restricted_locations_config)
 
     @_builtins.property
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        The catalog type of the IcebergCatalog.
+        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -87,6 +99,20 @@ class IcebergCatalogArgs:
     @credential_mode.setter
     def credential_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultLocation")
+    def default_location(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The default storage location for the catalog, e.g., `gs://my-bucket`.
+        Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        Required when the catalog type is CATALOG_TYPE_BIGLAKE.
+        """
+        return pulumi.get(self, "default_location")
+
+    @default_location.setter
+    def default_location(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_location", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -147,6 +173,20 @@ class IcebergCatalogArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="restrictedLocationsConfig")
+    def restricted_locations_config(self) -> pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']]:
+        """
+        Configuration for the additional GCS locations that are permitted for use
+        by resources within this catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_locations_config")
+
+    @restricted_locations_config.setter
+    def restricted_locations_config(self, value: pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']]):
+        pulumi.set(self, "restricted_locations_config", value)
+
 
 @pulumi.input_type
 class _IcebergCatalogState:
@@ -161,18 +201,21 @@ class _IcebergCatalogState:
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogReplicaArgs']]]] = None,
+                 restricted_locations_config: pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']] = None,
                  storage_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IcebergCatalog resources.
 
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
-        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
+               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-        :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
+               Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+               Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -189,6 +232,9 @@ class _IcebergCatalogState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['IcebergCatalogReplicaArgs']]] replicas: Output only. The replicas for the catalog metadata.
+               Structure is documented below.
+        :param pulumi.Input['IcebergCatalogRestrictedLocationsConfigArgs'] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+               by resources within this catalog.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_regions: Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
         :param pulumi.Input[_builtins.str] update_time: Output only. The last modification time of the IcebergCatalog.
@@ -213,6 +259,8 @@ class _IcebergCatalogState:
             pulumi.set(__self__, "project", project)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if restricted_locations_config is not None:
+            pulumi.set(__self__, "restricted_locations_config", restricted_locations_config)
         if storage_regions is not None:
             pulumi.set(__self__, "storage_regions", storage_regions)
         if update_time is not None:
@@ -234,8 +282,8 @@ class _IcebergCatalogState:
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        The catalog type of the IcebergCatalog.
+        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -272,7 +320,9 @@ class _IcebergCatalogState:
     @pulumi.getter(name="defaultLocation")
     def default_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        The default storage location for the catalog, e.g., `gs://my-bucket`.
+        Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         """
         return pulumi.get(self, "default_location")
 
@@ -353,6 +403,20 @@ class _IcebergCatalogState:
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
+    @pulumi.getter(name="restrictedLocationsConfig")
+    def restricted_locations_config(self) -> pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']]:
+        """
+        Configuration for the additional GCS locations that are permitted for use
+        by resources within this catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_locations_config")
+
+    @restricted_locations_config.setter
+    def restricted_locations_config(self, value: pulumi.Input[Optional['IcebergCatalogRestrictedLocationsConfigArgs']]):
+        pulumi.set(self, "restricted_locations_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageRegions")
     def storage_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -385,10 +449,12 @@ class IcebergCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
                  __props__=None):
         """
         IcebergCatalogs are top-level containers for Apache Iceberg REST Catalog served Namespaces and Tables.
@@ -440,6 +506,34 @@ class IcebergCatalog(pulumi.CustomResource):
             primary_location="us-central1",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+        ### Biglake Iceberg Catalog Biglake
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_bucket = gcp.storage.Bucket("default_bucket",
+            name="my_iceberg_catalog-default",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        restricted_bucket = gcp.storage.Bucket("restricted_bucket",
+            name="my_iceberg_catalog-restricted",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            name="my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_BIGLAKE",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
+            default_location=default_bucket.name.apply(lambda name: f"gs://{name}"),
+            restricted_locations_config={
+                "restricted_locations": [
+                    default_bucket.name.apply(lambda name: f"gs://{name}"),
+                    restricted_bucket.name.apply(lambda name: f"gs://{name}"),
+                ],
+            })
+        ```
 
         ## Import
 
@@ -460,10 +554,13 @@ class IcebergCatalog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
+               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
+        :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
+               Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+               Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -479,6 +576,9 @@ class IcebergCatalog(pulumi.CustomResource):
                catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+               by resources within this catalog.
+               Structure is documented below.
         """
         ...
     @overload
@@ -536,6 +636,34 @@ class IcebergCatalog(pulumi.CustomResource):
             primary_location="us-central1",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
+        ### Biglake Iceberg Catalog Biglake
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_bucket = gcp.storage.Bucket("default_bucket",
+            name="my_iceberg_catalog-default",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        restricted_bucket = gcp.storage.Bucket("restricted_bucket",
+            name="my_iceberg_catalog-restricted",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            name="my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_BIGLAKE",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
+            default_location=default_bucket.name.apply(lambda name: f"gs://{name}"),
+            restricted_locations_config={
+                "restricted_locations": [
+                    default_bucket.name.apply(lambda name: f"gs://{name}"),
+                    restricted_bucket.name.apply(lambda name: f"gs://{name}"),
+                ],
+            })
+        ```
 
         ## Import
 
@@ -571,10 +699,12 @@ class IcebergCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,13 +718,14 @@ class IcebergCatalog(pulumi.CustomResource):
                 raise TypeError("Missing required property 'catalog_type'")
             __props__.__dict__["catalog_type"] = catalog_type
             __props__.__dict__["credential_mode"] = credential_mode
+            __props__.__dict__["default_location"] = default_location
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["primary_location"] = primary_location
             __props__.__dict__["project"] = project
+            __props__.__dict__["restricted_locations_config"] = restricted_locations_config
             __props__.__dict__["biglake_service_account"] = None
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["default_location"] = None
             __props__.__dict__["replicas"] = None
             __props__.__dict__["storage_regions"] = None
             __props__.__dict__["update_time"] = None
@@ -618,6 +749,7 @@ class IcebergCatalog(pulumi.CustomResource):
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]]] = None,
+            restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
             storage_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'IcebergCatalog':
         """
@@ -628,12 +760,14 @@ class IcebergCatalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
-        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
+               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-        :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
+               Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+               Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -650,6 +784,9 @@ class IcebergCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]] replicas: Output only. The replicas for the catalog metadata.
+               Structure is documented below.
+        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+               by resources within this catalog.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_regions: Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
         :param pulumi.Input[_builtins.str] update_time: Output only. The last modification time of the IcebergCatalog.
@@ -668,6 +805,7 @@ class IcebergCatalog(pulumi.CustomResource):
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replicas"] = replicas
+        __props__.__dict__["restricted_locations_config"] = restricted_locations_config
         __props__.__dict__["storage_regions"] = storage_regions
         __props__.__dict__["update_time"] = update_time
         return IcebergCatalog(resource_name, opts=opts, __props__=__props__)
@@ -684,8 +822,8 @@ class IcebergCatalog(pulumi.CustomResource):
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+        The catalog type of the IcebergCatalog.
+        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -710,7 +848,9 @@ class IcebergCatalog(pulumi.CustomResource):
     @pulumi.getter(name="defaultLocation")
     def default_location(self) -> pulumi.Output[_builtins.str]:
         """
-        Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        The default storage location for the catalog, e.g., `gs://my-bucket`.
+        Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+        Required when the catalog type is CATALOG_TYPE_BIGLAKE.
         """
         return pulumi.get(self, "default_location")
 
@@ -765,6 +905,16 @@ class IcebergCatalog(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "replicas")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictedLocationsConfig")
+    def restricted_locations_config(self) -> pulumi.Output['outputs.IcebergCatalogRestrictedLocationsConfig']:
+        """
+        Configuration for the additional GCS locations that are permitted for use
+        by resources within this catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_locations_config")
 
     @_builtins.property
     @pulumi.getter(name="storageRegions")

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.biglake.IcebergCatalogArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergCatalogState;
 import com.pulumi.gcp.biglake.outputs.IcebergCatalogReplica;
+import com.pulumi.gcp.biglake.outputs.IcebergCatalogRestrictedLocationsConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -124,6 +125,63 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Biglake Iceberg Catalog Biglake
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogRestrictedLocationsConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
+ *             .name("my_iceberg_catalog-default")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var restrictedBucket = new Bucket("restrictedBucket", BucketArgs.builder()
+ *             .name("my_iceberg_catalog-restricted")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
+ *             .name("my_iceberg_catalog")
+ *             .catalogType("CATALOG_TYPE_BIGLAKE")
+ *             .credentialMode("CREDENTIAL_MODE_VENDED_CREDENTIALS")
+ *             .defaultLocation(defaultBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *             .restrictedLocationsConfig(IcebergCatalogRestrictedLocationsConfigArgs.builder()
+ *                 .restrictedLocations(                
+ *                     defaultBucket.name().applyValue(_name -> String.format("gs://%s", _name)),
+ *                     restrictedBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -159,16 +217,16 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
         return this.biglakeServiceAccount;
     }
     /**
-     * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      * 
      */
     @Export(name="catalogType", refs={String.class}, tree="[0]")
     private Output<String> catalogType;
 
     /**
-     * @return The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * @return The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      * 
      */
     public Output<String> catalogType() {
@@ -205,14 +263,18 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
         return this.credentialMode;
     }
     /**
-     * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      * 
      */
     @Export(name="defaultLocation", refs={String.class}, tree="[0]")
     private Output<String> defaultLocation;
 
     /**
-     * @return Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * @return The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      * 
      */
     public Output<String> defaultLocation() {
@@ -311,6 +373,24 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
      */
     public Output<List<IcebergCatalogReplica>> replicas() {
         return this.replicas;
+    }
+    /**
+     * Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restrictedLocationsConfig", refs={IcebergCatalogRestrictedLocationsConfig.class}, tree="[0]")
+    private Output<IcebergCatalogRestrictedLocationsConfig> restrictedLocationsConfig;
+
+    /**
+     * @return Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     * 
+     */
+    public Output<IcebergCatalogRestrictedLocationsConfig> restrictedLocationsConfig() {
+        return this.restrictedLocationsConfig;
     }
     /**
      * Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.

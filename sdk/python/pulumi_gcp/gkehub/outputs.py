@@ -3997,7 +3997,8 @@ class RolloutSequenceStage(dict):
         :param 'RolloutSequenceStageClusterSelectorArgs' cluster_selector: Filter to select a subset of clusters from the specified Fleet projects.
                If not specified, all clusters in the fleet projects are selected.
                Structure is documented below.
-        :param _builtins.str soak_duration: Soak time after upgrading all the clusters in the stage, specified in seconds.
+        :param _builtins.str soak_duration: Soak time after upgrading all the clusters in the stage.
+               Has to be specified in seconds, minutes, hours or days.
         """
         pulumi.set(__self__, "fleet_projects", fleet_projects)
         if cluster_selector is not None:
@@ -4028,7 +4029,8 @@ class RolloutSequenceStage(dict):
     @pulumi.getter(name="soakDuration")
     def soak_duration(self) -> Optional[_builtins.str]:
         """
-        Soak time after upgrading all the clusters in the stage, specified in seconds.
+        Soak time after upgrading all the clusters in the stage.
+        Has to be specified in seconds, minutes, hours or days.
         """
         return pulumi.get(self, "soak_duration")
 

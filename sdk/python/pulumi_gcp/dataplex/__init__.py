@@ -55,6 +55,7 @@ from .lake import *
 from .lake_iam_binding import *
 from .lake_iam_member import *
 from .lake_iam_policy import *
+from .metadata_feed import *
 from .task import *
 from .task_iam_binding import *
 from .task_iam_member import *

@@ -119,6 +119,7 @@ type LookupClusterResult struct {
 	CostManagementConfigs                []GetClusterCostManagementConfig          `pulumi:"costManagementConfigs"`
 	DatabaseEncryptions                  []GetClusterDatabaseEncryption            `pulumi:"databaseEncryptions"`
 	DatapathProvider                     string                                    `pulumi:"datapathProvider"`
+	DataplaneOptimizationMode            string                                    `pulumi:"dataplaneOptimizationMode"`
 	DefaultMaxPodsPerNode                int                                       `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus             `pulumi:"defaultSnatStatuses"`
 	DeletionPolicy                       string                                    `pulumi:"deletionPolicy"`
@@ -146,6 +147,7 @@ type LookupClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                                       string                                              `pulumi:"id"`
 	IdentityServiceConfigs                   []GetClusterIdentityServiceConfig                   `pulumi:"identityServiceConfigs"`
+	IgnoreNodeCountChanges                   bool                                                `pulumi:"ignoreNodeCountChanges"`
 	InTransitEncryptionConfig                string                                              `pulumi:"inTransitEncryptionConfig"`
 	InitialNodeCount                         int                                                 `pulumi:"initialNodeCount"`
 	IpAllocationPolicies                     []GetClusterIpAllocationPolicy                      `pulumi:"ipAllocationPolicies"`
@@ -195,6 +197,7 @@ type LookupClusterResult struct {
 	SelfLink                                 string                                              `pulumi:"selfLink"`
 	ServiceExternalIpsConfigs                []GetClusterServiceExternalIpsConfig                `pulumi:"serviceExternalIpsConfigs"`
 	ServicesIpv4Cidr                         string                                              `pulumi:"servicesIpv4Cidr"`
+	SkipNodePoolRefresh                      bool                                                `pulumi:"skipNodePoolRefresh"`
 	Subnetwork                               string                                              `pulumi:"subnetwork"`
 	TpuConfigs                               []GetClusterTpuConfig                               `pulumi:"tpuConfigs"`
 	TpuIpv4CidrBlock                         string                                              `pulumi:"tpuIpv4CidrBlock"`
@@ -311,6 +314,10 @@ func (o LookupClusterResultOutput) DatapathProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DatapathProvider }).(pulumi.StringOutput)
 }
 
+func (o LookupClusterResultOutput) DataplaneOptimizationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DataplaneOptimizationMode }).(pulumi.StringOutput)
+}
+
 func (o LookupClusterResultOutput) DefaultMaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.DefaultMaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -414,6 +421,10 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) IdentityServiceConfigs() GetClusterIdentityServiceConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterIdentityServiceConfig { return v.IdentityServiceConfigs }).(GetClusterIdentityServiceConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) IgnoreNodeCountChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.IgnoreNodeCountChanges }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) InTransitEncryptionConfig() pulumi.StringOutput {
@@ -616,6 +627,10 @@ func (o LookupClusterResultOutput) ServiceExternalIpsConfigs() GetClusterService
 
 func (o LookupClusterResultOutput) ServicesIpv4Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) SkipNodePoolRefresh() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.SkipNodePoolRefresh }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) Subnetwork() pulumi.StringOutput {

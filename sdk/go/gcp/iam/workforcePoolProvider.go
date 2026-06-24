@@ -23,6 +23,9 @@ import (
 // > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
 // billing/quota project. The account team notifies you when the project is granted access.
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `oidc.client_secret.value.plain_text_wo`, `extra_attributes_oauth2_client.client_secret.value.plain_text_wo`, `extended_attributes_oauth2_client.client_secret.value.plain_text_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Iam Workforce Pool Provider Saml Basic

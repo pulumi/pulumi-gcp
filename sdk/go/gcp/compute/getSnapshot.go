@@ -96,6 +96,7 @@ type LookupSnapshotResult struct {
 	Licenses                 []string                             `pulumi:"licenses"`
 	MostRecent               *bool                                `pulumi:"mostRecent"`
 	Name                     *string                              `pulumi:"name"`
+	Params                   []GetSnapshotParam                   `pulumi:"params"`
 	Project                  *string                              `pulumi:"project"`
 	PulumiLabels             map[string]string                    `pulumi:"pulumiLabels"`
 	SelfLink                 string                               `pulumi:"selfLink"`
@@ -211,6 +212,10 @@ func (o LookupSnapshotResultOutput) MostRecent() pulumi.BoolPtrOutput {
 
 func (o LookupSnapshotResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSnapshotResultOutput) Params() GetSnapshotParamArrayOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) []GetSnapshotParam { return v.Params }).(GetSnapshotParamArrayOutput)
 }
 
 func (o LookupSnapshotResultOutput) Project() pulumi.StringPtrOutput {

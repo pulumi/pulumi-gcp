@@ -6,6 +6,7 @@ package com.pulumi.gcp.biglake.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.biglake.inputs.IcebergCatalogReplicaArgs;
+import com.pulumi.gcp.biglake.inputs.IcebergCatalogRestrictedLocationsConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,16 +34,16 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      * 
      */
     @Import(name="catalogType")
     private @Nullable Output<String> catalogType;
 
     /**
-     * @return The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+     * @return The catalog type of the IcebergCatalog.
+     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
      * 
      */
     public Optional<Output<String>> catalogType() {
@@ -82,14 +83,18 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      * 
      */
     @Import(name="defaultLocation")
     private @Nullable Output<String> defaultLocation;
 
     /**
-     * @return Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * @return The default storage location for the catalog, e.g., `gs://my-bucket`.
+     * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+     * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
      * 
      */
     public Optional<Output<String>> defaultLocation() {
@@ -196,6 +201,25 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restrictedLocationsConfig")
+    private @Nullable Output<IcebergCatalogRestrictedLocationsConfigArgs> restrictedLocationsConfig;
+
+    /**
+     * @return Configuration for the additional GCS locations that are permitted for use
+     * by resources within this catalog.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<IcebergCatalogRestrictedLocationsConfigArgs>> restrictedLocationsConfig() {
+        return Optional.ofNullable(this.restrictedLocationsConfig);
+    }
+
+    /**
      * Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
      * 
      */
@@ -238,6 +262,7 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         this.primaryLocation = $.primaryLocation;
         this.project = $.project;
         this.replicas = $.replicas;
+        this.restrictedLocationsConfig = $.restrictedLocationsConfig;
         this.storageRegions = $.storageRegions;
         this.updateTime = $.updateTime;
     }
@@ -282,8 +307,8 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogType The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+         * @param catalogType The catalog type of the IcebergCatalog.
+         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
          * 
          * @return builder
          * 
@@ -294,8 +319,8 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogType The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
-         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
+         * @param catalogType The catalog type of the IcebergCatalog.
+         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
          * 
          * @return builder
          * 
@@ -349,7 +374,9 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultLocation Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+         * @param defaultLocation The default storage location for the catalog, e.g., `gs://my-bucket`.
+         * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+         * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
          * 
          * @return builder
          * 
@@ -360,7 +387,9 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultLocation Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+         * @param defaultLocation The default storage location for the catalog, e.g., `gs://my-bucket`.
+         * Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+         * Required when the catalog type is CATALOG_TYPE_BIGLAKE.
          * 
          * @return builder
          * 
@@ -507,6 +536,31 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
          */
         public Builder replicas(IcebergCatalogReplicaArgs... replicas) {
             return replicas(List.of(replicas));
+        }
+
+        /**
+         * @param restrictedLocationsConfig Configuration for the additional GCS locations that are permitted for use
+         * by resources within this catalog.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedLocationsConfig(@Nullable Output<IcebergCatalogRestrictedLocationsConfigArgs> restrictedLocationsConfig) {
+            $.restrictedLocationsConfig = restrictedLocationsConfig;
+            return this;
+        }
+
+        /**
+         * @param restrictedLocationsConfig Configuration for the additional GCS locations that are permitted for use
+         * by resources within this catalog.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedLocationsConfig(IcebergCatalogRestrictedLocationsConfigArgs restrictedLocationsConfig) {
+            return restrictedLocationsConfig(Output.of(restrictedLocationsConfig));
         }
 
         /**

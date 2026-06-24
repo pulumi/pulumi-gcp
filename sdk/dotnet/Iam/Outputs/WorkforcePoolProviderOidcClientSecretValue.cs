@@ -15,8 +15,22 @@ namespace Pulumi.Gcp.Iam.Outputs
     {
         /// <summary>
         /// The plain text of the client secret value.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string PlainText;
+        public readonly string? PlainText;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The plain text of the client secret value.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PlainText` or `PlainTextWo` can only be set.
+        /// </summary>
+        public readonly string? PlainTextWo;
+        /// <summary>
+        /// Triggers update of `PlainTextWo` write-only. Increment this value when an update to `PlainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? PlainTextWoVersion;
         /// <summary>
         /// (Output)
         /// A thumbprint to represent the current client secret value.
@@ -25,11 +39,17 @@ namespace Pulumi.Gcp.Iam.Outputs
 
         [OutputConstructor]
         private WorkforcePoolProviderOidcClientSecretValue(
-            string plainText,
+            string? plainText,
+
+            string? plainTextWo,
+
+            string? plainTextWoVersion,
 
             string? thumbprint)
         {
             PlainText = plainText;
+            PlainTextWo = plainTextWo;
+            PlainTextWoVersion = plainTextWoVersion;
             Thumbprint = thumbprint;
         }
     }

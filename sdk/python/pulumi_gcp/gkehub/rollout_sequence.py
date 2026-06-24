@@ -499,6 +499,73 @@ class RolloutSequence(pulumi.CustomResource):
         * How-to Guides
             * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
 
+        ## Example Usage
+
+        ### Gke Hub Rollout Sequence Create
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            rollout_sequence_id="rs-basic",
+            display_name="Basic Rollout Sequence",
+            ignored_clusters_selector={
+                "label_selector": "resource.labels.ignored == 'true'",
+            },
+            stages=[{
+                "fleet_projects": ["projects/my-project-name"],
+                "soak_duration": "1h",
+            }],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [
+                        "CONTROL_PLANE_MINOR",
+                        "CONTROL_PLANE_PATCH",
+                        "NODE_MINOR",
+                        "NODE_PATCH",
+                    ],
+                },
+            })
+        ```
+        ### Gke Hub Rollout Sequence Update
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            rollout_sequence_id="rs-basic",
+            display_name="Modified Rollout Sequence",
+            ignored_clusters_selector={
+                "label_selector": "resource.labels.ignored == 'super_true'",
+            },
+            stages=[
+                {
+                    "fleet_projects": ["projects/my-project-name"],
+                    "cluster_selector": {
+                        "label_selector": "resource.labels.canary=='true'",
+                    },
+                    "soak_duration": "2h",
+                },
+                {
+                    "fleet_projects": ["projects/my-project-name"],
+                    "soak_duration": "1d",
+                },
+            ],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [
+                        "CONTROL_PLANE_PATCH",
+                        "NODE_PATCH",
+                    ],
+                },
+            },
+            labels={
+                "some_key": "some_value",
+            })
+        ```
+
         ## Import
 
         RolloutSequence can be imported using any of these accepted formats:
@@ -557,6 +624,73 @@ class RolloutSequence(pulumi.CustomResource):
         * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
         * How-to Guides
             * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
+
+        ## Example Usage
+
+        ### Gke Hub Rollout Sequence Create
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            rollout_sequence_id="rs-basic",
+            display_name="Basic Rollout Sequence",
+            ignored_clusters_selector={
+                "label_selector": "resource.labels.ignored == 'true'",
+            },
+            stages=[{
+                "fleet_projects": ["projects/my-project-name"],
+                "soak_duration": "1h",
+            }],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [
+                        "CONTROL_PLANE_MINOR",
+                        "CONTROL_PLANE_PATCH",
+                        "NODE_MINOR",
+                        "NODE_PATCH",
+                    ],
+                },
+            })
+        ```
+        ### Gke Hub Rollout Sequence Update
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            rollout_sequence_id="rs-basic",
+            display_name="Modified Rollout Sequence",
+            ignored_clusters_selector={
+                "label_selector": "resource.labels.ignored == 'super_true'",
+            },
+            stages=[
+                {
+                    "fleet_projects": ["projects/my-project-name"],
+                    "cluster_selector": {
+                        "label_selector": "resource.labels.canary=='true'",
+                    },
+                    "soak_duration": "2h",
+                },
+                {
+                    "fleet_projects": ["projects/my-project-name"],
+                    "soak_duration": "1d",
+                },
+            ],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [
+                        "CONTROL_PLANE_PATCH",
+                        "NODE_PATCH",
+                    ],
+                },
+            },
+            labels={
+                "some_key": "some_value",
+            })
+        ```
 
         ## Import
 

@@ -31,6 +31,123 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
  * 
+ * ## Example Usage
+ * 
+ * ### Gke Hub Rollout Sequence Create
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.RolloutSequence;
+ * import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var rolloutSequence = new RolloutSequence("rolloutSequence", RolloutSequenceArgs.builder()
+ *             .rolloutSequenceId("rs-basic")
+ *             .displayName("Basic Rollout Sequence")
+ *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
+ *                 .labelSelector("resource.labels.ignored == 'true'")
+ *                 .build())
+ *             .stages(RolloutSequenceStageArgs.builder()
+ *                 .fleetProjects("projects/my-project-name")
+ *                 .soakDuration("1h")
+ *                 .build())
+ *             .autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs.builder()
+ *                 .rolloutCreationScope(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs.builder()
+ *                     .upgradeTypes(                    
+ *                         "CONTROL_PLANE_MINOR",
+ *                         "CONTROL_PLANE_PATCH",
+ *                         "NODE_MINOR",
+ *                         "NODE_PATCH")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Gke Hub Rollout Sequence Update
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.RolloutSequence;
+ * import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageClusterSelectorArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var rolloutSequence = new RolloutSequence("rolloutSequence", RolloutSequenceArgs.builder()
+ *             .rolloutSequenceId("rs-basic")
+ *             .displayName("Modified Rollout Sequence")
+ *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
+ *                 .labelSelector("resource.labels.ignored == 'super_true'")
+ *                 .build())
+ *             .stages(            
+ *                 RolloutSequenceStageArgs.builder()
+ *                     .fleetProjects("projects/my-project-name")
+ *                     .clusterSelector(RolloutSequenceStageClusterSelectorArgs.builder()
+ *                         .labelSelector("resource.labels.canary=='true'")
+ *                         .build())
+ *                     .soakDuration("2h")
+ *                     .build(),
+ *                 RolloutSequenceStageArgs.builder()
+ *                     .fleetProjects("projects/my-project-name")
+ *                     .soakDuration("1d")
+ *                     .build())
+ *             .autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs.builder()
+ *                 .rolloutCreationScope(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs.builder()
+ *                     .upgradeTypes(                    
+ *                         "CONTROL_PLANE_PATCH",
+ *                         "NODE_PATCH")
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("some_key", "some_value"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * RolloutSequence can be imported using any of these accepted formats:

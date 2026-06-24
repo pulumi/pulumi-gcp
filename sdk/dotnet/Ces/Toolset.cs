@@ -886,6 +886,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for tools behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("toolFakeConfig")]
+        public Output<Outputs.ToolsetToolFakeConfig?> ToolFakeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID to use for the toolset, which will become the final component of
         /// the toolset's resource name. If not provided, a unique ID will be
         /// automatically assigned for the toolset.
@@ -1012,6 +1019,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Configuration for tools behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolFakeConfig")]
+        public Input<Inputs.ToolsetToolFakeConfigArgs>? ToolFakeConfig { get; set; }
+
+        /// <summary>
         /// The ID to use for the toolset, which will become the final component of
         /// the toolset's resource name. If not provided, a unique ID will be
         /// automatically assigned for the toolset.
@@ -1114,6 +1128,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration for tools behavior in fake mode.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolFakeConfig")]
+        public Input<Inputs.ToolsetToolFakeConfigGetArgs>? ToolFakeConfig { get; set; }
 
         /// <summary>
         /// The ID to use for the toolset, which will become the final component of

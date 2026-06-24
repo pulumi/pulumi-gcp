@@ -70,6 +70,14 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly bool? SendNumNewerVersionsIfZero;
         /// <summary>
+        /// Objects having a size greater than this value in bytes will be matched.
+        /// </summary>
+        public readonly int? SizeAboveBytes;
+        /// <summary>
+        /// Objects having a size smaller than this value in bytes will be matched.
+        /// </summary>
+        public readonly int? SizeBelowBytes;
+        /// <summary>
         /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         /// </summary>
         public readonly string? WithState;
@@ -104,6 +112,10 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             bool? sendNumNewerVersionsIfZero,
 
+            int? sizeAboveBytes,
+
+            int? sizeBelowBytes,
+
             string? withState)
         {
             Age = age;
@@ -120,6 +132,8 @@ namespace Pulumi.Gcp.Storage.Outputs
             SendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             SendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             SendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;
+            SizeAboveBytes = sizeAboveBytes;
+            SizeBelowBytes = sizeBelowBytes;
             WithState = withState;
         }
     }

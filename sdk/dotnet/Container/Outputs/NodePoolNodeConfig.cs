@@ -194,6 +194,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// Taint configuration for the node pool. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigTaintConfig? TaintConfig;
+        /// <summary>
         /// List of Kubernetes taints to be applied to each node.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigTaint> Taints;
@@ -298,6 +302,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> tags,
 
+            Outputs.NodePoolNodeConfigTaintConfig? taintConfig,
+
             ImmutableArray<Outputs.NodePoolNodeConfigTaint> taints,
 
             Outputs.NodePoolNodeConfigWindowsNodeConfig? windowsNodeConfig,
@@ -349,6 +355,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Spot = spot;
             StoragePools = storagePools;
             Tags = tags;
+            TaintConfig = taintConfig;
             Taints = taints;
             WindowsNodeConfig = windowsNodeConfig;
             WorkloadMetadataConfig = workloadMetadataConfig;
