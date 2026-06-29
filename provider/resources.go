@@ -555,6 +555,21 @@ func Provider() tfbridge.ProviderInfo {
 			"terraform_attribution_label_addition_strategy": {
 				Name: "pulumiAttributionLabelAdditionStrategy",
 			},
+			"universe_domain": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GOOGLE_UNIVERSE_DOMAIN"},
+				},
+			},
+			"billing_project": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GOOGLE_BILLING_PROJECT"},
+				},
+			},
+			"user_project_override": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"USER_PROJECT_OVERRIDE"},
+				},
+			},
 		},
 		ExtraConfig: map[string]*tfbridge.ConfigInfo{
 			"skipRegionValidation": {
