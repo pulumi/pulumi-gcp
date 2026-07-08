@@ -179,6 +179,7 @@ class _DataProductDataAssetState:
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -201,6 +202,7 @@ class _DataProductDataAssetState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the data asset.
+        :param pulumi.Input[_builtins.str] name: The relative resource name of the data asset.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -222,6 +224,8 @@ class _DataProductDataAssetState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -325,6 +329,18 @@ class _DataProductDataAssetState:
 
     @_builtins.property
     @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The relative resource name of the data asset.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -409,7 +425,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_37559",
+            data_product_id="tf-test-dp-_13293",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -417,12 +433,12 @@ class DataProductDataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_91980@example.com",
+                    "google_group": "tf-test-analysts-_40289@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__37118",
+            dataset_id="tf_test_dataset__33395",
             location="us-central1")
         example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
             project="my-project-name",
@@ -444,7 +460,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_80332",
+            data_product_id="tf-test-dp-_76044",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -467,7 +483,7 @@ class DataProductDataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__13293",
+            dataset_id="tf_test_dataset__69391",
             location="us-central1")
         example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
             project="my-project-name",
@@ -558,7 +574,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_37559",
+            data_product_id="tf-test-dp-_13293",
             display_name="Parent Data Product",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[{
@@ -566,12 +582,12 @@ class DataProductDataAsset(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_91980@example.com",
+                    "google_group": "tf-test-analysts-_40289@example.com",
                 },
             }])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__37118",
+            dataset_id="tf_test_dataset__33395",
             location="us-central1")
         example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
             project="my-project-name",
@@ -593,7 +609,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
             location="us-central1",
-            data_product_id="tf-test-dp-_80332",
+            data_product_id="tf-test-dp-_76044",
             display_name="Full Example Parent DP",
             owner_emails=["gterraformtestuser@gmail.com"],
             access_groups=[
@@ -616,7 +632,7 @@ class DataProductDataAsset(pulumi.CustomResource):
             ])
         example_dataset = gcp.bigquery.Dataset("example",
             project="my-project-name",
-            dataset_id="tf_test_dataset__13293",
+            dataset_id="tf_test_dataset__69391",
             location="us-central1")
         example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
             project="my-project-name",
@@ -710,6 +726,7 @@ class DataProductDataAsset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["uid"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -731,6 +748,7 @@ class DataProductDataAsset(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -757,6 +775,7 @@ class DataProductDataAsset(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the data asset.
+        :param pulumi.Input[_builtins.str] name: The relative resource name of the data asset.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -775,6 +794,7 @@ class DataProductDataAsset(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["resource"] = resource
@@ -844,6 +864,14 @@ class DataProductDataAsset(pulumi.CustomResource):
         The location for the data asset.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The relative resource name of the data asset.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter

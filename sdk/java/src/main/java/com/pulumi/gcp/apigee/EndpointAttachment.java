@@ -14,13 +14,17 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Apigee Endpoint Attachment.
+ * An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+ * 
+ * For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
  * 
  * To get more information about EndpointAttachment, see:
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
  * * How-to Guides
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ * 
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -41,6 +45,7 @@ import javax.annotation.Nullable;
 public class EndpointAttachment extends com.pulumi.resources.CustomResource {
     /**
      * State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      * 
      */
     @Export(name="connectionState", refs={String.class}, tree="[0]")
@@ -48,6 +53,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      * 
      */
     public Output<String> connectionState() {
@@ -106,14 +112,14 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Location of the endpoint attachment.
+     * @return The location of the endpoint attachment.
      * 
      */
     public Output<String> location() {
@@ -152,14 +158,16 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     @Export(name="serviceAttachment", refs={String.class}, tree="[0]")
     private Output<String> serviceAttachment;
 
     /**
-     * @return Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * @return The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     public Output<String> serviceAttachment() {

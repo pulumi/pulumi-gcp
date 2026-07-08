@@ -13,6 +13,174 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ProjectConfigPlatformLogsConfig struct {
+	// The state of the platform logs: enabled or disabled.
+	// Possible values are: `ENABLED`, `DISABLED`.
+	LoggingState *string `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here.
+	// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	SeverityLevel *string `pulumi:"severityLevel"`
+}
+
+// ProjectConfigPlatformLogsConfigInput is an input type that accepts ProjectConfigPlatformLogsConfigArgs and ProjectConfigPlatformLogsConfigOutput values.
+// You can construct a concrete instance of `ProjectConfigPlatformLogsConfigInput` via:
+//
+//	ProjectConfigPlatformLogsConfigArgs{...}
+type ProjectConfigPlatformLogsConfigInput interface {
+	pulumi.Input
+
+	ToProjectConfigPlatformLogsConfigOutput() ProjectConfigPlatformLogsConfigOutput
+	ToProjectConfigPlatformLogsConfigOutputWithContext(context.Context) ProjectConfigPlatformLogsConfigOutput
+}
+
+type ProjectConfigPlatformLogsConfigArgs struct {
+	// The state of the platform logs: enabled or disabled.
+	// Possible values are: `ENABLED`, `DISABLED`.
+	LoggingState pulumi.StringPtrInput `pulumi:"loggingState"`
+	// The severity level for the logs. Logs will be generated if their
+	// severity level is >= than the value of the severity level mentioned here.
+	// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+	SeverityLevel pulumi.StringPtrInput `pulumi:"severityLevel"`
+}
+
+func (ProjectConfigPlatformLogsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectConfigPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i ProjectConfigPlatformLogsConfigArgs) ToProjectConfigPlatformLogsConfigOutput() ProjectConfigPlatformLogsConfigOutput {
+	return i.ToProjectConfigPlatformLogsConfigOutputWithContext(context.Background())
+}
+
+func (i ProjectConfigPlatformLogsConfigArgs) ToProjectConfigPlatformLogsConfigOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectConfigPlatformLogsConfigOutput)
+}
+
+func (i ProjectConfigPlatformLogsConfigArgs) ToProjectConfigPlatformLogsConfigPtrOutput() ProjectConfigPlatformLogsConfigPtrOutput {
+	return i.ToProjectConfigPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectConfigPlatformLogsConfigArgs) ToProjectConfigPlatformLogsConfigPtrOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectConfigPlatformLogsConfigOutput).ToProjectConfigPlatformLogsConfigPtrOutputWithContext(ctx)
+}
+
+// ProjectConfigPlatformLogsConfigPtrInput is an input type that accepts ProjectConfigPlatformLogsConfigArgs, ProjectConfigPlatformLogsConfigPtr and ProjectConfigPlatformLogsConfigPtrOutput values.
+// You can construct a concrete instance of `ProjectConfigPlatformLogsConfigPtrInput` via:
+//
+//	        ProjectConfigPlatformLogsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectConfigPlatformLogsConfigPtrInput interface {
+	pulumi.Input
+
+	ToProjectConfigPlatformLogsConfigPtrOutput() ProjectConfigPlatformLogsConfigPtrOutput
+	ToProjectConfigPlatformLogsConfigPtrOutputWithContext(context.Context) ProjectConfigPlatformLogsConfigPtrOutput
+}
+
+type projectConfigPlatformLogsConfigPtrType ProjectConfigPlatformLogsConfigArgs
+
+func ProjectConfigPlatformLogsConfigPtr(v *ProjectConfigPlatformLogsConfigArgs) ProjectConfigPlatformLogsConfigPtrInput {
+	return (*projectConfigPlatformLogsConfigPtrType)(v)
+}
+
+func (*projectConfigPlatformLogsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectConfigPlatformLogsConfig)(nil)).Elem()
+}
+
+func (i *projectConfigPlatformLogsConfigPtrType) ToProjectConfigPlatformLogsConfigPtrOutput() ProjectConfigPlatformLogsConfigPtrOutput {
+	return i.ToProjectConfigPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *projectConfigPlatformLogsConfigPtrType) ToProjectConfigPlatformLogsConfigPtrOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectConfigPlatformLogsConfigPtrOutput)
+}
+
+type ProjectConfigPlatformLogsConfigOutput struct{ *pulumi.OutputState }
+
+func (ProjectConfigPlatformLogsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectConfigPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o ProjectConfigPlatformLogsConfigOutput) ToProjectConfigPlatformLogsConfigOutput() ProjectConfigPlatformLogsConfigOutput {
+	return o
+}
+
+func (o ProjectConfigPlatformLogsConfigOutput) ToProjectConfigPlatformLogsConfigOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigOutput {
+	return o
+}
+
+func (o ProjectConfigPlatformLogsConfigOutput) ToProjectConfigPlatformLogsConfigPtrOutput() ProjectConfigPlatformLogsConfigPtrOutput {
+	return o.ToProjectConfigPlatformLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectConfigPlatformLogsConfigOutput) ToProjectConfigPlatformLogsConfigPtrOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectConfigPlatformLogsConfig) *ProjectConfigPlatformLogsConfig {
+		return &v
+	}).(ProjectConfigPlatformLogsConfigPtrOutput)
+}
+
+// The state of the platform logs: enabled or disabled.
+// Possible values are: `ENABLED`, `DISABLED`.
+func (o ProjectConfigPlatformLogsConfigOutput) LoggingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectConfigPlatformLogsConfig) *string { return v.LoggingState }).(pulumi.StringPtrOutput)
+}
+
+// The severity level for the logs. Logs will be generated if their
+// severity level is >= than the value of the severity level mentioned here.
+// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o ProjectConfigPlatformLogsConfigOutput) SeverityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectConfigPlatformLogsConfig) *string { return v.SeverityLevel }).(pulumi.StringPtrOutput)
+}
+
+type ProjectConfigPlatformLogsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectConfigPlatformLogsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectConfigPlatformLogsConfig)(nil)).Elem()
+}
+
+func (o ProjectConfigPlatformLogsConfigPtrOutput) ToProjectConfigPlatformLogsConfigPtrOutput() ProjectConfigPlatformLogsConfigPtrOutput {
+	return o
+}
+
+func (o ProjectConfigPlatformLogsConfigPtrOutput) ToProjectConfigPlatformLogsConfigPtrOutputWithContext(ctx context.Context) ProjectConfigPlatformLogsConfigPtrOutput {
+	return o
+}
+
+func (o ProjectConfigPlatformLogsConfigPtrOutput) Elem() ProjectConfigPlatformLogsConfigOutput {
+	return o.ApplyT(func(v *ProjectConfigPlatformLogsConfig) ProjectConfigPlatformLogsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectConfigPlatformLogsConfig
+		return ret
+	}).(ProjectConfigPlatformLogsConfigOutput)
+}
+
+// The state of the platform logs: enabled or disabled.
+// Possible values are: `ENABLED`, `DISABLED`.
+func (o ProjectConfigPlatformLogsConfigPtrOutput) LoggingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectConfigPlatformLogsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity level for the logs. Logs will be generated if their
+// severity level is >= than the value of the severity level mentioned here.
+// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+func (o ProjectConfigPlatformLogsConfigPtrOutput) SeverityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectConfigPlatformLogsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryCleanupPolicy struct {
 	// Policy action.
 	// Possible values are: `DELETE`, `KEEP`.
@@ -8466,6 +8634,8 @@ func (o GetVersionsVersionRelatedTagArrayOutput) Index(i pulumi.IntInput) GetVer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectConfigPlatformLogsConfigInput)(nil)).Elem(), ProjectConfigPlatformLogsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectConfigPlatformLogsConfigPtrInput)(nil)).Elem(), ProjectConfigPlatformLogsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyInput)(nil)).Elem(), RepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyArrayInput)(nil)).Elem(), RepositoryCleanupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyConditionInput)(nil)).Elem(), RepositoryCleanupPolicyConditionArgs{})
@@ -8588,6 +8758,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionArrayInput)(nil)).Elem(), GetVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionRelatedTagInput)(nil)).Elem(), GetVersionsVersionRelatedTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionRelatedTagArrayInput)(nil)).Elem(), GetVersionsVersionRelatedTagArray{})
+	pulumi.RegisterOutputType(ProjectConfigPlatformLogsConfigOutput{})
+	pulumi.RegisterOutputType(ProjectConfigPlatformLogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionOutput{})

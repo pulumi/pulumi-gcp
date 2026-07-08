@@ -118,8 +118,7 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     @Import(name="workloadIdentityPoolNamespaceId", required=true)
@@ -131,8 +130,7 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     public Output<String> workloadIdentityPoolNamespaceId() {
@@ -299,8 +297,7 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 
@@ -316,8 +313,7 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 

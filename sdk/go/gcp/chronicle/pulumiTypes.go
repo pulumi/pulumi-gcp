@@ -22779,7 +22779,6 @@ type FeedDetailsFoxItStixSettingsSsl struct {
 	// -----BEGIN RSA PRIVATE KEY-----
 	// Proc-Type: 4,ENCRYPTED
 	// DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-	//
 	// -----END RSA PRIVATE KEY-----
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	EncodedPrivateKey *string `pulumi:"encodedPrivateKey"`
@@ -22812,7 +22811,6 @@ type FeedDetailsFoxItStixSettingsSslArgs struct {
 	// -----BEGIN RSA PRIVATE KEY-----
 	// Proc-Type: 4,ENCRYPTED
 	// DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-	//
 	// -----END RSA PRIVATE KEY-----
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	EncodedPrivateKey pulumi.StringPtrInput `pulumi:"encodedPrivateKey"`
@@ -22910,7 +22908,6 @@ func (o FeedDetailsFoxItStixSettingsSslOutput) ToFeedDetailsFoxItStixSettingsSsl
 // -----BEGIN RSA PRIVATE KEY-----
 // Proc-Type: 4,ENCRYPTED
 // DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-//
 // -----END RSA PRIVATE KEY-----
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o FeedDetailsFoxItStixSettingsSslOutput) EncodedPrivateKey() pulumi.StringPtrOutput {
@@ -22959,7 +22956,6 @@ func (o FeedDetailsFoxItStixSettingsSslPtrOutput) Elem() FeedDetailsFoxItStixSet
 // -----BEGIN RSA PRIVATE KEY-----
 // Proc-Type: 4,ENCRYPTED
 // DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-//
 // -----END RSA PRIVATE KEY-----
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o FeedDetailsFoxItStixSettingsSslPtrOutput) EncodedPrivateKey() pulumi.StringPtrOutput {

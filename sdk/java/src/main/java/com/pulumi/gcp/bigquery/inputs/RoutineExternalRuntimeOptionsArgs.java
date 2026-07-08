@@ -59,6 +59,25 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
     }
 
     /**
+     * Maximum number of concurrent requests per Python UDF container instance. For more
+     * information, see [Configure container limits for Python
+     * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+     * 
+     */
+    @Import(name="containerRequestConcurrency")
+    private @Nullable Output<String> containerRequestConcurrency;
+
+    /**
+     * @return Maximum number of concurrent requests per Python UDF container instance. For more
+     * information, see [Configure container limits for Python
+     * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+     * 
+     */
+    public Optional<Output<String>> containerRequestConcurrency() {
+        return Optional.ofNullable(this.containerRequestConcurrency);
+    }
+
+    /**
      * Maximum number of rows in each batch sent to the external runtime. If
      * absent or if 0, BigQuery dynamically decides the number of rows in a batch.
      * 
@@ -114,6 +133,7 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
     private RoutineExternalRuntimeOptionsArgs(RoutineExternalRuntimeOptionsArgs $) {
         this.containerCpu = $.containerCpu;
         this.containerMemory = $.containerMemory;
+        this.containerRequestConcurrency = $.containerRequestConcurrency;
         this.maxBatchingRows = $.maxBatchingRows;
         this.runtimeConnection = $.runtimeConnection;
         this.runtimeVersion = $.runtimeVersion;
@@ -189,6 +209,31 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
          */
         public Builder containerMemory(String containerMemory) {
             return containerMemory(Output.of(containerMemory));
+        }
+
+        /**
+         * @param containerRequestConcurrency Maximum number of concurrent requests per Python UDF container instance. For more
+         * information, see [Configure container limits for Python
+         * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerRequestConcurrency(@Nullable Output<String> containerRequestConcurrency) {
+            $.containerRequestConcurrency = containerRequestConcurrency;
+            return this;
+        }
+
+        /**
+         * @param containerRequestConcurrency Maximum number of concurrent requests per Python UDF container instance. For more
+         * information, see [Configure container limits for Python
+         * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerRequestConcurrency(String containerRequestConcurrency) {
+            return containerRequestConcurrency(Output.of(containerRequestConcurrency));
         }
 
         /**

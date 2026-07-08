@@ -28,10 +28,11 @@ class EndpointAttachmentArgs:
         The set of arguments for constructing a EndpointAttachment resource.
 
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
-        :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
+        :param pulumi.Input[_builtins.str] location: The location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[_builtins.str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
+        :param pulumi.Input[_builtins.str] service_attachment: The resource URL of the service attachment in the format:
+               `projects/*/regions/*/serviceAttachments/*`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -62,7 +63,7 @@ class EndpointAttachmentArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[_builtins.str]:
         """
-        Location of the endpoint attachment.
+        The location of the endpoint attachment.
         """
         return pulumi.get(self, "location")
 
@@ -87,7 +88,8 @@ class EndpointAttachmentArgs:
     @pulumi.getter(name="serviceAttachment")
     def service_attachment(self) -> pulumi.Input[_builtins.str]:
         """
-        Format: projects/*/regions/*/serviceAttachments/*
+        The resource URL of the service attachment in the format:
+        `projects/*/regions/*/serviceAttachments/*`.
         """
         return pulumi.get(self, "service_attachment")
 
@@ -128,6 +130,7 @@ class _EndpointAttachmentState:
         Input properties used for looking up and filtering EndpointAttachment resources.
 
         :param pulumi.Input[_builtins.str] connection_state: State of the endpoint attachment connection to the service attachment.
+               Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -136,12 +139,13 @@ class _EndpointAttachmentState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
-        :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
+        :param pulumi.Input[_builtins.str] location: The location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] name: Name of the Endpoint Attachment in the following format:
                organizations/{organization}/endpointAttachments/{endpointAttachment}.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[_builtins.str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
+        :param pulumi.Input[_builtins.str] service_attachment: The resource URL of the service attachment in the format:
+               `projects/*/regions/*/serviceAttachments/*`.
         """
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
@@ -165,6 +169,7 @@ class _EndpointAttachmentState:
     def connection_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the endpoint attachment connection to the service attachment.
+        Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         """
         return pulumi.get(self, "connection_state")
 
@@ -217,7 +222,7 @@ class _EndpointAttachmentState:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Location of the endpoint attachment.
+        The location of the endpoint attachment.
         """
         return pulumi.get(self, "location")
 
@@ -255,7 +260,8 @@ class _EndpointAttachmentState:
     @pulumi.getter(name="serviceAttachment")
     def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Format: projects/*/regions/*/serviceAttachments/*
+        The resource URL of the service attachment in the format:
+        `projects/*/regions/*/serviceAttachments/*`.
         """
         return pulumi.get(self, "service_attachment")
 
@@ -277,13 +283,17 @@ class EndpointAttachment(pulumi.CustomResource):
                  service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Apigee Endpoint Attachment.
+        An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+
+        For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
 
         To get more information about EndpointAttachment, see:
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
         * How-to Guides
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+
+        ## Example Usage
 
         ## Import
 
@@ -309,10 +319,11 @@ class EndpointAttachment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
-        :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
+        :param pulumi.Input[_builtins.str] location: The location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[_builtins.str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
+        :param pulumi.Input[_builtins.str] service_attachment: The resource URL of the service attachment in the format:
+               `projects/*/regions/*/serviceAttachments/*`.
         """
         ...
     @overload
@@ -321,13 +332,17 @@ class EndpointAttachment(pulumi.CustomResource):
                  args: EndpointAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Apigee Endpoint Attachment.
+        An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+
+        For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
 
         To get more information about EndpointAttachment, see:
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
         * How-to Guides
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+
+        ## Example Usage
 
         ## Import
 
@@ -415,6 +430,7 @@ class EndpointAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_state: State of the endpoint attachment connection to the service attachment.
+               Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -423,12 +439,13 @@ class EndpointAttachment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
-        :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
+        :param pulumi.Input[_builtins.str] location: The location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] name: Name of the Endpoint Attachment in the following format:
                organizations/{organization}/endpointAttachments/{endpointAttachment}.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[_builtins.str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
+        :param pulumi.Input[_builtins.str] service_attachment: The resource URL of the service attachment in the format:
+               `projects/*/regions/*/serviceAttachments/*`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -449,6 +466,7 @@ class EndpointAttachment(pulumi.CustomResource):
     def connection_state(self) -> pulumi.Output[_builtins.str]:
         """
         State of the endpoint attachment connection to the service attachment.
+        Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         """
         return pulumi.get(self, "connection_state")
 
@@ -485,7 +503,7 @@ class EndpointAttachment(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
-        Location of the endpoint attachment.
+        The location of the endpoint attachment.
         """
         return pulumi.get(self, "location")
 
@@ -511,7 +529,8 @@ class EndpointAttachment(pulumi.CustomResource):
     @pulumi.getter(name="serviceAttachment")
     def service_attachment(self) -> pulumi.Output[_builtins.str]:
         """
-        Format: projects/*/regions/*/serviceAttachments/*
+        The resource URL of the service attachment in the format:
+        `projects/*/regions/*/serviceAttachments/*`.
         """
         return pulumi.get(self, "service_attachment")
 

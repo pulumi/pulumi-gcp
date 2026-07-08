@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateState;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -445,6 +446,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate")
 public class PreventionInspectTemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     * 
+     */
+    @Export(name="allowLimitedAvailabilityInfoTypes", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowLimitedAvailabilityInfoTypes;
+
+    /**
+     * @return Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     * 
+     */
+    public Output<Optional<Boolean>> allowLimitedAvailabilityInfoTypes() {
+        return Codegen.optional(this.allowLimitedAvailabilityInfoTypes);
+    }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,

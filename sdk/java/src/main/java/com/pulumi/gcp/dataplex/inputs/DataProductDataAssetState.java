@@ -140,6 +140,21 @@ public final class DataProductDataAssetState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The relative resource name of the data asset.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The relative resource name of the data asset.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -213,6 +228,7 @@ public final class DataProductDataAssetState extends com.pulumi.resources.Resour
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
+        this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.resource = $.resource;
@@ -409,6 +425,27 @@ public final class DataProductDataAssetState extends com.pulumi.resources.Resour
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param name The relative resource name of the data asset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The relative resource name of the data asset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

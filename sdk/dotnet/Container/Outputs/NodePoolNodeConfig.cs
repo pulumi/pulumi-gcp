@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
-        /// Node kubelet configs.
+        /// Node kubelet configs. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigKubeletConfig? KubeletConfig;
         /// <summary>

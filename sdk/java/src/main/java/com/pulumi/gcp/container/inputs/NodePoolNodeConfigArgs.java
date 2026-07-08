@@ -330,14 +330,14 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Node kubelet configs.
+     * Node kubelet configs. Structure is documented below.
      * 
      */
     @Import(name="kubeletConfig")
     private @Nullable Output<NodePoolNodeConfigKubeletConfigArgs> kubeletConfig;
 
     /**
-     * @return Node kubelet configs.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolNodeConfigKubeletConfigArgs>> kubeletConfig() {
@@ -1271,7 +1271,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubeletConfig Node kubelet configs.
+         * @param kubeletConfig Node kubelet configs. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1282,7 +1282,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubeletConfig Node kubelet configs.
+         * @param kubeletConfig Node kubelet configs. Structure is documented below.
          * 
          * @return builder
          * 

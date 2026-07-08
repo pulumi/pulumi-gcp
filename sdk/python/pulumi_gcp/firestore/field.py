@@ -368,7 +368,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__48675",
+            collection="chatrooms__40816",
             field="basic",
             index_config={
                 "indexes": [
@@ -486,7 +486,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__42702",
+            collection="chatrooms__94690",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -518,7 +518,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__37426",
+            collection="chatrooms__29947",
             field="*",
             index_config={
                 "indexes": [
@@ -607,7 +607,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__48675",
+            collection="chatrooms__40816",
             field="basic",
             index_config={
                 "indexes": [
@@ -725,7 +725,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__42702",
+            collection="chatrooms__94690",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -757,7 +757,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__37426",
+            collection="chatrooms__29947",
             field="*",
             index_config={
                 "indexes": [

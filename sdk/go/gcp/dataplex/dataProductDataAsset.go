@@ -42,7 +42,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_37559"),
+//				DataProductId: pulumi.String("tf-test-dp-_13293"),
 //				DisplayName:   pulumi.String("Parent Data Product"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -53,7 +53,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_91980@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_40289@example.com"),
 //						},
 //					},
 //				},
@@ -63,7 +63,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__37118"),
+//				DatasetId: pulumi.String("tf_test_dataset__33395"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_80332"),
+//				DataProductId: pulumi.String("tf-test-dp-_76044"),
 //				DisplayName:   pulumi.String("Full Example Parent DP"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -137,7 +137,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__13293"),
+//				DatasetId: pulumi.String("tf_test_dataset__69391"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -221,6 +221,8 @@ type DataProductDataAsset struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the data asset.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The relative resource name of the data asset.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -302,6 +304,8 @@ type dataProductDataAssetState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the data asset.
 	Location *string `pulumi:"location"`
+	// The relative resource name of the data asset.
+	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -337,6 +341,8 @@ type DataProductDataAssetState struct {
 	Labels pulumi.StringMapInput
 	// The location for the data asset.
 	Location pulumi.StringPtrInput
+	// The relative resource name of the data asset.
+	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -540,6 +546,11 @@ func (o DataProductDataAssetOutput) Labels() pulumi.StringMapOutput {
 // The location for the data asset.
 func (o DataProductDataAssetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataProductDataAsset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the data asset.
+func (o DataProductDataAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataProductDataAsset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

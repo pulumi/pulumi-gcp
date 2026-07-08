@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Apigee
 {
     /// <summary>
-    /// Apigee Endpoint Attachment.
+    /// An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+    /// 
+    /// For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
     /// 
     /// To get more information about EndpointAttachment, see:
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
     /// * How-to Guides
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+    /// 
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -37,6 +41,7 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// State of the endpoint attachment connection to the service attachment.
+        /// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         /// </summary>
         [Output("connectionState")]
         public Output<string> ConnectionState { get; private set; } = null!;
@@ -65,7 +70,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// Location of the endpoint attachment.
+        /// The location of the endpoint attachment.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -85,7 +90,8 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Format: projects/*/regions/*/serviceAttachments/*
+        /// The resource URL of the service attachment in the format:
+        /// `projects/*/regions/*/serviceAttachments/*`.
         /// </summary>
         [Output("serviceAttachment")]
         public Output<string> ServiceAttachment { get; private set; } = null!;
@@ -154,7 +160,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> EndpointAttachmentId { get; set; } = null!;
 
         /// <summary>
-        /// Location of the endpoint attachment.
+        /// The location of the endpoint attachment.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -167,7 +173,8 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Format: projects/*/regions/*/serviceAttachments/*
+        /// The resource URL of the service attachment in the format:
+        /// `projects/*/regions/*/serviceAttachments/*`.
         /// </summary>
         [Input("serviceAttachment", required: true)]
         public Input<string> ServiceAttachment { get; set; } = null!;
@@ -182,6 +189,7 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// State of the endpoint attachment connection to the service attachment.
+        /// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
         /// </summary>
         [Input("connectionState")]
         public Input<string>? ConnectionState { get; set; }
@@ -210,7 +218,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Location of the endpoint attachment.
+        /// The location of the endpoint attachment.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -230,7 +238,8 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Format: projects/*/regions/*/serviceAttachments/*
+        /// The resource URL of the service attachment in the format:
+        /// `projects/*/regions/*/serviceAttachments/*`.
         /// </summary>
         [Input("serviceAttachment")]
         public Input<string>? ServiceAttachment { get; set; }

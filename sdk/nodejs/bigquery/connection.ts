@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  * const user = new gcp.sql.User("user", {
  *     name: "user",
  *     instance: instance.name,
- *     password: "tf-test-my-password_15222",
+ *     password: "tf-test-my-password_85794",
  * });
  * const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
  *     friendlyName: "👋",

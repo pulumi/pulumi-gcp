@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const project_2 = new gcp.organizations.Project("project-2", {
- *     projectId: "tf-test_31660",
- *     name: "tf-test_97962",
+ *     projectId: "tf-test_44023",
+ *     name: "tf-test_50206",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

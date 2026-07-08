@@ -31,6 +31,9 @@ public final class Config {
     public Optional<Boolean> addPulumiAttributionLabel() {
         return Codegen.booleanProp("addPulumiAttributionLabel").config(config).get();
     }
+    public Optional<String> agentRegistryCustomEndpoint() {
+        return Codegen.stringProp("agentRegistryCustomEndpoint").config(config).get();
+    }
     public Optional<String> alloydbCustomEndpoint() {
         return Codegen.stringProp("alloydbCustomEndpoint").config(config).get();
     }

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_56529@example.com",
+ *             googleGroup: "tf-test-analysts-_91980@example.com",
  *         },
  *     }],
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testSa = new gcp.serviceaccount.Account("test_sa", {
- *     accountId: "tf-test-sa-_75413",
+ *     accountId: "tf-test-sa-_37118",
  *     displayName: "Test Service Account",
  * });
  * const example = new gcp.dataplex.DataProduct("example", {
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_55138@example.com",
+ *                 googleGroup: "tf-test-analysts-_80332@example.com",
  *             },
  *         },
  *         {
@@ -177,6 +177,14 @@ export class DataProduct extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
+     * Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     */
+    declare public readonly icon: pulumi.Output<string | undefined>;
+    /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -236,6 +244,7 @@ export class DataProduct extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["icon"] = state?.icon;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -264,6 +273,7 @@ export class DataProduct extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["icon"] = args?.icon;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["ownerEmails"] = args?.ownerEmails;
@@ -335,6 +345,14 @@ export interface DataProductState {
      * Checksum for concurrency control.
      */
     etag?: pulumi.Input<string | undefined>;
+    /**
+     * Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     */
+    icon?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -408,6 +426,14 @@ export interface DataProductArgs {
      * User-friendly display name.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     */
+    icon?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

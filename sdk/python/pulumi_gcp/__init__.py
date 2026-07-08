@@ -17,6 +17,8 @@ if typing.TYPE_CHECKING:
     accesscontextmanager = __accesscontextmanager
     import pulumi_gcp.activedirectory as __activedirectory
     activedirectory = __activedirectory
+    import pulumi_gcp.agentregistry as __agentregistry
+    agentregistry = __agentregistry
     import pulumi_gcp.alloydb as __alloydb
     alloydb = __alloydb
     import pulumi_gcp.apigateway as __apigateway
@@ -299,6 +301,7 @@ else:
     accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')
+    agentregistry = _utilities.lazy_import('pulumi_gcp.agentregistry')
     alloydb = _utilities.lazy_import('pulumi_gcp.alloydb')
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
@@ -616,6 +619,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.activedirectory",
   "classes": {
    "gcp:activedirectory/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agentregistry/binding",
+  "fqn": "pulumi_gcp.agentregistry",
+  "classes": {
+   "gcp:agentregistry/binding:Binding": "Binding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agentregistry/service",
+  "fqn": "pulumi_gcp.agentregistry",
+  "classes": {
+   "gcp:agentregistry/service:Service": "Service"
   }
  },
  {
@@ -1244,6 +1263,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "artifactregistry/projectConfig",
+  "fqn": "pulumi_gcp.artifactregistry",
+  "classes": {
+   "gcp:artifactregistry/projectConfig:ProjectConfig": "ProjectConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "artifactregistry/repository",
   "fqn": "pulumi_gcp.artifactregistry",
   "classes": {
@@ -1480,6 +1507,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.biglake",
   "classes": {
    "gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy": "HiveCatalogIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveDatabase",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveDatabase:HiveDatabase": "HiveDatabase"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveDatabaseIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveDatabaseIamBinding:HiveDatabaseIamBinding": "HiveDatabaseIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveDatabaseIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember": "HiveDatabaseIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveDatabaseIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy": "HiveDatabaseIamPolicy"
   }
  },
  {
@@ -3220,6 +3279,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/bulkPerInstanceConfig",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig": "BulkPerInstanceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/caExternalAccountKey",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3312,6 +3379,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation": "FirewallPolicyAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicyIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding": "FirewallPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicyIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember": "FirewallPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/firewallPolicyIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy": "FirewallPolicyIamPolicy"
   }
  },
  {
@@ -3740,6 +3831,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding": "NetworkFirewallPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember": "NetworkFirewallPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/networkFirewallPolicyPacketMirroringRule",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4124,6 +4239,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding": "RegionNetworkFirewallPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyIamMember:RegionNetworkFirewallPolicyIamMember": "RegionNetworkFirewallPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyIamPolicy:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionNetworkFirewallPolicyRule",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4136,6 +4275,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules": "RegionNetworkFirewallPolicyWithRules"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy": "RegionNetworkPolicy"
   }
  },
  {
@@ -4576,6 +4723,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/wireGroup:WireGroup": "WireGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/zoneVmExtensionPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy": "ZoneVmExtensionPolicy"
   }
  },
  {
@@ -9508,6 +9663,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "oracledatabase/cloudExadataInfrastructureExascaleConfig",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig": "CloudExadataInfrastructureExascaleConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "oracledatabase/cloudVmCluster",
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
@@ -11552,6 +11715,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiMetadataStore:AiMetadataStore": "AiMetadataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiModelGardenEnableModel",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel": "AiModelGardenEnableModel"
   }
  },
  {

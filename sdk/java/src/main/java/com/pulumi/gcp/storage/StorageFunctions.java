@@ -25,8 +25,12 @@ import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
@@ -37,6 +41,8 @@ import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisio
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
@@ -57,12 +63,15 @@ import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetBucketsResult;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
+import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceFindingsSummaryResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
+import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceFindingsSummaryResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingRevisionResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingRevisionsResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingsResult;
+import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceFindingsSummaryResult;
 import com.pulumi.gcp.storage.outputs.GetInsightsDatasetConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
@@ -2043,6 +2052,206 @@ public final class StorageFunctions {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", TypeShape.of(GetControlFolderIntelligenceConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Summarizes Cloud Storage intelligence findings in a specified folder and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+     *             .folder("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs args) {
+        return getControlFolderIntelligenceFindingsSummary(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified folder and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+     *             .folder("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummaryPlain(GetControlFolderIntelligenceFindingsSummaryPlainArgs args) {
+        return getControlFolderIntelligenceFindingsSummaryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified folder and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+     *             .folder("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary", TypeShape.of(GetControlFolderIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified folder and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+     *             .folder("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary", TypeShape.of(GetControlFolderIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified folder and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+     *             .folder("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummaryPlain(GetControlFolderIntelligenceFindingsSummaryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary", TypeShape.of(GetControlFolderIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
      * 
      * ## Example Usage
@@ -2241,6 +2450,206 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfigPlain(GetControlOrganizationIntelligenceConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", TypeShape.of(GetControlOrganizationIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified organization and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+     *             .organization("123456789012")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs args) {
+        return getControlOrganizationIntelligenceFindingsSummary(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified organization and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+     *             .organization("123456789012")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummaryPlain(GetControlOrganizationIntelligenceFindingsSummaryPlainArgs args) {
+        return getControlOrganizationIntelligenceFindingsSummaryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified organization and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+     *             .organization("123456789012")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", TypeShape.of(GetControlOrganizationIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified organization and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+     *             .organization("123456789012")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", TypeShape.of(GetControlOrganizationIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified organization and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+     *             .organization("123456789012")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummaryPlain(GetControlOrganizationIntelligenceFindingsSummaryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", TypeShape.of(GetControlOrganizationIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Cloud Storage Control ProjectIntelligenceConfig.
@@ -3331,6 +3740,286 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindingsPlain(GetControlProjectIntelligenceFindingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings", TypeShape.of(GetControlProjectIntelligenceFindingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummary() {
+        return getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummaryPlain() {
+        return getControlProjectIntelligenceFindingsSummaryPlain(GetControlProjectIntelligenceFindingsSummaryPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs args) {
+        return getControlProjectIntelligenceFindingsSummary(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummaryPlain(GetControlProjectIntelligenceFindingsSummaryPlainArgs args) {
+        return getControlProjectIntelligenceFindingsSummaryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary", TypeShape.of(GetControlProjectIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary", TypeShape.of(GetControlProjectIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Summarizes Cloud Storage intelligence findings in a specified project and location.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummaryPlain(GetControlProjectIntelligenceFindingsSummaryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary", TypeShape.of(GetControlProjectIntelligenceFindingsSummaryResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a Storage Insights Dataset Config resource.

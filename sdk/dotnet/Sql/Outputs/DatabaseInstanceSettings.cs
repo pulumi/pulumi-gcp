@@ -92,7 +92,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `Edition`
+        /// is not set, the Cloud SQL API determines the default based on `DatabaseVersion`: instances with
+        /// `DatabaseVersion` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+        /// `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+        /// types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+        /// `db-custom-*` require `edition = "ENTERPRISE"`. Omitting `Edition` on a PostgreSQL 16+ instance while
+        /// setting a shared-core or custom `Tier` therefore fails at create time with
+        /// `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
         /// </summary>
         public readonly string? Edition;
         /// <summary>
@@ -150,7 +157,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
         /// for more details and supported versions. Postgres supports only shared-core machine types,
-        /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `Edition` is unset (see the `Edition` argument below).
         /// </summary>
         public readonly string Tier;
         /// <summary>

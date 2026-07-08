@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "asia-south1",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "asia-south1-b-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "ORACLE",
@@ -74,9 +74,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "northamerica-northeast1",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "northamerica-northeast1-a-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "MYSQL",
@@ -108,9 +108,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "southamerica-east1",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "southamerica-east1-a-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "POSTGRESQL",
@@ -135,9 +135,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "asia-northeast2",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "asia-northeast2-a-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "REDIS",
@@ -161,9 +161,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "europe-west8",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "europe-west8-a-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "KAFKA",
@@ -193,9 +193,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "australia-southeast1",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "australia-southeast1-b-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "ICEBERG",
@@ -231,9 +231,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "europe-west3",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "europe-west3-b-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "SNOWFLAKE",
@@ -256,9 +256,9 @@ import * as utilities from "../utilities";
  *
  * const connection = new gcp.oracledatabase.GoldengateConnection("connection", {
  *     goldengateConnectionId: "my-connection",
- *     location: "us-east4",
+ *     location: "asia-northeast1",
  *     project: "my-project",
- *     gcpOracleZone: "us-east4-b-r1",
+ *     gcpOracleZone: "asia-northeast1-a-r1",
  *     properties: {
  *         displayName: "my-connection display name",
  *         connectionType: "JAVA_MESSAGE_SERVICE",

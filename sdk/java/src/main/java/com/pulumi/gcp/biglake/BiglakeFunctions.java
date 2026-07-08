@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.biglake.inputs.GetHiveCatalogIamPolicyArgs;
 import com.pulumi.gcp.biglake.inputs.GetHiveCatalogIamPolicyPlainArgs;
+import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyPlainArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyPlainArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
@@ -18,6 +20,7 @@ import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyPlainArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyPlainArgs;
 import com.pulumi.gcp.biglake.outputs.GetHiveCatalogIamPolicyResult;
+import com.pulumi.gcp.biglake.outputs.GetHiveDatabaseIamPolicyResult;
 import com.pulumi.gcp.biglake.outputs.GetIcebergCatalogIamPolicyResult;
 import com.pulumi.gcp.biglake.outputs.GetIcebergNamespaceIamPolicyResult;
 import com.pulumi.gcp.biglake.outputs.GetIcebergTableIamPolicyResult;
@@ -238,6 +241,226 @@ public final class BiglakeFunctions {
      */
     public static CompletableFuture<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyPlain(GetHiveCatalogIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:biglake/getHiveCatalogIamPolicy:getHiveCatalogIamPolicy", TypeShape.of(GetHiveCatalogIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for hivedatabase
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
+     *             .project(myHiveDatabase.project())
+     *             .catalog(myHiveDatabase.catalog())
+     *             .name(myHiveDatabase.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs args) {
+        return getHiveDatabaseIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for hivedatabase
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
+     *             .project(myHiveDatabase.project())
+     *             .catalog(myHiveDatabase.catalog())
+     *             .name(myHiveDatabase.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyPlain(GetHiveDatabaseIamPolicyPlainArgs args) {
+        return getHiveDatabaseIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for hivedatabase
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
+     *             .project(myHiveDatabase.project())
+     *             .catalog(myHiveDatabase.catalog())
+     *             .name(myHiveDatabase.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy", TypeShape.of(GetHiveDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for hivedatabase
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
+     *             .project(myHiveDatabase.project())
+     *             .catalog(myHiveDatabase.catalog())
+     *             .name(myHiveDatabase.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy", TypeShape.of(GetHiveDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for hivedatabase
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.biglake.BiglakeFunctions;
+     * import com.pulumi.gcp.biglake.inputs.GetHiveDatabaseIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
+     *             .project(myHiveDatabase.project())
+     *             .catalog(myHiveDatabase.catalog())
+     *             .name(myHiveDatabase.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyPlain(GetHiveDatabaseIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy", TypeShape.of(GetHiveDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for icebergcatalog

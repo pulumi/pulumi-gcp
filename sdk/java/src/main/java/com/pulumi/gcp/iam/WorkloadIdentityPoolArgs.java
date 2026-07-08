@@ -165,7 +165,6 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     /**
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
-     * 
      * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
      * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
      * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -195,7 +194,6 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     /**
      * @return The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
-     * 
      * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
      * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
      * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -491,7 +489,6 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         /**
          * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
          * are in `FEDERATION_ONLY` mode.
-         * 
          * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
          * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
          * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -525,7 +522,6 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         /**
          * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
          * are in `FEDERATION_ONLY` mode.
-         * 
          * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
          * `pulumi preview` may show an update if you change this field&#39;s value, `pulumi up`
          * **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).

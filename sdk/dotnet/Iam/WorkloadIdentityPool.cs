@@ -313,7 +313,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
-        /// 
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -490,7 +489,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
-        /// 
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -608,7 +606,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
-        /// 
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).

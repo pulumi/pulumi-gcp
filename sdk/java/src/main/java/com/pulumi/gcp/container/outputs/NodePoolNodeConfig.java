@@ -136,7 +136,7 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable String imageType;
     /**
-     * @return Node kubelet configs.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
@@ -421,7 +421,7 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.imageType);
     }
     /**
-     * @return Node kubelet configs.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     public Optional<NodePoolNodeConfigKubeletConfig> kubeletConfig() {

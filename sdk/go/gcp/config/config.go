@@ -26,6 +26,9 @@ func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 func GetAddPulumiAttributionLabel(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:addPulumiAttributionLabel")
 }
+func GetAgentRegistryCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:agentRegistryCustomEndpoint")
+}
 func GetAlloydbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:alloydbCustomEndpoint")
 }

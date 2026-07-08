@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_37559")
+ *             .dataProductId("tf-test-dp-_13293")
  *             .displayName("Parent Data Product")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_91980}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_40289}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__37118")
+ *             .datasetId("tf_test_dataset__33395")
  *             .location("us-central1")
  *             .build());
  * 
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_80332")
+ *             .dataProductId("tf-test-dp-_76044")
  *             .displayName("Full Example Parent DP")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(            
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__13293")
+ *             .datasetId("tf_test_dataset__69391")
  *             .location("us-central1")
  *             .build());
  * 
@@ -320,6 +320,20 @@ public class DataProductDataAsset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The relative resource name of the data asset.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The relative resource name of the data asset.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * The ID of the project in which the resource belongs.

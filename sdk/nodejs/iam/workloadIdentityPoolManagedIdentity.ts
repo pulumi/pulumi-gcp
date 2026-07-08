@@ -169,7 +169,6 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolManagedIdentityId: pulumi.Output<string>;
@@ -179,7 +178,6 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
@@ -294,7 +292,6 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolManagedIdentityId?: pulumi.Input<string | undefined>;
@@ -304,7 +301,6 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId?: pulumi.Input<string | undefined>;
@@ -356,7 +352,6 @@ export interface WorkloadIdentityPoolManagedIdentityArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolManagedIdentityId: pulumi.Input<string>;
@@ -366,7 +361,6 @@ export interface WorkloadIdentityPoolManagedIdentityArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId: pulumi.Input<string>;

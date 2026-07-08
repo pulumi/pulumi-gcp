@@ -161,6 +161,8 @@ __all__ = [
     'GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationResult',
     'GetControlFolderIntelligenceConfigTrialConfigResult',
+    'GetControlFolderIntelligenceFindingsSummaryFindingSummaryResult',
+    'GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailResult',
     'GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigResult',
     'GetControlOrganizationIntelligenceConfigFilterResult',
     'GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketResult',
@@ -168,6 +170,8 @@ __all__ = [
     'GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationResult',
     'GetControlOrganizationIntelligenceConfigTrialConfigResult',
+    'GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryResult',
+    'GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailResult',
     'GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigResult',
     'GetControlProjectIntelligenceConfigFilterResult',
     'GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketResult',
@@ -263,6 +267,8 @@ __all__ = [
     'GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketContributionResult',
     'GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketContributionTopPrefixResult',
     'GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorResult',
+    'GetControlProjectIntelligenceFindingsSummaryFindingSummaryResult',
+    'GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailResult',
     'GetInsightsDatasetConfigExcludeCloudStorageBucketResult',
     'GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketResult',
     'GetInsightsDatasetConfigExcludeCloudStorageLocationResult',
@@ -7518,6 +7524,141 @@ class GetControlFolderIntelligenceConfigTrialConfigResult(dict):
 
 
 @pulumi.output_type
+class GetControlFolderIntelligenceFindingsSummaryFindingSummaryResult(dict):
+    def __init__(__self__, *,
+                 category: _builtins.str,
+                 create_time: _builtins.str,
+                 severity: _builtins.str,
+                 summary_details: Sequence['outputs.GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailResult'],
+                 target_resource: _builtins.str,
+                 type: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str category: The category of the finding.
+        :param _builtins.str create_time: The creation time of the earliest finding that this summary is based on.
+        :param _builtins.str severity: Severity of the finding.
+        :param Sequence['GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs'] summary_details: The SummaryDetails resources. Structure is documented below.
+        :param _builtins.str target_resource: The fully qualified Cloud resource name for which this summary was generated.
+        :param _builtins.str type: The type of finding.
+        :param _builtins.str update_time: The time of the most recent update among all the findings that this summary is based on.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "summary_details", summary_details)
+        pulumi.set(__self__, "target_resource", target_resource)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the finding.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the earliest finding that this summary is based on.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        Severity of the finding.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryDetails")
+    def summary_details(self) -> Sequence['outputs.GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailResult']:
+        """
+        The SummaryDetails resources. Structure is documented below.
+        """
+        return pulumi.get(self, "summary_details")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResource")
+    def target_resource(self) -> _builtins.str:
+        """
+        The fully qualified Cloud resource name for which this summary was generated.
+        """
+        return pulumi.get(self, "target_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of finding.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time of the most recent update among all the findings that this summary is based on.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.str,
+                 description: _builtins.str,
+                 percentage: _builtins.float,
+                 resource_type: _builtins.str):
+        """
+        :param _builtins.str count: The count of impacted resources.
+        :param _builtins.str description: A short description about the FindingSummary.
+        :param _builtins.float percentage: The percentage of impacted resources.
+        :param _builtins.str resource_type: The type of Cloud resource this summary detail applies to.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.str:
+        """
+        The count of impacted resources.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A short description about the FindingSummary.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.float:
+        """
+        The percentage of impacted resources.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        The type of Cloud resource this summary detail applies to.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
 class GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigResult(dict):
     def __init__(__self__, *,
                  effective_edition: _builtins.str,
@@ -7685,6 +7826,141 @@ class GetControlOrganizationIntelligenceConfigTrialConfigResult(dict):
         The time at which the trial expires.
         """
         return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
+class GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryResult(dict):
+    def __init__(__self__, *,
+                 category: _builtins.str,
+                 create_time: _builtins.str,
+                 severity: _builtins.str,
+                 summary_details: Sequence['outputs.GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailResult'],
+                 target_resource: _builtins.str,
+                 type: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str category: The category of the finding.
+        :param _builtins.str create_time: The creation time of the earliest finding that this summary is based on.
+        :param _builtins.str severity: Severity of the finding.
+        :param Sequence['GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs'] summary_details: The SummaryDetails resources. Structure is documented below.
+        :param _builtins.str target_resource: The fully qualified Cloud resource name for which this summary was generated.
+        :param _builtins.str type: The type of finding.
+        :param _builtins.str update_time: The time of the most recent update among all the findings that this summary is based on.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "summary_details", summary_details)
+        pulumi.set(__self__, "target_resource", target_resource)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the finding.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the earliest finding that this summary is based on.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        Severity of the finding.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryDetails")
+    def summary_details(self) -> Sequence['outputs.GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailResult']:
+        """
+        The SummaryDetails resources. Structure is documented below.
+        """
+        return pulumi.get(self, "summary_details")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResource")
+    def target_resource(self) -> _builtins.str:
+        """
+        The fully qualified Cloud resource name for which this summary was generated.
+        """
+        return pulumi.get(self, "target_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of finding.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time of the most recent update among all the findings that this summary is based on.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.str,
+                 description: _builtins.str,
+                 percentage: _builtins.float,
+                 resource_type: _builtins.str):
+        """
+        :param _builtins.str count: The count of impacted resources.
+        :param _builtins.str description: A short description about the FindingSummary.
+        :param _builtins.float percentage: The percentage of impacted resources.
+        :param _builtins.str resource_type: The type of Cloud resource this summary detail applies to.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.str:
+        """
+        The count of impacted resources.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A short description about the FindingSummary.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.float:
+        """
+        The percentage of impacted resources.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        The type of Cloud resource this summary detail applies to.
+        """
+        return pulumi.get(self, "resource_type")
 
 
 @pulumi.output_type
@@ -12398,6 +12674,141 @@ class GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucke
         The error message.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingsSummaryFindingSummaryResult(dict):
+    def __init__(__self__, *,
+                 category: _builtins.str,
+                 create_time: _builtins.str,
+                 severity: _builtins.str,
+                 summary_details: Sequence['outputs.GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailResult'],
+                 target_resource: _builtins.str,
+                 type: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str category: The category of the finding.
+        :param _builtins.str create_time: The creation time of the earliest finding that this summary is based on.
+        :param _builtins.str severity: Severity of the finding.
+        :param Sequence['GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs'] summary_details: The SummaryDetails resources. Structure is documented below.
+        :param _builtins.str target_resource: The fully qualified Cloud resource name for which this summary was generated.
+        :param _builtins.str type: The type of finding.
+        :param _builtins.str update_time: The time of the most recent update among all the findings that this summary is based on.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "summary_details", summary_details)
+        pulumi.set(__self__, "target_resource", target_resource)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the finding.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the earliest finding that this summary is based on.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        Severity of the finding.
+        """
+        return pulumi.get(self, "severity")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryDetails")
+    def summary_details(self) -> Sequence['outputs.GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailResult']:
+        """
+        The SummaryDetails resources. Structure is documented below.
+        """
+        return pulumi.get(self, "summary_details")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResource")
+    def target_resource(self) -> _builtins.str:
+        """
+        The fully qualified Cloud resource name for which this summary was generated.
+        """
+        return pulumi.get(self, "target_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of finding.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time of the most recent update among all the findings that this summary is based on.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.str,
+                 description: _builtins.str,
+                 percentage: _builtins.float,
+                 resource_type: _builtins.str):
+        """
+        :param _builtins.str count: The count of impacted resources.
+        :param _builtins.str description: A short description about the FindingSummary.
+        :param _builtins.float percentage: The percentage of impacted resources.
+        :param _builtins.str resource_type: The type of Cloud resource this summary detail applies to.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.str:
+        """
+        The count of impacted resources.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A short description about the FindingSummary.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.float:
+        """
+        The percentage of impacted resources.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        The type of Cloud resource this summary detail applies to.
+        """
+        return pulumi.get(self, "resource_type")
 
 
 @pulumi.output_type

@@ -54,7 +54,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// CA in the same region as the workload will be selected to issue the certificate. Enabling
         /// this will clear any existing 'ca_pools' configuration to provision the certificates.
         /// 
-        /// 
         /// &gt; **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
         /// certificates will be automatically provisioned from the default shared CAs. This flag should
         /// not be set if you want to use your own CA pools to provision the certificates.

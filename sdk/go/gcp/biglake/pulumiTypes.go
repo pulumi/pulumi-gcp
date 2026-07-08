@@ -615,6 +615,332 @@ func (o HiveCatalogReplicaArrayOutput) Index(i pulumi.IntInput) HiveCatalogRepli
 	}).(HiveCatalogReplicaOutput)
 }
 
+type HiveDatabaseIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveDatabaseIamBindingConditionInput is an input type that accepts HiveDatabaseIamBindingConditionArgs and HiveDatabaseIamBindingConditionOutput values.
+// You can construct a concrete instance of `HiveDatabaseIamBindingConditionInput` via:
+//
+//	HiveDatabaseIamBindingConditionArgs{...}
+type HiveDatabaseIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToHiveDatabaseIamBindingConditionOutput() HiveDatabaseIamBindingConditionOutput
+	ToHiveDatabaseIamBindingConditionOutputWithContext(context.Context) HiveDatabaseIamBindingConditionOutput
+}
+
+type HiveDatabaseIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveDatabaseIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (i HiveDatabaseIamBindingConditionArgs) ToHiveDatabaseIamBindingConditionOutput() HiveDatabaseIamBindingConditionOutput {
+	return i.ToHiveDatabaseIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i HiveDatabaseIamBindingConditionArgs) ToHiveDatabaseIamBindingConditionOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamBindingConditionOutput)
+}
+
+func (i HiveDatabaseIamBindingConditionArgs) ToHiveDatabaseIamBindingConditionPtrOutput() HiveDatabaseIamBindingConditionPtrOutput {
+	return i.ToHiveDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveDatabaseIamBindingConditionArgs) ToHiveDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamBindingConditionOutput).ToHiveDatabaseIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// HiveDatabaseIamBindingConditionPtrInput is an input type that accepts HiveDatabaseIamBindingConditionArgs, HiveDatabaseIamBindingConditionPtr and HiveDatabaseIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `HiveDatabaseIamBindingConditionPtrInput` via:
+//
+//	        HiveDatabaseIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveDatabaseIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveDatabaseIamBindingConditionPtrOutput() HiveDatabaseIamBindingConditionPtrOutput
+	ToHiveDatabaseIamBindingConditionPtrOutputWithContext(context.Context) HiveDatabaseIamBindingConditionPtrOutput
+}
+
+type hiveDatabaseIamBindingConditionPtrType HiveDatabaseIamBindingConditionArgs
+
+func HiveDatabaseIamBindingConditionPtr(v *HiveDatabaseIamBindingConditionArgs) HiveDatabaseIamBindingConditionPtrInput {
+	return (*hiveDatabaseIamBindingConditionPtrType)(v)
+}
+
+func (*hiveDatabaseIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (i *hiveDatabaseIamBindingConditionPtrType) ToHiveDatabaseIamBindingConditionPtrOutput() HiveDatabaseIamBindingConditionPtrOutput {
+	return i.ToHiveDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveDatabaseIamBindingConditionPtrType) ToHiveDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamBindingConditionPtrOutput)
+}
+
+type HiveDatabaseIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveDatabaseIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) ToHiveDatabaseIamBindingConditionOutput() HiveDatabaseIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) ToHiveDatabaseIamBindingConditionOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) ToHiveDatabaseIamBindingConditionPtrOutput() HiveDatabaseIamBindingConditionPtrOutput {
+	return o.ToHiveDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) ToHiveDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveDatabaseIamBindingCondition) *HiveDatabaseIamBindingCondition {
+		return &v
+	}).(HiveDatabaseIamBindingConditionPtrOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveDatabaseIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveDatabaseIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveDatabaseIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveDatabaseIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveDatabaseIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) ToHiveDatabaseIamBindingConditionPtrOutput() HiveDatabaseIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) ToHiveDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) Elem() HiveDatabaseIamBindingConditionOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamBindingCondition) HiveDatabaseIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveDatabaseIamBindingCondition
+		return ret
+	}).(HiveDatabaseIamBindingConditionOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveDatabaseIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveDatabaseIamMemberConditionInput is an input type that accepts HiveDatabaseIamMemberConditionArgs and HiveDatabaseIamMemberConditionOutput values.
+// You can construct a concrete instance of `HiveDatabaseIamMemberConditionInput` via:
+//
+//	HiveDatabaseIamMemberConditionArgs{...}
+type HiveDatabaseIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToHiveDatabaseIamMemberConditionOutput() HiveDatabaseIamMemberConditionOutput
+	ToHiveDatabaseIamMemberConditionOutputWithContext(context.Context) HiveDatabaseIamMemberConditionOutput
+}
+
+type HiveDatabaseIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveDatabaseIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (i HiveDatabaseIamMemberConditionArgs) ToHiveDatabaseIamMemberConditionOutput() HiveDatabaseIamMemberConditionOutput {
+	return i.ToHiveDatabaseIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i HiveDatabaseIamMemberConditionArgs) ToHiveDatabaseIamMemberConditionOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamMemberConditionOutput)
+}
+
+func (i HiveDatabaseIamMemberConditionArgs) ToHiveDatabaseIamMemberConditionPtrOutput() HiveDatabaseIamMemberConditionPtrOutput {
+	return i.ToHiveDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveDatabaseIamMemberConditionArgs) ToHiveDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamMemberConditionOutput).ToHiveDatabaseIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// HiveDatabaseIamMemberConditionPtrInput is an input type that accepts HiveDatabaseIamMemberConditionArgs, HiveDatabaseIamMemberConditionPtr and HiveDatabaseIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `HiveDatabaseIamMemberConditionPtrInput` via:
+//
+//	        HiveDatabaseIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveDatabaseIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveDatabaseIamMemberConditionPtrOutput() HiveDatabaseIamMemberConditionPtrOutput
+	ToHiveDatabaseIamMemberConditionPtrOutputWithContext(context.Context) HiveDatabaseIamMemberConditionPtrOutput
+}
+
+type hiveDatabaseIamMemberConditionPtrType HiveDatabaseIamMemberConditionArgs
+
+func HiveDatabaseIamMemberConditionPtr(v *HiveDatabaseIamMemberConditionArgs) HiveDatabaseIamMemberConditionPtrInput {
+	return (*hiveDatabaseIamMemberConditionPtrType)(v)
+}
+
+func (*hiveDatabaseIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (i *hiveDatabaseIamMemberConditionPtrType) ToHiveDatabaseIamMemberConditionPtrOutput() HiveDatabaseIamMemberConditionPtrOutput {
+	return i.ToHiveDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveDatabaseIamMemberConditionPtrType) ToHiveDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseIamMemberConditionPtrOutput)
+}
+
+type HiveDatabaseIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveDatabaseIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) ToHiveDatabaseIamMemberConditionOutput() HiveDatabaseIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) ToHiveDatabaseIamMemberConditionOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) ToHiveDatabaseIamMemberConditionPtrOutput() HiveDatabaseIamMemberConditionPtrOutput {
+	return o.ToHiveDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) ToHiveDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveDatabaseIamMemberCondition) *HiveDatabaseIamMemberCondition {
+		return &v
+	}).(HiveDatabaseIamMemberConditionPtrOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveDatabaseIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveDatabaseIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveDatabaseIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveDatabaseIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveDatabaseIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) ToHiveDatabaseIamMemberConditionPtrOutput() HiveDatabaseIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) ToHiveDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveDatabaseIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) Elem() HiveDatabaseIamMemberConditionOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamMemberCondition) HiveDatabaseIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveDatabaseIamMemberCondition
+		return ret
+	}).(HiveDatabaseIamMemberConditionOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveDatabaseIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type IcebergCatalogIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -3123,6 +3449,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogIamMemberConditionPtrInput)(nil)).Elem(), HiveCatalogIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogReplicaInput)(nil)).Elem(), HiveCatalogReplicaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveCatalogReplicaArrayInput)(nil)).Elem(), HiveCatalogReplicaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamBindingConditionInput)(nil)).Elem(), HiveDatabaseIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamBindingConditionPtrInput)(nil)).Elem(), HiveDatabaseIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionPtrInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionPtrInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
@@ -3163,6 +3493,10 @@ func init() {
 	pulumi.RegisterOutputType(HiveCatalogIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(HiveCatalogReplicaOutput{})
 	pulumi.RegisterOutputType(HiveCatalogReplicaArrayOutput{})
+	pulumi.RegisterOutputType(HiveDatabaseIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(HiveDatabaseIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionOutput{})

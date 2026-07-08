@@ -60,6 +60,31 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
     }
 
     /**
+     * List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    @Import(name="forwardAttributes")
+    private @Nullable Output<List<String>> forwardAttributes;
+
+    /**
+     * @return List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    public Optional<Output<List<String>>> forwardAttributes() {
+        return Optional.ofNullable(this.forwardAttributes);
+    }
+
+    /**
      * List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
      * 
@@ -178,6 +203,7 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
     private LbTrafficExtensionExtensionChainExtensionArgs(LbTrafficExtensionExtensionChainExtensionArgs $) {
         this.authority = $.authority;
         this.failOpen = $.failOpen;
+        this.forwardAttributes = $.forwardAttributes;
         this.forwardHeaders = $.forwardHeaders;
         this.metadata = $.metadata;
         this.name = $.name;
@@ -254,6 +280,52 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          */
         public Builder failOpen(Boolean failOpen) {
             return failOpen(Output.of(failOpen));
+        }
+
+        /**
+         * @param forwardAttributes List of the Envoy attributes to forward to the extension server. The attributes
+         * provided here are included as part of the `ProcessingRequest.attributes` field
+         * (of type `map`), where the keys are the attribute names. Refer to the
+         * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+         * for the names of attributes that can be forwarded. If omitted, no attributes
+         * are sent. Each element is a string indicating the attribute name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardAttributes(@Nullable Output<List<String>> forwardAttributes) {
+            $.forwardAttributes = forwardAttributes;
+            return this;
+        }
+
+        /**
+         * @param forwardAttributes List of the Envoy attributes to forward to the extension server. The attributes
+         * provided here are included as part of the `ProcessingRequest.attributes` field
+         * (of type `map`), where the keys are the attribute names. Refer to the
+         * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+         * for the names of attributes that can be forwarded. If omitted, no attributes
+         * are sent. Each element is a string indicating the attribute name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardAttributes(List<String> forwardAttributes) {
+            return forwardAttributes(Output.of(forwardAttributes));
+        }
+
+        /**
+         * @param forwardAttributes List of the Envoy attributes to forward to the extension server. The attributes
+         * provided here are included as part of the `ProcessingRequest.attributes` field
+         * (of type `map`), where the keys are the attribute names. Refer to the
+         * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+         * for the names of attributes that can be forwarded. If omitted, no attributes
+         * are sent. Each element is a string indicating the attribute name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardAttributes(String... forwardAttributes) {
+            return forwardAttributes(List.of(forwardAttributes));
         }
 
         /**

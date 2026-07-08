@@ -105,13 +105,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
- *             .displayName("tf-test-secpol-_89605")
+ *             .displayName("tf-test-secpol-_64336")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
  * 
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_56730")
+ *             .shortName("tf-test_34962")
  *             .parent(securityPolicyTarget.name())
  *             .type("CLOUD_ARMOR")
  *             .build());

@@ -11590,7 +11590,6 @@ class FeedDetailsFoxItStixSettingsSslArgsDict(TypedDict):
     -----BEGIN RSA PRIVATE KEY-----
     Proc-Type: 4,ENCRYPTED
     DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-
     -----END RSA PRIVATE KEY-----
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
@@ -11618,7 +11617,6 @@ class FeedDetailsFoxItStixSettingsSslArgs:
                -----BEGIN RSA PRIVATE KEY-----
                Proc-Type: 4,ENCRYPTED
                DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-               
                -----END RSA PRIVATE KEY-----
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] ssl_certificate: The encoded SSL certificate. The string should be an SSL certificate in
@@ -11645,7 +11643,6 @@ class FeedDetailsFoxItStixSettingsSslArgs:
         -----BEGIN RSA PRIVATE KEY-----
         Proc-Type: 4,ENCRYPTED
         DEK-Info: DES-EDE3-CBC,F23074E02CF47304
-
         -----END RSA PRIVATE KEY-----
         **Note**: This property is sensitive and will not be displayed in the plan.
         """

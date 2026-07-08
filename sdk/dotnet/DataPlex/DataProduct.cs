@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_56529@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_91980@example.com",
     ///                 },
     ///             },
     ///         },
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
     ///     {
-    ///         AccountId = "tf-test-sa-_75413",
+    ///         AccountId = "tf-test-sa-_37118",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 Description = "In-place update verified",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_55138@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_80332@example.com",
     ///                 },
     ///             },
     ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs
@@ -210,6 +210,16 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Base64 encoded image representing the data product. Max Size: 3.0MiB
+        /// Expected image dimensions are 512x512 pixels, however the API only
+        /// performs validation on size of the encoded data.
+        /// Note: For byte fields, the content of the fields are base64-encoded (which
+        /// increases the size of the data by 33-36%) when using JSON on the wire.
+        /// </summary>
+        [Output("icon")]
+        public Output<string?> Icon { get; private set; } = null!;
 
         /// <summary>
         /// User-defined labels.
@@ -363,6 +373,16 @@ namespace Pulumi.Gcp.DataPlex
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Base64 encoded image representing the data product. Max Size: 3.0MiB
+        /// Expected image dimensions are 512x512 pixels, however the API only
+        /// performs validation on size of the encoded data.
+        /// Note: For byte fields, the content of the fields are base64-encoded (which
+        /// increases the size of the data by 33-36%) when using JSON on the wire.
+        /// </summary>
+        [Input("icon")]
+        public Input<string>? Icon { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -492,6 +512,16 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Base64 encoded image representing the data product. Max Size: 3.0MiB
+        /// Expected image dimensions are 512x512 pixels, however the API only
+        /// performs validation on size of the encoded data.
+        /// Note: For byte fields, the content of the fields are base64-encoded (which
+        /// increases the size of the data by 33-36%) when using JSON on the wire.
+        /// </summary>
+        [Input("icon")]
+        public Input<string>? Icon { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

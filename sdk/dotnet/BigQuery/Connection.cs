@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         Name = "user",
     ///         Instance = instance.Name,
-    ///         Password = "tf-test-my-password_15222",
+    ///         Password = "tf-test-my-password_85794",
     ///     });
     /// 
     ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()

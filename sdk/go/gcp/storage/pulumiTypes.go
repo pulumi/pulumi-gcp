@@ -21733,6 +21733,289 @@ func (o GetControlFolderIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi
 	}).(GetControlFolderIntelligenceConfigTrialConfigOutput)
 }
 
+type GetControlFolderIntelligenceFindingsSummaryFindingSummary struct {
+	// The category of the finding.
+	Category string `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime string `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity string `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails []GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource string `pulumi:"targetResource"`
+	// The type of finding.
+	Type string `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetControlFolderIntelligenceFindingsSummaryFindingSummaryInput is an input type that accepts GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs and GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceFindingsSummaryFindingSummaryInput` via:
+//
+//	GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs{...}
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs struct {
+	// The category of the finding.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource pulumi.StringInput `pulumi:"targetResource"`
+	// The type of finding.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput {
+	return i.ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+// GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayInput is an input type that accepts GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray and GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayInput` via:
+//
+//	GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray{ GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs{...} }
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray []GetControlFolderIntelligenceFindingsSummaryFindingSummaryInput
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return i.ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput)
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+// The category of the finding.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The creation time of the earliest finding that this summary is based on.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Severity of the finding.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The SummaryDetails resources. Structure is documented below.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) SummaryDetails() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) []GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return v.SummaryDetails
+	}).(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+// The fully qualified Cloud resource name for which this summary was generated.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) TargetResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.TargetResource }).(pulumi.StringOutput)
+}
+
+// The type of finding.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time of the most recent update among all the findings that this summary is based on.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummary) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceFindingsSummaryFindingSummary {
+		return vs[0].([]GetControlFolderIntelligenceFindingsSummaryFindingSummary)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail struct {
+	// The count of impacted resources.
+	Count string `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description string `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage float64 `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailInput is an input type that accepts GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs and GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailInput` via:
+//
+//	GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...}
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs struct {
+	// The count of impacted resources.
+	Count pulumi.StringInput `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return i.ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
+}
+
+// GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput is an input type that accepts GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray and GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput` via:
+//
+//	GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{ GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...} }
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+	ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray []GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailInput
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return i.ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+// The count of impacted resources.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// A short description about the FindingSummary.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// The percentage of impacted resources.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail) float64 {
+		return v.Percentage
+	}).(pulumi.Float64Output)
+}
+
+// The type of Cloud resource this summary detail applies to.
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.ResourceType
+	}).(pulumi.StringOutput)
+}
+
+type GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return vs[0].([]GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetail)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
+}
+
 type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// The 'StorageIntelligence' edition that is applicable for the resource.
 	EffectiveEdition string `pulumi:"effectiveEdition"`
@@ -22466,6 +22749,293 @@ func (o GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigTrialConfig {
 		return vs[0].([]GetControlOrganizationIntelligenceConfigTrialConfig)[vs[1].(int)]
 	}).(GetControlOrganizationIntelligenceConfigTrialConfigOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummary struct {
+	// The category of the finding.
+	Category string `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime string `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity string `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails []GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource string `pulumi:"targetResource"`
+	// The type of finding.
+	Type string `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryInput is an input type that accepts GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs and GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryInput` via:
+//
+//	GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs{...}
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs struct {
+	// The category of the finding.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource pulumi.StringInput `pulumi:"targetResource"`
+	// The type of finding.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput {
+	return i.ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+// GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayInput is an input type that accepts GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray and GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray{ GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs{...} }
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray []GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryInput
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+// The category of the finding.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The creation time of the earliest finding that this summary is based on.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Severity of the finding.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The SummaryDetails resources. Structure is documented below.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) SummaryDetails() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) []GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return v.SummaryDetails
+	}).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+// The fully qualified Cloud resource name for which this summary was generated.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) TargetResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string {
+		return v.TargetResource
+	}).(pulumi.StringOutput)
+}
+
+// The type of finding.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time of the most recent update among all the findings that this summary is based on.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummary) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceFindingsSummaryFindingSummary {
+		return vs[0].([]GetControlOrganizationIntelligenceFindingsSummaryFindingSummary)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail struct {
+	// The count of impacted resources.
+	Count string `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description string `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage float64 `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput is an input type that accepts GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs and GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput` via:
+//
+//	GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...}
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs struct {
+	// The count of impacted resources.
+	Count pulumi.StringInput `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return i.ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
+}
+
+// GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput is an input type that accepts GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray and GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{ GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...} }
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+	ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray []GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+// The count of impacted resources.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.Count
+	}).(pulumi.StringOutput)
+}
+
+// A short description about the FindingSummary.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// The percentage of impacted resources.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail) float64 {
+		return v.Percentage
+	}).(pulumi.Float64Output)
+}
+
+// The type of Cloud resource this summary detail applies to.
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.ResourceType
+	}).(pulumi.StringOutput)
+}
+
+type GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return vs[0].([]GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetail)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
 }
 
 type GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
@@ -34792,6 +35362,289 @@ func (o GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBuc
 	}).(GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorOutput)
 }
 
+type GetControlProjectIntelligenceFindingsSummaryFindingSummary struct {
+	// The category of the finding.
+	Category string `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime string `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity string `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails []GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource string `pulumi:"targetResource"`
+	// The type of finding.
+	Type string `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetControlProjectIntelligenceFindingsSummaryFindingSummaryInput is an input type that accepts GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs and GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingsSummaryFindingSummaryInput` via:
+//
+//	GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs{...}
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs struct {
+	// The category of the finding.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The creation time of the earliest finding that this summary is based on.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Severity of the finding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// The SummaryDetails resources. Structure is documented below.
+	SummaryDetails GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput `pulumi:"summaryDetails"`
+	// The fully qualified Cloud resource name for which this summary was generated.
+	TargetResource pulumi.StringInput `pulumi:"targetResource"`
+	// The type of finding.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time of the most recent update among all the findings that this summary is based on.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput {
+	return i.ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+// GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayInput is an input type that accepts GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray and GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray{ GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs{...} }
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray []GetControlProjectIntelligenceFindingsSummaryFindingSummaryInput
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput {
+	return o
+}
+
+// The category of the finding.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The creation time of the earliest finding that this summary is based on.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Severity of the finding.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The SummaryDetails resources. Structure is documented below.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) SummaryDetails() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) []GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return v.SummaryDetails
+	}).(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+// The fully qualified Cloud resource name for which this summary was generated.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) TargetResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.TargetResource }).(pulumi.StringOutput)
+}
+
+// The type of finding.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time of the most recent update among all the findings that this summary is based on.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummary) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingsSummaryFindingSummary)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingsSummaryFindingSummary {
+		return vs[0].([]GetControlProjectIntelligenceFindingsSummaryFindingSummary)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput)
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail struct {
+	// The count of impacted resources.
+	Count string `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description string `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage float64 `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailInput is an input type that accepts GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs and GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailInput` via:
+//
+//	GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...}
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs struct {
+	// The count of impacted resources.
+	Count pulumi.StringInput `pulumi:"count"`
+	// A short description about the FindingSummary.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The percentage of impacted resources.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+	// The type of Cloud resource this summary detail applies to.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return i.ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
+}
+
+// GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput is an input type that accepts GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray and GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput` via:
+//
+//	GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{ GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{...} }
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+	ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray []GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailInput
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return i.ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput)
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return o
+}
+
+// The count of impacted resources.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// A short description about the FindingSummary.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// The percentage of impacted resources.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail) float64 {
+		return v.Percentage
+	}).(pulumi.Float64Output)
+}
+
+// The type of Cloud resource this summary detail applies to.
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail) string {
+		return v.ResourceType
+	}).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput() GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) ToGetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail {
+		return vs[0].([]GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput)
+}
+
 type GetInsightsDatasetConfigExcludeCloudStorageBucket struct {
 	// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
 	CloudStorageBuckets []GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket `pulumi:"cloudStorageBuckets"`
@@ -36117,6 +36970,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlFolderIntelligenceConfigTrialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigTrialConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummaryInput)(nil)).Elem(), GetControlFolderIntelligenceFindingsSummaryFindingSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayInput)(nil)).Elem(), GetControlFolderIntelligenceFindingsSummaryFindingSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailInput)(nil)).Elem(), GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput)(nil)).Elem(), GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterArgs{})
@@ -36131,6 +36988,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigTrialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigTrialConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterArgs{})
@@ -36321,6 +37182,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketContributionTopPrefixArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketContributionTopPrefixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummaryInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsSummaryFindingSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsSummaryFindingSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayInput)(nil)).Elem(), GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketArrayInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs{})
@@ -36629,6 +37494,10 @@ func init() {
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigTrialConfigOutput{})
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigTrialConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceFindingsSummaryFindingSummaryOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceFindingsSummaryFindingSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterOutput{})
@@ -36643,6 +37512,10 @@ func init() {
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigTrialConfigOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterOutput{})
@@ -36833,6 +37706,10 @@ func init() {
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketContributionTopPrefixArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsFindingThrottledRequestsSpikeTopBucketErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsSummaryFindingSummaryOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsSummaryFindingSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketOutput{})
 	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput{})

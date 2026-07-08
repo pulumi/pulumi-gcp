@@ -42,6 +42,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('addPulumiAttributionLabel')
 
     @_builtins.property
+    def agent_registry_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('agentRegistryCustomEndpoint')
+
+    @_builtins.property
     def alloydb_custom_endpoint(self) -> Optional[str]:
         return __config__.get('alloydbCustomEndpoint')
 

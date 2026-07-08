@@ -90,6 +90,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int PodPidsLimit;
         /// <summary>
+        /// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        /// </summary>
+        public readonly int ShutdownGracePeriodCriticalPodsSeconds;
+        /// <summary>
+        /// Controls the total duration of time (in seconds) the node delays shutdown.
+        /// </summary>
+        public readonly int ShutdownGracePeriodSeconds;
+        /// <summary>
         /// Defines whether to enable single process OOM killer.
         /// </summary>
         public readonly bool SingleProcessOomKill;
@@ -138,6 +146,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int podPidsLimit,
 
+            int shutdownGracePeriodCriticalPodsSeconds,
+
+            int shutdownGracePeriodSeconds,
+
             bool singleProcessOomKill,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerResult> topologyManagers)
@@ -161,6 +173,8 @@ namespace Pulumi.Gcp.Container.Outputs
             MaxParallelImagePulls = maxParallelImagePulls;
             MemoryManagers = memoryManagers;
             PodPidsLimit = podPidsLimit;
+            ShutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            ShutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
             SingleProcessOomKill = singleProcessOomKill;
             TopologyManagers = topologyManagers;
         }

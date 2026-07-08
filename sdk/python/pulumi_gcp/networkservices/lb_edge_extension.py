@@ -513,6 +513,10 @@ class LbEdgeExtension(pulumi.CustomResource):
                     "fail_open": False,
                     "supported_events": ["REQUEST_HEADERS"],
                     "forward_headers": ["custom-header"],
+                    "forward_attributes": [
+                        "request.host",
+                        "request.path",
+                    ],
                 }],
             }],
             labels={
@@ -656,6 +660,10 @@ class LbEdgeExtension(pulumi.CustomResource):
                     "fail_open": False,
                     "supported_events": ["REQUEST_HEADERS"],
                     "forward_headers": ["custom-header"],
+                    "forward_attributes": [
+                        "request.host",
+                        "request.path",
+                    ],
                 }],
             }],
             labels={

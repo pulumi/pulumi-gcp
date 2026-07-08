@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
-    ///         DatasetId = "tf_test_dataset_id_81126",
+    ///         DatasetId = "tf_test_dataset_id_21197",
     ///     });
     /// 
     ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
@@ -424,6 +424,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             ContainerMemory = "512Mi",
     ///             ContainerCpu = 0.5,
     ///             RuntimeVersion = "python-3.11",
+    ///             ContainerRequestConcurrency = "1",
     ///         },
     ///     });
     /// 

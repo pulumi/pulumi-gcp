@@ -29,6 +29,8 @@ import com.pulumi.gcp.compute.inputs.GetDiskArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRulePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
@@ -52,6 +54,8 @@ import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGroupsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
@@ -82,6 +86,8 @@ import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPlainArgs;
@@ -109,6 +115,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
@@ -179,6 +187,7 @@ import com.pulumi.gcp.compute.outputs.GetCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetDefaultServiceAccountResult;
 import com.pulumi.gcp.compute.outputs.GetDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetDiskResult;
+import com.pulumi.gcp.compute.outputs.GetFirewallPolicyIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetForwardingRuleResult;
 import com.pulumi.gcp.compute.outputs.GetForwardingRulesResult;
 import com.pulumi.gcp.compute.outputs.GetGlobalAddressResult;
@@ -190,6 +199,7 @@ import com.pulumi.gcp.compute.outputs.GetImageResult;
 import com.pulumi.gcp.compute.outputs.GetImagesResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupResult;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupsResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGuestAttributesResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceResult;
@@ -206,6 +216,7 @@ import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkAttachmentResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupsResult;
+import com.pulumi.gcp.compute.outputs.GetNetworkFirewallPolicyIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNetworksResult;
@@ -220,6 +231,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstantSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
+import com.pulumi.gcp.compute.outputs.GetRegionNetworkFirewallPolicyIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
@@ -2801,6 +2813,206 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetDiskIamPolicyResult> getDiskIamPolicyPlain(GetDiskIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", TypeShape.of(GetDiskIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for firewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs args) {
+        return getFirewallPolicyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for firewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyPlain(GetFirewallPolicyIamPolicyPlainArgs args) {
+        return getFirewallPolicyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for firewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy", TypeShape.of(GetFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for firewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy", TypeShape.of(GetFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for firewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyPlain(GetFirewallPolicyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy", TypeShape.of(GetFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a forwarding rule within GCE from its name.
@@ -6105,6 +6317,293 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", TypeShape.of(GetInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceGroupsResult> getInstanceGroups() {
+        return getInstanceGroups(GetInstanceGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupsResult> getInstanceGroupsPlain() {
+        return getInstanceGroupsPlain(GetInstanceGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceGroupsResult> getInstanceGroups(GetInstanceGroupsArgs args) {
+        return getInstanceGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupsResult> getInstanceGroupsPlain(GetInstanceGroupsPlainArgs args) {
+        return getInstanceGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceGroupsResult> getInstanceGroups(GetInstanceGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceGroups:getInstanceGroups", TypeShape.of(GetInstanceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInstanceGroupsResult> getInstanceGroups(GetInstanceGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceGroups:getInstanceGroups", TypeShape.of(GetInstanceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInstanceGroups(GetInstanceGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupsResult> getInstanceGroupsPlain(GetInstanceGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroups:getInstanceGroups", TypeShape.of(GetInstanceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a VM instance resource within GCE. For more information see
@@ -11268,6 +11767,211 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", TypeShape.of(GetNetworkEndpointGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for networkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs args) {
+        return getNetworkFirewallPolicyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for networkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicyPlain(GetNetworkFirewallPolicyIamPolicyPlainArgs args) {
+        return getNetworkFirewallPolicyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for networkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy", TypeShape.of(GetNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for networkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy", TypeShape.of(GetNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for networkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicyPlain(GetNetworkFirewallPolicyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy", TypeShape.of(GetNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information of a specified compute network peering. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
      * and
@@ -14636,6 +15340,216 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", TypeShape.of(GetRegionNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs args) {
+        return getRegionNetworkFirewallPolicyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicyPlain(GetRegionNetworkFirewallPolicyIamPolicyPlainArgs args) {
+        return getRegionNetworkFirewallPolicyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy", TypeShape.of(GetRegionNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy", TypeShape.of(GetRegionNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regionnetworkfirewallpolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkFirewallPolicyIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicyPlain(GetRegionNetworkFirewallPolicyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy", TypeShape.of(GetRegionNetworkFirewallPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.

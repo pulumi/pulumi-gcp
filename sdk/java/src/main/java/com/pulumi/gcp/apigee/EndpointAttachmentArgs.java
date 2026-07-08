@@ -57,14 +57,14 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Location of the endpoint attachment.
+     * @return The location of the endpoint attachment.
      * 
      */
     public Output<String> location() {
@@ -89,14 +89,16 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     @Import(name="serviceAttachment", required=true)
     private Output<String> serviceAttachment;
 
     /**
-     * @return Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * @return The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     public Output<String> serviceAttachment() {
@@ -184,7 +186,7 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location of the endpoint attachment.
+         * @param location The location of the endpoint attachment.
          * 
          * @return builder
          * 
@@ -195,7 +197,7 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location of the endpoint attachment.
+         * @param location The location of the endpoint attachment.
          * 
          * @return builder
          * 
@@ -228,7 +230,8 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+         * @param serviceAttachment The resource URL of the service attachment in the format:
+         * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
          * 
          * @return builder
          * 
@@ -239,7 +242,8 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+         * @param serviceAttachment The resource URL of the service attachment in the format:
+         * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
          * 
          * @return builder
          * 

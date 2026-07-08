@@ -27,6 +27,15 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly bool? FailOpen;
         /// <summary>
+        /// List of the Envoy attributes to forward to the extension server. The attributes
+        /// provided here are included as part of the `ProcessingRequest.attributes` field
+        /// (of type `Map`), where the keys are the attribute names. Refer to the
+        /// [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+        /// for the names of attributes that can be forwarded. If omitted, no attributes
+        /// are sent. Each element is a string indicating the attribute name.
+        /// </summary>
+        public readonly ImmutableArray<string> ForwardAttributes;
+        /// <summary>
         /// List of the HTTP headers to forward to the extension (from the client or backend).
         /// If omitted, all headers are sent. Each element is a string indicating the header name.
         /// </summary>
@@ -89,6 +98,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             bool? failOpen,
 
+            ImmutableArray<string> forwardAttributes,
+
             ImmutableArray<string> forwardHeaders,
 
             ImmutableDictionary<string, string>? metadata,
@@ -107,6 +118,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         {
             Authority = authority;
             FailOpen = failOpen;
+            ForwardAttributes = forwardAttributes;
             ForwardHeaders = forwardHeaders;
             Metadata = metadata;
             Name = name;

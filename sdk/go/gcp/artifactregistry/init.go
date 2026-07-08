@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:artifactregistry/projectConfig:ProjectConfig":
+		r = &ProjectConfig{}
 	case "gcp:artifactregistry/repository:Repository":
 		r = &Repository{}
 	case "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding":
@@ -46,6 +48,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"artifactregistry/projectConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"artifactregistry/repository",

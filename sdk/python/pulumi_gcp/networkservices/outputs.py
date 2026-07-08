@@ -5019,6 +5019,8 @@ class LbEdgeExtensionExtensionChainExtension(dict):
         suggest = None
         if key == "failOpen":
             suggest = "fail_open"
+        elif key == "forwardAttributes":
+            suggest = "forward_attributes"
         elif key == "forwardHeaders":
             suggest = "forward_headers"
         elif key == "supportedEvents":
@@ -5039,6 +5041,7 @@ class LbEdgeExtensionExtensionChainExtension(dict):
                  name: _builtins.str,
                  service: _builtins.str,
                  fail_open: Optional[_builtins.bool] = None,
+                 forward_attributes: Optional[Sequence[_builtins.str]] = None,
                  forward_headers: Optional[Sequence[_builtins.str]] = None,
                  supported_events: Optional[Sequence[_builtins.str]] = None):
         """
@@ -5055,6 +5058,12 @@ class LbEdgeExtensionExtensionChainExtension(dict):
                When set to FALSE: * If response headers have not been delivered to the downstream client,
                a generic 500 error is returned to the client. The error response can be tailored by
                configuring a custom error response in the load balancer.
+        :param Sequence[_builtins.str] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
         :param Sequence[_builtins.str] supported_events: A set of events during request or response processing for which this extension is called.
@@ -5064,6 +5073,8 @@ class LbEdgeExtensionExtensionChainExtension(dict):
         pulumi.set(__self__, "service", service)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if supported_events is not None:
@@ -5102,6 +5113,19 @@ class LbEdgeExtensionExtensionChainExtension(dict):
         configuring a custom error response in the load balancer.
         """
         return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
@@ -5237,6 +5261,8 @@ class LbRouteExtensionExtensionChainExtension(dict):
         suggest = None
         if key == "failOpen":
             suggest = "fail_open"
+        elif key == "forwardAttributes":
+            suggest = "forward_attributes"
         elif key == "forwardHeaders":
             suggest = "forward_headers"
         elif key == "observabilityMode":
@@ -5262,6 +5288,7 @@ class LbRouteExtensionExtensionChainExtension(dict):
                  service: _builtins.str,
                  authority: Optional[_builtins.str] = None,
                  fail_open: Optional[_builtins.bool] = None,
+                 forward_attributes: Optional[Sequence[_builtins.str]] = None,
                  forward_headers: Optional[Sequence[_builtins.str]] = None,
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
                  observability_mode: Optional[_builtins.bool] = None,
@@ -5283,6 +5310,12 @@ class LbRouteExtensionExtensionChainExtension(dict):
                When set to FALSE: * If response headers have not been delivered to the downstream client,
                a generic 500 error is returned to the client. The error response can be tailored by
                configuring a custom error response in the load balancer.
+        :param Sequence[_builtins.str] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
         :param Mapping[str, _builtins.str] metadata: The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
@@ -5315,6 +5348,8 @@ class LbRouteExtensionExtensionChainExtension(dict):
             pulumi.set(__self__, "authority", authority)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if metadata is not None:
@@ -5369,6 +5404,19 @@ class LbRouteExtensionExtensionChainExtension(dict):
         configuring a custom error response in the load balancer.
         """
         return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
@@ -5553,6 +5601,8 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         suggest = None
         if key == "failOpen":
             suggest = "fail_open"
+        elif key == "forwardAttributes":
+            suggest = "forward_attributes"
         elif key == "forwardHeaders":
             suggest = "forward_headers"
         elif key == "supportedEvents":
@@ -5574,6 +5624,7 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                  service: _builtins.str,
                  authority: Optional[_builtins.str] = None,
                  fail_open: Optional[_builtins.bool] = None,
+                 forward_attributes: Optional[Sequence[_builtins.str]] = None,
                  forward_headers: Optional[Sequence[_builtins.str]] = None,
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
                  supported_events: Optional[Sequence[_builtins.str]] = None,
@@ -5593,6 +5644,12 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                When set to FALSE: * If response headers have not been delivered to the downstream client,
                a generic 500 error is returned to the client. The error response can be tailored by
                configuring a custom error response in the load balancer.
+        :param Sequence[_builtins.str] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
         :param Mapping[str, _builtins.str] metadata: Metadata associated with the extension. This field is used to pass metadata to the extension service.
@@ -5611,6 +5668,8 @@ class LbTrafficExtensionExtensionChainExtension(dict):
             pulumi.set(__self__, "authority", authority)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if metadata is not None:
@@ -5661,6 +5720,19 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         configuring a custom error response in the load balancer.
         """
         return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")

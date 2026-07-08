@@ -9,6 +9,7 @@ import typing
 from .catalog import *
 from .database import *
 from .get_hive_catalog_iam_policy import *
+from .get_hive_database_iam_policy import *
 from .get_iceberg_catalog_iam_policy import *
 from .get_iceberg_namespace_iam_policy import *
 from .get_iceberg_table_iam_policy import *
@@ -16,6 +17,10 @@ from .hive_catalog import *
 from .hive_catalog_iam_binding import *
 from .hive_catalog_iam_member import *
 from .hive_catalog_iam_policy import *
+from .hive_database import *
+from .hive_database_iam_binding import *
+from .hive_database_iam_member import *
+from .hive_database_iam_policy import *
 from .iceberg_catalog import *
 from .iceberg_catalog_iam_binding import *
 from .iceberg_catalog_iam_member import *

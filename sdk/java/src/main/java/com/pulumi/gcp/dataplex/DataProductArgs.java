@@ -125,6 +125,29 @@ public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     * 
+     */
+    @Import(name="icon")
+    private @Nullable Output<String> icon;
+
+    /**
+     * @return Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     * 
+     */
+    public Optional<Output<String>> icon() {
+        return Optional.ofNullable(this.icon);
+    }
+
+    /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -199,6 +222,7 @@ public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.icon = $.icon;
         this.labels = $.labels;
         this.location = $.location;
         this.ownerEmails = $.ownerEmails;
@@ -372,6 +396,35 @@ public final class DataProductArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param icon Base64 encoded image representing the data product. Max Size: 3.0MiB
+         * Expected image dimensions are 512x512 pixels, however the API only
+         * performs validation on size of the encoded data.
+         * Note: For byte fields, the content of the fields are base64-encoded (which
+         * increases the size of the data by 33-36%) when using JSON on the wire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder icon(@Nullable Output<String> icon) {
+            $.icon = icon;
+            return this;
+        }
+
+        /**
+         * @param icon Base64 encoded image representing the data product. Max Size: 3.0MiB
+         * Expected image dimensions are 512x512 pixels, however the API only
+         * performs validation on size of the encoded data.
+         * Note: For byte fields, the content of the fields are base64-encoded (which
+         * increases the size of the data by 33-36%) when using JSON on the wire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder icon(String icon) {
+            return icon(Output.of(icon));
         }
 
         /**

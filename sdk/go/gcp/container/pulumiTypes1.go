@@ -8083,6 +8083,10 @@ type GetClusterNodePoolNodeConfigKubeletConfig struct {
 	MemoryManagers []GetClusterNodePoolNodeConfigKubeletConfigMemoryManager `pulumi:"memoryManagers"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit int `pulumi:"podPidsLimit"`
+	// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+	ShutdownGracePeriodCriticalPodsSeconds int `pulumi:"shutdownGracePeriodCriticalPodsSeconds"`
+	// Controls the total duration of time (in seconds) the node delays shutdown.
+	ShutdownGracePeriodSeconds int `pulumi:"shutdownGracePeriodSeconds"`
 	// Defines whether to enable single process OOM killer.
 	SingleProcessOomKill bool `pulumi:"singleProcessOomKill"`
 	// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
@@ -8139,6 +8143,10 @@ type GetClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	MemoryManagers GetClusterNodePoolNodeConfigKubeletConfigMemoryManagerArrayInput `pulumi:"memoryManagers"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
+	// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+	ShutdownGracePeriodCriticalPodsSeconds pulumi.IntInput `pulumi:"shutdownGracePeriodCriticalPodsSeconds"`
+	// Controls the total duration of time (in seconds) the node delays shutdown.
+	ShutdownGracePeriodSeconds pulumi.IntInput `pulumi:"shutdownGracePeriodSeconds"`
 	// Defines whether to enable single process OOM killer.
 	SingleProcessOomKill pulumi.BoolInput `pulumi:"singleProcessOomKill"`
 	// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
@@ -8299,6 +8307,16 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) MemoryManagers() GetClu
 // Controls the maximum number of processes allowed to run in a pod.
 func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.PodPidsLimit }).(pulumi.IntOutput)
+}
+
+// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ShutdownGracePeriodCriticalPodsSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.ShutdownGracePeriodCriticalPodsSeconds }).(pulumi.IntOutput)
+}
+
+// Controls the total duration of time (in seconds) the node delays shutdown.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ShutdownGracePeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.ShutdownGracePeriodSeconds }).(pulumi.IntOutput)
 }
 
 // Defines whether to enable single process OOM killer.

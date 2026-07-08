@@ -27,9 +27,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "asia-south1",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "asia-south1-b-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -101,9 +101,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "northamerica-northeast1",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "northamerica-northeast1-a-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -148,9 +148,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "southamerica-east1",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "southamerica-east1-a-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -184,9 +184,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "asia-northeast2",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "asia-northeast2-a-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -219,9 +219,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "europe-west8",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "europe-west8-a-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -264,9 +264,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "australia-southeast1",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "australia-southeast1-b-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -315,9 +315,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "europe-west3",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "europe-west3-b-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",
@@ -349,9 +349,9 @@ namespace Pulumi.Gcp.OracleDatabase
     ///     var connection = new Gcp.OracleDatabase.GoldengateConnection("connection", new()
     ///     {
     ///         GoldengateConnectionId = "my-connection",
-    ///         Location = "us-east4",
+    ///         Location = "asia-northeast1",
     ///         Project = "my-project",
-    ///         GcpOracleZone = "us-east4-b-r1",
+    ///         GcpOracleZone = "asia-northeast1-a-r1",
     ///         Properties = new Gcp.OracleDatabase.Inputs.GoldengateConnectionPropertiesArgs
     ///         {
     ///             DisplayName = "my-connection display name",

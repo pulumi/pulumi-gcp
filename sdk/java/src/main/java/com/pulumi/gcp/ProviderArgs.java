@@ -56,6 +56,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.addPulumiAttributionLabel);
     }
 
+    @Import(name="agentRegistryCustomEndpoint")
+    private @Nullable Output<String> agentRegistryCustomEndpoint;
+
+    public Optional<Output<String>> agentRegistryCustomEndpoint() {
+        return Optional.ofNullable(this.agentRegistryCustomEndpoint);
+    }
+
     @Import(name="alloydbCustomEndpoint")
     private @Nullable Output<String> alloydbCustomEndpoint;
 
@@ -1527,6 +1534,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accessToken = $.accessToken;
         this.activeDirectoryCustomEndpoint = $.activeDirectoryCustomEndpoint;
         this.addPulumiAttributionLabel = $.addPulumiAttributionLabel;
+        this.agentRegistryCustomEndpoint = $.agentRegistryCustomEndpoint;
         this.alloydbCustomEndpoint = $.alloydbCustomEndpoint;
         this.apiGatewayCustomEndpoint = $.apiGatewayCustomEndpoint;
         this.apigeeCustomEndpoint = $.apigeeCustomEndpoint;
@@ -1799,6 +1807,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder addPulumiAttributionLabel(Boolean addPulumiAttributionLabel) {
             return addPulumiAttributionLabel(Output.of(addPulumiAttributionLabel));
+        }
+
+        public Builder agentRegistryCustomEndpoint(@Nullable Output<String> agentRegistryCustomEndpoint) {
+            $.agentRegistryCustomEndpoint = agentRegistryCustomEndpoint;
+            return this;
+        }
+
+        public Builder agentRegistryCustomEndpoint(String agentRegistryCustomEndpoint) {
+            return agentRegistryCustomEndpoint(Output.of(agentRegistryCustomEndpoint));
         }
 
         public Builder alloydbCustomEndpoint(@Nullable Output<String> alloydbCustomEndpoint) {

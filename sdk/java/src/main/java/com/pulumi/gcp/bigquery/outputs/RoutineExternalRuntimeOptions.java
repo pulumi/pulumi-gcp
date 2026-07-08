@@ -29,6 +29,13 @@ public final class RoutineExternalRuntimeOptions {
      */
     private @Nullable String containerMemory;
     /**
+     * @return Maximum number of concurrent requests per Python UDF container instance. For more
+     * information, see [Configure container limits for Python
+     * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+     * 
+     */
+    private @Nullable String containerRequestConcurrency;
+    /**
      * @return Maximum number of rows in each batch sent to the external runtime. If
      * absent or if 0, BigQuery dynamically decides the number of rows in a batch.
      * 
@@ -69,6 +76,15 @@ public final class RoutineExternalRuntimeOptions {
         return Optional.ofNullable(this.containerMemory);
     }
     /**
+     * @return Maximum number of concurrent requests per Python UDF container instance. For more
+     * information, see [Configure container limits for Python
+     * UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+     * 
+     */
+    public Optional<String> containerRequestConcurrency() {
+        return Optional.ofNullable(this.containerRequestConcurrency);
+    }
+    /**
      * @return Maximum number of rows in each batch sent to the external runtime. If
      * absent or if 0, BigQuery dynamically decides the number of rows in a batch.
      * 
@@ -104,6 +120,7 @@ public final class RoutineExternalRuntimeOptions {
     public static final class Builder {
         private @Nullable Double containerCpu;
         private @Nullable String containerMemory;
+        private @Nullable String containerRequestConcurrency;
         private @Nullable String maxBatchingRows;
         private @Nullable String runtimeConnection;
         private @Nullable String runtimeVersion;
@@ -112,6 +129,7 @@ public final class RoutineExternalRuntimeOptions {
     	      Objects.requireNonNull(defaults);
     	      this.containerCpu = defaults.containerCpu;
     	      this.containerMemory = defaults.containerMemory;
+    	      this.containerRequestConcurrency = defaults.containerRequestConcurrency;
     	      this.maxBatchingRows = defaults.maxBatchingRows;
     	      this.runtimeConnection = defaults.runtimeConnection;
     	      this.runtimeVersion = defaults.runtimeVersion;
@@ -127,6 +145,12 @@ public final class RoutineExternalRuntimeOptions {
         public Builder containerMemory(@Nullable String containerMemory) {
 
             this.containerMemory = containerMemory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerRequestConcurrency(@Nullable String containerRequestConcurrency) {
+
+            this.containerRequestConcurrency = containerRequestConcurrency;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +175,7 @@ public final class RoutineExternalRuntimeOptions {
             final var _resultValue = new RoutineExternalRuntimeOptions();
             _resultValue.containerCpu = containerCpu;
             _resultValue.containerMemory = containerMemory;
+            _resultValue.containerRequestConcurrency = containerRequestConcurrency;
             _resultValue.maxBatchingRows = maxBatchingRows;
             _resultValue.runtimeConnection = runtimeConnection;
             _resultValue.runtimeVersion = runtimeVersion;

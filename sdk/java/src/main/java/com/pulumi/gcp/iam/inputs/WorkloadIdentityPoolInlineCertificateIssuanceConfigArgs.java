@@ -120,7 +120,6 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
      * If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
      * CA in the same region as the workload will be selected to issue the certificate. Enabling
      * this will clear any existing `caPools` configuration to provision the certificates.
-     * 
      * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
      * certificates will be automatically provisioned from the default shared CAs. This flag should
      * not be set if you want to use your own CA pools to provision the certificates.
@@ -133,7 +132,6 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
      * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
      * CA in the same region as the workload will be selected to issue the certificate. Enabling
      * this will clear any existing `caPools` configuration to provision the certificates.
-     * 
      * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
      * certificates will be automatically provisioned from the default shared CAs. This flag should
      * not be set if you want to use your own CA pools to provision the certificates.
@@ -297,7 +295,6 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
          * @param useDefaultSharedCa If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
          * CA in the same region as the workload will be selected to issue the certificate. Enabling
          * this will clear any existing `caPools` configuration to provision the certificates.
-         * 
          * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
          * certificates will be automatically provisioned from the default shared CAs. This flag should
          * not be set if you want to use your own CA pools to provision the certificates.
@@ -314,7 +311,6 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
          * @param useDefaultSharedCa If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
          * CA in the same region as the workload will be selected to issue the certificate. Enabling
          * this will clear any existing `caPools` configuration to provision the certificates.
-         * 
          * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
          * certificates will be automatically provisioned from the default shared CAs. This flag should
          * not be set if you want to use your own CA pools to provision the certificates.

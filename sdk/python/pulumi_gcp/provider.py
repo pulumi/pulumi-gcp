@@ -25,6 +25,7 @@ class ProviderArgs:
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 agent_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -247,6 +248,8 @@ class ProviderArgs:
             pulumi.set(__self__, "active_directory_custom_endpoint", active_directory_custom_endpoint)
         if add_pulumi_attribution_label is not None:
             pulumi.set(__self__, "add_pulumi_attribution_label", add_pulumi_attribution_label)
+        if agent_registry_custom_endpoint is not None:
+            pulumi.set(__self__, "agent_registry_custom_endpoint", agent_registry_custom_endpoint)
         if alloydb_custom_endpoint is not None:
             pulumi.set(__self__, "alloydb_custom_endpoint", alloydb_custom_endpoint)
         if api_gateway_custom_endpoint is not None:
@@ -716,6 +719,15 @@ class ProviderArgs:
     @add_pulumi_attribution_label.setter
     def add_pulumi_attribution_label(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "add_pulumi_attribution_label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentRegistryCustomEndpoint")
+    def agent_registry_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "agent_registry_custom_endpoint")
+
+    @agent_registry_custom_endpoint.setter
+    def agent_registry_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_registry_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="alloydbCustomEndpoint")
@@ -2610,6 +2622,7 @@ class Provider(pulumi.ProviderResource):
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 agent_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2863,6 +2876,7 @@ class Provider(pulumi.ProviderResource):
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 agent_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3086,6 +3100,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
             __props__.__dict__["add_pulumi_attribution_label"] = pulumi.Output.from_input(add_pulumi_attribution_label).apply(pulumi.runtime.to_json) if add_pulumi_attribution_label is not None else None
+            __props__.__dict__["agent_registry_custom_endpoint"] = agent_registry_custom_endpoint
             __props__.__dict__["alloydb_custom_endpoint"] = alloydb_custom_endpoint
             __props__.__dict__["api_gateway_custom_endpoint"] = api_gateway_custom_endpoint
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
@@ -3328,6 +3343,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="activeDirectoryCustomEndpoint")
     def active_directory_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "active_directory_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="agentRegistryCustomEndpoint")
+    def agent_registry_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "agent_registry_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="alloydbCustomEndpoint")

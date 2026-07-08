@@ -147,6 +147,10 @@ import (
 //								ForwardHeaders: pulumi.StringArray{
 //									pulumi.String("custom-header"),
 //								},
+//								ForwardAttributes: pulumi.StringArray{
+//									pulumi.String("request.host"),
+//									pulumi.String("request.path"),
+//								},
 //							},
 //						},
 //					},

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class PreventionInspectTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionInspectTemplateArgs Empty = new PreventionInspectTemplateArgs();
+
+    /**
+     * Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     * 
+     */
+    @Import(name="allowLimitedAvailabilityInfoTypes")
+    private @Nullable Output<Boolean> allowLimitedAvailabilityInfoTypes;
+
+    /**
+     * @return Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     * 
+     */
+    public Optional<Output<Boolean>> allowLimitedAvailabilityInfoTypes() {
+        return Optional.ofNullable(this.allowLimitedAvailabilityInfoTypes);
+    }
 
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -134,6 +152,7 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
     private PreventionInspectTemplateArgs() {}
 
     private PreventionInspectTemplateArgs(PreventionInspectTemplateArgs $) {
+        this.allowLimitedAvailabilityInfoTypes = $.allowLimitedAvailabilityInfoTypes;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -158,6 +177,29 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
 
         public Builder(PreventionInspectTemplateArgs defaults) {
             $ = new PreventionInspectTemplateArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowLimitedAvailabilityInfoTypes Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+         * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowLimitedAvailabilityInfoTypes(@Nullable Output<Boolean> allowLimitedAvailabilityInfoTypes) {
+            $.allowLimitedAvailabilityInfoTypes = allowLimitedAvailabilityInfoTypes;
+            return this;
+        }
+
+        /**
+         * @param allowLimitedAvailabilityInfoTypes Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+         * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowLimitedAvailabilityInfoTypes(Boolean allowLimitedAvailabilityInfoTypes) {
+            return allowLimitedAvailabilityInfoTypes(Output.of(allowLimitedAvailabilityInfoTypes));
         }
 
         /**

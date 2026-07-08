@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_37559",
+ *     dataProductId: "tf-test-dp-_13293",
  *     displayName: "Parent Data Product",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [{
@@ -34,13 +34,13 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_91980@example.com",
+ *             googleGroup: "tf-test-analysts-_40289@example.com",
  *         },
  *     }],
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__37118",
+ *     datasetId: "tf_test_dataset__33395",
  *     location: "us-central1",
  * });
  * const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_80332",
+ *     dataProductId: "tf-test-dp-_76044",
  *     displayName: "Full Example Parent DP",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [
@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__13293",
+ *     datasetId: "tf_test_dataset__69391",
  *     location: "us-central1",
  * });
  * const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -191,6 +191,10 @@ export class DataProductDataAsset extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The relative resource name of the data asset.
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -229,6 +233,7 @@ export class DataProductDataAsset extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["resource"] = state?.resource;
@@ -256,6 +261,7 @@ export class DataProductDataAsset extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["resource"] = args?.resource;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
@@ -306,6 +312,10 @@ export interface DataProductDataAssetState {
      * The location for the data asset.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * The relative resource name of the data asset.
+     */
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -19,6 +19,7 @@ from .backend_service_iam_binding import *
 from .backend_service_iam_member import *
 from .backend_service_iam_policy import *
 from .backend_service_signed_url_key import *
+from .bulk_per_instance_config import *
 from .ca_external_account_key import *
 from .cross_site_network import *
 from .disk import *
@@ -31,6 +32,9 @@ from .external_vpn_gateway import *
 from .firewall import *
 from .firewall_policy import *
 from .firewall_policy_association import *
+from .firewall_policy_iam_binding import *
+from .firewall_policy_iam_member import *
+from .firewall_policy_iam_policy import *
 from .firewall_policy_rule import *
 from .firewall_policy_with_rules import *
 from .forwarding_rule import *
@@ -45,6 +49,7 @@ from .get_certificate import *
 from .get_default_service_account import *
 from .get_disk import *
 from .get_disk_iam_policy import *
+from .get_firewall_policy_iam_policy import *
 from .get_forwarding_rule import *
 from .get_forwarding_rules import *
 from .get_global_address import *
@@ -57,6 +62,7 @@ from .get_images import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_group_manager import *
+from .get_instance_groups import *
 from .get_instance_guest_attributes import *
 from .get_instance_iam_policy import *
 from .get_instance_serial_port import *
@@ -73,6 +79,7 @@ from .get_network import *
 from .get_network_attachment import *
 from .get_network_endpoint_group import *
 from .get_network_endpoint_groups import *
+from .get_network_firewall_policy_iam_policy import *
 from .get_network_peering import *
 from .get_networks import *
 from .get_node_types import *
@@ -86,6 +93,7 @@ from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
 from .get_region_instant_snapshot_iam_policy import *
 from .get_region_network_endpoint_group import *
+from .get_region_network_firewall_policy_iam_policy import *
 from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
 from .get_region_ssl_policy import *
@@ -164,6 +172,9 @@ from .network_endpoint_group import *
 from .network_endpoint_list import *
 from .network_firewall_policy import *
 from .network_firewall_policy_association import *
+from .network_firewall_policy_iam_binding import *
+from .network_firewall_policy_iam_member import *
+from .network_firewall_policy_iam_policy import *
 from .network_firewall_policy_packet_mirroring_rule import *
 from .network_firewall_policy_rule import *
 from .network_firewall_policy_with_rules import *
@@ -212,8 +223,12 @@ from .region_network_endpoint import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_association import *
+from .region_network_firewall_policy_iam_binding import *
+from .region_network_firewall_policy_iam_member import *
+from .region_network_firewall_policy_iam_policy import *
 from .region_network_firewall_policy_rule import *
 from .region_network_firewall_policy_with_rules import *
+from .region_network_policy import *
 from .region_per_instance_config import *
 from .region_resize_request import *
 from .region_security_policy import *
@@ -270,5 +285,6 @@ from .url_map import *
 from .vpn_gateway import *
 from .vpn_tunnel import *
 from .wire_group import *
+from .zone_vm_extension_policy import *
 from ._inputs import *
 from . import outputs

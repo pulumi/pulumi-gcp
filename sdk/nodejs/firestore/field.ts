@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.firestore.Field("basic", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__48675",
+ *     collection: "chatrooms__40816",
  *     field: "basic",
  *     indexConfig: {
  *         indexes: [
@@ -169,7 +169,7 @@ import * as utilities from "../utilities";
  * const matchOverride = new gcp.firestore.Field("match_override", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__42702",
+ *     collection: "chatrooms__94690",
  *     field: "field_with_same_configuration_as_ancestor",
  *     indexConfig: {
  *         indexes: [
@@ -203,7 +203,7 @@ import * as utilities from "../utilities";
  * const wildcard = new gcp.firestore.Field("wildcard", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__37426",
+ *     collection: "chatrooms__29947",
  *     field: "*",
  *     indexConfig: {
  *         indexes: [

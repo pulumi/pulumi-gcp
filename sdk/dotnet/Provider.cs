@@ -30,6 +30,9 @@ namespace Pulumi.Gcp
         [Output("activeDirectoryCustomEndpoint")]
         public Output<string?> ActiveDirectoryCustomEndpoint { get; private set; } = null!;
 
+        [Output("agentRegistryCustomEndpoint")]
+        public Output<string?> AgentRegistryCustomEndpoint { get; private set; } = null!;
+
         [Output("alloydbCustomEndpoint")]
         public Output<string?> AlloydbCustomEndpoint { get; private set; } = null!;
 
@@ -691,6 +694,9 @@ namespace Pulumi.Gcp
 
         [Input("addPulumiAttributionLabel", json: true)]
         public Input<bool>? AddPulumiAttributionLabel { get; set; }
+
+        [Input("agentRegistryCustomEndpoint")]
+        public Input<string>? AgentRegistryCustomEndpoint { get; set; }
 
         [Input("alloydbCustomEndpoint")]
         public Input<string>? AlloydbCustomEndpoint { get; set; }

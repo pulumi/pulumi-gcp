@@ -38,7 +38,6 @@ class WorkloadIdentityPoolNamespaceArgs:
                * contain only lowercase alphanumeric characters or `-`
                * start with an alphanumeric character
                * end with an alphanumeric character
-               
                The prefix `gcp-` will be reserved for future uses.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -87,7 +86,6 @@ class WorkloadIdentityPoolNamespaceArgs:
         * contain only lowercase alphanumeric characters or `-`
         * start with an alphanumeric character
         * end with an alphanumeric character
-
         The prefix `gcp-` will be reserved for future uses.
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")
@@ -199,7 +197,6 @@ class _WorkloadIdentityPoolNamespaceState:
                * contain only lowercase alphanumeric characters or `-`
                * start with an alphanumeric character
                * end with an alphanumeric character
-               
                The prefix `gcp-` will be reserved for future uses.
         """
         if deletion_policy is not None:
@@ -344,7 +341,6 @@ class _WorkloadIdentityPoolNamespaceState:
         * contain only lowercase alphanumeric characters or `-`
         * start with an alphanumeric character
         * end with an alphanumeric character
-
         The prefix `gcp-` will be reserved for future uses.
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")
@@ -448,7 +444,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                * contain only lowercase alphanumeric characters or `-`
                * start with an alphanumeric character
                * end with an alphanumeric character
-               
                The prefix `gcp-` will be reserved for future uses.
         """
         ...
@@ -616,7 +611,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                * contain only lowercase alphanumeric characters or `-`
                * start with an alphanumeric character
                * end with an alphanumeric character
-               
                The prefix `gcp-` will be reserved for future uses.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -725,7 +719,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         * contain only lowercase alphanumeric characters or `-`
         * start with an alphanumeric character
         * end with an alphanumeric character
-
         The prefix `gcp-` will be reserved for future uses.
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")

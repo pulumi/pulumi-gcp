@@ -31,6 +31,16 @@ public final class LbTrafficExtensionExtensionChainExtension {
      */
     private @Nullable Boolean failOpen;
     /**
+     * @return List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    private @Nullable List<String> forwardAttributes;
+    /**
      * @return List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
      * 
@@ -92,6 +102,18 @@ public final class LbTrafficExtensionExtensionChainExtension {
      */
     public Optional<Boolean> failOpen() {
         return Optional.ofNullable(this.failOpen);
+    }
+    /**
+     * @return List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    public List<String> forwardAttributes() {
+        return this.forwardAttributes == null ? List.of() : this.forwardAttributes;
     }
     /**
      * @return List of the HTTP headers to forward to the extension (from the client or backend).
@@ -159,6 +181,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
     public static final class Builder {
         private @Nullable String authority;
         private @Nullable Boolean failOpen;
+        private @Nullable List<String> forwardAttributes;
         private @Nullable List<String> forwardHeaders;
         private @Nullable Map<String,String> metadata;
         private String name;
@@ -170,6 +193,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
     	      Objects.requireNonNull(defaults);
     	      this.authority = defaults.authority;
     	      this.failOpen = defaults.failOpen;
+    	      this.forwardAttributes = defaults.forwardAttributes;
     	      this.forwardHeaders = defaults.forwardHeaders;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
@@ -189,6 +213,15 @@ public final class LbTrafficExtensionExtensionChainExtension {
 
             this.failOpen = failOpen;
             return this;
+        }
+        @CustomType.Setter
+        public Builder forwardAttributes(@Nullable List<String> forwardAttributes) {
+
+            this.forwardAttributes = forwardAttributes;
+            return this;
+        }
+        public Builder forwardAttributes(String... forwardAttributes) {
+            return forwardAttributes(List.of(forwardAttributes));
         }
         @CustomType.Setter
         public Builder forwardHeaders(@Nullable List<String> forwardHeaders) {
@@ -240,6 +273,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
             final var _resultValue = new LbTrafficExtensionExtensionChainExtension();
             _resultValue.authority = authority;
             _resultValue.failOpen = failOpen;
+            _resultValue.forwardAttributes = forwardAttributes;
             _resultValue.forwardHeaders = forwardHeaders;
             _resultValue.metadata = metadata;
             _resultValue.name = name;

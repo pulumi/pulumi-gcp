@@ -116,6 +116,16 @@ public final class NodePoolNodeConfigKubeletConfig {
      */
     private @Nullable Integer podPidsLimit;
     /**
+     * @return Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    private @Nullable Integer shutdownGracePeriodCriticalPodsSeconds;
+    /**
+     * @return Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    private @Nullable Integer shutdownGracePeriodSeconds;
+    /**
      * @return Defines whether to enable single process OOM killer.
      * 
      */
@@ -261,6 +271,20 @@ public final class NodePoolNodeConfigKubeletConfig {
         return Optional.ofNullable(this.podPidsLimit);
     }
     /**
+     * @return Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    public Optional<Integer> shutdownGracePeriodCriticalPodsSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodCriticalPodsSeconds);
+    }
+    /**
+     * @return Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    public Optional<Integer> shutdownGracePeriodSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodSeconds);
+    }
+    /**
      * @return Defines whether to enable single process OOM killer.
      * 
      */
@@ -303,6 +327,8 @@ public final class NodePoolNodeConfigKubeletConfig {
         private @Nullable Integer maxParallelImagePulls;
         private @Nullable NodePoolNodeConfigKubeletConfigMemoryManager memoryManager;
         private @Nullable Integer podPidsLimit;
+        private @Nullable Integer shutdownGracePeriodCriticalPodsSeconds;
+        private @Nullable Integer shutdownGracePeriodSeconds;
         private @Nullable Boolean singleProcessOomKill;
         private @Nullable NodePoolNodeConfigKubeletConfigTopologyManager topologyManager;
         public Builder() {}
@@ -327,6 +353,8 @@ public final class NodePoolNodeConfigKubeletConfig {
     	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
     	      this.memoryManager = defaults.memoryManager;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.shutdownGracePeriodCriticalPodsSeconds = defaults.shutdownGracePeriodCriticalPodsSeconds;
+    	      this.shutdownGracePeriodSeconds = defaults.shutdownGracePeriodSeconds;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
     	      this.topologyManager = defaults.topologyManager;
         }
@@ -449,6 +477,18 @@ public final class NodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder shutdownGracePeriodCriticalPodsSeconds(@Nullable Integer shutdownGracePeriodCriticalPodsSeconds) {
+
+            this.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shutdownGracePeriodSeconds(@Nullable Integer shutdownGracePeriodSeconds) {
+
+            this.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder singleProcessOomKill(@Nullable Boolean singleProcessOomKill) {
 
             this.singleProcessOomKill = singleProcessOomKill;
@@ -481,6 +521,8 @@ public final class NodePoolNodeConfigKubeletConfig {
             _resultValue.maxParallelImagePulls = maxParallelImagePulls;
             _resultValue.memoryManager = memoryManager;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            _resultValue.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
             _resultValue.topologyManager = topologyManager;
             return _resultValue;

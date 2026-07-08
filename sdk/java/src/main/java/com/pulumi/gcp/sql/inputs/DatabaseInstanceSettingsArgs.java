@@ -324,14 +324,28 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+     * is not set, the Cloud SQL API determines the default based on `databaseVersion`: instances with
+     * `databaseVersion` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+     * `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+     * types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+     * `db-custom-*` require `edition = &#34;ENTERPRISE&#34;`. Omitting `edition` on a PostgreSQL 16+ instance while
+     * setting a shared-core or custom `tier` therefore fails at create time with
+     * `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
      * 
      */
     @Import(name="edition")
     private @Nullable Output<String> edition;
 
     /**
-     * @return The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * @return The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+     * is not set, the Cloud SQL API determines the default based on `databaseVersion`: instances with
+     * `databaseVersion` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+     * `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+     * types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+     * `db-custom-*` require `edition = &#34;ENTERPRISE&#34;`. Omitting `edition` on a PostgreSQL 16+ instance while
+     * setting a shared-core or custom `tier` therefore fails at create time with
+     * `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
      * 
      */
     public Optional<Output<String>> edition() {
@@ -542,7 +556,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     /**
      * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
-     * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
      * 
      */
     @Import(name="tier", required=true)
@@ -551,7 +565,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     /**
      * @return The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
-     * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+     * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
      * 
      */
     public Output<String> tier() {
@@ -1069,7 +1083,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+         * is not set, the Cloud SQL API determines the default based on `databaseVersion`: instances with
+         * `databaseVersion` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+         * `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+         * types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+         * `db-custom-*` require `edition = &#34;ENTERPRISE&#34;`. Omitting `edition` on a PostgreSQL 16+ instance while
+         * setting a shared-core or custom `tier` therefore fails at create time with
+         * `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
          * 
          * @return builder
          * 
@@ -1080,7 +1101,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+         * is not set, the Cloud SQL API determines the default based on `databaseVersion`: instances with
+         * `databaseVersion` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+         * `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+         * types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+         * `db-custom-*` require `edition = &#34;ENTERPRISE&#34;`. Omitting `edition` on a PostgreSQL 16+ instance while
+         * setting a shared-core or custom `tier` therefore fails at create time with
+         * `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
          * 
          * @return builder
          * 
@@ -1367,7 +1395,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         /**
          * @param tier The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types,
-         * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+         * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
          * 
          * @return builder
          * 
@@ -1380,7 +1408,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         /**
          * @param tier The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types,
-         * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+         * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
          * 
          * @return builder
          * 

@@ -4272,7 +4272,6 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
     If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
     CA in the same region as the workload will be selected to issue the certificate. Enabling
     this will clear any existing `ca_pools` configuration to provision the certificates.
-
     > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
     certificates will be automatically provisioned from the default shared CAs. This flag should
     not be set if you want to use your own CA pools to provision the certificates.
@@ -4313,7 +4312,6 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         :param pulumi.Input[_builtins.bool] use_default_shared_ca: If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
                CA in the same region as the workload will be selected to issue the certificate. Enabling
                this will clear any existing `ca_pools` configuration to provision the certificates.
-               
                > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
                certificates will be automatically provisioned from the default shared CAs. This flag should
                not be set if you want to use your own CA pools to provision the certificates.
@@ -4403,7 +4401,6 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
         CA in the same region as the workload will be selected to issue the certificate. Enabling
         this will clear any existing `ca_pools` configuration to provision the certificates.
-
         > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
         certificates will be automatically provisioned from the default shared CAs. This flag should
         not be set if you want to use your own CA pools to provision the certificates.
@@ -4481,7 +4478,6 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDi
     """
     If set to True, the trust bundle will include the private ca managed identity regional root
     public certificates.
-
     > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
     resource.
     """
@@ -4500,7 +4496,6 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
         :param pulumi.Input[_builtins.str] trust_domain: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.bool] trust_default_shared_ca: If set to True, the trust bundle will include the private ca managed identity regional root
                public certificates.
-               
                > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
                resource.
         """
@@ -4542,7 +4537,6 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
         """
         If set to True, the trust bundle will include the private ca managed identity regional root
         public certificates.
-
         > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
         resource.
         """

@@ -390,12 +390,9 @@ class RegionResizeRequest(pulumi.CustomResource):
 
         With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about RegionResizeRequest, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagerResizeRequests)
         * How-to Guides
             * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 
@@ -415,8 +412,14 @@ class RegionResizeRequest(pulumi.CustomResource):
             machine_type="a3-highgpu-8g",
             can_ip_forward=False,
             scheduling={
+                "provisioning_model": "FLEX_START",
                 "automatic_restart": False,
                 "on_host_maintenance": "TERMINATE",
+                "instance_termination_action": "DELETE",
+                "max_run_duration": {
+                    "seconds": 7200,
+                    "nanos": 0,
+                },
             },
             disks=[{
                 "source_image": "cos-cloud/cos-121-lts",
@@ -527,12 +530,9 @@ class RegionResizeRequest(pulumi.CustomResource):
 
         With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about RegionResizeRequest, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagerResizeRequests)
         * How-to Guides
             * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 
@@ -552,8 +552,14 @@ class RegionResizeRequest(pulumi.CustomResource):
             machine_type="a3-highgpu-8g",
             can_ip_forward=False,
             scheduling={
+                "provisioning_model": "FLEX_START",
                 "automatic_restart": False,
                 "on_host_maintenance": "TERMINATE",
+                "instance_termination_action": "DELETE",
+                "max_run_duration": {
+                    "seconds": 7200,
+                    "nanos": 0,
+                },
             },
             disks=[{
                 "source_image": "cos-cloud/cos-121-lts",
