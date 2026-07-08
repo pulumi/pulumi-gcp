@@ -1005,6 +1005,46 @@
                 "current": "gcp:activedirectory/peering:Peering",
                 "majorVersion": 9
             },
+            "google_agent_registry_binding": {
+                "current": "gcp:agentregistry/binding:Binding",
+                "majorVersion": 9,
+                "fields": {
+                    "auth_provider_binding": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "source": {
+                        "maxItemsOne": true
+                    },
+                    "target": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_agent_registry_service": {
+                "current": "gcp:agentregistry/service:Service",
+                "majorVersion": 9,
+                "fields": {
+                    "agent_spec": {
+                        "maxItemsOne": true
+                    },
+                    "endpoint_spec": {
+                        "maxItemsOne": true
+                    },
+                    "interfaces": {
+                        "maxItemsOne": false
+                    },
+                    "mcp_server_spec": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_alloydb_backup": {
                 "current": "gcp:alloydb/backup:Backup",
                 "majorVersion": 9,
@@ -2561,6 +2601,15 @@
                     }
                 }
             },
+            "google_artifact_registry_project_config": {
+                "current": "gcp:artifactregistry/projectConfig:ProjectConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "platform_logs_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_artifact_registry_repository": {
                 "current": "gcp:artifactregistry/repository:Repository",
                 "majorVersion": 9,
@@ -3357,6 +3406,35 @@
             },
             "google_biglake_hive_catalog_iam_policy": {
                 "current": "gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy",
+                "majorVersion": 9
+            },
+            "google_biglake_hive_database": {
+                "current": "gcp:biglake/hiveDatabase:HiveDatabase",
+                "majorVersion": 9
+            },
+            "google_biglake_hive_database_iam_binding": {
+                "current": "gcp:biglake/hiveDatabaseIamBinding:HiveDatabaseIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_biglake_hive_database_iam_member": {
+                "current": "gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_biglake_hive_database_iam_policy": {
+                "current": "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy",
                 "majorVersion": 9
             },
             "google_biglake_iceberg_catalog": {
@@ -11928,6 +12006,15 @@
                 "current": "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey",
                 "majorVersion": 9
             },
+            "google_compute_bulk_per_instance_config": {
+                "current": "gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "instances": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_compute_cross_site_network": {
                 "current": "gcp:compute/crossSiteNetwork:CrossSiteNetwork",
                 "majorVersion": 9
@@ -12071,6 +12158,31 @@
             },
             "google_compute_firewall_policy_association": {
                 "current": "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation",
+                "majorVersion": 9
+            },
+            "google_compute_firewall_policy_iam_binding": {
+                "current": "gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_firewall_policy_iam_member": {
+                "current": "gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_firewall_policy_iam_policy": {
+                "current": "gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy",
                 "majorVersion": 9
             },
             "google_compute_firewall_policy_rule": {
@@ -13814,6 +13926,31 @@
                 "current": "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation",
                 "majorVersion": 9
             },
+            "google_compute_network_firewall_policy_iam_binding": {
+                "current": "gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_network_firewall_policy_iam_member": {
+                "current": "gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_network_firewall_policy_iam_policy": {
+                "current": "gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy",
+                "majorVersion": 9
+            },
             "google_compute_network_firewall_policy_packet_mirroring_rule": {
                 "current": "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule",
                 "majorVersion": 9,
@@ -15079,6 +15216,31 @@
                 "current": "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation",
                 "majorVersion": 9
             },
+            "google_compute_region_network_firewall_policy_iam_binding": {
+                "current": "gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_region_network_firewall_policy_iam_member": {
+                "current": "gcp:compute/regionNetworkFirewallPolicyIamMember:RegionNetworkFirewallPolicyIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_region_network_firewall_policy_iam_policy": {
+                "current": "gcp:compute/regionNetworkFirewallPolicyIamPolicy:RegionNetworkFirewallPolicyIamPolicy",
+                "majorVersion": 9
+            },
             "google_compute_region_network_firewall_policy_rule": {
                 "current": "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule",
                 "majorVersion": 9,
@@ -15279,6 +15441,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_compute_region_network_policy": {
+                "current": "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "associations": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -18229,6 +18400,25 @@
                                 },
                                 "wire_properties": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_compute_zone_vm_extension_policy": {
+                "current": "gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "extension_policies": {
+                        "maxItemsOne": false
+                    },
+                    "instance_selectors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "label_selector": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -37759,6 +37949,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "forward_attributes": {
+                                                "maxItemsOne": false
+                                            },
                                             "forward_headers": {
                                                 "maxItemsOne": false
                                             },
@@ -37791,6 +37984,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "forward_attributes": {
+                                                "maxItemsOne": false
+                                            },
                                             "forward_headers": {
                                                 "maxItemsOne": false
                                             },
@@ -37823,6 +38019,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "forward_attributes": {
+                                                "maxItemsOne": false
+                                            },
                                             "forward_headers": {
                                                 "maxItemsOne": false
                                             },
@@ -38356,6 +38555,10 @@
                         }
                     }
                 }
+            },
+            "google_oracle_database_cloud_exadata_infrastructure_exascale_config": {
+                "current": "gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig",
+                "majorVersion": 9
             },
             "google_oracle_database_cloud_vm_cluster": {
                 "current": "gcp:oracledatabase/cloudVmCluster:CloudVmCluster",
@@ -45830,6 +46033,10 @@
                     }
                 }
             },
+            "google_vertex_ai_model_garden_enable_model": {
+                "current": "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel",
+                "majorVersion": 9
+            },
             "google_vertex_ai_rag_engine_config": {
                 "current": "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig",
                 "majorVersion": 9,
@@ -46650,6 +46857,63 @@
             "google_active_folder": {
                 "current": "gcp:organizations/getActiveFolder:getActiveFolder",
                 "majorVersion": 9
+            },
+            "google_agent_registry_agent": {
+                "current": "gcp:agentregistry/getAgent:getAgent",
+                "majorVersion": 9,
+                "fields": {
+                    "protocols": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "interfaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "skills": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "examples": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_agent_registry_endpoint": {
+                "current": "gcp:agentregistry/getEndpoint:getEndpoint",
+                "majorVersion": 9,
+                "fields": {
+                    "interfaces": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_agent_registry_mcp_server": {
+                "current": "gcp:agentregistry/getMcpServer:getMcpServer",
+                "majorVersion": 9,
+                "fields": {
+                    "interfaces": {
+                        "maxItemsOne": false
+                    },
+                    "tools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "annotations": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_alloydb_cluster": {
                 "current": "gcp:alloydb/getCluster:getCluster",
@@ -47604,6 +47868,10 @@
             },
             "google_biglake_hive_catalog_iam_policy": {
                 "current": "gcp:biglake/getHiveCatalogIamPolicy:getHiveCatalogIamPolicy",
+                "majorVersion": 9
+            },
+            "google_biglake_hive_database_iam_policy": {
+                "current": "gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy",
                 "majorVersion": 9
             },
             "google_biglake_iceberg_catalog_iam_policy": {
@@ -49729,6 +49997,10 @@
                 "current": "gcp:compute/getDiskIamPolicy:getDiskIamPolicy",
                 "majorVersion": 9
             },
+            "google_compute_firewall_policy_iam_policy": {
+                "current": "gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy",
+                "majorVersion": 9
+            },
             "google_compute_forwarding_rule": {
                 "current": "gcp:compute/getForwardingRule:getForwardingRule",
                 "majorVersion": 9,
@@ -50109,6 +50381,22 @@
                     }
                 }
             },
+            "google_compute_instance_groups": {
+                "current": "gcp:compute/getInstanceGroups:getInstanceGroups",
+                "majorVersion": 9,
+                "fields": {
+                    "instance_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "named_port": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_instance_guest_attributes": {
                 "current": "gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes",
                 "majorVersion": 9,
@@ -50368,6 +50656,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_compute_network_firewall_policy_iam_policy": {
+                "current": "gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy",
+                "majorVersion": 9
             },
             "google_compute_network_peering": {
                 "current": "gcp:compute/getNetworkPeering:getNetworkPeering",
@@ -50913,6 +51205,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_compute_region_network_firewall_policy_iam_policy": {
+                "current": "gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy",
+                "majorVersion": 9
             },
             "google_compute_region_security_policy": {
                 "current": "gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy",
@@ -57008,6 +57304,22 @@
                     }
                 }
             },
+            "google_storage_control_folder_intelligence_findings_summary": {
+                "current": "gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary",
+                "majorVersion": 9,
+                "fields": {
+                    "finding_summaries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "summary_details": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_storage_control_organization_intelligence_config": {
                 "current": "gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig",
                 "majorVersion": 9,
@@ -57064,6 +57376,22 @@
                     },
                     "trial_config": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_storage_control_organization_intelligence_findings_summary": {
+                "current": "gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary",
+                "majorVersion": 9,
+                "fields": {
+                    "finding_summaries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "summary_details": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -57628,6 +57956,22 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_storage_control_project_intelligence_findings_summary": {
+                "current": "gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary",
+                "majorVersion": 9,
+                "fields": {
+                    "finding_summaries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "summary_details": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -59775,6 +60119,8 @@
             "gcp:activedirectory/domain:Domain": 0,
             "gcp:activedirectory/domainTrust:DomainTrust": 0,
             "gcp:activedirectory/peering:Peering": 0,
+            "gcp:agentregistry/binding:Binding": 0,
+            "gcp:agentregistry/service:Service": 0,
             "gcp:alloydb/backup:Backup": 0,
             "gcp:alloydb/cluster:Cluster": 0,
             "gcp:alloydb/instance:Instance": 0,
@@ -59853,6 +60199,7 @@
             "gcp:apphub/workload:Workload": 0,
             "gcp:applicationintegration/authConfig:AuthConfig": 0,
             "gcp:applicationintegration/client:Client": 0,
+            "gcp:artifactregistry/projectConfig:ProjectConfig": 0,
             "gcp:artifactregistry/repository:Repository": 0,
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
@@ -59883,6 +60230,10 @@
             "gcp:biglake/hiveCatalogIamBinding:HiveCatalogIamBinding": 0,
             "gcp:biglake/hiveCatalogIamMember:HiveCatalogIamMember": 0,
             "gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy": 0,
+            "gcp:biglake/hiveDatabase:HiveDatabase": 0,
+            "gcp:biglake/hiveDatabaseIamBinding:HiveDatabaseIamBinding": 0,
+            "gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember": 0,
+            "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy": 0,
             "gcp:biglake/icebergCatalog:IcebergCatalog": 0,
             "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding": 0,
             "gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember": 0,
@@ -60100,6 +60451,7 @@
             "gcp:compute/backendServiceIamMember:BackendServiceIamMember": 0,
             "gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy": 0,
             "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey": 0,
+            "gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig": 0,
             "gcp:compute/caExternalAccountKey:CaExternalAccountKey": 0,
             "gcp:compute/crossSiteNetwork:CrossSiteNetwork": 0,
             "gcp:compute/disk:Disk": 0,
@@ -60112,6 +60464,9 @@
             "gcp:compute/firewall:Firewall": 0,
             "gcp:compute/firewallPolicy:FirewallPolicy": 0,
             "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation": 0,
+            "gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding": 0,
+            "gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember": 0,
+            "gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy": 0,
             "gcp:compute/firewallPolicyRule:FirewallPolicyRule": 0,
             "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules": 0,
             "gcp:compute/forwardingRule:ForwardingRule": 0,
@@ -60165,6 +60520,9 @@
             "gcp:compute/networkEndpointList:NetworkEndpointList": 0,
             "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy": 0,
             "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation": 0,
+            "gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding": 0,
+            "gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember": 0,
+            "gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy": 0,
             "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule": 0,
             "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule": 0,
             "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules": 0,
@@ -60213,8 +60571,12 @@
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": 0,
             "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy": 0,
             "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation": 0,
+            "gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding": 0,
+            "gcp:compute/regionNetworkFirewallPolicyIamMember:RegionNetworkFirewallPolicyIamMember": 0,
+            "gcp:compute/regionNetworkFirewallPolicyIamPolicy:RegionNetworkFirewallPolicyIamPolicy": 0,
             "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule": 0,
             "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules": 0,
+            "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy": 0,
             "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig": 0,
             "gcp:compute/regionResizeRequest:RegionResizeRequest": 0,
             "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": 0,
@@ -60270,6 +60632,7 @@
             "gcp:compute/vPNGateway:VPNGateway": 0,
             "gcp:compute/vPNTunnel:VPNTunnel": 0,
             "gcp:compute/wireGroup:WireGroup": 0,
+            "gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy": 0,
             "gcp:configdeployment/deployment:Deployment": 0,
             "gcp:contactcenterinsights/analysisRule:AnalysisRule": 0,
             "gcp:contactcenterinsights/assessmentRule:AssessmentRule": 0,
@@ -60886,6 +61249,7 @@
             "gcp:observability/traceScope:TraceScope": 0,
             "gcp:oracledatabase/autonomousDatabase:AutonomousDatabase": 0,
             "gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure": 0,
+            "gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig": 0,
             "gcp:oracledatabase/cloudVmCluster:CloudVmCluster": 0,
             "gcp:oracledatabase/dbSystem:DbSystem": 0,
             "gcp:oracledatabase/exadbVmCluster:ExadbVmCluster": 0,
@@ -61142,6 +61506,7 @@
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": 0,
             "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
+            "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel": 0,
             "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": 0,
             "gcp:vertex/aiReasoningEngine:AiReasoningEngine": 0,
             "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding": 0,
@@ -61184,6 +61549,9 @@
             "gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy": 0,
             "gcp:accesscontextmanager/getSupportedService:getSupportedService": 0,
             "gcp:accesscontextmanager/getSupportedServices:getSupportedServices": 0,
+            "gcp:agentregistry/getAgent:getAgent": 0,
+            "gcp:agentregistry/getEndpoint:getEndpoint": 0,
+            "gcp:agentregistry/getMcpServer:getMcpServer": 0,
             "gcp:alloydb/getCluster:getCluster": 0,
             "gcp:alloydb/getInstance:getInstance": 0,
             "gcp:alloydb/getLocations:getLocations": 0,
@@ -61233,6 +61601,7 @@
             "gcp:beyondcorp/getSecurityGatewayApplicationIamPolicy:getSecurityGatewayApplicationIamPolicy": 0,
             "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:biglake/getHiveCatalogIamPolicy:getHiveCatalogIamPolicy": 0,
+            "gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy": 0,
             "gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy": 0,
             "gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy": 0,
             "gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy": 0,
@@ -61303,6 +61672,7 @@
             "gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount": 0,
             "gcp:compute/getDisk:getDisk": 0,
             "gcp:compute/getDiskIamPolicy:getDiskIamPolicy": 0,
+            "gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy": 0,
             "gcp:compute/getForwardingRule:getForwardingRule": 0,
             "gcp:compute/getForwardingRules:getForwardingRules": 0,
             "gcp:compute/getGlobalAddress:getGlobalAddress": 0,
@@ -61315,6 +61685,7 @@
             "gcp:compute/getInstance:getInstance": 0,
             "gcp:compute/getInstanceGroup:getInstanceGroup": 0,
             "gcp:compute/getInstanceGroupManager:getInstanceGroupManager": 0,
+            "gcp:compute/getInstanceGroups:getInstanceGroups": 0,
             "gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes": 0,
             "gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:compute/getInstanceSerialPort:getInstanceSerialPort": 0,
@@ -61331,6 +61702,7 @@
             "gcp:compute/getNetworkAttachment:getNetworkAttachment": 0,
             "gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup": 0,
             "gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups": 0,
+            "gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy": 0,
             "gcp:compute/getNetworkPeering:getNetworkPeering": 0,
             "gcp:compute/getNetworks:getNetworks": 0,
             "gcp:compute/getNodeTypes:getNodeTypes": 0,
@@ -61344,6 +61716,7 @@
             "gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate": 0,
             "gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy": 0,
             "gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup": 0,
+            "gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy": 0,
             "gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy": 0,
             "gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy": 0,
             "gcp:compute/getRegionSslCertificate:getRegionSslCertificate": 0,
@@ -61611,12 +61984,15 @@
             "gcp:storage/getBucketObjects:getBucketObjects": 0,
             "gcp:storage/getBuckets:getBuckets": 0,
             "gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig": 0,
+            "gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary": 0,
             "gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig": 0,
+            "gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary": 0,
             "gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig": 0,
             "gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding": 0,
             "gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision": 0,
             "gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions": 0,
             "gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings": 0,
+            "gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary": 0,
             "gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig": 0,
             "gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy": 0,
             "gcp:storage/getObjectSignedUrl:getObjectSignedUrl": 0,
@@ -61659,28 +62035,43 @@
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": 0
         },
         "listResources": {
+            "gcp:bigquery/dataset:Dataset": 1,
             "gcp:bigquery/datasetAccess:DatasetAccess": 1,
             "gcp:cloudrun/service:Service": 1,
             "gcp:cloudscheduler/job:Job": 1,
             "gcp:compute/address:Address": 1,
             "gcp:compute/crossSiteNetwork:CrossSiteNetwork": 1,
             "gcp:compute/disk:Disk": 1,
+            "gcp:compute/externalVpnGateway:ExternalVpnGateway": 1,
             "gcp:compute/firewall:Firewall": 1,
             "gcp:compute/globalAddress:GlobalAddress": 1,
+            "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup": 1,
+            "gcp:compute/haVpnGateway:HaVpnGateway": 1,
             "gcp:compute/httpsHealthCheck:HttpsHealthCheck": 1,
             "gcp:compute/image:Image": 1,
+            "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup": 1,
+            "gcp:compute/interconnectGroup:InterconnectGroup": 1,
             "gcp:compute/machineImage:MachineImage": 1,
             "gcp:compute/nodeTemplate:NodeTemplate": 1,
             "gcp:compute/packetMirroring:PacketMirroring": 1,
+            "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix": 1,
             "gcp:compute/regionAutoscaler:RegionAutoscaler": 1,
+            "gcp:compute/regionCommitment:RegionCommitment": 1,
             "gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck": 1,
             "gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy": 1,
             "gcp:compute/regionHealthSource:RegionHealthSource": 1,
+            "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": 1,
             "gcp:compute/snapshot:Snapshot": 1,
             "gcp:compute/subnetwork:Subnetwork": 1,
+            "gcp:compute/vPNGateway:VPNGateway": 1,
+            "gcp:compute/wireGroup:WireGroup": 1,
             "gcp:dns/recordSet:RecordSet": 1,
+            "gcp:folder/iAMMember:IAMMember": 1,
+            "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 1,
             "gcp:monitoring/alertPolicy:AlertPolicy": 1,
+            "gcp:organizations/project:Project": 1,
             "gcp:projects/iAMMember:IAMMember": 1,
+            "gcp:projects/service:Service": 1,
             "gcp:pubsub/subscription:Subscription": 1,
             "gcp:pubsub/topic:Topic": 1,
             "gcp:secretmanager/secret:Secret": 1,

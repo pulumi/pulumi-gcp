@@ -178,6 +178,7 @@ var moduleMapping = map[string]string{
 	"access_approval":                 gcpAccessApproval,
 	"access_context_manager":          gcpAccessContextManager,
 	"active_directory":                gcpActiveDirectory,
+	"agent_registry":                  "AgentRegistry",
 	"alloydb":                         gcpAlloydb,
 	"api_gateway":                     gcpApiGateway,
 	"apihub":                          gcpApiHub,

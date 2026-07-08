@@ -5,19 +5,13 @@ Subject: [PATCH] rebase bigquery_dataset
 
 
 diff --git a/google-beta/services/bigquery/resource_bigquery_dataset.go b/google-beta/services/bigquery/resource_bigquery_dataset.go
-index b834fdc952..9c3f7cd05d 100644
+index 42b953b289..667644ff64 100644
 --- a/google-beta/services/bigquery/resource_bigquery_dataset.go
 +++ b/google-beta/services/bigquery/resource_bigquery_dataset.go
-@@ -2147,8 +2147,13 @@ func ResourceBigQueryDatasetFlatten(d *schema.ResourceData, meta interface{}, re
- 	if err = d.Set("effective_labels", flattenBigQueryDatasetEffectiveLabels(res["labels"], d, config)); err != nil {
- 		return fmt.Errorf("Error reading Dataset: %s", err)
- 	}
--	if err = d.Set("self_link", tpgresource.ConvertSelfLinkToV1(res["selfLink"].(string))); err != nil {
--		return fmt.Errorf("Error reading Dataset: %s", err)
-+	if res["selfLink"] != nil {
-+		if err := d.Set("self_link", tpgresource.ConvertSelfLinkToV1(res["selfLink"].(string))); err != nil {
-+			return fmt.Errorf("Error reading Dataset: %s", err)
-+		}
+@@ -2219,6 +2219,9 @@ func ResourceBigQueryDatasetFlatten(d *schema.ResourceData, meta interface{}, re
+ 		if err = d.Set("self_link", tpgresource.ConvertSelfLinkToV1(selfLink)); err != nil {
+ 			return fmt.Errorf("Error reading Dataset: %s", err)
+ 		}
 +	} else {
 +		// we don't have a self_link so we set an empty string
 +		d.Set("self_link", "")
