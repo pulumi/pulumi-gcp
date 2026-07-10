@@ -32,8 +32,7 @@ class AttachedDiskArgs:
 
         :param pulumi.Input[_builtins.str] disk: `name` or `self_link` of the disk that will be attached.
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -95,8 +94,7 @@ class AttachedDiskArgs:
         """
         `name` or `self_link` of the disk that will be attached.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "disk")
 
@@ -252,8 +250,7 @@ class _AttachedDiskState:
                assigned by Google Compute Engine.
         :param pulumi.Input[_builtins.str] disk: `name` or `self_link` of the disk that will be attached.
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -339,8 +336,7 @@ class _AttachedDiskState:
         """
         `name` or `self_link` of the disk that will be attached.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "disk")
 
@@ -515,8 +511,7 @@ class AttachedDisk(pulumi.CustomResource):
                assigned by Google Compute Engine.
         :param pulumi.Input[_builtins.str] disk: `name` or `self_link` of the disk that will be attached.
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -687,8 +682,7 @@ class AttachedDisk(pulumi.CustomResource):
                assigned by Google Compute Engine.
         :param pulumi.Input[_builtins.str] disk: `name` or `self_link` of the disk that will be attached.
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -763,8 +757,7 @@ class AttachedDisk(pulumi.CustomResource):
         """
         `name` or `self_link` of the disk that will be attached.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "disk")
 

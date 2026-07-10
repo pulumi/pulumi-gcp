@@ -126,11 +126,11 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * The internet access type for IPv6 Public Advertised Prefixes. It can be
      * set to one of following:
      * * EXTERNAL: Default access type. The prefix will be announced to the
-     * internet. All children PDPs will have access type as EXTERNAL.
+     *   internet. All children PDPs will have access type as EXTERNAL.
      * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-     * be used privately within Google Cloud. All children PDPs will have
-     * access type as INTERNAL.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     declare public readonly ipv6AccessType: pulumi.Output<string>;
     /**
@@ -146,10 +146,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
      * * REGIONAL: The public delegated prefix is regional only. The
-     * provisioning will take a few minutes.
+     *   provisioning will take a few minutes.
      * * GLOBAL: The public delegated prefix is global only. The provisioning
-     * will take ~4 weeks.
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      */
     declare public readonly pdpScope: pulumi.Output<string | undefined>;
     /**
@@ -239,11 +239,11 @@ export interface PublicAdvertisedPrefixState {
      * The internet access type for IPv6 Public Advertised Prefixes. It can be
      * set to one of following:
      * * EXTERNAL: Default access type. The prefix will be announced to the
-     * internet. All children PDPs will have access type as EXTERNAL.
+     *   internet. All children PDPs will have access type as EXTERNAL.
      * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-     * be used privately within Google Cloud. All children PDPs will have
-     * access type as INTERNAL.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
@@ -259,10 +259,10 @@ export interface PublicAdvertisedPrefixState {
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
      * * REGIONAL: The public delegated prefix is regional only. The
-     * provisioning will take a few minutes.
+     *   provisioning will take a few minutes.
      * * GLOBAL: The public delegated prefix is global only. The provisioning
-     * will take ~4 weeks.
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      */
     pdpScope?: pulumi.Input<string | undefined>;
     /**
@@ -309,11 +309,11 @@ export interface PublicAdvertisedPrefixArgs {
      * The internet access type for IPv6 Public Advertised Prefixes. It can be
      * set to one of following:
      * * EXTERNAL: Default access type. The prefix will be announced to the
-     * internet. All children PDPs will have access type as EXTERNAL.
+     *   internet. All children PDPs will have access type as EXTERNAL.
      * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-     * be used privately within Google Cloud. All children PDPs will have
-     * access type as INTERNAL.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
@@ -329,10 +329,10 @@ export interface PublicAdvertisedPrefixArgs {
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
      * * REGIONAL: The public delegated prefix is regional only. The
-     * provisioning will take a few minutes.
+     *   provisioning will take a few minutes.
      * * GLOBAL: The public delegated prefix is global only. The provisioning
-     * will take ~4 weeks.
-     * Possible values are: `GLOBAL`, `REGIONAL`.
+     *   will take ~4 weeks.
+     *   Possible values are: `GLOBAL`, `REGIONAL`.
      */
     pdpScope?: pulumi.Input<string | undefined>;
     /**

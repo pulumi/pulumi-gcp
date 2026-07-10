@@ -129,7 +129,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     declare public readonly cluster: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -337,7 +337,7 @@ export interface NodePoolState {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     cluster?: pulumi.Input<string | undefined>;
     /**
@@ -372,7 +372,7 @@ export interface NodePoolState {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -476,7 +476,7 @@ export interface NodePoolArgs {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     cluster: pulumi.Input<string>;
     /**
@@ -507,7 +507,7 @@ export interface NodePoolArgs {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**

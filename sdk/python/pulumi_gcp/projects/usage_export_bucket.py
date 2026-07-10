@@ -28,7 +28,7 @@ class UsageExportBucketArgs:
 
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -52,7 +52,7 @@ class UsageExportBucketArgs:
         """
         The bucket to store reports in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket_name")
 
@@ -114,7 +114,7 @@ class _UsageExportBucketState:
 
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -139,7 +139,7 @@ class _UsageExportBucketState:
         """
         The bucket to store reports in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket_name")
 
@@ -241,7 +241,7 @@ class UsageExportBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -351,7 +351,7 @@ class UsageExportBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The bucket to store reports in.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -377,7 +377,7 @@ class UsageExportBucket(pulumi.CustomResource):
         """
         The bucket to store reports in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket_name")
 

@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-gcp"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Google Cloud Platform resources."
+                description = $/A Pulumi package for creating and managing Google Cloud Platform resources./$
 
                 url = "https://github.com/pulumi/pulumi-gcp"
 

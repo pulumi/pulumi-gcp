@@ -2449,14 +2449,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(dict):
                you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
                The placeholders in this value are replaced as follows:
                * ENDPOINT: The last segment (following `endpoints/`)of the
-               Endpoint.name][] field of the Endpoint where this Model has been
-               deployed. (Vertex AI makes this value available to your container code
-               as the [`AIP_ENDPOINT_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 Endpoint.name][] field of the Endpoint where this Model has been
+                 deployed. (Vertex AI makes this value available to your container code
+                 as the [`AIP_ENDPOINT_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
                * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-               (Vertex AI makes this value available to your container code as the
-               [`AIP_DEPLOYED_MODEL_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 (Vertex AI makes this value available to your container code as the
+                 [`AIP_DEPLOYED_MODEL_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param 'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs' liveness_probe: Probe describes a health check to be performed against a container to
                determine whether it is alive or ready to receive traffic.
                Structure is documented below.
@@ -2493,14 +2493,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(dict):
                you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
                The placeholders in this value are replaced as follows:
                * ENDPOINT: The last segment (following `endpoints/`)of the
-               Endpoint.name][] field of the Endpoint where this Model has been
-               deployed. (Vertex AI makes this value available to your container code
-               as the [`AIP_ENDPOINT_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 Endpoint.name][] field of the Endpoint where this Model has been
+                 deployed. (Vertex AI makes this value available to your container code
+                 as the [`AIP_ENDPOINT_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
                * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-               (Vertex AI makes this value available to your container code
-               as the [`AIP_DEPLOYED_MODEL_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 (Vertex AI makes this value available to your container code
+                 as the [`AIP_DEPLOYED_MODEL_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param _builtins.str shared_memory_size_mb: The amount of the VM memory to reserve as the shared memory for the model
                in megabytes.
         :param 'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs' startup_probe: Probe describes a health check to be performed against a container to
@@ -2712,14 +2712,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(dict):
         you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         The placeholders in this value are replaced as follows:
         * ENDPOINT: The last segment (following `endpoints/`)of the
-        Endpoint.name][] field of the Endpoint where this Model has been
-        deployed. (Vertex AI makes this value available to your container code
-        as the [`AIP_ENDPOINT_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          Endpoint.name][] field of the Endpoint where this Model has been
+          deployed. (Vertex AI makes this value available to your container code
+          as the [`AIP_ENDPOINT_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        (Vertex AI makes this value available to your container code as the
-        [`AIP_DEPLOYED_MODEL_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          (Vertex AI makes this value available to your container code as the
+          [`AIP_DEPLOYED_MODEL_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         """
         return pulumi.get(self, "health_route")
 
@@ -2777,14 +2777,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(dict):
         you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         The placeholders in this value are replaced as follows:
         * ENDPOINT: The last segment (following `endpoints/`)of the
-        Endpoint.name][] field of the Endpoint where this Model has been
-        deployed. (Vertex AI makes this value available to your container code
-        as the [`AIP_ENDPOINT_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          Endpoint.name][] field of the Endpoint where this Model has been
+          deployed. (Vertex AI makes this value available to your container code
+          as the [`AIP_ENDPOINT_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        (Vertex AI makes this value available to your container code
-        as the [`AIP_DEPLOYED_MODEL_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          (Vertex AI makes this value available to your container code
+          as the [`AIP_DEPLOYED_MODEL_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         """
         return pulumi.get(self, "predict_route")
 
@@ -7143,7 +7143,7 @@ class AiReasoningEngineSpec(dict):
                Possible values:
                * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
                * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
-               Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+                 Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
         :param 'AiReasoningEngineSpecPackageSpecArgs' package_spec: Optional. User provided package spec of the ReasoningEngine.
                Ignored when users directly specify a deployment image through
                deploymentSpec.first_party_image_override, but keeping the
@@ -7230,7 +7230,7 @@ class AiReasoningEngineSpec(dict):
         Possible values:
         * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
         * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
-        Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+          Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
         """
         return pulumi.get(self, "identity_type")
 

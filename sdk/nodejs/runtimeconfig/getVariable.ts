@@ -46,7 +46,7 @@ export interface GetVariableArgs {
     /**
      * The name of the RuntimeConfig resource containing this variable.
      *
-     * - - -
+     * ***
      */
     parent: string;
     /**
@@ -114,7 +114,7 @@ export interface GetVariableOutputArgs {
     /**
      * The name of the RuntimeConfig resource containing this variable.
      *
-     * - - -
+     * ***
      */
     parent: pulumi.Input<string>;
     /**

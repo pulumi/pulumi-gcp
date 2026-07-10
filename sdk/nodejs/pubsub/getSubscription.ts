@@ -37,7 +37,7 @@ export interface GetSubscriptionArgs {
     /**
      * The name of the Cloud Pub/Sub Subscription.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -108,7 +108,7 @@ export interface GetSubscriptionOutputArgs {
     /**
      * The name of the Cloud Pub/Sub Subscription.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

@@ -135,9 +135,9 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
      * * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-     * after approximately 30 days. You can restore a soft-deleted namespace using
-     * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-     * until it is permanently deleted.
+     *   after approximately 30 days. You can restore a soft-deleted namespace using
+     *   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+     *   until it is permanently deleted.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -245,9 +245,9 @@ export interface WorkloadIdentityPoolNamespaceState {
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
      * * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-     * after approximately 30 days. You can restore a soft-deleted namespace using
-     * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-     * until it is permanently deleted.
+     *   after approximately 30 days. You can restore a soft-deleted namespace using
+     *   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+     *   until it is permanently deleted.
      */
     state?: pulumi.Input<string | undefined>;
     /**

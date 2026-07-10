@@ -169,7 +169,7 @@ class AuthorizedViewSubsetView(dict):
         """
         :param Sequence['AuthorizedViewSubsetViewFamilySubsetArgs'] family_subsets: A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
                
-               -----
+               ***
         :param Sequence[_builtins.str] row_prefixes: A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
         """
         if family_subsets is not None:
@@ -183,7 +183,7 @@ class AuthorizedViewSubsetView(dict):
         """
         A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
 
-        -----
+        ***
         """
         return pulumi.get(self, "family_subsets")
 
@@ -268,7 +268,7 @@ class GCPolicyMaxAge(dict):
         :param _builtins.int days: Number of days before applying GC policy.
         :param _builtins.str duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
                
-               -----
+               ***
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
@@ -290,7 +290,7 @@ class GCPolicyMaxAge(dict):
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
 
-        -----
+        ***
         """
         return pulumi.get(self, "duration")
 
@@ -302,7 +302,7 @@ class GCPolicyMaxVersion(dict):
         """
         :param _builtins.int number: Number of version before applying the GC policy.
                
-               -----
+               ***
                `gc_rules` include 2 fields:
         """
         pulumi.set(__self__, "number", number)
@@ -313,7 +313,7 @@ class GCPolicyMaxVersion(dict):
         """
         Number of version before applying the GC policy.
 
-        -----
+        ***
         `gc_rules` include 2 fields:
         """
         return pulumi.get(self, "number")

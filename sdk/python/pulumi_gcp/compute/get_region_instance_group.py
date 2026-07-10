@@ -141,7 +141,7 @@ def get_region_instance_group(name: Optional[_builtins.str] = None,
            provided, the provider region is used.
     :param _builtins.str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['name'] = name
@@ -187,7 +187,7 @@ def get_region_instance_group_output(name: pulumi.Input[Optional[Optional[_built
            provided, the provider region is used.
     :param _builtins.str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['name'] = name

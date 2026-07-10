@@ -1777,7 +1777,6 @@ class AppDataStoreSettingsArgsDict(TypedDict):
     The engines for the app.
     Structure is documented below.
 
-
     <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
     """
 
@@ -1789,7 +1788,6 @@ class AppDataStoreSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppDataStoreSettingsEngineArgs']]] engines: (Output)
                The engines for the app.
                Structure is documented below.
-               
                
                <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
         """
@@ -1803,7 +1801,6 @@ class AppDataStoreSettingsArgs:
         (Output)
         The engines for the app.
         Structure is documented below.
-
 
         <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
         """
@@ -2366,8 +2363,8 @@ class AppLanguageSettingsArgsDict(TypedDict):
     Valid values are:
     - A tool's full resource name, which triggers a specific tool execution.
     - A predefined system action, such as "escalate" or "exit", which triggers
-    an EndSession signal with corresponding metadata
-    to terminate the conversation.
+      an EndSession signal with corresponding metadata
+      to terminate the conversation.
     """
     supported_language_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -2392,8 +2389,8 @@ class AppLanguageSettingsArgs:
                Valid values are:
                - A tool's full resource name, which triggers a specific tool execution.
                - A predefined system action, such as "escalate" or "exit", which triggers
-               an EndSession signal with corresponding metadata
-               to terminate the conversation.
+                 an EndSession signal with corresponding metadata
+                 to terminate the conversation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: List of languages codes supported by the app, in addition to the
                `default_language_code`.
         """
@@ -2441,8 +2438,8 @@ class AppLanguageSettingsArgs:
         Valid values are:
         - A tool's full resource name, which triggers a specific tool execution.
         - A predefined system action, such as "escalate" or "exit", which triggers
-        an EndSession signal with corresponding metadata
-        to terminate the conversation.
+          an EndSession signal with corresponding metadata
+          to terminate the conversation.
         """
         return pulumi.get(self, "fallback_action")
 
@@ -2607,8 +2604,8 @@ class AppLoggingSettingsAudioRecordingConfigArgsDict(TypedDict):
     - $app:       app ID
     - $date:      session date in YYYY-MM-DD format
     - $session:   session ID
-    If the path prefix is not specified, the default prefix
-    `$project/$location/$app/$date/$session/` will be used.
+      If the path prefix is not specified, the default prefix
+      `$project/$location/$app/$date/$session/` will be used.
     """
 
 @pulumi.input_type
@@ -2630,8 +2627,8 @@ class AppLoggingSettingsAudioRecordingConfigArgs:
                - $app:       app ID
                - $date:      session date in YYYY-MM-DD format
                - $session:   session ID
-               If the path prefix is not specified, the default prefix
-               `$project/$location/$app/$date/$session/` will be used.
+                 If the path prefix is not specified, the default prefix
+                 `$project/$location/$app/$date/$session/` will be used.
         """
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -2666,8 +2663,8 @@ class AppLoggingSettingsAudioRecordingConfigArgs:
         - $app:       app ID
         - $date:      session date in YYYY-MM-DD format
         - $session:   session ID
-        If the path prefix is not specified, the default prefix
-        `$project/$location/$app/$date/$session/` will be used.
+          If the path prefix is not specified, the default prefix
+          `$project/$location/$app/$date/$session/` will be used.
         """
         return pulumi.get(self, "gcs_path_prefix")
 
@@ -3106,9 +3103,9 @@ class AppVariableDeclarationSchemaArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3200,9 +3197,9 @@ class AppVariableDeclarationSchemaArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enums: Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.bool] nullable: Indicates if the value may be null.
         :param pulumi.Input[_builtins.str] prefix_items: Optional. Schemas of initial elements of Type.ARRAY.
@@ -3350,9 +3347,9 @@ class AppVariableDeclarationSchemaArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -6677,8 +6674,8 @@ class AppVersionSnapshotAppLanguageSettingArgsDict(TypedDict):
     Valid values are:
     - A tool's full resource name, which triggers a specific tool execution.
     - A predefined system action, such as "escalate" or "exit", which triggers
-    an EndSession signal with corresponding metadata
-    to terminate the conversation.
+      an EndSession signal with corresponding metadata
+      to terminate the conversation.
     """
     supported_language_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -6707,8 +6704,8 @@ class AppVersionSnapshotAppLanguageSettingArgs:
                Valid values are:
                - A tool's full resource name, which triggers a specific tool execution.
                - A predefined system action, such as "escalate" or "exit", which triggers
-               an EndSession signal with corresponding metadata
-               to terminate the conversation.
+                 an EndSession signal with corresponding metadata
+                 to terminate the conversation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: (Output)
                List of languages codes supported by the app, in addition to the
                `default_language_code`.
@@ -6760,8 +6757,8 @@ class AppVersionSnapshotAppLanguageSettingArgs:
         Valid values are:
         - A tool's full resource name, which triggers a specific tool execution.
         - A predefined system action, such as "escalate" or "exit", which triggers
-        an EndSession signal with corresponding metadata
-        to terminate the conversation.
+          an EndSession signal with corresponding metadata
+          to terminate the conversation.
         """
         return pulumi.get(self, "fallback_action")
 
@@ -6944,8 +6941,8 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict(TypedDict)
     - $app:       app ID
     - $date:      session date in YYYY-MM-DD format
     - $session:   session ID
-    If the path prefix is not specified, the default prefix
-    `$project/$location/$app/$date/$session/` will be used.
+      If the path prefix is not specified, the default prefix
+      `$project/$location/$app/$date/$session/` will be used.
     """
 
 @pulumi.input_type
@@ -6969,8 +6966,8 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs:
                - $app:       app ID
                - $date:      session date in YYYY-MM-DD format
                - $session:   session ID
-               If the path prefix is not specified, the default prefix
-               `$project/$location/$app/$date/$session/` will be used.
+                 If the path prefix is not specified, the default prefix
+                 `$project/$location/$app/$date/$session/` will be used.
         """
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -7007,8 +7004,8 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs:
         - $app:       app ID
         - $date:      session date in YYYY-MM-DD format
         - $session:   session ID
-        If the path prefix is not specified, the default prefix
-        `$project/$location/$app/$date/$session/` will be used.
+          If the path prefix is not specified, the default prefix
+          `$project/$location/$app/$date/$session/` will be used.
         """
         return pulumi.get(self, "gcs_path_prefix")
 
@@ -7477,9 +7474,9 @@ class AppVersionSnapshotAppVariableDeclarationSchemaArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -7581,9 +7578,9 @@ class AppVersionSnapshotAppVariableDeclarationSchemaArgs:
                Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: (Output)
                Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.bool] nullable: (Output)
@@ -7730,9 +7727,9 @@ class AppVersionSnapshotAppVariableDeclarationSchemaArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -11203,9 +11200,9 @@ class AppVersionSnapshotToolClientFunctionParameterArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -11307,9 +11304,9 @@ class AppVersionSnapshotToolClientFunctionParameterArgs:
                Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: (Output)
                Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.bool] nullable: (Output)
@@ -11456,9 +11453,9 @@ class AppVersionSnapshotToolClientFunctionParameterArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -11630,9 +11627,9 @@ class AppVersionSnapshotToolClientFunctionResponseArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -11734,9 +11731,9 @@ class AppVersionSnapshotToolClientFunctionResponseArgs:
                Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: (Output)
                Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.bool] nullable: (Output)
@@ -11883,9 +11880,9 @@ class AppVersionSnapshotToolClientFunctionResponseArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -12555,9 +12552,9 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     Can be one of:
     1. The numerical field value.
     2. The duration spec for freshness:
-    The value must be formatted as an XSD `dayTimeDuration` value (a
-    restricted subset of an ISO 8601 duration value). The pattern for
-    this is: `nDnM]`.
+       The value must be formatted as an XSD `dayTimeDuration` value (a
+       restricted subset of an ISO 8601 duration value). The pattern for
+       this is: `nDnM]`.
     """
     boost_amount: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
@@ -12576,9 +12573,9 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
                Can be one of:
                1. The numerical field value.
                2. The duration spec for freshness:
-               The value must be formatted as an XSD `dayTimeDuration` value (a
-               restricted subset of an ISO 8601 duration value). The pattern for
-               this is: `nDnM]`.
+                  The value must be formatted as an XSD `dayTimeDuration` value (a
+                  restricted subset of an ISO 8601 duration value). The pattern for
+                  this is: `nDnM]`.
         :param pulumi.Input[_builtins.float] boost_amount: (Output)
                The value between -1 to 1 by which to boost the score if the
                attribute_value evaluates to the value specified above.
@@ -12596,9 +12593,9 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
         Can be one of:
         1. The numerical field value.
         2. The duration spec for freshness:
-        The value must be formatted as an XSD `dayTimeDuration` value (a
-        restricted subset of an ISO 8601 duration value). The pattern for
-        this is: `nDnM]`.
+           The value must be formatted as an XSD `dayTimeDuration` value (a
+           restricted subset of an ISO 8601 duration value). The pattern for
+           this is: `nDnM]`.
         """
         return pulumi.get(self, "attribute_value")
 
@@ -14363,9 +14360,9 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     """
     display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -14386,9 +14383,9 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         :param pulumi.Input[_builtins.str] display_name: The display name of the app version.
         """
@@ -14408,9 +14405,9 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "cert")
@@ -15528,9 +15525,9 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     """
     display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -15551,9 +15548,9 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         :param pulumi.Input[_builtins.str] display_name: The display name of the app version.
         """
@@ -15573,9 +15570,9 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "cert")
@@ -15616,7 +15613,7 @@ class DeploymentChannelProfileArgsDict(TypedDict):
     Whether to disable user barge-in control in the conversation.
     - **true**: User interruptions are disabled while the agent is speaking.
     - **false**: The agent retains automatic control over when the user can
-    interrupt.
+      interrupt.
     """
     disable_dtmf: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -15660,7 +15657,7 @@ class DeploymentChannelProfileArgs:
         :param pulumi.Input[_builtins.bool] disable_barge_in_control: Whether to disable user barge-in control in the conversation.
                - **true**: User interruptions are disabled while the agent is speaking.
                - **false**: The agent retains automatic control over when the user can
-               interrupt.
+                 interrupt.
         :param pulumi.Input[_builtins.bool] disable_dtmf: Whether to disable DTMF (dual-tone multi-frequency).
         :param pulumi.Input['DeploymentChannelProfilePersonaPropertyArgs'] persona_property: Represents the persona property of a channel.
                Structure is documented below.
@@ -15709,7 +15706,7 @@ class DeploymentChannelProfileArgs:
         Whether to disable user barge-in control in the conversation.
         - **true**: User interruptions are disabled while the agent is speaking.
         - **false**: The agent retains automatic control over when the user can
-        interrupt.
+          interrupt.
         """
         return pulumi.get(self, "disable_barge_in_control")
 
@@ -16077,7 +16074,6 @@ class EvaluationGoldenTurnArgsDict(TypedDict):
     The sequence of steps required to replay a golden conversation turn.
     Structure is documented below.
 
-
     <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
     """
     root_spans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnRootSpanArgsDict']]]]]
@@ -16096,7 +16092,6 @@ class EvaluationGoldenTurnArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EvaluationGoldenTurnStepArgs']]] steps: The sequence of steps required to replay a golden conversation turn.
                Structure is documented below.
                
-               
                <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
         :param pulumi.Input[Sequence[pulumi.Input['EvaluationGoldenTurnRootSpanArgs']]] root_spans: (Output)
                The root span of the golden turn for processing and maintaining audio information.
@@ -16112,7 +16107,6 @@ class EvaluationGoldenTurnArgs:
         """
         The sequence of steps required to replay a golden conversation turn.
         Structure is documented below.
-
 
         <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
         """
@@ -21368,8 +21362,8 @@ class GuardrailLlmPromptSecurityArgsDict(TypedDict):
     Determines the behavior when the guardrail encounters an LLM error.
     - If true: the guardrail is bypassed.
     - If false (default): the guardrail triggers/blocks.
-    Note: If a custom policy is provided, this field is ignored in favor of
-    the policy's 'failOpen' configuration.
+      Note: If a custom policy is provided, this field is ignored in favor of
+      the policy's 'failOpen' configuration.
     """
 
 @pulumi.input_type
@@ -21387,8 +21381,8 @@ class GuardrailLlmPromptSecurityArgs:
         :param pulumi.Input[_builtins.bool] fail_open: Determines the behavior when the guardrail encounters an LLM error.
                - If true: the guardrail is bypassed.
                - If false (default): the guardrail triggers/blocks.
-               Note: If a custom policy is provided, this field is ignored in favor of
-               the policy's 'failOpen' configuration.
+                 Note: If a custom policy is provided, this field is ignored in favor of
+                 the policy's 'failOpen' configuration.
         """
         if custom_policy is not None:
             pulumi.set(__self__, "custom_policy", custom_policy)
@@ -21431,8 +21425,8 @@ class GuardrailLlmPromptSecurityArgs:
         Determines the behavior when the guardrail encounters an LLM error.
         - If true: the guardrail is bypassed.
         - If false (default): the guardrail triggers/blocks.
-        Note: If a custom policy is provided, this field is ignored in favor of
-        the policy's 'failOpen' configuration.
+          Note: If a custom policy is provided, this field is ignored in favor of
+          the policy's 'failOpen' configuration.
         """
         return pulumi.get(self, "fail_open")
 
@@ -22082,9 +22076,9 @@ class ToolClientFunctionParametersArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -22196,9 +22190,9 @@ class ToolClientFunctionParametersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enums: Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.int] max_items: Maximum number of the elements for Type.ARRAY. (int64 format)
         :param pulumi.Input[_builtins.float] maximum: Maximum value for Type.INTEGER and Type.NUMBER.
@@ -22358,9 +22352,9 @@ class ToolClientFunctionParametersArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -22572,9 +22566,9 @@ class ToolClientFunctionResponseArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -22686,9 +22680,9 @@ class ToolClientFunctionResponseArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enums: Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.int] max_items: Maximum number of the elements for Type.ARRAY. (int64 format)
         :param pulumi.Input[_builtins.float] maximum: Maximum value for Type.INTEGER and Type.NUMBER.
@@ -22848,9 +22842,9 @@ class ToolClientFunctionResponseArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -23875,9 +23869,9 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
     Can be one of:
     1. The numerical field value.
     2. The duration spec for freshness:
-    The value must be formatted as an XSD `dayTimeDuration` value (a
-    restricted subset of an ISO 8601 duration value). The pattern for
-    this is: `nDnM]`.
+       The value must be formatted as an XSD `dayTimeDuration` value (a
+       restricted subset of an ISO 8601 duration value). The pattern for
+       this is: `nDnM]`.
     """
     boost_amount: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
@@ -23894,9 +23888,9 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
         :param pulumi.Input[_builtins.str] attribute_value: Can be one of:
                1. The numerical field value.
                2. The duration spec for freshness:
-               The value must be formatted as an XSD `dayTimeDuration` value (a
-               restricted subset of an ISO 8601 duration value). The pattern for
-               this is: `nDnM]`.
+                  The value must be formatted as an XSD `dayTimeDuration` value (a
+                  restricted subset of an ISO 8601 duration value). The pattern for
+                  this is: `nDnM]`.
         :param pulumi.Input[_builtins.float] boost_amount: The value between -1 to 1 by which to boost the score if the
                attribute_value evaluates to the value specified above.
         """
@@ -23912,9 +23906,9 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
         Can be one of:
         1. The numerical field value.
         2. The duration spec for freshness:
-        The value must be formatted as an XSD `dayTimeDuration` value (a
-        restricted subset of an ISO 8601 duration value). The pattern for
-        this is: `nDnM]`.
+           The value must be formatted as an XSD `dayTimeDuration` value (a
+           restricted subset of an ISO 8601 duration value). The pattern for
+           this is: `nDnM]`.
         """
         return pulumi.get(self, "attribute_value")
 
@@ -24034,7 +24028,6 @@ class ToolDataStoreToolDataStoreSourceDataStoreArgsDict(TypedDict):
     FAQ
     CONNECTOR
 
-
     <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
     """
 
@@ -24072,7 +24065,6 @@ class ToolDataStoreToolDataStoreSourceDataStoreArgs:
                UNSTRUCTURED
                FAQ
                CONNECTOR
-               
                
                <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
@@ -24171,7 +24163,6 @@ class ToolDataStoreToolDataStoreSourceDataStoreArgs:
         UNSTRUCTURED
         FAQ
         CONNECTOR
-
 
         <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
@@ -24447,7 +24438,6 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
     FAQ
     CONNECTOR
 
-
     <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
     """
 
@@ -24485,7 +24475,6 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
                UNSTRUCTURED
                FAQ
                CONNECTOR
-               
                
                <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
@@ -24584,7 +24573,6 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
         UNSTRUCTURED
         FAQ
         CONNECTOR
-
 
         <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
@@ -26291,9 +26279,9 @@ class ToolMcpToolTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     A base64-encoded string.
     """
@@ -26317,9 +26305,9 @@ class ToolMcpToolTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
                A base64-encoded string.
         :param pulumi.Input[_builtins.str] display_name: (Output)
@@ -26342,9 +26330,9 @@ class ToolMcpToolTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         A base64-encoded string.
         """
@@ -27149,9 +27137,9 @@ class ToolOpenApiToolTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     A base64-encoded string.
     """
@@ -27175,9 +27163,9 @@ class ToolOpenApiToolTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
                A base64-encoded string.
         :param pulumi.Input[_builtins.str] display_name: (Output)
@@ -27200,9 +27188,9 @@ class ToolOpenApiToolTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         A base64-encoded string.
         """
@@ -28390,9 +28378,9 @@ class ToolWidgetToolParametersArgsDict(TypedDict):
     Possible values of the element of primitive type with enum format.
     Examples:
     1. We can define direction as :
-    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+       {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
     2. We can define apartment number as :
-    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+       {type:INTEGER, format:enum, enum:["101", "201", "301"]}
     """
     items: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -28504,9 +28492,9 @@ class ToolWidgetToolParametersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enums: Possible values of the element of primitive type with enum format.
                Examples:
                1. We can define direction as :
-               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+                  {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
                2. We can define apartment number as :
-               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+                  {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         :param pulumi.Input[_builtins.str] items: Schema of the elements of Type.ARRAY.
         :param pulumi.Input[_builtins.int] max_items: Maximum number of the elements for Type.ARRAY. (int64 format)
         :param pulumi.Input[_builtins.float] maximum: Maximum value for Type.INTEGER and Type.NUMBER.
@@ -28666,9 +28654,9 @@ class ToolWidgetToolParametersArgs:
         Possible values of the element of primitive type with enum format.
         Examples:
         1. We can define direction as :
-        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+           {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
         2. We can define apartment number as :
-        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+           {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         """
         return pulumi.get(self, "enums")
 
@@ -29617,9 +29605,9 @@ class ToolsetMcpToolsetTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     """
     display_name: pulumi.Input[_builtins.str]
@@ -29640,9 +29628,9 @@ class ToolsetMcpToolsetTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         :param pulumi.Input[_builtins.str] display_name: The name of the allowed custom CA certificates. This
                can be used to disambiguate the custom CA certificates.
@@ -29660,9 +29648,9 @@ class ToolsetMcpToolsetTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "cert")
@@ -30379,9 +30367,9 @@ class ToolsetOpenApiToolsetTlsConfigCaCertArgsDict(TypedDict):
     store to verify certificates. N.B. Make sure the HTTPS server
     certificates are signed with "subject alt name". For instance a
     certificate can be self-signed using the following command,
-    openssl x509 -req -days 200 -in example.com.csr \\
-    -signkey example.com.key \\
-    -out example.com.crt \\
+    openssl x509 -req -days 200 -in example.com.csr\\
+    -signkey example.com.key\\
+    -out example.com.crt\\
     -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
     """
     display_name: pulumi.Input[_builtins.str]
@@ -30402,9 +30390,9 @@ class ToolsetOpenApiToolsetTlsConfigCaCertArgs:
                store to verify certificates. N.B. Make sure the HTTPS server
                certificates are signed with "subject alt name". For instance a
                certificate can be self-signed using the following command,
-               openssl x509 -req -days 200 -in example.com.csr \\
-               -signkey example.com.key \\
-               -out example.com.crt \\
+               openssl x509 -req -days 200 -in example.com.csr\\
+               -signkey example.com.key\\
+               -out example.com.crt\\
                -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         :param pulumi.Input[_builtins.str] display_name: The name of the allowed custom CA certificates. This
                can be used to disambiguate the custom CA certificates.
@@ -30422,9 +30410,9 @@ class ToolsetOpenApiToolsetTlsConfigCaCertArgs:
         store to verify certificates. N.B. Make sure the HTTPS server
         certificates are signed with "subject alt name". For instance a
         certificate can be self-signed using the following command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
+        openssl x509 -req -days 200 -in example.com.csr\\
+        -signkey example.com.key\\
+        -out example.com.crt\\
         -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "cert")

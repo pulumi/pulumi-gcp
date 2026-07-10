@@ -25,8 +25,7 @@ export interface GetAppleAppArgs {
     /**
      * The appId of name of the Firebase iosApp.
      *
-     *
-     * - - -
+     * ***
      */
     appId: string;
     /**
@@ -95,8 +94,7 @@ export interface GetAppleAppOutputArgs {
     /**
      * The appId of name of the Firebase iosApp.
      *
-     *
-     * - - -
+     * ***
      */
     appId: pulumi.Input<string>;
     /**

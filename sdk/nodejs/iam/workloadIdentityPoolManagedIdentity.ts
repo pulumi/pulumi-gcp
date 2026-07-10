@@ -152,9 +152,9 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * The current state of the managed identity.
      * * `ACTIVE`: The managed identity is active.
      * * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-     * identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-     * soft-deleted managed identity until it is permanently deleted.
+     *   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+     *   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+     *   soft-deleted managed identity until it is permanently deleted.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -277,9 +277,9 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * The current state of the managed identity.
      * * `ACTIVE`: The managed identity is active.
      * * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-     * identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-     * soft-deleted managed identity until it is permanently deleted.
+     *   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+     *   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+     *   soft-deleted managed identity until it is permanently deleted.
      */
     state?: pulumi.Input<string | undefined>;
     /**

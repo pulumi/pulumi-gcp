@@ -51,9 +51,9 @@ export interface GetKeyHandlesArgs {
      */
     project?: string;
     /**
-     * The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+     * The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
      *
-     * - - -
+     * ***
      */
     resourceTypeSelector: string;
 }
@@ -125,9 +125,9 @@ export interface GetKeyHandlesOutputArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+     * The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
      *
-     * - - -
+     * ***
      */
     resourceTypeSelector: pulumi.Input<string>;
 }

@@ -331,7 +331,7 @@ export class DataConnector extends pulumi.CustomResource {
      * - All functionalities, including data synchronization, are halted.
      * - Any ongoing data synchronization job will be canceled.
      * - No future data synchronization runs will be scheduled nor can be
-     * triggered.
+     *   triggered.
      */
     declare public /*out*/ readonly latestPauseTime: pulumi.Output<string>;
     /**
@@ -641,7 +641,7 @@ export interface DataConnectorState {
      * - All functionalities, including data synchronization, are halted.
      * - Any ongoing data synchronization job will be canceled.
      * - No future data synchronization runs will be scheduled nor can be
-     * triggered.
+     *   triggered.
      */
     latestPauseTime?: pulumi.Input<string | undefined>;
     /**

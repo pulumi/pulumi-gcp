@@ -162,8 +162,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -247,7 +247,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     declare public readonly sourceMachineImage: pulumi.Output<string>;
     /**
@@ -496,8 +496,8 @@ export interface InstanceFromMachineImageState {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -581,7 +581,7 @@ export interface InstanceFromMachineImageState {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     sourceMachineImage?: pulumi.Input<string | undefined>;
     /**
@@ -677,8 +677,8 @@ export interface InstanceFromMachineImageArgs {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -746,7 +746,7 @@ export interface InstanceFromMachineImageArgs {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     sourceMachineImage: pulumi.Input<string>;
     /**

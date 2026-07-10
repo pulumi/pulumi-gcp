@@ -55,9 +55,9 @@ class VolumeQuotaRuleArgs:
                Valid targets for volumes with NFS protocol enabled:
                - UNIX UID for individual user quota
                - UNIX GID for individual group quota
-               Valid targets for volumes with SMB protocol enabled:
+                 Valid targets for volumes with SMB protocol enabled:
                - Windows SID for individual user quota
-               Leave empty for default quotas
+                 Leave empty for default quotas
         """
         pulumi.set(__self__, "disk_limit_mib", disk_limit_mib)
         pulumi.set(__self__, "type", type)
@@ -203,9 +203,9 @@ class VolumeQuotaRuleArgs:
         Valid targets for volumes with NFS protocol enabled:
         - UNIX UID for individual user quota
         - UNIX GID for individual group quota
-        Valid targets for volumes with SMB protocol enabled:
+          Valid targets for volumes with SMB protocol enabled:
         - Windows SID for individual user quota
-        Leave empty for default quotas
+          Leave empty for default quotas
         """
         return pulumi.get(self, "target")
 
@@ -261,9 +261,9 @@ class _VolumeQuotaRuleState:
                Valid targets for volumes with NFS protocol enabled:
                - UNIX UID for individual user quota
                - UNIX GID for individual group quota
-               Valid targets for volumes with SMB protocol enabled:
+                 Valid targets for volumes with SMB protocol enabled:
                - Windows SID for individual user quota
-               Leave empty for default quotas
+                 Leave empty for default quotas
         :param pulumi.Input[_builtins.str] type: Types of Quota Rule.
                Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.
         :param pulumi.Input[_builtins.str] volume_name: Name of the volume to create the quotaRule in.
@@ -461,9 +461,9 @@ class _VolumeQuotaRuleState:
         Valid targets for volumes with NFS protocol enabled:
         - UNIX UID for individual user quota
         - UNIX GID for individual group quota
-        Valid targets for volumes with SMB protocol enabled:
+          Valid targets for volumes with SMB protocol enabled:
         - Windows SID for individual user quota
-        Leave empty for default quotas
+          Leave empty for default quotas
         """
         return pulumi.get(self, "target")
 
@@ -593,9 +593,9 @@ class VolumeQuotaRule(pulumi.CustomResource):
                Valid targets for volumes with NFS protocol enabled:
                - UNIX UID for individual user quota
                - UNIX GID for individual group quota
-               Valid targets for volumes with SMB protocol enabled:
+                 Valid targets for volumes with SMB protocol enabled:
                - Windows SID for individual user quota
-               Leave empty for default quotas
+                 Leave empty for default quotas
         :param pulumi.Input[_builtins.str] type: Types of Quota Rule.
                Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.
         :param pulumi.Input[_builtins.str] volume_name: Name of the volume to create the quotaRule in.
@@ -778,9 +778,9 @@ class VolumeQuotaRule(pulumi.CustomResource):
                Valid targets for volumes with NFS protocol enabled:
                - UNIX UID for individual user quota
                - UNIX GID for individual group quota
-               Valid targets for volumes with SMB protocol enabled:
+                 Valid targets for volumes with SMB protocol enabled:
                - Windows SID for individual user quota
-               Leave empty for default quotas
+                 Leave empty for default quotas
         :param pulumi.Input[_builtins.str] type: Types of Quota Rule.
                Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.
         :param pulumi.Input[_builtins.str] volume_name: Name of the volume to create the quotaRule in.
@@ -920,9 +920,9 @@ class VolumeQuotaRule(pulumi.CustomResource):
         Valid targets for volumes with NFS protocol enabled:
         - UNIX UID for individual user quota
         - UNIX GID for individual group quota
-        Valid targets for volumes with SMB protocol enabled:
+          Valid targets for volumes with SMB protocol enabled:
         - Windows SID for individual user quota
-        Leave empty for default quotas
+          Leave empty for default quotas
         """
         return pulumi.get(self, "target")
 

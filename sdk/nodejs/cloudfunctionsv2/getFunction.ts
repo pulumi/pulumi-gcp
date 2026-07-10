@@ -39,7 +39,7 @@ export interface GetFunctionArgs {
     /**
      * The location in which the resource belongs.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -111,7 +111,7 @@ export interface GetFunctionOutputArgs {
     /**
      * The location in which the resource belongs.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

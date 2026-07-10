@@ -6,7 +6,13 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .location_from_id import *
+from .name_from_id import *
+from .project_from_id import *
 from .provider import *
+from .region_from_id import *
+from .region_from_zone import *
+from .zone_from_id import *
 from ._inputs import *
 
 # Make subpackages available:

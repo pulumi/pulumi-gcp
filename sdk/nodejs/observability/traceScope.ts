@@ -115,7 +115,7 @@ export class TraceScope extends pulumi.CustomResource {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     declare public readonly resourceNames: pulumi.Output<string[]>;
     /**
@@ -215,7 +215,7 @@ export interface TraceScopeState {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     resourceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -258,7 +258,7 @@ export interface TraceScopeArgs {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     resourceNames: pulumi.Input<pulumi.Input<string>[]>;
     /**

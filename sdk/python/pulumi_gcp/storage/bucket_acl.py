@@ -29,7 +29,7 @@ class BucketACLArgs:
 
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -56,7 +56,7 @@ class BucketACLArgs:
         """
         The name of the bucket it applies to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket")
 
@@ -131,7 +131,7 @@ class _BucketACLState:
 
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -159,7 +159,7 @@ class _BucketACLState:
         """
         The name of the bucket it applies to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket")
 
@@ -273,7 +273,7 @@ class BucketACL(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -386,7 +386,7 @@ class BucketACL(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket it applies to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -414,7 +414,7 @@ class BucketACL(pulumi.CustomResource):
         """
         The name of the bucket it applies to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "bucket")
 

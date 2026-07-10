@@ -36,7 +36,7 @@ class ConfigArgs:
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -85,7 +85,7 @@ class ConfigArgs:
         """
         The name of the runtime config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -127,7 +127,7 @@ class _ConfigState:
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -176,7 +176,7 @@ class _ConfigState:
         """
         The name of the runtime config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -263,7 +263,7 @@ class Config(pulumi.CustomResource):
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -378,7 +378,7 @@ class Config(pulumi.CustomResource):
                config.
         :param pulumi.Input[_builtins.str] name: The name of the runtime config.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -420,7 +420,7 @@ class Config(pulumi.CustomResource):
         """
         The name of the runtime config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

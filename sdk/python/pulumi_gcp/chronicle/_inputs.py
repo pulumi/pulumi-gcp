@@ -5894,7 +5894,6 @@ class FeedDetailsArgsDict(TypedDict):
     Workspace Users settings.
     Structure is documented below.
 
-
     <a name="nested_details_amazon_s3_settings"></a>The `amazon_s3_settings` block supports:
     """
 
@@ -6166,7 +6165,6 @@ class FeedDetailsArgs:
                Structure is documented below.
         :param pulumi.Input['FeedDetailsWorkspaceUsersSettingsArgs'] workspace_users_settings: Workspace Users settings.
                Structure is documented below.
-               
                
                <a name="nested_details_amazon_s3_settings"></a>The `amazon_s3_settings` block supports:
         """
@@ -7388,7 +7386,6 @@ class FeedDetailsArgs:
         Workspace Users settings.
         Structure is documented below.
 
-
         <a name="nested_details_amazon_s3_settings"></a>The `amazon_s3_settings` block supports:
         """
         return pulumi.get(self, "workspace_users_settings")
@@ -8254,7 +8251,6 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgsDict(TypedDict):
     Amazon SQS access key and secret auth.
     Structure is documented below.
 
-
     <a name="nested_details_amazon_sqs_settings_authentication_additional_s3_access_key_secret_auth"></a>The `additional_s3_access_key_secret_auth` block supports:
     """
 
@@ -8268,7 +8264,6 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
                Structure is documented below.
         :param pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs'] sqs_access_key_secret_auth: Amazon SQS access key and secret auth.
                Structure is documented below.
-               
                
                <a name="nested_details_amazon_sqs_settings_authentication_additional_s3_access_key_secret_auth"></a>The `additional_s3_access_key_secret_auth` block supports:
         """
@@ -8296,7 +8291,6 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
         """
         Amazon SQS access key and secret auth.
         Structure is documented below.
-
 
         <a name="nested_details_amazon_sqs_settings_authentication_additional_s3_access_key_secret_auth"></a>The `additional_s3_access_key_secret_auth` block supports:
         """
@@ -9827,7 +9821,6 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict(TypedDict):
     SAS Token.
     **Note**: This property is sensitive and will not be displayed in the plan.
 
-
     <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
     """
     shared_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -9847,7 +9840,6 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
         :param pulumi.Input[_builtins.str] sas_token: SAS Token.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
-               
                <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         :param pulumi.Input[_builtins.str] shared_key: Shared Key.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9865,7 +9857,6 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
         """
         SAS Token.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
 
         <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
@@ -10023,7 +10014,6 @@ class FeedDetailsAzureBlobStoreV2SettingsAuthenticationArgsDict(TypedDict):
     SAS Token.
     **Note**: This property is sensitive and will not be displayed in the plan.
 
-
     <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
     """
 
@@ -10040,7 +10030,6 @@ class FeedDetailsAzureBlobStoreV2SettingsAuthenticationArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] sas_token: SAS Token.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
                
                <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
@@ -10080,7 +10069,6 @@ class FeedDetailsAzureBlobStoreV2SettingsAuthenticationArgs:
         """
         SAS Token.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
 
         <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
@@ -16896,7 +16884,7 @@ class FeedDetailsTrellixHxAlertsSettingsArgsDict(TypedDict):
     Usually a device URL is in the form of either:
     https://xxx.trellix.com/hx/id//
     - or -
-    https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+      https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
 
 @pulumi.input_type
@@ -16913,7 +16901,7 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -16943,7 +16931,7 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 
@@ -17231,7 +17219,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgsDict(TypedDict):
     Usually a device URL is in the form of either:
     https://xxx.trellix.com/hx/id//
     - or -
-    https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+      https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
     authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict']]]
     """
@@ -17251,7 +17239,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         :param pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs'] authentication: TrellixStarXAuthentication contains a oneof with all of the authentication
                types supported by Trellix *X devices.
                Structure is documented below.
@@ -17269,7 +17257,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 
@@ -17565,7 +17553,7 @@ class FeedDetailsTrellixHxHostsSettingsArgsDict(TypedDict):
     Usually a device URL is in the form of either:
     https://xxx.trellix.com/hx/id//
     - or -
-    https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+      https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
     authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict']]]
     """
@@ -17585,7 +17573,7 @@ class FeedDetailsTrellixHxHostsSettingsArgs:
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         :param pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs'] authentication: TrellixStarXAuthentication contains a oneof with all of the authentication
                types supported by Trellix *X devices.
                Structure is documented below.
@@ -17603,7 +17591,7 @@ class FeedDetailsTrellixHxHostsSettingsArgs:
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 

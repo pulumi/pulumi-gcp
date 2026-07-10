@@ -1397,7 +1397,6 @@ class InboundSamlConfigSpConfigArgsDict(TypedDict):
     The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
     Structure is documented below.
 
-
     <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
     """
     sp_entity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -1416,7 +1415,6 @@ class InboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
-               
                
                <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         :param pulumi.Input[_builtins.str] sp_entity_id: Unique identifier for all SAML entities.
@@ -1447,7 +1445,6 @@ class InboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -1762,7 +1759,6 @@ class TenantInboundSamlConfigSpConfigArgsDict(TypedDict):
     The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
     Structure is documented below.
 
-
     <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
     """
 
@@ -1778,7 +1774,6 @@ class TenantInboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
-               
                
                <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -1818,7 +1813,6 @@ class TenantInboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """

@@ -101,7 +101,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -377,7 +377,7 @@ class DatabaseInstanceArgs:
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 
@@ -594,7 +594,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -1004,7 +1004,7 @@ class _DatabaseInstanceState:
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 
@@ -1555,7 +1555,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -2098,7 +2098,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -2386,7 +2386,7 @@ class DatabaseInstance(pulumi.CustomResource):
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 

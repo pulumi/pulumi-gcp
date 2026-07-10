@@ -366,7 +366,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
@@ -663,7 +663,7 @@ export interface InstanceTemplateState {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     machineType?: pulumi.Input<string | undefined>;
     /**
@@ -852,7 +852,7 @@ export interface InstanceTemplateArgs {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     machineType: pulumi.Input<string>;
     /**

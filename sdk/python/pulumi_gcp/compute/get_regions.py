@@ -92,14 +92,14 @@ def get_regions(project: Optional[_builtins.str] = None,
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_regions()
-    cluster: list[Any] = []
+    cluster: list[gcp.compute.Subnetwork] = []
     def create_cluster(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
+        for cluster_range in [{"value": i} for i in range(0, range_body)]:
+            cluster.append(gcp.compute.Subnetwork(f"cluster-{cluster_range['value']}",
                 name="my-network",
-                ip_cidr_range=f"10.36.{range['value']}.0/24",
+                ip_cidr_range=f"10.36.{cluster_range['value']}.0/24",
                 network="my-network",
-                region=available.names[range["value"]]))
+                region=available.names[cluster_range["value"]]))
 
     (len(available.names)).apply(create_cluster)
     ```
@@ -133,14 +133,14 @@ def get_regions_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] 
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_regions()
-    cluster: list[Any] = []
+    cluster: list[gcp.compute.Subnetwork] = []
     def create_cluster(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
+        for cluster_range in [{"value": i} for i in range(0, range_body)]:
+            cluster.append(gcp.compute.Subnetwork(f"cluster-{cluster_range['value']}",
                 name="my-network",
-                ip_cidr_range=f"10.36.{range['value']}.0/24",
+                ip_cidr_range=f"10.36.{cluster_range['value']}.0/24",
                 network="my-network",
-                region=available.names[range["value"]]))
+                region=available.names[cluster_range["value"]]))
 
     (len(available.names)).apply(create_cluster)
     ```

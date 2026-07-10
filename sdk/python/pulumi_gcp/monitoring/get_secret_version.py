@@ -176,7 +176,7 @@ def get_secret_version(fetch_secret_data: Optional[_builtins.bool] = None,
     ```
 
 
-    :param _builtins.bool fetch_secret_data: If set to `false`, the `secret_data` 
+    :param _builtins.bool fetch_secret_data: If set to `false`, the `secret_data`
            will not be fetched. Default is `true`.
     :param _builtins.bool is_secret_data_base64: If set to `true`, the secret data is
            expected to be base64-encoded string.
@@ -227,7 +227,7 @@ def get_secret_version_output(fetch_secret_data: pulumi.Input[Optional[Optional[
     ```
 
 
-    :param _builtins.bool fetch_secret_data: If set to `false`, the `secret_data` 
+    :param _builtins.bool fetch_secret_data: If set to `false`, the `secret_data`
            will not be fetched. Default is `true`.
     :param _builtins.bool is_secret_data_base64: If set to `true`, the secret data is
            expected to be base64-encoded string.

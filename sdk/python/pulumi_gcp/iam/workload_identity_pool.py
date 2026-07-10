@@ -70,22 +70,22 @@ class WorkloadIdentityPoolArgs:
                **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
                To specify a different `mode`, please create a new Workload Identity Pool resource.
                * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-               Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-               workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-               within the pool besides providers.
+                 Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+                 workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+                 within the pool besides providers.
                * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-               identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-               workload identifier. The subject identifier for all identities must conform to the following
-               format: `ns/<namespace>/sa/<workload_identifier>`.
-               `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-               mode pools.
+                 identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+                 workload identifier. The subject identifier for all identities must conform to the following
+                 format: `ns/<namespace>/sa/<workload_identifier>`.
+                 `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+                 mode pools.
                * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+                 `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+                 can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+                 `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
                * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
                * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+                 Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -237,22 +237,22 @@ class WorkloadIdentityPoolArgs:
         **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
         To specify a different `mode`, please create a new Workload Identity Pool resource.
         * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-        Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-        workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-        within the pool besides providers.
+          Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+          workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+          within the pool besides providers.
         * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-        identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-        workload identifier. The subject identifier for all identities must conform to the following
-        format: `ns/<namespace>/sa/<workload_identifier>`.
-        `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-        mode pools.
+          identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+          workload identifier. The subject identifier for all identities must conform to the following
+          format: `ns/<namespace>/sa/<workload_identifier>`.
+          `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+          mode pools.
         * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+          `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+          can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+          `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
         * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
         * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+          Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 
@@ -325,22 +325,22 @@ class _WorkloadIdentityPoolState:
                **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
                To specify a different `mode`, please create a new Workload Identity Pool resource.
                * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-               Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-               workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-               within the pool besides providers.
+                 Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+                 workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+                 within the pool besides providers.
                * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-               identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-               workload identifier. The subject identifier for all identities must conform to the following
-               format: `ns/<namespace>/sa/<workload_identifier>`.
-               `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-               mode pools.
+                 identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+                 workload identifier. The subject identifier for all identities must conform to the following
+                 format: `ns/<namespace>/sa/<workload_identifier>`.
+                 `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+                 mode pools.
                * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+                 `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+                 can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+                 `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
                * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
                * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+                 Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] name: The resource name of the pool as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -349,11 +349,11 @@ class _WorkloadIdentityPoolState:
                * `STATE_UNSPECIFIED`: State unspecified.
                * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
                * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-               approximately 30 days. You can restore a soft-deleted pool using
-               `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
-               permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
-               use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-               access again.
+                 approximately 30 days. You can restore a soft-deleted pool using
+                 `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
+                 permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+                 use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+                 access again.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -497,22 +497,22 @@ class _WorkloadIdentityPoolState:
         **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
         To specify a different `mode`, please create a new Workload Identity Pool resource.
         * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-        Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-        workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-        within the pool besides providers.
+          Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+          workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+          within the pool besides providers.
         * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-        identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-        workload identifier. The subject identifier for all identities must conform to the following
-        format: `ns/<namespace>/sa/<workload_identifier>`.
-        `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-        mode pools.
+          identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+          workload identifier. The subject identifier for all identities must conform to the following
+          format: `ns/<namespace>/sa/<workload_identifier>`.
+          `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+          mode pools.
         * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+          `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+          can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+          `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
         * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
         * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+          Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 
@@ -554,11 +554,11 @@ class _WorkloadIdentityPoolState:
         * `STATE_UNSPECIFIED`: State unspecified.
         * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
         * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-        approximately 30 days. You can restore a soft-deleted pool using
-        `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
-        permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
-        use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-        access again.
+          approximately 30 days. You can restore a soft-deleted pool using
+          `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
+          permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+          use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+          access again.
         """
         return pulumi.get(self, "state")
 
@@ -788,22 +788,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
                To specify a different `mode`, please create a new Workload Identity Pool resource.
                * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-               Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-               workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-               within the pool besides providers.
+                 Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+                 workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+                 within the pool besides providers.
                * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-               identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-               workload identifier. The subject identifier for all identities must conform to the following
-               format: `ns/<namespace>/sa/<workload_identifier>`.
-               `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-               mode pools.
+                 identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+                 workload identifier. The subject identifier for all identities must conform to the following
+                 format: `ns/<namespace>/sa/<workload_identifier>`.
+                 `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+                 mode pools.
                * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+                 `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+                 can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+                 `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
                * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
                * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+                 Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
@@ -1081,22 +1081,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
                To specify a different `mode`, please create a new Workload Identity Pool resource.
                * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-               Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-               workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-               within the pool besides providers.
+                 Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+                 workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+                 within the pool besides providers.
                * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-               identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-               workload identifier. The subject identifier for all identities must conform to the following
-               format: `ns/<namespace>/sa/<workload_identifier>`.
-               `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-               mode pools.
+                 identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+                 workload identifier. The subject identifier for all identities must conform to the following
+                 format: `ns/<namespace>/sa/<workload_identifier>`.
+                 `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+                 mode pools.
                * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+                 `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+                 can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+                 `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
                * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
                * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+                 Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] name: The resource name of the pool as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1105,11 +1105,11 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                * `STATE_UNSPECIFIED`: State unspecified.
                * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
                * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-               approximately 30 days. You can restore a soft-deleted pool using
-               `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
-               permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
-               use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-               access again.
+                 approximately 30 days. You can restore a soft-deleted pool using
+                 `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
+                 permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+                 use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+                 access again.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -1218,22 +1218,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
         To specify a different `mode`, please create a new Workload Identity Pool resource.
         * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
-        Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
-        workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
-        within the pool besides providers.
+          Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
+          workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
+          within the pool besides providers.
         * `TRUST_DOMAIN`: Pools can be used to assign identities to Google Cloud workloads. All
-        identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
-        workload identifier. The subject identifier for all identities must conform to the following
-        format: `ns/<namespace>/sa/<workload_identifier>`.
-        `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
-        mode pools.
+          identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
+          workload identifier. The subject identifier for all identities must conform to the following
+          format: `ns/<namespace>/sa/<workload_identifier>`.
+          `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
+          mode pools.
         * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
-        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
-        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
-        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+          `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+          can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+          `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
         * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
         * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+          Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 
@@ -1263,11 +1263,11 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         * `STATE_UNSPECIFIED`: State unspecified.
         * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
         * `DELETED`: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-        approximately 30 days. You can restore a soft-deleted pool using
-        `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
-        permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
-        use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-        access again.
+          approximately 30 days. You can restore a soft-deleted pool using
+          `UndeleteWorkloadIdentityPool`. You cannot reuse the ID of a soft-deleted pool until it is
+          permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+          use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+          access again.
         """
         return pulumi.get(self, "state")
 

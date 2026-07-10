@@ -97,8 +97,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     declare public readonly addressType: pulumi.Output<string | undefined>;
     /**
@@ -253,8 +253,8 @@ export interface GlobalAddressState {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string | undefined>;
     /**
@@ -355,8 +355,8 @@ export interface GlobalAddressArgs {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string | undefined>;
     /**

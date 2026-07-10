@@ -31,7 +31,7 @@ class TraceScopeArgs:
         :param pulumi.Input[_builtins.str] location: GCP region the TraceScope is stored in. Only `global` is supported.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of the projects that are included in this trace scope.
                *  `projects/[PROJECT_ID]`
-               A trace scope can include a maximum of 20 projects.
+                  A trace scope can include a maximum of 20 projects.
         :param pulumi.Input[_builtins.str] trace_scope_id: A client-assigned identifier for the trace scope.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -72,7 +72,7 @@ class TraceScopeArgs:
         """
         Names of the projects that are included in this trace scope.
         *  `projects/[PROJECT_ID]`
-        A trace scope can include a maximum of 20 projects.
+           A trace scope can include a maximum of 20 projects.
         """
         return pulumi.get(self, "resource_names")
 
@@ -168,7 +168,7 @@ class _TraceScopeState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of the projects that are included in this trace scope.
                *  `projects/[PROJECT_ID]`
-               A trace scope can include a maximum of 20 projects.
+                  A trace scope can include a maximum of 20 projects.
         :param pulumi.Input[_builtins.str] trace_scope_id: A client-assigned identifier for the trace scope.
         :param pulumi.Input[_builtins.str] update_time: The last update timestamp of the trace scope.
         """
@@ -278,7 +278,7 @@ class _TraceScopeState:
         """
         Names of the projects that are included in this trace scope.
         *  `projects/[PROJECT_ID]`
-        A trace scope can include a maximum of 20 projects.
+           A trace scope can include a maximum of 20 projects.
         """
         return pulumi.get(self, "resource_names")
 
@@ -384,7 +384,7 @@ class TraceScope(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of the projects that are included in this trace scope.
                *  `projects/[PROJECT_ID]`
-               A trace scope can include a maximum of 20 projects.
+                  A trace scope can include a maximum of 20 projects.
         :param pulumi.Input[_builtins.str] trace_scope_id: A client-assigned identifier for the trace scope.
         """
         ...
@@ -526,7 +526,7 @@ class TraceScope(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Names of the projects that are included in this trace scope.
                *  `projects/[PROJECT_ID]`
-               A trace scope can include a maximum of 20 projects.
+                  A trace scope can include a maximum of 20 projects.
         :param pulumi.Input[_builtins.str] trace_scope_id: A client-assigned identifier for the trace scope.
         :param pulumi.Input[_builtins.str] update_time: The last update timestamp of the trace scope.
         """
@@ -608,7 +608,7 @@ class TraceScope(pulumi.CustomResource):
         """
         Names of the projects that are included in this trace scope.
         *  `projects/[PROJECT_ID]`
-        A trace scope can include a maximum of 20 projects.
+           A trace scope can include a maximum of 20 projects.
         """
         return pulumi.get(self, "resource_names")
 

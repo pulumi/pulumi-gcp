@@ -15,12 +15,12 @@ import * as utilities from "../utilities";
  * const available = gcp.compute.getZones({});
  * const foo: gcp.compute.InstanceGroupManager[] = [];
  * available.then(available => available.names).length.apply(rangeBody => {
- *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
- *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
- *             name: `test-${range.value}`,
+ *     for (let range = 0; range < rangeBody; range++) {
+ *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+ *             name: `test-${range}`,
  *             instanceTemplate: foobar.selfLink,
- *             baseInstanceName: `foobar-${range.value}`,
- *             zone: available.then(available => available.names[range.value]),
+ *             baseInstanceName: `foobar-${range}`,
+ *             zone: available.then(available => available.names[range]),
  *             targetSize: 1,
  *         }));
  *     }
@@ -83,12 +83,12 @@ export interface GetZonesResult {
  * const available = gcp.compute.getZones({});
  * const foo: gcp.compute.InstanceGroupManager[] = [];
  * available.then(available => available.names).length.apply(rangeBody => {
- *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
- *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
- *             name: `test-${range.value}`,
+ *     for (let range = 0; range < rangeBody; range++) {
+ *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+ *             name: `test-${range}`,
  *             instanceTemplate: foobar.selfLink,
- *             baseInstanceName: `foobar-${range.value}`,
- *             zone: available.then(available => available.names[range.value]),
+ *             baseInstanceName: `foobar-${range}`,
+ *             zone: available.then(available => available.names[range]),
  *             targetSize: 1,
  *         }));
  *     }

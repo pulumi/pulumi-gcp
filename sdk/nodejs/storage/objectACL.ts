@@ -92,7 +92,7 @@ export class ObjectACL extends pulumi.CustomResource {
     /**
      * The name of the object to apply the acl to.
      *
-     * - - -
+     * ***
      */
     declare public readonly object: pulumi.Output<string>;
     /**
@@ -166,7 +166,7 @@ export interface ObjectACLState {
     /**
      * The name of the object to apply the acl to.
      *
-     * - - -
+     * ***
      */
     object?: pulumi.Input<string | undefined>;
     /**
@@ -204,7 +204,7 @@ export interface ObjectACLArgs {
     /**
      * The name of the object to apply the acl to.
      *
-     * - - -
+     * ***
      */
     object: pulumi.Input<string>;
     /**

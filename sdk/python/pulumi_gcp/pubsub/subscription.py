@@ -87,8 +87,8 @@ class SubscriptionArgs:
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[_builtins.bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -295,8 +295,8 @@ class SubscriptionArgs:
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -559,8 +559,8 @@ class _SubscriptionState:
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[_builtins.bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -775,8 +775,8 @@ class _SubscriptionState:
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -1560,8 +1560,8 @@ class Subscription(pulumi.CustomResource):
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[_builtins.bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -2267,8 +2267,8 @@ class Subscription(pulumi.CustomResource):
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[_builtins.bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -2443,8 +2443,8 @@ class Subscription(pulumi.CustomResource):
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 

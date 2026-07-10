@@ -57,7 +57,7 @@ class AddressArgs:
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
@@ -88,17 +88,17 @@ class AddressArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
-               This should only be set when using an Internal address.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
+                 This should only be set when using an Internal address.
         :param pulumi.Input[_builtins.str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -206,7 +206,7 @@ class AddressArgs:
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         """
@@ -336,17 +336,17 @@ class AddressArgs:
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
-        This should only be set when using an Internal address.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
+          This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -434,7 +434,7 @@ class _AddressState:
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
@@ -469,17 +469,17 @@ class _AddressState:
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
-               This should only be set when using an Internal address.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
+                 This should only be set when using an Internal address.
         :param pulumi.Input[_builtins.str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -639,7 +639,7 @@ class _AddressState:
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         """
@@ -795,17 +795,17 @@ class _AddressState:
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
-        This should only be set when using an Internal address.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
+          This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -1033,7 +1033,7 @@ class Address(pulumi.CustomResource):
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
@@ -1064,17 +1064,17 @@ class Address(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
-               This should only be set when using an Internal address.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
+                 This should only be set when using an Internal address.
         :param pulumi.Input[_builtins.str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -1338,7 +1338,7 @@ class Address(pulumi.CustomResource):
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
@@ -1373,17 +1373,17 @@ class Address(pulumi.CustomResource):
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
-               This should only be set when using an Internal address.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
+                 This should only be set when using an Internal address.
         :param pulumi.Input[_builtins.str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -1497,7 +1497,7 @@ class Address(pulumi.CustomResource):
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         """
@@ -1609,17 +1609,17 @@ class Address(pulumi.CustomResource):
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
-        This should only be set when using an Internal address.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
+          This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 

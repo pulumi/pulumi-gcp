@@ -67,7 +67,7 @@ export class Api extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface ApiState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -211,7 +211,7 @@ export interface ApiArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

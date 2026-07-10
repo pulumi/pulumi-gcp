@@ -36,7 +36,7 @@ export interface GetAppConnectionArgs {
     /**
      * The name of the App Connection.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -102,7 +102,7 @@ export interface GetAppConnectionOutputArgs {
     /**
      * The name of the App Connection.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

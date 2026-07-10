@@ -128,11 +128,11 @@ export class PluginInstance extends pulumi.CustomResource {
      * The ID to use for the plugin instance, which will become the final
      * component of the plugin instance's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified id is already used by another plugin instance in the plugin
-     * resource.
+     *   the specified id is already used by another plugin instance in the plugin
+     *   resource.
      * * If not provided, a system generated id will be used.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-63 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     declare public readonly pluginInstanceId: pulumi.Output<string>;
     /**
@@ -278,11 +278,11 @@ export interface PluginInstanceState {
      * The ID to use for the plugin instance, which will become the final
      * component of the plugin instance's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified id is already used by another plugin instance in the plugin
-     * resource.
+     *   the specified id is already used by another plugin instance in the plugin
+     *   resource.
      * * If not provided, a system generated id will be used.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-63 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     pluginInstanceId?: pulumi.Input<string | undefined>;
     /**
@@ -352,11 +352,11 @@ export interface PluginInstanceArgs {
      * The ID to use for the plugin instance, which will become the final
      * component of the plugin instance's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified id is already used by another plugin instance in the plugin
-     * resource.
+     *   the specified id is already used by another plugin instance in the plugin
+     *   resource.
      * * If not provided, a system generated id will be used.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-63 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     pluginInstanceId: pulumi.Input<string>;
     /**

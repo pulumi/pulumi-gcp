@@ -39,7 +39,7 @@ export interface GetServiceArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: string;
     /**
@@ -138,7 +138,7 @@ export interface GetServiceOutputArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**

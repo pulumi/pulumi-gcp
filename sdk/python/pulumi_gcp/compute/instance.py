@@ -73,7 +73,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -268,7 +268,7 @@ class InstanceArgs:
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -846,7 +846,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1371,7 +1371,7 @@ class _InstanceState:
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1801,7 +1801,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkInterfaceArgs', 'InstanceNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceNetworkPerformanceConfigArgs', 'InstanceNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -2199,7 +2199,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkInterfaceArgs', 'InstanceNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceNetworkPerformanceConfigArgs', 'InstanceNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -2568,7 +2568,7 @@ class Instance(pulumi.CustomResource):
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 

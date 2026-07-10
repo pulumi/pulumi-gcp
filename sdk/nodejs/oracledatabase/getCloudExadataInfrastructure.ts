@@ -44,7 +44,7 @@ export interface GetCloudExadataInfrastructureArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -115,7 +115,7 @@ export interface GetCloudExadataInfrastructureOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

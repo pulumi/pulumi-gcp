@@ -121,9 +121,9 @@ export class AiTensorboardExperiment extends pulumi.CustomResource {
      * System reserved label keys are prefixed with `aiplatform.googleapis.com/`
      * and are immutable. The following system labels exist for each Dataset:
      * * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-     * value is the metadata_schema's title.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   value is the metadata_schema's title.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -267,9 +267,9 @@ export interface AiTensorboardExperimentState {
      * System reserved label keys are prefixed with `aiplatform.googleapis.com/`
      * and are immutable. The following system labels exist for each Dataset:
      * * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-     * value is the metadata_schema's title.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   value is the metadata_schema's title.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -346,9 +346,9 @@ export interface AiTensorboardExperimentArgs {
      * System reserved label keys are prefixed with `aiplatform.googleapis.com/`
      * and are immutable. The following system labels exist for each Dataset:
      * * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-     * value is the metadata_schema's title.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   value is the metadata_schema's title.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

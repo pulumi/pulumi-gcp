@@ -37,7 +37,7 @@ export function getSink(args: GetSinkArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetSinkArgs {
     /**
-     * The identifier for the resource. 
+     * The identifier for the resource.
      * Examples:
      *
      * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
@@ -118,7 +118,7 @@ export function getSinkOutput(args: GetSinkOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetSinkOutputArgs {
     /**
-     * The identifier for the resource. 
+     * The identifier for the resource.
      * Examples:
      *
      * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`

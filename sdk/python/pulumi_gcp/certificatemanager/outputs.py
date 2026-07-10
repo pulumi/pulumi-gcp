@@ -153,7 +153,6 @@ class CertificateManaged(dict):
                specified for this Managed Certificate.
                Structure is documented below.
                
-               
                <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param Sequence[_builtins.str] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param Sequence[_builtins.str] domains: The domains for which a managed SSL certificate will be generated.
@@ -188,7 +187,6 @@ class CertificateManaged(dict):
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
-
 
         <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         """

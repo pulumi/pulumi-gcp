@@ -49,7 +49,7 @@ class SecurityPolicyArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the security policy.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs'] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -58,12 +58,12 @@ class SecurityPolicyArgs:
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-               They filter requests before they hit the origin servers.
+                 They filter requests before they hit the origin servers.
                * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-               They filter requests before the request is served from Google's cache.
+                 (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+                 They filter requests before the request is served from Google's cache.
                * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-               managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+                 managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -160,7 +160,7 @@ class SecurityPolicyArgs:
         """
         The name of the security policy.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -213,12 +213,12 @@ class SecurityPolicyArgs:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-        They filter requests before they hit the origin servers.
+          They filter requests before they hit the origin servers.
         * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-        They filter requests before the request is served from Google's cache.
+          (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+          They filter requests before the request is served from Google's cache.
         * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-        managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+          managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         return pulumi.get(self, "type")
 
@@ -266,7 +266,7 @@ class _SecurityPolicyState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the security policy.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -277,12 +277,12 @@ class _SecurityPolicyState:
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-               They filter requests before they hit the origin servers.
+                 They filter requests before they hit the origin servers.
                * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-               They filter requests before the request is served from Google's cache.
+                 (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+                 They filter requests before the request is served from Google's cache.
                * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-               managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+                 managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -425,7 +425,7 @@ class _SecurityPolicyState:
         """
         The name of the security policy.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -502,12 +502,12 @@ class _SecurityPolicyState:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-        They filter requests before they hit the origin servers.
+          They filter requests before they hit the origin servers.
         * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-        They filter requests before the request is served from Google's cache.
+          (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+          They filter requests before the request is served from Google's cache.
         * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-        managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+          managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         return pulumi.get(self, "type")
 
@@ -743,7 +743,7 @@ class SecurityPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the security policy.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -752,12 +752,12 @@ class SecurityPolicy(pulumi.CustomResource):
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-               They filter requests before they hit the origin servers.
+                 They filter requests before they hit the origin servers.
                * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-               They filter requests before the request is served from Google's cache.
+                 (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+                 They filter requests before the request is served from Google's cache.
                * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-               managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+                 managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         ...
     @overload
@@ -1059,7 +1059,7 @@ class SecurityPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the security policy.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1070,12 +1070,12 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-               They filter requests before they hit the origin servers.
+                 They filter requests before they hit the origin servers.
                * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-               They filter requests before the request is served from Google's cache.
+                 (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+                 They filter requests before the request is served from Google's cache.
                * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-               managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+                 managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1176,7 +1176,7 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         The name of the security policy.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -1229,12 +1229,12 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-        They filter requests before they hit the origin servers.
+          They filter requests before they hit the origin servers.
         * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-        They filter requests before the request is served from Google's cache.
+          (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+          They filter requests before the request is served from Google's cache.
         * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-        managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+          managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
         """
         return pulumi.get(self, "type")
 

@@ -140,12 +140,12 @@ export class QaQuestion extends pulumi.CustomResource {
     /**
      * Questions are tagged for categorization and scoring. Tags can either be:
      * - Default Tags: These are predefined categories. They are identified by
-     * their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+     *   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
      * - Custom Tags: These are user-defined categories. They are identified by
-     * their full resource name (e.g.,
-     * projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-     * Both default and custom tags are used to group questions and to influence
-     * the scoring of each question.
+     *   their full resource name (e.g.,
+     *   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+     *   Both default and custom tags are used to group questions and to influence
+     *   the scoring of each question.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -316,12 +316,12 @@ export interface QaQuestionState {
     /**
      * Questions are tagged for categorization and scoring. Tags can either be:
      * - Default Tags: These are predefined categories. They are identified by
-     * their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+     *   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
      * - Custom Tags: These are user-defined categories. They are identified by
-     * their full resource name (e.g.,
-     * projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-     * Both default and custom tags are used to group questions and to influence
-     * the scoring of each question.
+     *   their full resource name (e.g.,
+     *   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+     *   Both default and custom tags are used to group questions and to influence
+     *   the scoring of each question.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -415,12 +415,12 @@ export interface QaQuestionArgs {
     /**
      * Questions are tagged for categorization and scoring. Tags can either be:
      * - Default Tags: These are predefined categories. They are identified by
-     * their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+     *   their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
      * - Custom Tags: These are user-defined categories. They are identified by
-     * their full resource name (e.g.,
-     * projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-     * Both default and custom tags are used to group questions and to influence
-     * the scoring of each question.
+     *   their full resource name (e.g.,
+     *   projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+     *   Both default and custom tags are used to group questions and to influence
+     *   the scoring of each question.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

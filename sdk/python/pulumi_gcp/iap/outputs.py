@@ -498,12 +498,12 @@ class SettingsAccessSettings(dict):
                Structure is documented below.
         :param 'SettingsAccessSettingsGcipSettingsArgs' gcip_settings: GCIP claims and endpoint configurations for 3p identity providers.
                * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-               Structure is documented below.
+                 Structure is documented below.
         :param Sequence[_builtins.str] identity_sources: Identity sources that IAP can use to authenticate the end user. Only one identity source
                can be configured. The possible values are:
                * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-               Identity Federation.
-               Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+                 Identity Federation.
+                 Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
         :param 'SettingsAccessSettingsOauthSettingsArgs' oauth_settings: Settings to configure IAP's OAuth behavior.
                Structure is documented below.
         :param 'SettingsAccessSettingsReauthSettingsArgs' reauth_settings: Settings to configure reauthentication policies in IAP.
@@ -551,7 +551,7 @@ class SettingsAccessSettings(dict):
         """
         GCIP claims and endpoint configurations for 3p identity providers.
         * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "gcip_settings")
 
@@ -562,8 +562,8 @@ class SettingsAccessSettings(dict):
         Identity sources that IAP can use to authenticate the end user. Only one identity source
         can be configured. The possible values are:
         * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-        Identity Federation.
-        Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+          Identity Federation.
+          Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
         """
         return pulumi.get(self, "identity_sources")
 
@@ -866,14 +866,14 @@ class SettingsAccessSettingsReauthSettings(dict):
                * `LOGIN`: Prompts the user to log in again.
                * `SECURE_KEY`: User must use their secure key 2nd factor device.
                * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-               Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+                 Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
         :param _builtins.str policy_type: How IAP determines the effective policy in cases of hierarchical policies.
                Policies are merged from higher in the hierarchy to lower in the hierarchy.
                The possible values are:
                * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-               Effective policy may only be the same or stricter.
+                 Effective policy may only be the same or stricter.
                * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-               Possible values are: `MINIMUM`, `DEFAULT`.
+                 Possible values are: `MINIMUM`, `DEFAULT`.
         """
         pulumi.set(__self__, "max_age", max_age)
         pulumi.set(__self__, "method", method)
@@ -897,7 +897,7 @@ class SettingsAccessSettingsReauthSettings(dict):
         * `LOGIN`: Prompts the user to log in again.
         * `SECURE_KEY`: User must use their secure key 2nd factor device.
         * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-        Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+          Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
         """
         return pulumi.get(self, "method")
 
@@ -909,9 +909,9 @@ class SettingsAccessSettingsReauthSettings(dict):
         Policies are merged from higher in the hierarchy to lower in the hierarchy.
         The possible values are:
         * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-        Effective policy may only be the same or stricter.
+          Effective policy may only be the same or stricter.
         * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-        Possible values are: `MINIMUM`, `DEFAULT`.
+          Possible values are: `MINIMUM`, `DEFAULT`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -943,7 +943,6 @@ class SettingsAccessSettingsWorkforceIdentitySettings(dict):
                federation services.
                Structure is documented below.
                
-               
                <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         :param _builtins.str workforce_pools: The workforce pool resources. Only one workforce pool is accepted.
         """
@@ -959,7 +958,6 @@ class SettingsAccessSettingsWorkforceIdentitySettings(dict):
         OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
         federation services.
         Structure is documented below.
-
 
         <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         """
@@ -1232,10 +1230,10 @@ class SettingsApplicationSettingsAttributePropagationSettings(dict):
                Possible values are:
                * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
                * `JWT`: Propagate attributes in the JWT of the form:
-               "additional_claims": { "my_attribute": ["value1", "value2"] }
+                 "additional_claims": { "my_attribute": ["value1", "value2"] }
                * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-               additional_claims": { "my_attribute": ["value1", "value2"] }
-               Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+                 additional_claims": { "my_attribute": ["value1", "value2"] }
+                 Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -1272,10 +1270,10 @@ class SettingsApplicationSettingsAttributePropagationSettings(dict):
         Possible values are:
         * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
         * `JWT`: Propagate attributes in the JWT of the form:
-        "additional_claims": { "my_attribute": ["value1", "value2"] }
+          "additional_claims": { "my_attribute": ["value1", "value2"] }
         * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-        additional_claims": { "my_attribute": ["value1", "value2"] }
-        Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+          additional_claims": { "my_attribute": ["value1", "value2"] }
+          Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
         """
         return pulumi.get(self, "output_credentials")
 

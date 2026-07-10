@@ -97,8 +97,8 @@ class InstanceDirectoryServicesLdap(dict):
                The LDAP servers names can come with two formats:
                1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
                2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-               All servers names must be in the same format: either all DNS names or all
-               IP addresses.
+                  All servers names must be in the same format: either all DNS names or all
+                  IP addresses.
         :param _builtins.str groups_ou: The groups Organizational Unit (OU) is optional. This parameter is a hint
                to allow faster lookup in the LDAP namespace. In case that this parameter
                is not provided, Filestore instance will query the whole LDAP namespace.
@@ -129,8 +129,8 @@ class InstanceDirectoryServicesLdap(dict):
         The LDAP servers names can come with two formats:
         1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
         2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-        All servers names must be in the same format: either all DNS names or all
-        IP addresses.
+           All servers names must be in the same format: either all DNS names or all
+           IP addresses.
         """
         return pulumi.get(self, "servers")
 
@@ -918,8 +918,8 @@ class GetInstanceDirectoryServiceLdapResult(dict):
                The LDAP servers names can come with two formats:
                1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
                2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
-               All servers names must be in the same format: either all DNS names or all
-               IP addresses.
+                  All servers names must be in the same format: either all DNS names or all
+                  IP addresses.
         :param _builtins.str users_ou: The users Organizational Unit (OU) is optional. This parameter is a hint
                to allow faster lookup in the LDAP namespace. In case that this parameter
                is not provided, Filestore instance will query the whole LDAP namespace.
@@ -955,8 +955,8 @@ class GetInstanceDirectoryServiceLdapResult(dict):
         The LDAP servers names can come with two formats:
         1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
         2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
-        All servers names must be in the same format: either all DNS names or all
-        IP addresses.
+           All servers names must be in the same format: either all DNS names or all
+           IP addresses.
         """
         return pulumi.get(self, "servers")
 
@@ -1068,7 +1068,7 @@ class GetInstanceFileShareResult(dict):
                for the standard tier, or 2560 GiB for the premium tier.
         :param _builtins.str name: The name of a Filestore instance.
                
-               - - -
+               ***
         :param Sequence['GetInstanceFileShareNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param _builtins.str source_backup: The resource name of the backup, in the format
                projects/{projectId}/locations/{locationId}/backups/{backupId},
@@ -1098,7 +1098,7 @@ class GetInstanceFileShareResult(dict):
         """
         The name of a Filestore instance.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

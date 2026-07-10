@@ -62,7 +62,7 @@ class InstanceTemplateArgs:
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -207,7 +207,7 @@ class InstanceTemplateArgs:
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 
@@ -635,7 +635,7 @@ class _InstanceTemplateState:
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -928,7 +928,7 @@ class _InstanceTemplateState:
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 
@@ -1560,7 +1560,7 @@ class InstanceTemplate(pulumi.CustomResource):
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_startup_script: An alternative to using the
@@ -2043,7 +2043,7 @@ class InstanceTemplate(pulumi.CustomResource):
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -2257,7 +2257,7 @@ class InstanceTemplate(pulumi.CustomResource):
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 

@@ -85,7 +85,7 @@ class HealthCheckArgs:
                * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
-               instance group auto-healing.
+                 instance group auto-healing.
         :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
@@ -311,7 +311,7 @@ class HealthCheckArgs:
         * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         * The checkIntervalSec field must be at least 30.
         * The health check cannot be used with BackendService nor with managed
-        instance group auto-healing.
+          instance group auto-healing.
         """
         return pulumi.get(self, "source_regions")
 
@@ -445,7 +445,7 @@ class _HealthCheckState:
                * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
-               instance group auto-healing.
+                 instance group auto-healing.
         :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
@@ -702,7 +702,7 @@ class _HealthCheckState:
         * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         * The checkIntervalSec field must be at least 30.
         * The health check cannot be used with BackendService nor with managed
-        instance group auto-healing.
+          instance group auto-healing.
         """
         return pulumi.get(self, "source_regions")
 
@@ -1204,7 +1204,7 @@ class HealthCheck(pulumi.CustomResource):
                * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
-               instance group auto-healing.
+                 instance group auto-healing.
         :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
@@ -1723,7 +1723,7 @@ class HealthCheck(pulumi.CustomResource):
                * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
-               instance group auto-healing.
+                 instance group auto-healing.
         :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
@@ -1909,7 +1909,7 @@ class HealthCheck(pulumi.CustomResource):
         * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
         * The checkIntervalSec field must be at least 30.
         * The health check cannot be used with BackendService nor with managed
-        instance group auto-healing.
+          instance group auto-healing.
         """
         return pulumi.get(self, "source_regions")
 

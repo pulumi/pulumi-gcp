@@ -56,9 +56,9 @@ class AiTensorboardExperimentArgs:
                System reserved label keys are prefixed with `aiplatform.googleapis.com/`
                and are immutable. The following system labels exist for each Dataset:
                * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-               value is the metadata_schema's title.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 value is the metadata_schema's title.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] source: Source of the TensorboardExperiment. Example: a custom training job.
@@ -174,9 +174,9 @@ class AiTensorboardExperimentArgs:
         System reserved label keys are prefixed with `aiplatform.googleapis.com/`
         and are immutable. The following system labels exist for each Dataset:
         * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-        value is the metadata_schema's title.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          value is the metadata_schema's title.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -251,9 +251,9 @@ class _AiTensorboardExperimentState:
                System reserved label keys are prefixed with `aiplatform.googleapis.com/`
                and are immutable. The following system labels exist for each Dataset:
                * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-               value is the metadata_schema's title.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 value is the metadata_schema's title.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the Tensorboard Experiment. eg us-central1
         :param pulumi.Input[_builtins.str] name: Name of the TensorboardExperiment.
                Format:
@@ -379,9 +379,9 @@ class _AiTensorboardExperimentState:
         System reserved label keys are prefixed with `aiplatform.googleapis.com/`
         and are immutable. The following system labels exist for each Dataset:
         * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-        value is the metadata_schema's title.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          value is the metadata_schema's title.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -579,9 +579,9 @@ class AiTensorboardExperiment(pulumi.CustomResource):
                System reserved label keys are prefixed with `aiplatform.googleapis.com/`
                and are immutable. The following system labels exist for each Dataset:
                * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-               value is the metadata_schema's title.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 value is the metadata_schema's title.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the Tensorboard Experiment. eg us-central1
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -754,9 +754,9 @@ class AiTensorboardExperiment(pulumi.CustomResource):
                System reserved label keys are prefixed with `aiplatform.googleapis.com/`
                and are immutable. The following system labels exist for each Dataset:
                * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-               value is the metadata_schema's title.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 value is the metadata_schema's title.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the Tensorboard Experiment. eg us-central1
         :param pulumi.Input[_builtins.str] name: Name of the TensorboardExperiment.
                Format:
@@ -853,9 +853,9 @@ class AiTensorboardExperiment(pulumi.CustomResource):
         System reserved label keys are prefixed with `aiplatform.googleapis.com/`
         and are immutable. The following system labels exist for each Dataset:
         * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its
-        value is the metadata_schema's title.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          value is the metadata_schema's title.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

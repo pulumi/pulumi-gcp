@@ -43,7 +43,7 @@ export interface GetDiskArgs {
     /**
      * The name of a specific disk.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -215,7 +215,7 @@ export interface GetDiskOutputArgs {
     /**
      * The name of a specific disk.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

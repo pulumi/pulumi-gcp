@@ -188,9 +188,9 @@ class _WorkloadIdentityPoolNamespaceState:
         :param pulumi.Input[_builtins.str] state: The current state of the namespace.
                * `ACTIVE`: The namespace is active.
                * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-               after approximately 30 days. You can restore a soft-deleted namespace using
-               UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-               until it is permanently deleted.
+                 after approximately 30 days. You can restore a soft-deleted namespace using
+                 UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+                 until it is permanently deleted.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -311,9 +311,9 @@ class _WorkloadIdentityPoolNamespaceState:
         The current state of the namespace.
         * `ACTIVE`: The namespace is active.
         * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-        after approximately 30 days. You can restore a soft-deleted namespace using
-        UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-        until it is permanently deleted.
+          after approximately 30 days. You can restore a soft-deleted namespace using
+          UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+          until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 
@@ -605,9 +605,9 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The current state of the namespace.
                * `ACTIVE`: The namespace is active.
                * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-               after approximately 30 days. You can restore a soft-deleted namespace using
-               UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-               until it is permanently deleted.
+                 after approximately 30 days. You can restore a soft-deleted namespace using
+                 UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+                 until it is permanently deleted.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -700,9 +700,9 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         The current state of the namespace.
         * `ACTIVE`: The namespace is active.
         * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-        after approximately 30 days. You can restore a soft-deleted namespace using
-        UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-        until it is permanently deleted.
+          after approximately 30 days. You can restore a soft-deleted namespace using
+          UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+          until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 

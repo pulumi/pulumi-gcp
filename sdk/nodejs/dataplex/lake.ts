@@ -123,9 +123,7 @@ export class Lake extends pulumi.CustomResource {
     /**
      * The name of the lake.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -268,9 +266,7 @@ export interface LakeState {
     /**
      * The name of the lake.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -338,9 +334,7 @@ export interface LakeArgs {
     /**
      * The name of the lake.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

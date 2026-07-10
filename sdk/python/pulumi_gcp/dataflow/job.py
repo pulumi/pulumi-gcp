@@ -45,7 +45,7 @@ class JobArgs:
 
         :param pulumi.Input[_builtins.str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -123,7 +123,7 @@ class JobArgs:
         """
         A writeable location on GCS for the Dataflow job to dump its temporary data.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "temp_gcs_location")
 
@@ -445,7 +445,7 @@ class _JobState:
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[_builtins.str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[_builtins.str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -771,7 +771,7 @@ class _JobState:
         """
         A writeable location on GCS for the Dataflow job to dump its temporary data.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "temp_gcs_location")
 
@@ -984,7 +984,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[_builtins.str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[_builtins.str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -1245,7 +1245,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[_builtins.str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[_builtins.str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -1466,7 +1466,7 @@ class Job(pulumi.CustomResource):
         """
         A writeable location on GCS for the Dataflow job to dump its temporary data.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "temp_gcs_location")
 

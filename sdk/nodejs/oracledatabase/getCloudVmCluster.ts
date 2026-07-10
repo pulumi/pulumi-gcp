@@ -44,7 +44,7 @@ export interface GetCloudVmClusterArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -122,7 +122,7 @@ export interface GetCloudVmClusterOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

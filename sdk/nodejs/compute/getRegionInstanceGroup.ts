@@ -55,7 +55,7 @@ export interface GetRegionInstanceGroupArgs {
     /**
      * The link to the instance group.  One of `name` or `selfLink` must be provided.
      *
-     * - - -
+     * ***
      */
     selfLink?: string;
 }
@@ -133,7 +133,7 @@ export interface GetRegionInstanceGroupOutputArgs {
     /**
      * The link to the instance group.  One of `name` or `selfLink` must be provided.
      *
-     * - - -
+     * ***
      */
     selfLink?: pulumi.Input<string | undefined>;
 }

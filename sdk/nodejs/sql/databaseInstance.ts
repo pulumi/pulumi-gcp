@@ -45,13 +45,13 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const apps: gcp.compute.Instance[] = [];
- * for (const range = {value: 0}; range.value < 8; range.value++) {
- *     apps.push(new gcp.compute.Instance(`apps-${range.value}`, {
+ * for (let range = 0; range < 8; range++) {
+ *     apps.push(new gcp.compute.Instance(`apps-${range}`, {
  *         networkInterfaces: [{
  *             accessConfigs: [{}],
  *             network: "default",
  *         }],
- *         name: `apps-${range.value + 1}`,
+ *         name: `apps-${range + 1}`,
  *         machineType: "f1-micro",
  *         bootDisk: {
  *             initializeParams: {
@@ -540,7 +540,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -825,7 +825,7 @@ export interface DatabaseInstanceState {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     region?: pulumi.Input<string | undefined>;
     /**
@@ -981,7 +981,7 @@ export interface DatabaseInstanceArgs {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     region?: pulumi.Input<string | undefined>;
     /**

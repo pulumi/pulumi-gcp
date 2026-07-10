@@ -48,7 +48,7 @@ export interface GetDatastoreArgs {
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-     * (section 3.5)
+     *   (section 3.5)
      */
     name: string;
     /**
@@ -120,7 +120,7 @@ export interface GetDatastoreOutputArgs {
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-     * (section 3.5)
+     *   (section 3.5)
      */
     name: pulumi.Input<string>;
     /**

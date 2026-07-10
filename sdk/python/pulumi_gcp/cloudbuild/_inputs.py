@@ -1143,7 +1143,6 @@ class TriggerBuildArtifactsObjectsArgsDict(TypedDict):
     Output only. Stores timing information for pushing all artifact objects.
     Structure is documented below.
 
-
     <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
     """
 
@@ -1161,7 +1160,6 @@ class TriggerBuildArtifactsObjectsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: (Output)
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
-               
                
                <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
@@ -1205,7 +1203,6 @@ class TriggerBuildArtifactsObjectsArgs:
         (Output)
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
-
 
         <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """

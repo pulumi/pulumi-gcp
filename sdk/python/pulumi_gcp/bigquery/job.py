@@ -726,18 +726,18 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         count = 2
-        source_dataset: list[Any] = []
-        for range in [{"value": i} for i in range(0, count)]:
-            source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
-                dataset_id=f"job_copy_{range['value']}_dataset",
+        source_dataset: list[gcp.bigquery.Dataset] = []
+        for source_dataset_range in [{"value": i} for i in range(0, count)]:
+            source_dataset.append(gcp.bigquery.Dataset(f"source-{source_dataset_range['value']}",
+                dataset_id=f"job_copy_{source_dataset_range['value']}_dataset",
                 friendly_name="test",
                 description="This is a test description",
                 location="US"))
-        source: list[Any] = []
-        for range in [{"value": i} for i in range(0, count)]:
-            source.append(gcp.bigquery.Table(f"source-{range['value']}",
-                dataset_id=source_dataset[range["value"]].dataset_id,
-                table_id=f"job_copy_{range['value']}_table",
+        source: list[gcp.bigquery.Table] = []
+        for source_range in [{"value": i} for i in range(0, count)]:
+            source.append(gcp.bigquery.Table(f"source-{source_range['value']}",
+                dataset_id=source_dataset[source_range["value"]].dataset_id,
+                table_id=f"job_copy_{source_range['value']}_table",
                 deletion_protection=False,
                 schema=\"\"\"[
           {
@@ -1148,18 +1148,18 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         count = 2
-        source_dataset: list[Any] = []
-        for range in [{"value": i} for i in range(0, count)]:
-            source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
-                dataset_id=f"job_copy_{range['value']}_dataset",
+        source_dataset: list[gcp.bigquery.Dataset] = []
+        for source_dataset_range in [{"value": i} for i in range(0, count)]:
+            source_dataset.append(gcp.bigquery.Dataset(f"source-{source_dataset_range['value']}",
+                dataset_id=f"job_copy_{source_dataset_range['value']}_dataset",
                 friendly_name="test",
                 description="This is a test description",
                 location="US"))
-        source: list[Any] = []
-        for range in [{"value": i} for i in range(0, count)]:
-            source.append(gcp.bigquery.Table(f"source-{range['value']}",
-                dataset_id=source_dataset[range["value"]].dataset_id,
-                table_id=f"job_copy_{range['value']}_table",
+        source: list[gcp.bigquery.Table] = []
+        for source_range in [{"value": i} for i in range(0, count)]:
+            source.append(gcp.bigquery.Table(f"source-{source_range['value']}",
+                dataset_id=source_dataset[source_range["value"]].dataset_id,
+                table_id=f"job_copy_{source_range['value']}_table",
                 deletion_protection=False,
                 schema=\"\"\"[
           {

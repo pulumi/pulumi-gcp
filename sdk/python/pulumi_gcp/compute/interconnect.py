@@ -47,13 +47,13 @@ class InterconnectArgs:
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
-               Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+                 Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         :param pulumi.Input[_builtins.str] link_type: Type of link requested. Note that this field indicates the speed of each of the links in the
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+                 Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
@@ -107,8 +107,8 @@ class InterconnectArgs:
                - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
                - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
                - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+                 Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+                 Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         """
         pulumi.set(__self__, "interconnect_type", interconnect_type)
         pulumi.set(__self__, "link_type", link_type)
@@ -153,7 +153,7 @@ class InterconnectArgs:
         Can take one of the following values:
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
-        Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+          Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -170,7 +170,7 @@ class InterconnectArgs:
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+          Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 
@@ -411,8 +411,8 @@ class InterconnectArgs:
         - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+          Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+          Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -477,7 +477,7 @@ class _InterconnectState:
                - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
                - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
                - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+                 Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -505,7 +505,7 @@ class _InterconnectState:
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
-               Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+                 Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         :param pulumi.Input[_builtins.str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -521,7 +521,7 @@ class _InterconnectState:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+                 Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -541,11 +541,11 @@ class _InterconnectState:
                federation.
         :param pulumi.Input[_builtins.str] operational_status: The current status of this Interconnect's functionality, which can take one of the following:
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-               be provisioned on this Interconnect.
+                 be provisioned on this Interconnect.
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-               provisioned on this Interconnect.
+                 provisioned on this Interconnect.
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-               attachments may be provisioned or updated on this Interconnect.
+                 attachments may be provisioned or updated on this Interconnect.
         :param pulumi.Input['InterconnectParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_ip_address: IP address configured on the customer side of the Interconnect link.
@@ -563,17 +563,17 @@ class _InterconnectState:
                - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
                - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
                - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+                 Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+                 Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[_builtins.str] state: (Output)
                State of this notification. Note that the versions of this enum prefixed with "NS_" have
                been deprecated in favor of the unprefixed values. Can take one of the following values:
                - ACTIVE: This outage notification is active. The event could be in the past, present,
-               or future. See startTime and endTime for scheduling.
+                 or future. See startTime and endTime for scheduling.
                - CANCELLED: The outage associated with this notification was cancelled before the
-               outage was due to start.
+                 outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
@@ -701,7 +701,7 @@ class _InterconnectState:
         - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
         - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
         - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-        Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+          Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
         """
         return pulumi.get(self, "available_features")
 
@@ -861,7 +861,7 @@ class _InterconnectState:
         Can take one of the following values:
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
-        Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+          Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -910,7 +910,7 @@ class _InterconnectState:
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+          Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 
@@ -996,11 +996,11 @@ class _InterconnectState:
         """
         The current status of this Interconnect's functionality, which can take one of the following:
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-        be provisioned on this Interconnect.
+          be provisioned on this Interconnect.
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-        provisioned on this Interconnect.
+          provisioned on this Interconnect.
         - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-        attachments may be provisioned or updated on this Interconnect.
+          attachments may be provisioned or updated on this Interconnect.
         """
         return pulumi.get(self, "operational_status")
 
@@ -1095,8 +1095,8 @@ class _InterconnectState:
         - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+          Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+          Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -1136,9 +1136,9 @@ class _InterconnectState:
         State of this notification. Note that the versions of this enum prefixed with "NS_" have
         been deprecated in favor of the unprefixed values. Can take one of the following values:
         - ACTIVE: This outage notification is active. The event could be in the past, present,
-        or future. See startTime and endTime for scheduling.
+          or future. See startTime and endTime for scheduling.
         - CANCELLED: The outage associated with this notification was cancelled before the
-        outage was due to start.
+          outage was due to start.
         - COMPLETED: The outage associated with this notification is complete.
         """
         return pulumi.get(self, "state")
@@ -1256,7 +1256,7 @@ class Interconnect(pulumi.CustomResource):
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
-               Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+                 Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
                
@@ -1267,7 +1267,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+                 Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -1296,8 +1296,8 @@ class Interconnect(pulumi.CustomResource):
                - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
                - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
                - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+                 Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+                 Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -1507,7 +1507,7 @@ class Interconnect(pulumi.CustomResource):
                - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
                - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
                - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+                 Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -1535,7 +1535,7 @@ class Interconnect(pulumi.CustomResource):
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
-               Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+                 Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         :param pulumi.Input[_builtins.str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -1551,7 +1551,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-               Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+                 Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -1571,11 +1571,11 @@ class Interconnect(pulumi.CustomResource):
                federation.
         :param pulumi.Input[_builtins.str] operational_status: The current status of this Interconnect's functionality, which can take one of the following:
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-               be provisioned on this Interconnect.
+                 be provisioned on this Interconnect.
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-               provisioned on this Interconnect.
+                 provisioned on this Interconnect.
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-               attachments may be provisioned or updated on this Interconnect.
+                 attachments may be provisioned or updated on this Interconnect.
         :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_ip_address: IP address configured on the customer side of the Interconnect link.
@@ -1593,17 +1593,17 @@ class Interconnect(pulumi.CustomResource):
                - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
                - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
                - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-               Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-               Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+                 Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+                 Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[_builtins.str] state: (Output)
                State of this notification. Note that the versions of this enum prefixed with "NS_" have
                been deprecated in favor of the unprefixed values. Can take one of the following values:
                - ACTIVE: This outage notification is active. The event could be in the past, present,
-               or future. See startTime and endTime for scheduling.
+                 or future. See startTime and endTime for scheduling.
                - CANCELLED: The outage associated with this notification was cancelled before the
-               outage was due to start.
+                 outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
@@ -1688,7 +1688,7 @@ class Interconnect(pulumi.CustomResource):
         - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
         - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
         - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-        Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+          Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
         """
         return pulumi.get(self, "available_features")
 
@@ -1800,7 +1800,7 @@ class Interconnect(pulumi.CustomResource):
         Can take one of the following values:
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
-        Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+          Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -1837,7 +1837,7 @@ class Interconnect(pulumi.CustomResource):
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
         - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-        Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+          Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         """
         return pulumi.get(self, "link_type")
 
@@ -1899,11 +1899,11 @@ class Interconnect(pulumi.CustomResource):
         """
         The current status of this Interconnect's functionality, which can take one of the following:
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-        be provisioned on this Interconnect.
+          be provisioned on this Interconnect.
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-        provisioned on this Interconnect.
+          provisioned on this Interconnect.
         - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-        attachments may be provisioned or updated on this Interconnect.
+          attachments may be provisioned or updated on this Interconnect.
         """
         return pulumi.get(self, "operational_status")
 
@@ -1970,8 +1970,8 @@ class Interconnect(pulumi.CustomResource):
         - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
         - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
         - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-        Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-        Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+          Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+          Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -1999,9 +1999,9 @@ class Interconnect(pulumi.CustomResource):
         State of this notification. Note that the versions of this enum prefixed with "NS_" have
         been deprecated in favor of the unprefixed values. Can take one of the following values:
         - ACTIVE: This outage notification is active. The event could be in the past, present,
-        or future. See startTime and endTime for scheduling.
+          or future. See startTime and endTime for scheduling.
         - CANCELLED: The outage associated with this notification was cancelled before the
-        outage was due to start.
+          outage was due to start.
         - COMPLETED: The outage associated with this notification is complete.
         """
         return pulumi.get(self, "state")

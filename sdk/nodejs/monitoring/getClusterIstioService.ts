@@ -54,12 +54,12 @@ export function getClusterIstioService(args: GetClusterIstioServiceArgs, opts?: 
  */
 export interface GetClusterIstioServiceArgs {
     /**
-     * The name of the Kubernetes cluster in which this Istio service 
+     * The name of the Kubernetes cluster in which this Istio service
      * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
      */
     clusterName: string;
     /**
-     * The location of the Kubernetes cluster in which this Istio service 
+     * The location of the Kubernetes cluster in which this Istio service
      * is defined. Corresponds to the location resource label in k8sCluster resources.
      */
     location: string;
@@ -72,7 +72,7 @@ export interface GetClusterIstioServiceArgs {
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */
@@ -162,12 +162,12 @@ export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputA
  */
 export interface GetClusterIstioServiceOutputArgs {
     /**
-     * The name of the Kubernetes cluster in which this Istio service 
+     * The name of the Kubernetes cluster in which this Istio service
      * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
      */
     clusterName: pulumi.Input<string>;
     /**
-     * The location of the Kubernetes cluster in which this Istio service 
+     * The location of the Kubernetes cluster in which this Istio service
      * is defined. Corresponds to the location resource label in k8sCluster resources.
      */
     location: pulumi.Input<string>;
@@ -180,7 +180,7 @@ export interface GetClusterIstioServiceOutputArgs {
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */

@@ -69,7 +69,7 @@ export interface GetAiReasoningEngineQueryArgs {
     /**
      * The ID of the Vertex AI Reasoning Engine to query.
      *
-     * - - -
+     * ***
      */
     reasoningEngineId: string;
     /**
@@ -161,7 +161,7 @@ export interface GetAiReasoningEngineQueryOutputArgs {
     /**
      * The ID of the Vertex AI Reasoning Engine to query.
      *
-     * - - -
+     * ***
      */
     reasoningEngineId: pulumi.Input<string>;
     /**

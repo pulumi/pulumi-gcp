@@ -155,7 +155,7 @@ export class Dashboard extends pulumi.CustomResource {
      * legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
      * accompanied by a non-removal change (trivial or not).
      *
-     * - - -
+     * ***
      */
     declare public readonly dashboardJson: pulumi.Output<string>;
     /**
@@ -217,7 +217,7 @@ export interface DashboardState {
      * legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
      * accompanied by a non-removal change (trivial or not).
      *
-     * - - -
+     * ***
      */
     dashboardJson?: pulumi.Input<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface DashboardArgs {
      * legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
      * accompanied by a non-removal change (trivial or not).
      *
-     * - - -
+     * ***
      */
     dashboardJson: pulumi.Input<string>;
     /**

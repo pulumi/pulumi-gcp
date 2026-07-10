@@ -115,7 +115,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
      *
-     * - - -
+     * ***
      */
     declare public readonly serviceName: pulumi.Output<string>;
 
@@ -213,7 +213,7 @@ export interface ServiceState {
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
      *
-     * - - -
+     * ***
      */
     serviceName?: pulumi.Input<string | undefined>;
 }
@@ -252,7 +252,7 @@ export interface ServiceArgs {
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
      *
-     * - - -
+     * ***
      */
     serviceName: pulumi.Input<string>;
 }

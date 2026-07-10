@@ -37,7 +37,7 @@ export interface GetBackupVaultArgs {
     /**
      * The id of Backup Vault resource.
      *
-     * - - -
+     * ***
      */
     backupVaultId: string;
     /**
@@ -121,7 +121,7 @@ export interface GetBackupVaultOutputArgs {
     /**
      * The id of Backup Vault resource.
      *
-     * - - -
+     * ***
      */
     backupVaultId: pulumi.Input<string>;
     /**

@@ -36,7 +36,7 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
  */
 export interface GetSecretVersionArgs {
     /**
-     * If set to `false`, the `secretData` 
+     * If set to `false`, the `secretData`
      * will not be fetched. Default is `true`.
      */
     fetchSecretData?: boolean;
@@ -128,7 +128,7 @@ export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: 
  */
 export interface GetSecretVersionOutputArgs {
     /**
-     * If set to `false`, the `secretData` 
+     * If set to `false`, the `secretData`
      * will not be fetched. Default is `true`.
      */
     fetchSecretData?: pulumi.Input<boolean | undefined>;

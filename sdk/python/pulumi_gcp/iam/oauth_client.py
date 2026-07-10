@@ -40,8 +40,8 @@ class OauthClientArgs:
                OAuth flows.
                The following scopes are supported:
                * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-               and delete your Google Cloud data and see the email address for your Google
-               Account.
+                 and delete your Google Cloud data and see the email address for your Google
+                 Account.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] oauth_client_id: Required. The ID to use for the OauthClient, which becomes the final component of
                the resource name. This value should be a string of 6 to 63 lowercase
@@ -121,8 +121,8 @@ class OauthClientArgs:
         OAuth flows.
         The following scopes are supported:
         * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        and delete your Google Cloud data and see the email address for your Google
-        Account.
+          and delete your Google Cloud data and see the email address for your Google
+          Account.
         """
         return pulumi.get(self, "allowed_scopes")
 
@@ -274,8 +274,8 @@ class _OauthClientState:
                OAuth flows.
                The following scopes are supported:
                * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-               and delete your Google Cloud data and see the email address for your Google
-               Account.
+                 and delete your Google Cloud data and see the email address for your Google
+                 Account.
         :param pulumi.Input[_builtins.str] client_id: Output only. The system-generated OauthClient id.
         :param pulumi.Input[_builtins.str] client_type: Immutable. The type of OauthClient. Either public or private.
                For private clients, the client secret can be managed using the dedicated
@@ -378,8 +378,8 @@ class _OauthClientState:
         OAuth flows.
         The following scopes are supported:
         * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        and delete your Google Cloud data and see the email address for your Google
-        Account.
+          and delete your Google Cloud data and see the email address for your Google
+          Account.
         """
         return pulumi.get(self, "allowed_scopes")
 
@@ -632,8 +632,8 @@ class OauthClient(pulumi.CustomResource):
                OAuth flows.
                The following scopes are supported:
                * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-               and delete your Google Cloud data and see the email address for your Google
-               Account.
+                 and delete your Google Cloud data and see the email address for your Google
+                 Account.
         :param pulumi.Input[_builtins.str] client_type: Immutable. The type of OauthClient. Either public or private.
                For private clients, the client secret can be managed using the dedicated
                OauthClientCredential resource.
@@ -815,8 +815,8 @@ class OauthClient(pulumi.CustomResource):
                OAuth flows.
                The following scopes are supported:
                * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-               and delete your Google Cloud data and see the email address for your Google
-               Account.
+                 and delete your Google Cloud data and see the email address for your Google
+                 Account.
         :param pulumi.Input[_builtins.str] client_id: Output only. The system-generated OauthClient id.
         :param pulumi.Input[_builtins.str] client_type: Immutable. The type of OauthClient. Either public or private.
                For private clients, the client secret can be managed using the dedicated
@@ -901,8 +901,8 @@ class OauthClient(pulumi.CustomResource):
         OAuth flows.
         The following scopes are supported:
         * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-        and delete your Google Cloud data and see the email address for your Google
-        Account.
+          and delete your Google Cloud data and see the email address for your Google
+          Account.
         """
         return pulumi.get(self, "allowed_scopes")
 

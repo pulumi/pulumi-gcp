@@ -134,7 +134,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
-     * - - -
+     * ***
      */
     declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
@@ -374,7 +374,7 @@ export interface FlexTemplateJobState {
     /**
      * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
-     * - - -
+     * ***
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
@@ -525,7 +525,7 @@ export interface FlexTemplateJobArgs {
     /**
      * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
-     * - - -
+     * ***
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**

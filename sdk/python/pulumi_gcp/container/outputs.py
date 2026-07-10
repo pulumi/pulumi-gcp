@@ -2018,7 +2018,7 @@ class AwsClusterNetworking(dict):
         :param Sequence[_builtins.str] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param _builtins.str vpc_id: The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
                
-               - - -
+               ***
         :param _builtins.bool per_node_pool_sg_rules_disabled: Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
@@ -2049,7 +2049,7 @@ class AwsClusterNetworking(dict):
         """
         The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "vpc_id")
 
@@ -2852,7 +2852,7 @@ class AwsNodePoolMaxPodsConstraint(dict):
         """
         :param _builtins.int max_pods_per_node: The maximum number of pods to schedule on a single node.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -2862,7 +2862,7 @@ class AwsNodePoolMaxPodsConstraint(dict):
         """
         The maximum number of pods to schedule on a single node.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -3614,7 +3614,7 @@ class AzureClusterNetworking(dict):
         :param Sequence[_builtins.str] service_address_cidr_blocks: The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
         :param _builtins.str virtual_network_id: The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -3642,7 +3642,7 @@ class AzureClusterNetworking(dict):
         """
         The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -4053,7 +4053,7 @@ class AzureNodePoolMaxPodsConstraint(dict):
         """
         :param _builtins.int max_pods_per_node: The maximum number of pods to schedule on a single node.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -4063,7 +4063,7 @@ class AzureNodePoolMaxPodsConstraint(dict):
         """
         The maximum number of pods to schedule on a single node.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -4213,7 +4213,7 @@ class ClusterAddonsConfig(dict):
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: . 
+        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: .
                The status of the slice controller addon.
                It is disabled by default. Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigSlurmOperatorConfigArgs' slurm_operator_config: The status of the Slurm Operator addon,
@@ -4456,7 +4456,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="sliceControllerConfig")
     def slice_controller_config(self) -> Optional['outputs.ClusterAddonsConfigSliceControllerConfig']:
         """
-        . 
+        .
         The status of the slice controller addon.
         It is disabled by default. Set `enabled = true` to enable.
         """
@@ -4741,7 +4741,7 @@ class ClusterAddonsConfigLustreCsiDriverConfig(dict):
         """
         :param _builtins.bool enabled: Whether the Lustre CSI driver is enabled for this cluster.
         :param _builtins.bool disable_multi_nic: When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
-        :param _builtins.bool enable_legacy_lustre_port: which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        :param _builtins.bool enable_legacy_lustre_port: which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
                This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4770,7 +4770,7 @@ class ClusterAddonsConfigLustreCsiDriverConfig(dict):
     @pulumi.getter(name="enableLegacyLustrePort")
     def enable_legacy_lustre_port(self) -> Optional[_builtins.bool]:
         """
-        which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         return pulumi.get(self, "enable_legacy_lustre_port")
@@ -11809,7 +11809,7 @@ class ClusterNodePool(dict):
         :param _builtins.str name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
         :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -11937,7 +11937,7 @@ class ClusterNodePool(dict):
         The name of the cluster, unique within the project and
         location.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -17603,7 +17603,7 @@ class ClusterPodAutoscaling(dict):
                Acceptable values are:
                * `"NONE"`: Customers explicitly opt-out of HPA profiles.
                * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
-               See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+                 See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
         """
         pulumi.set(__self__, "hpa_profile", hpa_profile)
 
@@ -17615,7 +17615,7 @@ class ClusterPodAutoscaling(dict):
         Acceptable values are:
         * `"NONE"`: Customers explicitly opt-out of HPA profiles.
         * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
-        See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+          See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
         """
         return pulumi.get(self, "hpa_profile")
 
@@ -18697,7 +18697,7 @@ class NodePoolAutoscaling(dict):
                scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
                * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
                * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-               and reduce preemption risk for Spot VMs.
+                 and reduce preemption risk for Spot VMs.
         :param _builtins.int max_node_count: Maximum number of nodes per zone in the NodePool.
                Must be >= min_node_count. Cannot be used with total limits.
         :param _builtins.int min_node_count: Minimum number of nodes per zone in the NodePool.
@@ -18728,7 +18728,7 @@ class NodePoolAutoscaling(dict):
         scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
         * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
         * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-        and reduce preemption risk for Spot VMs.
+          and reduce preemption risk for Spot VMs.
         """
         return pulumi.get(self, "location_policy")
 
@@ -24084,7 +24084,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         :param _builtins.str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
                
-               																A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param Sequence['GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs'] standard_rollout_policies: Standard policy for the blue-green upgrade.
         """
         pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -24096,7 +24096,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
 
-        																A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         return pulumi.get(self, "node_pool_soak_duration")
 
@@ -24120,7 +24120,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         :param _builtins.float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         :param _builtins.str batch_soak_duration: Soak time after each batch gets drained.
                
-               																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                                           A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "batch_node_count", batch_node_count)
         pulumi.set(__self__, "batch_percentage", batch_percentage)
@@ -24148,7 +24148,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         Soak time after each batch gets drained.
 
-        																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                                    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         return pulumi.get(self, "batch_soak_duration")
 

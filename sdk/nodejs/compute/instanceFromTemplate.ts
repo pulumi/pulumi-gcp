@@ -180,8 +180,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -268,7 +268,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     declare public readonly sourceInstanceTemplate: pulumi.Output<string>;
     /**
@@ -512,8 +512,8 @@ export interface InstanceFromTemplateState {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -600,7 +600,7 @@ export interface InstanceFromTemplateState {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     sourceInstanceTemplate?: pulumi.Input<string | undefined>;
     /**
@@ -701,8 +701,8 @@ export interface InstanceFromTemplateArgs {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -777,7 +777,7 @@ export interface InstanceFromTemplateArgs {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     sourceInstanceTemplate: pulumi.Input<string>;
     /**

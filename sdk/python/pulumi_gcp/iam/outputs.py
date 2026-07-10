@@ -539,35 +539,35 @@ class FolderAccessPolicyDetailsRule(dict):
                permissions on Google Cloud resources. This field can contain the
                following values:
                * `principal://goog/subject/{email_id}`: A specific Google Account.
-               Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-               example, `principal://goog/subject/alice@example.com`.
+                 Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+                 example, `principal://goog/subject/alice@example.com`.
                * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-               A Google Cloud service account. For example,
-               `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+                 A Google Cloud service account. For example,
+                 `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
                * `principalSet://goog/group/{group_id}`: A Google group. For example,
-               `principalSet://goog/group/admins@example.com`.
+                 `principalSet://goog/group/admins@example.com`.
                * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-               principals associated with the specified Google Workspace or Cloud
-               Identity customer ID. For example,
-               `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-               If an identifier that was previously set on a policy is soft deleted, then
-               calls to read that policy will return the identifier with a deleted
-               prefix. Users cannot set identifiers with this syntax.
+                 principals associated with the specified Google Workspace or Cloud
+                 Identity customer ID. For example,
+                 `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+                 If an identifier that was previously set on a policy is soft deleted, then
+                 calls to read that policy will return the identifier with a deleted
+                 prefix. Users cannot set identifiers with this syntax.
                * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-               Google Account that was deleted recently. For example,
-               `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-               the Google Account is recovered, this identifier reverts to the standard
-               identifier for a Google Account.
+                 Google Account that was deleted recently. For example,
+                 `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+                 the Google Account is recovered, this identifier reverts to the standard
+                 identifier for a Google Account.
                * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-               that was deleted recently. For example,
-               `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-               If the Google group is restored, this identifier reverts to the standard
-               identifier for a Google group.
+                 that was deleted recently. For example,
+                 `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+                 If the Google group is restored, this identifier reverts to the standard
+                 identifier for a Google group.
                * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-               A Google Cloud service account that was deleted recently. For example,
-               `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-               If the service account is undeleted, this identifier reverts to the
-               standard identifier for a service account.
+                 A Google Cloud service account that was deleted recently. For example,
+                 `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+                 If the service account is undeleted, this identifier reverts to the
+                 standard identifier for a service account.
         :param Sequence['FolderAccessPolicyDetailsRuleConditionArgs'] conditions: The conditions that determine whether this rule applies to a request.
                Conditions are identified by their key, which is the FQDN of the service
                that they are relevant to. For example:
@@ -582,13 +582,13 @@ class FolderAccessPolicyDetailsRule(dict):
                to a request, other rules might still apply.
                Currently supported keys are as follows:
                * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-               resource fields.
+                 resource fields.
                * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-               [resource
-               tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-               combine them using boolean and logical operators. Other functions and
-               operators are not supported.
-               Structure is documented below.
+                 [resource
+                 tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+                 combine them using boolean and logical operators. Other functions and
+                 operators are not supported.
+                 Structure is documented below.
         :param _builtins.str description: Customer specified description of the rule. Must be less than or equal to
                256 characters.
         :param Sequence[_builtins.str] excluded_principals: The identities that are excluded from the access policy rule, even if they
@@ -636,35 +636,35 @@ class FolderAccessPolicyDetailsRule(dict):
         permissions on Google Cloud resources. This field can contain the
         following values:
         * `principal://goog/subject/{email_id}`: A specific Google Account.
-        Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-        example, `principal://goog/subject/alice@example.com`.
+          Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+          example, `principal://goog/subject/alice@example.com`.
         * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-        A Google Cloud service account. For example,
-        `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+          A Google Cloud service account. For example,
+          `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
         * `principalSet://goog/group/{group_id}`: A Google group. For example,
-        `principalSet://goog/group/admins@example.com`.
+          `principalSet://goog/group/admins@example.com`.
         * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-        principals associated with the specified Google Workspace or Cloud
-        Identity customer ID. For example,
-        `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-        If an identifier that was previously set on a policy is soft deleted, then
-        calls to read that policy will return the identifier with a deleted
-        prefix. Users cannot set identifiers with this syntax.
+          principals associated with the specified Google Workspace or Cloud
+          Identity customer ID. For example,
+          `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+          If an identifier that was previously set on a policy is soft deleted, then
+          calls to read that policy will return the identifier with a deleted
+          prefix. Users cannot set identifiers with this syntax.
         * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-        Google Account that was deleted recently. For example,
-        `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-        the Google Account is recovered, this identifier reverts to the standard
-        identifier for a Google Account.
+          Google Account that was deleted recently. For example,
+          `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+          the Google Account is recovered, this identifier reverts to the standard
+          identifier for a Google Account.
         * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-        that was deleted recently. For example,
-        `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-        If the Google group is restored, this identifier reverts to the standard
-        identifier for a Google group.
+          that was deleted recently. For example,
+          `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+          If the Google group is restored, this identifier reverts to the standard
+          identifier for a Google group.
         * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-        A Google Cloud service account that was deleted recently. For example,
-        `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-        If the service account is undeleted, this identifier reverts to the
-        standard identifier for a service account.
+          A Google Cloud service account that was deleted recently. For example,
+          `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+          If the service account is undeleted, this identifier reverts to the
+          standard identifier for a service account.
         """
         return pulumi.get(self, "principals")
 
@@ -686,13 +686,13 @@ class FolderAccessPolicyDetailsRule(dict):
         to a request, other rules might still apply.
         Currently supported keys are as follows:
         * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-        resource fields.
+          resource fields.
         * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-        [resource
-        tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-        combine them using boolean and logical operators. Other functions and
-        operators are not supported.
-        Structure is documented below.
+          [resource
+          tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+          combine them using boolean and logical operators. Other functions and
+          operators are not supported.
+          Structure is documented below.
         """
         return pulumi.get(self, "conditions")
 
@@ -894,7 +894,7 @@ class FoldersPolicyBindingTarget(dict):
         :param _builtins.str principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
-               It must be parent by the policy binding's parent (the folder).
+                 It must be parent by the policy binding's parent (the folder).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -906,7 +906,7 @@ class FoldersPolicyBindingTarget(dict):
         Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
-        It must be parent by the policy binding's parent (the folder).
+          It must be parent by the policy binding's parent (the folder).
         """
         return pulumi.get(self, "principal_set")
 
@@ -970,35 +970,35 @@ class OrganizationAccessPolicyDetailsRule(dict):
                permissions on Google Cloud resources. This field can contain the
                following values:
                * `principal://goog/subject/{email_id}`: A specific Google Account.
-               Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-               example, `principal://goog/subject/alice@example.com`.
+                 Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+                 example, `principal://goog/subject/alice@example.com`.
                * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-               A Google Cloud service account. For example,
-               `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+                 A Google Cloud service account. For example,
+                 `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
                * `principalSet://goog/group/{group_id}`: A Google group. For example,
-               `principalSet://goog/group/admins@example.com`.
+                 `principalSet://goog/group/admins@example.com`.
                * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-               principals associated with the specified Google Workspace or Cloud
-               Identity customer ID. For example,
-               `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-               If an identifier that was previously set on a policy is soft deleted, then
-               calls to read that policy will return the identifier with a deleted
-               prefix. Users cannot set identifiers with this syntax.
+                 principals associated with the specified Google Workspace or Cloud
+                 Identity customer ID. For example,
+                 `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+                 If an identifier that was previously set on a policy is soft deleted, then
+                 calls to read that policy will return the identifier with a deleted
+                 prefix. Users cannot set identifiers with this syntax.
                * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-               Google Account that was deleted recently. For example,
-               `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-               the Google Account is recovered, this identifier reverts to the standard
-               identifier for a Google Account.
+                 Google Account that was deleted recently. For example,
+                 `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+                 the Google Account is recovered, this identifier reverts to the standard
+                 identifier for a Google Account.
                * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-               that was deleted recently. For example,
-               `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-               If the Google group is restored, this identifier reverts to the standard
-               identifier for a Google group.
+                 that was deleted recently. For example,
+                 `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+                 If the Google group is restored, this identifier reverts to the standard
+                 identifier for a Google group.
                * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-               A Google Cloud service account that was deleted recently. For example,
-               `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-               If the service account is undeleted, this identifier reverts to the
-               standard identifier for a service account.
+                 A Google Cloud service account that was deleted recently. For example,
+                 `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+                 If the service account is undeleted, this identifier reverts to the
+                 standard identifier for a service account.
         :param Sequence['OrganizationAccessPolicyDetailsRuleConditionArgs'] conditions: The conditions that determine whether this rule applies to a request.
                Conditions are identified by their key, which is the FQDN of the service
                that they are relevant to. For example:
@@ -1013,13 +1013,13 @@ class OrganizationAccessPolicyDetailsRule(dict):
                to a request, other rules might still apply.
                Currently supported keys are as follows:
                * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-               resource fields.
+                 resource fields.
                * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-               [resource
-               tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-               combine them using boolean and logical operators. Other functions and
-               operators are not supported.
-               Structure is documented below.
+                 [resource
+                 tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+                 combine them using boolean and logical operators. Other functions and
+                 operators are not supported.
+                 Structure is documented below.
         :param _builtins.str description: Customer specified description of the rule. Must be less than or equal to
                256 characters.
         :param Sequence[_builtins.str] excluded_principals: The identities that are excluded from the access policy rule, even if they
@@ -1067,35 +1067,35 @@ class OrganizationAccessPolicyDetailsRule(dict):
         permissions on Google Cloud resources. This field can contain the
         following values:
         * `principal://goog/subject/{email_id}`: A specific Google Account.
-        Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-        example, `principal://goog/subject/alice@example.com`.
+          Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+          example, `principal://goog/subject/alice@example.com`.
         * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-        A Google Cloud service account. For example,
-        `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+          A Google Cloud service account. For example,
+          `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
         * `principalSet://goog/group/{group_id}`: A Google group. For example,
-        `principalSet://goog/group/admins@example.com`.
+          `principalSet://goog/group/admins@example.com`.
         * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-        principals associated with the specified Google Workspace or Cloud
-        Identity customer ID. For example,
-        `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-        If an identifier that was previously set on a policy is soft deleted, then
-        calls to read that policy will return the identifier with a deleted
-        prefix. Users cannot set identifiers with this syntax.
+          principals associated with the specified Google Workspace or Cloud
+          Identity customer ID. For example,
+          `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+          If an identifier that was previously set on a policy is soft deleted, then
+          calls to read that policy will return the identifier with a deleted
+          prefix. Users cannot set identifiers with this syntax.
         * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-        Google Account that was deleted recently. For example,
-        `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-        the Google Account is recovered, this identifier reverts to the standard
-        identifier for a Google Account.
+          Google Account that was deleted recently. For example,
+          `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+          the Google Account is recovered, this identifier reverts to the standard
+          identifier for a Google Account.
         * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-        that was deleted recently. For example,
-        `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-        If the Google group is restored, this identifier reverts to the standard
-        identifier for a Google group.
+          that was deleted recently. For example,
+          `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+          If the Google group is restored, this identifier reverts to the standard
+          identifier for a Google group.
         * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-        A Google Cloud service account that was deleted recently. For example,
-        `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-        If the service account is undeleted, this identifier reverts to the
-        standard identifier for a service account.
+          A Google Cloud service account that was deleted recently. For example,
+          `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+          If the service account is undeleted, this identifier reverts to the
+          standard identifier for a service account.
         """
         return pulumi.get(self, "principals")
 
@@ -1117,13 +1117,13 @@ class OrganizationAccessPolicyDetailsRule(dict):
         to a request, other rules might still apply.
         Currently supported keys are as follows:
         * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-        resource fields.
+          resource fields.
         * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-        [resource
-        tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-        combine them using boolean and logical operators. Other functions and
-        operators are not supported.
-        Structure is documented below.
+          [resource
+          tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+          combine them using boolean and logical operators. Other functions and
+          operators are not supported.
+          Structure is documented below.
         """
         return pulumi.get(self, "conditions")
 
@@ -1327,7 +1327,7 @@ class OrganizationsPolicyBindingTarget(dict):
                * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
                * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
                * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
-               It must be parent by the policy binding's parent (the organization).
+                 It must be parent by the policy binding's parent (the organization).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -1341,7 +1341,7 @@ class OrganizationsPolicyBindingTarget(dict):
         * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
         * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
         * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
-        It must be parent by the policy binding's parent (the organization).
+          It must be parent by the policy binding's parent (the organization).
         """
         return pulumi.get(self, "principal_set")
 
@@ -1417,7 +1417,7 @@ class PrincipalAccessBoundaryPolicyDetailsRule(dict):
                * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
                * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
                * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
-               or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+                 or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
         :param _builtins.str description: The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
         """
         pulumi.set(__self__, "effect", effect)
@@ -1445,7 +1445,7 @@ class PrincipalAccessBoundaryPolicyDetailsRule(dict):
         * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
         * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
         * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
-        or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+          or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
         """
         return pulumi.get(self, "resources")
 
@@ -1517,35 +1517,35 @@ class ProjectAccessPolicyDetailsRule(dict):
                permissions on Google Cloud resources. This field can contain the
                following values:
                * `principal://goog/subject/{email_id}`: A specific Google Account.
-               Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-               example, `principal://goog/subject/alice@example.com`.
+                 Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+                 example, `principal://goog/subject/alice@example.com`.
                * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-               A Google Cloud service account. For example,
-               `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+                 A Google Cloud service account. For example,
+                 `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
                * `principalSet://goog/group/{group_id}`: A Google group. For example,
-               `principalSet://goog/group/admins@example.com`.
+                 `principalSet://goog/group/admins@example.com`.
                * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-               principals associated with the specified Google Workspace or Cloud
-               Identity customer ID. For example,
-               `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-               If an identifier that was previously set on a policy is soft deleted, then
-               calls to read that policy will return the identifier with a deleted
-               prefix. Users cannot set identifiers with this syntax.
+                 principals associated with the specified Google Workspace or Cloud
+                 Identity customer ID. For example,
+                 `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+                 If an identifier that was previously set on a policy is soft deleted, then
+                 calls to read that policy will return the identifier with a deleted
+                 prefix. Users cannot set identifiers with this syntax.
                * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-               Google Account that was deleted recently. For example,
-               `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-               the Google Account is recovered, this identifier reverts to the standard
-               identifier for a Google Account.
+                 Google Account that was deleted recently. For example,
+                 `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+                 the Google Account is recovered, this identifier reverts to the standard
+                 identifier for a Google Account.
                * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-               that was deleted recently. For example,
-               `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-               If the Google group is restored, this identifier reverts to the standard
-               identifier for a Google group.
+                 that was deleted recently. For example,
+                 `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+                 If the Google group is restored, this identifier reverts to the standard
+                 identifier for a Google group.
                * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-               A Google Cloud service account that was deleted recently. For example,
-               `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-               If the service account is undeleted, this identifier reverts to the
-               standard identifier for a service account.
+                 A Google Cloud service account that was deleted recently. For example,
+                 `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+                 If the service account is undeleted, this identifier reverts to the
+                 standard identifier for a service account.
         :param Sequence['ProjectAccessPolicyDetailsRuleConditionArgs'] conditions: The conditions that determine whether this rule applies to a request.
                Conditions are identified by their key, which is the FQDN of the service
                that they are relevant to. For example:
@@ -1560,13 +1560,13 @@ class ProjectAccessPolicyDetailsRule(dict):
                to a request, other rules might still apply.
                Currently supported keys are as follows:
                * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-               resource fields.
+                 resource fields.
                * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-               [resource
-               tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-               combine them using boolean and logical operators. Other functions and
-               operators are not supported.
-               Structure is documented below.
+                 [resource
+                 tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+                 combine them using boolean and logical operators. Other functions and
+                 operators are not supported.
+                 Structure is documented below.
         :param _builtins.str description: Customer specified description of the rule. Must be less than or equal to
                256 characters.
         :param Sequence[_builtins.str] excluded_principals: The identities that are excluded from the access policy rule, even if they
@@ -1614,35 +1614,35 @@ class ProjectAccessPolicyDetailsRule(dict):
         permissions on Google Cloud resources. This field can contain the
         following values:
         * `principal://goog/subject/{email_id}`: A specific Google Account.
-        Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
-        example, `principal://goog/subject/alice@example.com`.
+          Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+          example, `principal://goog/subject/alice@example.com`.
         * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
-        A Google Cloud service account. For example,
-        `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+          A Google Cloud service account. For example,
+          `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
         * `principalSet://goog/group/{group_id}`: A Google group. For example,
-        `principalSet://goog/group/admins@example.com`.
+          `principalSet://goog/group/admins@example.com`.
         * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
-        principals associated with the specified Google Workspace or Cloud
-        Identity customer ID. For example,
-        `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-        If an identifier that was previously set on a policy is soft deleted, then
-        calls to read that policy will return the identifier with a deleted
-        prefix. Users cannot set identifiers with this syntax.
+          principals associated with the specified Google Workspace or Cloud
+          Identity customer ID. For example,
+          `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+          If an identifier that was previously set on a policy is soft deleted, then
+          calls to read that policy will return the identifier with a deleted
+          prefix. Users cannot set identifiers with this syntax.
         * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
-        Google Account that was deleted recently. For example,
-        `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
-        the Google Account is recovered, this identifier reverts to the standard
-        identifier for a Google Account.
+          Google Account that was deleted recently. For example,
+          `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+          the Google Account is recovered, this identifier reverts to the standard
+          identifier for a Google Account.
         * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
-        that was deleted recently. For example,
-        `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
-        If the Google group is restored, this identifier reverts to the standard
-        identifier for a Google group.
+          that was deleted recently. For example,
+          `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+          If the Google group is restored, this identifier reverts to the standard
+          identifier for a Google group.
         * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
-        A Google Cloud service account that was deleted recently. For example,
-        `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-        If the service account is undeleted, this identifier reverts to the
-        standard identifier for a service account.
+          A Google Cloud service account that was deleted recently. For example,
+          `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+          If the service account is undeleted, this identifier reverts to the
+          standard identifier for a service account.
         """
         return pulumi.get(self, "principals")
 
@@ -1664,13 +1664,13 @@ class ProjectAccessPolicyDetailsRule(dict):
         to a request, other rules might still apply.
         Currently supported keys are as follows:
         * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
-        resource fields.
+          resource fields.
         * `iam.googleapis.com`: Can use `CEL` functions that evaluate
-        [resource
-        tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
-        combine them using boolean and logical operators. Other functions and
-        operators are not supported.
-        Structure is documented below.
+          [resource
+          tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+          combine them using boolean and logical operators. Other functions and
+          operators are not supported.
+          Structure is documented below.
         """
         return pulumi.get(self, "conditions")
 
@@ -1875,7 +1875,7 @@ class ProjectsPolicyBindingTarget(dict):
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
                * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
-               It must be parent by the policy binding's parent (the project).
+                 It must be parent by the policy binding's parent (the project).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -1890,7 +1890,7 @@ class ProjectsPolicyBindingTarget(dict):
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
         * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
-        It must be parent by the policy binding's parent (the project).
+          It must be parent by the policy binding's parent (the project).
         """
         return pulumi.get(self, "principal_set")
 
@@ -2062,13 +2062,13 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client(dict):
         """
         :param _builtins.str attributes_type: Represents the IdP and type of claims that should be fetched.
                * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-               using configuration provided in ExtendedAttributesOAuth2Client and 'id'
-               property of the 'microsoft.graph.group' object is used for claim mapping. See
-               https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-               for more details on 'microsoft.graph.group' properties. The
-               group IDs obtained from Azure AD are present in 'assertion.groups' for
-               OIDC providers and 'assertion.attributes.groups' for SAML providers for
-               attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+                 using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+                 property of the 'microsoft.graph.group' object is used for claim mapping. See
+                 https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+                 for more details on 'microsoft.graph.group' properties. The
+                 group IDs obtained from Azure AD are present in 'assertion.groups' for
+                 OIDC providers and 'assertion.attributes.groups' for SAML providers for
+                 attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
         :param _builtins.str client_id: The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param 'WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs' client_secret: The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param _builtins.str issuer_uri: The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
@@ -2087,13 +2087,13 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client(dict):
         """
         Represents the IdP and type of claims that should be fetched.
         * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-        using configuration provided in ExtendedAttributesOAuth2Client and 'id'
-        property of the 'microsoft.graph.group' object is used for claim mapping. See
-        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        for more details on 'microsoft.graph.group' properties. The
-        group IDs obtained from Azure AD are present in 'assertion.groups' for
-        OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+          using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+          property of the 'microsoft.graph.group' object is used for claim mapping. See
+          https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+          for more details on 'microsoft.graph.group' properties. The
+          group IDs obtained from Azure AD are present in 'assertion.groups' for
+          OIDC providers and 'assertion.attributes.groups' for SAML providers for
+          attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
         """
         return pulumi.get(self, "attributes_type")
 
@@ -2300,25 +2300,25 @@ class WorkforcePoolProviderExtraAttributesOauth2Client(dict):
         """
         :param _builtins.str attributes_type: Represents the IdP and type of claims that should be fetched.
                * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
-               in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
-               See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-               'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+                 in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+                 See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+                 'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
                * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-               using configuration provided in ExtraAttributesOAuth2Client and 'id'
-               property of the 'microsoft.graph.group' object is used for claim mapping. See
-               https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-               for more details on 'microsoft.graph.group' properties. The
-               group IDs obtained from Azure AD are present in 'assertion.groups' for
-               OIDC providers and 'assertion.attributes.groups' for SAML providers for
-               attribute mapping.
+                 using configuration provided in ExtraAttributesOAuth2Client and 'id'
+                 property of the 'microsoft.graph.group' object is used for claim mapping. See
+                 https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+                 for more details on 'microsoft.graph.group' properties. The
+                 group IDs obtained from Azure AD are present in 'assertion.groups' for
+                 OIDC providers and 'assertion.attributes.groups' for SAML providers for
+                 attribute mapping.
                * AZURE_AD_GROUPS_DISPLAY_NAME: Used to get the user's group claims from the Azure AD identity provider
-               using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
-               of the 'microsoft.graph.group' object is used for claim mapping. See
-               https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-               for more details on 'microsoft.graph.group' properties. The
-               group displayNames obtained from Azure AD are present in 'assertion.groups' for
-               OIDC providers and 'assertion.attributes.groups' for SAML providers for
-               attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
+                 using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
+                 of the 'microsoft.graph.group' object is used for claim mapping. See
+                 https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+                 for more details on 'microsoft.graph.group' properties. The
+                 group displayNames obtained from Azure AD are present in 'assertion.groups' for
+                 OIDC providers and 'assertion.attributes.groups' for SAML providers for
+                 attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
         :param _builtins.str client_id: The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param 'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs' client_secret: The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
         :param _builtins.str issuer_uri: The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
@@ -2337,25 +2337,25 @@ class WorkforcePoolProviderExtraAttributesOauth2Client(dict):
         """
         Represents the IdP and type of claims that should be fetched.
         * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
-        in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
-        See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-        'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+          in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+          See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+          'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
         * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-        using configuration provided in ExtraAttributesOAuth2Client and 'id'
-        property of the 'microsoft.graph.group' object is used for claim mapping. See
-        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        for more details on 'microsoft.graph.group' properties. The
-        group IDs obtained from Azure AD are present in 'assertion.groups' for
-        OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping.
+          using configuration provided in ExtraAttributesOAuth2Client and 'id'
+          property of the 'microsoft.graph.group' object is used for claim mapping. See
+          https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+          for more details on 'microsoft.graph.group' properties. The
+          group IDs obtained from Azure AD are present in 'assertion.groups' for
+          OIDC providers and 'assertion.attributes.groups' for SAML providers for
+          attribute mapping.
         * AZURE_AD_GROUPS_DISPLAY_NAME: Used to get the user's group claims from the Azure AD identity provider
-        using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
-        of the 'microsoft.graph.group' object is used for claim mapping. See
-        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        for more details on 'microsoft.graph.group' properties. The
-        group displayNames obtained from Azure AD are present in 'assertion.groups' for
-        OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
+          using configuration provided in ExtraAttributesOAuth2Client and 'displayName' property
+          of the 'microsoft.graph.group' object is used for claim mapping. See
+          https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+          for more details on 'microsoft.graph.group' properties. The
+          group displayNames obtained from Azure AD are present in 'assertion.groups' for
+          OIDC providers and 'assertion.attributes.groups' for SAML providers for
+          attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
         """
         return pulumi.get(self, "attributes_type")
 
@@ -2919,12 +2919,12 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
         :param _builtins.str assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
                * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
                * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-               Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+                 Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         :param _builtins.str response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
                The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
                * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
                * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-               Possible values are: `CODE`, `ID_TOKEN`.
+                 Possible values are: `CODE`, `ID_TOKEN`.
         :param Sequence[_builtins.str] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
                Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
                
@@ -2942,7 +2942,7 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
         The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
         * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
         * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-        Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+          Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         """
         return pulumi.get(self, "assertion_claims_behavior")
 
@@ -2954,7 +2954,7 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
         The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
         * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
         * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-        Possible values are: `CODE`, `ID_TOKEN`.
+          Possible values are: `CODE`, `ID_TOKEN`.
         """
         return pulumi.get(self, "response_type")
 
@@ -2999,12 +2999,12 @@ class WorkforcePoolProviderSaml(dict):
                1) Must contain an Identity Provider Entity ID.
                2) Must contain at least one non-expired signing key certificate.
                3) For each signing key:
-               a) Valid from should be no more than 7 days from now.
-               b) Valid to should be no more than 10 years in the future.
+                  a) Valid from should be no more than 7 days from now.
+                  b) Valid to should be no more than 10 years in the future.
                4) Up to 3 IdP signing keys are allowed in the metadata xml.
-               When updating the provider's metadata xml, at least one non-expired signing key
-               must overlap with the existing metadata. This requirement is skipped if there are
-               no non-expired signing keys present in the existing metadata.
+                  When updating the provider's metadata xml, at least one non-expired signing key
+                  must overlap with the existing metadata. This requirement is skipped if there are
+                  no non-expired signing keys present in the existing metadata.
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -3019,12 +3019,12 @@ class WorkforcePoolProviderSaml(dict):
         1) Must contain an Identity Provider Entity ID.
         2) Must contain at least one non-expired signing key certificate.
         3) For each signing key:
-        a) Valid from should be no more than 7 days from now.
-        b) Valid to should be no more than 10 years in the future.
+           a) Valid from should be no more than 7 days from now.
+           b) Valid to should be no more than 10 years in the future.
         4) Up to 3 IdP signing keys are allowed in the metadata xml.
-        When updating the provider's metadata xml, at least one non-expired signing key
-        must overlap with the existing metadata. This requirement is skipped if there are
-        no non-expired signing keys present in the existing metadata.
+           When updating the provider's metadata xml, at least one non-expired signing key
+           must overlap with the existing metadata. This requirement is skipped if there are
+           no non-expired signing keys present in the existing metadata.
         """
         return pulumi.get(self, "idp_metadata_xml")
 
@@ -3199,11 +3199,11 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         :param Mapping[str, _builtins.str] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
                for certificate issuance, adhering to these constraints:
                * **Key format:** A supported cloud region name equivalent to the location identifier in
-               the corresponding map entry's value.
+                 the corresponding map entry's value.
                * **Value format:** A valid CA pool resource path format like:
-               `projects/{project}/locations/{location}/caPools/{ca_pool}`
+                 `projects/{project}/locations/{location}/caPools/{ca_pool}`
                * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-               same region. Also the CA pool region (in value) must match the workload's region (key).
+                 same region. Also the CA pool region (in value) must match the workload's region (key).
         :param _builtins.str key_algorithm: Key algorithm to use when generating the key pair. This key pair will be used to create
                the certificate. If unspecified, this will default to `ECDSA_P256`.
                * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
@@ -3211,7 +3211,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
                * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
                * `ECDSA_P256`: Specifies ECDSA with curve P256.
                * `ECDSA_P384`: Specifies ECDSA with curve P384.
-               Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+                 Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
         :param _builtins.str lifetime: Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
                `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
                and is preceded by the number of seconds. If unspecified, this will be defaulted to
@@ -3245,11 +3245,11 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         A required mapping of a cloud region to the CA pool resource located in that region used
         for certificate issuance, adhering to these constraints:
         * **Key format:** A supported cloud region name equivalent to the location identifier in
-        the corresponding map entry's value.
+          the corresponding map entry's value.
         * **Value format:** A valid CA pool resource path format like:
-        `projects/{project}/locations/{location}/caPools/{ca_pool}`
+          `projects/{project}/locations/{location}/caPools/{ca_pool}`
         * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-        same region. Also the CA pool region (in value) must match the workload's region (key).
+          same region. Also the CA pool region (in value) must match the workload's region (key).
         """
         return pulumi.get(self, "ca_pools")
 
@@ -3264,7 +3264,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
         * `ECDSA_P256`: Specifies ECDSA with curve P256.
         * `ECDSA_P384`: Specifies ECDSA with curve P384.
-        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+          Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
         """
         return pulumi.get(self, "key_algorithm")
 
@@ -4116,11 +4116,11 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
                for certificate issuance, adhering to these constraints:
                
                * **Key format:** A supported cloud region name equivalent to the location identifier in
-               the corresponding map entry's value.
+                 the corresponding map entry's value.
                * **Value format:** A valid CA pool resource path format like:
-               'projects/{project}/locations/{location}/caPools/{ca_pool}'
+                 'projects/{project}/locations/{location}/caPools/{ca_pool}'
                * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-               same region. Also the CA pool region (in value) must match the workload's region (key).
+                 same region. Also the CA pool region (in value) must match the workload's region (key).
         :param _builtins.str key_algorithm: Key algorithm to use when generating the key pair. This key pair will be used to create
                the certificate. If unspecified, this will default to 'ECDSA_P256'.
                
@@ -4140,7 +4140,6 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
                CA in the same region as the workload will be selected to issue the certificate. Enabling
                this will clear any existing 'ca_pools' configuration to provision the certificates.
                
-               
                > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
                certificates will be automatically provisioned from the default shared CAs. This flag should
                not be set if you want to use your own CA pools to provision the certificates.
@@ -4159,11 +4158,11 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
         for certificate issuance, adhering to these constraints:
 
         * **Key format:** A supported cloud region name equivalent to the location identifier in
-        the corresponding map entry's value.
+          the corresponding map entry's value.
         * **Value format:** A valid CA pool resource path format like:
-        'projects/{project}/locations/{location}/caPools/{ca_pool}'
+          'projects/{project}/locations/{location}/caPools/{ca_pool}'
         * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-        same region. Also the CA pool region (in value) must match the workload's region (key).
+          same region. Also the CA pool region (in value) must match the workload's region (key).
         """
         return pulumi.get(self, "ca_pools")
 
@@ -4210,7 +4209,6 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
         If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
         CA in the same region as the workload will be selected to issue the certificate. Enabling
         this will clear any existing 'ca_pools' configuration to provision the certificates.
-
 
         > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
         certificates will be automatically provisioned from the default shared CAs. This flag should
@@ -4264,7 +4262,6 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult(dict):
         :param _builtins.bool trust_default_shared_ca: If set to True, the trust bundle will include the private ca managed identity regional root
                public certificates.
                
-               
                > **Note** 'trust_default_shared_ca' is only supported for managed identity trust domain
                resource.
         """
@@ -4288,7 +4285,6 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult(dict):
         """
         If set to True, the trust bundle will include the private ca managed identity regional root
         public certificates.
-
 
         > **Note** 'trust_default_shared_ca' is only supported for managed identity trust domain
         resource.

@@ -85,7 +85,7 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
     /**
      * The value to set for the given metadata key.
      *
-     * - - -
+     * ***
      */
     declare public readonly value: pulumi.Output<string>;
 
@@ -149,7 +149,7 @@ export interface ProjectMetadataItemState {
     /**
      * The value to set for the given metadata key.
      *
-     * - - -
+     * ***
      */
     value?: pulumi.Input<string | undefined>;
 }
@@ -179,7 +179,7 @@ export interface ProjectMetadataItemArgs {
     /**
      * The value to set for the given metadata key.
      *
-     * - - -
+     * ***
      */
     value: pulumi.Input<string>;
 }

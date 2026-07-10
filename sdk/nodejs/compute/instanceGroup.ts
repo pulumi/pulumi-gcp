@@ -152,7 +152,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     /**
      * The zone that this instance group should be created in.
      *
-     * - - -
+     * ***
      */
     declare public readonly zone: pulumi.Output<string>;
 
@@ -255,7 +255,7 @@ export interface InstanceGroupState {
     /**
      * The zone that this instance group should be created in.
      *
-     * - - -
+     * ***
      */
     zone?: pulumi.Input<string | undefined>;
 }
@@ -310,7 +310,7 @@ export interface InstanceGroupArgs {
     /**
      * The zone that this instance group should be created in.
      *
-     * - - -
+     * ***
      */
     zone?: pulumi.Input<string | undefined>;
 }

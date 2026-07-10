@@ -27,7 +27,7 @@ class ProjectMetadataArgs:
 
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -49,7 +49,7 @@ class ProjectMetadataArgs:
         """
         A series of key value pairs.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "metadata")
 
@@ -105,7 +105,7 @@ class _ProjectMetadataState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -139,7 +139,7 @@ class _ProjectMetadataState:
         """
         A series of key value pairs.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "metadata")
 
@@ -234,7 +234,7 @@ class ProjectMetadata(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -357,7 +357,7 @@ class ProjectMetadata(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A series of key value pairs.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -389,7 +389,7 @@ class ProjectMetadata(pulumi.CustomResource):
         """
         A series of key value pairs.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "metadata")
 

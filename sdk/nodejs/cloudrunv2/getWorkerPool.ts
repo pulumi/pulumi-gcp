@@ -39,7 +39,7 @@ export interface GetWorkerPoolArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: string;
     /**
@@ -130,7 +130,7 @@ export interface GetWorkerPoolOutputArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**

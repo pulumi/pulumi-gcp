@@ -45,7 +45,7 @@ class TransferAgentPoolArgs:
                * Start with a lowercase ASCII character, followed by:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
-               As expressed by the regular expression: ^(?!goog)a-z?$.
+                 As expressed by the regular expression: ^(?!goog)a-z?$.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -113,7 +113,7 @@ class TransferAgentPoolArgs:
         * Start with a lowercase ASCII character, followed by:
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
-        As expressed by the regular expression: ^(?!goog)a-z?$.
+          As expressed by the regular expression: ^(?!goog)a-z?$.
         """
         return pulumi.get(self, "name")
 
@@ -163,7 +163,7 @@ class _TransferAgentPoolState:
                * Start with a lowercase ASCII character, followed by:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
-               As expressed by the regular expression: ^(?!goog)a-z?$.
+                 As expressed by the regular expression: ^(?!goog)a-z?$.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Specifies the state of the AgentPool.
@@ -234,7 +234,7 @@ class _TransferAgentPoolState:
         * Start with a lowercase ASCII character, followed by:
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
-        As expressed by the regular expression: ^(?!goog)a-z?$.
+          As expressed by the regular expression: ^(?!goog)a-z?$.
         """
         return pulumi.get(self, "name")
 
@@ -346,7 +346,7 @@ class TransferAgentPool(pulumi.CustomResource):
                * Start with a lowercase ASCII character, followed by:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
-               As expressed by the regular expression: ^(?!goog)a-z?$.
+                 As expressed by the regular expression: ^(?!goog)a-z?$.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -478,7 +478,7 @@ class TransferAgentPool(pulumi.CustomResource):
                * Start with a lowercase ASCII character, followed by:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
-               As expressed by the regular expression: ^(?!goog)a-z?$.
+                 As expressed by the regular expression: ^(?!goog)a-z?$.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Specifies the state of the AgentPool.
@@ -536,7 +536,7 @@ class TransferAgentPool(pulumi.CustomResource):
         * Start with a lowercase ASCII character, followed by:
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
-        As expressed by the regular expression: ^(?!goog)a-z?$.
+          As expressed by the regular expression: ^(?!goog)a-z?$.
         """
         return pulumi.get(self, "name")
 

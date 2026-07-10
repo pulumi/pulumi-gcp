@@ -132,7 +132,7 @@ def get_key_handle(location: Optional[_builtins.str] = None,
     :param _builtins.str location: The Google Cloud Platform location for the KeyHandle.
            A full list of valid locations can be found by running `gcloud kms locations list`.
            
-           - - -
+           ***
     :param _builtins.str name: The KeyHandle's name.
            A KeyHandle name must exist within the provided location and must be valid UUID.
     :param _builtins.str project: The project in which the resource belongs. If it
@@ -178,7 +178,7 @@ def get_key_handle_output(location: pulumi.Input[Optional[_builtins.str]] = None
     :param _builtins.str location: The Google Cloud Platform location for the KeyHandle.
            A full list of valid locations can be found by running `gcloud kms locations list`.
            
-           - - -
+           ***
     :param _builtins.str name: The KeyHandle's name.
            A KeyHandle name must exist within the provided location and must be valid UUID.
     :param _builtins.str project: The project in which the resource belongs. If it

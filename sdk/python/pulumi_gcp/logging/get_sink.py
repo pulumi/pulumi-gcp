@@ -172,7 +172,7 @@ def get_sink(id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str id: The identifier for the resource. 
+    :param _builtins.str id: The identifier for the resource.
            Examples:
            
            - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
@@ -216,7 +216,7 @@ def get_sink_output(id: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str id: The identifier for the resource. 
+    :param _builtins.str id: The identifier for the resource.
            Examples:
            
            - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`

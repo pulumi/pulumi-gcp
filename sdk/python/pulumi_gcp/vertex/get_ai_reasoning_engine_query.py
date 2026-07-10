@@ -148,7 +148,7 @@ def get_ai_reasoning_engine_query(class_method: Optional[_builtins.str] = None,
     :param _builtins.str project: The ID of the project in which the resource belongs. If it is not provided, the provider default project is used.
     :param _builtins.str reasoning_engine_id: The ID of the Vertex AI Reasoning Engine to query.
            
-           - - -
+           ***
     :param _builtins.str region: The location of the resource.
     """
     __args__ = dict()
@@ -210,7 +210,7 @@ def get_ai_reasoning_engine_query_output(class_method: pulumi.Input[Optional[Opt
     :param _builtins.str project: The ID of the project in which the resource belongs. If it is not provided, the provider default project is used.
     :param _builtins.str reasoning_engine_id: The ID of the Vertex AI Reasoning Engine to query.
            
-           - - -
+           ***
     :param _builtins.str region: The location of the resource.
     """
     __args__ = dict()

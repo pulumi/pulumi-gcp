@@ -140,7 +140,7 @@ export class AppCheckResourcePolicy extends pulumi.CustomResource {
     /**
      * Service specific name of the resource object to which this policy applies, in the format:
      * * iOS OAuth clients (Google Identity for iOS):
-     * `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+     *   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
      */
     declare public readonly targetResource: pulumi.Output<string>;
     /**
@@ -256,7 +256,7 @@ export interface AppCheckResourcePolicyState {
     /**
      * Service specific name of the resource object to which this policy applies, in the format:
      * * iOS OAuth clients (Google Identity for iOS):
-     * `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+     *   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
      */
     targetResource?: pulumi.Input<string | undefined>;
     /**
@@ -322,7 +322,7 @@ export interface AppCheckResourcePolicyArgs {
     /**
      * Service specific name of the resource object to which this policy applies, in the format:
      * * iOS OAuth clients (Google Identity for iOS):
-     * `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+     *   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
      */
     targetResource: pulumi.Input<string>;
 }

@@ -75,18 +75,18 @@ class AuthzExtensionArgs:
                EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
                Supported values:
                - WIRE_FORMAT_UNSPECIFIED:
-               No wire format is explicitly specified. The backend automatically
-               defaults this value to EXT_PROC_GRPC.
+                 No wire format is explicitly specified. The backend automatically
+                 defaults this value to EXT_PROC_GRPC.
                - EXT_PROC_GRPC:
-               Uses Envoy's External Processing (ext_proc) gRPC API over a single
-               gRPC stream. The backend service must support HTTP/2 or H2C.
-               All supported events for a client request are sent over the same
-               gRPC stream. This is the default wire format.
+                 Uses Envoy's External Processing (ext_proc) gRPC API over a single
+                 gRPC stream. The backend service must support HTTP/2 or H2C.
+                 All supported events for a client request are sent over the same
+                 gRPC stream. This is the default wire format.
                - EXT_AUTHZ_GRPC:
-               Uses Envoy's external authorization (ext_authz) gRPC API.
-               The backend service must support HTTP/2 or H2C.
-               This option is only supported for regional AuthzExtension resources.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+                 Uses Envoy's external authorization (ext_authz) gRPC API.
+                 The backend service must support HTTP/2 or H2C.
+                 This option is only supported for regional AuthzExtension resources.
+                 Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "service", service)
@@ -300,18 +300,18 @@ class AuthzExtensionArgs:
         EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
         Supported values:
         - WIRE_FORMAT_UNSPECIFIED:
-        No wire format is explicitly specified. The backend automatically
-        defaults this value to EXT_PROC_GRPC.
+          No wire format is explicitly specified. The backend automatically
+          defaults this value to EXT_PROC_GRPC.
         - EXT_PROC_GRPC:
-        Uses Envoy's External Processing (ext_proc) gRPC API over a single
-        gRPC stream. The backend service must support HTTP/2 or H2C.
-        All supported events for a client request are sent over the same
-        gRPC stream. This is the default wire format.
+          Uses Envoy's External Processing (ext_proc) gRPC API over a single
+          gRPC stream. The backend service must support HTTP/2 or H2C.
+          All supported events for a client request are sent over the same
+          gRPC stream. This is the default wire format.
         - EXT_AUTHZ_GRPC:
-        Uses Envoy's external authorization (ext_authz) gRPC API.
-        The backend service must support HTTP/2 or H2C.
-        This option is only supported for regional AuthzExtension resources.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+          Uses Envoy's external authorization (ext_authz) gRPC API.
+          The backend service must support HTTP/2 or H2C.
+          This option is only supported for regional AuthzExtension resources.
+          Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 
@@ -388,18 +388,18 @@ class _AuthzExtensionState:
                EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
                Supported values:
                - WIRE_FORMAT_UNSPECIFIED:
-               No wire format is explicitly specified. The backend automatically
-               defaults this value to EXT_PROC_GRPC.
+                 No wire format is explicitly specified. The backend automatically
+                 defaults this value to EXT_PROC_GRPC.
                - EXT_PROC_GRPC:
-               Uses Envoy's External Processing (ext_proc) gRPC API over a single
-               gRPC stream. The backend service must support HTTP/2 or H2C.
-               All supported events for a client request are sent over the same
-               gRPC stream. This is the default wire format.
+                 Uses Envoy's External Processing (ext_proc) gRPC API over a single
+                 gRPC stream. The backend service must support HTTP/2 or H2C.
+                 All supported events for a client request are sent over the same
+                 gRPC stream. This is the default wire format.
                - EXT_AUTHZ_GRPC:
-               Uses Envoy's external authorization (ext_authz) gRPC API.
-               The backend service must support HTTP/2 or H2C.
-               This option is only supported for regional AuthzExtension resources.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+                 Uses Envoy's external authorization (ext_authz) gRPC API.
+                 The backend service must support HTTP/2 or H2C.
+                 This option is only supported for regional AuthzExtension resources.
+                 Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
@@ -673,18 +673,18 @@ class _AuthzExtensionState:
         EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
         Supported values:
         - WIRE_FORMAT_UNSPECIFIED:
-        No wire format is explicitly specified. The backend automatically
-        defaults this value to EXT_PROC_GRPC.
+          No wire format is explicitly specified. The backend automatically
+          defaults this value to EXT_PROC_GRPC.
         - EXT_PROC_GRPC:
-        Uses Envoy's External Processing (ext_proc) gRPC API over a single
-        gRPC stream. The backend service must support HTTP/2 or H2C.
-        All supported events for a client request are sent over the same
-        gRPC stream. This is the default wire format.
+          Uses Envoy's External Processing (ext_proc) gRPC API over a single
+          gRPC stream. The backend service must support HTTP/2 or H2C.
+          All supported events for a client request are sent over the same
+          gRPC stream. This is the default wire format.
         - EXT_AUTHZ_GRPC:
-        Uses Envoy's external authorization (ext_authz) gRPC API.
-        The backend service must support HTTP/2 or H2C.
-        This option is only supported for regional AuthzExtension resources.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+          Uses Envoy's external authorization (ext_authz) gRPC API.
+          The backend service must support HTTP/2 or H2C.
+          This option is only supported for regional AuthzExtension resources.
+          Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 
@@ -850,18 +850,18 @@ class AuthzExtension(pulumi.CustomResource):
                EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
                Supported values:
                - WIRE_FORMAT_UNSPECIFIED:
-               No wire format is explicitly specified. The backend automatically
-               defaults this value to EXT_PROC_GRPC.
+                 No wire format is explicitly specified. The backend automatically
+                 defaults this value to EXT_PROC_GRPC.
                - EXT_PROC_GRPC:
-               Uses Envoy's External Processing (ext_proc) gRPC API over a single
-               gRPC stream. The backend service must support HTTP/2 or H2C.
-               All supported events for a client request are sent over the same
-               gRPC stream. This is the default wire format.
+                 Uses Envoy's External Processing (ext_proc) gRPC API over a single
+                 gRPC stream. The backend service must support HTTP/2 or H2C.
+                 All supported events for a client request are sent over the same
+                 gRPC stream. This is the default wire format.
                - EXT_AUTHZ_GRPC:
-               Uses Envoy's external authorization (ext_authz) gRPC API.
-               The backend service must support HTTP/2 or H2C.
-               This option is only supported for regional AuthzExtension resources.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+                 Uses Envoy's external authorization (ext_authz) gRPC API.
+                 The backend service must support HTTP/2 or H2C.
+                 This option is only supported for regional AuthzExtension resources.
+                 Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         ...
     @overload
@@ -1107,18 +1107,18 @@ class AuthzExtension(pulumi.CustomResource):
                EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
                Supported values:
                - WIRE_FORMAT_UNSPECIFIED:
-               No wire format is explicitly specified. The backend automatically
-               defaults this value to EXT_PROC_GRPC.
+                 No wire format is explicitly specified. The backend automatically
+                 defaults this value to EXT_PROC_GRPC.
                - EXT_PROC_GRPC:
-               Uses Envoy's External Processing (ext_proc) gRPC API over a single
-               gRPC stream. The backend service must support HTTP/2 or H2C.
-               All supported events for a client request are sent over the same
-               gRPC stream. This is the default wire format.
+                 Uses Envoy's External Processing (ext_proc) gRPC API over a single
+                 gRPC stream. The backend service must support HTTP/2 or H2C.
+                 All supported events for a client request are sent over the same
+                 gRPC stream. This is the default wire format.
                - EXT_AUTHZ_GRPC:
-               Uses Envoy's external authorization (ext_authz) gRPC API.
-               The backend service must support HTTP/2 or H2C.
-               This option is only supported for regional AuthzExtension resources.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+                 Uses Envoy's external authorization (ext_authz) gRPC API.
+                 The backend service must support HTTP/2 or H2C.
+                 This option is only supported for regional AuthzExtension resources.
+                 Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1311,18 +1311,18 @@ class AuthzExtension(pulumi.CustomResource):
         EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
         Supported values:
         - WIRE_FORMAT_UNSPECIFIED:
-        No wire format is explicitly specified. The backend automatically
-        defaults this value to EXT_PROC_GRPC.
+          No wire format is explicitly specified. The backend automatically
+          defaults this value to EXT_PROC_GRPC.
         - EXT_PROC_GRPC:
-        Uses Envoy's External Processing (ext_proc) gRPC API over a single
-        gRPC stream. The backend service must support HTTP/2 or H2C.
-        All supported events for a client request are sent over the same
-        gRPC stream. This is the default wire format.
+          Uses Envoy's External Processing (ext_proc) gRPC API over a single
+          gRPC stream. The backend service must support HTTP/2 or H2C.
+          All supported events for a client request are sent over the same
+          gRPC stream. This is the default wire format.
         - EXT_AUTHZ_GRPC:
-        Uses Envoy's external authorization (ext_authz) gRPC API.
-        The backend service must support HTTP/2 or H2C.
-        This option is only supported for regional AuthzExtension resources.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
+          Uses Envoy's external authorization (ext_authz) gRPC API.
+          The backend service must support HTTP/2 or H2C.
+          This option is only supported for regional AuthzExtension resources.
+          Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 

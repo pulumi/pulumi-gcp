@@ -203,7 +203,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
-     * - - -
+     * ***
      */
     declare public readonly replicationSpec: pulumi.Output<outputs.storage.TransferJobReplicationSpec | undefined>;
     /**
@@ -330,7 +330,7 @@ export interface TransferJobState {
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
-     * - - -
+     * ***
      */
     replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec | undefined>;
     /**
@@ -392,7 +392,7 @@ export interface TransferJobArgs {
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
-     * - - -
+     * ***
      */
     replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec | undefined>;
     /**

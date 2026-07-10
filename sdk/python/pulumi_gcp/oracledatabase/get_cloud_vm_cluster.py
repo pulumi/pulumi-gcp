@@ -263,7 +263,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
     :param _builtins.str cloud_vm_cluster_id: The ID of the VM Cluster.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -321,7 +321,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: pulumi.Input[Optional[_buil
     :param _builtins.str cloud_vm_cluster_id: The ID of the VM Cluster.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

@@ -236,9 +236,9 @@ class _WorkloadIdentityPoolManagedIdentityState:
         :param pulumi.Input[_builtins.str] state: The current state of the managed identity.
                * `ACTIVE`: The managed identity is active.
                * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-               permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-               identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-               soft-deleted managed identity until it is permanently deleted.
+                 permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+                 identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+                 soft-deleted managed identity until it is permanently deleted.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -368,9 +368,9 @@ class _WorkloadIdentityPoolManagedIdentityState:
         The current state of the managed identity.
         * `ACTIVE`: The managed identity is active.
         * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-        permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-        identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-        soft-deleted managed identity until it is permanently deleted.
+          permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+          identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+          soft-deleted managed identity until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 
@@ -728,9 +728,9 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The current state of the managed identity.
                * `ACTIVE`: The managed identity is active.
                * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-               permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-               identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-               soft-deleted managed identity until it is permanently deleted.
+                 permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+                 identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+                 soft-deleted managed identity until it is permanently deleted.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -831,9 +831,9 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         The current state of the managed identity.
         * `ACTIVE`: The managed identity is active.
         * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-        permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-        identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-        soft-deleted managed identity until it is permanently deleted.
+          permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+          identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+          soft-deleted managed identity until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 

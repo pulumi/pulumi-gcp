@@ -41,11 +41,11 @@ class CxEntityTypeArgs:
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -116,7 +116,7 @@ class CxEntityTypeArgs:
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -131,7 +131,7 @@ class CxEntityTypeArgs:
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -244,7 +244,7 @@ class _CxEntityTypeState:
         :param pulumi.Input[_builtins.str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -262,7 +262,7 @@ class _CxEntityTypeState:
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -304,7 +304,7 @@ class _CxEntityTypeState:
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -388,7 +388,7 @@ class _CxEntityTypeState:
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -546,7 +546,7 @@ class CxEntityType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -564,7 +564,7 @@ class CxEntityType(pulumi.CustomResource):
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -735,7 +735,7 @@ class CxEntityType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -753,7 +753,7 @@ class CxEntityType(pulumi.CustomResource):
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -789,7 +789,7 @@ class CxEntityType(pulumi.CustomResource):
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -849,7 +849,7 @@ class CxEntityType(pulumi.CustomResource):
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 

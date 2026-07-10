@@ -40,8 +40,8 @@ class EnvironmentArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location or Compute Engine region for the environment.
@@ -97,8 +97,8 @@ class EnvironmentArgs:
         """
         User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -180,8 +180,8 @@ class _EnvironmentState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -254,8 +254,8 @@ class _EnvironmentState:
         """
         User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -716,8 +716,8 @@ class Environment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location or Compute Engine region for the environment.
@@ -1174,8 +1174,8 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1232,8 +1232,8 @@ class Environment(pulumi.CustomResource):
         """
         User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

@@ -49,7 +49,7 @@ class RulesetSource(dict):
         :param Sequence['RulesetSourceFileArgs'] files: `File` set constituting the `Source` bundle.
         :param _builtins.str language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "files", files)
         if language is not None:
@@ -69,7 +69,7 @@ class RulesetSource(dict):
         """
         `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 
-        - - -
+        ***
         """
         return pulumi.get(self, "language")
 

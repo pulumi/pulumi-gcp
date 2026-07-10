@@ -657,7 +657,6 @@ class AppHostingBuildSourceCodebaseArgsDict(TypedDict):
     """
     The commit in the codebase to build from.
 
-
     <a name="nested_source_codebase_author"></a>The `author` block contains:
     """
     commit_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -706,7 +705,6 @@ class AppHostingBuildSourceCodebaseArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] branch: The branch in the codebase to build from, using the latest commit.
         :param pulumi.Input[_builtins.str] commit: The commit in the codebase to build from.
-               
                
                <a name="nested_source_codebase_author"></a>The `author` block contains:
         :param pulumi.Input[_builtins.str] commit_message: (Output)
@@ -771,7 +769,6 @@ class AppHostingBuildSourceCodebaseArgs:
     def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit in the codebase to build from.
-
 
         <a name="nested_source_codebase_author"></a>The `author` block contains:
         """
@@ -1538,8 +1535,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(T
     - A and AAAA: IP addresses for the domain.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain. App Hosting
-    uses TXT records to determine which Firebase projects have
-    permission to act on the domain's behalf.
+      uses TXT records to determine which Firebase projects have
+      permission to act on the domain's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     relevant_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -1587,8 +1584,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
                - A and AAAA: IP addresses for the domain.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain. App Hosting
-               uses TXT records to determine which Firebase projects have
-               permission to act on the domain's behalf.
+                 uses TXT records to determine which Firebase projects have
+                 permission to act on the domain's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] relevant_states: (Output)
                An enum that indicates which state(s) this DNS record applies to. Populated
@@ -1643,8 +1640,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         - A and AAAA: IP addresses for the domain.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain. App Hosting
-        uses TXT records to determine which Firebase projects have
-        permission to act on the domain's behalf.
+          uses TXT records to determine which Firebase projects have
+          permission to act on the domain's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")
@@ -1902,8 +1899,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDic
     - A and AAAA: IP addresses for the domain.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain. App Hosting
-    uses TXT records to determine which Firebase projects have
-    permission to act on the domain's behalf.
+      uses TXT records to determine which Firebase projects have
+      permission to act on the domain's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     relevant_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -1951,8 +1948,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
                - A and AAAA: IP addresses for the domain.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain. App Hosting
-               uses TXT records to determine which Firebase projects have
-               permission to act on the domain's behalf.
+                 uses TXT records to determine which Firebase projects have
+                 permission to act on the domain's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] relevant_states: (Output)
                An enum that indicates which state(s) this DNS record applies to. Populated
@@ -2007,8 +2004,8 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         - A and AAAA: IP addresses for the domain.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain. App Hosting
-        uses TXT records to determine which Firebase projects have
-        permission to act on the domain's behalf.
+          uses TXT records to determine which Firebase projects have
+          permission to act on the domain's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")
@@ -3148,8 +3145,8 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict(TypedDict):
     - A and AAAA: IP addresses for the domain name.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain name. Hosting
-    uses TXT records to determine a which Firebase Projects have
-    permission to act on the domain name's behalf.
+      uses TXT records to determine a which Firebase Projects have
+      permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -3174,8 +3171,8 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
                - A and AAAA: IP addresses for the domain name.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain name. Hosting
-               uses TXT records to determine a which Firebase Projects have
-               permission to act on the domain name's behalf.
+                 uses TXT records to determine a which Firebase Projects have
+                 permission to act on the domain name's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[_builtins.str] required_action: Indicates the a required action for this record.
         :param pulumi.Input[_builtins.str] type: The record's type, which determines what data the record contains.
@@ -3209,8 +3206,8 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
         - A and AAAA: IP addresses for the domain name.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain name. Hosting
-        uses TXT records to determine a which Firebase Projects have
-        permission to act on the domain name's behalf.
+          uses TXT records to determine a which Firebase Projects have
+          permission to act on the domain name's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")
@@ -3307,8 +3304,8 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict(TypedDict):
     - A and AAAA: IP addresses for the domain name.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain name. Hosting
-    uses TXT records to determine a which Firebase Projects have
-    permission to act on the domain name's behalf.
+      uses TXT records to determine a which Firebase Projects have
+      permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -3333,8 +3330,8 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
                - A and AAAA: IP addresses for the domain name.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain name. Hosting
-               uses TXT records to determine a which Firebase Projects have
-               permission to act on the domain name's behalf.
+                 uses TXT records to determine a which Firebase Projects have
+                 permission to act on the domain name's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[_builtins.str] required_action: Indicates the a required action for this record.
         :param pulumi.Input[_builtins.str] type: The record's type, which determines what data the record contains.
@@ -3368,8 +3365,8 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
         - A and AAAA: IP addresses for the domain name.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain name. Hosting
-        uses TXT records to determine a which Firebase Projects have
-        permission to act on the domain name's behalf.
+          uses TXT records to determine a which Firebase Projects have
+          permission to act on the domain name's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")
@@ -3705,8 +3702,8 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
     - A and AAAA: IP addresses for the domain name.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain name. Hosting
-    uses TXT records to determine a which Firebase Projects have
-    permission to act on the domain name's behalf.
+      uses TXT records to determine a which Firebase Projects have
+      permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -3731,8 +3728,8 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
                - A and AAAA: IP addresses for the domain name.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain name. Hosting
-               uses TXT records to determine a which Firebase Projects have
-               permission to act on the domain name's behalf.
+                 uses TXT records to determine a which Firebase Projects have
+                 permission to act on the domain name's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[_builtins.str] required_action: Indicates the a required action for this record.
         :param pulumi.Input[_builtins.str] type: The record's type, which determines what data the record contains.
@@ -3766,8 +3763,8 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
         - A and AAAA: IP addresses for the domain name.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain name. Hosting
-        uses TXT records to determine a which Firebase Projects have
-        permission to act on the domain name's behalf.
+          uses TXT records to determine a which Firebase Projects have
+          permission to act on the domain name's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")
@@ -3864,8 +3861,8 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
     - A and AAAA: IP addresses for the domain name.
     - CNAME: Another domain to check for records.
     - TXT: Arbitrary text strings associated with the domain name. Hosting
-    uses TXT records to determine a which Firebase Projects have
-    permission to act on the domain name's behalf.
+      uses TXT records to determine a which Firebase Projects have
+      permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
     required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -3890,8 +3887,8 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
                - A and AAAA: IP addresses for the domain name.
                - CNAME: Another domain to check for records.
                - TXT: Arbitrary text strings associated with the domain name. Hosting
-               uses TXT records to determine a which Firebase Projects have
-               permission to act on the domain name's behalf.
+                 uses TXT records to determine a which Firebase Projects have
+                 permission to act on the domain name's behalf.
                - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         :param pulumi.Input[_builtins.str] required_action: Indicates the a required action for this record.
         :param pulumi.Input[_builtins.str] type: The record's type, which determines what data the record contains.
@@ -3925,8 +3922,8 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
         - A and AAAA: IP addresses for the domain name.
         - CNAME: Another domain to check for records.
         - TXT: Arbitrary text strings associated with the domain name. Hosting
-        uses TXT records to determine a which Firebase Projects have
-        permission to act on the domain name's behalf.
+          uses TXT records to determine a which Firebase Projects have
+          permission to act on the domain name's behalf.
         - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
         """
         return pulumi.get(self, "rdata")

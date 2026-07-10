@@ -61,7 +61,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -83,8 +83,8 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -187,7 +187,7 @@ class InstanceFromMachineImageArgs:
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -374,8 +374,8 @@ class InstanceFromMachineImageArgs:
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -692,8 +692,8 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -717,7 +717,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs'] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
@@ -1102,8 +1102,8 @@ class _InstanceFromMachineImageState:
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1347,7 +1347,7 @@ class _InstanceFromMachineImageState:
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -1505,8 +1505,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -1526,7 +1526,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If not
@@ -1778,8 +1778,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1803,7 +1803,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
@@ -2058,8 +2058,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2223,7 +2223,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 

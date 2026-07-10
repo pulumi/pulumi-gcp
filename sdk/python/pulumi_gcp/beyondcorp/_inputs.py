@@ -802,7 +802,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgsDict(TypedDict):
     The names should conform to RFC 9110:
     > Field names SHOULD constrain themselves to alphanumeric characters, "-",
     and ".", and SHOULD begin with a letter.
-    > Field values SHOULD contain only ASCII printable characters and tab.
+    Field values SHOULD contain only ASCII printable characters and tab.
     """
 
 @pulumi.input_type
@@ -824,7 +824,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgs:
                The names should conform to RFC 9110:
                > Field names SHOULD constrain themselves to alphanumeric characters, "-",
                and ".", and SHOULD begin with a letter.
-               > Field values SHOULD contain only ASCII printable characters and tab.
+               Field values SHOULD contain only ASCII printable characters and tab.
         """
         if allowed_client_headers is not None:
             pulumi.set(__self__, "allowed_client_headers", allowed_client_headers)
@@ -895,7 +895,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgs:
         The names should conform to RFC 9110:
         > Field names SHOULD constrain themselves to alphanumeric characters, "-",
         and ".", and SHOULD begin with a letter.
-        > Field values SHOULD contain only ASCII printable characters and tab.
+        Field values SHOULD contain only ASCII printable characters and tab.
         """
         return pulumi.get(self, "metadata_headers")
 
@@ -1376,7 +1376,7 @@ class SecurityGatewayProxyProtocolConfigArgsDict(TypedDict):
     The names should conform to RFC 9110:
     > Field names SHOULD constrain themselves to alphanumeric characters, "-",
     and ".", and SHOULD begin with a letter.
-    > Field values SHOULD contain only ASCII printable characters and tab.
+    Field values SHOULD contain only ASCII printable characters and tab.
     """
 
 @pulumi.input_type
@@ -1398,7 +1398,7 @@ class SecurityGatewayProxyProtocolConfigArgs:
                The names should conform to RFC 9110:
                > Field names SHOULD constrain themselves to alphanumeric characters, "-",
                and ".", and SHOULD begin with a letter.
-               > Field values SHOULD contain only ASCII printable characters and tab.
+               Field values SHOULD contain only ASCII printable characters and tab.
         """
         if allowed_client_headers is not None:
             pulumi.set(__self__, "allowed_client_headers", allowed_client_headers)
@@ -1469,7 +1469,7 @@ class SecurityGatewayProxyProtocolConfigArgs:
         The names should conform to RFC 9110:
         > Field names SHOULD constrain themselves to alphanumeric characters, "-",
         and ".", and SHOULD begin with a letter.
-        > Field values SHOULD contain only ASCII printable characters and tab.
+        Field values SHOULD contain only ASCII printable characters and tab.
         """
         return pulumi.get(self, "metadata_headers")
 

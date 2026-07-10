@@ -234,9 +234,7 @@ export class Workload extends pulumi.CustomResource {
     /**
      * The organization for the resource
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly organization: pulumi.Output<string>;
     /**
@@ -442,9 +440,7 @@ export interface WorkloadState {
     /**
      * The organization for the resource
      *
-     *
-     *
-     * - - -
+     * ***
      */
     organization?: pulumi.Input<string | undefined>;
     /**
@@ -536,9 +532,7 @@ export interface WorkloadArgs {
     /**
      * The organization for the resource
      *
-     *
-     *
-     * - - -
+     * ***
      */
     organization: pulumi.Input<string>;
     /**

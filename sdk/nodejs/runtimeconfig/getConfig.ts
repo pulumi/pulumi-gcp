@@ -40,7 +40,7 @@ export interface GetConfigArgs {
     /**
      * The name of the Runtime Configurator configuration.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -99,7 +99,7 @@ export interface GetConfigOutputArgs {
     /**
      * The name of the Runtime Configurator configuration.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

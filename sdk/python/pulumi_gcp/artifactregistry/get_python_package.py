@@ -80,7 +80,7 @@ class GetPythonPackageResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The fully qualified name of the fetched package. Format:  
+        The fully qualified name of the fetched package. Format:
         ```
         projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/pythonPackages/{{package}}:{{version}}
         ```

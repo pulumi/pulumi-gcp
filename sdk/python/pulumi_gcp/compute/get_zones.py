@@ -102,14 +102,14 @@ def get_zones(project: Optional[_builtins.str] = None,
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_zones()
-    foo: list[Any] = []
+    foo: list[gcp.compute.InstanceGroupManager] = []
     def create_foo(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
-                name=f"test-{range['value']}",
+        for foo_range in [{"value": i} for i in range(0, range_body)]:
+            foo.append(gcp.compute.InstanceGroupManager(f"foo-{foo_range['value']}",
+                name=f"test-{foo_range['value']}",
                 instance_template=foobar["selfLink"],
-                base_instance_name=f"foobar-{range['value']}",
-                zone=available.names[range["value"]],
+                base_instance_name=f"foobar-{foo_range['value']}",
+                zone=available.names[foo_range["value"]],
                 target_size=1))
 
     (len(available.names)).apply(create_foo)
@@ -148,14 +148,14 @@ def get_zones_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = 
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_zones()
-    foo: list[Any] = []
+    foo: list[gcp.compute.InstanceGroupManager] = []
     def create_foo(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
-                name=f"test-{range['value']}",
+        for foo_range in [{"value": i} for i in range(0, range_body)]:
+            foo.append(gcp.compute.InstanceGroupManager(f"foo-{foo_range['value']}",
+                name=f"test-{foo_range['value']}",
                 instance_template=foobar["selfLink"],
-                base_instance_name=f"foobar-{range['value']}",
-                zone=available.names[range["value"]],
+                base_instance_name=f"foobar-{foo_range['value']}",
+                zone=available.names[foo_range["value"]],
                 target_size=1))
 
     (len(available.names)).apply(create_foo)

@@ -103,7 +103,7 @@ export class Interconnect extends pulumi.CustomResource {
      * - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
      * - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
      * - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-     * Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+     *   Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
      */
     declare public /*out*/ readonly availableFeatures: pulumi.Output<string[]>;
     /**
@@ -167,7 +167,7 @@ export class Interconnect extends pulumi.CustomResource {
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
-     * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      */
     declare public readonly interconnectType: pulumi.Output<string>;
     /**
@@ -192,7 +192,7 @@ export class Interconnect extends pulumi.CustomResource {
      * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-     * Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+     *   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
      */
     declare public readonly linkType: pulumi.Output<string>;
     /**
@@ -230,11 +230,11 @@ export class Interconnect extends pulumi.CustomResource {
     /**
      * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-     * be provisioned on this Interconnect.
+     *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-     * provisioned on this Interconnect.
+     *   provisioned on this Interconnect.
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-     * attachments may be provisioned or updated on this Interconnect.
+     *   attachments may be provisioned or updated on this Interconnect.
      */
     declare public /*out*/ readonly operationalStatus: pulumi.Output<string>;
     /**
@@ -273,8 +273,8 @@ export class Interconnect extends pulumi.CustomResource {
      * - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
      * - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
      * - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-     * Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+     *   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      */
     declare public readonly requestedFeatures: pulumi.Output<string[] | undefined>;
     /**
@@ -290,9 +290,9 @@ export class Interconnect extends pulumi.CustomResource {
      * State of this notification. Note that the versions of this enum prefixed with "NS_" have
      * been deprecated in favor of the unprefixed values. Can take one of the following values:
      * - ACTIVE: This outage notification is active. The event could be in the past, present,
-     * or future. See startTime and endTime for scheduling.
+     *   or future. See startTime and endTime for scheduling.
      * - CANCELLED: The outage associated with this notification was cancelled before the
-     * outage was due to start.
+     *   outage was due to start.
      * - COMPLETED: The outage associated with this notification is complete.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
@@ -436,7 +436,7 @@ export interface InterconnectState {
      * - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
      * - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
      * - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-     * Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
+     *   Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
      */
     availableFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -500,7 +500,7 @@ export interface InterconnectState {
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
-     * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      */
     interconnectType?: pulumi.Input<string | undefined>;
     /**
@@ -525,7 +525,7 @@ export interface InterconnectState {
      * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-     * Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+     *   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
      */
     linkType?: pulumi.Input<string | undefined>;
     /**
@@ -563,11 +563,11 @@ export interface InterconnectState {
     /**
      * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
-     * be provisioned on this Interconnect.
+     *   be provisioned on this Interconnect.
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
-     * provisioned on this Interconnect.
+     *   provisioned on this Interconnect.
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
-     * attachments may be provisioned or updated on this Interconnect.
+     *   attachments may be provisioned or updated on this Interconnect.
      */
     operationalStatus?: pulumi.Input<string | undefined>;
     /**
@@ -606,8 +606,8 @@ export interface InterconnectState {
      * - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
      * - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
      * - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-     * Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+     *   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      */
     requestedFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -623,9 +623,9 @@ export interface InterconnectState {
      * State of this notification. Note that the versions of this enum prefixed with "NS_" have
      * been deprecated in favor of the unprefixed values. Can take one of the following values:
      * - ACTIVE: This outage notification is active. The event could be in the past, present,
-     * or future. See startTime and endTime for scheduling.
+     *   or future. See startTime and endTime for scheduling.
      * - CANCELLED: The outage associated with this notification was cancelled before the
-     * outage was due to start.
+     *   outage was due to start.
      * - COMPLETED: The outage associated with this notification is complete.
      */
     state?: pulumi.Input<string | undefined>;
@@ -681,7 +681,7 @@ export interface InterconnectArgs {
      * Can take one of the following values:
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
-     * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      */
     interconnectType: pulumi.Input<string>;
     /**
@@ -698,7 +698,7 @@ export interface InterconnectArgs {
      * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
      * - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
-     * Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+     *   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
      */
     linkType: pulumi.Input<string>;
     /**
@@ -754,8 +754,8 @@ export interface InterconnectArgs {
      * - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
      * - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
      * - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-     * Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
+     *   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      */
     requestedFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

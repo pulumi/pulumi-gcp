@@ -33,7 +33,7 @@ class OrganizationPolicyArgs:
 
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         :param pulumi.Input['OrganizationPolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -43,7 +43,7 @@ class OrganizationPolicyArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input['OrganizationPolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It
                can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input['OrganizationPolicyRestorePolicyArgs'] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
@@ -71,7 +71,7 @@ class OrganizationPolicyArgs:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "constraint")
 
@@ -114,7 +114,7 @@ class OrganizationPolicyArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -181,7 +181,7 @@ class _OrganizationPolicyState:
         :param pulumi.Input['OrganizationPolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -189,7 +189,7 @@ class _OrganizationPolicyState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         :param pulumi.Input['OrganizationPolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It
@@ -238,7 +238,7 @@ class _OrganizationPolicyState:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "constraint")
 
@@ -257,7 +257,7 @@ class _OrganizationPolicyState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -450,7 +450,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -458,7 +458,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         :param pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It
                can also be used to allow or deny all values. Structure is documented below.
@@ -636,7 +636,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -644,7 +644,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         :param pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It
@@ -685,7 +685,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "constraint")
 
@@ -700,7 +700,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

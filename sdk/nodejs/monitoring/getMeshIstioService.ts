@@ -65,7 +65,7 @@ export interface GetMeshIstioServiceArgs {
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */
@@ -165,7 +165,7 @@ export interface GetMeshIstioServiceOutputArgs {
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */

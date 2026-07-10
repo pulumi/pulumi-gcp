@@ -87,7 +87,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * The service to generate identity for.
      *
-     * - - -
+     * ***
      */
     declare public readonly service: pulumi.Output<string>;
 
@@ -145,7 +145,7 @@ export interface ServiceIdentityState {
     /**
      * The service to generate identity for.
      *
-     * - - -
+     * ***
      */
     service?: pulumi.Input<string | undefined>;
 }
@@ -161,7 +161,7 @@ export interface ServiceIdentityArgs {
     /**
      * The service to generate identity for.
      *
-     * - - -
+     * ***
      */
     service: pulumi.Input<string>;
 }

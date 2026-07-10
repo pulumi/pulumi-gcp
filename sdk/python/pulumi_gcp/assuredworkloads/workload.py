@@ -45,9 +45,7 @@ class WorkloadArgs:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] organization: The organization for the resource
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -140,9 +138,7 @@ class WorkloadArgs:
         """
         The organization for the resource
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "organization")
 
@@ -360,9 +356,7 @@ class _WorkloadState:
         :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workload.
         :param pulumi.Input[_builtins.str] organization: The organization for the resource
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
         :param pulumi.Input['WorkloadPartnerPermissionsArgs'] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[_builtins.str] partner_services_billing_account: Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
@@ -621,9 +615,7 @@ class _WorkloadState:
         """
         The organization for the resource
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "organization")
 
@@ -922,9 +914,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] organization: The organization for the resource
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
         :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[_builtins.str] partner_services_billing_account: Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
@@ -1210,9 +1200,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workload.
         :param pulumi.Input[_builtins.str] organization: The organization for the resource
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
         :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[_builtins.str] partner_services_billing_account: Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
@@ -1390,9 +1378,7 @@ class Workload(pulumi.CustomResource):
         """
         The organization for the resource
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "organization")
 

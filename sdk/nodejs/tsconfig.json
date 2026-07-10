@@ -1393,6 +1393,7 @@
         "kms/secretCiphertext.ts",
         "licensemanager/configuration.ts",
         "licensemanager/index.ts",
+        "locationFromId.ts",
         "logging/billingAccountBucketConfig.ts",
         "logging/billingAccountExclusion.ts",
         "logging/billingAccountSink.ts",
@@ -1475,6 +1476,7 @@
         "monitoring/notificationChannel.ts",
         "monitoring/slo.ts",
         "monitoring/uptimeCheckConfig.ts",
+        "nameFromId.ts",
         "netapp/activeDirectory.ts",
         "netapp/backup.ts",
         "netapp/backupPolicy.ts",
@@ -1672,6 +1674,7 @@
         "privilegedaccessmanager/getEntitlement.ts",
         "privilegedaccessmanager/index.ts",
         "privilegedaccessmanager/settings.ts",
+        "projectFromId.ts",
         "projects/accessApprovalSettings.ts",
         "projects/apiKey.ts",
         "projects/defaultServiceAccounts.ts",
@@ -1724,6 +1727,8 @@
         "redis/getInstance.ts",
         "redis/index.ts",
         "redis/instance.ts",
+        "regionFromId.ts",
+        "regionFromZone.ts",
         "resourcemanager/capability.ts",
         "resourcemanager/index.ts",
         "resourcemanager/lien.ts",
@@ -2073,6 +2078,7 @@
         "workstations/workstationConfigIamPolicy.ts",
         "workstations/workstationIamBinding.ts",
         "workstations/workstationIamMember.ts",
-        "workstations/workstationIamPolicy.ts"
+        "workstations/workstationIamPolicy.ts",
+        "zoneFromId.ts"
     ]
 }

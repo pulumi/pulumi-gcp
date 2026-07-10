@@ -36,7 +36,7 @@ export interface GetCertificateArgs {
     /**
      * The name of the certificate.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -100,7 +100,7 @@ export interface GetCertificateOutputArgs {
     /**
      * The name of the certificate.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

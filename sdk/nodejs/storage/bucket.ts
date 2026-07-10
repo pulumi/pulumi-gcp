@@ -303,7 +303,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -534,7 +534,7 @@ export interface BucketState {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -672,7 +672,7 @@ export interface BucketArgs {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

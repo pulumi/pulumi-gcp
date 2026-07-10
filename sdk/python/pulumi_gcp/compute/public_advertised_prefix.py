@@ -42,11 +42,11 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[_builtins.str] ipv6_access_type: The internet access type for IPv6 Public Advertised Prefixes. It can be
                set to one of following:
                * EXTERNAL: Default access type. The prefix will be announced to the
-               internet. All children PDPs will have access type as EXTERNAL.
+                 internet. All children PDPs will have access type as EXTERNAL.
                * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-               be used privately within Google Cloud. All children PDPs will have
-               access type as INTERNAL.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 be used privately within Google Cloud. All children PDPs will have
+                 access type as INTERNAL.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -56,10 +56,10 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[_builtins.str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
                * REGIONAL: The public delegated prefix is regional only. The
-               provisioning will take a few minutes.
+                 provisioning will take a few minutes.
                * GLOBAL: The public delegated prefix is global only. The provisioning
-               will take ~4 weeks.
-               Possible values are: `GLOBAL`, `REGIONAL`.
+                 will take ~4 weeks.
+                 Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -139,11 +139,11 @@ class PublicAdvertisedPrefixArgs:
         The internet access type for IPv6 Public Advertised Prefixes. It can be
         set to one of following:
         * EXTERNAL: Default access type. The prefix will be announced to the
-        internet. All children PDPs will have access type as EXTERNAL.
+          internet. All children PDPs will have access type as EXTERNAL.
         * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-        be used privately within Google Cloud. All children PDPs will have
-        access type as INTERNAL.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          be used privately within Google Cloud. All children PDPs will have
+          access type as INTERNAL.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -175,10 +175,10 @@ class PublicAdvertisedPrefixArgs:
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
         * REGIONAL: The public delegated prefix is regional only. The
-        provisioning will take a few minutes.
+          provisioning will take a few minutes.
         * GLOBAL: The public delegated prefix is global only. The provisioning
-        will take ~4 weeks.
-        Possible values are: `GLOBAL`, `REGIONAL`.
+          will take ~4 weeks.
+          Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
 
@@ -228,11 +228,11 @@ class _PublicAdvertisedPrefixState:
         :param pulumi.Input[_builtins.str] ipv6_access_type: The internet access type for IPv6 Public Advertised Prefixes. It can be
                set to one of following:
                * EXTERNAL: Default access type. The prefix will be announced to the
-               internet. All children PDPs will have access type as EXTERNAL.
+                 internet. All children PDPs will have access type as EXTERNAL.
                * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-               be used privately within Google Cloud. All children PDPs will have
-               access type as INTERNAL.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 be used privately within Google Cloud. All children PDPs will have
+                 access type as INTERNAL.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -242,10 +242,10 @@ class _PublicAdvertisedPrefixState:
         :param pulumi.Input[_builtins.str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
                * REGIONAL: The public delegated prefix is regional only. The
-               provisioning will take a few minutes.
+                 provisioning will take a few minutes.
                * GLOBAL: The public delegated prefix is global only. The provisioning
-               will take ~4 weeks.
-               Possible values are: `GLOBAL`, `REGIONAL`.
+                 will take ~4 weeks.
+                 Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -332,11 +332,11 @@ class _PublicAdvertisedPrefixState:
         The internet access type for IPv6 Public Advertised Prefixes. It can be
         set to one of following:
         * EXTERNAL: Default access type. The prefix will be announced to the
-        internet. All children PDPs will have access type as EXTERNAL.
+          internet. All children PDPs will have access type as EXTERNAL.
         * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-        be used privately within Google Cloud. All children PDPs will have
-        access type as INTERNAL.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          be used privately within Google Cloud. All children PDPs will have
+          access type as INTERNAL.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -368,10 +368,10 @@ class _PublicAdvertisedPrefixState:
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
         * REGIONAL: The public delegated prefix is regional only. The
-        provisioning will take a few minutes.
+          provisioning will take a few minutes.
         * GLOBAL: The public delegated prefix is global only. The provisioning
-        will take ~4 weeks.
-        Possible values are: `GLOBAL`, `REGIONAL`.
+          will take ~4 weeks.
+          Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
 
@@ -513,11 +513,11 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_access_type: The internet access type for IPv6 Public Advertised Prefixes. It can be
                set to one of following:
                * EXTERNAL: Default access type. The prefix will be announced to the
-               internet. All children PDPs will have access type as EXTERNAL.
+                 internet. All children PDPs will have access type as EXTERNAL.
                * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-               be used privately within Google Cloud. All children PDPs will have
-               access type as INTERNAL.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 be used privately within Google Cloud. All children PDPs will have
+                 access type as INTERNAL.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -527,10 +527,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
                * REGIONAL: The public delegated prefix is regional only. The
-               provisioning will take a few minutes.
+                 provisioning will take a few minutes.
                * GLOBAL: The public delegated prefix is global only. The provisioning
-               will take ~4 weeks.
-               Possible values are: `GLOBAL`, `REGIONAL`.
+                 will take ~4 weeks.
+                 Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -690,11 +690,11 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_access_type: The internet access type for IPv6 Public Advertised Prefixes. It can be
                set to one of following:
                * EXTERNAL: Default access type. The prefix will be announced to the
-               internet. All children PDPs will have access type as EXTERNAL.
+                 internet. All children PDPs will have access type as EXTERNAL.
                * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-               be used privately within Google Cloud. All children PDPs will have
-               access type as INTERNAL.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 be used privately within Google Cloud. All children PDPs will have
+                 access type as INTERNAL.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -704,10 +704,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
                must be one of: GLOBAL, REGIONAL
                * REGIONAL: The public delegated prefix is regional only. The
-               provisioning will take a few minutes.
+                 provisioning will take a few minutes.
                * GLOBAL: The public delegated prefix is global only. The provisioning
-               will take ~4 weeks.
-               Possible values are: `GLOBAL`, `REGIONAL`.
+                 will take ~4 weeks.
+                 Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -773,11 +773,11 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         The internet access type for IPv6 Public Advertised Prefixes. It can be
         set to one of following:
         * EXTERNAL: Default access type. The prefix will be announced to the
-        internet. All children PDPs will have access type as EXTERNAL.
+          internet. All children PDPs will have access type as EXTERNAL.
         * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-        be used privately within Google Cloud. All children PDPs will have
-        access type as INTERNAL.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          be used privately within Google Cloud. All children PDPs will have
+          access type as INTERNAL.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -801,10 +801,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         Specifies how child public delegated prefix will be scoped. pdpScope
         must be one of: GLOBAL, REGIONAL
         * REGIONAL: The public delegated prefix is regional only. The
-        provisioning will take a few minutes.
+          provisioning will take a few minutes.
         * GLOBAL: The public delegated prefix is global only. The provisioning
-        will take ~4 weeks.
-        Possible values are: `GLOBAL`, `REGIONAL`.
+          will take ~4 weeks.
+          Possible values are: `GLOBAL`, `REGIONAL`.
         """
         return pulumi.get(self, "pdp_scope")
 

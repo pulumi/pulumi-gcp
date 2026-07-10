@@ -94,8 +94,8 @@ export class OauthClient extends pulumi.CustomResource {
      * OAuth flows.
      * The following scopes are supported:
      * * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-     * and delete your Google Cloud data and see the email address for your Google
-     * Account.
+     *   and delete your Google Cloud data and see the email address for your Google
+     *   Account.
      */
     declare public readonly allowedScopes: pulumi.Output<string[]>;
     /**
@@ -256,8 +256,8 @@ export interface OauthClientState {
      * OAuth flows.
      * The following scopes are supported:
      * * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-     * and delete your Google Cloud data and see the email address for your Google
-     * Account.
+     *   and delete your Google Cloud data and see the email address for your Google
+     *   Account.
      */
     allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -353,8 +353,8 @@ export interface OauthClientArgs {
      * OAuth flows.
      * The following scopes are supported:
      * * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
-     * and delete your Google Cloud data and see the email address for your Google
-     * Account.
+     *   and delete your Google Cloud data and see the email address for your Google
+     *   Account.
      */
     allowedScopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

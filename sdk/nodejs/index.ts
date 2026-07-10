@@ -5,10 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export const locationFromId: typeof import("./locationFromId").locationFromId = null as any;
+export const locationFromIdOutput: typeof import("./locationFromId").locationFromIdOutput = null as any;
+utilities.lazyLoad(exports, ["locationFromId","locationFromIdOutput"], () => require("./locationFromId"));
+
+export const nameFromId: typeof import("./nameFromId").nameFromId = null as any;
+export const nameFromIdOutput: typeof import("./nameFromId").nameFromIdOutput = null as any;
+utilities.lazyLoad(exports, ["nameFromId","nameFromIdOutput"], () => require("./nameFromId"));
+
+export const projectFromId: typeof import("./projectFromId").projectFromId = null as any;
+export const projectFromIdOutput: typeof import("./projectFromId").projectFromIdOutput = null as any;
+utilities.lazyLoad(exports, ["projectFromId","projectFromIdOutput"], () => require("./projectFromId"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
+export const regionFromId: typeof import("./regionFromId").regionFromId = null as any;
+export const regionFromIdOutput: typeof import("./regionFromId").regionFromIdOutput = null as any;
+utilities.lazyLoad(exports, ["regionFromId","regionFromIdOutput"], () => require("./regionFromId"));
+
+export const regionFromZone: typeof import("./regionFromZone").regionFromZone = null as any;
+export const regionFromZoneOutput: typeof import("./regionFromZone").regionFromZoneOutput = null as any;
+utilities.lazyLoad(exports, ["regionFromZone","regionFromZoneOutput"], () => require("./regionFromZone"));
+
 export * from "./utils";
+export const zoneFromId: typeof import("./zoneFromId").zoneFromId = null as any;
+export const zoneFromIdOutput: typeof import("./zoneFromId").zoneFromIdOutput = null as any;
+utilities.lazyLoad(exports, ["zoneFromId","zoneFromIdOutput"], () => require("./zoneFromId"));
+
 
 // Export sub-modules:
 import * as accessapproval from "./accessapproval";

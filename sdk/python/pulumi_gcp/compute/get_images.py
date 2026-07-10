@@ -108,7 +108,7 @@ def get_images(filter: Optional[_builtins.str] = None,
 
     :param _builtins.str filter: Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
@@ -155,7 +155,7 @@ def get_images_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = 
 
     :param _builtins.str filter: Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.

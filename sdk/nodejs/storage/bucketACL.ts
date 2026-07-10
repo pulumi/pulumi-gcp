@@ -72,7 +72,7 @@ export class BucketACL extends pulumi.CustomResource {
     /**
      * The name of the bucket it applies to.
      *
-     * - - -
+     * ***
      */
     declare public readonly bucket: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface BucketACLState {
     /**
      * The name of the bucket it applies to.
      *
-     * - - -
+     * ***
      */
     bucket?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface BucketACLArgs {
     /**
      * The name of the bucket it applies to.
      *
-     * - - -
+     * ***
      */
     bucket: pulumi.Input<string>;
     /**

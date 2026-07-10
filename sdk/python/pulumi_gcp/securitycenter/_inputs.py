@@ -590,15 +590,15 @@ class FolderNotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -616,15 +616,15 @@ class FolderNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -642,15 +642,15 @@ class FolderNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -2174,15 +2174,15 @@ class NotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -2200,15 +2200,15 @@ class NotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -2226,15 +2226,15 @@ class NotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -3184,15 +3184,15 @@ class ProjectNotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -3210,15 +3210,15 @@ class ProjectNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3236,15 +3236,15 @@ class ProjectNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -3372,15 +3372,15 @@ class V2FolderNotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -3398,15 +3398,15 @@ class V2FolderNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3424,15 +3424,15 @@ class V2FolderNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -3454,15 +3454,15 @@ class V2OrganizationNotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -3480,15 +3480,15 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3506,15 +3506,15 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -3624,15 +3624,15 @@ class V2ProjectNotificationConfigStreamingConfigArgsDict(TypedDict):
     map to those defined in the corresponding resource.
     The supported operators are:
     * = for all value types.
-    * >, <, >=, <= for integer values.
+    * > , <, >=, <= for integer values.
     * :, meaning substring matching, for strings.
-    The supported value types are:
+      The supported value types are:
     * string literals in quotes.
     * integer literals without quotes.
     * boolean literals true and false without quotes.
-    See
-    [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-    for information on how to write a filter.
+      See
+      [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+      for information on how to write a filter.
     """
 
 @pulumi.input_type
@@ -3650,15 +3650,15 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3676,15 +3676,15 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 

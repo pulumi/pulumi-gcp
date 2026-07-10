@@ -29,7 +29,7 @@ export interface GetRegionDiskArgs {
     /**
      * The name of a specific disk.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -113,7 +113,7 @@ export interface GetRegionDiskOutputArgs {
     /**
      * The name of a specific disk.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

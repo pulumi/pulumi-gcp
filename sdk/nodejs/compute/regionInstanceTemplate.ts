@@ -351,7 +351,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
@@ -645,7 +645,7 @@ export interface RegionInstanceTemplateState {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     machineType?: pulumi.Input<string | undefined>;
     /**
@@ -831,7 +831,7 @@ export interface RegionInstanceTemplateArgs {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     machineType: pulumi.Input<string>;
     /**

@@ -130,7 +130,7 @@ def get_address_groups(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: The location of the Address Group.
            
-           - - -
+           ***
     :param _builtins.str parent: The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
            
            > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
@@ -187,7 +187,7 @@ def get_address_groups_output(location: pulumi.Input[Optional[_builtins.str]] = 
 
     :param _builtins.str location: The location of the Address Group.
            
-           - - -
+           ***
     :param _builtins.str parent: The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
            
            > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.

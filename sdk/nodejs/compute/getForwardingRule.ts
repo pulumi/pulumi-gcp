@@ -36,8 +36,7 @@ export interface GetForwardingRuleArgs {
     /**
      * The name of the forwarding rule.
      *
-     *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -128,8 +127,7 @@ export interface GetForwardingRuleOutputArgs {
     /**
      * The name of the forwarding rule.
      *
-     *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

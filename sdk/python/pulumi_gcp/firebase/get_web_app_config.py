@@ -177,7 +177,7 @@ def get_web_app_config(project: Optional[_builtins.str] = None,
            is not provided, the provider project is used.
     :param _builtins.str web_app_id: the id of the firebase web app
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project
@@ -216,7 +216,7 @@ def get_web_app_config_output(project: pulumi.Input[Optional[Optional[_builtins.
            is not provided, the provider project is used.
     :param _builtins.str web_app_id: the id of the firebase web app
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project

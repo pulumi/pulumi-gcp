@@ -133,7 +133,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
-     * - - -
+     * ***
      */
     declare public readonly constraint: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -232,7 +232,7 @@ export interface OrganizationPolicyState {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
-     * - - -
+     * ***
      */
     constraint?: pulumi.Input<string | undefined>;
     /**
@@ -243,7 +243,7 @@ export interface OrganizationPolicyState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -287,7 +287,7 @@ export interface OrganizationPolicyArgs {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
-     * - - -
+     * ***
      */
     constraint: pulumi.Input<string>;
     /**
@@ -298,7 +298,7 @@ export interface OrganizationPolicyArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

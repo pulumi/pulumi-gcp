@@ -2089,9 +2089,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
@@ -2101,8 +2101,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         """
         if context is not None:
             pulumi.set(__self__, "context", context)
@@ -2119,9 +2119,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -2145,8 +2145,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -2653,12 +2653,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param _builtins.str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
@@ -2700,12 +2700,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -3916,7 +3916,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Example Use Cases:
                - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
                - Redact a field if the date of birth field is greater than 85.
-               Structure is documented below.
+                 Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs' info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
                Only one of `primitive_transformation` or `info_type_transformations` must be specified.
                Structure is documented below.
@@ -3951,7 +3951,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Example Use Cases:
         - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
         - Redact a field if the date of birth field is greater than 85.
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -5726,15 +5726,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
@@ -5761,8 +5761,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -5774,9 +5774,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -6282,12 +6282,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param _builtins.str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         :param _builtins.int radix: The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
@@ -6335,12 +6335,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -8653,9 +8653,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
@@ -8665,8 +8665,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         """
         if context is not None:
             pulumi.set(__self__, "context", context)
@@ -8683,9 +8683,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -8709,8 +8709,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -9217,12 +9217,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param _builtins.str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
@@ -9264,12 +9264,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -14215,7 +14215,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions(dict):
         :param 'PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgs' amazon_s3_bucket_conditions: Amazon S3 bucket conditions.
                Structure is documented below.
                
-               
                <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         :param _builtins.str min_age: Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
         """
@@ -14230,7 +14229,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions(dict):
         """
         Amazon S3 bucket conditions.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         """
@@ -14485,7 +14483,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         :param 'PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgs' amazon_s3_bucket_regex: Regex for Cloud Storage.
                Structure is documented below.
                
-               
                <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
         if amazon_s3_bucket_regex is not None:
@@ -14497,7 +14494,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         """
         Regex for Cloud Storage.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
@@ -14621,7 +14617,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(dict):
         :param 'PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgs' amazon_s3_bucket: Amazon S3 bucket.
                Structure is documented below.
                
-               
                <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
         if amazon_s3_bucket is not None:
@@ -14633,7 +14628,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(dict):
         """
         Amazon S3 bucket.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
