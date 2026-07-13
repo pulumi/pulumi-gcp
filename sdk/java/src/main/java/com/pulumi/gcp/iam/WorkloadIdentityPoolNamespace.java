@@ -286,8 +286,7 @@ public class WorkloadIdentityPoolNamespace extends com.pulumi.resources.CustomRe
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     @Export(name="workloadIdentityPoolNamespaceId", refs={String.class}, tree="[0]")
@@ -299,8 +298,7 @@ public class WorkloadIdentityPoolNamespace extends com.pulumi.resources.CustomRe
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     public Output<String> workloadIdentityPoolNamespaceId() {

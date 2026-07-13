@@ -70,6 +70,11 @@ export type BackendServiceSignedUrlKey = import("./backendServiceSignedUrlKey").
 export const BackendServiceSignedUrlKey: typeof import("./backendServiceSignedUrlKey").BackendServiceSignedUrlKey = null as any;
 utilities.lazyLoad(exports, ["BackendServiceSignedUrlKey"], () => require("./backendServiceSignedUrlKey"));
 
+export { BulkPerInstanceConfigArgs, BulkPerInstanceConfigState } from "./bulkPerInstanceConfig";
+export type BulkPerInstanceConfig = import("./bulkPerInstanceConfig").BulkPerInstanceConfig;
+export const BulkPerInstanceConfig: typeof import("./bulkPerInstanceConfig").BulkPerInstanceConfig = null as any;
+utilities.lazyLoad(exports, ["BulkPerInstanceConfig"], () => require("./bulkPerInstanceConfig"));
+
 export { CaExternalAccountKeyArgs, CaExternalAccountKeyState } from "./caExternalAccountKey";
 export type CaExternalAccountKey = import("./caExternalAccountKey").CaExternalAccountKey;
 export const CaExternalAccountKey: typeof import("./caExternalAccountKey").CaExternalAccountKey = null as any;
@@ -129,6 +134,21 @@ export { FirewallPolicyAssociationArgs, FirewallPolicyAssociationState } from ".
 export type FirewallPolicyAssociation = import("./firewallPolicyAssociation").FirewallPolicyAssociation;
 export const FirewallPolicyAssociation: typeof import("./firewallPolicyAssociation").FirewallPolicyAssociation = null as any;
 utilities.lazyLoad(exports, ["FirewallPolicyAssociation"], () => require("./firewallPolicyAssociation"));
+
+export { FirewallPolicyIamBindingArgs, FirewallPolicyIamBindingState } from "./firewallPolicyIamBinding";
+export type FirewallPolicyIamBinding = import("./firewallPolicyIamBinding").FirewallPolicyIamBinding;
+export const FirewallPolicyIamBinding: typeof import("./firewallPolicyIamBinding").FirewallPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["FirewallPolicyIamBinding"], () => require("./firewallPolicyIamBinding"));
+
+export { FirewallPolicyIamMemberArgs, FirewallPolicyIamMemberState } from "./firewallPolicyIamMember";
+export type FirewallPolicyIamMember = import("./firewallPolicyIamMember").FirewallPolicyIamMember;
+export const FirewallPolicyIamMember: typeof import("./firewallPolicyIamMember").FirewallPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["FirewallPolicyIamMember"], () => require("./firewallPolicyIamMember"));
+
+export { FirewallPolicyIamPolicyArgs, FirewallPolicyIamPolicyState } from "./firewallPolicyIamPolicy";
+export type FirewallPolicyIamPolicy = import("./firewallPolicyIamPolicy").FirewallPolicyIamPolicy;
+export const FirewallPolicyIamPolicy: typeof import("./firewallPolicyIamPolicy").FirewallPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["FirewallPolicyIamPolicy"], () => require("./firewallPolicyIamPolicy"));
 
 export { FirewallPolicyRuleArgs, FirewallPolicyRuleState } from "./firewallPolicyRule";
 export type FirewallPolicyRule = import("./firewallPolicyRule").FirewallPolicyRule;
@@ -200,6 +220,11 @@ export const getDiskIamPolicy: typeof import("./getDiskIamPolicy").getDiskIamPol
 export const getDiskIamPolicyOutput: typeof import("./getDiskIamPolicy").getDiskIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getDiskIamPolicy","getDiskIamPolicyOutput"], () => require("./getDiskIamPolicy"));
 
+export { GetFirewallPolicyIamPolicyArgs, GetFirewallPolicyIamPolicyResult, GetFirewallPolicyIamPolicyOutputArgs } from "./getFirewallPolicyIamPolicy";
+export const getFirewallPolicyIamPolicy: typeof import("./getFirewallPolicyIamPolicy").getFirewallPolicyIamPolicy = null as any;
+export const getFirewallPolicyIamPolicyOutput: typeof import("./getFirewallPolicyIamPolicy").getFirewallPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallPolicyIamPolicy","getFirewallPolicyIamPolicyOutput"], () => require("./getFirewallPolicyIamPolicy"));
+
 export { GetForwardingRuleArgs, GetForwardingRuleResult, GetForwardingRuleOutputArgs } from "./getForwardingRule";
 export const getForwardingRule: typeof import("./getForwardingRule").getForwardingRule = null as any;
 export const getForwardingRuleOutput: typeof import("./getForwardingRule").getForwardingRuleOutput = null as any;
@@ -259,6 +284,11 @@ export { GetInstanceGroupManagerArgs, GetInstanceGroupManagerResult, GetInstance
 export const getInstanceGroupManager: typeof import("./getInstanceGroupManager").getInstanceGroupManager = null as any;
 export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
+
+export { GetInstanceGroupsArgs, GetInstanceGroupsResult, GetInstanceGroupsOutputArgs } from "./getInstanceGroups";
+export const getInstanceGroups: typeof import("./getInstanceGroups").getInstanceGroups = null as any;
+export const getInstanceGroupsOutput: typeof import("./getInstanceGroups").getInstanceGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceGroups","getInstanceGroupsOutput"], () => require("./getInstanceGroups"));
 
 export { GetInstanceGuestAttributesArgs, GetInstanceGuestAttributesResult, GetInstanceGuestAttributesOutputArgs } from "./getInstanceGuestAttributes";
 export const getInstanceGuestAttributes: typeof import("./getInstanceGuestAttributes").getInstanceGuestAttributes = null as any;
@@ -340,6 +370,11 @@ export const getNetworkEndpointGroups: typeof import("./getNetworkEndpointGroups
 export const getNetworkEndpointGroupsOutput: typeof import("./getNetworkEndpointGroups").getNetworkEndpointGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkEndpointGroups","getNetworkEndpointGroupsOutput"], () => require("./getNetworkEndpointGroups"));
 
+export { GetNetworkFirewallPolicyIamPolicyArgs, GetNetworkFirewallPolicyIamPolicyResult, GetNetworkFirewallPolicyIamPolicyOutputArgs } from "./getNetworkFirewallPolicyIamPolicy";
+export const getNetworkFirewallPolicyIamPolicy: typeof import("./getNetworkFirewallPolicyIamPolicy").getNetworkFirewallPolicyIamPolicy = null as any;
+export const getNetworkFirewallPolicyIamPolicyOutput: typeof import("./getNetworkFirewallPolicyIamPolicy").getNetworkFirewallPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkFirewallPolicyIamPolicy","getNetworkFirewallPolicyIamPolicyOutput"], () => require("./getNetworkFirewallPolicyIamPolicy"));
+
 export { GetNetworkPeeringArgs, GetNetworkPeeringResult, GetNetworkPeeringOutputArgs } from "./getNetworkPeering";
 export const getNetworkPeering: typeof import("./getNetworkPeering").getNetworkPeering = null as any;
 export const getNetworkPeeringOutput: typeof import("./getNetworkPeering").getNetworkPeeringOutput = null as any;
@@ -404,6 +439,11 @@ export { GetRegionNetworkEndpointGroupArgs, GetRegionNetworkEndpointGroupResult,
 export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroup = null as any;
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionNetworkEndpointGroup","getRegionNetworkEndpointGroupOutput"], () => require("./getRegionNetworkEndpointGroup"));
+
+export { GetRegionNetworkFirewallPolicyIamPolicyArgs, GetRegionNetworkFirewallPolicyIamPolicyResult, GetRegionNetworkFirewallPolicyIamPolicyOutputArgs } from "./getRegionNetworkFirewallPolicyIamPolicy";
+export const getRegionNetworkFirewallPolicyIamPolicy: typeof import("./getRegionNetworkFirewallPolicyIamPolicy").getRegionNetworkFirewallPolicyIamPolicy = null as any;
+export const getRegionNetworkFirewallPolicyIamPolicyOutput: typeof import("./getRegionNetworkFirewallPolicyIamPolicy").getRegionNetworkFirewallPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionNetworkFirewallPolicyIamPolicy","getRegionNetworkFirewallPolicyIamPolicyOutput"], () => require("./getRegionNetworkFirewallPolicyIamPolicy"));
 
 export { GetRegionSSLPolicyArgs, GetRegionSSLPolicyResult, GetRegionSSLPolicyOutputArgs } from "./getRegionSSLPolicy";
 export const getRegionSSLPolicy: typeof import("./getRegionSSLPolicy").getRegionSSLPolicy = null as any;
@@ -795,6 +835,21 @@ export type NetworkFirewallPolicyAssociation = import("./networkFirewallPolicyAs
 export const NetworkFirewallPolicyAssociation: typeof import("./networkFirewallPolicyAssociation").NetworkFirewallPolicyAssociation = null as any;
 utilities.lazyLoad(exports, ["NetworkFirewallPolicyAssociation"], () => require("./networkFirewallPolicyAssociation"));
 
+export { NetworkFirewallPolicyIamBindingArgs, NetworkFirewallPolicyIamBindingState } from "./networkFirewallPolicyIamBinding";
+export type NetworkFirewallPolicyIamBinding = import("./networkFirewallPolicyIamBinding").NetworkFirewallPolicyIamBinding;
+export const NetworkFirewallPolicyIamBinding: typeof import("./networkFirewallPolicyIamBinding").NetworkFirewallPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamBinding"], () => require("./networkFirewallPolicyIamBinding"));
+
+export { NetworkFirewallPolicyIamMemberArgs, NetworkFirewallPolicyIamMemberState } from "./networkFirewallPolicyIamMember";
+export type NetworkFirewallPolicyIamMember = import("./networkFirewallPolicyIamMember").NetworkFirewallPolicyIamMember;
+export const NetworkFirewallPolicyIamMember: typeof import("./networkFirewallPolicyIamMember").NetworkFirewallPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamMember"], () => require("./networkFirewallPolicyIamMember"));
+
+export { NetworkFirewallPolicyIamPolicyArgs, NetworkFirewallPolicyIamPolicyState } from "./networkFirewallPolicyIamPolicy";
+export type NetworkFirewallPolicyIamPolicy = import("./networkFirewallPolicyIamPolicy").NetworkFirewallPolicyIamPolicy;
+export const NetworkFirewallPolicyIamPolicy: typeof import("./networkFirewallPolicyIamPolicy").NetworkFirewallPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamPolicy"], () => require("./networkFirewallPolicyIamPolicy"));
+
 export { NetworkFirewallPolicyPacketMirroringRuleArgs, NetworkFirewallPolicyPacketMirroringRuleState } from "./networkFirewallPolicyPacketMirroringRule";
 export type NetworkFirewallPolicyPacketMirroringRule = import("./networkFirewallPolicyPacketMirroringRule").NetworkFirewallPolicyPacketMirroringRule;
 export const NetworkFirewallPolicyPacketMirroringRule: typeof import("./networkFirewallPolicyPacketMirroringRule").NetworkFirewallPolicyPacketMirroringRule = null as any;
@@ -1035,6 +1090,21 @@ export type RegionNetworkFirewallPolicyAssociation = import("./regionNetworkFire
 export const RegionNetworkFirewallPolicyAssociation: typeof import("./regionNetworkFirewallPolicyAssociation").RegionNetworkFirewallPolicyAssociation = null as any;
 utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyAssociation"], () => require("./regionNetworkFirewallPolicyAssociation"));
 
+export { RegionNetworkFirewallPolicyIamBindingArgs, RegionNetworkFirewallPolicyIamBindingState } from "./regionNetworkFirewallPolicyIamBinding";
+export type RegionNetworkFirewallPolicyIamBinding = import("./regionNetworkFirewallPolicyIamBinding").RegionNetworkFirewallPolicyIamBinding;
+export const RegionNetworkFirewallPolicyIamBinding: typeof import("./regionNetworkFirewallPolicyIamBinding").RegionNetworkFirewallPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamBinding"], () => require("./regionNetworkFirewallPolicyIamBinding"));
+
+export { RegionNetworkFirewallPolicyIamMemberArgs, RegionNetworkFirewallPolicyIamMemberState } from "./regionNetworkFirewallPolicyIamMember";
+export type RegionNetworkFirewallPolicyIamMember = import("./regionNetworkFirewallPolicyIamMember").RegionNetworkFirewallPolicyIamMember;
+export const RegionNetworkFirewallPolicyIamMember: typeof import("./regionNetworkFirewallPolicyIamMember").RegionNetworkFirewallPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamMember"], () => require("./regionNetworkFirewallPolicyIamMember"));
+
+export { RegionNetworkFirewallPolicyIamPolicyArgs, RegionNetworkFirewallPolicyIamPolicyState } from "./regionNetworkFirewallPolicyIamPolicy";
+export type RegionNetworkFirewallPolicyIamPolicy = import("./regionNetworkFirewallPolicyIamPolicy").RegionNetworkFirewallPolicyIamPolicy;
+export const RegionNetworkFirewallPolicyIamPolicy: typeof import("./regionNetworkFirewallPolicyIamPolicy").RegionNetworkFirewallPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamPolicy"], () => require("./regionNetworkFirewallPolicyIamPolicy"));
+
 export { RegionNetworkFirewallPolicyRuleArgs, RegionNetworkFirewallPolicyRuleState } from "./regionNetworkFirewallPolicyRule";
 export type RegionNetworkFirewallPolicyRule = import("./regionNetworkFirewallPolicyRule").RegionNetworkFirewallPolicyRule;
 export const RegionNetworkFirewallPolicyRule: typeof import("./regionNetworkFirewallPolicyRule").RegionNetworkFirewallPolicyRule = null as any;
@@ -1044,6 +1114,11 @@ export { RegionNetworkFirewallPolicyWithRulesArgs, RegionNetworkFirewallPolicyWi
 export type RegionNetworkFirewallPolicyWithRules = import("./regionNetworkFirewallPolicyWithRules").RegionNetworkFirewallPolicyWithRules;
 export const RegionNetworkFirewallPolicyWithRules: typeof import("./regionNetworkFirewallPolicyWithRules").RegionNetworkFirewallPolicyWithRules = null as any;
 utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyWithRules"], () => require("./regionNetworkFirewallPolicyWithRules"));
+
+export { RegionNetworkPolicyArgs, RegionNetworkPolicyState } from "./regionNetworkPolicy";
+export type RegionNetworkPolicy = import("./regionNetworkPolicy").RegionNetworkPolicy;
+export const RegionNetworkPolicy: typeof import("./regionNetworkPolicy").RegionNetworkPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkPolicy"], () => require("./regionNetworkPolicy"));
 
 export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./regionPerInstanceConfig";
 export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
@@ -1325,6 +1400,11 @@ export type WireGroup = import("./wireGroup").WireGroup;
 export const WireGroup: typeof import("./wireGroup").WireGroup = null as any;
 utilities.lazyLoad(exports, ["WireGroup"], () => require("./wireGroup"));
 
+export { ZoneVmExtensionPolicyArgs, ZoneVmExtensionPolicyState } from "./zoneVmExtensionPolicy";
+export type ZoneVmExtensionPolicy = import("./zoneVmExtensionPolicy").ZoneVmExtensionPolicy;
+export const ZoneVmExtensionPolicy: typeof import("./zoneVmExtensionPolicy").ZoneVmExtensionPolicy = null as any;
+utilities.lazyLoad(exports, ["ZoneVmExtensionPolicy"], () => require("./zoneVmExtensionPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -1356,6 +1436,8 @@ const _module = {
                 return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
                 return new BackendServiceSignedUrlKey(name, <any>undefined, { urn })
+            case "gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig":
+                return new BulkPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/caExternalAccountKey:CaExternalAccountKey":
                 return new CaExternalAccountKey(name, <any>undefined, { urn })
             case "gcp:compute/crossSiteNetwork:CrossSiteNetwork":
@@ -1380,6 +1462,12 @@ const _module = {
                 return new FirewallPolicy(name, <any>undefined, { urn })
             case "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation":
                 return new FirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding":
+                return new FirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember":
+                return new FirewallPolicyIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy":
+                return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/firewallPolicyRule:FirewallPolicyRule":
                 return new FirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules":
@@ -1486,6 +1574,12 @@ const _module = {
                 return new NetworkFirewallPolicy(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
                 return new NetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding":
+                return new NetworkFirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember":
+                return new NetworkFirewallPolicyIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy":
+                return new NetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule":
                 return new NetworkFirewallPolicyPacketMirroringRule(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
@@ -1582,10 +1676,18 @@ const _module = {
                 return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation":
                 return new RegionNetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding":
+                return new RegionNetworkFirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyIamMember:RegionNetworkFirewallPolicyIamMember":
+                return new RegionNetworkFirewallPolicyIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyIamPolicy:RegionNetworkFirewallPolicyIamPolicy":
+                return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
                 return new RegionNetworkFirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules":
                 return new RegionNetworkFirewallPolicyWithRules(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy":
+                return new RegionNetworkPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionResizeRequest:RegionResizeRequest":
@@ -1696,6 +1798,8 @@ const _module = {
                 return new VPNTunnel(name, <any>undefined, { urn })
             case "gcp:compute/wireGroup:WireGroup":
                 return new WireGroup(name, <any>undefined, { urn })
+            case "gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy":
+                return new ZoneVmExtensionPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -1714,6 +1818,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamBinding",
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceSignedUrlKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/bulkPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/caExternalAccountKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/crossSiteNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/disk", _module)
@@ -1726,6 +1831,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/externalVpnGateway", _modu
 pulumi.runtime.registerResourceModule("gcp", "compute/firewall", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/firewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/forwardingRule", _module)
@@ -1779,6 +1887,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointList", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyPacketMirroringRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyWithRules", _module)
@@ -1827,8 +1938,12 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpoint", _m
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyWithRules", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionResizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)
@@ -1884,3 +1999,4 @@ pulumi.runtime.registerResourceModule("gcp", "compute/uRLMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/vPNGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/vPNTunnel", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/wireGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/zoneVmExtensionPolicy", _module)

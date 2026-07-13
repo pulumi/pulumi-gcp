@@ -173,16 +173,14 @@ type WorkloadIdentityPoolManagedIdentity struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringOutput `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringOutput `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -264,16 +262,14 @@ type workloadIdentityPoolManagedIdentityState struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolManagedIdentityId *string `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId *string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -317,16 +313,14 @@ type WorkloadIdentityPoolManagedIdentityState struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringPtrInput
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringPtrInput
 }
 
@@ -364,16 +358,14 @@ type workloadIdentityPoolManagedIdentityArgs struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolManagedIdentityId string `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -408,16 +400,14 @@ type WorkloadIdentityPoolManagedIdentityArgs struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringInput
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringInput
 }
 
@@ -569,12 +559,11 @@ func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolId() pulu
 }
 
 // The ID to use for the managed identity. This value must:
-// * contain at most 63 characters
-// * contain only lowercase alphanumeric characters or `-`
-// * start with an alphanumeric character
-// * end with an alphanumeric character
-//
-// The prefix `gcp-` will be reserved for future uses.
+//   - contain at most 63 characters
+//   - contain only lowercase alphanumeric characters or `-`
+//   - start with an alphanumeric character
+//   - end with an alphanumeric character
+//     The prefix `gcp-` will be reserved for future uses.
 func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolManagedIdentityId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) pulumi.StringOutput {
 		return v.WorkloadIdentityPoolManagedIdentityId
@@ -582,12 +571,11 @@ func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolManagedId
 }
 
 // The ID to use for the namespace. This value must:
-// * contain at most 63 characters
-// * contain only lowercase alphanumeric characters or `-`
-// * start with an alphanumeric character
-// * end with an alphanumeric character
-//
-// The prefix `gcp-` will be reserved for future uses.
+//   - contain at most 63 characters
+//   - contain only lowercase alphanumeric characters or `-`
+//   - start with an alphanumeric character
+//   - end with an alphanumeric character
+//     The prefix `gcp-` will be reserved for future uses.
 func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolNamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) pulumi.StringOutput {
 		return v.WorkloadIdentityPoolNamespaceId

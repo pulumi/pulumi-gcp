@@ -43,7 +43,6 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
     /**
      * If set to True, the trust bundle will include the private ca managed identity regional root
      * public certificates.
-     * 
      * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
      * resource.
      * 
@@ -54,7 +53,6 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
     /**
      * @return If set to True, the trust bundle will include the private ca managed identity regional root
      * public certificates.
-     * 
      * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
      * resource.
      * 
@@ -147,7 +145,6 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
         /**
          * @param trustDefaultSharedCa If set to True, the trust bundle will include the private ca managed identity regional root
          * public certificates.
-         * 
          * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
          * resource.
          * 
@@ -162,7 +159,6 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
         /**
          * @param trustDefaultSharedCa If set to True, the trust bundle will include the private ca managed identity regional root
          * public certificates.
-         * 
          * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
          * resource.
          * 

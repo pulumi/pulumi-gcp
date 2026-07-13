@@ -576,7 +576,7 @@ class Feed(pulumi.CustomResource):
         gcs_account = gcp.storage.get_project_service_account(project="my-project-name")
         # 1. Create the Pub/Sub Topic
         test_topic = gcp.pubsub.Topic("test_topic",
-            name="chronicle-test-topic-my-project-name-_85840",
+            name="chronicle-test-topic-my-project-name-_91042",
             project="my-project-name")
         # 2. Grant GCS permission to publish to the topic
         # This must remain so GCS can send file notifications to Pub/Sub
@@ -586,13 +586,13 @@ class Feed(pulumi.CustomResource):
             member=f"serviceAccount:{gcs_account.email_address}")
         # 3. Create the Pub/Sub Subscription
         test_subscription = gcp.pubsub.Subscription("test_subscription",
-            name="chronicle-test-sub-my-project-name-_60302",
+            name="chronicle-test-sub-my-project-name-_72490",
             project="my-project-name",
             topic=test_topic.name,
             message_retention_duration="1200s")
         # 4. Define the GCS Bucket
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_22811",
+            name="chronicle-test-bucket-my-project-name-_89605",
             project="my-project-name",
             location="US",
             force_destroy=True)
@@ -733,7 +733,7 @@ class Feed(pulumi.CustomResource):
         gcs_account = gcp.storage.get_project_service_account(project="my-project-name")
         # 1. Create the Pub/Sub Topic
         test_topic = gcp.pubsub.Topic("test_topic",
-            name="chronicle-test-topic-my-project-name-_85840",
+            name="chronicle-test-topic-my-project-name-_91042",
             project="my-project-name")
         # 2. Grant GCS permission to publish to the topic
         # This must remain so GCS can send file notifications to Pub/Sub
@@ -743,13 +743,13 @@ class Feed(pulumi.CustomResource):
             member=f"serviceAccount:{gcs_account.email_address}")
         # 3. Create the Pub/Sub Subscription
         test_subscription = gcp.pubsub.Subscription("test_subscription",
-            name="chronicle-test-sub-my-project-name-_60302",
+            name="chronicle-test-sub-my-project-name-_72490",
             project="my-project-name",
             topic=test_topic.name,
             message_retention_duration="1200s")
         # 4. Define the GCS Bucket
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_22811",
+            name="chronicle-test-bucket-my-project-name-_89605",
             project="my-project-name",
             location="US",
             force_destroy=True)

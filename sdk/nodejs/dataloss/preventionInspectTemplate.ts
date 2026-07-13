@@ -330,6 +330,11 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     */
+    declare public readonly allowLimitedAvailabilityInfoTypes: pulumi.Output<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -383,6 +388,7 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionInspectTemplateState | undefined;
+            resourceInputs["allowLimitedAvailabilityInfoTypes"] = state?.allowLimitedAvailabilityInfoTypes;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -395,6 +401,7 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["allowLimitedAvailabilityInfoTypes"] = args?.allowLimitedAvailabilityInfoTypes;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
@@ -412,6 +419,11 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PreventionInspectTemplate resources.
  */
 export interface PreventionInspectTemplateState {
+    /**
+     * Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     */
+    allowLimitedAvailabilityInfoTypes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -458,6 +470,11 @@ export interface PreventionInspectTemplateState {
  * The set of arguments for constructing a PreventionInspectTemplate resource.
  */
 export interface PreventionInspectTemplateArgs {
+    /**
+     * Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+     * in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+     */
+    allowLimitedAvailabilityInfoTypes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

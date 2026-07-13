@@ -1379,8 +1379,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
- *             .projectId("tf-test_40472")
- *             .name("tf-test_44339")
+ *             .projectId("tf-test_55500")
+ *             .name("tf-test_12223")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

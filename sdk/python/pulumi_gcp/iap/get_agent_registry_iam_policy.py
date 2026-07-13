@@ -97,8 +97,6 @@ def get_agent_registry_iam_policy(location: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAgentRegistryIamPolicyResult:
     """
     Retrieves the current IAM policy data for agentregistry
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 
@@ -132,8 +130,6 @@ def get_agent_registry_iam_policy_output(location: pulumi.Input[Optional[_builti
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAgentRegistryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for agentregistry
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 

@@ -406,6 +406,9 @@ import (
 type PreventionInspectTemplate struct {
 	pulumi.CustomResourceState
 
+	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+	AllowLimitedAvailabilityInfoTypes pulumi.BoolPtrOutput `pulumi:"allowLimitedAvailabilityInfoTypes"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -467,6 +470,9 @@ func GetPreventionInspectTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionInspectTemplate resources.
 type preventionInspectTemplateState struct {
+	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+	AllowLimitedAvailabilityInfoTypes *bool `pulumi:"allowLimitedAvailabilityInfoTypes"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -496,6 +502,9 @@ type preventionInspectTemplateState struct {
 }
 
 type PreventionInspectTemplateState struct {
+	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+	AllowLimitedAvailabilityInfoTypes pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -529,6 +538,9 @@ func (PreventionInspectTemplateState) ElementType() reflect.Type {
 }
 
 type preventionInspectTemplateArgs struct {
+	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+	AllowLimitedAvailabilityInfoTypes *bool `pulumi:"allowLimitedAvailabilityInfoTypes"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -557,6 +569,9 @@ type preventionInspectTemplateArgs struct {
 
 // The set of arguments for constructing a PreventionInspectTemplate resource.
 type PreventionInspectTemplateArgs struct {
+	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+	AllowLimitedAvailabilityInfoTypes pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -668,6 +683,12 @@ func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutput() Pre
 
 func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput {
 	return o
+}
+
+// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+func (o PreventionInspectTemplateOutput) AllowLimitedAvailabilityInfoTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.BoolPtrOutput { return v.AllowLimitedAvailabilityInfoTypes }).(pulumi.BoolPtrOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

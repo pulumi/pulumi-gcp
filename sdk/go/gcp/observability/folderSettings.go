@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testFolder, err := organizations.NewFolder(ctx, "test_folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("tf-test-_25601"),
+//				DisplayName:        pulumi.String("tf-test-_63399"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -112,7 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testFolder, err := organizations.NewFolder(ctx, "test_folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("tf-test-_17228"),
+//				DisplayName:        pulumi.String("tf-test-_97523"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})

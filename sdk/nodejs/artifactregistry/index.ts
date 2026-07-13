@@ -100,6 +100,11 @@ export const getVersions: typeof import("./getVersions").getVersions = null as a
 export const getVersionsOutput: typeof import("./getVersions").getVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getVersions","getVersionsOutput"], () => require("./getVersions"));
 
+export { ProjectConfigArgs, ProjectConfigState } from "./projectConfig";
+export type ProjectConfig = import("./projectConfig").ProjectConfig;
+export const ProjectConfig: typeof import("./projectConfig").ProjectConfig = null as any;
+utilities.lazyLoad(exports, ["ProjectConfig"], () => require("./projectConfig"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
@@ -135,6 +140,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:artifactregistry/projectConfig:ProjectConfig":
+                return new ProjectConfig(name, <any>undefined, { urn })
             case "gcp:artifactregistry/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
             case "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding":
@@ -152,6 +159,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "artifactregistry/projectConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repository", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamMember", _module)

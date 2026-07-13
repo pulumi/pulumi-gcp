@@ -180,8 +180,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     @Import(name="workloadIdentityPoolManagedIdentityId")
@@ -193,8 +192,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     public Optional<Output<String>> workloadIdentityPoolManagedIdentityId() {
@@ -207,8 +205,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     @Import(name="workloadIdentityPoolNamespaceId")
@@ -220,8 +217,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * 
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      * 
      */
     public Optional<Output<String>> workloadIdentityPoolNamespaceId() {
@@ -484,8 +480,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 
@@ -501,8 +496,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 
@@ -517,8 +511,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 
@@ -534,8 +527,7 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * * contain only lowercase alphanumeric characters or `-`
          * * start with an alphanumeric character
          * * end with an alphanumeric character
-         * 
-         * The prefix `gcp-` will be reserved for future uses.
+         *   The prefix `gcp-` will be reserved for future uses.
          * 
          * @return builder
          * 

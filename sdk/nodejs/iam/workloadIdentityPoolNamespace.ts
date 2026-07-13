@@ -152,7 +152,6 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
@@ -262,7 +261,6 @@ export interface WorkloadIdentityPoolNamespaceState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId?: pulumi.Input<string | undefined>;
@@ -308,7 +306,6 @@ export interface WorkloadIdentityPoolNamespaceArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     *
      * The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId: pulumi.Input<string>;

@@ -22,6 +22,7 @@ type Provider struct {
 	AccessContextManagerCustomEndpoint     pulumi.StringPtrOutput `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                            pulumi.StringPtrOutput `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint          pulumi.StringPtrOutput `pulumi:"activeDirectoryCustomEndpoint"`
+	AgentRegistryCustomEndpoint            pulumi.StringPtrOutput `pulumi:"agentRegistryCustomEndpoint"`
 	AlloydbCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
@@ -268,6 +269,7 @@ type providerArgs struct {
 	AccessToken                            *string                      `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint          *string                      `pulumi:"activeDirectoryCustomEndpoint"`
 	AddPulumiAttributionLabel              *bool                        `pulumi:"addPulumiAttributionLabel"`
+	AgentRegistryCustomEndpoint            *string                      `pulumi:"agentRegistryCustomEndpoint"`
 	AlloydbCustomEndpoint                  *string                      `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               *string                      `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   *string                      `pulumi:"apigeeCustomEndpoint"`
@@ -486,6 +488,7 @@ type ProviderArgs struct {
 	AccessToken                            pulumi.StringPtrInput
 	ActiveDirectoryCustomEndpoint          pulumi.StringPtrInput
 	AddPulumiAttributionLabel              pulumi.BoolPtrInput
+	AgentRegistryCustomEndpoint            pulumi.StringPtrInput
 	AlloydbCustomEndpoint                  pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint               pulumi.StringPtrInput
 	ApigeeCustomEndpoint                   pulumi.StringPtrInput
@@ -771,6 +774,10 @@ func (o ProviderOutput) AccessToken() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ActiveDirectoryCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ActiveDirectoryCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) AgentRegistryCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AgentRegistryCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) AlloydbCustomEndpoint() pulumi.StringPtrOutput {

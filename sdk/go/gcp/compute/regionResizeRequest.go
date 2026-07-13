@@ -18,12 +18,9 @@ import (
 //
 // With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about RegionResizeRequest, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagerResizeRequests)
 // * How-to Guides
 //   - [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 //
@@ -51,8 +48,14 @@ import (
 //				MachineType:         pulumi.String("a3-highgpu-8g"),
 //				CanIpForward:        pulumi.Bool(false),
 //				Scheduling: &compute.RegionInstanceTemplateSchedulingArgs{
-//					AutomaticRestart:  pulumi.Bool(false),
-//					OnHostMaintenance: pulumi.String("TERMINATE"),
+//					ProvisioningModel:         pulumi.String("FLEX_START"),
+//					AutomaticRestart:          pulumi.Bool(false),
+//					OnHostMaintenance:         pulumi.String("TERMINATE"),
+//					InstanceTerminationAction: pulumi.String("DELETE"),
+//					MaxRunDuration: &compute.RegionInstanceTemplateSchedulingMaxRunDurationArgs{
+//						Seconds: pulumi.Int(7200),
+//						Nanos:   pulumi.Int(0),
+//					},
 //				},
 //				Disks: compute.RegionInstanceTemplateDiskArray{
 //					&compute.RegionInstanceTemplateDiskArgs{

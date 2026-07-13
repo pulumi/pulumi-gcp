@@ -40,6 +40,7 @@ from .ai_index import *
 from .ai_index_endpoint import *
 from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
+from .ai_model_garden_enable_model import *
 from .ai_rag_engine_config import *
 from .ai_reasoning_engine import *
 from .ai_reasoning_engine_iam_binding import *

@@ -14,6 +14,7 @@ export * from "./utils";
 import * as accessapproval from "./accessapproval";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as activedirectory from "./activedirectory";
+import * as agentregistry from "./agentregistry";
 import * as alloydb from "./alloydb";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
@@ -159,6 +160,7 @@ export {
     accessapproval,
     accesscontextmanager,
     activedirectory,
+    agentregistry,
     alloydb,
     apigateway,
     apigee,

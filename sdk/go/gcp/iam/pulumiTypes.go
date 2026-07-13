@@ -8327,7 +8327,6 @@ type WorkloadIdentityPoolInlineCertificateIssuanceConfig struct {
 	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
 	// CA in the same region as the workload will be selected to issue the certificate. Enabling
 	// this will clear any existing `caPools` configuration to provision the certificates.
-	//
 	// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
 	// certificates will be automatically provisioned from the default shared CAs. This flag should
 	// not be set if you want to use your own CA pools to provision the certificates.
@@ -8376,7 +8375,6 @@ type WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs struct {
 	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
 	// CA in the same region as the workload will be selected to issue the certificate. Enabling
 	// this will clear any existing `caPools` configuration to provision the certificates.
-	//
 	// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
 	// certificates will be automatically provisioned from the default shared CAs. This flag should
 	// not be set if you want to use your own CA pools to provision the certificates.
@@ -8502,7 +8500,6 @@ func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) RotationWindo
 // If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
 // CA in the same region as the workload will be selected to issue the certificate. Enabling
 // this will clear any existing `caPools` configuration to provision the certificates.
-//
 // > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
 // certificates will be automatically provisioned from the default shared CAs. This flag should
 // not be set if you want to use your own CA pools to provision the certificates.
@@ -8596,7 +8593,6 @@ func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput) RotationWi
 // If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
 // CA in the same region as the workload will be selected to issue the certificate. Enabling
 // this will clear any existing `caPools` configuration to provision the certificates.
-//
 // > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
 // certificates will be automatically provisioned from the default shared CAs. This flag should
 // not be set if you want to use your own CA pools to provision the certificates.
@@ -8784,7 +8780,6 @@ type WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle struct {
 	TrustAnchors []WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor `pulumi:"trustAnchors"`
 	// If set to True, the trust bundle will include the private ca managed identity regional root
 	// public certificates.
-	//
 	// > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
 	// resource.
 	TrustDefaultSharedCa *bool `pulumi:"trustDefaultSharedCa"`
@@ -8811,7 +8806,6 @@ type WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs struct {
 	TrustAnchors WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayInput `pulumi:"trustAnchors"`
 	// If set to True, the trust bundle will include the private ca managed identity regional root
 	// public certificates.
-	//
 	// > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
 	// resource.
 	TrustDefaultSharedCa pulumi.BoolPtrInput `pulumi:"trustDefaultSharedCa"`
@@ -8882,7 +8876,6 @@ func (o WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustA
 
 // If set to True, the trust bundle will include the private ca managed identity regional root
 // public certificates.
-//
 // > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
 // resource.
 func (o WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustDefaultSharedCa() pulumi.BoolPtrOutput {

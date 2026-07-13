@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_45397"),
+//				BatchId:  pulumi.String("tf-test-batch_11171"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
@@ -234,7 +234,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparsql", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_16451"),
+//				BatchId:  pulumi.String("tf-test-batch_40472"),
 //				Location: pulumi.String("us-central1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
@@ -280,7 +280,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_pyspark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_3686"),
+//				BatchId:  pulumi.String("tf-test-batch_44339"),
 //				Location: pulumi.String("us-central1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
@@ -337,7 +337,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparkr", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_54136"),
+//				BatchId:  pulumi.String("tf-test-batch_34599"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
@@ -387,7 +387,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_autotuning", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_11171"),
+//				BatchId:  pulumi.String("tf-test-batch_79513"),
 //				Location: pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),

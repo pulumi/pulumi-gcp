@@ -164,7 +164,6 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// 
         /// The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Output("workloadIdentityPoolNamespaceId")]
@@ -262,7 +261,6 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// 
         /// The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId", required: true)]
@@ -354,7 +352,6 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// 
         /// The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId")]

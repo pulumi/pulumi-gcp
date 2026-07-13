@@ -104,6 +104,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? PodPidsLimit;
         /// <summary>
+        /// The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `ShutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        /// </summary>
+        public readonly int? ShutdownGracePeriodCriticalPodsSeconds;
+        /// <summary>
+        /// The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        /// </summary>
+        public readonly int? ShutdownGracePeriodSeconds;
+        /// <summary>
         /// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         /// </summary>
         public readonly bool? SingleProcessOomKill;
@@ -152,6 +160,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int? podPidsLimit,
 
+            int? shutdownGracePeriodCriticalPodsSeconds,
+
+            int? shutdownGracePeriodSeconds,
+
             bool? singleProcessOomKill,
 
             Outputs.ClusterNodeConfigKubeletConfigTopologyManager? topologyManager)
@@ -175,6 +187,8 @@ namespace Pulumi.Gcp.Container.Outputs
             MaxParallelImagePulls = maxParallelImagePulls;
             MemoryManager = memoryManager;
             PodPidsLimit = podPidsLimit;
+            ShutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            ShutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
             SingleProcessOomKill = singleProcessOomKill;
             TopologyManager = topologyManager;
         }

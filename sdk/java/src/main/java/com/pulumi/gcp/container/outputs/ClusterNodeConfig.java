@@ -154,8 +154,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable String imageType;
     /**
-     * @return Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Structure is documented below.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigKubeletConfig kubeletConfig;
@@ -492,8 +491,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.imageType);
     }
     /**
-     * @return Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Structure is documented below.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigKubeletConfig> kubeletConfig() {

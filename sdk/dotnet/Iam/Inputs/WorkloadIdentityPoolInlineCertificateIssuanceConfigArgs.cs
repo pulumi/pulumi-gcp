@@ -65,7 +65,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
         /// CA in the same region as the workload will be selected to issue the certificate. Enabling
         /// this will clear any existing `CaPools` configuration to provision the certificates.
-        /// 
         /// &gt; **Note** This field is mutually exclusive with `CaPools`. If this flag is enabled,
         /// certificates will be automatically provisioned from the default shared CAs. This flag should
         /// not be set if you want to use your own CA pools to provision the certificates.

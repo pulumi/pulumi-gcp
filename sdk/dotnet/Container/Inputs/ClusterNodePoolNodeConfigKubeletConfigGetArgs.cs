@@ -147,6 +147,18 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? PodPidsLimit { get; set; }
 
         /// <summary>
+        /// The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `ShutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        /// </summary>
+        [Input("shutdownGracePeriodCriticalPodsSeconds")]
+        public Input<int>? ShutdownGracePeriodCriticalPodsSeconds { get; set; }
+
+        /// <summary>
+        /// The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        /// </summary>
+        [Input("shutdownGracePeriodSeconds")]
+        public Input<int>? ShutdownGracePeriodSeconds { get; set; }
+
+        /// <summary>
         /// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         /// </summary>
         [Input("singleProcessOomKill")]

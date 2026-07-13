@@ -274,7 +274,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const globalAssoc = new gcp.compute.NetworkFirewallPolicyAssociation("global_assoc", {
- *     name: "global-policy-assoc-_72490",
+ *     name: "global-policy-assoc-_95154",
  *     firewallPolicy: fwPolicy.id,
  *     attachmentTarget: net.id,
  * });

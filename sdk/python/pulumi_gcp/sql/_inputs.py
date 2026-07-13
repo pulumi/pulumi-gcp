@@ -1076,7 +1076,7 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
     for more details and supported versions. Postgres supports only shared-core machine types,
-    and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+    and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
     """
     activation_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1158,7 +1158,14 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+    The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+    is not set, the Cloud SQL API determines the default based on `database_version`: instances with
+    `database_version` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+    `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+    types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+    `db-custom-*` require `edition = "ENTERPRISE"`. Omitting `edition` on a PostgreSQL 16+ instance while
+    setting a shared-core or custom `tier` therefore fails at create time with
+    `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
     """
     effective_availability_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1272,7 +1279,7 @@ class DatabaseInstanceSettingsArgs:
         """
         :param pulumi.Input[_builtins.str] tier: The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
                for more details and supported versions. Postgres supports only shared-core machine types,
-               and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+               and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
         :param pulumi.Input[_builtins.str] activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         :param pulumi.Input[_builtins.bool] auto_upgrade_enabled: Enables
@@ -1301,7 +1308,14 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[_builtins.int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[_builtins.int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         :param pulumi.Input[_builtins.str] disk_type: The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
-        :param pulumi.Input[_builtins.str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param pulumi.Input[_builtins.str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+               is not set, the Cloud SQL API determines the default based on `database_version`: instances with
+               `database_version` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+               `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+               types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+               `db-custom-*` require `edition = "ENTERPRISE"`. Omitting `edition` on a PostgreSQL 16+ instance while
+               setting a shared-core or custom `tier` therefore fails at create time with
+               `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
         :param pulumi.Input[_builtins.str] effective_availability_type: (Computed) The availability type of
                the Cloud SQL instance, high availability (REGIONAL) or single zone
                (ZONAL). This field always contains the value that is reported by the API (for
@@ -1408,7 +1422,7 @@ class DatabaseInstanceSettingsArgs:
         """
         The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
         for more details and supported versions. Postgres supports only shared-core machine types,
-        and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types. Note that shared-core and custom machine types are valid only under the `ENTERPRISE` edition; PostgreSQL 16+ instances default to `ENTERPRISE_PLUS` when `edition` is unset (see the `edition` argument below).
         """
         return pulumi.get(self, "tier")
 
@@ -1658,7 +1672,14 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter
     def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`. If `edition`
+        is not set, the Cloud SQL API determines the default based on `database_version`: instances with
+        `database_version` `POSTGRES_16` or later default to `ENTERPRISE_PLUS`, while all others default to
+        `ENTERPRISE`. Note that `ENTERPRISE_PLUS` supports only predefined `db-perf-optimized-N-*` machine
+        types (the `N2`/`C4A` series); shared-core and custom tiers such as `db-g1-small`, `db-f1-micro`, and
+        `db-custom-*` require `edition = "ENTERPRISE"`. Omitting `edition` on a PostgreSQL 16+ instance while
+        setting a shared-core or custom `tier` therefore fails at create time with
+        `Invalid Tier (...) for (ENTERPRISE_PLUS) Edition`.
         """
         return pulumi.get(self, "edition")
 

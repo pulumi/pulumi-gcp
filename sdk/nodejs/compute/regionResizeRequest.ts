@@ -13,12 +13,9 @@ import * as utilities from "../utilities";
  *
  * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about RegionResizeRequest, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagerResizeRequests)
  * * How-to Guides
  *     * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
  *
@@ -38,8 +35,14 @@ import * as utilities from "../utilities";
  *     machineType: "a3-highgpu-8g",
  *     canIpForward: false,
  *     scheduling: {
+ *         provisioningModel: "FLEX_START",
  *         automaticRestart: false,
  *         onHostMaintenance: "TERMINATE",
+ *         instanceTerminationAction: "DELETE",
+ *         maxRunDuration: {
+ *             seconds: 7200,
+ *             nanos: 0,
+ *         },
  *     },
  *     disks: [{
  *         sourceImage: "cos-cloud/cos-121-lts",

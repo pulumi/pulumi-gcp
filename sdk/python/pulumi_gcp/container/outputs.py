@@ -8153,17 +8153,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
         :param _builtins.str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-               Structure is documented below.
-               
-               ```
-               kubelet_config {
-               cpu_manager_policy   = "static"
-               cpu_cfs_quota        = true
-               cpu_cfs_quota_period = "100us"
-               pod_pids_limit       = 1024
-               }
-               ```
+        :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
         :param Mapping[str, _builtins.str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
@@ -8501,17 +8491,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional['outputs.ClusterNodeConfigKubeletConfig']:
         """
-        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        Structure is documented below.
-
-        ```
-        kubelet_config {
-        cpu_manager_policy   = "static"
-        cpu_cfs_quota        = true
-        cpu_cfs_quota_period = "100us"
-        pod_pids_limit       = 1024
-        }
-        ```
+        Node kubelet configs. Structure is documented below.
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -9938,6 +9918,10 @@ class ClusterNodeConfigKubeletConfig(dict):
             suggest = "memory_manager"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "shutdownGracePeriodCriticalPodsSeconds":
+            suggest = "shutdown_grace_period_critical_pods_seconds"
+        elif key == "shutdownGracePeriodSeconds":
+            suggest = "shutdown_grace_period_seconds"
         elif key == "singleProcessOomKill":
             suggest = "single_process_oom_kill"
         elif key == "topologyManager":
@@ -9974,6 +9958,8 @@ class ClusterNodeConfigKubeletConfig(dict):
                  max_parallel_image_pulls: Optional[_builtins.int] = None,
                  memory_manager: Optional['outputs.ClusterNodeConfigKubeletConfigMemoryManager'] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
+                 shutdown_grace_period_critical_pods_seconds: Optional[_builtins.int] = None,
+                 shutdown_grace_period_seconds: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None,
                  topology_manager: Optional['outputs.ClusterNodeConfigKubeletConfigTopologyManager'] = None):
         """
@@ -10010,6 +9996,8 @@ class ClusterNodeConfigKubeletConfig(dict):
                The memory manager optimizes memory and hugepages allocation for pods, especially
                those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        :param _builtins.int shutdown_grace_period_critical_pods_seconds: The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdown_grace_period_seconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        :param _builtins.int shutdown_grace_period_seconds: The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         :param 'ClusterNodeConfigKubeletConfigTopologyManagerArgs' topology_manager: These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
@@ -10051,6 +10039,10 @@ class ClusterNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if shutdown_grace_period_critical_pods_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_critical_pods_seconds", shutdown_grace_period_critical_pods_seconds)
+        if shutdown_grace_period_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_seconds", shutdown_grace_period_seconds)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
         if topology_manager is not None:
@@ -10221,6 +10213,22 @@ class ClusterNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodCriticalPodsSeconds")
+    def shutdown_grace_period_critical_pods_seconds(self) -> Optional[_builtins.int]:
+        """
+        The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdown_grace_period_seconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        """
+        return pulumi.get(self, "shutdown_grace_period_critical_pods_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodSeconds")
+    def shutdown_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        """
+        return pulumi.get(self, "shutdown_grace_period_seconds")
 
     @_builtins.property
     @pulumi.getter(name="singleProcessOomKill")
@@ -13556,17 +13564,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
         :param _builtins.str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-               Structure is documented below.
-               
-               ```
-               kubelet_config {
-               cpu_manager_policy   = "static"
-               cpu_cfs_quota        = true
-               cpu_cfs_quota_period = "100us"
-               pod_pids_limit       = 1024
-               }
-               ```
+        :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
         :param Mapping[str, _builtins.str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
@@ -13904,17 +13902,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig']:
         """
-        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        Structure is documented below.
-
-        ```
-        kubelet_config {
-        cpu_manager_policy   = "static"
-        cpu_cfs_quota        = true
-        cpu_cfs_quota_period = "100us"
-        pod_pids_limit       = 1024
-        }
-        ```
+        Node kubelet configs. Structure is documented below.
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -15341,6 +15329,10 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             suggest = "memory_manager"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "shutdownGracePeriodCriticalPodsSeconds":
+            suggest = "shutdown_grace_period_critical_pods_seconds"
+        elif key == "shutdownGracePeriodSeconds":
+            suggest = "shutdown_grace_period_seconds"
         elif key == "singleProcessOomKill":
             suggest = "single_process_oom_kill"
         elif key == "topologyManager":
@@ -15377,6 +15369,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
                  max_parallel_image_pulls: Optional[_builtins.int] = None,
                  memory_manager: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigMemoryManager'] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
+                 shutdown_grace_period_critical_pods_seconds: Optional[_builtins.int] = None,
+                 shutdown_grace_period_seconds: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None,
                  topology_manager: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigTopologyManager'] = None):
         """
@@ -15413,6 +15407,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
                The memory manager optimizes memory and hugepages allocation for pods, especially
                those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        :param _builtins.int shutdown_grace_period_critical_pods_seconds: The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdown_grace_period_seconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        :param _builtins.int shutdown_grace_period_seconds: The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         :param 'ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs' topology_manager: These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
@@ -15454,6 +15450,10 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if shutdown_grace_period_critical_pods_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_critical_pods_seconds", shutdown_grace_period_critical_pods_seconds)
+        if shutdown_grace_period_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_seconds", shutdown_grace_period_seconds)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
         if topology_manager is not None:
@@ -15624,6 +15624,22 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodCriticalPodsSeconds")
+    def shutdown_grace_period_critical_pods_seconds(self) -> Optional[_builtins.int]:
+        """
+        The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdown_grace_period_seconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        """
+        return pulumi.get(self, "shutdown_grace_period_critical_pods_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodSeconds")
+    def shutdown_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+        """
+        return pulumi.get(self, "shutdown_grace_period_seconds")
 
     @_builtins.property
     @pulumi.getter(name="singleProcessOomKill")
@@ -19302,7 +19318,7 @@ class NodePoolNodeConfig(dict):
         :param 'NodePoolNodeConfigGvnicArgs' gvnic: Enable or disable gvnic in the node pool.
         :param 'NodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
         :param _builtins.str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
-        :param 'NodePoolNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs.
+        :param 'NodePoolNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
         :param Mapping[str, _builtins.str] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
         :param 'NodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Parameters that can be configured on Linux nodes.
         :param 'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for raw-block local NVMe SSDs.
@@ -19588,7 +19604,7 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional['outputs.NodePoolNodeConfigKubeletConfig']:
         """
-        Node kubelet configs.
+        Node kubelet configs. Structure is documented below.
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -20957,6 +20973,10 @@ class NodePoolNodeConfigKubeletConfig(dict):
             suggest = "memory_manager"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "shutdownGracePeriodCriticalPodsSeconds":
+            suggest = "shutdown_grace_period_critical_pods_seconds"
+        elif key == "shutdownGracePeriodSeconds":
+            suggest = "shutdown_grace_period_seconds"
         elif key == "singleProcessOomKill":
             suggest = "single_process_oom_kill"
         elif key == "topologyManager":
@@ -20993,6 +21013,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
                  max_parallel_image_pulls: Optional[_builtins.int] = None,
                  memory_manager: Optional['outputs.NodePoolNodeConfigKubeletConfigMemoryManager'] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
+                 shutdown_grace_period_critical_pods_seconds: Optional[_builtins.int] = None,
+                 shutdown_grace_period_seconds: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None,
                  topology_manager: Optional['outputs.NodePoolNodeConfigKubeletConfigTopologyManager'] = None):
         """
@@ -21015,6 +21037,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
         :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param 'NodePoolNodeConfigKubeletConfigMemoryManagerArgs' memory_manager: Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.int shutdown_grace_period_critical_pods_seconds: Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        :param _builtins.int shutdown_grace_period_seconds: Controls the total duration of time (in seconds) the node delays shutdown.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         :param 'NodePoolNodeConfigKubeletConfigTopologyManagerArgs' topology_manager: Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
         """
@@ -21056,6 +21080,10 @@ class NodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if shutdown_grace_period_critical_pods_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_critical_pods_seconds", shutdown_grace_period_critical_pods_seconds)
+        if shutdown_grace_period_seconds is not None:
+            pulumi.set(__self__, "shutdown_grace_period_seconds", shutdown_grace_period_seconds)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
         if topology_manager is not None:
@@ -21212,6 +21240,22 @@ class NodePoolNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodCriticalPodsSeconds")
+    def shutdown_grace_period_critical_pods_seconds(self) -> Optional[_builtins.int]:
+        """
+        Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        """
+        return pulumi.get(self, "shutdown_grace_period_critical_pods_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodSeconds")
+    def shutdown_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Controls the total duration of time (in seconds) the node delays shutdown.
+        """
+        return pulumi.get(self, "shutdown_grace_period_seconds")
 
     @_builtins.property
     @pulumi.getter(name="singleProcessOomKill")
@@ -26740,6 +26784,8 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
                  max_parallel_image_pulls: _builtins.int,
                  memory_managers: Sequence['outputs.GetClusterNodeConfigKubeletConfigMemoryManagerResult'],
                  pod_pids_limit: _builtins.int,
+                 shutdown_grace_period_critical_pods_seconds: _builtins.int,
+                 shutdown_grace_period_seconds: _builtins.int,
                  single_process_oom_kill: _builtins.bool,
                  topology_managers: Sequence['outputs.GetClusterNodeConfigKubeletConfigTopologyManagerResult']):
         """
@@ -26762,6 +26808,8 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param Sequence['GetClusterNodeConfigKubeletConfigMemoryManagerArgs'] memory_managers: Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.int shutdown_grace_period_critical_pods_seconds: Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        :param _builtins.int shutdown_grace_period_seconds: Controls the total duration of time (in seconds) the node delays shutdown.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         :param Sequence['GetClusterNodeConfigKubeletConfigTopologyManagerArgs'] topology_managers: Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
         """
@@ -26784,6 +26832,8 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         pulumi.set(__self__, "memory_managers", memory_managers)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        pulumi.set(__self__, "shutdown_grace_period_critical_pods_seconds", shutdown_grace_period_critical_pods_seconds)
+        pulumi.set(__self__, "shutdown_grace_period_seconds", shutdown_grace_period_seconds)
         pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
         pulumi.set(__self__, "topology_managers", topology_managers)
 
@@ -26938,6 +26988,22 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodCriticalPodsSeconds")
+    def shutdown_grace_period_critical_pods_seconds(self) -> _builtins.int:
+        """
+        Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        """
+        return pulumi.get(self, "shutdown_grace_period_critical_pods_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodSeconds")
+    def shutdown_grace_period_seconds(self) -> _builtins.int:
+        """
+        Controls the total duration of time (in seconds) the node delays shutdown.
+        """
+        return pulumi.get(self, "shutdown_grace_period_seconds")
 
     @_builtins.property
     @pulumi.getter(name="singleProcessOomKill")
@@ -30324,6 +30390,8 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
                  max_parallel_image_pulls: _builtins.int,
                  memory_managers: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigMemoryManagerResult'],
                  pod_pids_limit: _builtins.int,
+                 shutdown_grace_period_critical_pods_seconds: _builtins.int,
+                 shutdown_grace_period_seconds: _builtins.int,
                  single_process_oom_kill: _builtins.bool,
                  topology_managers: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerResult']):
         """
@@ -30346,6 +30414,8 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param Sequence['GetClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs'] memory_managers: Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.int shutdown_grace_period_critical_pods_seconds: Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        :param _builtins.int shutdown_grace_period_seconds: Controls the total duration of time (in seconds) the node delays shutdown.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         :param Sequence['GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs'] topology_managers: Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
         """
@@ -30368,6 +30438,8 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         pulumi.set(__self__, "memory_managers", memory_managers)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        pulumi.set(__self__, "shutdown_grace_period_critical_pods_seconds", shutdown_grace_period_critical_pods_seconds)
+        pulumi.set(__self__, "shutdown_grace_period_seconds", shutdown_grace_period_seconds)
         pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
         pulumi.set(__self__, "topology_managers", topology_managers)
 
@@ -30522,6 +30594,22 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodCriticalPodsSeconds")
+    def shutdown_grace_period_critical_pods_seconds(self) -> _builtins.int:
+        """
+        Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        """
+        return pulumi.get(self, "shutdown_grace_period_critical_pods_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="shutdownGracePeriodSeconds")
+    def shutdown_grace_period_seconds(self) -> _builtins.int:
+        """
+        Controls the total duration of time (in seconds) the node delays shutdown.
+        """
+        return pulumi.get(self, "shutdown_grace_period_seconds")
 
     @_builtins.property
     @pulumi.getter(name="singleProcessOomKill")

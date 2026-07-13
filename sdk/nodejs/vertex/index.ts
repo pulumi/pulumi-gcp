@@ -175,6 +175,11 @@ export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
 utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
+export { AiModelGardenEnableModelArgs, AiModelGardenEnableModelState } from "./aiModelGardenEnableModel";
+export type AiModelGardenEnableModel = import("./aiModelGardenEnableModel").AiModelGardenEnableModel;
+export const AiModelGardenEnableModel: typeof import("./aiModelGardenEnableModel").AiModelGardenEnableModel = null as any;
+utilities.lazyLoad(exports, ["AiModelGardenEnableModel"], () => require("./aiModelGardenEnableModel"));
+
 export { AiRagEngineConfigArgs, AiRagEngineConfigState } from "./aiRagEngineConfig";
 export type AiRagEngineConfig = import("./aiRagEngineConfig").AiRagEngineConfig;
 export const AiRagEngineConfig: typeof import("./aiRagEngineConfig").AiRagEngineConfig = null as any;
@@ -338,6 +343,8 @@ const _module = {
                 return new AiIndexEndpointDeployedIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel":
+                return new AiModelGardenEnableModel(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
                 return new AiRagEngineConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
@@ -395,6 +402,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelGardenEnableModel", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)

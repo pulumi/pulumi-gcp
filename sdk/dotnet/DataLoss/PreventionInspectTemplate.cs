@@ -474,6 +474,13 @@ namespace Pulumi.Gcp.DataLoss
     public partial class PreventionInspectTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+        /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+        /// </summary>
+        [Output("allowLimitedAvailabilityInfoTypes")]
+        public Output<bool?> AllowLimitedAvailabilityInfoTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -574,6 +581,13 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionInspectTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+        /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+        /// </summary>
+        [Input("allowLimitedAvailabilityInfoTypes")]
+        public Input<bool>? AllowLimitedAvailabilityInfoTypes { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -629,6 +643,13 @@ namespace Pulumi.Gcp.DataLoss
 
     public sealed class PreventionInspectTemplateState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+        /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
+        /// </summary>
+        [Input("allowLimitedAvailabilityInfoTypes")]
+        public Input<bool>? AllowLimitedAvailabilityInfoTypes { get; set; }
+
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -166,7 +166,6 @@ type Policy struct {
 	// to by one or more attestors, that all pod creations will be allowed,
 	// or that all pod creations will be denied. There can be at most one
 	// admission rule per cluster spec.
-	//
 	// Identifier format: `{{location}}.{{clusterId}}`.
 	// A location is either a compute zone (e.g. `us-central1-a`) or a region
 	// (e.g. `us-central1`).
@@ -238,7 +237,6 @@ type policyState struct {
 	// to by one or more attestors, that all pod creations will be allowed,
 	// or that all pod creations will be denied. There can be at most one
 	// admission rule per cluster spec.
-	//
 	// Identifier format: `{{location}}.{{clusterId}}`.
 	// A location is either a compute zone (e.g. `us-central1-a`) or a region
 	// (e.g. `us-central1`).
@@ -278,7 +276,6 @@ type PolicyState struct {
 	// to by one or more attestors, that all pod creations will be allowed,
 	// or that all pod creations will be denied. There can be at most one
 	// admission rule per cluster spec.
-	//
 	// Identifier format: `{{location}}.{{clusterId}}`.
 	// A location is either a compute zone (e.g. `us-central1-a`) or a region
 	// (e.g. `us-central1`).
@@ -322,7 +319,6 @@ type policyArgs struct {
 	// to by one or more attestors, that all pod creations will be allowed,
 	// or that all pod creations will be denied. There can be at most one
 	// admission rule per cluster spec.
-	//
 	// Identifier format: `{{location}}.{{clusterId}}`.
 	// A location is either a compute zone (e.g. `us-central1-a`) or a region
 	// (e.g. `us-central1`).
@@ -363,7 +359,6 @@ type PolicyArgs struct {
 	// to by one or more attestors, that all pod creations will be allowed,
 	// or that all pod creations will be denied. There can be at most one
 	// admission rule per cluster spec.
-	//
 	// Identifier format: `{{location}}.{{clusterId}}`.
 	// A location is either a compute zone (e.g. `us-central1-a`) or a region
 	// (e.g. `us-central1`).
@@ -492,7 +487,6 @@ func (o PolicyOutput) AdmissionWhitelistPatterns() PolicyAdmissionWhitelistPatte
 // to by one or more attestors, that all pod creations will be allowed,
 // or that all pod creations will be denied. There can be at most one
 // admission rule per cluster spec.
-//
 // Identifier format: `{{location}}.{{clusterId}}`.
 // A location is either a compute zone (e.g. `us-central1-a`) or a region
 // (e.g. `us-central1`).

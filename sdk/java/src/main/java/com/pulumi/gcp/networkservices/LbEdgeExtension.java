@@ -146,6 +146,9 @@ import javax.annotation.Nullable;
  *                     .failOpen(false)
  *                     .supportedEvents("REQUEST_HEADERS")
  *                     .forwardHeaders("custom-header")
+ *                     .forwardAttributes(                    
+ *                         "request.host",
+ *                         "request.path")
  *                     .build())
  *                 .build())
  *             .labels(Map.of("foo", "bar"))

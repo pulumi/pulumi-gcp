@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_95154")
+ *             .shortName("tf-test_74000")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_64336")
+ *             .shortName("tf-test_75125")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_34962")
+ *             .shortName("tf-test_88722")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_74000")
+ *             .shortName("tf-test_39249")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -301,7 +301,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_75125")
+ *             .shortName("tf-test_74391")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());

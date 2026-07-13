@@ -366,16 +366,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Structure is documented below.
+     * Node kubelet configs. Structure is documented below.
      * 
      */
     @Import(name="kubeletConfig")
     private @Nullable Output<ClusterNodePoolNodeConfigKubeletConfigArgs> kubeletConfig;
 
     /**
-     * @return Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Structure is documented below.
+     * @return Node kubelet configs. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigKubeletConfigArgs>> kubeletConfig() {
@@ -1414,8 +1412,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param kubeletConfig Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Structure is documented below.
+         * @param kubeletConfig Node kubelet configs. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1426,8 +1423,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param kubeletConfig Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Structure is documented below.
+         * @param kubeletConfig Node kubelet configs. Structure is documented below.
          * 
          * @return builder
          * 

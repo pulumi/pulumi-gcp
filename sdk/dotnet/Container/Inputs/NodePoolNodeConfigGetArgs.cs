@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
-        /// Node kubelet configs.
+        /// Node kubelet configs. Structure is documented below.
         /// </summary>
         [Input("kubeletConfig")]
         public Input<Inputs.NodePoolNodeConfigKubeletConfigGetArgs>? KubeletConfig { get; set; }

@@ -31,6 +31,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? ContainerMemory { get; set; }
 
         /// <summary>
+        /// Maximum number of concurrent requests per Python UDF container instance. For more
+        /// information, see [Configure container limits for Python
+        /// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        /// </summary>
+        [Input("containerRequestConcurrency")]
+        public Input<string>? ContainerRequestConcurrency { get; set; }
+
+        /// <summary>
         /// Maximum number of rows in each batch sent to the external runtime. If
         /// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         /// </summary>

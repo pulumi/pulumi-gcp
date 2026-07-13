@@ -17,6 +17,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
     /**
      * State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      * 
      */
     @Import(name="connectionState")
@@ -24,6 +25,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
     /**
      * @return State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      * 
      */
     public Optional<Output<String>> connectionState() {
@@ -86,14 +88,14 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Location of the endpoint attachment.
+     * @return The location of the endpoint attachment.
      * 
      */
     public Optional<Output<String>> location() {
@@ -135,14 +137,16 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     @Import(name="serviceAttachment")
     private @Nullable Output<String> serviceAttachment;
 
     /**
-     * @return Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * @return The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      * 
      */
     public Optional<Output<String>> serviceAttachment() {
@@ -182,6 +186,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param connectionState State of the endpoint attachment connection to the service attachment.
+         * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
          * 
          * @return builder
          * 
@@ -193,6 +198,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param connectionState State of the endpoint attachment connection to the service attachment.
+         * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
          * 
          * @return builder
          * 
@@ -275,7 +281,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Location of the endpoint attachment.
+         * @param location The location of the endpoint attachment.
          * 
          * @return builder
          * 
@@ -286,7 +292,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Location of the endpoint attachment.
+         * @param location The location of the endpoint attachment.
          * 
          * @return builder
          * 
@@ -342,7 +348,8 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+         * @param serviceAttachment The resource URL of the service attachment in the format:
+         * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
          * 
          * @return builder
          * 
@@ -353,7 +360,8 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+         * @param serviceAttachment The resource URL of the service attachment in the format:
+         * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
          * 
          * @return builder
          * 

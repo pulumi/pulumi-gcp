@@ -32,9 +32,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("asia-south1"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("asia-south1-b-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("ORACLE"),
@@ -117,9 +117,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("northamerica-northeast1"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("northamerica-northeast1-a-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("MYSQL"),
@@ -168,9 +168,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("southamerica-east1"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("southamerica-east1-a-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("POSTGRESQL"),
@@ -210,9 +210,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("asia-northeast2"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("asia-northeast2-a-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("REDIS"),
@@ -251,9 +251,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("europe-west8"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("europe-west8-a-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("KAFKA"),
@@ -300,9 +300,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("australia-southeast1"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("australia-southeast1-b-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("ICEBERG"),
@@ -353,9 +353,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("europe-west3"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("europe-west3-b-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("SNOWFLAKE"),
@@ -393,9 +393,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oracledatabase.NewGoldengateConnection(ctx, "connection", &oracledatabase.GoldengateConnectionArgs{
 //				GoldengateConnectionId: pulumi.String("my-connection"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("asia-northeast1"),
 //				Project:                pulumi.String("my-project"),
-//				GcpOracleZone:          pulumi.String("us-east4-b-r1"),
+//				GcpOracleZone:          pulumi.String("asia-northeast1-a-r1"),
 //				Properties: &oracledatabase.GoldengateConnectionPropertiesArgs{
 //					DisplayName:    pulumi.String("my-connection display name"),
 //					ConnectionType: pulumi.String("JAVA_MESSAGE_SERVICE"),

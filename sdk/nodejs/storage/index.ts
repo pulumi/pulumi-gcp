@@ -120,10 +120,20 @@ export const getControlFolderIntelligenceConfig: typeof import("./getControlFold
 export const getControlFolderIntelligenceConfigOutput: typeof import("./getControlFolderIntelligenceConfig").getControlFolderIntelligenceConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getControlFolderIntelligenceConfig","getControlFolderIntelligenceConfigOutput"], () => require("./getControlFolderIntelligenceConfig"));
 
+export { GetControlFolderIntelligenceFindingsSummaryArgs, GetControlFolderIntelligenceFindingsSummaryResult, GetControlFolderIntelligenceFindingsSummaryOutputArgs } from "./getControlFolderIntelligenceFindingsSummary";
+export const getControlFolderIntelligenceFindingsSummary: typeof import("./getControlFolderIntelligenceFindingsSummary").getControlFolderIntelligenceFindingsSummary = null as any;
+export const getControlFolderIntelligenceFindingsSummaryOutput: typeof import("./getControlFolderIntelligenceFindingsSummary").getControlFolderIntelligenceFindingsSummaryOutput = null as any;
+utilities.lazyLoad(exports, ["getControlFolderIntelligenceFindingsSummary","getControlFolderIntelligenceFindingsSummaryOutput"], () => require("./getControlFolderIntelligenceFindingsSummary"));
+
 export { GetControlOrganizationIntelligenceConfigArgs, GetControlOrganizationIntelligenceConfigResult, GetControlOrganizationIntelligenceConfigOutputArgs } from "./getControlOrganizationIntelligenceConfig";
 export const getControlOrganizationIntelligenceConfig: typeof import("./getControlOrganizationIntelligenceConfig").getControlOrganizationIntelligenceConfig = null as any;
 export const getControlOrganizationIntelligenceConfigOutput: typeof import("./getControlOrganizationIntelligenceConfig").getControlOrganizationIntelligenceConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getControlOrganizationIntelligenceConfig","getControlOrganizationIntelligenceConfigOutput"], () => require("./getControlOrganizationIntelligenceConfig"));
+
+export { GetControlOrganizationIntelligenceFindingsSummaryArgs, GetControlOrganizationIntelligenceFindingsSummaryResult, GetControlOrganizationIntelligenceFindingsSummaryOutputArgs } from "./getControlOrganizationIntelligenceFindingsSummary";
+export const getControlOrganizationIntelligenceFindingsSummary: typeof import("./getControlOrganizationIntelligenceFindingsSummary").getControlOrganizationIntelligenceFindingsSummary = null as any;
+export const getControlOrganizationIntelligenceFindingsSummaryOutput: typeof import("./getControlOrganizationIntelligenceFindingsSummary").getControlOrganizationIntelligenceFindingsSummaryOutput = null as any;
+utilities.lazyLoad(exports, ["getControlOrganizationIntelligenceFindingsSummary","getControlOrganizationIntelligenceFindingsSummaryOutput"], () => require("./getControlOrganizationIntelligenceFindingsSummary"));
 
 export { GetControlProjectIntelligenceConfigArgs, GetControlProjectIntelligenceConfigResult, GetControlProjectIntelligenceConfigOutputArgs } from "./getControlProjectIntelligenceConfig";
 export const getControlProjectIntelligenceConfig: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfig = null as any;
@@ -149,6 +159,11 @@ export { GetControlProjectIntelligenceFindingsArgs, GetControlProjectIntelligenc
 export const getControlProjectIntelligenceFindings: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindings = null as any;
 export const getControlProjectIntelligenceFindingsOutput: typeof import("./getControlProjectIntelligenceFindings").getControlProjectIntelligenceFindingsOutput = null as any;
 utilities.lazyLoad(exports, ["getControlProjectIntelligenceFindings","getControlProjectIntelligenceFindingsOutput"], () => require("./getControlProjectIntelligenceFindings"));
+
+export { GetControlProjectIntelligenceFindingsSummaryArgs, GetControlProjectIntelligenceFindingsSummaryResult, GetControlProjectIntelligenceFindingsSummaryOutputArgs } from "./getControlProjectIntelligenceFindingsSummary";
+export const getControlProjectIntelligenceFindingsSummary: typeof import("./getControlProjectIntelligenceFindingsSummary").getControlProjectIntelligenceFindingsSummary = null as any;
+export const getControlProjectIntelligenceFindingsSummaryOutput: typeof import("./getControlProjectIntelligenceFindingsSummary").getControlProjectIntelligenceFindingsSummaryOutput = null as any;
+utilities.lazyLoad(exports, ["getControlProjectIntelligenceFindingsSummary","getControlProjectIntelligenceFindingsSummaryOutput"], () => require("./getControlProjectIntelligenceFindingsSummary"));
 
 export { GetInsightsDatasetConfigArgs, GetInsightsDatasetConfigResult, GetInsightsDatasetConfigOutputArgs } from "./getInsightsDatasetConfig";
 export const getInsightsDatasetConfig: typeof import("./getInsightsDatasetConfig").getInsightsDatasetConfig = null as any;

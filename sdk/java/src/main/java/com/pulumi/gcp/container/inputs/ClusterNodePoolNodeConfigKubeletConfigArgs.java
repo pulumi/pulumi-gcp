@@ -338,6 +338,36 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
     }
 
     /**
+     * The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    @Import(name="shutdownGracePeriodCriticalPodsSeconds")
+    private @Nullable Output<Integer> shutdownGracePeriodCriticalPodsSeconds;
+
+    /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    public Optional<Output<Integer>> shutdownGracePeriodCriticalPodsSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodCriticalPodsSeconds);
+    }
+
+    /**
+     * The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    @Import(name="shutdownGracePeriodSeconds")
+    private @Nullable Output<Integer> shutdownGracePeriodSeconds;
+
+    /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    public Optional<Output<Integer>> shutdownGracePeriodSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodSeconds);
+    }
+
+    /**
      * Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
      * 
      */
@@ -389,6 +419,8 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
         this.maxParallelImagePulls = $.maxParallelImagePulls;
         this.memoryManager = $.memoryManager;
         this.podPidsLimit = $.podPidsLimit;
+        this.shutdownGracePeriodCriticalPodsSeconds = $.shutdownGracePeriodCriticalPodsSeconds;
+        this.shutdownGracePeriodSeconds = $.shutdownGracePeriodSeconds;
         this.singleProcessOomKill = $.singleProcessOomKill;
         this.topologyManager = $.topologyManager;
     }
@@ -846,6 +878,48 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
          */
         public Builder podPidsLimit(Integer podPidsLimit) {
             return podPidsLimit(Output.of(podPidsLimit));
+        }
+
+        /**
+         * @param shutdownGracePeriodCriticalPodsSeconds The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodCriticalPodsSeconds(@Nullable Output<Integer> shutdownGracePeriodCriticalPodsSeconds) {
+            $.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            return this;
+        }
+
+        /**
+         * @param shutdownGracePeriodCriticalPodsSeconds The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodCriticalPodsSeconds(Integer shutdownGracePeriodCriticalPodsSeconds) {
+            return shutdownGracePeriodCriticalPodsSeconds(Output.of(shutdownGracePeriodCriticalPodsSeconds));
+        }
+
+        /**
+         * @param shutdownGracePeriodSeconds The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodSeconds(@Nullable Output<Integer> shutdownGracePeriodSeconds) {
+            $.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param shutdownGracePeriodSeconds The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodSeconds(Integer shutdownGracePeriodSeconds) {
+            return shutdownGracePeriodSeconds(Output.of(shutdownGracePeriodSeconds));
         }
 
         /**

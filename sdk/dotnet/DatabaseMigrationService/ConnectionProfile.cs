@@ -459,13 +459,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         },
     ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
     ///         {
-    ///             ClusterId = "tf-test-dbmsalloycluster_27169",
+    ///             ClusterId = "tf-test-dbmsalloycluster_2605",
     ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
     ///             {
     ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
     ///                 {
-    ///                     User = "alloyuser_75223",
-    ///                     Password = "alloypass_41819",
+    ///                     User = "alloyuser_34535",
+    ///                     Password = "alloypass_22375",
     ///                 },
     ///                 VpcNetwork = @default.Id,
     ///                 Labels = 

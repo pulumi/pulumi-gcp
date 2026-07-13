@@ -6118,6 +6118,12 @@ class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
     see [Configure container limits for Python
     UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
     """
+    container_request_concurrency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Maximum number of concurrent requests per Python UDF container instance. For more
+    information, see [Configure container limits for Python
+    UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+    """
     max_batching_rows: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Maximum number of rows in each batch sent to the external runtime. If
@@ -6139,6 +6145,7 @@ class RoutineExternalRuntimeOptionsArgs:
     def __init__(__self__, *,
                  container_cpu: pulumi.Input[Optional[_builtins.float]] = None,
                  container_memory: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_request_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
                  max_batching_rows: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_connection: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
@@ -6151,6 +6158,9 @@ class RoutineExternalRuntimeOptionsArgs:
                512Mi). If not specified, the default value is 512Mi. For more information,
                see [Configure container limits for Python
                UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        :param pulumi.Input[_builtins.str] container_request_concurrency: Maximum number of concurrent requests per Python UDF container instance. For more
+               information, see [Configure container limits for Python
+               UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
         :param pulumi.Input[_builtins.str] max_batching_rows: Maximum number of rows in each batch sent to the external runtime. If
                absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         :param pulumi.Input[_builtins.str] runtime_connection: Fully qualified name of the connection whose service account will be used
@@ -6162,6 +6172,8 @@ class RoutineExternalRuntimeOptionsArgs:
             pulumi.set(__self__, "container_cpu", container_cpu)
         if container_memory is not None:
             pulumi.set(__self__, "container_memory", container_memory)
+        if container_request_concurrency is not None:
+            pulumi.set(__self__, "container_request_concurrency", container_request_concurrency)
         if max_batching_rows is not None:
             pulumi.set(__self__, "max_batching_rows", max_batching_rows)
         if runtime_connection is not None:
@@ -6198,6 +6210,20 @@ class RoutineExternalRuntimeOptionsArgs:
     @container_memory.setter
     def container_memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_memory", value)
+
+    @_builtins.property
+    @pulumi.getter(name="containerRequestConcurrency")
+    def container_request_concurrency(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Maximum number of concurrent requests per Python UDF container instance. For more
+        information, see [Configure container limits for Python
+        UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        """
+        return pulumi.get(self, "container_request_concurrency")
+
+    @container_request_concurrency.setter
+    def container_request_concurrency(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "container_request_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBatchingRows")

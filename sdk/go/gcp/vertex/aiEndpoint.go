@@ -152,7 +152,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("psc-network-_48153"),
+//				Name: pulumi.String("psc-network-_29506"),
 //			})
 //			if err != nil {
 //				return err
@@ -162,7 +162,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_58845"),
+//				Name:        pulumi.String("endpoint-name_86474"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -207,7 +207,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_9305"),
+//				Name:        pulumi.String("endpoint-name_95761"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),

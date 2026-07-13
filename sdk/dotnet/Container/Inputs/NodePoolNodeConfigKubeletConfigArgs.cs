@@ -133,6 +133,18 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? PodPidsLimit { get; set; }
 
         /// <summary>
+        /// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+        /// </summary>
+        [Input("shutdownGracePeriodCriticalPodsSeconds")]
+        public Input<int>? ShutdownGracePeriodCriticalPodsSeconds { get; set; }
+
+        /// <summary>
+        /// Controls the total duration of time (in seconds) the node delays shutdown.
+        /// </summary>
+        [Input("shutdownGracePeriodSeconds")]
+        public Input<int>? ShutdownGracePeriodSeconds { get; set; }
+
+        /// <summary>
         /// Defines whether to enable single process OOM killer.
         /// </summary>
         [Input("singleProcessOomKill")]

@@ -43,7 +43,6 @@ class PolicyArgs:
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
-               
                Identifier format: `{{location}}.{{clusterId}}`.
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
@@ -114,7 +113,6 @@ class PolicyArgs:
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
-
         Identifier format: `{{location}}.{{clusterId}}`.
         A location is either a compute zone (e.g. `us-central1-a`) or a region
         (e.g. `us-central1`).
@@ -206,7 +204,6 @@ class _PolicyState:
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
-               
                Identifier format: `{{location}}.{{clusterId}}`.
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
@@ -267,7 +264,6 @@ class _PolicyState:
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
-
         Identifier format: `{{location}}.{{clusterId}}`.
         A location is either a compute zone (e.g. `us-central1-a`) or a region
         (e.g. `us-central1`).
@@ -462,7 +458,6 @@ class Policy(pulumi.CustomResource):
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
-               
                Identifier format: `{{location}}.{{clusterId}}`.
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
@@ -649,7 +644,6 @@ class Policy(pulumi.CustomResource):
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
-               
                Identifier format: `{{location}}.{{clusterId}}`.
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
@@ -704,7 +698,6 @@ class Policy(pulumi.CustomResource):
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
-
         Identifier format: `{{location}}.{{clusterId}}`.
         A location is either a compute zone (e.g. `us-central1-a`) or a region
         (e.g. `us-central1`).

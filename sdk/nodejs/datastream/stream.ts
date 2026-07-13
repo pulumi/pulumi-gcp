@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_40472",
- *     name: "tf-test_44339",
+ *     projectId: "tf-test_55500",
+ *     name: "tf-test_12223",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",

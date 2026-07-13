@@ -12,13 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Apigee Endpoint Attachment.
+// An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+//
+// For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
 //
 // To get more information about EndpointAttachment, see:
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
 // * How-to Guides
 //   - [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+//
+// ## Example Usage
 //
 // ## Import
 //
@@ -37,6 +41,7 @@ type EndpointAttachment struct {
 	pulumi.CustomResourceState
 
 	// State of the endpoint attachment connection to the service attachment.
+	// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -49,7 +54,7 @@ type EndpointAttachment struct {
 	EndpointAttachmentId pulumi.StringOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// Location of the endpoint attachment.
+	// The location of the endpoint attachment.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the Endpoint Attachment in the following format:
 	// organizations/{organization}/endpointAttachments/{endpointAttachment}.
@@ -57,7 +62,8 @@ type EndpointAttachment struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Format: projects/*/regions/*/serviceAttachments/*
+	// The resource URL of the service attachment in the format:
+	// `projects/*/regions/*/serviceAttachments/*`.
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
 }
 
@@ -104,6 +110,7 @@ func GetEndpointAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EndpointAttachment resources.
 type endpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
+	// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
 	ConnectionState *string `pulumi:"connectionState"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -116,7 +123,7 @@ type endpointAttachmentState struct {
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host *string `pulumi:"host"`
-	// Location of the endpoint attachment.
+	// The location of the endpoint attachment.
 	Location *string `pulumi:"location"`
 	// Name of the Endpoint Attachment in the following format:
 	// organizations/{organization}/endpointAttachments/{endpointAttachment}.
@@ -124,12 +131,14 @@ type endpointAttachmentState struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId *string `pulumi:"orgId"`
-	// Format: projects/*/regions/*/serviceAttachments/*
+	// The resource URL of the service attachment in the format:
+	// `projects/*/regions/*/serviceAttachments/*`.
 	ServiceAttachment *string `pulumi:"serviceAttachment"`
 }
 
 type EndpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
+	// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
 	ConnectionState pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -142,7 +151,7 @@ type EndpointAttachmentState struct {
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host pulumi.StringPtrInput
-	// Location of the endpoint attachment.
+	// The location of the endpoint attachment.
 	Location pulumi.StringPtrInput
 	// Name of the Endpoint Attachment in the following format:
 	// organizations/{organization}/endpointAttachments/{endpointAttachment}.
@@ -150,7 +159,8 @@ type EndpointAttachmentState struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringPtrInput
-	// Format: projects/*/regions/*/serviceAttachments/*
+	// The resource URL of the service attachment in the format:
+	// `projects/*/regions/*/serviceAttachments/*`.
 	ServiceAttachment pulumi.StringPtrInput
 }
 
@@ -168,12 +178,13 @@ type endpointAttachmentArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId string `pulumi:"endpointAttachmentId"`
-	// Location of the endpoint attachment.
+	// The location of the endpoint attachment.
 	Location string `pulumi:"location"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId string `pulumi:"orgId"`
-	// Format: projects/*/regions/*/serviceAttachments/*
+	// The resource URL of the service attachment in the format:
+	// `projects/*/regions/*/serviceAttachments/*`.
 	ServiceAttachment string `pulumi:"serviceAttachment"`
 }
 
@@ -188,12 +199,13 @@ type EndpointAttachmentArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringInput
-	// Location of the endpoint attachment.
+	// The location of the endpoint attachment.
 	Location pulumi.StringInput
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringInput
-	// Format: projects/*/regions/*/serviceAttachments/*
+	// The resource URL of the service attachment in the format:
+	// `projects/*/regions/*/serviceAttachments/*`.
 	ServiceAttachment pulumi.StringInput
 }
 
@@ -285,6 +297,7 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx cont
 }
 
 // State of the endpoint attachment connection to the service attachment.
+// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
 func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }
@@ -309,7 +322,7 @@ func (o EndpointAttachmentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// Location of the endpoint attachment.
+// The location of the endpoint attachment.
 func (o EndpointAttachmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -326,7 +339,8 @@ func (o EndpointAttachmentOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Format: projects/*/regions/*/serviceAttachments/*
+// The resource URL of the service attachment in the format:
+// `projects/*/regions/*/serviceAttachments/*`.
 func (o EndpointAttachmentOutput) ServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ServiceAttachment }).(pulumi.StringOutput)
 }

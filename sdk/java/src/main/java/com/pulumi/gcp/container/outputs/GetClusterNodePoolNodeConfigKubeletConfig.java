@@ -115,6 +115,16 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      */
     private Integer podPidsLimit;
     /**
+     * @return Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    private Integer shutdownGracePeriodCriticalPodsSeconds;
+    /**
+     * @return Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    private Integer shutdownGracePeriodSeconds;
+    /**
      * @return Defines whether to enable single process OOM killer.
      * 
      */
@@ -260,6 +270,20 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         return this.podPidsLimit;
     }
     /**
+     * @return Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    public Integer shutdownGracePeriodCriticalPodsSeconds() {
+        return this.shutdownGracePeriodCriticalPodsSeconds;
+    }
+    /**
+     * @return Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    public Integer shutdownGracePeriodSeconds() {
+        return this.shutdownGracePeriodSeconds;
+    }
+    /**
      * @return Defines whether to enable single process OOM killer.
      * 
      */
@@ -302,6 +326,8 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         private Integer maxParallelImagePulls;
         private List<GetClusterNodePoolNodeConfigKubeletConfigMemoryManager> memoryManagers;
         private Integer podPidsLimit;
+        private Integer shutdownGracePeriodCriticalPodsSeconds;
+        private Integer shutdownGracePeriodSeconds;
         private Boolean singleProcessOomKill;
         private List<GetClusterNodePoolNodeConfigKubeletConfigTopologyManager> topologyManagers;
         public Builder() {}
@@ -326,6 +352,8 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
     	      this.memoryManagers = defaults.memoryManagers;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.shutdownGracePeriodCriticalPodsSeconds = defaults.shutdownGracePeriodCriticalPodsSeconds;
+    	      this.shutdownGracePeriodSeconds = defaults.shutdownGracePeriodSeconds;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
     	      this.topologyManagers = defaults.topologyManagers;
         }
@@ -501,6 +529,22 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder shutdownGracePeriodCriticalPodsSeconds(Integer shutdownGracePeriodCriticalPodsSeconds) {
+            if (shutdownGracePeriodCriticalPodsSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "shutdownGracePeriodCriticalPodsSeconds");
+            }
+            this.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shutdownGracePeriodSeconds(Integer shutdownGracePeriodSeconds) {
+            if (shutdownGracePeriodSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "shutdownGracePeriodSeconds");
+            }
+            this.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
             if (singleProcessOomKill == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "singleProcessOomKill");
@@ -540,6 +584,8 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             _resultValue.maxParallelImagePulls = maxParallelImagePulls;
             _resultValue.memoryManagers = memoryManagers;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            _resultValue.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
             _resultValue.topologyManagers = topologyManagers;
             return _resultValue;

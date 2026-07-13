@@ -98,6 +98,10 @@ import * as utilities from "../utilities";
  *             failOpen: false,
  *             supportedEvents: ["REQUEST_HEADERS"],
  *             forwardHeaders: ["custom-header"],
+ *             forwardAttributes: [
+ *                 "request.host",
+ *                 "request.path",
+ *             ],
  *         }],
  *     }],
  *     labels: {

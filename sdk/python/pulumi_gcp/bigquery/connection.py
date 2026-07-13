@@ -851,7 +851,7 @@ class Connection(pulumi.CustomResource):
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password="tf-test-my-password_15222")
+            password="tf-test-my-password_85794")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",
@@ -1211,7 +1211,7 @@ class Connection(pulumi.CustomResource):
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password="tf-test-my-password_15222")
+            password="tf-test-my-password_85794")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",

@@ -310,6 +310,36 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    @Import(name="shutdownGracePeriodCriticalPodsSeconds")
+    private @Nullable Output<Integer> shutdownGracePeriodCriticalPodsSeconds;
+
+    /**
+     * @return Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+     * 
+     */
+    public Optional<Output<Integer>> shutdownGracePeriodCriticalPodsSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodCriticalPodsSeconds);
+    }
+
+    /**
+     * Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    @Import(name="shutdownGracePeriodSeconds")
+    private @Nullable Output<Integer> shutdownGracePeriodSeconds;
+
+    /**
+     * @return Controls the total duration of time (in seconds) the node delays shutdown.
+     * 
+     */
+    public Optional<Output<Integer>> shutdownGracePeriodSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodSeconds);
+    }
+
+    /**
      * Defines whether to enable single process OOM killer.
      * 
      */
@@ -361,6 +391,8 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         this.maxParallelImagePulls = $.maxParallelImagePulls;
         this.memoryManager = $.memoryManager;
         this.podPidsLimit = $.podPidsLimit;
+        this.shutdownGracePeriodCriticalPodsSeconds = $.shutdownGracePeriodCriticalPodsSeconds;
+        this.shutdownGracePeriodSeconds = $.shutdownGracePeriodSeconds;
         this.singleProcessOomKill = $.singleProcessOomKill;
         this.topologyManager = $.topologyManager;
     }
@@ -790,6 +822,48 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
          */
         public Builder podPidsLimit(Integer podPidsLimit) {
             return podPidsLimit(Output.of(podPidsLimit));
+        }
+
+        /**
+         * @param shutdownGracePeriodCriticalPodsSeconds Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodCriticalPodsSeconds(@Nullable Output<Integer> shutdownGracePeriodCriticalPodsSeconds) {
+            $.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            return this;
+        }
+
+        /**
+         * @param shutdownGracePeriodCriticalPodsSeconds Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodCriticalPodsSeconds(Integer shutdownGracePeriodCriticalPodsSeconds) {
+            return shutdownGracePeriodCriticalPodsSeconds(Output.of(shutdownGracePeriodCriticalPodsSeconds));
+        }
+
+        /**
+         * @param shutdownGracePeriodSeconds Controls the total duration of time (in seconds) the node delays shutdown.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodSeconds(@Nullable Output<Integer> shutdownGracePeriodSeconds) {
+            $.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param shutdownGracePeriodSeconds Controls the total duration of time (in seconds) the node delays shutdown.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shutdownGracePeriodSeconds(Integer shutdownGracePeriodSeconds) {
+            return shutdownGracePeriodSeconds(Output.of(shutdownGracePeriodSeconds));
         }
 
         /**

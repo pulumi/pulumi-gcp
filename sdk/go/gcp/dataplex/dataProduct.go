@@ -51,7 +51,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_56529@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_91980@example.com"),
 //						},
 //					},
 //				},
@@ -80,7 +80,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_75413"),
+//				AccountId:   pulumi.String("tf-test-sa-_37118"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -110,7 +110,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_55138@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_80332@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
@@ -177,6 +177,12 @@ type DataProduct struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Checksum for concurrency control.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Base64 encoded image representing the data product. Max Size: 3.0MiB
+	// Expected image dimensions are 512x512 pixels, however the API only
+	// performs validation on size of the encoded data.
+	// Note: For byte fields, the content of the fields are base64-encoded (which
+	// increases the size of the data by 33-36%) when using JSON on the wire.
+	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// User-defined labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -273,6 +279,12 @@ type dataProductState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Checksum for concurrency control.
 	Etag *string `pulumi:"etag"`
+	// Base64 encoded image representing the data product. Max Size: 3.0MiB
+	// Expected image dimensions are 512x512 pixels, however the API only
+	// performs validation on size of the encoded data.
+	// Note: For byte fields, the content of the fields are base64-encoded (which
+	// increases the size of the data by 33-36%) when using JSON on the wire.
+	Icon *string `pulumi:"icon"`
 	// User-defined labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -323,6 +335,12 @@ type DataProductState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Checksum for concurrency control.
 	Etag pulumi.StringPtrInput
+	// Base64 encoded image representing the data product. Max Size: 3.0MiB
+	// Expected image dimensions are 512x512 pixels, however the API only
+	// performs validation on size of the encoded data.
+	// Note: For byte fields, the content of the fields are base64-encoded (which
+	// increases the size of the data by 33-36%) when using JSON on the wire.
+	Icon pulumi.StringPtrInput
 	// User-defined labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -369,6 +387,12 @@ type dataProductArgs struct {
 	Description *string `pulumi:"description"`
 	// User-friendly display name.
 	DisplayName string `pulumi:"displayName"`
+	// Base64 encoded image representing the data product. Max Size: 3.0MiB
+	// Expected image dimensions are 512x512 pixels, however the API only
+	// performs validation on size of the encoded data.
+	// Note: For byte fields, the content of the fields are base64-encoded (which
+	// increases the size of the data by 33-36%) when using JSON on the wire.
+	Icon *string `pulumi:"icon"`
 	// User-defined labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -403,6 +427,12 @@ type DataProductArgs struct {
 	Description pulumi.StringPtrInput
 	// User-friendly display name.
 	DisplayName pulumi.StringInput
+	// Base64 encoded image representing the data product. Max Size: 3.0MiB
+	// Expected image dimensions are 512x512 pixels, however the API only
+	// performs validation on size of the encoded data.
+	// Note: For byte fields, the content of the fields are base64-encoded (which
+	// increases the size of the data by 33-36%) when using JSON on the wire.
+	Icon pulumi.StringPtrInput
 	// User-defined labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -558,6 +588,15 @@ func (o DataProductOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Checksum for concurrency control.
 func (o DataProductOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataProduct) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Base64 encoded image representing the data product. Max Size: 3.0MiB
+// Expected image dimensions are 512x512 pixels, however the API only
+// performs validation on size of the encoded data.
+// Note: For byte fields, the content of the fields are base64-encoded (which
+// increases the size of the data by 33-36%) when using JSON on the wire.
+func (o DataProductOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataProduct) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // User-defined labels.

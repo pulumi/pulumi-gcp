@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendServiceIamPolicy{}
 	case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
 		r = &BackendServiceSignedUrlKey{}
+	case "gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig":
+		r = &BulkPerInstanceConfig{}
 	case "gcp:compute/caExternalAccountKey:CaExternalAccountKey":
 		r = &CaExternalAccountKey{}
 	case "gcp:compute/crossSiteNetwork:CrossSiteNetwork":
@@ -71,6 +73,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallPolicy{}
 	case "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation":
 		r = &FirewallPolicyAssociation{}
+	case "gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding":
+		r = &FirewallPolicyIamBinding{}
+	case "gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember":
+		r = &FirewallPolicyIamMember{}
+	case "gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy":
+		r = &FirewallPolicyIamPolicy{}
 	case "gcp:compute/firewallPolicyRule:FirewallPolicyRule":
 		r = &FirewallPolicyRule{}
 	case "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules":
@@ -177,6 +185,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFirewallPolicy{}
 	case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
 		r = &NetworkFirewallPolicyAssociation{}
+	case "gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding":
+		r = &NetworkFirewallPolicyIamBinding{}
+	case "gcp:compute/networkFirewallPolicyIamMember:NetworkFirewallPolicyIamMember":
+		r = &NetworkFirewallPolicyIamMember{}
+	case "gcp:compute/networkFirewallPolicyIamPolicy:NetworkFirewallPolicyIamPolicy":
+		r = &NetworkFirewallPolicyIamPolicy{}
 	case "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule":
 		r = &NetworkFirewallPolicyPacketMirroringRule{}
 	case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
@@ -273,10 +287,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicy{}
 	case "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation":
 		r = &RegionNetworkFirewallPolicyAssociation{}
+	case "gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding":
+		r = &RegionNetworkFirewallPolicyIamBinding{}
+	case "gcp:compute/regionNetworkFirewallPolicyIamMember:RegionNetworkFirewallPolicyIamMember":
+		r = &RegionNetworkFirewallPolicyIamMember{}
+	case "gcp:compute/regionNetworkFirewallPolicyIamPolicy:RegionNetworkFirewallPolicyIamPolicy":
+		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
 		r = &RegionNetworkFirewallPolicyRule{}
 	case "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules":
 		r = &RegionNetworkFirewallPolicyWithRules{}
+	case "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy":
+		r = &RegionNetworkPolicy{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
 		r = &RegionPerInstanceConfig{}
 	case "gcp:compute/regionResizeRequest:RegionResizeRequest":
@@ -387,6 +409,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VPNTunnel{}
 	case "gcp:compute/wireGroup:WireGroup":
 		r = &WireGroup{}
+	case "gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy":
+		r = &ZoneVmExtensionPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -467,6 +491,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/bulkPerInstanceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/caExternalAccountKey",
 		&module{version},
 	)
@@ -523,6 +552,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/firewallPolicyAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/firewallPolicyIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -792,6 +836,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/networkFirewallPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/networkFirewallPolicyPacketMirroringRule",
 		&module{version},
 	)
@@ -1032,12 +1091,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/regionNetworkFirewallPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkFirewallPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkFirewallPolicyIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/regionNetworkFirewallPolicyRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionNetworkFirewallPolicyWithRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1313,6 +1392,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/wireGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/zoneVmExtensionPolicy",
 		&module{version},
 	)
 }

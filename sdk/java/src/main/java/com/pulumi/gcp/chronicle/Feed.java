@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *         // 1. Create the Pub/Sub Topic
  *         var testTopic = new Topic("testTopic", TopicArgs.builder()
- *             .name("chronicle-test-topic-my-project-name-_85840")
+ *             .name("chronicle-test-topic-my-project-name-_91042")
  *             .project("my-project-name")
  *             .build());
  * 
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  * 
  *         // 3. Create the Pub/Sub Subscription
  *         var testSubscription = new Subscription("testSubscription", SubscriptionArgs.builder()
- *             .name("chronicle-test-sub-my-project-name-_60302")
+ *             .name("chronicle-test-sub-my-project-name-_72490")
  *             .project("my-project-name")
  *             .topic(testTopic.name())
  *             .messageRetentionDuration("1200s")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  * 
  *         // 4. Define the GCS Bucket
  *         var testBucket = new Bucket("testBucket", BucketArgs.builder()
- *             .name("chronicle-test-bucket-my-project-name-_22811")
+ *             .name("chronicle-test-bucket-my-project-name-_89605")
  *             .project("my-project-name")
  *             .location("US")
  *             .forceDestroy(true)

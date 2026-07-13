@@ -150,8 +150,7 @@ type WorkloadIdentityPoolNamespace struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringOutput `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -230,8 +229,7 @@ type workloadIdentityPoolNamespaceState struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId *string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -275,8 +273,7 @@ type WorkloadIdentityPoolNamespaceState struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringPtrInput
 }
 
@@ -310,8 +307,7 @@ type workloadIdentityPoolNamespaceArgs struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -342,8 +338,7 @@ type WorkloadIdentityPoolNamespaceArgs struct {
 	// * contain only lowercase alphanumeric characters or `-`
 	// * start with an alphanumeric character
 	// * end with an alphanumeric character
-	//
-	// The prefix `gcp-` will be reserved for future uses.
+	//   The prefix `gcp-` will be reserved for future uses.
 	WorkloadIdentityPoolNamespaceId pulumi.StringInput
 }
 
@@ -495,12 +490,11 @@ func (o WorkloadIdentityPoolNamespaceOutput) WorkloadIdentityPoolId() pulumi.Str
 }
 
 // The ID to use for the namespace. This value must:
-// * contain at most 63 characters
-// * contain only lowercase alphanumeric characters or `-`
-// * start with an alphanumeric character
-// * end with an alphanumeric character
-//
-// The prefix `gcp-` will be reserved for future uses.
+//   - contain at most 63 characters
+//   - contain only lowercase alphanumeric characters or `-`
+//   - start with an alphanumeric character
+//   - end with an alphanumeric character
+//     The prefix `gcp-` will be reserved for future uses.
 func (o WorkloadIdentityPoolNamespaceOutput) WorkloadIdentityPoolNamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolNamespace) pulumi.StringOutput { return v.WorkloadIdentityPoolNamespaceId }).(pulumi.StringOutput)
 }

@@ -130,6 +130,16 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
      */
     private @Nullable Integer podPidsLimit;
     /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    private @Nullable Integer shutdownGracePeriodCriticalPodsSeconds;
+    /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    private @Nullable Integer shutdownGracePeriodSeconds;
+    /**
      * @return Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
      * 
      */
@@ -289,6 +299,20 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
         return Optional.ofNullable(this.podPidsLimit);
     }
     /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown for critical pods. This value must be less than or equal to `shutdownGracePeriodSeconds`. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    public Optional<Integer> shutdownGracePeriodCriticalPodsSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodCriticalPodsSeconds);
+    }
+    /**
+     * @return The grace period (in seconds) to use during a graceful node shutdown. This is the time allocated for all pods (critical and non-critical) to terminate. The value must be between 10 and 10000. This field can only be configured if the node pool uses Spot VMs or Preemptible VMs.
+     * 
+     */
+    public Optional<Integer> shutdownGracePeriodSeconds() {
+        return Optional.ofNullable(this.shutdownGracePeriodSeconds);
+    }
+    /**
      * @return Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
      * 
      */
@@ -331,6 +355,8 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
         private @Nullable Integer maxParallelImagePulls;
         private @Nullable ClusterNodePoolNodeConfigKubeletConfigMemoryManager memoryManager;
         private @Nullable Integer podPidsLimit;
+        private @Nullable Integer shutdownGracePeriodCriticalPodsSeconds;
+        private @Nullable Integer shutdownGracePeriodSeconds;
         private @Nullable Boolean singleProcessOomKill;
         private @Nullable ClusterNodePoolNodeConfigKubeletConfigTopologyManager topologyManager;
         public Builder() {}
@@ -355,6 +381,8 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
     	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
     	      this.memoryManager = defaults.memoryManager;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.shutdownGracePeriodCriticalPodsSeconds = defaults.shutdownGracePeriodCriticalPodsSeconds;
+    	      this.shutdownGracePeriodSeconds = defaults.shutdownGracePeriodSeconds;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
     	      this.topologyManager = defaults.topologyManager;
         }
@@ -477,6 +505,18 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder shutdownGracePeriodCriticalPodsSeconds(@Nullable Integer shutdownGracePeriodCriticalPodsSeconds) {
+
+            this.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shutdownGracePeriodSeconds(@Nullable Integer shutdownGracePeriodSeconds) {
+
+            this.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder singleProcessOomKill(@Nullable Boolean singleProcessOomKill) {
 
             this.singleProcessOomKill = singleProcessOomKill;
@@ -509,6 +549,8 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
             _resultValue.maxParallelImagePulls = maxParallelImagePulls;
             _resultValue.memoryManager = memoryManager;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.shutdownGracePeriodCriticalPodsSeconds = shutdownGracePeriodCriticalPodsSeconds;
+            _resultValue.shutdownGracePeriodSeconds = shutdownGracePeriodSeconds;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
             _resultValue.topologyManager = topologyManager;
             return _resultValue;

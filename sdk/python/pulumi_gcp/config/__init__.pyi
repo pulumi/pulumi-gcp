@@ -25,6 +25,8 @@ activeDirectoryCustomEndpoint: Optional[str]
 
 addPulumiAttributionLabel: Optional[bool]
 
+agentRegistryCustomEndpoint: Optional[str]
+
 alloydbCustomEndpoint: Optional[str]
 
 apiGatewayCustomEndpoint: Optional[str]

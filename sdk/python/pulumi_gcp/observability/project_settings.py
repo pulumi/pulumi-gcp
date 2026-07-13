@@ -224,8 +224,8 @@ class ProjectSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_63399",
-            name="tf-test_97523",
+            project_id="tf-test_34534",
+            name="tf-test_87829",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_api = gcp.projects.Service("observability_api",
@@ -289,8 +289,8 @@ class ProjectSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_63399",
-            name="tf-test_97523",
+            project_id="tf-test_34534",
+            name="tf-test_87829",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_api = gcp.projects.Service("observability_api",

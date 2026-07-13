@@ -13192,6 +13192,10 @@ type RoutineExternalRuntimeOptions struct {
 	// see [Configure container limits for Python
 	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
 	ContainerMemory *string `pulumi:"containerMemory"`
+	// Maximum number of concurrent requests per Python UDF container instance. For more
+	// information, see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerRequestConcurrency *string `pulumi:"containerRequestConcurrency"`
 	// Maximum number of rows in each batch sent to the external runtime. If
 	// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 	MaxBatchingRows *string `pulumi:"maxBatchingRows"`
@@ -13225,6 +13229,10 @@ type RoutineExternalRuntimeOptionsArgs struct {
 	// see [Configure container limits for Python
 	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
 	ContainerMemory pulumi.StringPtrInput `pulumi:"containerMemory"`
+	// Maximum number of concurrent requests per Python UDF container instance. For more
+	// information, see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerRequestConcurrency pulumi.StringPtrInput `pulumi:"containerRequestConcurrency"`
 	// Maximum number of rows in each batch sent to the external runtime. If
 	// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 	MaxBatchingRows pulumi.StringPtrInput `pulumi:"maxBatchingRows"`
@@ -13329,6 +13337,13 @@ func (o RoutineExternalRuntimeOptionsOutput) ContainerMemory() pulumi.StringPtrO
 	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.ContainerMemory }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of concurrent requests per Python UDF container instance. For more
+// information, see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsOutput) ContainerRequestConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.ContainerRequestConcurrency }).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of rows in each batch sent to the external runtime. If
 // absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 func (o RoutineExternalRuntimeOptionsOutput) MaxBatchingRows() pulumi.StringPtrOutput {
@@ -13394,6 +13409,18 @@ func (o RoutineExternalRuntimeOptionsPtrOutput) ContainerMemory() pulumi.StringP
 			return nil
 		}
 		return v.ContainerMemory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of concurrent requests per Python UDF container instance. For more
+// information, see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsPtrOutput) ContainerRequestConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerRequestConcurrency
 	}).(pulumi.StringPtrOutput)
 }
 

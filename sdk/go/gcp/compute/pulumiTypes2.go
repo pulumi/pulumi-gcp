@@ -13,6 +13,1681 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetImagesImage struct {
+	// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+	ArchiveSizeBytes int `pulumi:"archiveSizeBytes"`
+	// The creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// An optional description of this image.
+	Description string `pulumi:"description"`
+	// The size of the image when restored onto a persistent disk in gigabytes.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The family name of the image.
+	Family  string `pulumi:"family"`
+	ImageId int    `pulumi:"imageId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels map[string]string `pulumi:"labels"`
+	// The name of the image.
+	Name string `pulumi:"name"`
+	// The URI of the image.
+	SelfLink string `pulumi:"selfLink"`
+	// The URL of the source disk used to create this image.
+	SourceDisk string `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image.
+	SourceDiskId string `pulumi:"sourceDiskId"`
+	// The ID value of the image used to create this image.
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
+// You can construct a concrete instance of `GetImagesImageInput` via:
+//
+//	GetImagesImageArgs{...}
+type GetImagesImageInput interface {
+	pulumi.Input
+
+	ToGetImagesImageOutput() GetImagesImageOutput
+	ToGetImagesImageOutputWithContext(context.Context) GetImagesImageOutput
+}
+
+type GetImagesImageArgs struct {
+	// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+	ArchiveSizeBytes pulumi.IntInput `pulumi:"archiveSizeBytes"`
+	// The creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// An optional description of this image.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The size of the image when restored onto a persistent disk in gigabytes.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The family name of the image.
+	Family  pulumi.StringInput `pulumi:"family"`
+	ImageId pulumi.IntInput    `pulumi:"imageId"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The name of the image.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URI of the image.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// The URL of the source disk used to create this image.
+	SourceDisk pulumi.StringInput `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image.
+	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
+	// The ID value of the image used to create this image.
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutput() GetImagesImageOutput {
+	return i.ToGetImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
+}
+
+// GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetImagesImageArrayInput` via:
+//
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
+type GetImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageArrayOutput() GetImagesImageArrayOutput
+	ToGetImagesImageArrayOutputWithContext(context.Context) GetImagesImageArrayOutput
+}
+
+type GetImagesImageArray []GetImagesImageInput
+
+func (GetImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return i.ToGetImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
+}
+
+type GetImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return o
+}
+
+// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+func (o GetImagesImageOutput) ArchiveSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.ArchiveSizeBytes }).(pulumi.IntOutput)
+}
+
+// The creation timestamp in RFC3339 text format.
+func (o GetImagesImageOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this image.
+func (o GetImagesImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The size of the image when restored onto a persistent disk in gigabytes.
+func (o GetImagesImageOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// The family name of the image.
+func (o GetImagesImageOutput) Family() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Family }).(pulumi.StringOutput)
+}
+
+func (o GetImagesImageOutput) ImageId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.ImageId }).(pulumi.IntOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o GetImagesImageOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesImage) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the image.
+func (o GetImagesImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URI of the image.
+func (o GetImagesImageOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The URL of the source disk used to create this image.
+func (o GetImagesImageOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+// The ID value of the disk used to create this image.
+func (o GetImagesImageOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The ID value of the image used to create this image.
+func (o GetImagesImageOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
+		return vs[0].([]GetImagesImage)[vs[1].(int)]
+	}).(GetImagesImageOutput)
+}
+
+type GetInstanceAdvancedMachineFeature struct {
+	// Whether to enable nested virtualization or not.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for the instance.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode string `pulumi:"turboMode"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount int `pulumi:"visibleCoreCount"`
+}
+
+// GetInstanceAdvancedMachineFeatureInput is an input type that accepts GetInstanceAdvancedMachineFeatureArgs and GetInstanceAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetInstanceAdvancedMachineFeatureInput` via:
+//
+//	GetInstanceAdvancedMachineFeatureArgs{...}
+type GetInstanceAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput
+	ToGetInstanceAdvancedMachineFeatureOutputWithContext(context.Context) GetInstanceAdvancedMachineFeatureOutput
+}
+
+type GetInstanceAdvancedMachineFeatureArgs struct {
+	// Whether to enable nested virtualization or not.
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for the instance.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode pulumi.StringInput `pulumi:"turboMode"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
+}
+
+func (GetInstanceAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceAdvancedMachineFeatureArgs) ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput {
+	return i.ToGetInstanceAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAdvancedMachineFeatureArgs) ToGetInstanceAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAdvancedMachineFeatureOutput)
+}
+
+// GetInstanceAdvancedMachineFeatureArrayInput is an input type that accepts GetInstanceAdvancedMachineFeatureArray and GetInstanceAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAdvancedMachineFeatureArrayInput` via:
+//
+//	GetInstanceAdvancedMachineFeatureArray{ GetInstanceAdvancedMachineFeatureArgs{...} }
+type GetInstanceAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput
+	ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetInstanceAdvancedMachineFeatureArrayOutput
+}
+
+type GetInstanceAdvancedMachineFeatureArray []GetInstanceAdvancedMachineFeatureInput
+
+func (GetInstanceAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceAdvancedMachineFeatureArray) ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput {
+	return i.ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAdvancedMachineFeatureArray) ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAdvancedMachineFeatureArrayOutput)
+}
+
+type GetInstanceAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureOutput {
+	return o
+}
+
+// Whether to enable nested virtualization or not.
+func (o GetInstanceAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Whether to enable UEFI networking for the instance.
+func (o GetInstanceAdvancedMachineFeatureOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
+// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+func (o GetInstanceAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o GetInstanceAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+func (o GetInstanceAdvancedMachineFeatureOutput) TurboMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) string { return v.TurboMode }).(pulumi.StringOutput)
+}
+
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+func (o GetInstanceAdvancedMachineFeatureOutput) VisibleCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetInstanceAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAdvancedMachineFeature {
+		return vs[0].([]GetInstanceAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetInstanceAdvancedMachineFeatureOutput)
+}
+
+type GetInstanceAttachedDisk struct {
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName string `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRsa string `pulumi:"diskEncryptionKeyRsa"`
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+	DiskEncryptionServiceAccount string `pulumi:"diskEncryptionServiceAccount"`
+	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	ForceAttach bool `pulumi:"forceAttach"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode string `pulumi:"mode"`
+	// The selfLink of the disk attached to this instance.
+	Source string `pulumi:"source"`
+}
+
+// GetInstanceAttachedDiskInput is an input type that accepts GetInstanceAttachedDiskArgs and GetInstanceAttachedDiskOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedDiskInput` via:
+//
+//	GetInstanceAttachedDiskArgs{...}
+type GetInstanceAttachedDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput
+	ToGetInstanceAttachedDiskOutputWithContext(context.Context) GetInstanceAttachedDiskOutput
+}
+
+type GetInstanceAttachedDiskArgs struct {
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRsa pulumi.StringInput `pulumi:"diskEncryptionKeyRsa"`
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+	DiskEncryptionServiceAccount pulumi.StringInput `pulumi:"diskEncryptionServiceAccount"`
+	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	ForceAttach pulumi.BoolInput `pulumi:"forceAttach"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The selfLink of the disk attached to this instance.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetInstanceAttachedDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedDiskArgs) ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput {
+	return i.ToGetInstanceAttachedDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedDiskArgs) ToGetInstanceAttachedDiskOutputWithContext(ctx context.Context) GetInstanceAttachedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedDiskOutput)
+}
+
+// GetInstanceAttachedDiskArrayInput is an input type that accepts GetInstanceAttachedDiskArray and GetInstanceAttachedDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedDiskArrayInput` via:
+//
+//	GetInstanceAttachedDiskArray{ GetInstanceAttachedDiskArgs{...} }
+type GetInstanceAttachedDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput
+	ToGetInstanceAttachedDiskArrayOutputWithContext(context.Context) GetInstanceAttachedDiskArrayOutput
+}
+
+type GetInstanceAttachedDiskArray []GetInstanceAttachedDiskInput
+
+func (GetInstanceAttachedDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedDiskArray) ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput {
+	return i.ToGetInstanceAttachedDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedDiskArray) ToGetInstanceAttachedDiskArrayOutputWithContext(ctx context.Context) GetInstanceAttachedDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedDiskArrayOutput)
+}
+
+type GetInstanceAttachedDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedDiskOutput) ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskOutput) ToGetInstanceAttachedDiskOutputWithContext(ctx context.Context) GetInstanceAttachedDiskOutput {
+	return o
+}
+
+// Name with which the attached disk is accessible
+// under `/dev/disk/by-id/`
+func (o GetInstanceAttachedDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeyRsa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeyRsa }).(pulumi.StringOutput)
+}
+
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionServiceAccount }).(pulumi.StringOutput)
+}
+
+// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+func (o GetInstanceAttachedDiskOutput) ForceAttach() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) bool { return v.ForceAttach }).(pulumi.BoolOutput)
+}
+
+// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+func (o GetInstanceAttachedDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+func (o GetInstanceAttachedDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The selfLink of the disk attached to this instance.
+func (o GetInstanceAttachedDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetInstanceAttachedDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) ToGetInstanceAttachedDiskArrayOutputWithContext(ctx context.Context) GetInstanceAttachedDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachedDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachedDisk {
+		return vs[0].([]GetInstanceAttachedDisk)[vs[1].(int)]
+	}).(GetInstanceAttachedDiskOutput)
+}
+
+type GetInstanceBootDisk struct {
+	// Whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete bool `pulumi:"autoDelete"`
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName string `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	DiskEncryptionKeyRsa string `pulumi:"diskEncryptionKeyRsa"`
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+	DiskEncryptionServiceAccount string `pulumi:"diskEncryptionServiceAccount"`
+	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	ForceAttach bool `pulumi:"forceAttach"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures []string `pulumi:"guestOsFeatures"`
+	// Parameters with which a disk was created alongside the instance.
+	// Structure is documented below.
+	InitializeParams []GetInstanceBootDiskInitializeParam `pulumi:"initializeParams"`
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface string `pulumi:"interface"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode string `pulumi:"mode"`
+	// The selfLink of the disk attached to this instance.
+	Source string `pulumi:"source"`
+}
+
+// GetInstanceBootDiskInput is an input type that accepts GetInstanceBootDiskArgs and GetInstanceBootDiskOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInput` via:
+//
+//	GetInstanceBootDiskArgs{...}
+type GetInstanceBootDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput
+	ToGetInstanceBootDiskOutputWithContext(context.Context) GetInstanceBootDiskOutput
+}
+
+type GetInstanceBootDiskArgs struct {
+	// Whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	DiskEncryptionKeyRsa pulumi.StringInput `pulumi:"diskEncryptionKeyRsa"`
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+	DiskEncryptionServiceAccount pulumi.StringInput `pulumi:"diskEncryptionServiceAccount"`
+	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	ForceAttach pulumi.BoolInput `pulumi:"forceAttach"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures pulumi.StringArrayInput `pulumi:"guestOsFeatures"`
+	// Parameters with which a disk was created alongside the instance.
+	// Structure is documented below.
+	InitializeParams GetInstanceBootDiskInitializeParamArrayInput `pulumi:"initializeParams"`
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The selfLink of the disk attached to this instance.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetInstanceBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskArgs) ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput {
+	return i.ToGetInstanceBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskArgs) ToGetInstanceBootDiskOutputWithContext(ctx context.Context) GetInstanceBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskOutput)
+}
+
+// GetInstanceBootDiskArrayInput is an input type that accepts GetInstanceBootDiskArray and GetInstanceBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskArrayInput` via:
+//
+//	GetInstanceBootDiskArray{ GetInstanceBootDiskArgs{...} }
+type GetInstanceBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput
+	ToGetInstanceBootDiskArrayOutputWithContext(context.Context) GetInstanceBootDiskArrayOutput
+}
+
+type GetInstanceBootDiskArray []GetInstanceBootDiskInput
+
+func (GetInstanceBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskArray) ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput {
+	return i.ToGetInstanceBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskArray) ToGetInstanceBootDiskArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskArrayOutput)
+}
+
+type GetInstanceBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskOutput) ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskOutput) ToGetInstanceBootDiskOutputWithContext(ctx context.Context) GetInstanceBootDiskOutput {
+	return o
+}
+
+// Whether the disk will be auto-deleted when the instance is deleted.
+func (o GetInstanceBootDiskOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) bool { return v.AutoDelete }).(pulumi.BoolOutput)
+}
+
+// Name with which the attached disk is accessible
+// under `/dev/disk/by-id/`
+func (o GetInstanceBootDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+func (o GetInstanceBootDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+func (o GetInstanceBootDiskOutput) DiskEncryptionKeyRsa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeyRsa }).(pulumi.StringOutput)
+}
+
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+func (o GetInstanceBootDiskOutput) DiskEncryptionServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionServiceAccount }).(pulumi.StringOutput)
+}
+
+// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+func (o GetInstanceBootDiskOutput) ForceAttach() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) bool { return v.ForceAttach }).(pulumi.BoolOutput)
+}
+
+// A list of features to enable on the guest operating system. Applicable only for bootable images.
+func (o GetInstanceBootDiskOutput) GuestOsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) []string { return v.GuestOsFeatures }).(pulumi.StringArrayOutput)
+}
+
+// Parameters with which a disk was created alongside the instance.
+// Structure is documented below.
+func (o GetInstanceBootDiskOutput) InitializeParams() GetInstanceBootDiskInitializeParamArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) []GetInstanceBootDiskInitializeParam { return v.InitializeParams }).(GetInstanceBootDiskInitializeParamArrayOutput)
+}
+
+// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+func (o GetInstanceBootDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+func (o GetInstanceBootDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+func (o GetInstanceBootDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The selfLink of the disk attached to this instance.
+func (o GetInstanceBootDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskArrayOutput) ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskArrayOutput) ToGetInstanceBootDiskArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDisk {
+		return vs[0].([]GetInstanceBootDisk)[vs[1].(int)]
+	}).(GetInstanceBootDiskOutput)
+}
+
+type GetInstanceBootDiskInitializeParam struct {
+	// The architecture of the disk. One of "X86_64" or "ARM64".
+	Architecture string `pulumi:"architecture"`
+	// A flag to enable confidential compute mode on boot disk
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+	// The image from which this disk was initialised.
+	Image string `pulumi:"image"`
+	// A set of key/value label pairs assigned to the disk.
+	Labels map[string]string `pulumi:"labels"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// A list of short names or selfLinks of zones in which to create a regional disk.
+	ReplicaZones []string `pulumi:"replicaZones"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+	// A list of selfLinks to resource policies attached to the selected `bootDisk`
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// The size of the image in gigabytes.
+	Size int `pulumi:"size"`
+	// The snapshot from which this disk was initialised.
+	Snapshot string `pulumi:"snapshot"`
+	// The encryption key used to decrypt the source image.
+	SourceImageEncryptionKeys []GetInstanceBootDiskInitializeParamSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKeys"`
+	// The encryption key used to decrypt the source snapshot.
+	SourceSnapshotEncryptionKeys []GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The URL of the storage pool in which the new disk is created
+	StoragePool string `pulumi:"storagePool"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceBootDiskInitializeParamInput is an input type that accepts GetInstanceBootDiskInitializeParamArgs and GetInstanceBootDiskInitializeParamOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamInput` via:
+//
+//	GetInstanceBootDiskInitializeParamArgs{...}
+type GetInstanceBootDiskInitializeParamInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput
+	ToGetInstanceBootDiskInitializeParamOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamOutput
+}
+
+type GetInstanceBootDiskInitializeParamArgs struct {
+	// The architecture of the disk. One of "X86_64" or "ARM64".
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	// A flag to enable confidential compute mode on boot disk
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+	// The image from which this disk was initialised.
+	Image pulumi.StringInput `pulumi:"image"`
+	// A set of key/value label pairs assigned to the disk.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	// A list of short names or selfLinks of zones in which to create a regional disk.
+	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+	// A list of selfLinks to resource policies attached to the selected `bootDisk`
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
+	// The size of the image in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The snapshot from which this disk was initialised.
+	Snapshot pulumi.StringInput `pulumi:"snapshot"`
+	// The encryption key used to decrypt the source image.
+	SourceImageEncryptionKeys GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayInput `pulumi:"sourceImageEncryptionKeys"`
+	// The encryption key used to decrypt the source snapshot.
+	SourceSnapshotEncryptionKeys GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The URL of the storage pool in which the new disk is created
+	StoragePool pulumi.StringInput `pulumi:"storagePool"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceBootDiskInitializeParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamArgs) ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput {
+	return i.ToGetInstanceBootDiskInitializeParamOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamArgs) ToGetInstanceBootDiskInitializeParamOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamOutput)
+}
+
+// GetInstanceBootDiskInitializeParamArrayInput is an input type that accepts GetInstanceBootDiskInitializeParamArray and GetInstanceBootDiskInitializeParamArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamArrayInput` via:
+//
+//	GetInstanceBootDiskInitializeParamArray{ GetInstanceBootDiskInitializeParamArgs{...} }
+type GetInstanceBootDiskInitializeParamArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput
+	ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamArrayOutput
+}
+
+type GetInstanceBootDiskInitializeParamArray []GetInstanceBootDiskInitializeParamInput
+
+func (GetInstanceBootDiskInitializeParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamArray) ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput {
+	return i.ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamArray) ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamArrayOutput)
+}
+
+type GetInstanceBootDiskInitializeParamOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializeParamOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamOutput {
+	return o
+}
+
+// The architecture of the disk. One of "X86_64" or "ARM64".
+func (o GetInstanceBootDiskInitializeParamOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// A flag to enable confidential compute mode on boot disk
+func (o GetInstanceBootDiskInitializeParamOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+// The image from which this disk was initialised.
+func (o GetInstanceBootDiskInitializeParamOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs assigned to the disk.
+func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
+}
+
+// A list of short names or selfLinks of zones in which to create a regional disk.
+func (o GetInstanceBootDiskInitializeParamOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+// A list of selfLinks to resource policies attached to the selected `bootDisk`
+func (o GetInstanceBootDiskInitializeParamOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// The size of the image in gigabytes.
+func (o GetInstanceBootDiskInitializeParamOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The snapshot from which this disk was initialised.
+func (o GetInstanceBootDiskInitializeParamOutput) Snapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Snapshot }).(pulumi.StringOutput)
+}
+
+// The encryption key used to decrypt the source image.
+func (o GetInstanceBootDiskInitializeParamOutput) SourceImageEncryptionKeys() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) []GetInstanceBootDiskInitializeParamSourceImageEncryptionKey {
+		return v.SourceImageEncryptionKeys
+	}).(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput)
+}
+
+// The encryption key used to decrypt the source snapshot.
+func (o GetInstanceBootDiskInitializeParamOutput) SourceSnapshotEncryptionKeys() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) []GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey {
+		return v.SourceSnapshotEncryptionKeys
+	}).(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+// The URL of the storage pool in which the new disk is created
+func (o GetInstanceBootDiskInitializeParamOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.StoragePool }).(pulumi.StringOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceBootDiskInitializeParamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskInitializeParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskInitializeParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDiskInitializeParam {
+		return vs[0].([]GetInstanceBootDiskInitializeParam)[vs[1].(int)]
+	}).(GetInstanceBootDiskInitializeParamOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+	// The SHA256 hash of the encryption key used to encrypt this disk.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyInput is an input type that accepts GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs and GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyInput` via:
+//
+//	GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs{...}
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput
+	ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput
+}
+
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	// The SHA256 hash of the encryption key used to encrypt this disk.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput {
+	return i.ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput)
+}
+
+// GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayInput is an input type that accepts GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray and GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayInput` via:
+//
+//	GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray{ GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs{...} }
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput
+	ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput
+}
+
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray []GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyInput
+
+func (GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParamSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput {
+	return i.ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceImageEncryptionKey) string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceImageEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceImageEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+// The SHA256 hash of the encryption key used to encrypt this disk.
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceImageEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParamSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput) ToGetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDiskInitializeParamSourceImageEncryptionKey {
+		return vs[0].([]GetInstanceBootDiskInitializeParamSourceImageEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+	// The SHA256 hash of the encryption key used to encrypt this disk.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyInput is an input type that accepts GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs and GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs{...}
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput
+	ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput
+}
+
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	// The SHA256 hash of the encryption key used to encrypt this disk.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray and GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray{ GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs{...} }
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput
+	ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray []GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyInput
+
+func (GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey) string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+// The SHA256 hash of the encryption key used to encrypt this disk.
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput() GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput) ToGetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey {
+		return vs[0].([]GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput)
+}
+
+type GetInstanceConfidentialInstanceConfig struct {
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
+	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// GetInstanceConfidentialInstanceConfigInput is an input type that accepts GetInstanceConfidentialInstanceConfigArgs and GetInstanceConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigInput` via:
+//
+//	GetInstanceConfidentialInstanceConfigArgs{...}
+type GetInstanceConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput
+	ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArgs struct {
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required.
+	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
+	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (GetInstanceConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
+// GetInstanceConfidentialInstanceConfigArrayInput is an input type that accepts GetInstanceConfidentialInstanceConfigArray and GetInstanceConfidentialInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigArrayInput` via:
+//
+//	GetInstanceConfidentialInstanceConfigArray{ GetInstanceConfidentialInstanceConfigArgs{...} }
+type GetInstanceConfidentialInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput
+	ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigArrayOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArray []GetInstanceConfidentialInstanceConfigInput
+
+func (GetInstanceConfidentialInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigArrayOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+// The confidential computing technology the instance uses.
+//
+//	SEV is an AMD feature. TDX is an Intel feature. One of the following
+//	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+//	"AMD Milan" is currently required.
+func (o GetInstanceConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
+}
+
+// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+func (o GetInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceConfidentialInstanceConfig {
+		return vs[0].([]GetInstanceConfidentialInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfig struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels map[string]string `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// GetInstanceGroupManagerAllInstancesConfigInput is an input type that accepts GetInstanceGroupManagerAllInstancesConfigArgs and GetInstanceGroupManagerAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAllInstancesConfigInput` via:
+//
+//	GetInstanceGroupManagerAllInstancesConfigArgs{...}
+type GetInstanceGroupManagerAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput
+	ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Context) GetInstanceGroupManagerAllInstancesConfigOutput
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArgs struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (GetInstanceGroupManagerAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArgs) ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput {
+	return i.ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArgs) ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+// GetInstanceGroupManagerAllInstancesConfigArrayInput is an input type that accepts GetInstanceGroupManagerAllInstancesConfigArray and GetInstanceGroupManagerAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAllInstancesConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerAllInstancesConfigArray{ GetInstanceGroupManagerAllInstancesConfigArgs{...} }
+type GetInstanceGroupManagerAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput
+	ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArray []GetInstanceGroupManagerAllInstancesConfigInput
+
+func (GetInstanceGroupManagerAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArray) ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArray) ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAllInstancesConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+// The label key-value pairs that you want to patch onto the instance,
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerAllInstancesConfig {
+		return vs[0].([]GetInstanceGroupManagerAllInstancesConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+type GetInstanceGroupManagerAutoHealingPolicy struct {
+	// The health check resource that signals autohealing.
+	HealthCheck string `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+}
+
+// GetInstanceGroupManagerAutoHealingPolicyInput is an input type that accepts GetInstanceGroupManagerAutoHealingPolicyArgs and GetInstanceGroupManagerAutoHealingPolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAutoHealingPolicyInput` via:
+//
+//	GetInstanceGroupManagerAutoHealingPolicyArgs{...}
+type GetInstanceGroupManagerAutoHealingPolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAutoHealingPolicyOutput() GetInstanceGroupManagerAutoHealingPolicyOutput
+	ToGetInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Context) GetInstanceGroupManagerAutoHealingPolicyOutput
+}
+
+type GetInstanceGroupManagerAutoHealingPolicyArgs struct {
+	// The health check resource that signals autohealing.
+	HealthCheck pulumi.StringInput `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+}
+
+func (GetInstanceGroupManagerAutoHealingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAutoHealingPolicyArgs) ToGetInstanceGroupManagerAutoHealingPolicyOutput() GetInstanceGroupManagerAutoHealingPolicyOutput {
+	return i.ToGetInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAutoHealingPolicyArgs) ToGetInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+// GetInstanceGroupManagerAutoHealingPolicyArrayInput is an input type that accepts GetInstanceGroupManagerAutoHealingPolicyArray and GetInstanceGroupManagerAutoHealingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAutoHealingPolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerAutoHealingPolicyArray{ GetInstanceGroupManagerAutoHealingPolicyArgs{...} }
+type GetInstanceGroupManagerAutoHealingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAutoHealingPolicyArrayOutput() GetInstanceGroupManagerAutoHealingPolicyArrayOutput
+	ToGetInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerAutoHealingPolicyArrayOutput
+}
+
+type GetInstanceGroupManagerAutoHealingPolicyArray []GetInstanceGroupManagerAutoHealingPolicyInput
+
+func (GetInstanceGroupManagerAutoHealingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAutoHealingPolicyArray) ToGetInstanceGroupManagerAutoHealingPolicyArrayOutput() GetInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAutoHealingPolicyArray) ToGetInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAutoHealingPolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerAutoHealingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAutoHealingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAutoHealingPolicyOutput) ToGetInstanceGroupManagerAutoHealingPolicyOutput() GetInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAutoHealingPolicyOutput) ToGetInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+// The health check resource that signals autohealing.
+func (o GetInstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAutoHealingPolicy) string { return v.HealthCheck }).(pulumi.StringOutput)
+}
+
+// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+func (o GetInstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAutoHealingPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupManagerAutoHealingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAutoHealingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetInstanceGroupManagerAutoHealingPolicyArrayOutput() GetInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerAutoHealingPolicy {
+		return vs[0].([]GetInstanceGroupManagerAutoHealingPolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicy struct {
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck string `pulumi:"onFailedHealthCheck"`
+	// Configuration for VM repairs in the MIG.
+	OnRepairs []GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair `pulumi:"onRepairs"`
+}
+
+// GetInstanceGroupManagerInstanceLifecyclePolicyInput is an input type that accepts GetInstanceGroupManagerInstanceLifecyclePolicyArgs and GetInstanceGroupManagerInstanceLifecyclePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerInstanceLifecyclePolicyInput` via:
+//
+//	GetInstanceGroupManagerInstanceLifecyclePolicyArgs{...}
+type GetInstanceGroupManagerInstanceLifecyclePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOutput
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOutput
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck pulumi.StringInput `pulumi:"onFailedHealthCheck"`
+	// Configuration for VM repairs in the MIG.
+	OnRepairs GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput `pulumi:"onRepairs"`
+}
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetInstanceGroupManagerInstanceLifecyclePolicyOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return i.ToGetInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
+// GetInstanceGroupManagerInstanceLifecyclePolicyArrayInput is an input type that accepts GetInstanceGroupManagerInstanceLifecyclePolicyArray and GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerInstanceLifecyclePolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerInstanceLifecyclePolicyArray{ GetInstanceGroupManagerInstanceLifecyclePolicyArgs{...} }
+type GetInstanceGroupManagerInstanceLifecyclePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+	ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyArray []GetInstanceGroupManagerInstanceLifecyclePolicyInput
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOutput() GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
+}
+
+// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
+}
+
+// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) OnFailedHealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.OnFailedHealthCheck }).(pulumi.StringOutput)
+}
+
+// Configuration for VM repairs in the MIG.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) OnRepairs() GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) []GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
+		return v.OnRepairs
+	}).(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput)
+}
+
+type GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerInstanceLifecyclePolicy {
+		return vs[0].([]GetInstanceGroupManagerInstanceLifecyclePolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
 type GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair struct {
 	// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
 	AllowChangingZone string `pulumi:"allowChangingZone"`
@@ -1960,6 +3635,302 @@ func (o GetInstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) GetIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupNamedPortType {
 		return vs[0].([]GetInstanceGroupNamedPortType)[vs[1].(int)]
 	}).(GetInstanceGroupNamedPortTypeOutput)
+}
+
+type GetInstanceGroupsInstanceGroup struct {
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	// Textual description of the instance group.
+	Description string `pulumi:"description"`
+	// The name of the instance group.
+	Name string `pulumi:"name"`
+	// List of named ports in the group, as a list of objects, each with the following attributes:
+	NamedPorts []GetInstanceGroupsInstanceGroupNamedPort `pulumi:"namedPorts"`
+	// The URL of the network the instance group is in.
+	Network string `pulumi:"network"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The URI of the resource.
+	SelfLink string `pulumi:"selfLink"`
+	// The number of instances in the group.
+	Size int `pulumi:"size"`
+	// The zone of the instance groups. If
+	// it is not provided, the provider zone is used.
+	Zone string `pulumi:"zone"`
+}
+
+// GetInstanceGroupsInstanceGroupInput is an input type that accepts GetInstanceGroupsInstanceGroupArgs and GetInstanceGroupsInstanceGroupOutput values.
+// You can construct a concrete instance of `GetInstanceGroupsInstanceGroupInput` via:
+//
+//	GetInstanceGroupsInstanceGroupArgs{...}
+type GetInstanceGroupsInstanceGroupInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupsInstanceGroupOutput() GetInstanceGroupsInstanceGroupOutput
+	ToGetInstanceGroupsInstanceGroupOutputWithContext(context.Context) GetInstanceGroupsInstanceGroupOutput
+}
+
+type GetInstanceGroupsInstanceGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
+	// Textual description of the instance group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of the instance group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of named ports in the group, as a list of objects, each with the following attributes:
+	NamedPorts GetInstanceGroupsInstanceGroupNamedPortArrayInput `pulumi:"namedPorts"`
+	// The URL of the network the instance group is in.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The URI of the resource.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// The number of instances in the group.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The zone of the instance groups. If
+	// it is not provided, the provider zone is used.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetInstanceGroupsInstanceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (i GetInstanceGroupsInstanceGroupArgs) ToGetInstanceGroupsInstanceGroupOutput() GetInstanceGroupsInstanceGroupOutput {
+	return i.ToGetInstanceGroupsInstanceGroupOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupsInstanceGroupArgs) ToGetInstanceGroupsInstanceGroupOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupsInstanceGroupOutput)
+}
+
+// GetInstanceGroupsInstanceGroupArrayInput is an input type that accepts GetInstanceGroupsInstanceGroupArray and GetInstanceGroupsInstanceGroupArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupsInstanceGroupArrayInput` via:
+//
+//	GetInstanceGroupsInstanceGroupArray{ GetInstanceGroupsInstanceGroupArgs{...} }
+type GetInstanceGroupsInstanceGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupsInstanceGroupArrayOutput() GetInstanceGroupsInstanceGroupArrayOutput
+	ToGetInstanceGroupsInstanceGroupArrayOutputWithContext(context.Context) GetInstanceGroupsInstanceGroupArrayOutput
+}
+
+type GetInstanceGroupsInstanceGroupArray []GetInstanceGroupsInstanceGroupInput
+
+func (GetInstanceGroupsInstanceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (i GetInstanceGroupsInstanceGroupArray) ToGetInstanceGroupsInstanceGroupArrayOutput() GetInstanceGroupsInstanceGroupArrayOutput {
+	return i.ToGetInstanceGroupsInstanceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupsInstanceGroupArray) ToGetInstanceGroupsInstanceGroupArrayOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupsInstanceGroupArrayOutput)
+}
+
+type GetInstanceGroupsInstanceGroupOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupsInstanceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (o GetInstanceGroupsInstanceGroupOutput) ToGetInstanceGroupsInstanceGroupOutput() GetInstanceGroupsInstanceGroupOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupOutput) ToGetInstanceGroupsInstanceGroupOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupOutput {
+	return o
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetInstanceGroupsInstanceGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Textual description of the instance group.
+func (o GetInstanceGroupsInstanceGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the instance group.
+func (o GetInstanceGroupsInstanceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of named ports in the group, as a list of objects, each with the following attributes:
+func (o GetInstanceGroupsInstanceGroupOutput) NamedPorts() GetInstanceGroupsInstanceGroupNamedPortArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) []GetInstanceGroupsInstanceGroupNamedPort { return v.NamedPorts }).(GetInstanceGroupsInstanceGroupNamedPortArrayOutput)
+}
+
+// The URL of the network the instance group is in.
+func (o GetInstanceGroupsInstanceGroupOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
+func (o GetInstanceGroupsInstanceGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URI of the resource.
+func (o GetInstanceGroupsInstanceGroupOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The number of instances in the group.
+func (o GetInstanceGroupsInstanceGroupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The zone of the instance groups. If
+// it is not provided, the provider zone is used.
+func (o GetInstanceGroupsInstanceGroupOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroup) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupsInstanceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupsInstanceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (o GetInstanceGroupsInstanceGroupArrayOutput) ToGetInstanceGroupsInstanceGroupArrayOutput() GetInstanceGroupsInstanceGroupArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupArrayOutput) ToGetInstanceGroupsInstanceGroupArrayOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupsInstanceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupsInstanceGroup {
+		return vs[0].([]GetInstanceGroupsInstanceGroup)[vs[1].(int)]
+	}).(GetInstanceGroupsInstanceGroupOutput)
+}
+
+type GetInstanceGroupsInstanceGroupNamedPort struct {
+	// The name of the instance group.
+	Name string `pulumi:"name"`
+	// The port number.
+	Port int `pulumi:"port"`
+}
+
+// GetInstanceGroupsInstanceGroupNamedPortInput is an input type that accepts GetInstanceGroupsInstanceGroupNamedPortArgs and GetInstanceGroupsInstanceGroupNamedPortOutput values.
+// You can construct a concrete instance of `GetInstanceGroupsInstanceGroupNamedPortInput` via:
+//
+//	GetInstanceGroupsInstanceGroupNamedPortArgs{...}
+type GetInstanceGroupsInstanceGroupNamedPortInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupsInstanceGroupNamedPortOutput() GetInstanceGroupsInstanceGroupNamedPortOutput
+	ToGetInstanceGroupsInstanceGroupNamedPortOutputWithContext(context.Context) GetInstanceGroupsInstanceGroupNamedPortOutput
+}
+
+type GetInstanceGroupsInstanceGroupNamedPortArgs struct {
+	// The name of the instance group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port number.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetInstanceGroupsInstanceGroupNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupsInstanceGroupNamedPort)(nil)).Elem()
+}
+
+func (i GetInstanceGroupsInstanceGroupNamedPortArgs) ToGetInstanceGroupsInstanceGroupNamedPortOutput() GetInstanceGroupsInstanceGroupNamedPortOutput {
+	return i.ToGetInstanceGroupsInstanceGroupNamedPortOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupsInstanceGroupNamedPortArgs) ToGetInstanceGroupsInstanceGroupNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupsInstanceGroupNamedPortOutput)
+}
+
+// GetInstanceGroupsInstanceGroupNamedPortArrayInput is an input type that accepts GetInstanceGroupsInstanceGroupNamedPortArray and GetInstanceGroupsInstanceGroupNamedPortArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupsInstanceGroupNamedPortArrayInput` via:
+//
+//	GetInstanceGroupsInstanceGroupNamedPortArray{ GetInstanceGroupsInstanceGroupNamedPortArgs{...} }
+type GetInstanceGroupsInstanceGroupNamedPortArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupsInstanceGroupNamedPortArrayOutput() GetInstanceGroupsInstanceGroupNamedPortArrayOutput
+	ToGetInstanceGroupsInstanceGroupNamedPortArrayOutputWithContext(context.Context) GetInstanceGroupsInstanceGroupNamedPortArrayOutput
+}
+
+type GetInstanceGroupsInstanceGroupNamedPortArray []GetInstanceGroupsInstanceGroupNamedPortInput
+
+func (GetInstanceGroupsInstanceGroupNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupsInstanceGroupNamedPort)(nil)).Elem()
+}
+
+func (i GetInstanceGroupsInstanceGroupNamedPortArray) ToGetInstanceGroupsInstanceGroupNamedPortArrayOutput() GetInstanceGroupsInstanceGroupNamedPortArrayOutput {
+	return i.ToGetInstanceGroupsInstanceGroupNamedPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupsInstanceGroupNamedPortArray) ToGetInstanceGroupsInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupsInstanceGroupNamedPortArrayOutput)
+}
+
+type GetInstanceGroupsInstanceGroupNamedPortOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupsInstanceGroupNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupsInstanceGroupNamedPort)(nil)).Elem()
+}
+
+func (o GetInstanceGroupsInstanceGroupNamedPortOutput) ToGetInstanceGroupsInstanceGroupNamedPortOutput() GetInstanceGroupsInstanceGroupNamedPortOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupNamedPortOutput) ToGetInstanceGroupsInstanceGroupNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupNamedPortOutput {
+	return o
+}
+
+// The name of the instance group.
+func (o GetInstanceGroupsInstanceGroupNamedPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroupNamedPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port number.
+func (o GetInstanceGroupsInstanceGroupNamedPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupsInstanceGroupNamedPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupsInstanceGroupNamedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupsInstanceGroupNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupsInstanceGroupNamedPort)(nil)).Elem()
+}
+
+func (o GetInstanceGroupsInstanceGroupNamedPortArrayOutput) ToGetInstanceGroupsInstanceGroupNamedPortArrayOutput() GetInstanceGroupsInstanceGroupNamedPortArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupNamedPortArrayOutput) ToGetInstanceGroupsInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupsInstanceGroupNamedPortArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupsInstanceGroupNamedPortArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupsInstanceGroupNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupsInstanceGroupNamedPort {
+		return vs[0].([]GetInstanceGroupsInstanceGroupNamedPort)[vs[1].(int)]
+	}).(GetInstanceGroupsInstanceGroupNamedPortOutput)
 }
 
 type GetInstanceGuestAccelerator struct {
@@ -38464,6 +40435,28 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedDiskInput)(nil)).Elem(), GetInstanceAttachedDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedDiskArrayInput)(nil)).Elem(), GetInstanceAttachedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInput)(nil)).Elem(), GetInstanceBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskArrayInput)(nil)).Elem(), GetInstanceBootDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamArrayInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfidentialInstanceConfigInput)(nil)).Elem(), GetInstanceConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfidentialInstanceConfigArrayInput)(nil)).Elem(), GetInstanceConfidentialInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), GetInstanceGroupManagerAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), GetInstanceGroupManagerAutoHealingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerAutoHealingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArgs{})
@@ -38500,6 +40493,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeArrayInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupsInstanceGroupInput)(nil)).Elem(), GetInstanceGroupsInstanceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupsInstanceGroupArrayInput)(nil)).Elem(), GetInstanceGroupsInstanceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupsInstanceGroupNamedPortInput)(nil)).Elem(), GetInstanceGroupsInstanceGroupNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupsInstanceGroupNamedPortArrayInput)(nil)).Elem(), GetInstanceGroupsInstanceGroupNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorInput)(nil)).Elem(), GetInstanceGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorArrayInput)(nil)).Elem(), GetInstanceGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArgs{})
@@ -39046,6 +41043,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetImagesImageOutput{})
+	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAutoHealingPolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAutoHealingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortOutput{})
@@ -39082,6 +41101,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupsInstanceGroupOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupsInstanceGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupsInstanceGroupNamedPortOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupsInstanceGroupNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueOutput{})

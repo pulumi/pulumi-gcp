@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_56529}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_91980}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var testSa = new Account("testSa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_75413")
+ *             .accountId("tf-test-sa-_37118")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_55138}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_80332}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()
@@ -319,6 +319,28 @@ public class DataProduct extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     * 
+     */
+    @Export(name="icon", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> icon;
+
+    /**
+     * @return Base64 encoded image representing the data product. Max Size: 3.0MiB
+     * Expected image dimensions are 512x512 pixels, however the API only
+     * performs validation on size of the encoded data.
+     * Note: For byte fields, the content of the fields are base64-encoded (which
+     * increases the size of the data by 33-36%) when using JSON on the wire.
+     * 
+     */
+    public Output<Optional<String>> icon() {
+        return Codegen.optional(this.icon);
     }
     /**
      * User-defined labels.

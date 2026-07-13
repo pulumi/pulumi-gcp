@@ -157,6 +157,11 @@ namespace Pulumi.Gcp.NetworkServices
     ///                         {
     ///                             "custom-header",
     ///                         },
+    ///                         ForwardAttributes = new[]
+    ///                         {
+    ///                             "request.host",
+    ///                             "request.path",
+    ///                         },
     ///                     },
     ///                 },
     ///             },

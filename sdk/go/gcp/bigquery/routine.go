@@ -369,7 +369,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("tf_test_dataset_id_81126"),
+//				DatasetId: pulumi.String("tf_test_dataset_id_21197"),
 //			})
 //			if err != nil {
 //				return err
@@ -489,9 +489,10 @@ import (
 //					EntryPoint: pulumi.String("multiply"),
 //				},
 //				ExternalRuntimeOptions: &bigquery.RoutineExternalRuntimeOptionsArgs{
-//					ContainerMemory: pulumi.String("512Mi"),
-//					ContainerCpu:    pulumi.Float64(0.5),
-//					RuntimeVersion:  pulumi.String("python-3.11"),
+//					ContainerMemory:             pulumi.String("512Mi"),
+//					ContainerCpu:                pulumi.Float64(0.5),
+//					RuntimeVersion:              pulumi.String("python-3.11"),
+//					ContainerRequestConcurrency: pulumi.String("1"),
 //				},
 //			})
 //			if err != nil {

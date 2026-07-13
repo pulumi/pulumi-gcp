@@ -15,6 +15,11 @@ export type CloudExadataInfrastructure = import("./cloudExadataInfrastructure").
 export const CloudExadataInfrastructure: typeof import("./cloudExadataInfrastructure").CloudExadataInfrastructure = null as any;
 utilities.lazyLoad(exports, ["CloudExadataInfrastructure"], () => require("./cloudExadataInfrastructure"));
 
+export { CloudExadataInfrastructureExascaleConfigArgs, CloudExadataInfrastructureExascaleConfigState } from "./cloudExadataInfrastructureExascaleConfig";
+export type CloudExadataInfrastructureExascaleConfig = import("./cloudExadataInfrastructureExascaleConfig").CloudExadataInfrastructureExascaleConfig;
+export const CloudExadataInfrastructureExascaleConfig: typeof import("./cloudExadataInfrastructureExascaleConfig").CloudExadataInfrastructureExascaleConfig = null as any;
+utilities.lazyLoad(exports, ["CloudExadataInfrastructureExascaleConfig"], () => require("./cloudExadataInfrastructureExascaleConfig"));
+
 export { CloudVmClusterArgs, CloudVmClusterState } from "./cloudVmCluster";
 export type CloudVmCluster = import("./cloudVmCluster").CloudVmCluster;
 export const CloudVmCluster: typeof import("./cloudVmCluster").CloudVmCluster = null as any;
@@ -139,6 +144,8 @@ const _module = {
                 return new AutonomousDatabase(name, <any>undefined, { urn })
             case "gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure":
                 return new CloudExadataInfrastructure(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig":
+                return new CloudExadataInfrastructureExascaleConfig(name, <any>undefined, { urn })
             case "gcp:oracledatabase/cloudVmCluster:CloudVmCluster":
                 return new CloudVmCluster(name, <any>undefined, { urn })
             case "gcp:oracledatabase/dbSystem:DbSystem":
@@ -164,6 +171,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/autonomousDatabase", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudExadataInfrastructure", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudExadataInfrastructureExascaleConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudVmCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/dbSystem", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exadbVmCluster", _module)

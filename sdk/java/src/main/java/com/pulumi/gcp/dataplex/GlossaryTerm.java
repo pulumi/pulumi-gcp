@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var termTestId = new Glossary("termTestId", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_37135")
+ *             .glossaryId("tf-test-glossary_82749")
  *             .location("us-central1")
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(termTestId.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-basic_42503")
+ *             .termId("tf-test-term-basic_15022")
  *             .build());
  * 
  *     }
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_9991")
+ *             .glossaryId("tf-test-glossary_89648")
  *             .location("us-central1")
  *             .build());
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(termTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-full_12125")
+ *             .termId("tf-test-term-full_64612")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform term")
  *             .description("term created by Terraform")

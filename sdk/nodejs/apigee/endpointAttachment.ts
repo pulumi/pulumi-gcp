@@ -5,13 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Apigee Endpoint Attachment.
+ * An `EndpointAttachment` in Apigee is a resource that facilitates private connectivity between Apigee and backend services using Private Service Connect (PSC).
+ *
+ * For more information, see the [Apigee documentation](https://docs.cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
  *
  * To get more information about EndpointAttachment, see:
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
  * * How-to Guides
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *
+ * ## Example Usage
  *
  * ## Import
  *
@@ -57,6 +61,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
 
     /**
      * State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      */
     declare public /*out*/ readonly connectionState: pulumi.Output<string>;
     /**
@@ -77,7 +82,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -91,7 +96,8 @@ export class EndpointAttachment extends pulumi.CustomResource {
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      */
     declare public readonly serviceAttachment: pulumi.Output<string>;
 
@@ -150,6 +156,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
 export interface EndpointAttachmentState {
     /**
      * State of the endpoint attachment connection to the service attachment.
+     * Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
      */
     connectionState?: pulumi.Input<string | undefined>;
     /**
@@ -170,7 +177,7 @@ export interface EndpointAttachmentState {
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -184,7 +191,8 @@ export interface EndpointAttachmentState {
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      */
     serviceAttachment?: pulumi.Input<string | undefined>;
 }
@@ -207,7 +215,7 @@ export interface EndpointAttachmentArgs {
      */
     endpointAttachmentId: pulumi.Input<string>;
     /**
-     * Location of the endpoint attachment.
+     * The location of the endpoint attachment.
      */
     location: pulumi.Input<string>;
     /**
@@ -216,7 +224,8 @@ export interface EndpointAttachmentArgs {
      */
     orgId: pulumi.Input<string>;
     /**
-     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
+     * The resource URL of the service attachment in the format:
+     * `projects/*&#47;regions/*&#47;serviceAttachments/*`.
      */
     serviceAttachment: pulumi.Input<string>;
 }

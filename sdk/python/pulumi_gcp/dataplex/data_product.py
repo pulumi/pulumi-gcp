@@ -29,6 +29,7 @@ class DataProductArgs:
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['DataProductAccessGroupArgs']]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -49,6 +50,11 @@ class DataProductArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
+        :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data product. Max Size: 3.0MiB
+               Expected image dimensions are 512x512 pixels, however the API only
+               performs validation on size of the encoded data.
+               Note: For byte fields, the content of the fields are base64-encoded (which
+               increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -67,6 +73,8 @@ class DataProductArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -177,6 +185,22 @@ class DataProductArgs:
 
     @_builtins.property
     @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Base64 encoded image representing the data product. Max Size: 3.0MiB
+        Expected image dimensions are 512x512 pixels, however the API only
+        performs validation on size of the encoded data.
+        Note: For byte fields, the content of the fields are base64-encoded (which
+        increases the size of the data by 33-36%) when using JSON on the wire.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+    @_builtins.property
+    @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
@@ -216,6 +240,7 @@ class _DataProductState:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -244,6 +269,11 @@ class _DataProductState:
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Checksum for concurrency control.
+        :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data product. Max Size: 3.0MiB
+               Expected image dimensions are 512x512 pixels, however the API only
+               performs validation on size of the encoded data.
+               Note: For byte fields, the content of the fields are base64-encoded (which
+               increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -277,6 +307,8 @@ class _DataProductState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -423,6 +455,22 @@ class _DataProductState:
 
     @_builtins.property
     @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Base64 encoded image representing the data product. Max Size: 3.0MiB
+        Expected image dimensions are 512x512 pixels, however the API only
+        performs validation on size of the encoded data.
+        Note: For byte fields, the content of the fields are base64-encoded (which
+        increases the size of the data by 33-36%) when using JSON on the wire.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+    @_builtins.property
+    @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
@@ -534,6 +582,7 @@ class DataProduct(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -568,7 +617,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_56529@example.com",
+                    "google_group": "tf-test-analysts-_91980@example.com",
                 },
             }])
         ```
@@ -579,7 +628,7 @@ class DataProduct(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_sa = gcp.serviceaccount.Account("test_sa",
-            account_id="tf-test-sa-_75413",
+            account_id="tf-test-sa-_37118",
             display_name="Test Service Account")
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
@@ -601,7 +650,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_55138@example.com",
+                        "google_group": "tf-test-analysts-_80332@example.com",
                     },
                 },
                 {
@@ -647,6 +696,11 @@ class DataProduct(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
+        :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data product. Max Size: 3.0MiB
+               Expected image dimensions are 512x512 pixels, however the API only
+               performs validation on size of the encoded data.
+               Note: For byte fields, the content of the fields are base64-encoded (which
+               increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -690,7 +744,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_56529@example.com",
+                    "google_group": "tf-test-analysts-_91980@example.com",
                 },
             }])
         ```
@@ -701,7 +755,7 @@ class DataProduct(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_sa = gcp.serviceaccount.Account("test_sa",
-            account_id="tf-test-sa-_75413",
+            account_id="tf-test-sa-_37118",
             display_name="Test Service Account")
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
@@ -723,7 +777,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_55138@example.com",
+                        "google_group": "tf-test-analysts-_80332@example.com",
                     },
                 },
                 {
@@ -775,6 +829,7 @@ class DataProduct(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -798,6 +853,7 @@ class DataProduct(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["icon"] = icon
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -836,6 +892,7 @@ class DataProduct(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
+            icon: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -868,6 +925,11 @@ class DataProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Checksum for concurrency control.
+        :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data product. Max Size: 3.0MiB
+               Expected image dimensions are 512x512 pixels, however the API only
+               performs validation on size of the encoded data.
+               Note: For byte fields, the content of the fields are base64-encoded (which
+               increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -895,6 +957,7 @@ class DataProduct(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["icon"] = icon
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -991,6 +1054,18 @@ class DataProduct(pulumi.CustomResource):
         Checksum for concurrency control.
         """
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Base64 encoded image representing the data product. Max Size: 3.0MiB
+        Expected image dimensions are 512x512 pixels, however the API only
+        performs validation on size of the encoded data.
+        Note: For byte fields, the content of the fields are base64-encoded (which
+        increases the size of the data by 33-36%) when using JSON on the wire.
+        """
+        return pulumi.get(self, "icon")
 
     @_builtins.property
     @pulumi.getter
