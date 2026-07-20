@@ -3029,6 +3029,7 @@ func Provider() tfbridge.ProviderInfo {
 		"google_workbench_instance_iam_member",
 		"google_workbench_instance_iam_policy",
 		"google_kms_key_ring",
+		"google_tags_tag_binding_collection",
 	}
 
 	for _, name := range allowMissingResourceDocs {
